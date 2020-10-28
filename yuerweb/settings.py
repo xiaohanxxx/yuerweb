@@ -32,8 +32,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'baike',
-    'hospital',
+    'artical',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

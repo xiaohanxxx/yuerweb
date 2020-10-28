@@ -1,7 +1,6 @@
 from django.shortcuts import render
 
 # Create your views here.
-
 import json
 from django import views
 from django.shortcuts import render, HttpResponse
@@ -22,5 +21,5 @@ class BaikeArtical(views.View):
     def get(self, request, *args, **kwargs):
         parent_id = request.GET.get('p')
         queryset = models.BaikeArtical.objects.get(parent_id=parent_id)
-        data = serializers.BaikeAreaSerializer(queryset).data
+        data = serializers.BaikeArticalSerializer(queryset).data
         return HttpResponse(json.dumps(data), content_type='application/json')
