@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <p>用户名<input type="text" name="user_name"></p>
+        <p>密码<input type="text" name="user_pwd"></p>
+        <p>确认密码<input type="text" name="r_user_pwd"></p>
+        <p>邮箱<input type="text" name="user_email"></p>
+        <p>电话<input type="text" name="user_phone"></p>
+        <p><input type="submit" name="提交"></p>
+        <p style="color: red">{{ error_msg }}</p>
+    </form>
+</head>
+<body>
+
+</body>
+</html>

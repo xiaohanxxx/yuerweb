@@ -1,13 +1,14 @@
 from django.db import models
-# Create your models here.
 
+
+# Create your models here.
 
 
 class User(models.Model):
     user_name = models.CharField('用户名', max_length=128, unique=True)
-    user_pwd = models.CharField('密码', max_length=256)
+    user_pwd = models.CharField('密码', max_length=255)
     user_email = models.EmailField('邮箱', unique=True)
-    user_phone = models.CharField('手机号',max_length=50, unique=True)
+    user_phone = models.CharField('手机号', max_length=50, unique=True)
     grade_choice = (
         (0, '普通会员'),
         (1, 'V1会员'),
@@ -32,7 +33,3 @@ class User(models.Model):
     class Meta:
         verbose_name = '用户管理'
         verbose_name_plural = verbose_name
-
-
-
-
