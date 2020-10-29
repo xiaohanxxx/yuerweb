@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from artical import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'hospital/', include('hospital.urls')),
-    url(r'baike/', include('baike.urls')),
+    path('',views.index),
 
 ]
