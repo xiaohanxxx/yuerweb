@@ -2,7 +2,8 @@
 # _*_ coding:utf-8 _*_
 from django.urls import re_path, path
 
+from .views import Artical
+
 urlpatterns = [
-    # path(r'area/', Area.as_view()),
-    # re_path(r'artical/', Artical.as_view()),
+    re_path(r'', Artical.as_view()),
 ]
