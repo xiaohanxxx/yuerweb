@@ -27,9 +27,21 @@ class User(models.Model):
     user_state = models.BooleanField('用户状态', default=True)
     add_time = models.DateTimeField('注册时间', auto_now_add=True)
 
+    head_photo = models.ImageField('头像',upload_to='user/image')
+
+
     def __str__(self):
         return self.user_name
+
+
+    def ge_avatar_url(self):
+        '''返回头像的url'''
+        return '域名/media' + str(self.head_photo)
 
     class Meta:
         verbose_name = '用户管理'
         verbose_name_plural = verbose_name
+
+
+# 前端展示
+# <img width="100" height="100"  data-url="{{ MEDIA_URL }}{{ user.image }}"/>
