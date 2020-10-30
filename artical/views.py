@@ -1,17 +1,73 @@
-import json
 from django import views
-from django.db.models import Q
 from django.shortcuts import render, HttpResponse
 from . import models
-from . import serializers
-
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
+"""医院推荐"""
 
-class Artical(views.View):
+
+# 查看医院推荐最上级目录
+class TuiJianRange(views.View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse("ok!!!!!")
+        data = models.Area.objects.filter(parent_id=None)
+        return HttpResponse(data.values())
+
+
+# 查看指定医院的推荐文章
+class ChoiceRange(views.View):
+    def get(self, request, *args, **kwargs):
+        world = request.GET.get("w", 0)
+        city = request.GET.get("c", 0)
+        # 所有医院
+        if not world and not city:
+            data = models.ArticalType.objects.get(name="医院介绍")
+            artical_list = data.artical_set.all()
+            return HttpResponse("所有医院推荐文章：{}".format(artical_list))
+
+        # 国内或者国外所有医院
+        elif world and not city:
+            # 查找下属所有城市
+            w_data = get_object_or_404(models.Area, pk=world)
+            # 正向查找下属所有城市
+            c_data = w_data.area_set.all()
+            # 查找下属所有医院
+            h_list = []
+            for i in c_data:
+                h_list.append(i.area_set.all())
+            # 查找医院所属医院介绍文章
+            a_list = []
+            for i in h_list:
+                for k in i:
+                    a_data = k.artical_set.filter(artical_type__name="医院介绍")
+                    if not a_data:
+                        continue
+                    a_list.append(a_data)
+            return HttpResponse("指定国内外医院介绍文章：{}".format(a_list))
+
+        # 某个城市所有医院介绍
+        else:
+            c_data = get_object_or_404(models.Area, pk=city)
+            # 正向查找下属所有医院
+            h_data = c_data.area_set.all()
+            a_list = []
+            for i in h_data:
+                a_data = i.artical_set.filter(artical_type__name="医院介绍")
+                if not a_data:
+                    continue
+                a_list.append(a_data)
+            return HttpResponse("指定城市医院介绍文章：{}".format(a_list))
+
+
+# 查看医院介绍文章
+class HospitalAritcal(views.View):
+    def get(self, request, *args, **kwargs):
+        aid = request.GET.get("id")
+        artical = models.Artical.objects.filter(pk=aid)
+        if not artical:
+            return HttpResponse("没有这篇文章！！！！！！")
+        return HttpResponse("医院介绍文章内容：{}".format(artical))
 
 
 if __name__ == '__main__':

@@ -16,6 +16,7 @@ class ArticleForm(forms.Form):
     category_id = forms.IntegerField()
 
 
+# get:获取帖子及评论， post: 发表帖子
 class Article(views.View):
     def get(self, request, *args, **kwargs):
         data = json.loads(request.body)
@@ -38,6 +39,7 @@ class Article(views.View):
         return HttpResponse("发表成功！！！！")
 
 
+# post: 发表评论
 class Comment(views.View):
     def get(self, request, *args, **kwargs):
         return render(request, "pinglun.html")
@@ -50,13 +52,14 @@ class Comment(views.View):
         return HttpResponse("评论成功！！！！！！！！！！")
 
 
+# 获取帖子列表
 class ArticleIndex(views.View):
     def get(self, request, *args, **kwargs):
-        data = json.loads(request.body)
-        pagi_data = models.PostArtical.objects.filter(category_id=data.get("category_id"))
+        category_id = request.GET.get("category_id")
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        pagi_data = models.PostArtical.objects.filter(category_id=category_id)
         paginator = Paginator(pagi_data, 10)
         pag_num = paginator.num_pages  # 获取整个表的总页数
-        curuent_page_num = int(data.get('page', 1))  # 获取当前页数,默认为1
         curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
 
         if pag_num < 11:  # 判断当前页是否小于11个
