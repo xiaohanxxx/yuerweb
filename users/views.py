@@ -139,3 +139,35 @@ class LoginOut(views.View):
     def get(self, request, *args, **kwargs):
         request.session.flush()
         return redirect("/login")
+
+
+
+# 测试上传
+def upload(request):
+    if request.method == 'POST':
+        name = request.POST.get('username')
+        avatar = request.FILES.get('avatar')
+        print(avatar)
+        with open(avatar.name, 'wb') as f:
+            for line in avatar:
+                f.write(line)
+        return HttpResponse('ok')
+    return render(request, 'picture_upload.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
