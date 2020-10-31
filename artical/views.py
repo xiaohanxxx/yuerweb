@@ -70,6 +70,17 @@ class HospitalAritcal(views.View):
         return HttpResponse("医院介绍文章内容：{}".format(artical))
 
 
+"""试管婴儿"""
+
+
+class ShiguanBaby(views.View):
+    def get(self, request, *args, **kwargs):
+        world = request.GET.get('w')
+        w_data = get_object_or_404(models.Area, pk=world)
+        a_data = w_data.artical_set.filter(artical_type__name="试管婴儿")
+        return HttpResponse("试管婴儿信息：{}".format(a_data))
+
+
 if __name__ == '__main__':
     # 区域测试数据
     data = {

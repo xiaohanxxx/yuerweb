@@ -8,4 +8,5 @@ urlpatterns = [
     path(r'tuijianrange/', views.TuiJianRange.as_view()),
     path(r'choicetuijian/', views.ChoiceRange.as_view()),
     path(r'hospitalartical/', views.HospitalAritcal.as_view()),
+    path(r'shiguanbaby/', views.ShiguanBaby.as_view()),
 ]
