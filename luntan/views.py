@@ -1,6 +1,6 @@
 import json
 
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 from . import models
 
@@ -19,8 +19,12 @@ class ArticleForm(forms.Form):
 # get:获取帖子及评论， post: 发表帖子
 class Article(views.View):
     def get(self, request, *args, **kwargs):
-        data = json.loads(request.body)
-        pass
+        aid = request.GET.get("id")
+        # 获取帖子
+        a_data = get_object_or_404(models.PostArtical, pk=aid)
+        # 获取评论
+        c_data = a_data.comment_set.all().values()
+        return HttpResponse("这是帖子内容及评论:{}, 这是评论：{}".format(a_data, c_data))
 
     def post(self, request, *args, **kwargs):
         form = ArticleForm(request.POST)
