@@ -23,7 +23,6 @@ from users import views  # test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'artical/', include('artical.urls')),
     url(r'luntan/', include('luntan.urls')),
     url(r'users/', include('users.urls')),
     url(r'hospital/', include('hospital.urls')),
