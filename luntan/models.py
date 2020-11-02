@@ -37,7 +37,7 @@ class Articles(models.Model):
     update_date = models.DateTimeField(auto_now=True, verbose_name="更新日期")
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")
     user = models.ForeignKey("users.User", related_name="articles_user",
-                             verbose_name="是否被删除(逻辑删除)", on_delete=models.CASCADE)
+                             verbose_name="用户", on_delete=models.CASCADE)
     topics = models.ManyToManyField("Topics", verbose_name='所属交流圈')
 
     class Meta:
