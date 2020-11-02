@@ -81,3 +81,4 @@ if __name__ == '__main__':
     tObj1 = models.HospitalType.objects.get(pk=1)
     tObj2 = models.HospitalType.objects.get(pk=2)
     hObj.hospitaltype.add(*[tObj1, tObj2])
+    print("xxxxxxxxxxx")
