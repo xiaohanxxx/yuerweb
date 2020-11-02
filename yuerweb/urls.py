@@ -27,7 +27,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'artical/', include('artical.urls')),
     url(r'luntan/', include('luntan.urls')),
-    url(r'users/', include('users.urls')),
+
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
 

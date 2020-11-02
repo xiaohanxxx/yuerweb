@@ -26,15 +26,16 @@ SECRET_KEY = 'b#b^v39c)n1)6jg52gq@%m1q(paqhd5mrv5(y6!9*1yo!g+=4+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
-
+ALLOWED_HOSTS = ['*',]
 
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',
     'users',
     'artical',
     'luntan',
+    'baike',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,14 +79,24 @@ WSGI_APPLICATION = 'yuerweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yuer_data',
+#         'HOST': '139.155.251.141',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'tbr@123456..',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yuer_data',
-        'HOST': '139.155.251.141',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'tbr@123456..',
+        'PASSWORD': '123456',
     }
 }
 
