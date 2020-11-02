@@ -175,10 +175,11 @@
 .h3frist a{ float: right;margin-right: 30px; font-size: 14px; text-decoration: none; font-size: 12px; color: #333; }
 .currpaitp{ background: #ff44ad; color: #fff; }
 
+
 .wentiwa{ width: 100%; overflow: hidden; }
 .titleanswer{ cursor: pointer; height: 70px; float:left; width: 31.3%; overflow: hidden; padding-left: 20px; margin-bottom: 10px; }
-.titleanswer h3{ font-size: 14px; height: 29px; font-weight: 400; padding-left: 40px; color: #666;  background-image: url('../img/wen.png'); background-repeat: no-repeat; background-size: 27px 27px; background-position: 10px center; }
-.titleanswer p{ font-size: 12px; padding-left: 40px; color: #666; line-height: 20px; background-image: url('../img/da.png'); background-repeat: no-repeat; background-size: 27px 27px; background-position: 10px center;}
+.titleanswer h3{ font-size: 14px; height: 29px; font-weight: 400; padding-left: 40px; color: #666;  background-image: url('../img/wen.png'); background-repeat: no-repeat; background-size: 27px 27px; background-position: 0px center; }
+.titleanswer p{ font-size: 12px; padding-left: 40px; color: #666; line-height: 20px; background-image: url('../img/da.png'); background-repeat: no-repeat; background-size: 27px 27px; background-position: 0px center;}
 .titleanswer abbr{ margin-left: 42px; font-size: 12px; }
 
 .hides{ display: none; }
