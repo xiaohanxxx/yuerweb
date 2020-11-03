@@ -48,7 +48,7 @@ class ArticlesList(views.View):
 
         return HttpResponse(
             "这是第{}页的数据，一共有{}页数据，页码列表是{}，本页数据内容是/r/n{}".format(
-                curuent_page_num, pag_num, pag_range, paginator, curuent_page
+                curuent_page_num, pag_num, pag_range, curuent_page
             )
         )
 
