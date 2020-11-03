@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'users',
     'luntan',
     'hospital',
+    'shiguanbaby',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
