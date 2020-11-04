@@ -1,57 +1,13 @@
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, HttpResponse, redirect
-from users import models as usermodels
+from django.contrib.auth import authenticate,login
+from django.contrib.auth.models import User
+from users.models import Userinfo
+from django.contrib.auth.decorators import login_required
 import json
-from datetime import datetime
-from django import views, forms
-
 
 # Create your views here.
-class RegisterForm(forms.Form):
-    user_name = forms.fields.CharField(
-        max_length=24,
-        min_length=6,
-        error_messages={
-            "required": "用户名不能为空",
-            'min_length': "长度小于6",
-            'max_length': "长度大于32",
-        })
-    user_email = forms.fields.EmailField(
-        error_messages={
-            'required': "邮箱不能为空",
-            "invalid": "邮箱格式错误",
-        }
-    )
-    user_phone = forms.fields.CharField(
-        max_length=11
-    )
-    user_pwd = forms.fields.CharField(
-        max_length=32,
-        min_length=6,
-        error_messages={
-            'required': "密码不能为空",
-            'min_length': "密码长度不能小于6",
-            'max_length': "密码长度不能大于32"
-        },
-        widget=forms.widgets.PasswordInput()
-    )
-    r_user_pwd = forms.CharField(
-        max_length=32,
-        min_length=6,
-        error_messages={
-            'required': "密码不能为空",
-            'min_length': "密码长度不能小于6",
-            'max_length': "密码长度不能大于32"
-        },
-        widget=forms.widgets.PasswordInput())
 
-    def clean_user_name(self):
-        name = self.cleaned_data.get('user_name')
-        isHave = usermodels.User.objects.filter(user_name=name)
-        if isHave:
-            raise ValidationError("用户名已存在")
-        else:
-            return name
 
     def clean_user_phone(self):
         val = self.cleaned_data.get("user_phone")
@@ -97,36 +53,23 @@ class LoginForm(forms.Form):
         if pwd != user_data.user_pwd:
             raise ValidationError("两次密码不一致")
         else:
-            self.cleaned_data['user_id'] = user_data.pk
-            return self.cleaned_data
+            # 创建用户
+            user = User.objects.create_user(
+                username=username,
+                password=password,
+            )
+            user_save = Userinfo(
+                phone=phone,
+            )
+            user_save.save()
 
+            data = {
+                'code': 200,
+                'msg': '注册成功'
+            }
+            return HttpResponse(json.dumps(data),content_type="application/json")
 
-# 注册
-class Register(views.View):
-    def get(self, request, *args, **kwargs):
-        return render(request, "register.html")
-
-    def post(self, request, *args, **kwargs):
-        form = RegisterForm(request.POST)
-        if not form.is_valid():
-            return render(request, "register.html", {"form_obj": form.errors})
-
-        # 创建用户
-        data = form.cleaned_data
-        data.pop('r_user_pwd')
-        usermodels.User.objects.create(**data)
-        return HttpResponse("注册成功！！！！！")
-
-
-# 登录
-class Login(views.View):
-    def get(self, request, *args, **kwargs):
-        return render(request, "login.html")
-
-    def post(self, request, *args, **kwargs):
-        form = LoginForm(request.POST)
-        if not form.is_valid():
-            return render(request, "register.html")
+    return render(request, "register.html")
 
         data = form.cleaned_data
         request.session['is_login'] = True
@@ -135,11 +78,9 @@ class Login(views.View):
 
 
 # 退出登录
-class LoginOut(views.View):
-    def get(self, request, *args, **kwargs):
-        request.session.flush()
-        return redirect("/login")
-
+def outlogin(request):
+    request.session.flush()
+    return redirect("/login")
 
 
 # 测试上传
