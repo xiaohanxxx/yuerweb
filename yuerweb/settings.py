@@ -26,16 +26,17 @@ SECRET_KEY = 'b#b^v39c)n1)6jg52gq@%m1q(paqhd5mrv5(y6!9*1yo!g+=4+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*',]
+ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
 INSTALLED_APPS = [
-    'simpleui',
     'users',
-    'artical',
     'luntan',
-    'baike',
+    'hospital',
+    'shiguanbaby',
+    'taolun',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

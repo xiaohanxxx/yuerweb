@@ -7,9 +7,9 @@ class CommentInline(admin.TabularInline):
     model = models.Comment
 
 
-class ArticlesAdmin(admin.ModelAdmin):
+class PostingAdmin(admin.ModelAdmin):
     inlines = [CommentInline]  # Inline
 
 
-admin.site.register(models.Articles, ArticlesAdmin)
-admin.site.register([models.Areas, models.ThumbUp, models.Comment, models.Topics])
+admin.site.register(models.Posting, PostingAdmin)
+admin.site.register([models.Groups, models.Topics])
