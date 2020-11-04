@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'luntan',
     'hospital',
     'shiguanbaby',
+    'taolun',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
