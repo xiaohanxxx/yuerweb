@@ -14,24 +14,30 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,re_path
+from django.urls import path, re_path
 from django.conf.urls import url, include
 from django.conf import settings
 from django.views.static import serve
-
-
-
-from users import views #test
+from yuerweb import views
+from users import views as userviews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.index),
+    path('register',userviews.register),
+    path('login',userviews.login),
+    path('outlog',userviews.outlogin),
+
+
+
+
     url(r'artical/', include('artical.urls')),
     url(r'luntan/', include('luntan.urls')),
 
+    url(r'baike/', include('baike.urls')),
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
-
-
-    url(r'^upload',views.upload) # 测试路由
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^upload', userviews.upload)  # 测试路由
 
 ]

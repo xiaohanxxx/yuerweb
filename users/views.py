@@ -3,8 +3,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
 from users.models import Userinfo
+from django.contrib.auth.decorators import login_required
 import json
-
 
 # Create your views here.
 
@@ -13,9 +13,10 @@ import json
 def register(request):
     if request.method == 'POST':
         # TODO 查询用户信息并返回到登录界面
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        phone = request.POST.get('phone')
+        username = request.GET.get('username')
+        password = request.GET.get('password')
+        phone = request.GET.get('phone')
+        print(username,password,phone)
         # 查询数据库中是否存在该数据
         user_pd = User.objects.filter(username=username).exists()
         if user_pd == True:
@@ -31,7 +32,6 @@ def register(request):
                 password=password,
             )
             user_save = Userinfo(
-                user=user,
                 phone=phone,
             )
             user_save.save()
@@ -48,8 +48,8 @@ def register(request):
 # 用户登录
 def userlogin(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
+        username = request.GET.get('username')
+        password = request.GET.get('password')
         user = authenticate(username=username, password=password)
         if user:
             # 查询密码是否正确

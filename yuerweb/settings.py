@@ -42,7 +42,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'ckeditor_uploader',
+    'rest_framework',
 ]
+
+
+CKEDITOR_CONFIGS = {
+
+'default': {
+
+'toolbar': 'full',
+
+'height':400,
+
+'width':1000,
+
+},
+
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,26 +98,26 @@ WSGI_APPLICATION = 'yuerweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'yuer_data',
-#         'HOST': '139.155.251.141',
-#         'PORT': '3306',
-#         'USER': 'root',
-#         'PASSWORD': 'tbr@123456..',
-#     }
-# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yuer_data',
-        'HOST': '127.0.0.1',
+        'HOST': '139.155.251.141',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': 'tbr@123456..',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yuer_data',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': '123456',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
