@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'users',
     'luntan',
     'hospital',
+    'shiguanbaby',
+    'taolun',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,14 +80,24 @@ WSGI_APPLICATION = 'yuerweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yuer_data',
+#         'HOST': '139.155.251.141',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'tbr@123456..',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yuer_data',
-        'HOST': '139.155.251.141',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': 'tbr@123456..',
+        'PASSWORD': '123456',
     }
 }
 
