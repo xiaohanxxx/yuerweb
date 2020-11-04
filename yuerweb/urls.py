@@ -24,10 +24,13 @@ from users import views  # test
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'luntan/', include('luntan.urls')),
-    url(r'users/', include('users.urls')),
+
     url(r'hospital/', include('hospital.urls')),
     url(r'shiguanbaby/', include('shiguanbaby.urls')),
     url(r'taolun/', include('taolun.urls')),
+
+    url(r'baike/',include('baike.urls')),
+    url(r'users/', include('users.urls')),
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
 
