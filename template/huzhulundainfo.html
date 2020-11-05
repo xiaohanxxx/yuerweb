@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name=renderer content=webkit>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/avalon.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+<!--      <style type="text/css">
+      body{ background: #029EE9; }
+     </style>
+ -->
+</head>
+
+<body  ms-controller="bodyconts">
+    <div class="header">
+       <div class="headerNav">
+         <div class="logos"><img src="img/logo.jpg"></div>
+         <div class="headerNav-ul">
+          <ul>
+            <li>
+              <a href="" class="nava">首页</a>
+            </li>
+            <li>
+              <a href="" class="acolor">试管婴儿  </a>
+              <div class="xialabox"  style="display: none;">
+                <p><a href="">海外试管</a></p>
+                <p><a href="">国内试管</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">育儿论坛</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕交流圈</a></p>
+                <p><a href="">妈妈交流圈</a></p>
+                <p><a href="">试管婴儿交流圈</a></p>
+                <p><a href="">难孕交流圈</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">互助问答</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">医院推荐</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">海外医院</a></p>
+                <p><a href="">国内医院</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">百科知识</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+                <p><a href="">育儿</a></p>
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+              </div>
+            </li>
+          </ul>
+         </div>
+         <div class="denglu">
+          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+                    <div class="yiyuansearch">
+                          <div  ms-click="showxiala">医院<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
+                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
+                              <li>医院</li>
+                              <li>医生</li>
+                              <li>问答</li>
+                              <li>百科</li>
+                          </ul>
+                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                          </ol>
+                    </div>
+                    <input type="" name="" id="blurfs">
+                    <i class="searchbox"></i>
+                </div>
+          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
+         </div>
+       </div>
+     </div>
+     
+   
+    <div class="hzwdbanner"><img src="img/hzwdbanner.png"></div>
+
+    <div class="hzwdconts">
+      <div class="hzwdleftse" style="min-height: 200px;">
+           <img src="img/tuxiang.jpg" style="border-radius: 50%; float: left; margin-right: 10px;"/>
+           <h3>我是问题描述文字信息</h3>
+           <p style="margin-top: 15px; padding-left: 45px;"><i class="layui-icon">&#xe66f;</i>我是用户名  <i class="layui-icon">&#xe68d;</i>2020-10-24 10:52 <abbr style="float: right;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+
+
+            <div class="pinglunkk">
+               <h4>评论</h4>
+               <div class="fuwenben">
+                 <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
+                  <script>
+                  layui.use('layedit', function(){
+                    var layedit = layui.layedit;
+                    layedit.build('demo',{
+                      // tool: ['face','image']
+                      tool: ['face'],
+                      height: 100
+                    }); //建立编辑器
+                  });
+                  </script>
+                  <p style="margin-top: 15px;"><abbr style="float: right; cursor: pointer; display: block; padding: 5px 15px; border-radius: 4px; background: #ff44ad; color: #fff;">评论</abbr></p>
+               </div>
+
+
+               
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+      <div class="hzwdrights">
+          <div class="metry">
+             <a href=""><img src="img/340.png"></a>
+          </div>
+          <div class="szzhuanjia">
+              <h3><abbr>热门问答推荐</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijian">
+                 <ul>
+                   <li>
+                     <a href="###">话题标签话题标签话题标签话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题标签话题标签话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题话题标签话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                 </ul>
+              </div>
+          </div><div class="szzhuanjia">
+              <h3><abbr>相关问答</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijian">
+                 <ol>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签话题标签话题标签话题标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签话题标签话题标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签话题标签话题标签话题标签标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签话题标签标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                   </li>
+                   <li>
+                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                   </li>
+                 </ol>
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+     <!-- 底部 -->
+     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
+     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+     		<div class="lianjieyq" style="margin-top: 30px;">
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     		</div>
+     	</div>
+     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
+     		 关于我们联系我们人才招聘法律申明网站地图<br>
+     		 地址：湖北省武汉市洪山区<br>
+     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
+     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
+     	</p>
+     </div>
+     
+      <script>
+    var vm = avalon.define({
+        $id: "bodyconts",
+        intopages:function(){
+            layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'pagers'
+                ,count: 100
+                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                ,jump: function(obj){
+                  console.log(obj)
+                }
+              });
+            });
+        }
+    })
+    vm.intopages();
+</script>
+</body>
+</html>

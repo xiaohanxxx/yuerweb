@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name=renderer content=webkit>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+     <style type="text/css">
+      body{ background: #029EE9; }
+          .swiper-container{
+               width: 100%;
+               min-height: 300px;
+               background: red;
+          }
+         .swiper-slide {
+                text-align: center;
+                font-size: 18px;
+                background: #fff;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+          }
+          .swiper-slide{ width: 1200px; height: 347px; }
+     </style>
+
+</head>
+<body  ms-controller="test">
+    <div class="header">
+       <div class="headerNav">
+         <div class="logos"><img src="img/logo.jpg"></div>
+         <div class="headerNav-ul">
+          <ul>
+            <li>
+              <a href="" class="nava">首页</a>
+            </li>
+            <li>
+              <a href="" class="acolor">试管婴儿  </a>
+              <div class="xialabox"  style="display: none;">
+                <p><a href="">海外试管</a></p>
+                <p><a href="">国内试管</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">育儿论坛</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕交流圈</a></p>
+                <p><a href="">妈妈交流圈</a></p>
+                <p><a href="">试管婴儿交流圈</a></p>
+                <p><a href="">难孕交流圈</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">互助问答</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">医院推荐</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">海外医院</a></p>
+                <p><a href="">国内医院</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">百科知识</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+                <p><a href="">育儿</a></p>
+                <p><a href="">试管婴儿</a></p>
+                            <p><a href="">不孕不育</a></p>
+              </div>
+            </li>
+          </ul>
+         </div>
+         <div class="denglu">
+          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+                    <div class="yiyuansearch">
+                          <div  ms-click="showxiala">医院</div>
+                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
+                              <li>医院</li>
+                              <li>医生</li>
+                              <li>问答</li>
+                              <li>百科</li>
+                          </ul>
+                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                          </ol>
+                    </div>
+                    <input type="" name="" id="blurfs">
+                    <i class="searchbox"></i>
+                </div>
+          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
+         </div>
+       </div>
+     </div>
+
+     <div class="bodyhs">
+             <div class="bodyhyasf" style="width: 1200px; height: 347px; margin: 20px auto; border-radius: 5px; overflow: hidden;">
+                  <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide">
+                               <div class="oneboxs">
+                                    <img src="img/ltbanner.png" style="float: left;">
+                                    <div class="toptitles" style="text-align: left;">
+                                         <h3 style="margin-bottom: 20px">备孕交流圈</h3>
+                                         <h4>我是文章标题</h4>
+                                         <div class="pplives">
+                                              <p>我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章...</p>
+                                         </div>
+                                         <div style="font-size: 12px; height: 20px; line-height: 20px; margin-top: 20px;">
+                                              <abbr style="float: left; display: block; height: 20px; line-height: 20px; vertical-align: middle;"><img src="img/ren.png" width="20" height="20">文小龙</abbr>
+                                              <abbr style="float: right;  display: block; height: 20px; line-height: 20px; vertical-align: middle;"><img src="img/message.png" width="20" height="20">88</abbr>
+                                         </div>
+                                    </div>
+                               </div>
+                          </div>
+                          <div class="swiper-slide">
+                               <div class="oneboxs">
+                                    <img src="img/ltbanner.png" style="float: left;">
+                                    <div class="toptitles" style="text-align: left;">
+                                         <h3 style="margin-bottom: 20px">备孕交流圈</h3>
+                                         <h4>我是文章标题</h4>
+                                         <div class="pplives">
+                                              <p>我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章内容内容我是文章内容我是文章内容我是文章...</p>
+                                         </div>
+                                         <div style="font-size: 12px; height: 20px; line-height: 20px; margin-top: 20px;">
+                                              <abbr style="float: left; display: block; height: 20px; line-height: 20px; vertical-align: middle;"><img src="img/ren.png" width="20" height="20">文小龙</abbr>
+                                              <abbr style="float: right;  display: block; height: 20px; line-height: 20px; vertical-align: middle;"><img src="img/message.png" width="20" height="20">88</abbr>
+                                         </div>
+                                    </div>
+                               </div>
+                          </div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                   </div>
+                 <!-- Initialize Swiper -->
+                 <script>
+                   var swiper = new Swiper('.swiper-container', {
+                     loop: true,
+                     loopedSlides: 5,
+                      autoplay: {
+                          delay: 3500,
+                          disableOnInteraction: false,
+                      },
+                     pagination: {
+                       el: '.swiper-pagination',
+                     },
+                   });
+                 </script>
+             </div>
+     </div>
+      
+
+
+
+
+     <!-- 圈子 -->
+     <div class="quanzibox">
+          <div class="quanbxzs">
+               <div class="sipartone">
+                    <div class="onetoptitle">
+                         <img src="img/110.png" style="float: left; margin-right: 10px;">
+                         <h3 style="font-size: 14px; font-weight: 450px;">备孕交流圈</h3>
+                         <p style="font-size: 10px; font-weight: 400px;">条交流帖子<br>999条评论</p>
+                    </div>
+                    <div class="onetopulli">
+                         <ul>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+
+                <div class="sipartone">
+                    <div class="onetoptitle">
+                         <img src="img/110.png" style="float: left; margin-right: 10px;">
+                         <h3 style="font-size: 14px; font-weight: 450px;">备孕交流圈</h3>
+                         <p style="font-size: 10px; font-weight: 400px;">999A条交流帖子<br>999条评论</p>
+                    </div>
+                    <div class="onetopulli">
+                         <ul>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+
+                <div class="sipartone">
+                    <div class="onetoptitle">
+                         <img src="img/110.png" style="float: left; margin-right: 10px;">
+                         <h3 style="font-size: 14px; font-weight: 450px;">备孕交流圈</h3>
+                         <p style="font-size: 10px; font-weight: 400px;">999A条交流帖子<br>999条评论</p>
+                    </div>
+                    <div class="onetopulli">
+                         <ul>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+
+                 <div class="sipartone">
+                    <div class="onetoptitle">
+                         <img src="img/110.png" style="float: left; margin-right: 10px;">
+                         <h3 style="font-size: 14px; font-weight: 450px;">备孕交流圈</h3>
+                         <p style="font-size: 10px; font-weight: 400px;">999A条交流帖子<br>999条评论</p>
+                    </div>
+                    <div class="onetopulli">
+                         <ul>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                              <li>
+                                   <a href="###">孕前检查</a>
+                              </li>
+                         </ul>
+                    </div>
+                  </div>
+
+
+
+          </div>
+     </div>
+
+
+     <!-- 备孕热点开始 -->
+     <div class="beirenyhudain">
+         <div class="beirencont">
+           <div class="bairenlieft">
+                 <div class="leftpartone">
+                  <div class="onetitle">
+                       <h3>备孕热点</h3>
+                       <a href="">更多>></a>
+                   </div>
+                   <div class="oneinfossdfwe">
+                      <ul style="margin: 20px 0;">
+                        <li>
+                            <img src="img/xiaoerzi.png">
+                            <div class="xezright">
+                               <h3 style="font-size: 14px;">我是标题文案，只显示一行</h3>
+                               <p style="font-size: 12px;">我是文章预览文字只显示两行，超出部分不显示哦看看，鼠标炫富就变成粉红色！</p>
+                            </div>
+                            <div class="userandrewrolws">
+                               <i style="float: left; font-size: 14px; margin-right: 61px;"><img src="img/03.png" width="20px;">用户名</i>
+                               <i style="float: right; font-size: 14px;"><img src="img/result.png">999</i>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/xiaoerzi.png">
+                            <div class="xezright">
+                               <h3 style="font-size: 14px;">我是标题文案，只显示一行</h3>
+                               <p style="font-size: 12px;">我是文章预览文字只显示两行，超出部分不显示哦看看，鼠标炫富就变成粉红色！</p>
+                            </div>
+                            <div class="userandrewrolws">
+                               <i style="float: left; font-size: 14px; margin-right: 61px;"><img src="img/03.png" width="20px;">用户名</i>
+                               <i style="float: right; font-size: 14px;"><img src="img/result.png">999</i>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/xiaoerzi.png">
+                            <div class="xezright">
+                               <h3 style="font-size: 14px;">我是标题文案，只显示一行</h3>
+                               <p style="font-size: 12px;">我是文章预览文字只显示两行，超出部分不显示哦看看，鼠标炫富就变成粉红色！</p>
+                            </div>
+                            <div class="userandrewrolws">
+                               <i style="float: left; font-size: 14px; margin-right: 61px;"><img src="img/03.png" width="20px;">用户名</i>
+                               <i style="float: right; font-size: 14px;"><img src="img/result.png">999</i>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/xiaoerzi.png">
+                            <div class="xezright">
+                               <h3 style="font-size: 14px;">我是标题文案，只显示一行</h3>
+                               <p style="font-size: 12px;">我是文章预览文字只显示两行，超出部分不显示哦看看，鼠标炫富就变成粉红色！</p>
+                            </div>
+                            <div class="userandrewrolws">
+                               <i style="float: left; font-size: 14px; margin-right: 61px;"><img src="img/03.png" width="20px;">用户名</i>
+                               <i style="float: right; font-size: 14px;"><img src="img/result.png">999</i>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/xiaoerzi.png">
+                            <div class="xezright">
+                               <h3 style="font-size: 14px;">我是标题文案，只显示一行</h3>
+                               <p style="font-size: 12px;">我是文章预览文字只显示两行，超出部分不显示哦看看，鼠标炫富就变成粉红色！</p>
+                            </div>
+                            <div class="userandrewrolws">
+                               <i style="float: left; font-size: 14px; margin-right: 61px;"><img src="img/03.png" width="20px;">用户名</i>
+                               <i style="float: right; font-size: 14px;"><img src="img/result.png">999</i>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/xiaoerzi.png">
+                            <div class="xezright">
+                               <h3 style="font-size: 14px;">我是标题文案，只显示一行</h3>
+                               <p style="font-size: 12px;">我是文章预览文字只显示两行，超出部分不显示哦看看，鼠标炫富就变成粉红色！</p>
+                            </div>
+                            <div class="userandrewrolws">
+                               <i style="float: left; font-size: 14px; margin-right: 61px;"><img src="img/03.png" width="20px;">用户名</i>
+                               <i style="float: right; font-size: 14px;"><img src="img/result.png">999</i>
+                            </div>
+                        </li>
+                      </ul>
+                   </div>
+                 </div>
+           
+            <div class="nanyunzhiliao" style="background: #fff; min-height: 200px; width: 100%; margin-top: 22px; margin-bottom: 22px;">
+                <div class="onetitle">
+                   <h3>难孕治疗</h3>
+                   <a href="">更多>></a>
+                </div>
+                <div class="nnayun">
+                   <ol>
+                     <li>
+                       <a  class="crrus" href="">卵巢问题</a>
+                     </li>
+                     <li>
+                       <a href="">子宫问题</a>
+                     </li>
+                     <li>
+                       <a href="">输卵管问题</a>
+                     </li>
+                     <li>
+                       <a href="">内分泌问题</a>
+                     </li>
+                     <li>
+                       <a href="">手术相关</a>
+                     </li>
+                     <li>
+                       <a href="">中医调理</a>
+                     </li>
+                     <li>
+                       <a href="">流产问题</a>
+                     </li>
+                     <li>
+                       <a href="">流产胎停</a>
+                     </li>
+                   </ol>
+                </div>
+                <div class="redianhosts">
+                  <div class="redianlefts" style="width: 50%; float: left; overflow: hidden; min-height: 100px;">
+                      <div class="fristgsadf">
+                        <img src="img/redian.png" width="79" height="79" style="float: left; margin-right: 15px;">
+                        <h3>我是文章标题，只显示一行文字</h3>
+                        <p>我是文章预览部分，最多显示三超过部分不显示，鼠标炫富再文章标题和这段文字上面显示这个颜色，点击跳转至文章标题。</p>
+                      </div>
+                      <div class="wenhaoconts">
+                         <ul>
+                           <li><a href="">勇敢面对生化，积极调整自己，迎接健康</a></li>
+                           <li><a href="">胎儿悬吊的经历为你解答</a></li>
+                           <li><a href="">结婚8年后有个女儿想要多个但流产</a></li>
+                           <li><a href="">巧囊+子宫腺肌病，记录我的治</a></li>
+                           <li><a href="">孕前常规检查：子宫话题卵巢发育</a></li>
+                           <li><a href="">经过多年的流产，我终于又怀孕了</a></li>
+                         </ul>
+                      </div>
+                  </div>
+                  <div class="redianrights" style="width: 50%; float: right; overflow: hidden; min-height: 100px;">
+                     <div class="hotsige">
+                        <div class="hotsigea">
+                           <img src="img/imglists.png">
+                           <p>我是育儿论坛文章标题最多显示一行...</p>
+                        </div>
+                        <div class="hotsigea">
+                           <img src="img/imglists.png">
+                           <p>我是育儿论坛文章标题最多显示一行...</p>
+                        </div>
+                        <div class="hotsigea">
+                           <img src="img/imglists.png">
+                           <p>我是育儿论坛文章标题最多显示一行...</p>
+                        </div>
+                        <div class="hotsigea">
+                           <img src="img/imglists.png">
+                           <p>我是育儿论坛文章标题最多显示一行...</p>
+                        </div>
+                     </div>
+                     <ol>
+                       <li>
+                         <a href="">本次月经3.29今天测试纸</a>
+                       </li>
+                       <li>
+                         <a href="">备孕两年都没怀上，郁闷</a>
+                       </li>
+                       <li>
+                         <a href="">多囊卵巢综合征；输卵管</a>
+                       </li>
+                       <li>
+                         <a href="">男人的静夜是细腻的，如...</a>
+                       </li>
+                       <li>
+                         <a href="">姐妹们，卵巢功能可以改...</a>
+                       </li>
+                       <li>
+                         <a href="">这是那种重要？这是干什么...</a>
+                       </li>
+                     </ol>
+                  </div>
+                </div>
+            </div>
+
+            <div class="nanyunzhiliao" style="background: #fff; min-height: 200px; width: 100%; margin-top: 22px; margin-bottom: 22px;">
+              <div class="onetitle">
+                 <h3>试管婴儿</h3>
+                 <a href="">更多>></a>
+              </div>
+              
+
+              <div class="leftlistsfenlei">
+                 <ol>
+                   <li>
+                     <a href="##" class="currone">人工授精</a>
+                   </li>
+                   <li>
+                     <a href="##">试管成功率</a>
+                   </li>
+                   <li>
+                     <a href="##">宫外孕试管</a>
+                   </li>
+                   <li>
+                     <a href="##">取精取卵</a>
+                   </li>
+                   <li>
+                     <a href="##">试管移植后保胎</a>
+                   </li>
+                 </ol>
+              </div>
+
+               <div class="fenleicontsta">
+                   <div class="topfenleittle">
+                      <img src="img/img01.png">
+                      <h3>试管婴儿准备：做试管去哪里做更好呢？</h3>
+                      <p>我是预览文案做多现实四行。我想做试管婴儿，再中国这样做挺方便，但恐怕不成功。出国成功率更高，但费用昂贵且不便。谁能帮助我分析我应该如何选择！文案文案文案文案文案文案文案文案文案文案文案</p>
+                   </div> 
+
+
+                    <ul class="ullists" style="overflow: hidden; width: 100%;">
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                      <li>
+                        <a href="">做试管婴儿哪家最好医院？泰国做试管</a>
+                        <div class="jiantousdfe" style="vertical-align: center;"><img style="margin-top: 5px;" src="img/message.png" width="25" height="25">999</div>
+                      </li>
+                    </ul>
+               </div>
+            </div>
+         </div>
+
+
+
+
+           <div class="nanyuanright" style="background: #fff; min-height: 200px; width: 335px; float: right; border-radius: 5px;">
+                <div class="onetitle">
+                   <h3 style="font-size: 18px; color: #666;">好孕妈妈榜</h3>
+                </div>
+
+                <div class="haoyunmama">
+
+
+
+                    <div class="fristmama">
+                       <img src="img/tuxiang.jpg" style="float: left; margin: 7px 15px 0 5px;">
+                       <h3 style="float: left; font-size: 16px; font-weight: 400;">小猪仔</h3>
+                       <abbr style="float: right;width: 85px; line-height: 55px;">胎心发芽</abbr>
+                    </div>
+
+
+                    <div class="tuxiangbig">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px; margin-left: 20px;">
+                        <h4 style="font-size: 14px;">我是用户名，鼠标悬浮放大信息</h4>
+                        <p  style="font-size: 12px;">
+                          我是论坛文章文字，只显示两行，超出部分用...代替。鼠标移动显示下一个。
+                        </p>
+                        <p style="margin:10px 0;padding-left: 50px; font-size: 12px;">胎心发芽  <abbr style="float: right; margin-right: 15px;"><img src="img/message.png" width="15" height="15">19985</abbr></p>
+                    </div>
+
+                    <div class="fristmama">
+                       <img src="img/tuxiang.jpg" style="float: left; margin: 7px 15px 0 5px;">
+                       <h3 style="float: left; font-size: 16px; font-weight: 400;">小猪仔</h3>
+                       <abbr style="float: right;width: 85px; line-height: 55px;">胎心发芽</abbr>
+                    </div>
+
+
+                       <div class="tuxiangbig" style="display: none;">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px; margin-left: 20px;">
+                        <h4 style="font-size: 14px;">我是用户名，鼠标悬浮放大信息</h4>
+                        <p  style="font-size: 12px;">
+                          我是论坛文章文字，只显示两行，超出部分用...代替。鼠标移动显示下一个。
+                        </p>
+                        <p style="margin:10px 0;padding-left: 50px; font-size: 12px;">胎心发芽  <abbr style="float: right; margin-right: 15px;"><img src="img/message.png" width="15" height="15">19985</abbr></p>
+                    </div>
+
+
+
+
+                    <div class="fristmama">
+                       <img src="img/tuxiang.jpg" style="float: left; margin: 7px 15px 0 5px;">
+                       <h3 style="float: left; font-size: 16px; font-weight: 400;">小猪仔</h3>
+                       <abbr style="float: right;width: 85px; line-height: 55px;">胎心发芽</abbr>
+                    </div>
+
+
+
+                        <div class="tuxiangbig" style="display: none;">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px; margin-left: 20px;">
+                        <h4 style="font-size: 14px;">我是用户名，鼠标悬浮放大信息</h4>
+                        <p  style="font-size: 12px;">
+                          我是论坛文章文字，只显示两行，超出部分用...代替。鼠标移动显示下一个。
+                        </p>
+                        <p style="margin:10px 0;padding-left: 50px; font-size: 12px;">胎心发芽  <abbr style="float: right; margin-right: 15px;"><img src="img/message.png" width="15" height="15">19985</abbr></p>
+                    </div>
+
+
+
+                    <div class="fristmama">
+                       <img src="img/tuxiang.jpg" style="float: left; margin: 7px 15px 0 5px;">
+                       <h3 style="float: left; font-size: 16px; font-weight: 400;">小猪仔</h3>
+                       <abbr style="float: right;width: 85px; line-height: 55px;">胎心发芽</abbr>
+                    </div>
+
+
+                       <div class="tuxiangbig" style="display: none;">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px; margin-left: 20px;">
+                        <h4 style="font-size: 14px;">我是用户名，鼠标悬浮放大信息</h4>
+                        <p  style="font-size: 12px;">
+                          我是论坛文章文字，只显示两行，超出部分用...代替。鼠标移动显示下一个。
+                        </p>
+                        <p style="margin:10px 0;padding-left: 50px; font-size: 12px;">胎心发芽  <abbr style="float: right; margin-right: 15px;"><img src="img/message.png" width="15" height="15">19985</abbr></p>
+                    </div>
+
+
+
+                    <div class="fristmama">
+                       <img src="img/tuxiang.jpg" style="float: left; margin: 7px 15px 0 5px;">
+                       <h3 style="float: left; font-size: 16px; font-weight: 400;">小猪仔</h3>
+                       <abbr style="float: right;width: 85px; line-height: 55px;">胎心发芽</abbr>
+                    </div>
+
+
+
+                        <div class="tuxiangbig" style="display: none;">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px; margin-left: 20px;">
+                        <h4 style="font-size: 14px;">我是用户名，鼠标悬浮放大信息</h4>
+                        <p  style="font-size: 12px;">
+                          我是论坛文章文字，只显示两行，超出部分用...代替。鼠标移动显示下一个。
+                        </p>
+                        <p style="margin:10px 0;padding-left: 50px; font-size: 12px;">胎心发芽  <abbr style="float: right; margin-right: 15px;"><img src="img/message.png" width="15" height="15">19985</abbr></p>
+                    </div>
+
+
+
+                </div>
+
+
+           </div>
+
+
+
+
+
+     </div>    
+     <!-- 备孕热点结束 -->
+
+
+     <!-- 底部 -->
+     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
+     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+     		<div class="lianjieyq" style="margin-top: 30px;">
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     		</div>
+     	</div>
+     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
+     		 关于我们联系我们人才招聘法律申明网站地图<br>
+     		 地址：湖北省武汉市洪山区<br>
+     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
+     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
+     	</p>
+     </div>
+     <script>
+          require(["pager/avalon.pager"], function() {
+              avalon.define("test", function(vm) {
+                  vm.pager = {
+                      totalItems: 150,
+                      onJump: function(e, data) {
+                          location.href = "#page=" + data.currentPage
+                      }
+                  }
+                  vm.$skipArray = ["pager"]
+              })
+              avalon.scan()
+          })
+      </script>
+</body>
+</html>

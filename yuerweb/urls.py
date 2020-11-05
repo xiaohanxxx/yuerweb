@@ -1,5 +1,5 @@
+  
 """yuerweb URL Configuration
-
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -14,24 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path,re_path
+from django.urls import path, re_path
 from django.conf.urls import url, include
 from django.conf import settings
 from django.views.static import serve
 
-
-
-from users import views #test
+from users import views  # test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'artical/', include('artical.urls')),
     url(r'luntan/', include('luntan.urls')),
 
+    url(r'hospital/', include('hospital.urls')),
+    url(r'shiguanbaby/', include('shiguanbaby.urls')),
+    url(r'taolun/', include('taolun.urls')),
+
+    url(r'baike/',include('baike.urls')),
+    url(r'users/', include('users.urls')),
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
 
-
-    url(r'^upload',views.upload) # 测试路由
+    url(r'^upload', views.upload)  # 测试路由
 
 ]

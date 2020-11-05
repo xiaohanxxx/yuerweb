@@ -1,0 +1,31 @@
+*{ padding: 0; margin: 0; list-style: none; }
+.Allconts{ width: 1200px; margin: 0 auto; overflow: hidden;  }
+.leftifnos{ width: 235px; min-height: 200px; float: left; background: #fff;}
+.momidel{ width: 602px; float: left; min-height: 200px; background: green; }
+.rightinfoc{ width: 320px; float: left; min-height: 200px; background: blue; }
+.dangqianadress{ width: 1200px; margin: 15px auto; font-size: 14px;  }
+.leftifnos h3{ font-size: 18px;width: 95%; font-family: "微软雅黑"; margin: 8px 0; text-align: center; }
+.leftfinfolist{ overflow: hidden; width: 95%; padding: 15px; }
+.leftfinfolist h4{ font-size: 16px;width: 95%; height: 35px; line-height: 35px; margin-bottom: 10px; color: #ff44ad;border-bottom: 1px solid #f1f1f1; }
+.listses{ width: 100%; overflow: hidden; }
+
+.allnews{ width: 1200px; margin: 0 auto; padding: 15px 0 15px 350px; overflow: hidden;  }
+.allnews p{ float: left;  padding: 4px 10px; margin-right: 10px; border-radius: 8px; background: #fff; border:1px solid #ff44ad;  }
+.listses a{ text-decoration: none; color: #666; margin-right: 18px; margin-bottom: 10px; }
+
+.denglupage{ width: 1200px; position: relative; overflow: hidden; margin:20px auto; height: 720px; background:#fff url(../img/dlbg.png) 664px 75px no-repeat;}
+.dengluandzc{ width: 518px; position: absolute;left: 64px; top: 68px; }
+.dengluandzc p{ display: block; cursor: pointer; width: 252px; height: 65px; line-height: 65px; text-decoration: none; text-align: center; float: left; font-size: 18px; }
+.dengluandzc .currese {color:#ff44ad; border: 1px solid #ff44ad; }
+.aaa{border-bottom: 1px solid #666; border-left:  1px solid #666; border-top:  1px solid #666;border-right:  1px solid #666;margin-right: 5px;}
+.denglubox { overflow: hidden; width: 100%; margin-top: 180px; margin-left: 25px; }
+
+.yonghu,.mima{ height: 60px; width: 592px; line-height: 60px; margin-bottom: 20px; }
+.yonghu input,.mima input{ outline: none; outline-style: none;   box-shadow: 5px 5px 50px 15px rgba(225, 255, 235, 0.3);
+ width: 449px; height: 60px; padding-left: 25px; background: #fff; margin-left: 25px; border:1px solid #eee; border-radius: 60px; font-size: 16px; }
+ .forgetmima a{ text-decoration: none; font-size: 14px; color: #666; }
+ .denlguanniu{ width: 592px; height: 60px; line-height: 60px;  margin-top: 80px; }
+  .denlguanniu{ width: 592px; height: 60px; line-height: 60px;  margin-top:60px; }
+ .weixinorqq{ margin-top: 45px; margin-left:55px; }
+.denglubox1{ overflow: hidden; width: 100%; margin-top: 168px; margin-left: 25px; }
+ .denglubox2{ overflow: hidden; width: 100%; margin-top: 88px; margin-left: 25px; }

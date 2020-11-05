@@ -36,8 +36,8 @@ class Articles(models.Model):
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="发布日期")
     update_date = models.DateTimeField(auto_now=True, verbose_name="更新日期")
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")
-    user = models.ForeignKey("users.User", related_name="articles_user",
-                             verbose_name="用户", on_delete=models.CASCADE)
+    # user = models.ForeignKey("users.User", related_name="articles_user",
+    #                          verbose_name="用户", on_delete=models.CASCADE)
     topics = models.ManyToManyField("Topics", verbose_name='所属交流圈')
 
     class Meta:
@@ -53,8 +53,8 @@ class Comment(models.Model):
     comment = models.TextField(max_length=1000, verbose_name="内容")
     articles = models.ForeignKey('Articles', related_name='articles_comment',
                                  on_delete=models.CASCADE, verbose_name="评论的帖子")
-    user = models.ForeignKey("users.User", related_name='comment_user',
-                             on_delete=models.CASCADE, verbose_name="评论用户")
+    # user = models.ForeignKey("users.User", related_name='comment_user',
+    #                          on_delete=models.CASCADE, verbose_name="评论用户")
     publish_date = models.DateTimeField(auto_now=True, verbose_name="评论日期")
     parent = models.ForeignKey("self", related_name='parrent_comment',
                                blank=True, null=True, on_delete=models.CASCADE)
@@ -71,8 +71,8 @@ class Comment(models.Model):
 class ThumbUp(models.Model):
     articles = models.ForeignKey('Articles', related_name="thumup_articles",
                                  on_delete=models.CASCADE, verbose_name="点赞的文章")
-    user = models.ForeignKey('users.User', related_name="thumup_user",
-                             on_delete=models.CASCADE, verbose_name="点赞用户")
+    # user = models.ForeignKey('users.User', related_name="thumup_user",
+    #                          on_delete=models.CASCADE, verbose_name="点赞用户")
     date = models.DateTimeField(auto_now=True)
 
     class Meta:

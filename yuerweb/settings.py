@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'hospital',
     'shiguanbaby',
     'taolun',
+    'baike',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,12 +95,24 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'yuer_data',
-        'HOST': '127.0.0.1',
+        'HOST': '139.155.251.141',
         'PORT': '3306',
         'USER': 'root',
-        'PASSWORD': '123456',
+        'PASSWORD': 'tbr@123456..',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yuer_data',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': '123456',
+#     }
+# }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators

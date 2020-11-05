@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name=renderer content=webkit>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+   <!--  <script type="text/javascript" src="js/avalon.js"></script> -->
+   <script src="https://cdn.bootcdn.net/ajax/libs/avalon.js/1.5.5/avalon.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<link rel="stylesheet" href="layui/css/layui.css" media="all">
+	<!-- <link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
+</head>
+<body  ms-controller="bodycont">
+  <div class="header">
+     	 <div class="headerNav">
+     	 	 <div class="logos"><img src="img/logo.jpg"></div>
+     	 	 <div class="headerNav-ul">
+     	 	 	<ul>
+     	 	 		<li>
+     	 	 			<a href="" class="nava">首页</a>
+     	 	 		</li>
+     	 	 		<li>
+     	 	 			<a href="" class="acolor">试管婴儿  </a>
+     	 	 			<div class="xialabox"  style="display: none;">
+     	 	 				<p><a href="">海外试管</a></p>
+     	 	 				<p><a href="">国内试管</a></p>
+     	 	 			</div>
+     	 	 		</li>
+     	 	 		<li>
+     	 	 			<a href="" class="acolor">育儿论坛</a>
+     	 	 			<div class="xialabox" style="display: none;">
+     	 	 				<p><a href="">备孕交流圈</a></p>
+     	 	 				<p><a href="">妈妈交流圈</a></p>
+     	 	 				<p><a href="">试管婴儿交流圈</a></p>
+     	 	 				<p><a href="">难孕交流圈</a></p>
+     	 	 			</div>
+     	 	 		</li>
+     	 	 		<li>
+     	 	 			<a href="" class="acolor">互助问答</a>
+     	 	 			<div class="xialabox" style="display: none;">
+     	 	 				<p><a href="">试管婴儿</a></p>
+     	 	 				<p><a href="">不孕不育</a></p>
+     	 	 				<p><a href="">备孕</a></p>
+     	 	 				<p><a href="">怀孕</a></p>
+     	 	 			</div>
+     	 	 		</li>
+     	 	 		<li>
+     	 	 			<a href="" class="acolor">医院推荐</a>
+     	 	 			<div class="xialabox" style="display: none;">
+     	 	 				<p><a href="">海外医院</a></p>
+     	 	 				<p><a href="">国内医院</a></p>
+     	 	 			</div>
+     	 	 		</li>
+     	 	 		<li>
+     	 	 			<a href="" class="acolor">百科知识</a>
+     	 	 			<div class="xialabox" style="display: none;">
+     	 	 				<p><a href="">备孕</a></p>
+     	 	 				<p><a href="">怀孕</a></p>
+     	 	 				<p><a href="">育儿</a></p>
+     	 	 				<p><a href="">试管婴儿</a></p>
+                            <p><a href="">不孕不育</a></p>
+     	 	 			</div>
+     	 	 		</li>
+     	 	 	</ul>
+     	 	 </div>
+     	 	 <div class="denglu">
+     	 	 	<div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+                    <div class="yiyuansearch">
+                          <div  ms-click="showxiala">医院</div>
+                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
+                              <li>医院</li>
+                              <li>医生</li>
+                              <li>问答</li>
+                              <li>百科</li>
+                          </ul>
+                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                          </ol>
+                    </div>
+                    <input type="" name="" id="blurfs" style="border:none;">
+                    <i class="searchbox"></i>
+                </div>
+     	 	 	<p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
+     	 	 </div>
+     	 </div>
+     </div>
+ 
+
+
+     
+    <div class="huzhuwenda">
+    	<div class="huzhuconst">
+    		<div class="jiarutlz">
+    			<div class="jiarutlztitle">
+    				<div class="h3jrzu">
+    					<h3>热门小组</h3>
+    					<ul>
+    						<li>
+    							<img src="img/930.png" style="float: left; margin-right: 16px;">
+    							<h4 style="font-size: 14px;">试管讨论组</h4>
+    							<p style="font-size: 12px;">9896位成员</p>
+    							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
+    						</li>
+    						<li>
+    							<img src="img/931.png" style="float: left; margin-right: 16px;">
+    							<h4 style="font-size: 14px;">备孕讨论组</h4>
+    							<p style="font-size: 12px;">9896位成员</p>
+    							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
+    						</li>
+    						<li>
+    							<img src="img/932.png" style="float: left; margin-right: 16px;">
+    							<h4 style="font-size: 14px;">怀孕讨论组</h4>
+    							<p style="font-size: 12px;">9896位成员</p>
+    							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
+    						</li>
+    						<li>
+    							<img src="img/933.png" style="float: left; margin-right: 16px;">
+    							<h4 style="font-size: 14px;">不孕不育讨论组</h4>
+    							<p style="font-size: 12px;">9896位成员</p>
+    							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
+    						</li>
+    					</ul>
+    				</div>
+    			</div>
+
+
+    			<div class="liststitleconts">
+    				<div class="titlestop">
+    					<p class="news" style="cursor:pointer;">最新</p>
+    					<p style="cursor:pointer;">热门</p>
+    					<p style="cursor:pointer;">等待回复</p>
+    					<a href="##">更多>></a>
+    				</div>
+    				<div class="listswenda">
+    					<ul>
+    						<li ms-repeat-el='datasfsa'>
+    							<div class="tuxiangimgs" style="float: left;"><a href=""><img ms-attr-src='el.userimg'></a></div>
+    							<div class="floafright" style="float: left;">
+    								<a href="" class="xuanfugh">
+	    								<p style="font-size: 16px; margin-bottom: 10px;">{{el.title}}</p>
+	    							</a>	
+	    							<a href="">
+		    							<p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">{{el.info}}</p>
+		    						</a>	
+	    							<div class="imglists">
+	    								<img ms-attr-src="el.img1" width="230" height="160">
+	    								<img ms-attr-src="el.img2" width="230" height="160">
+	    								<img ms-attr-src="el.img3" width="230" height="160">
+	    							</div>
+	    							<div class="infousers">
+	    								<div class="userone">
+	    									<i><img src="img/user.png">{{el.user}}</i>
+	    									<i><img src="img/time.png">{{el.times}}</i>
+	    								</div>
+	    								<div class="usertwo">
+	    									<i><img src="img/yanjin.png">{{el.yanjing}}</i>
+	    									<i><img src="img/result.png">{{el.total}}</i>
+	    								</div>
+	    							</div>
+    							</div>
+    						</li>
+    					</ul>
+    					<div id="pagers"></div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="kjiarutlzright">
+    			 <div class="fabuwenzhang">
+    			 	<p class="inlist">进入小组列表</p>
+    			 	<p class="pusharcal">文章发布</p>
+    			 </div>
+                 
+                 <div class="remenhuati">
+                 	 <h3>热门话题 <a href="">更多>></a></h3>
+                 	 <ul>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">最多显示六个字</a>
+                 	 	</li>
+                 	 </ul>
+                 </div>
+                  <div class="remenhuati">
+                 	 <h3>精华推荐</h3>
+                 	 <ol>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
+                 	 			<h4>我是文章标题只显示一行</h4>
+                 	 			<div class="tubiaoousrt">
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
+                 	 			</div>
+                 	 		</a>
+                 	 	</li>
+                 	 </ol>
+                 </div>
+                   <div class="remenhuaties">
+                 	 <h3>升值医院推荐 <a href="">更多>></a></h3>
+                 	 <p style="margin:5px 0;"><img src="img/04.jpg"></p>
+                 	 <ul>
+                 	 	<li>
+                 	 		<a href="">我是医院名称</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">武汉大学人民医院</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">武汉大学人民医院</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">武汉大学人民医院</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">我是医院名称</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">武汉大学人民医院</a>
+                 	 	</li>
+                 	 	<li>
+                 	 		<a href="">话题标签</a>
+                 	 	</li>
+                 	 </ul>
+                 </div>
+    		</div>
+    	</div>
+    </div>
+     
+
+
+     <!-- 底部 -->
+     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
+     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+     		<div class="lianjieyq" style="margin-top: 30px;">
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     		</div>
+     	</div>
+     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
+     		 关于我们联系我们人才招聘法律申明网站地图<br>
+     		 地址：湖北省武汉市洪山区<br>
+     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
+     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
+     	</p>
+     </div>
+<script>
+    var vm = avalon.define({
+        $id: "bodycont",
+        count:0,//数据总条数
+        curr:1, //当前页码
+        limites:10,//每一页显示多少条
+        datasfsa:[
+            {
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },
+     	    {
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },
+     	    {
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },{
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },{
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },{
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },{
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },{
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    },{
+             userimg:"img/rwtx.png",
+             title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
+             info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
+             user:"我是用户名",
+             times:"2020-10-15  09:10",
+             yanjing:"999",
+             total:"9999"
+     	    }
+         ],
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+        intopages:function(){
+				layui.use(['laypage', 'layer'], function(){
+				  var laypage = layui.laypage
+				  ,layer = layui.layer;
+				  laypage.render({
+				    elem: 'pagers'
+				    ,count: 100
+				    ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+				    ,jump: function(obj){
+				      console.log(obj)
+				    }
+				  });
+				});
+        }
+    })
+    vm.intopages();
+</script>
+<script type="text/javascript">
+</script>
+</body>
+</html>
