@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>首页</title>
+	<title>互助问答详情页</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="layui/layui.js"></script>
-	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/avalon.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="css/css.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="layui/{% static 'css/layui.css' %}">
 <!--      <style type="text/css">
       body{ background: #029EE9; }
      </style>
@@ -23,7 +23,7 @@
 <body  ms-controller="bodyconts">
     <div class="header">
        <div class="headerNav">
-         <div class="logos"><img src="img/logo.jpg"></div>
+         <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
          <div class="headerNav-ul">
           <ul>
             <li>
@@ -99,11 +99,11 @@
      </div>
      
    
-    <div class="hzwdbanner"><img src="img/hzwdbanner.png"></div>
+    <div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
 
     <div class="hzwdconts">
       <div class="hzwdleftse" style="min-height: 200px;">
-           <img src="img/tuxiang.jpg" style="border-radius: 50%; float: left; margin-right: 10px;"/>
+           <img src="{% static 'img/tuxiang.jpg' %}" style="border-radius: 50%; float: left; margin-right: 10px;"/>
            <h3>我是问题描述文字信息</h3>
            <p style="margin-top: 15px; padding-left: 45px;"><i class="layui-icon">&#xe66f;</i>我是用户名  <i class="layui-icon">&#xe68d;</i>2020-10-24 10:52 <abbr style="float: right;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
 
@@ -132,31 +132,31 @@
 
 
                     <div class="pllist">
-                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 15px; margin-bottom: 13px;">
                         <h3>我是用户名</h3>
                         <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
                         <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
                     </div>
                     <div class="pllist">
-                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 15px; margin-bottom: 13px;">
                         <h3>我是用户名</h3>
                         <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
                         <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
                     </div>
                     <div class="pllist">
-                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 15px; margin-bottom: 13px;">
                         <h3>我是用户名</h3>
                         <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
                         <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
                     </div>
                     <div class="pllist">
-                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 15px; margin-bottom: 13px;">
                         <h3>我是用户名</h3>
                         <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
                         <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
                     </div>
                     <div class="pllist">
-                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 15px; margin-bottom: 13px;">
                         <h3>我是用户名</h3>
                         <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
                         <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
@@ -187,7 +187,7 @@
       </div>
       <div class="hzwdrights">
           <div class="metry">
-             <a href=""><img src="img/340.png"></a>
+             <a href=""><img src="{% static 'img/340.png' %}"></a>
           </div>
           <div class="szzhuanjia">
               <h3><abbr>热门问答推荐</abbr> <a href="###">更多>></a></h3>
