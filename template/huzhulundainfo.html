@@ -122,11 +122,49 @@
                     }); //建立编辑器
                   });
                   </script>
-                  <p style="margin-top: 15px;"><abbr style="float: right; cursor: pointer; display: block; padding: 5px 15px; border-radius: 4px; background: #ff44ad; color: #fff;">评论</abbr></p>
+                  <p style="margin-top: 15px; overflow: hidden;"><abbr style="float: right; cursor: pointer; display: block; padding: 5px 15px; border-radius: 4px; background: #ff44ad; color: #fff;">评论</abbr></p>
+                  <p style="margin-top: 15px; overflow: hidden;"><abbr style="float: right; cursor: pointer; display: block; padding: 5px 15px; ">点赞排序</abbr></p>
+                  <p style="margin-top: 15px; overflow: hidden;">评论 （999）</p>
                </div>
-
-
                
+               <div class="pinglunlist">
+
+
+
+                    <div class="pllist">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <h3>我是用户名</h3>
+                        <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                        <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
+                    </div>
+                    <div class="pllist">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <h3>我是用户名</h3>
+                        <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                        <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
+                    </div>
+                    <div class="pllist">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <h3>我是用户名</h3>
+                        <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                        <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
+                    </div>
+                    <div class="pllist">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <h3>我是用户名</h3>
+                        <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                        <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
+                    </div>
+                    <div class="pllist">
+                        <img src="img/tuxiang.jpg" style="float: left; margin-right: 15px; margin-bottom: 13px;">
+                        <h3>我是用户名</h3>
+                        <p style="margin: 5px 0;">2020.11.4   12:24:56  <abbr style="float: right; margin-right: 50px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                        <p style="margin-left: 53px; margin-top: 15px;">我是用户名评论信息文字</p>
+                    </div>
+                    
+                   <div id="pagers"></div> 
+
+               </div>
 
 
 
@@ -295,7 +333,7 @@
               laypage.render({
                 elem: 'pagers'
                 ,count: 100
-                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                ,layout: ['count', 'prev', 'page', 'next']
                 ,jump: function(obj){
                   console.log(obj)
                 }

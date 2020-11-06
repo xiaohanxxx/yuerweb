@@ -14,7 +14,7 @@ from . import form
 class Areas(views.View):
     def get(self, request, *args, **kwargs):
         data = luntanmodel.Areas.objects.all()
-        return HttpResponse("交流圈有：{}".format(data))
+        return render(request, 'yuerlt.html', {"data": data})
 
 
 # 获取分类话题

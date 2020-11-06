@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="育儿论坛">
+    <meta name="keywords" content="育儿论坛">
+    <link rel="stylesheet" href="{%static 'css/coment.css'%}">
+    <link rel="stylesheet" href="{%static 'css/idangerous.swiper.css'%}">
+    <link rel="stylesheet" href="{%static 'css/yuerlt.css'%}">
+    <link rel="stylesheet" href="{%static 'css/iconfont.css'%}">
+    <script src="{%static 'js/uitls/jquery.min.js'%}"></script>
+    <script src="{%static 'js/uitls/idangerous.swiper2.7.6.min.js'%}"></script>
+    <script src="{%static 'js/uitls/avalon.js'%}"></script>
+    <script src="{%static 'js/uitls/tool.js'%}"></script>
+
+    <title>育儿论坛</title>
+</head>
+
+<body id='body' ms-controller='yuerltctr'>
+    <header style='width: 100%;height:150px;background-color:skyblue;position:absolute;top:0;'></header>
+    <!-- 育儿论坛头部板块 -->
+    <section id="yuerhead" class='wid yuerhead'>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="javascript:;" class='yu_h_imgbox fl'><img src="{%static 'images/yuerlt/img01.png'%}" alt=""></a>
+                    <div class="yu_h_info fl">
+                        <h3>
+                            <a href="javascript:;">备孕交流圈</a>
+                        </h3>
+                        <p class='stitle'>
+                            <a href="javascript:;">我是文章标题我是文章标题</a>
+                        </p>
+                        <p class="info">
+                            <a href="javascript:;">
+                                我是文章内容显示文章备孕交流圈文章开头部分，最多显
+                                示三行。文案文案文案文案文案文案文案案文案文案文案
+                                文案案文案文案文案文案
+                            </a>
+                        </p>
+                        <div class="userinfo">
+                            <a href="javascript:; " class='fl'><i class='iconfont'>&#xe604;</i><span>啦啦啦</span></a>
+                            <a href="javascript:;" class='fr'><i class='iconfont' style='color:#ccc;'>&#xe66a;</i><span>88</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide" style='background-color:orange;'>Slide 2</div>
+                <div class="swiper-slide" style='background-color:skyblue;'>Slide 3</div>
+            </div>
+            <!-- 导航按钮 -->
+            <div class="leftBtn iconfont lb_btn">&#xe609;</div>
+            <div class="rightBtn iconfont lb_btn">&#xe60a;</div>
+            <!-- 分页器 -->
+            <div class="pagination"></div>
+        </div>
+        <div class="jlquan">
+            <div class="jlqunClass">
+                <div class="quanTitle">
+                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
+                    <div class="quaninfo">
+                        <h5>
+                            <a href="javascript:;">备孕交流圈</a>
+                        </h5>
+                        <p><span>785</span>篇备孕交流帖子</p>
+                        <p><span>123</span>条评论</p>
+                    </div>
+                </div>
+                <div class="quanmeta">
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                </div>
+            </div>
+            <div class="jlqunClass">
+                <div class="quanTitle">
+                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
+                    <div class="quaninfo">
+                        <h5>
+                            <a href="javascript:;">备孕交流圈</a>
+                        </h5>
+                        <p><span>785</span>篇备孕交流帖子</p>
+                        <p><span>123</span>条评论</p>
+                    </div>
+                </div>
+                <div class="quanmeta">
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                </div>
+            </div>
+            <div class="jlqunClass">
+                <div class="quanTitle">
+                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
+                    <div class="quaninfo">
+                        <h5>
+                            <a href="javascript:;">备孕交流圈</a>
+                        </h5>
+                        <p><span>785</span>篇备孕交流帖子</p>
+                        <p><span>123</span>条评论</p>
+                    </div>
+                </div>
+                <div class="quanmeta">
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                </div>
+            </div>
+            <div class="jlqunClass">
+                <div class="quanTitle">
+                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
+                    <div class="quaninfo">
+                        <h5>
+                            <a href="javascript:;">备孕交流圈</a>
+                        </h5>
+                        <p><span>785</span>篇备孕交流帖子</p>
+                        <p><span>123</span>条评论</p>
+                    </div>
+                </div>
+                <div class="quanmeta">
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                    <a href="javascript:;">孕前检查</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- 育儿论坛主体板块 -->
+    <section id="yuermain" class='wid clearfix'>
+        <!--备孕热点  -->
+        <div class="hotcontent clearfix">
+            <div class="byhot fl">
+                <div class="yuermeta_h clearfix">
+                    <h3><a href="javascript:;">备孕热点</a></h3>
+                    <p>
+                        <a href="javascript:;"></a>
+                    </p>
+                </div>
+                <div class="byinfobox">
+                    <div class="box_byinfo">
+                        <a href="javascript:;"><img src="{%static 'images/yuerlt/img02.png'%}" alt=""></a>
+                        <div class="byinfo_r">
+                            <p class="bytit"><a href="javascript:;">我是标题文案，只显示一行</a></p>
+                            <p>
+                                <a href="javascript:;">我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色
+                                </a>
+                            </p>
+                            <div class="byuser">
+                                <div><img src="{%static 'images/yuerlt/user01.png'%}" alt=""><span>用户名</span></div>
+                                <a href="javascript:;"><i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>88</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_byinfo">
+                        <a href="javascript:;"><img src="{%static 'images/yuerlt/img02.png'%}" alt=""></a>
+                        <div class="byinfo_r">
+                            <p class="bytit"><a href="javascript:;">我是标题文案，只显示一行</a></p>
+                            <p>
+                                <a href="javascript:;">我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色
+                                </a>
+                            </p>
+                            <div class="byuser">
+                                <div><img src="{%static 'images/yuerlt/user01.png'%}" alt=""><span>用户名</span></div>
+                                <a href="javascript:;"><i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>88</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_byinfo">
+                        <a href="javascript:;"><img src="{%static 'images/yuerlt/img02.png'%}" alt=""></a>
+                        <div class="byinfo_r">
+                            <p class="bytit"><a href="javascript:;">我是标题文案，只显示一行</a></p>
+                            <p>
+                                <a href="javascript:;">我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色
+                                </a>
+                            </p>
+                            <div class="byuser">
+                                <div><img src="{%static 'images/yuerlt/user01.png'%}" alt=""><span>用户名</span></div>
+                                <a href="javascript:;"><i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>88</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_byinfo">
+                        <a href="javascript:;"><img src="{%static 'images/yuerlt/img02.png'%}" alt=""></a>
+                        <div class="byinfo_r">
+                            <p class="bytit"><a href="javascript:;">我是标题文案，只显示一行</a></p>
+                            <p>
+                                <a href="javascript:;">我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色
+                                </a>
+                            </p>
+                            <div class="byuser">
+                                <div><img src="{%static 'images/yuerlt/user01.png'%}" alt=""><span>用户名</span></div>
+                                <a href="javascript:;"><i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>88</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_byinfo">
+                        <a href="javascript:;"><img src="{%static 'images/yuerlt/img02.png'%}" alt=""></a>
+                        <div class="byinfo_r">
+                            <p class="bytit"><a href="javascript:;">我是标题文案，只显示一行</a></p>
+                            <p>
+                                <a href="javascript:;">我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色
+                                </a>
+                            </p>
+                            <div class="byuser">
+                                <div><img src="{%static 'images/yuerlt/user01.png'%}" alt=""><span>用户名</span></div>
+                                <a href="javascript:;"><i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>88</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box_byinfo">
+                        <a href="javascript:;"><img src="{%static 'images/yuerlt/img02.png'%}" alt=""></a>
+                        <div class="byinfo_r">
+                            <p class="bytit"><a href="javascript:;">我是标题文案，只显示一行</a></p>
+                            <p>
+                                <a href="javascript:;">我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色我是文章预览文字只显示两行，超出
+                                部分不显示哦，鼠标悬浮和标题同色
+                                </a>
+                            </p>
+                            <div class="byuser">
+                                <div><img src="{%static 'images/yuerlt/user01.png'%}" alt=""><span>用户名</span></div>
+                                <a href="javascript:;"><i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>88</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="byhot_r fl">
+                <div class="rgt_tit">
+                    <h4><span>好孕妈妈榜</span></h4>
+                </div>
+                <ul class="rgt_infobox">
+                    <li class='rgt_select'>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class=''>
+                        <div>
+                            <div class='fl'><img src="{%static 'images/yuerlt/user02.png'%}" alt=""><span>小猪仔</span></div>
+                            <span class='fr'>胎心发芽</span>
+                        </div>
+                        <div>
+                            <img src="{%static 'images/yuerlt/user03.png'%}" alt="">
+                            <div class='fl userinfo'>
+                                <p class="rgt_t"><a href="">我是用户名</a></p>
+                                <p class='rgt_info'><a href="">我是论坛文章文字，只显示两行，超出
+                                    部分用...代替。鼠标移动显示下一个</a></p>
+                                <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>183697</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div class="sjchangebtn">
+                    <img src="{%static 'images/yuerlt/change.png'%}" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- 难孕治疗，试管婴儿主体 -->
+        <div class="mainbox wid clearfix">
+            <div class="main_f fl">
+                <div class="nyzlbox">
+                    <div class="yuermeta_h clearfix">
+                        <h3><a href="javascript:;">难孕治疗</a></h3>
+                        <p>
+                            <a href="javascript:;"></a>
+                        </p>
+                    </div>
+                    <ul class="metalist">
+                        <li class='yesSelect'>
+                            <a href="#">卵巢问题</a>
+                        </li>
+                        <li>
+                            <a href="#">子宫问题</a>
+                        </li>
+                        <li>
+                            <a href="#">输卵管问题</a>
+                        </li>
+                        <li>
+                            <a href="#">内分泌问题</a>
+                        </li>
+                        <li>
+                            <a href="#">手术相关</a>
+                        </li>
+                        <li>
+                            <a href="#">中医调理</a>
+                        </li>
+                        <li>
+                            <a href="#">男科问题</a>
+                        </li>
+                        <li>
+                            <a href="#">流产胎停</a>
+                        </li>
+                    </ul>
+                    <div class="nyinfo">
+                        <div class="info_l fl">
+                            <div class="info_h clearfix">
+                                <img src="{%static 'images/yuerlt/hot.png'%}" alt="">
+                                <div>
+                                    <p><a href="#">我是文章标题，只显示一行文字</a></p>
+                                    <p>
+                                        <a href="#">我是文章预览部分，最多显示三超过部分不<br>
+                                        显示。鼠标悬浮在文章标题和这段文字上显<br>
+                                        示这个颜色，点击跳转至文章详情。</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <ul class="info_lis">
+                                <li>
+                                    <a href="#"><i class='iconfont icon-wenhao'></i>勇敢面对生化，积极调整自己，迎接健康</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class='iconfont icon-wenhao'></i>胎儿悬吊的经历会为你解答</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class='iconfont icon-wenhao'></i>结婚八年后有个女儿想要多个但流产</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class='iconfont icon-wenhao'></i>巧囊+子宫腺肌病+子宫肌瘤,记录我的治</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class='iconfont icon-wenhao'></i>孕前常规检查:子宫和卵巢发育</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class='iconfont icon-wenhao'></i>经过多年的流产，我终于又怀孕了</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="info_r fl">
+                            <div class="r_imgbox">
+                                <a href="#">
+                                    <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                                    <span>我是育儿论坛文章标题最多显示一行....</span>
+                                </a>
+                                <a href="#">
+                                    <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                                    <span>我是育儿论坛文章标题最多显示一行....</span>
+                                </a>
+                                <a href="#">
+                                    <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                                    <span>我是育儿论坛文章标题最多显示一行....</span>
+                                </a>
+                                <a href="#">
+                                    <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                                    <span>我是育儿论坛文章标题最多显示一行....</span>
+                                </a>
+                            </div>
+                            <div class="r_list">
+                                <a href="#"><i class='iconfont icon-dot'></i><span>末次月经3.29今天测试纸...</span></a>
+                                <a href="#"><i class='iconfont icon-dot'></i><span>备孕两年都没怀上，郁闷...</span></a>
+                                <a href="#"><i class='iconfont icon-dot'></i><span>多囊卵巢综合征；输卵管...</span></a>
+                                <a href="#"><i class='iconfont icon-dot'></i><span>男人的精液是细腻的，如...</span></a>
+                                <a href="#"><i class='iconfont icon-dot'></i><span>姐妹们，卵巢功能可以改...</span></a>
+                                <a href="#"><i class='iconfont icon-dot'></i><span>这是哪种中药？这是干什...</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sgyerbox">
+                    <div class="yuermeta_h clearfix">
+                        <h3><a href="javascript:;">试管婴儿</a></h3>
+                        <p>
+                            <a href="javascript:;"></a>
+                        </p>
+                    </div>
+                    <ul class="sgyer-h fl">
+                        <li class='lisSelect'>人工授精</li>
+                        <li>试管成功率</li>
+                        <li>宫外孕试管</li>
+                        <li>取精取卵</li>
+                        <li>试管移植后</li>
+                        <li>保胎</li>
+                    </ul>
+                    <div class="sgyer-infolis fl">
+                        <div class='clearfix'>
+                            <a href="#">
+                                <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                            </a>
+                            <div class='infolis-b'>
+                                <h6>
+                                    <a href="#">试管婴儿准备：做试管去哪里做更好呢？</a>
+                                </h6>
+                                <p>
+                                    <a href="#">我是预览文案做多显示四行。我想做试管婴儿，在中国这样做比较方便，但恐怕不会成功。 出国成功率较高，但费用昂贵且不便。谁能帮助我分析我应该如何选择！ 文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案案文案文案文案文
+                                        </a>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="sgyer-lis">
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                            <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="main_r fl">
+                <div class="quick_ask">
+                    <div class="head">
+                        <i class='iconfont'>&#xe640;</i>
+                        <p>快速提问</p>
+                    </div>
+                    <textarea name="quick_ask" id="" cols="1" rows="3">
+                    </textarea>
+                    <div class="lis-select">
+                        <select>
+                            <option value ="volvo">备孕</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <select>
+                            <option value ="volvo">备孕</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                        <select>
+                            <option value ="volvo">试管</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                        <select>
+                            <option value ="volvo">不孕不育</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                        <select>
+                            <option value ="volvo">其他</option>
+                            <option value ="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                          </select>
+                    </div>
+                    <div class="lis-foot">
+                        <span>今日1128位提问</span>
+                        <a href="#">免费提问</a>
+                    </div>
+                </div>
+                <div class="hot_arc">
+                    <div class="rgt_tit">
+                        <h4><span>热门文章</span></h4>
+                    </div>
+                    <ul class='clearfix'>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a></li>
+                    </ul>
+                    <div class="sjchangebtn">
+                        <img src="{%static 'images/yuerlt/change.png'%}" alt="">
+                    </div>
+                </div>
+                <div class="hot_bq">
+                    <div class="rgt_tit">
+                        <h4><span>热点标签</span></h4>
+                    </div>
+                    <ul class='hot_bqbox'>
+                        <li><a href="#">试管婴儿</a></li>
+                        <li><a href="#">试管婴儿</a></li>
+                        <li><a href="#">试管婴儿</a></li>
+                        <li><a href="#">试管婴儿而非个人各</a></li>
+                        <li><a href="#">试管婴儿</a></li>
+                        <li><a href="#">试管婴儿</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer style='width: 100%;height:388px;background-color:skyblue;margin-top:45px;'></footer>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: 5000,
+            pagination: '.pagination',
+            paginationClickable: true,
+        })
+        var lb_btn = $('.lb_btn');
+        $('.leftBtn').click(function() {
+            mySwiper.swipePrev();
+        });
+        $('.rightBtn').click(function() {
+            mySwiper.swipeNext();
+        });
+        $('.swiper-container').mousemove(function() {
+            lb_btn.each(function() {
+                $(this).addClass('yesShow');
+            });
+        }).mouseleave(function() {
+            lb_btn.each(function() {
+                $(this).removeClass('yesShow');
+            });
+        })
+
+        $('.rgt_infobox>li').mouseover(function() {
+            Toolfun.clearClass('rgt_select', $('.rgt_infobox>li'))
+            $(this).addClass('rgt_select');
+        })
+    </script>
+</body>
+
+</html>
