@@ -1,5 +1,6 @@
 from django.contrib import admin
 from baike.models import Bk_menu, Child_menu, Menu, Artical
+from django import forms
 
 
 # Register your models here.
@@ -24,3 +25,5 @@ class Menu_Admin(admin.ModelAdmin):
 class Artical_Admin(admin.ModelAdmin):
     list_display = ('title', 'category', 'author', 'content', 'excerpt', 'click_count')
     readonly_fields = ("excerpt", "click_count",)
+
+

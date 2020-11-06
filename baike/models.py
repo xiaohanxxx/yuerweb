@@ -63,8 +63,6 @@ class Artical(models.Model):
     add_time = models.DateTimeField('发布时间',auto_now_add=True)
 
 
-
-
     def save(self, *args, **kwargs):
         md = markdown.Markdown(extensions=[
             'markdown.extensions.extra',

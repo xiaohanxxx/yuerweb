@@ -4,7 +4,6 @@ from django.urls import re_path, path
 from users import views
 
 urlpatterns = [
-
     path('register', views.register),
     path('login',views.userlogin),
 

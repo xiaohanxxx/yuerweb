@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>互助问答频道页</title>
+	<title>首页</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
-   <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script> 
-   <!--script src="https://cdn.bootcdn.net/ajax/libs/avalon.js"></script>-->
-	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-	<script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
-	<link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all">
-	<!-- <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}"> -->
-	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/iconfont.css' %}">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+   <!--  <script type="text/javascript" src="js/avalon.js"></script> -->
+   <script src="https://cdn.bootcdn.net/ajax/libs/avalon.js/1.5.5/avalon.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<link rel="stylesheet" href="layui/css/layui.css" media="all">
+	<!-- <link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css"> -->
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link rel="stylesheet" type="text/css" href="css/iconfont.css">
 </head>
 <body  ms-controller="bodycont">
   <div class="header">
      	 <div class="headerNav">
-     	 	 <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
+     	 	 <div class="logos"><img src="img/logo.jpg"></div>
      	 	 <div class="headerNav-ul">
      	 	 	<ul>
      	 	 		<li>
@@ -105,25 +105,25 @@
     					<h3>热门小组</h3>
     					<ul>
     						<li>
-    							<img src="{% static 'img/930.png' %}" style="float: left; margin-right: 16px;">
+    							<img src="img/930.png" style="float: left; margin-right: 16px;">
     							<h4 style="font-size: 14px;">试管讨论组</h4>
     							<p style="font-size: 12px;">9896位成员</p>
     							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
     						</li>
     						<li>
-    							<img src="{% static 'img/931.png' %}" style="float: left; margin-right: 16px;">
+    							<img src="img/931.png" style="float: left; margin-right: 16px;">
     							<h4 style="font-size: 14px;">备孕讨论组</h4>
     							<p style="font-size: 12px;">9896位成员</p>
     							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
     						</li>
     						<li>
-    							<img src="{% static 'img/932.png' %}" style="float: left; margin-right: 16px;">
+    							<img src="img/932.png" style="float: left; margin-right: 16px;">
     							<h4 style="font-size: 14px;">怀孕讨论组</h4>
     							<p style="font-size: 12px;">9896位成员</p>
     							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
     						</li>
     						<li>
-    							<img src="{% static 'img/933.png' %}" style="float: left; margin-right: 16px;">
+    							<img src="img/933.png" style="float: left; margin-right: 16px;">
     							<h4 style="font-size: 14px;">不孕不育讨论组</h4>
     							<p style="font-size: 12px;">9896位成员</p>
     							<abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">加入小组</abbr>
@@ -158,12 +158,12 @@
 	    							</div>
 	    							<div class="infousers">
 	    								<div class="userone">
-	    									<i><img src="{% static 'img/user.png' %}">{{el.user}}</i>
-	    									<i><img src="{% static 'img/time.png' %}">{{el.times}}</i>
+	    									<i><img src="img/user.png">{{el.user}}</i>
+	    									<i><img src="img/time.png">{{el.times}}</i>
 	    								</div>
 	    								<div class="usertwo">
-	    									<i><img src="{% static 'img/yanjin.png' %}">{{el.yanjing}}</i>
-	    									<i><img src="{% static 'img/result.png' %}">{{el.total}}</i>
+	    									<i><img src="img/yanjin.png">{{el.yanjing}}</i>
+	    									<i><img src="img/result.png">{{el.total}}</i>
 	    								</div>
 	    							</div>
     							</div>
@@ -261,101 +261,101 @@
                  	 <ol>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static 'img/rwtx.png' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
                  	 	<li>
                  	 		<a href="">
-                 	 			<img src="{% static '{% static 'img/rwtx.png' %}' %}" style="float: left; margin-right: 12px;">
+                 	 			<img src="img/rwtx.png" style="float: left; margin-right: 12px;">
                  	 			<h4>我是文章标题只显示一行</h4>
                  	 			<div class="tubiaoousrt">
-                 	 				<i><img src="{% static 'img/ren.png' %}"> 999</i>
-                 	 				<i><img src="{% static 'img/result.png' %}"> 999</i>
+                 	 				<i><img src="img/ren.png"> 999</i>
+                 	 				<i><img src="img/result.png"> 999</i>
                  	 			</div>
                  	 		</a>
                  	 	</li>
@@ -363,7 +363,7 @@
                  </div>
                    <div class="remenhuaties">
                  	 <h3>升值医院推荐 <a href="">更多>></a></h3>
-                 	 <p style="margin:5px 0;"><img src="{% static '{% static 'img/04.jpg' %}"></p>
+                 	 <p style="margin:5px 0;"><img src="img/04.jpg"></p>
                  	 <ul>
                  	 	<li>
                  	 		<a href="">我是医院名称</a>
@@ -453,102 +453,102 @@
         limites:10,//每一页显示多少条
         datasfsa:[
             {
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },
      	    {
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },
      	    {
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },{
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },{
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },{
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },{
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },{
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",
              total:"9999"
      	    },{
-             userimg:"{% static '{% static 'img/rwtx.png' %}' %}",
+             userimg:"img/rwtx.png",
              title:"我是文章标题最多显示一行，鼠标悬浮的时候当前颜色，点击鼠标跳转到文章详情页.",
              info:"近期准备跟老公正在备孕二胎，昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好昨天去医院做了检查，我老公的身体情况良好...",
-             img1:"{% static '{% static 'img/img01.png' %}' %}",
-             img2:"{% static '{% static 'img/img02.png' %}' %}",
-             img3:"{% static '{% static 'img/img03.png' %}' %}",
+             img1:"img/img01.png",
+             img2:"img/img02.png",
+             img3:"img/img03.png",
              user:"我是用户名",
              times:"2020-10-15  09:10",
              yanjing:"999",

@@ -1,5 +1,5 @@
-  
 """yuerweb URL Configuration
+
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.1/topics/http/urls/
 Examples:
@@ -25,17 +25,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index),
 
-
     url(r'luntan/', include('luntan.urls')),
 
     url(r'hospital/', include('hospital.urls')),
     url(r'shiguanbaby/', include('shiguanbaby.urls')),
     url(r'taolun/', include('taolun.urls')),
 
-    url(r'baike/',include('baike.urls')),
+    url(r'baike/', include('baike.urls')),
     url(r'users/', include('users.urls')),
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')), # 富文本路由
+
 
     url(r'^upload', views.upload)  # 测试路由
 

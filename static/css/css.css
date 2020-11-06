@@ -237,64 +237,37 @@ body{ background: #f9f9f9; }
 .haoyunboxos ul li a{ font-weight: 400; font-family: "Î¢ÈíÑÅºÚ"; }
 
 
-.hzwdbanner{width: 1200px; overflow: hidden; margin: 15px auto;}
-.hzwdconts{width: 1200px; overflow: hidden; margin: 0 auto 15px auto; }
-.hzwdlefts{width: 835px; float: left;  min-height: 200px;}
-
-.hzwdrights{float: right; width: 340px; min-height: 200px; }
-.hzwdlefts ul{ overflow: hidden; width: 100%; padding-left: 15px; }
-
-.hzwdlefts ul li{ float: left; cursor: pointer; margin-right: 15px; margin-bottom: 10px; border:1px solid #fff; padding: 0 5px; border-radius: 3px; }
-.hzwdlefts ul li.curreswd{ border-radius: 8px; color: #ff44ad; border:1px solid #ff44ad; }
-
-.fenleiallswd{width: 100%; overflow: hidden; padding-left: 16px; margin-top: 10px;}
-.fenleiallswd p{ float: left; margin-right: 30px; cursor: pointer; }
-.allcurr{ color: #ff44ad; border-bottom: 1px solid #ff44ad; }
 
 
 
-.hzwdcontslist{width: 100%; overflow: hidden; margin:25px 0;}
-.hzwdcontslist h4{ font-size: 16px; color: #333; margin-bottom: 5px;}
-.hzwdcontslist p{ color: #666; }
-
-.partwdone{ overflow: hidden; width: 100%; margin: 25px 0  70px 0; padding-left: 15px;}
-.doctorbox,.metry,.szzhuanjia{ overflow: hidden; width: 100%; }
-.szzhuanjia h3{height: 53px; line-height: 53px; font-size: 16px; border-bottom:1px solid #666;}
-.szzhuanjia h3 a{float: right; font-size: 12px; margin-right: 10px; display: block; width: 60px; height: 53px; line-height: 53px; }
-.szzhuanjia h3 abbr{ height: 53px; line-height: 53px; display: block; width: 102px;float: left; border-bottom: 1px solid #ff44ad; }
-
-.doctorbox{width: 100%; overflow: hidden;}
-.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }
-
-.hotwdtuijian,.hotwdtuijian ul,.hotwdtuijian ol{ overflow: hidden; width: 100%; }
-.hotwdtuijian ul li{ margin:20px 0;font-size: 12px;  }
-.hotwdtuijian ul li a:hover{ color: #ff44ad; }
-.hotwdtuijian ul li abbr{ float: right;font-size: 12px; }
 
 
-.hotwdtuijianes ol li{ margin:10px 20px 10px 0;font-size: 12px; float: left;  }
-.hotwdtuijianes ol li a:hover{ color: #ff44ad; }
-.hotwdtuijianes ol li abbr{ float: right;font-size: 12px; }
 
 
-.hotwdtuijian ol li{ margin:20px 0;font-size: 12px; padding-left: 5px;  }
-.hotwdtuijian ol li a:hover{ color: #ff44ad; }
-.hotwdtuijian ol li abbr{ float: right;font-size: 12px; }
-.hzwdleftse{ overflow: hidden; width: 835px; float: left; }
-.hzwdleftse h3{ margin-top: 8px; }
-
-.pinglunkk{ width: 100%; overflow: hidden; }
-.pinglunkk h4{ font-size: 14px; padding-left: 10px; margin: 20px 0; }
-
-.fuwenben{ margin: 15px 0; }
-.pinglunlist,.pllist{ width: 100%; overflow: hidden; }
-.pllist{ padding: 30px 0; }
 
 
-.hotwdtuijiana{width: 100%; overflow: hidden;}
-.qiehuanhw{ overflow: hidden; padding: 15px 0; }
-.qiehuanhw p{ float: left; margin-right: 15px; cursor: pointer; }
-.qiehuanhw p.curraddw{ color: #ff44ad; border-bottom: 1px solid #ff44ad; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -472,14 +445,3 @@ color: #666; font-size: 12px; }
 .abq{ width: 100%; overflow: hidden; }
 .ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; }
 .ululli h4{ margin-bottom: 10px; color: #ff44ad;}
-
-
-.listsqiehuanwh,.listqha{width: 100%; overflow: hidden;}
-.listqha{ margin-bottom: 15px; }
-.listqha img{float: left; margin-right: 10px;}
-.hzwdleftse ul{ overflow: hidden; width: 100%; margin-top: 15px; }
-.allList{color: #ff44ad; border-bottom: 1px solid #ff44ad;}
-.hzwdleftse ul li{float: left; margin: 0 20px; cursor: pointer;}
-
-.hzwdleftse ol{ overflow: hidden; width: 100%; }
-.hzwdleftse ol li{float: left;  overflow: hidden; margin: 25px 108px 25px 0;}
