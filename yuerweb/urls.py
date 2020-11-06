@@ -23,6 +23,9 @@ from users import views  # test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index),
+
+
     url(r'luntan/', include('luntan.urls')),
 
     url(r'hospital/', include('hospital.urls')),
