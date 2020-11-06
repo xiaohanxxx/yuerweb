@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/avalon.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="css/css.css">
-  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="layui/{% static 'css/layui.css' %}">
 </head>
 <body  ms-controller="bodycont">
      <div class="header">
@@ -95,7 +95,7 @@
      	<div class="bannersBox">
      		<div class="bannerboxleft">
      			<div class="bannerwz bags">
-     				<img src="./img/ban1.png">
+     				<img src="{% static './img/ban1.png' %}">
      				<div class="xmlist">
      					<h3>备孕</h3>
      					<p>
@@ -153,7 +153,7 @@
      			</div>
 
      			<div class="bannerwz">
-     				<img src="./img/ban2.png">
+     				<img src="{% static './img/ban2.png' %}">
      				<div class="xmlist">
      					<h3>试管婴儿</h3>
      					<p>
@@ -197,7 +197,7 @@
 
 
      			<div class="bannerwz">
-     				<img src="./img/ban3.png">
+     				<img src="{% static './img/ban3.png' %}">
      				<div class="xmlist">
      					<h3>不孕不育</h3>
      					<p>
@@ -243,13 +243,13 @@
      		</div>
 
      		<div class="qiehuanimg">
-     			<!-- <img src="./img/banner1.jpg" width="890" height="360"> -->
+     			<!-- <img src="{% static './img/banner1.jpg' %}" width="890" height="360"> -->
      			  <!-- Swiper -->
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
-				      <div class="swiper-slide"><img src="./img/banner1.jpg" width="890" height="360"></div>
-				      <div class="swiper-slide"><img src="./img/banner1.jpg" width="890" height="360"></div>
-				      <div class="swiper-slide"><img src="./img/banner1.jpg" width="890" height="360"></div>
+				      <div class="swiper-slide"><img src="{% static './img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img src="{% static './img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img src="{% static './img/banner1.jpg' %}" width="890" height="360"></div>
 				    </div>
 				    <div class="swiper-button-next"></div>
 				    <div class="swiper-button-prev"></div>
@@ -750,9 +750,6 @@
  	 				</div>
  	 				<div class="leftcontinfo123">
  	 					<div class="baikelist" style="padding-top: 30px;">
-
-
-
  	 						<div class="fourpartg" ms-repeat-el="erjidatalist">
                                 <div>
  	 							<h3>{{el.erjilanmu}}</h3>
@@ -871,34 +868,34 @@
      	<div style="width: 1200px; margin: 0 auto; overflow: hidden; background:#fff;" class="footeres">
      		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
      		<div class="lianjieyq" style="margin-top: 30px;">
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
+     			<a href="###">网上药店</a>
      		</div>
      	</div>
      	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666; background:#fff; padding: 20px 0;">
