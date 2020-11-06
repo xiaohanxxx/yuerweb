@@ -9,6 +9,11 @@ from . import form
 
 # Create your views here.
 
+# 论坛主界面
+class Luntan(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'yuerlt.html')
+
 
 # 获取交流圈
 class Areas(views.View):
