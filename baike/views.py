@@ -1,11 +1,21 @@
 from django.shortcuts import render, HttpResponse
 from baike import models
-from django.core import serializers
-from django.http import JsonResponse
-import json
+import json,datetime
+from django.core.paginator import Paginator
 
 
 # Create your views here.
+
+# json序列化方法重写
+class JsonCustomEncoder(json.JSONEncoder):
+    def default(self, field):
+        if isinstance(field, datetime.datetime):
+            return (field + datetime.timedelta(hours=8)).strftime('%Y-%m-%d %H:%M')
+        elif isinstance(field, datetime.date):
+            return field.strftime('%Y-%m-%d')
+        else:
+            return json.JSONEncoder.default(self, field)
+
 
 def baike(request):
     return render(request, 'baike.html')
@@ -59,18 +69,32 @@ def sjld(request):
                     ],
                 }
             )
-
     return HttpResponse(json.dumps(data), content_type="application/json")
 
 
-# 获取文章
-def artcle(request):
-    if request.method == 'GET':
-        menu_id = request.GET.get('menu_id')
-        page = request.GET.get('page')
-        rows = request.GET.get('rows')
-        menu = models.Menu.objects.get(id=menu_id)
-        artcle_list = menu.artical_set.values()
+# 获取三级分类文章列表
+def artclelist(request):
+    mid = request.GET.get('mid') # 获取栏目id
+    page = request.GET.get('page',1) # 获取页码
+    count = request.GET.get('count',10) # 获取每页数据条目，默认10条
+
+    menu_obj = models.Menu.objects.get(id=mid)
+    menu_name = menu_obj.child_name # 三级栏目名
+    artcle_list = menu_obj.artical_set.all().values() # 查询该三级栏目id下的文章数据
+    paginator = Paginator(artcle_list,count) # 分页
+    page_data = paginator.page(page) # 获取对应页码文章
+    page_sum = paginator.num_pages  # 栏目下总页数
+    data = {
+        'code':200,
+        'msg':'success',
+        'menu_name':menu_name,
+        'page':page_sum,
+        'data':list(page_data.object_list)
+
+    }
+
+    # print(json.dumps(data,cls=JsonCustomEncoder))
+    return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
 
 
 
@@ -81,17 +105,16 @@ def artcle(request):
 from django.views import View
 from rest_framework.views import APIView
 
-
-# CBV
-class OrderView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('获取订单')
-
-    def post(self, request, *args, **kwargs):
-        return HttpResponse('创建订单')
-
-    def put(self, request, *args, **kwargs):
-        return HttpResponse('修改订单')
-
-    def delete(self, request, *args, **kwargs):
-        return HttpResponse('删除订单')
+# # CBV test
+# class OrderView(View):
+#     def get(self, request, *args, **kwargs):
+#         return HttpResponse('获取订单')
+#
+#     def post(self, request, *args, **kwargs):
+#         return HttpResponse('创建订单')
+#
+#     def put(self, request, *args, **kwargs):
+#         return HttpResponse('修改订单')
+#
+#     def delete(self, request, *args, **kwargs):
+#         return HttpResponse('删除订单')

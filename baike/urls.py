@@ -9,7 +9,7 @@ urlpatterns = [
 
     path('api/menu',views.baikemenu),
     path('api/sgbk_sjld',views.sjld),
-    path('api/artcle',views.artcle),
+    path('api/artcle',views.artclelist),
 
     # path('api/sgbk_sjld',views.OrderView.as_view())
 ]
