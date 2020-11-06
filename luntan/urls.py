@@ -5,6 +5,7 @@ from django.urls import re_path, path
 from . import views
 
 urlpatterns = [
+    path(r'index/', views.Luntan.as_view(), name='index'),
     path(r'areas/', views.Areas.as_view(), name='areas'),
     path(r'topics/', views.Topics.as_view(), name='topices'),
     path(r'articlelist/', views.ArticlesList.as_view(), name='articlelist'),
