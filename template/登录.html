@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name=renderer content=webkit>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="layui/layui.js"></script>
+	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="js/avalon.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+     <style type="text/css">
+      body{ background: #029EE9; }
+          .swiper-container{
+               width: 100%;
+               min-height: 300px;
+               background: red;
+          }
+         .swiper-slide {
+                text-align: center;
+                font-size: 18px;
+                background: #fff;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                -webkit-align-items: center;
+                align-items: center;
+          }
+          .swiper-slide{ width: 1200px; height: 347px; }
+     </style>
+
+</head>
+
+<body  ms-controller="bodyconts">
+    <div class="header">
+       <div class="headerNav">
+         <div class="logos"><img src="img/logo.jpg"></div>
+         <div class="headerNav-ul">
+          <ul>
+            <li>
+              <a href="" class="nava">首页</a>
+            </li>
+            <li>
+              <a href="" class="acolor">试管婴儿  </a>
+              <div class="xialabox"  style="display: none;">
+                <p><a href="">海外试管</a></p>
+                <p><a href="">国内试管</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">育儿论坛</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕交流圈</a></p>
+                <p><a href="">妈妈交流圈</a></p>
+                <p><a href="">试管婴儿交流圈</a></p>
+                <p><a href="">难孕交流圈</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">互助问答</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">医院推荐</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">海外医院</a></p>
+                <p><a href="">国内医院</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">百科知识</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+                <p><a href="">育儿</a></p>
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+              </div>
+            </li>
+          </ul>
+         </div>
+         <div class="denglu">
+          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+                    <div class="yiyuansearch">
+                          <div  ms-click="showxiala">医院<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
+                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
+                              <li>医院</li>
+                              <li>医生</li>
+                              <li>问答</li>
+                              <li>百科</li>
+                          </ul>
+                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                              <li>我是关键词</li> 
+                          </ol>
+                    </div>
+                    <input type="" name="" id="blurfs">
+                    <i class="searchbox"></i>
+                </div>
+          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
+         </div>
+       </div>
+     </div>
+     
+   
+    <div class="denglupage">
+       
+       <div class="dengluandzc">
+            <p class="aaa" ms-class="currese:a==1" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;" ms-click="changedlorzc(1)">登录</p>
+            <p class="aaa" ms-class="currese:a==2" style =" border-top-right-radius: 3px; border-bottom-right-radius: 3px;" href=""  ms-click="changedlorzc(2)">注册</p>
+       </div>
+           
+       <div class="denglubox" ms-if="a==1">
+          <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name="" placeholder="请输入用户名"></div>
+          <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" name="" placeholder="请输入密码"></div>
+          <div class="forgetmima" style="float: left; width: 592px; text-align: right; "><a style="margin-right: 25px;" href="">忘记密码</a></div>
+          <div class="denlguanniu">
+                <p style="width: 492px; height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;">登录</p>
+          </div>
+          <div class="weixinorqq">
+              <a href="##"><img src="img/weixin.png"></a>
+              <a href="##"><img src="img/qq.png"></a>
+          </div>
+       </div>
+
+        <div class="denglubox1" ms-if="a==2">
+           <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name="" placeholder="请输入用户名"></div>
+           <div class="yonghu">手机<i class="layui-icon">&#xe678;</i><input type="" name="" placeholder="请输入手机号"></div>
+           <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
+           <div class="yonghu" style="margin-left: 25px;"><input type="" name="" placeholder="请输入验证码" style="width: 300px;"><abbr style="cursor: pointer;">获取验证码</abbr></div>
+
+           <div class="denlguanniu1">
+                <p style="width: 492px; height: 62px; line-height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;">注册</p>
+                <p style="margin-top: 25px; padding-left: 25px; width: 492px;"><label><input type="checkbox" name="" title="用户协议" style="margin-right: 15px;">我同意  <abbr style="color: #ff44ad;">用户协议</abbr></label>      <a href="" style="float: right; color: #ff44ad;">已有账号，返回登录</a></p>
+          </div>
+        </div> 
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+     <!-- 底部 -->
+     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
+     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+     		<div class="lianjieyq" style="margin-top: 30px;">
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     		</div>
+     	</div>
+     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
+     		 关于我们联系我们人才招聘法律申明网站地图<br>
+     		 地址：湖北省武汉市洪山区<br>
+     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
+     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
+     	</p>
+     </div>
+     
+      <script>
+    var vm = avalon.define({
+        $id: "bodyconts",
+        a: 1,
+        changedlorzc:function(id){
+            vm.a = id;
+        },
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+    })
+</script>
+</body>
+</html>
