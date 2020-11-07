@@ -106,7 +106,7 @@ def artclelist(request):
 
 
 from django.views import View
-from rest_framework.views import APIView
+# from rest_framework.views import APIView
 
 # # CBV test
 # class OrderView(View):
