@@ -193,10 +193,13 @@
      </div>
      
       <script>
-    var vm = avalon.define({
-        $id: "bodyconts",
-        
-    })
+       avalon.config({
+          interpolate: ["{", "}"]
+       });
+      var vm = avalon.define({
+          $id: "bodyconts",
+          
+      })
 </script>
 </body>
 </html>

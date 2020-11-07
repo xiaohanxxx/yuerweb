@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
+    {% load static %}
 	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
@@ -14,88 +15,13 @@
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 </head>
 <body  ms-controller="bodycont">
-     <div class="header">
-     	 <div class="headerNav">
-     	 	 <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
-     	 	 <div class="headerNav-ul">
-     	 	 	<ul>
-     	 	 		<li>
-     	 	 			<a href="" class="nava">首页</a>
-     	 	 		</li>
-     	 	 		<li>
-     	 	 			<a href="" class="acolor">试管婴儿  </a>
-     	 	 			<div class="xialabox"  style="display: none;">
-     	 	 				<p><a href="">海外试管</a></p>
-     	 	 				<p><a href="">国内试管</a></p>
-     	 	 			</div>
-     	 	 		</li>
-     	 	 		<li>
-     	 	 			<a href="" class="acolor">育儿论坛</a>
-     	 	 			<div class="xialabox" style="display: none;">
-     	 	 				<p><a href="">备孕交流圈</a></p>
-     	 	 				<p><a href="">妈妈交流圈</a></p>
-     	 	 				<p><a href="">试管婴儿交流圈</a></p>
-     	 	 				<p><a href="">难孕交流圈</a></p>
-     	 	 			</div>
-     	 	 		</li>
-     	 	 		<li>
-     	 	 			<a href="" class="acolor">互助问答</a>
-     	 	 			<div class="xialabox" style="display: none;">
-     	 	 				<p><a href="">试管婴儿</a></p>
-     	 	 				<p><a href="">不孕不育</a></p>
-     	 	 				<p><a href="">备孕</a></p>
-     	 	 				<p><a href="">怀孕</a></p>
-     	 	 			</div>
-     	 	 		</li>
-     	 	 		<li>
-     	 	 			<a href="" class="acolor">医院推荐</a>
-     	 	 			<div class="xialabox" style="display: none;">
-     	 	 				<p><a href="">海外医院</a></p>
-     	 	 				<p><a href="">国内医院</a></p>
-     	 	 			</div>
-     	 	 		</li>
-     	 	 		<li>
-     	 	 			<a href="" class="acolor">百科知识</a>
-     	 	 			<div class="xialabox" style="display: none;">
-     	 	 				<p><a href="">备孕</a></p>
-     	 	 				<p><a href="">怀孕</a></p>
-     	 	 				<p><a href="">育儿</a></p>
-     	 	 				<p><a href="">试管婴儿</a></p>
-                            <p><a href="">不孕不育</a></p>
-     	 	 			</div>
-     	 	 		</li>
-     	 	 	</ul>
-     	 	 </div>
-     	 	 <div class="denglu">
-     	 	 	<div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                    <div class="yiyuansearch">
-                          <div  ms-click="showxiala">{{names}}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
-                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
-                              <li ms-click="changeSearch('医院')">医院</li>
-                              <li ms-click="changeSearch('医生')">医生</li>
-                              <li ms-click="changeSearch('问答')">问答</li>
-                              <li ms-click="changeSearch('百科')">百科</li>
-                          </ul>
-                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                          </ol>
-                    </div>
-                    <input type="" name="" id="blurfs">
-                    <i class="searchbox"></i>
-                </div>
-     	 	 	<p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
-     	 	 </div>
-     	 </div>
-     </div>
+     {% include 'header.html' %}
 
      <div class="banners">
      	<div class="bannersBox">
      		<div class="bannerboxleft">
      			<div class="bannerwz bags">
-     				<img src="./{% static 'img/ban1.png' %}">
+     				<img src="{% static 'img/ban1.png' %}">
      				<div class="xmlist">
      					<h3>备孕</h3>
      					<p>
@@ -153,7 +79,7 @@
      			</div>
 
      			<div class="bannerwz">
-     				<img src="./{% static 'img/ban2.png' %}">
+     				<img src="{% static 'img/ban2.png' %}">
      				<div class="xmlist">
      					<h3>试管婴儿</h3>
      					<p>
@@ -197,7 +123,7 @@
 
 
      			<div class="bannerwz">
-     				<img src="./{% static 'img/ban3.png' %}">
+     				<img src="{% static 'img/ban3.png' %}">
      				<div class="xmlist">
      					<h3>不孕不育</h3>
      					<p>
@@ -243,13 +169,13 @@
      		</div>
 
      		<div class="qiehuanimg">
-     			<!-- <img src="./{% static 'img/banner1.jpg' %}" width="890" height="360"> -->
+     			<!-- <img src="{% static 'img/banner1.jpg' %}" width="890" height="360"> -->
      			  <!-- Swiper -->
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
-				      <div class="swiper-slide"><img src="./{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
-				      <div class="swiper-slide"><img src="./{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
-				      <div class="swiper-slide"><img src="./{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img  src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img  src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img  src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
 				    </div>
 				    <div class="swiper-button-next"></div>
 				    <div class="swiper-button-prev"></div>
@@ -268,31 +194,31 @@
                  <ul id="baoxi_scroll_ul1" style="position: absolute; top: 10px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
@@ -300,25 +226,25 @@
                  <ul id="baoxi_scroll_ul2" style="position: absolute; bottom: 10px; padding-top: 5px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
+                             <img  src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
@@ -349,7 +275,7 @@
      	 		<div class="hhgihtlefth3">
  	 				<div class="lefth3list">
  	 					<ul>
- 	 						<li ms-repeat="shiguanyiner" ms-class="currshequ:el.id == a" ms-click="getDatasgye(el,$index)">{{el.name}}</li>
+ 	 						<li ms-repeat="shiguanyiner" ms-class="currshequ:el.id == a" ms-click="getDatasgye(el,$index)">{el.name}</li>
  	 					</ul>
  	 				</div>
  	 				<div class="leftcontinfo">
@@ -374,7 +300,7 @@
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="{% static 'img/03.png' %}">
+ 	 									<img {% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
@@ -740,7 +666,7 @@
  	 				<div class="lefth3list">
  	 					<ul>
  	 						<!-- <li class="currshequ">备孕</li> -->
- 	 						<li ms-repeat-el="datasgyes"  ms-class="currshequ:el.yijilanmu == b" ms-click="changrightlm(el.yijilanmu,$index)">{{el.zhulanmu}}</li>
+ 	 						<li ms-repeat-el="datasgyes"  ms-class="currshequ:el.yijilanmu == b" ms-click="changrightlm(el.yijilanmu,$index)">{el.zhulanmu}</li>
  	 						<!-- <li>输卵</li>
  	 						<li>子宫</li>
  	 						<li>试管</li>
@@ -755,9 +681,9 @@
 
  	 						<div class="fourpartg" ms-repeat-el="erjidatalist">
                                 <div>
- 	 							<h3>{{el.erjilanmu}}</h3>
+ 	 							<h3>{el.erjilanmu}</h3>
      	 							<div class="yunqq">
-     	 								<a ms-repeat-sanji="el.list" href="###" >{{sanji.erjilanmu}}</a>
+     	 								<a ms-repeat-sanji="el.list" href="###" >{sanji.erjilanmu}</a>
                                         <!-- <a href="###">孕前期</a> -->
      	 							</div>
                                 </div>
@@ -867,47 +793,7 @@
 
 
      <!-- 底部 -->
-     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px; background:#fff;" >
-     	<div style="width: 1200px; margin: 0 auto; overflow: hidden; background:#fff;" class="footeres">
-     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-     		<div class="lianjieyq" style="margin-top: 30px;">
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     		</div>
-     	</div>
-     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666; background:#fff; padding: 20px 0;">
-     		 关于我们联系我们人才招聘法律申明网站地图<br>
-     		 地址：湖北省武汉市洪山区<br>
-     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
-     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
-     	</p>
-     </div>
+     {% include 'footer.html' %}
 <script>
         var swiper = new Swiper('.swiper-container', {
           navigation: {
@@ -917,7 +803,7 @@
         });
 </script>
 
-{{names}}
+
 
 
   <script>
@@ -975,127 +861,7 @@
         })
       }
   </script>
- <script>
-    var vm = avalon.define({
-        $id: "bodycont",
-        names:'医院',
-        a: 1,
-        b:1,
-        datasgyes:[
-            {
-                "zhulanmu": "备孕百科",
-                "yijilanmu":1,
-                "list":[
-                         {
-                            "erjilanmu":"二级栏目2",
-                             "erjilanmuID":1,
-                             "list":[
-                                {
-                                    "erjilanmu":"三級栏目31",
-                                    "erjilanmuID":1,
-                                },{
-                                    "erjilanmu":"三級栏目32",
-                                    "erjilanmuID":2,
-                                }
-                              ],
-                        }
-                ]
-            },{
-                "zhulanmu": "备孕百科2",
-                "yijilanmu":2,
-                "list":[
-                         {
-                            "erjilanmu":"二级栏目22",
-                             "erjilanmuID":1,
-                             "list":[
-                                {
-                                    "erjilanmu":"三級栏目311",
-                                    "erjilanmuID":1,
-                                },{
-                                    "erjilanmu":"三級栏目322",
-                                    "erjilanmuID":2,
-                                }
-                              ],
-                        }
-                ]
-            },{
-                "zhulanmu": "备孕百科3",
-                "yijilanmu":3,
-                "list":[
-                         {
-                            "erjilanmu":"二级栏目23",
-                             "erjilanmuID":1,
-                             "list":[
-                                {
-                                    "erjilanmu":"三級栏目313",
-                                    "erjilanmuID":1,
-                                },{
-                                    "erjilanmu":"三級栏目323",
-                                    "erjilanmuID":2,
-                                }
-                              ],
-                        }
-                ]
-            }
-        ],
-        erjidatalist:[],
-        showxiala:function(){
-            var _this = $(this);
-            if(_this.next('ul').hasClass('hites')){
-                _this.next('ul').removeClass('hites');
-            }else{
-                _this.next('ul').addClass('hites');
-            }
-        },
-        changeSearch:function(els){
-           console.log(els);
-           vm.names = '';
-           vm.names = els;
-           $(this).parent().addClass('hites');
-        },
-        shiguanyiner:[
-               {
-                  name:'试管社区',
-                  id:1,
-                  crruse:true
-               },
-               {
-                  name:'输卵管问题',
-                  id:2,
-                  crruse:false
-               },
-               {
-                  name:'子宫问题',
-                  id:3,
-                  crruse:false,
-               },
-               {
-                  name:'高龄试管',
-                  id:4,
-                  crruse:false
-               },
-               {
-                  name:'染色体异常',
-                  id:5,
-                  crruse:false
-               },
-               {
-                  name:'精子问题',
-                  id:6,
-                  crruse:false
-               }
-         ],
-        getDatasgye: function(el,index){
-            vm.a = el.id;
-        },
-        changrightlm:function(id,index){
-            vm.b = id
-            vm.erjidatalist = [];
-            vm.erjidatalist = vm.datasgyes[index].list;
-        }
-    })
-    vm.changrightlm(1,0);
-</script>
+
 </body>
 </html>
 

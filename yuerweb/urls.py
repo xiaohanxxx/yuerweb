@@ -23,6 +23,7 @@ from yuerweb import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index),
     path('login',views.login),
     path('register',views.register),
     path('changepwd',views.changepwd),

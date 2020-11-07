@@ -6,15 +6,8 @@ from users.models import Userinfo
 import json
 
 
+
 # Create your views here.
-
-def index(request):
-    return render(request,'首页.html')
-
-
-def index(request):
-    return render(request,'首页.html')
-
 
 # 用户注册
 def register(request):
@@ -23,6 +16,7 @@ def register(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         phone = request.POST.get('phone')
+        print(password)
         # 查询数据库中是否存在该数据
         user_pd = User.objects.filter(username=username).exists()
         if user_pd == True:
