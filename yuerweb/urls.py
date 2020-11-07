@@ -18,12 +18,16 @@ from django.urls import path, re_path
 from django.conf.urls import url, include
 from django.conf import settings
 from django.views.static import serve
+from yuerweb import views
 
-from users import views  # test
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',views.index),
+    path('login',views.login),
+    path('register',views.register),
+    path('changepwd',views.changepwd),
+
+
 
     url(r'luntan/', include('luntan.urls')),
 
@@ -38,6 +42,6 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')), # 富文本路由
 
 
-    url(r'^upload', views.upload)  # 测试路由
+    # url(r'^upload', views.upload)  # 测试路由
 
 ]
