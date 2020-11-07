@@ -6,7 +6,10 @@ def index(request):
     return render(request,'index.html')
 
 def login(request):
-    return render(request,'login.html')
+    if list(request.session.values()) == []:
+        return render(request,'login.html')
+    else:
+        return redirect('/')
 
 
 def register(request):

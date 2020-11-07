@@ -154,3 +154,5 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 CKEDITOR_UPLOAD_PATH = "images"  # 上传图片保存路径
+
+LOGIN_URL = '/login' # 用户验证重定向界面
