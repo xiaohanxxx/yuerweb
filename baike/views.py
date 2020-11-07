@@ -24,9 +24,31 @@ def baike(request):
 def baike_list(request):
     return render(request,'baike_list.html')
 
+# 文章详情页
+def article(request):
+    return render(request,'article.html')
+
+
+
+# 异常处理装饰器
+def error(func):
+    def errorcase(request, *args, **kwargs):
+        try:
+            func(request, *args, **kwargs)
+        except:
+            data = {
+                'code':400,
+                'msg':'获取数据失败',
+                'data':[]
+            }
+            return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
+    return errorcase
+
+
 
 # 获取栏目api,1,2,3级栏目
-def baikemenu(request):
+@error
+def baikemenuapi(request):
     if request.method == 'POST':
         type = request.GET.get('type')
         code = 200
@@ -50,8 +72,10 @@ def baikemenu(request):
         return HttpResponse(json.dumps(data), content_type="application/json")
 
 
+
 # 获取百科全部三级栏目api
-def sjld(request):
+@error
+def sjldapi(request):
     menu_one = models.Bk_menu.objects.all()
     data = []
     for i in menu_one:
@@ -77,15 +101,16 @@ def sjld(request):
 
 
 # 获取分类文章列表
-def artclelist(request):
+@error
+def articlelistapi(request):
     mid = request.GET.get('mid') # 获取栏目id
     page = request.GET.get('page',1) # 获取页码
     count = request.GET.get('count',10) # 获取每页数据条目，默认10条
 
     menu_obj = models.Menu.objects.get(id=mid)
     menu_name = menu_obj.child_name # 三级栏目名
-    artcle_list = menu_obj.artical_set.all().values('id','title','category_id','author','excerpt','click_count','add_time') # 查询该三级栏目id下的文章数据
-    paginator = Paginator(artcle_list,count) # 分页
+    article_list = menu_obj.artical_set.all().values('id','title','category_id','author','excerpt','click_count','add_time') # 查询该三级栏目id下的文章数据
+    paginator = Paginator(article_list,count) # 分页
     page_data = paginator.page(page) # 获取对应页码文章
     page_sum = paginator.num_pages  # 栏目下总页数
     data = {
@@ -100,24 +125,25 @@ def artclelist(request):
     return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
 
 
-
-
-
-
-
-from django.views import View
-from rest_framework.views import APIView
-
-# # CBV test
-# class OrderView(View):
-#     def get(self, request, *args, **kwargs):
-#         return HttpResponse('获取订单')
-#
-#     def post(self, request, *args, **kwargs):
-#         return HttpResponse('创建订单')
-#
-#     def put(self, request, *args, **kwargs):
-#         return HttpResponse('修改订单')
-#
-#     def delete(self, request, *args, **kwargs):
-#         return HttpResponse('删除订单')
+# 获取文章内容
+@error
+def articleapi(request):
+    aid = request.GET.get('aid')
+    article_obj = models.Artical.objects.get(id=aid)
+    data = {
+        'code':200,
+        'msg':'success',
+        'data':[
+            {
+                'id':article_obj.id,
+                'category_id': article_obj.category_id,
+                'title':article_obj.title,
+                'author':article_obj.author,
+                'excerpt':article_obj.excerpt,
+                'content':article_obj.content,
+                'click_count':article_obj.click_count,
+                'add_time':article_obj.add_time
+            }
+        ]
+    }
+    return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")

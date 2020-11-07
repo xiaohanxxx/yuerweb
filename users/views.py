@@ -9,9 +9,6 @@ import json
 # Create your views here.
 
 
-def index(request):
-    return render(request,'首页.html')
-
 
 # 用户注册
 def register(request):

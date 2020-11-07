@@ -5,18 +5,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/avalon.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="css/css.css">
-  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
+    {% load static %}
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="layui/{% static 'css/layui.css' %}">
 </head>
 <body  ms-controller="bodycont">
      <div class="header">
      	 <div class="headerNav">
-     	 	 <div class="logos"><img src="img/logo.jpg"></div>
+     	 	 <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
      	 	 <div class="headerNav-ul">
      	 	 	<ul>
      	 	 		<li>
@@ -95,7 +96,7 @@
      	<div class="bannersBox">
      		<div class="bannerboxleft">
      			<div class="bannerwz bags">
-     				<img src="./img/ban1.png">
+     				<img src="{% static 'img/ban1.png' %}">
      				<div class="xmlist">
      					<h3>备孕</h3>
      					<p>
@@ -153,7 +154,7 @@
      			</div>
 
      			<div class="bannerwz">
-     				<img src="./img/ban2.png">
+     				<img src="{% static 'img/ban2.png' %}">
      				<div class="xmlist">
      					<h3>试管婴儿</h3>
      					<p>
@@ -197,7 +198,7 @@
 
 
      			<div class="bannerwz">
-     				<img src="./img/ban3.png">
+     				<img src="{% static 'img/ban3.png' %}">
      				<div class="xmlist">
      					<h3>不孕不育</h3>
      					<p>
@@ -243,13 +244,13 @@
      		</div>
 
      		<div class="qiehuanimg">
-     			<!-- <img src="./img/banner1.jpg" width="890" height="360"> -->
+     			<!-- <img src="{% static 'img/banner1.jpg' %}" width="890" height="360"> -->
      			  <!-- Swiper -->
 				  <div class="swiper-container">
 				    <div class="swiper-wrapper">
-				      <div class="swiper-slide"><img src="./img/banner1.jpg" width="890" height="360"></div>
-				      <div class="swiper-slide"><img src="./img/banner1.jpg" width="890" height="360"></div>
-				      <div class="swiper-slide"><img src="./img/banner1.jpg" width="890" height="360"></div>
+				      <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
+				      <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
 				    </div>
 				    <div class="swiper-button-next"></div>
 				    <div class="swiper-button-prev"></div>
@@ -263,36 +264,36 @@
     
      <div class="haoyunxibao" style="width: 100%; overflow: hidden; margin: 30px 0 10px 0;">
          <div class="haoyunboxos" style="margin: 0 auto; overflow: hidden; width: 1200px; height: 137px; background: #f9f1f5;">
-             <div class="xibaobox" style="float: left; width: 302px;"><img src="img/xibao.jpg"></div>
+             <div class="xibaobox" style="float: left; width: 302px;"><img src="{% static 'img/xibao.jpg' %}"></div>
              <div class="asdlkfj" style="width: 898px; float: left; height: 137px; position: relative; overflow: hidden;">
                  <ul id="baoxi_scroll_ul1" style="position: absolute; top: 10px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
@@ -300,37 +301,37 @@
                  <ul id="baoxi_scroll_ul2" style="position: absolute; bottom: 10px; padding-top: 5px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
                      <li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                          <a href="" style="text-decoration: none; color: #666;">
-                             <img src="img/tuxiang.jpg" style="float: left; margin-right: 8px;">
+                             <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 8px;">
                              <h3 style="font-size: 12px; margin-top: 14px;">会员名字:<abbr style="color: #ff44ad;">弹幕内容...</abbr></h3>
                          </a>
                      </li>
@@ -355,11 +356,11 @@
  	 				<div class="leftcontinfo">
  	 					<div class="hotinfo">
  	 						<div class="infoone">
- 	 							<img src="img/02.png">
+ 	 							<img src="{% static 'img/02.png' %}">
  	 							<p>我是文章标题，最多显示一行，多余部分显示...</p>
  	 						</div>
  	 						<div class="infoone">
- 	 							<img src="img/02.png">
+ 	 							<img src="{% static 'img/02.png' %}">
  	 							<p>我是文章标题，最多显示一行，多余部分显示...</p>
  	 						</div>
  	 					</div>
@@ -367,35 +368,35 @@
  	 						<ul>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
@@ -416,7 +417,6 @@
             		生殖医院推荐 <abbr><a href="###" style="text-decoration: none; color: #666;">更多>></a></abbr>
             	</div>
             	<div class="cityhologe">
-            		<!-- <img src="img/04.jpg" style="margin-left: 20px;"> -->
             		<ul>
             			<li><a href="">我是医院名称</a><abbr>></abbr></li>
             			<li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
@@ -444,11 +444,11 @@
  	 				<div class="leftcontinfoes">
  	 					<div class="hotinfo" style="width: 167px;">
  	 						<div class="infoone" style="margin-top: 30px;">
- 	 							<img src="img/022.png" width="167" height="170">
+ 	 							<img src="{% static 'img/022.png' %}" width="167" height="170">
  	 							<p>我是文章标题，最多显示一行，多余部分显示...</p>
  	 						</div>
  	 						<div class="infoone" style="margin-top: 30px;">
- 	 							<img src="img/022.png" width="167" height="170">
+ 	 							<img src="{% static 'img/022.png' %}" width="167" height="170">
  	 							<p>我是文章标题，最多显示一行，多余部分显示...</p>
  	 						</div>
  	 					</div>
@@ -456,35 +456,35 @@
  	 						<ul>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
  	 							</li>
  	 							<li>
  	 								<a href="">
- 	 									<img src="img/03.png">
+ 	 									<img src="{% static 'img/03.png' %}">
 	 	 								<h3>我还文章标题显示一行，文案...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案...</p>
  	 							    </a>
@@ -493,7 +493,7 @@
  	 					</div>
 
  	 					<div class="hotbeiyun">
- 	 						<a href=""><img src="img/05.jpg" height="409" width="100%;"><p>我是文章最多显示一行，其它用...</p></a>
+ 	 						<a href=""><img src="{% static 'img/05.jpg' %}" height="409" width="100%;"><p>我是文章最多显示一行，其它用...</p></a>
  	 					</div>
  	 				</div>
 
@@ -508,7 +508,7 @@
             		备孕头条 <abbr>更多>></abbr>
             	</div>
             	<div class="cityhologe">
-            		<img src="img/04.jpg" style="margin-left: 20px;">
+            		<img src="{% static 'img/04.jpg' %}" style="margin-left: 20px;">
             		<ul>
             			<li><a href="">我是医院名称</a><abbr>></abbr></li>
             			<li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
@@ -539,13 +539,13 @@
  	 						<div class="h3tgoplis">
  	 							<div class="tupianhost">
 	 	 							<a href="##">
-	 	 								<img src="img/010.png" alt="">
+	 	 								<img src="{% static 'img/010.png' %}" alt="">
 	 	 								<p>我是育儿文章标题</p>
 	 	 							</a>
 	 	 						</div>
 	 	 						<div class="tupianhost">
 	 	 							<a href="##">
-	 	 								<img src="img/011.png" alt="">
+	 	 								<img src="{% static 'img/011.png' %}" alt="">
 	 	 								<p>我是育儿文章标题</p>
 	 	 							</a>
 	 	 						</div>
@@ -554,21 +554,21 @@
  	 							<ul>
  	 								<li>
  	 									<a href="##">
- 	 										<img src="img/03.png" alt="">
+ 	 										<img src="{% static 'img/03.png' %}" alt="">
 		 	 								<h3>我还文章标题显示一行，文案...</h3>
 		 	 								<p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
  	 									</a>
  	 								</li>
  	 								<li>
  	 									<a href="##">
- 	 										<img src="img/03.png" alt="">
+ 	 										<img src="{% static 'img/03.png' %}" alt="">
 		 	 								<h3>我还文章标题显示一行，文案...</h3>
 		 	 								<p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
  	 									</a>
  	 								</li>
  	 								<li>
  	 									<a href="##">
- 	 										<img src="img/03.png" alt="">
+ 	 										<img src="{% static 'img/03.png' %}" alt="">
 		 	 								<h3>我还文章标题显示一行，文案...</h3>
 		 	 								<p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
  	 									</a>
@@ -580,14 +580,14 @@
  	 						<div class="ahfljks">
  	 							<div class="fsaldkjf">
  	 								<a href="##">
- 	 									<img src="img/jj01.png" alt="" width="133" height="60" style="float: left; margin-right: 8px;">
+ 	 									<img src="{% static 'img/jj01.png' %}" alt="" width="133" height="60" style="float: left; margin-right: 8px;">
 	 	 								<h3>我还文章标题显示...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案文案文...</p>
  	 								</a>
  	 							</div>
  	 							<div class="fsaldkjf">
  	 								<a href="##">
- 	 									<img src="img/jj01.png" alt="" width="133" height="60" style="float: left; margin-right: 8px;">
+ 	 									<img src="{% static 'img/jj01.png' %}" alt="" width="133" height="60" style="float: left; margin-right: 8px;">
 	 	 								<h3>我还文章标题显示...</h3>
 	 	 								<p>我还文章标题显示一行文案文案文案文案文...</p>
  	 								</a>
@@ -599,21 +599,21 @@
  	 							<ul>
  	 								<li>
  	 									<a href="##">
- 	 										<img src="img/03.png" alt="">
+ 	 										<img src="{% static 'img/03.png' %}" alt="">
 		 	 								<h3>我还文章标题显示一行，文案...</h3>
 		 	 								<p>我还文章标题显示一行文案文案文案文案文案文案...</p>
  	 									</a>
  	 								</li>
  	 								<li>
  	 									<a href="##">
- 	 										<img src="img/03.png" alt="">
+ 	 										<img src="{% static 'img/03.png' %}" alt="">
 		 	 								<h3>我还文章标题显示一行，文案...</h3>
 		 	 								<p>我还文章标题显示一行文案文案文案文案文案文...</p>
  	 									</a>
  	 								</li>
  	 								<li>
  	 									<a href="##">
- 	 										<img src="img/03.png" alt="">
+ 	 										<img src="{% static 'img/03.png' %}" alt="">
 		 	 								<h3>我还文章标题显示一行，文案...</h3>
 		 	 								<p>我还文章标题显示一行文案文案文案文案文...</p>
  	 									</a>
@@ -632,7 +632,7 @@
 
             <div class="szdoctorhot">
             	<div class="cityhologe">
-            		<a href="##"><img src="img/07.jpg" style="margin-left: 20px;"></a>
+            		<a href="##"><img src="{% static 'img/07.jpg' %}" style="margin-left: 20px;"></a>
             	    <p>病理性不孕  <abbr title="">换一批</abbr></p>
             		<ul>
             			<li><a href="">我是医院名称</a><abbr>></abbr></li>
@@ -848,7 +848,7 @@
                     </abbr>
             	</div>
             	<div class="cityhologe">
-            		<!-- <img src="img/04.jpg" style="margin-left: 20px;"> -->
+            		<!-- <img src="{% static 'img/04.jpg' %}" style="margin-left: 20px;"> -->
             		<ul>
             			<li><a href="">1.我是医院名称</a><abbr>></abbr></li>
             			<li><a href="">2.武汉同济生殖医学专科医院</a><abbr>></abbr></li>
