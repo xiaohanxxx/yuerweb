@@ -40,11 +40,15 @@
      		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
      	</p>
      </div>
-
+<script type="text/javascript">
+     layui.use('layer', function(){
+       var layer = layui.layer;
+     }); 
+</script>
 <script type="text/javascript">
      avalon.config({
         interpolate: ["{", "}"]
-     });
+     });  
     var vm = avalon.define({
         $id: "bodycont",
         names:'医院',
@@ -108,6 +112,77 @@
             }
         ],
         erjidatalist:[],
+        zhuceDatas:{
+          username:'',
+          phone:'',
+          password:''
+        },
+        loginData:{
+          username:'',
+          password:''
+        },
+        loginFun:function(){
+          console.log(999);
+            if(vm.loginData.username == '' || !vm.loginData.username){
+               layer.msg('请填写正确的用户名');
+               return;
+            }
+            if(vm.loginData.password == '' || !vm.loginData.password){
+               layer.msg('请填写正确的密码');
+               return;
+            }
+            $.ajax({
+              type: 'post',
+              url: 'users/login',
+              data: vm.loginData,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                  if(data.code == 200){
+                         layer.msg('登录成功，即将跳转到首页');
+                         setTimeout(function(){
+                              vm.a = 2;
+                         },2000)
+                  }else{
+                         layer.msg('登录不成功');
+                         return;
+                  }
+              }
+            });
+        },
+        register:function(){
+            if(vm.zhuceDatas.username == '' || !vm.zhuceDatas.username){
+               layer.msg('请填写正确的用户名');
+               return;
+            }
+            if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone){
+               layer.msg('请填写正确的手机号');
+               return;
+            }
+            if(vm.zhuceDatas.password == '' || !vm.zhuceDatas.password){
+               layer.msg('请填写正确的密码');
+               return;
+            }
+            $.ajax({
+              type: 'post',
+              url: '/users/register',
+              data: vm.zhuceDatas,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                  console.log(data,123);
+                  if(data.code == 200){
+                         layer.msg('注册成功，即将跳转到登录页面');
+                         setTimeout(function(){
+                              window.location.href="/login"
+                         },2000)
+                  }else{
+                         layer.msg('注册不成功');
+                         return;
+                  }
+              }
+            });
+        },
         showxiala:function(){
             var _this = $(this);
             if(_this.next('ul').hasClass('hites')){
