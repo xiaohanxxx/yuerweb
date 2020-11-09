@@ -1,13 +1,15 @@
-from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ValidationError
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
 from users.models import Userinfo
+from django.contrib.auth.decorators import login_required
 import json
 from baike.views import error
 
 # Create your views here.
+
+
 
 # 用户注册
 def register(request):
@@ -16,7 +18,6 @@ def register(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         phone = request.POST.get('phone')
-
         # 查询数据库中是否存在该数据
         user_pd = User.objects.filter(username=username).exists()
         if user_pd == True:
@@ -55,12 +56,6 @@ def userlogin(request):
         if user:
             # 查询密码是否正确
             login(request,user)
-            # print(request.session_id)
-            # print(request.session['user_id'])
-            # # request.session['is_login'] = True
-            # # request.session['user_id'] =
-            # # request.session['user_name'] = db_user.name
-
             data = {
                 'code': 200,
                 'msg': '登录成功'
@@ -109,20 +104,6 @@ def upload(request):
                 f.write(line)
         return HttpResponse('ok')
     return render(request, 'picture_upload.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

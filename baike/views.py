@@ -125,26 +125,6 @@ def articlelistapi(request):
     return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
 
 
-
-
-
-from django.views import View
-# from rest_framework.views import APIView
-
-# # CBV test
-# class OrderView(View):
-#     def get(self, request, *args, **kwargs):
-#         return HttpResponse('获取订单')
-#
-#     def post(self, request, *args, **kwargs):
-#         return HttpResponse('创建订单')
-#
-#     def put(self, request, *args, **kwargs):
-#         return HttpResponse('修改订单')
-#
-#     def delete(self, request, *args, **kwargs):
-#         return HttpResponse('删除订单')
-
 # 获取文章内容
 @error
 def articleapi(request):
@@ -167,4 +147,3 @@ def articleapi(request):
         ]
     }
     return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
-
