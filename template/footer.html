@@ -1,3 +1,4 @@
+
  <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
      	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
      		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
@@ -39,6 +40,7 @@
      		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
      	</p>
      </div>
+
 <script type="text/javascript">
      avalon.config({
         interpolate: ["{", "}"]
@@ -48,7 +50,6 @@
         names:'医院',
         a: 1,
         b:1,
-        c:1,
         datasgyes:[
             {
                 "zhulanmu": "备孕百科",
@@ -116,12 +117,13 @@
             }
         }, 
         changedlorzc:function(id){
-            vm.c = id;
+            vm.a = id;
         },
         changeSearch:function(els){
-           console.log(els);
+           //console.log(els);
            vm.names = '';
            vm.names = els;
+           console.log(vm.names);
            $(this).parent().addClass('hites');
         },
         shiguanyiner:[

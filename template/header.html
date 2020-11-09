@@ -1,4 +1,5 @@
  {% load static %}
+<body  ms-controller="bodycont">
 <div class="header">
        <div class="headerNav">
          <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
@@ -82,32 +83,26 @@
 
 
      <script type="text/javascript">
-     avalon.config({
-        interpolate: ["{", "}"]
-     });
-    var vm = avalon.define({
-        $id: "bodycont",
-        names:'医院',
-        erjidatalist:[],
-        showxiala:function(){
-            var _this = $(this);
-            if(_this.next('ul').hasClass('hites')){
-                _this.next('ul').removeClass('hites');
-            }else{
-                _this.next('ul').addClass('hites');
-            }
-        },
-        changeSearch:function(els){
-           console.log(els);
-           vm.names = '';
-           vm.names = els;
-           $(this).parent().addClass('hites');
-        },
-        changrightlm:function(id,index){
-            vm.b = id
-            vm.erjidatalist = [];
-            vm.erjidatalist = vm.datasgyes[index].list;
-        }
-    })
-    vm.changrightlm(1,0);
+     // avalon.config({
+     //    interpolate: ["{", "}"]
+     // });
+    // var vm = avalon.define({
+    //     $id: "bodycont",
+    //     names:'医院',
+        // showxiala:function(){
+        //     var _this = $(this);
+        //     if(_this.next('ul').hasClass('hites')){
+        //         _this.next('ul').removeClass('hites');
+        //     }else{
+        //         _this.next('ul').addClass('hites');
+        //     }
+        // },
+        // changeSearch:function(els){
+        //    //console.log(els);
+        //    vm.names = '';
+        //    vm.names = els;
+        //    $(this).parent().addClass('hites');
+        // }
+    // })
+    // vm.changrightlm(1,0);
     </script>
