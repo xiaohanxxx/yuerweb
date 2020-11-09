@@ -45,7 +45,8 @@
 </head>
 
 <body  ms-controller="bodyconts">
-    <div class="header">
+  {% include 'header.html' %}
+<!--     <div class="header">
        <div class="headerNav">
          <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
          <div class="headerNav-ul">
@@ -120,7 +121,7 @@
           <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
          </div>
        </div>
-     </div>
+     </div> -->
      
    
     <div class="denglupage">
@@ -164,52 +165,12 @@
 
 
 
-
-
-     <!-- 底部 -->
-     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
-     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
-     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-     		<div class="lianjieyq" style="margin-top: 30px;">
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     		</div>
-     	</div>
-     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
-     		 关于我们联系我们人才招聘法律申明网站地图<br>
-     		 地址：湖北省武汉市洪山区<br>
-     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
-     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
-     	</p>
-     </div>
+  {% include 'footer.html' %}
      
       <script>
+       avalon.config({
+          interpolate: ["{", "}"]
+       });
     var vm = avalon.define({
         $id: "bodyconts",
         a: 1,
