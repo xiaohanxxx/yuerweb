@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from users.models import Userinfo
 from django.contrib.auth.decorators import login_required
 import json
+from baike.views import error
 
 # Create your views here.
 
@@ -55,12 +56,6 @@ def userlogin(request):
         if user:
             # 查询密码是否正确
             login(request,user)
-            print(request.session_id)
-            print(request.session['user_id'])
-            # request.session['is_login'] = True
-            # request.session['user_id'] =
-            # request.session['user_name'] = db_user.name
-
             data = {
                 'code': 200,
                 'msg': '登录成功'
@@ -80,6 +75,22 @@ def userlogin(request):
 def outlogin(request):
     request.session.flush()
     return redirect("/login")
+
+
+@error
+@login_required
+def changepwd(request):
+    print("aaaa")
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        request.user.set_password(new_password)
+        request.user.save()
+        data = {
+            'code':200,
+            'msg':'修改成功'
+        }
+        return HttpResponse(json.dumps(data), content_type="application/json")
+
 
 
 # 测试上传
