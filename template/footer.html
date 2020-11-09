@@ -1,0 +1,169 @@
+ <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
+     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+     		<div class="lianjieyq" style="margin-top: 30px;">
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     		</div>
+     	</div>
+     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
+     		 关于我们联系我们人才招聘法律申明网站地图<br>
+     		 地址：湖北省武汉市洪山区<br>
+     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
+     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
+     	</p>
+     </div>
+<script type="text/javascript">
+     avalon.config({
+        interpolate: ["{", "}"]
+     });
+    var vm = avalon.define({
+        $id: "bodycont",
+        names:'医院',
+        a: 1,
+        b:1,
+        c:1,
+        datasgyes:[
+            {
+                "zhulanmu": "备孕百科",
+                "yijilanmu":1,
+                "list":[
+                         {
+                            "erjilanmu":"二级栏目2",
+                             "erjilanmuID":1,
+                             "list":[
+                                {
+                                    "erjilanmu":"三級栏目31",
+                                    "erjilanmuID":1,
+                                },{
+                                    "erjilanmu":"三級栏目32",
+                                    "erjilanmuID":2,
+                                }
+                              ],
+                        }
+                ]
+            },{
+                "zhulanmu": "备孕百科2",
+                "yijilanmu":2,
+                "list":[
+                         {
+                            "erjilanmu":"二级栏目22",
+                             "erjilanmuID":1,
+                             "list":[
+                                {
+                                    "erjilanmu":"三級栏目311",
+                                    "erjilanmuID":1,
+                                },{
+                                    "erjilanmu":"三級栏目322",
+                                    "erjilanmuID":2,
+                                }
+                              ],
+                        }
+                ]
+            },{
+                "zhulanmu": "备孕百科3",
+                "yijilanmu":3,
+                "list":[
+                         {
+                            "erjilanmu":"二级栏目23",
+                             "erjilanmuID":1,
+                             "list":[
+                                {
+                                    "erjilanmu":"三級栏目313",
+                                    "erjilanmuID":1,
+                                },{
+                                    "erjilanmu":"三級栏目323",
+                                    "erjilanmuID":2,
+                                }
+                              ],
+                        }
+                ]
+            }
+        ],
+        erjidatalist:[],
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        }, 
+        changedlorzc:function(id){
+            vm.c = id;
+        },
+        changeSearch:function(els){
+           console.log(els);
+           vm.names = '';
+           vm.names = els;
+           $(this).parent().addClass('hites');
+        },
+        shiguanyiner:[
+               {
+                  name:'试管社区',
+                  id:1,
+                  crruse:true
+               },
+               {
+                  name:'输卵管问题',
+                  id:2,
+                  crruse:false
+               },
+               {
+                  name:'子宫问题',
+                  id:3,
+                  crruse:false,
+               },
+               {
+                  name:'高龄试管',
+                  id:4,
+                  crruse:false
+               },
+               {
+                  name:'染色体异常',
+                  id:5,
+                  crruse:false
+               },
+               {
+                  name:'精子问题',
+                  id:6,
+                  crruse:false
+               }
+         ],
+        getDatasgye: function(el,index){
+            vm.a = el.id;
+        },
+        changrightlm:function(id,index){
+            vm.b = id
+            vm.erjidatalist = [];
+            vm.erjidatalist = vm.datasgyes[index].list;
+        }
+    })
+    vm.changrightlm(1,0);
+    </script>

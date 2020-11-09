@@ -5,12 +5,7 @@ from django.contrib.auth.models import User
 from users.models import Userinfo
 import json
 
-
-<<<<<<< HEAD
-
 # Create your views here.
-=======
->>>>>>> 241a417dc80cfbc0dc622952f3889e40212160f3
 
 # 用户注册
 def register(request):
@@ -19,10 +14,7 @@ def register(request):
         username = request.POST.get('username')
         password = request.POST.get('password')
         phone = request.POST.get('phone')
-<<<<<<< HEAD
-        print(password)
-=======
->>>>>>> 241a417dc80cfbc0dc622952f3889e40212160f3
+
         # 查询数据库中是否存在该数据
         user_pd = User.objects.filter(username=username).exists()
         if user_pd == True:

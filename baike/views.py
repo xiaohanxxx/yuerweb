@@ -125,9 +125,6 @@ def articlelistapi(request):
     return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
 
 
-<<<<<<< HEAD
-
-
 
 
 
@@ -147,7 +144,7 @@ from django.views import View
 #
 #     def delete(self, request, *args, **kwargs):
 #         return HttpResponse('删除订单')
-=======
+
 # 获取文章内容
 @error
 def articleapi(request):
@@ -170,4 +167,4 @@ def articleapi(request):
         ]
     }
     return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
->>>>>>> 241a417dc80cfbc0dc622952f3889e40212160f3
+
