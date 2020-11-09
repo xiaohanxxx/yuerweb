@@ -53,11 +53,11 @@ def userlogin(request):
         if user:
             # 查询密码是否正确
             login(request,user)
-            print(request.session_id)
-            print(request.session['user_id'])
-            # request.session['is_login'] = True
-            # request.session['user_id'] =
-            # request.session['user_name'] = db_user.name
+            # print(request.session_id)
+            # print(request.session['user_id'])
+            # # request.session['is_login'] = True
+            # # request.session['user_id'] =
+            # # request.session['user_name'] = db_user.name
 
             data = {
                 'code': 200,

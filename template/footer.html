@@ -141,7 +141,7 @@
                   if(data.code == 200){
                          layer.msg('登录成功，即将跳转到首页');
                          setTimeout(function(){
-                              vm.a = 2;
+                              window.location.href="/"
                          },2000)
                   }else{
                          layer.msg('登录不成功');
@@ -174,7 +174,7 @@
                   if(data.code == 200){
                          layer.msg('注册成功，即将跳转到登录页面');
                          setTimeout(function(){
-                              window.location.href="/login"
+                               vm.a = 1;
                          },2000)
                   }else{
                          layer.msg('注册不成功');
