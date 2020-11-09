@@ -21,7 +21,7 @@
 </head>
 
 <body id='body' ms-controller='yuerltctr'>
-    <header style='width: 100%;height:150px;background-color:skyblue;position:absolute;top:0;'></header>
+    {% include 'header.html' %}
     <!-- 育儿论坛头部板块 -->
     <section id="yuerhead" class='wid yuerhead'>
         <div class="swiper-container">
@@ -58,72 +58,12 @@
             <div class="pagination"></div>
         </div>
         <div class="jlquan">
-            <div class="jlqunClass">
+            <div class="jlqunClass" ms-repeat-el="yuerlt_data">
                 <div class="quanTitle">
                     <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
                     <div class="quaninfo">
                         <h5>
-                            <a href="javascript:;">备孕交流圈</a>
-                        </h5>
-                        <p><span>785</span>篇备孕交流帖子</p>
-                        <p><span>123</span>条评论</p>
-                    </div>
-                </div>
-                <div class="quanmeta">
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                </div>
-            </div>
-            <div class="jlqunClass">
-                <div class="quanTitle">
-                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
-                    <div class="quaninfo">
-                        <h5>
-                            <a href="javascript:;">备孕交流圈</a>
-                        </h5>
-                        <p><span>785</span>篇备孕交流帖子</p>
-                        <p><span>123</span>条评论</p>
-                    </div>
-                </div>
-                <div class="quanmeta">
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                </div>
-            </div>
-            <div class="jlqunClass">
-                <div class="quanTitle">
-                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
-                    <div class="quaninfo">
-                        <h5>
-                            <a href="javascript:;">备孕交流圈</a>
-                        </h5>
-                        <p><span>785</span>篇备孕交流帖子</p>
-                        <p><span>123</span>条评论</p>
-                    </div>
-                </div>
-                <div class="quanmeta">
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                    <a href="javascript:;">孕前检查</a>
-                </div>
-            </div>
-            <div class="jlqunClass">
-                <div class="quanTitle">
-                    <a href="javascript:;"><img src="{%static 'images/yuerlt/zhiliao.png'%}" alt=""></a>
-                    <div class="quaninfo">
-                        <h5>
-                            <a href="javascript:;">备孕交流圈</a>
+                            <a href="javascript:;">{el.name}</a>
                         </h5>
                         <p><span>785</span>篇备孕交流帖子</p>
                         <p><span>123</span>条评论</p>
@@ -632,8 +572,7 @@
             </div>
         </div>
     </section>
-    <footer style='width: 100%;height:388px;background-color:skyblue;margin-top:45px;'></footer>
-    <script>
+        <script>
         var mySwiper = new Swiper('.swiper-container', {
             loop: true,
             autoplay: 5000,
@@ -656,12 +595,35 @@
                 $(this).removeClass('yesShow');
             });
         })
-
         $('.rgt_infobox>li').mouseover(function() {
             Toolfun.clearClass('rgt_select', $('.rgt_infobox>li'))
             $(this).addClass('rgt_select');
         })
+        $('.headerNav-ul ul li').hover(function(){
+		    $(this).find('.xialabox').show();
+	    },function(){
+		    $(this).find('.xialabox').hide();
+	    });
+    {#    vm#}
+         avalon.config({
+            interpolate: ["{", "}"]
+         });
+        var vm2 = avalon.define({
+            $id: "yuerltctr",
+            yuerlt_data:[],
+        });
+        $.ajax({
+            url:'http://127.0.0.1:8000/luntan/areas/',
+            type:'get',
+            dataType:'json',
+            success: function (ajax) {
+                console.log(ajax);
+                vm2.yuerlt_data=ajax.data;
+               console.log(vm2.yuerlt_data)
+        }});
     </script>
+{#    {% include 'footer.html' %}#}
+
 </body>
 
 </html>
