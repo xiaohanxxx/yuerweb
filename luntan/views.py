@@ -19,7 +19,7 @@ class Luntan(views.View):
 class Areas(views.View):
     def get(self, request, *args, **kwargs):
         data = luntanmodel.Areas.objects.all()
-        res = [{"id": i.id, "name": i.name} for i in data]
+        res = [{"id": i.id, "name": i.name, "child": [{"id": k.id, "name": k.name, "child": []} for k in i.areas_topics.all()]} for i in data]
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
