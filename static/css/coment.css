@@ -73,14 +73,54 @@ button {
 #body a:hover {
     color: #FF44AD;
 }
+.header{ height: 150px; width: 100%; border-bottom: 1px solid #f8eaea;  background:#fff; }
+.headerNav{ height: 150px; width: 1200px; margin: 0 auto; background:#fff;}
+.headerNav .logos{ width: 289px; height: 150px; float: left; }
+.headerNav-ul{ float: left;  }
+.headerNav-ul ul{ margin-top: 65px; }
+.headerNav-ul ul li{ float: left; margin: 5px 17px; position: relative; }
+.xialabox{ position: absolute;  z-index: 999; left: -16px;top: 20px; background: #f2f2f2; width: 140px; padding:10px 0; border-radius: 5px; }
+.xialabox p{ padding:5px 5px 5px 14px;  }
+.xialabox p a{ text-decoration: none; color: #333; }
+.shownone{display: none;}
+.headerNav-ul ul li a.acolor{ text-decoration: none; color: #666; border-width: blod; font-family: 'Î¢ÈíÑÅºÚ'; display: block; padding-right: 27px;  background: url('../img/xjt.png') 70px center no-repeat; }
+.headerNav-ul ul li a.nava{color: #ff44ad;}
+.headerNav-ul ul li a:hover{color: #ff44ad;}
+.denglu{ float: right; position: relative;}
+.denglu .pps{ width: 162px; height: 32px; border-radius: 5px; color: #ff44ad;   background: url('../img/searchbg.png') no-repeat; padding-left: 54px;}
+/*.denglu p input{ width: 162px; height: 32px;  border-radius: 5px; outline: none;}*/
+/*border: 1px solid #ff44ad; */
+.denglu .pps input{ width: 110px; height: 30px; margin-top: 1px; margin-left: 14px;}
+.denglu .pps i{ position: absolute;width: 32px; height: 32px; right: 0px; cursor: pointer; }
+.denglu .pps a{ color: #ff44ad; margin-left: 5px; text-decoration: none; }
+.denlgu p a{ color: #F94479£» }
+
+
+.yiyuansearch{ /*background-image: url(../img/searchxl.jpg);*/
+ background-repeat: no-repeat;
+ background-size: 30%;
+ background-position: 35px center;
+ position: absolute;left: 0;
+ font-size: 14px;
+ font-family: "Î¢ÈíÑÅºÚ";
+ width: 55px;
+ padding-left: 5px;
+ height: 32px;
+ line-height: 32px;
+ color: #666;
+ cursor: pointer;}
+
+.hites{ display: none; }
+
+.yiyuansearch ul li{ text-align: center; }
+.yiyuansearch ol { width: 100%; overflow: hidden; background:#f1f1f1;}
+.yiyuansearch ol li{ float: left; width: 48%;height: 30px; margin-left: 2%; line-height: 30px; text-align: center; }
 
 #sgyer_main .sg_select {
     background-color: #FF44AD;
     border-radius: 5px;
     color: #FFD7ED;
 }
-
-
 /* hotinfo  热点新闻调用 */
 
 .rtglob {
