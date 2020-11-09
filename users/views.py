@@ -3,6 +3,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
 from users.models import Userinfo
+from django.contrib.auth.decorators import login_required
 import json
 from baike.views import error
 
