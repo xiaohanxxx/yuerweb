@@ -19,7 +19,8 @@ class Luntan(views.View):
 class Areas(views.View):
     def get(self, request, *args, **kwargs):
         data = luntanmodel.Areas.objects.all()
-        return HttpResponse(data)
+        res = [{"id": i.id, "name": i.name} for i in data]
+        return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
 # 获取分类话题
@@ -28,15 +29,16 @@ class Topics(views.View):
         areaId = request.GET.get('aid')
         areaObj = get_object_or_404(luntanmodel.Areas, pk=areaId)
         topics = areaObj.areas_topics.all()
-        return HttpResponse("{}包含的分类话题有：{}".format(areaObj.name, topics))
+        areaData = [{"id": i.id, "name": i.name} for i in topics]
+        return HttpResponse(json.dumps({"data": areaData}), content_type="application/json")
 
 
 # 获取分类帖子列表
 class ArticlesList(views.View):
     def get(self, request, *args, **kwargs):
         topicsId = request.GET.get('tid')
-        topicsData = luntanmodel.Topics.objects.get(pk=topicsId)
-        articleList = topicsData.articles_set.all().order_by("id")
+        topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
+        articleList = topicsData.articles_set.exclude(isdelete=1).order_by("id")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleList, 10)
         pag_num = paginator.num_pages  # 获取整个表的总页数
@@ -51,25 +53,50 @@ class ArticlesList(views.View):
             else:
                 pag_range = range(curuent_page_num - 5, curuent_page_num + 5)  # 当前页+5大于最大页数时
 
-        return HttpResponse(
-            "这是第{}页的数据，一共有{}页数据，页码列表是{}，本页数据内容是/r/n{}".format(
-                curuent_page_num, pag_num, pag_range, curuent_page
-            )
-        )
+        res = {
+            "curuent_page_num": curuent_page_num,   # 当前页数
+            "page_num": pag_num,    # 总共页数
+            "page_range": [i for i in pag_range],    # 页码列表
+            "curuent_page": [
+                {
+                    "id": i.id,
+                    "title": i.title,
+                    "content": i.content,
+                    "publish_date": str(i.publish_date),
+                    "user": {"id": i.user.id, "username": i.user.username}
+                } for i in curuent_page
+            ]
+        }
+
+        return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
 # 获取帖子
 class Article(views.View):
     def get(self, request, *args, **kwargs):
         articleId = request.GET.get('aid')
-        articleData = get_object_or_404(luntanmodel.Articles, pk=articleId)
-        # 获取帖子发布人信息
-        articleData.userData = articleData.user
+        artObj = get_object_or_404(luntanmodel.Articles, pk=articleId)
         # 获取帖子评论信息
-        commentData = articleData.articles_comment.all()
-        for i in commentData:
-            commentData.userData = i.user
-        return HttpResponse("帖子：{}，评论：{}".format(articleData, commentData))
+        commentData = artObj.articles_comment.all()
+        # 获取帖子发布人信息
+        artData = {
+            "id": artObj.id,
+            "title": artObj.title,
+            "content": artObj.content,
+            "publish_date": str(artObj.publish_date),
+            "user": {"id": artObj.user.id, "username": artObj.user.username}
+        }
+        resComment = [
+            {
+                "comment": i.comment,
+                "publish_date": str(i.publish_date),
+                "user": {"id": i.user.id, "username": i.user.username},
+                "parent": i.parent_id
+            } for i in commentData
+        ]
+
+        artData['comment'] = resComment
+        return HttpResponse(json.dumps(artData), content_type="application/json")
 
     def post(self, request, *args, **kwargs):
         article = form.ArticlesForm(request.POST)
