@@ -56,6 +56,7 @@ CKEDITOR_CONFIGS = {
     },
 }
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -129,6 +130,22 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# 短信验证
+SMS_SECRET_ID = "AKID2rPgnI0VChz0lVAIQIMCoFTSBdonM96t"  # API秘钥管理SecretId
+SMS_SECRET_KEY = "lKsAGxQdeOuCF9nBQVMAi2RaVBiyHK7q"  # API秘钥管理SecretKey
+SMS_APPID = '1400447111'  # 应用列表SDK AppID
+SMS_SIGN = '智媒AI批量写作助手'  # 签名管理的内容
+
+# 正文模板管理ID
+SMS_TEMPLATE_ID = {
+    'test1': '770865',  # 注册模板ID
+    'register': '770682',  # 注册模板ID
+    # 'register': '123456',  # 注册模板ID
+    # 're_password': '123456',  # 改密模板ID
+}
+
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
