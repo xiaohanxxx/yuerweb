@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
 from users.models import Userinfo
 import json
+from baike.views import error
 
 # Create your views here.
 
@@ -78,6 +79,22 @@ def userlogin(request):
 def outlogin(request):
     request.session.flush()
     return redirect("/login")
+
+
+@error
+@login_required
+def changepwd(request):
+    print("aaaa")
+    if request.method == 'POST':
+        new_password = request.POST.get('new_password')
+        request.user.set_password(new_password)
+        request.user.save()
+        data = {
+            'code':200,
+            'msg':'修改成功'
+        }
+        return HttpResponse(json.dumps(data), content_type="application/json")
+
 
 
 # 测试上传

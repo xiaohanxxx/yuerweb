@@ -26,8 +26,6 @@ urlpatterns = [
     path('',views.index),
     path('login',views.login),
     path('register',views.register),
-    path('changepwd',views.changepwd),
-
 
 
     url(r'luntan/', include('luntan.urls')),
