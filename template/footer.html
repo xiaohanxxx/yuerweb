@@ -150,16 +150,24 @@
               }
             });
         },
+        mimayanzheng:function(ml){
+          var reg = /^[\w]{6,12}$/
+           if(ml.match(reg)){
+               return true;
+           }else{
+               return false;
+           }
+        },
         register:function(){
             if(vm.zhuceDatas.username == '' || !vm.zhuceDatas.username){
                layer.msg('请填写正确的用户名');
                return;
             }
-            if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone){
+            if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)){
                layer.msg('请填写正确的手机号');
                return;
             }
-            if(vm.zhuceDatas.password == '' || !vm.zhuceDatas.password){
+            if(vm.zhuceDatas.password == '' || !vm.zhuceDatas.password || !vm.mimayanzheng(vm.zhuceDatas.password)){
                layer.msg('请填写正确的密码');
                return;
             }
@@ -177,7 +185,7 @@
                                vm.a = 1;
                          },2000)
                   }else{
-                         layer.msg('注册不成功');
+                         layer.msg(data.msg);
                          return;
                   }
               }
@@ -190,15 +198,17 @@
             }else{
                 _this.next('ul').addClass('hites');
             }
-        }, 
+        },
+        validatorTel:function(content){
+             eval("var reg = /^1[34578]\\d{9}$/;");
+             return RegExp(reg).test(content);
+        },
         changedlorzc:function(id){
             vm.a = id;
         },
         changeSearch:function(els){
-           //console.log(els);
            vm.names = '';
            vm.names = els;
-           console.log(vm.names);
            $(this).parent().addClass('hites');
         },
         shiguanyiner:[

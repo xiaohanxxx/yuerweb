@@ -47,7 +47,7 @@ def error(func):
 
 
 # 获取栏目api,1,2,3级栏目
-@error
+
 def baikemenuapi(request):
     if request.method == 'POST':
         type = request.GET.get('type')

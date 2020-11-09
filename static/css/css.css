@@ -417,7 +417,7 @@ color: #666; font-size: 12px; }
 .haohengconts{ width: 100%; overflow: hidden; }
 .haohengconts ul li{ position: relative; float: left; }
 .haohengconts ul li p { width: 100px;position: absolute; left: 45px; top: 53px; }
-.haohengconts ul li p a{ display: block; text-decoration: none; color: #666; margin-bottom: 5px; }
+.haohengconts ul li p a{ display: block; text-decoration: none; color: #fff; margin-bottom: 5px; }
 
 .parttwo{ width: 100%; overflow: hidden; }
 .parttwopart{ width: 1200px; overflow: hidden; min-height: 200px; margin: 0 auto; }
@@ -443,5 +443,5 @@ color: #666; font-size: 12px; }
 .rightlistsa ul{ width: 30%; float: left; overflow: hidden; }
 .ululli{ width: 30%; float: left; overflow: hidden; margin-bottom: 42px; margin-right: 2%; }
 .abq{ width: 100%; overflow: hidden; }
-.ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; }
-.ululli h4{ margin-bottom: 10px; color: #ff44ad;}
+.ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; font-size: 14px; }
+.ululli h4{ margin-bottom: 10px; color: #ff44ad; font-size: 16px;}
