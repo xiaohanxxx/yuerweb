@@ -4,6 +4,8 @@ from django.core.paginator import Paginator
 from django.db.models import Count
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
+
+from yuerweb import settings
 from . import models as luntanmodel
 from . import form
 
@@ -56,7 +58,7 @@ class ArticlesList(views.View):
         topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
         articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
-        paginator = Paginator(articleList, 10)
+        paginator = Paginator(articleList, settings.PAGE_NUM)
         pag_num = paginator.num_pages  # 获取整个表的总页数
         curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
         if pag_num < 11:  # 判断当前页是否小于11个
