@@ -79,7 +79,8 @@ class ArticlesList(views.View):
                     "title": i.title,
                     "content": i.content,
                     "publish_date": str(i.publish_date),
-                    "user": {"id": i.user.id, "username": i.user.username}
+                    "user": {"id": i.user.id, "username": i.user.username},
+                    "commentnum": i.articles_comment.all().count()
                 } for i in curuent_page
             ]
         }
@@ -120,7 +121,7 @@ class Article(views.View):
             return HttpResponse("发布失败!!!!!,{}".format(article.errors))
 
         articleData = article.cleaned_data
-        user_id = request.session.get("user_id", 2)
+        user_id = request.session.get("user_id", 0)
         articleData['user_id'] = user_id
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
