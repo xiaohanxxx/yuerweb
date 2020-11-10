@@ -5,186 +5,138 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <meta name=renderer content=webkit>
-    {% load static %}
+   {% load static %}
   <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
-    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
   <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
-  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}"> -->
-   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 <!--      <style type="text/css">
       body{ background: #029EE9; }
      </style>
  -->
 </head>
 
-<body  ms-controller="bodyconts">
-    <div class="header">
-       <div class="headerNav">
-         <div class="logos"><img src="{% static 'img/logo.jpg' %}"></div>
-         <div class="headerNav-ul">
-          <ul>
-            <li>
-              <a href="" class="nava">首页</a>
-            </li>
-            <li>
-              <a href="" class="acolor">试管婴儿  </a>
-              <div class="xialabox"  style="display: none;">
-                <p><a href="">海外试管</a></p>
-                <p><a href="">国内试管</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">育儿论坛</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">备孕交流圈</a></p>
-                <p><a href="">妈妈交流圈</a></p>
-                <p><a href="">试管婴儿交流圈</a></p>
-                <p><a href="">难孕交流圈</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">互助问答</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">试管婴儿</a></p>
-                <p><a href="">不孕不育</a></p>
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">医院推荐</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">海外医院</a></p>
-                <p><a href="">国内医院</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">百科知识</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-                <p><a href="">育儿</a></p>
-                <p><a href="">试管婴儿</a></p>
-                <p><a href="">不孕不育</a></p>
-              </div>
-            </li>
-          </ul>
-         </div>
-         <div class="denglu">
-          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                    <div class="yiyuansearch">
-                          <div  ms-click="showxiala">{{name}}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
-                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
-                              <li ms-click="changeSearch('医院')">医院</li>
-                              <li ms-click="changeSearch('医生')">医生</li>
-                              <li ms-click="changeSearch('问答')">问答</li>
-                              <li ms-click="changeSearch('百科')">百科</li>
-                          </ul>
-                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                          </ol>
-                    </div>
-                    <input type="" name="" id="blurfs">
-                    <i class="searchbox"></i>
-                </div>
-          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
-         </div>
-       </div>
-     </div>
+  {% include 'header.html' %}
      
-   
-    <div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
-
     <div class="hzwdconts">
       <div class="hzwdlefts">
-         <h3 style="font-size: 16px; padding: 15px;">试管婴儿</h3>
-         <div style="padding: 15px;">总共为您找到相关结果<abbr style="color: red; margin:0 10px;">999</abbr>个</div>
+
+ 
+        <a href=""><img src="{% static 'img/hzwdbanner.png' %}" width="835" height="150"></a>
+
+         <h3 style="font-size: 16px; padding: 15px;">国内试管婴儿推荐医院</h3>
          <div class="fenleiallswd">
-             <p class="allcurr">全部</p>
-             <p>最新</p>
-             <p>热门</p>
-             <p>求助</p>
-             <p>发帖</p>
+             <p>地区：</p>
+             <p class="allcurr">中国大陆</p>
+             <p>港澳台</p>
+         </div>
+          <div class="fenleiallswd">
+             <p style="float: left;">省份：</p>
+             <div>
+               <p class="allcurr">全部</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+             </div>
+         </div>
+          <div class="fenleiallswd">
+             <p>城市：</p>
+             <p class="allcurr">
+               <select name="" id="">
+                   <option value="">请选择城市</option>
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5">5</option>
+               </select>
+             </p>
+             <!-- <p>港澳台</p> -->
          </div>
 
+
+        <div class="fenleiallswd">
+             <p>等级：</p>
+             <p class="allcurr">全部</p>
+             <p>三级甲等</p>
+             <p>二级甲等</p>
+             <p>一级</p>
+             <p>未定级</p>
+         </div>
+
+
+         <div class="fenleiallswd">
+             <p>地区：</p>
+             <p class="allcurr">全部</p>
+             <p>第三代试管婴儿</p>
+             <p>第二代试管婴儿</p>
+             <p>第一代试管婴儿</p>
+             <p>夫精人工授精</p>
+             <p>供精人工授精</p>
+         </div>
+  
+
+
          <div class="hzwdcontslist">
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行。   ----医院</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+             <div class="tjyylists">
+                  <div class="leftyytj">
+                     <img src="hospitals" alt="">
+                  </div>
              </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   ---医生</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   ---问答</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   ---百科</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   ---百科</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   ---百科</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   ---百科</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行   --问答</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行     --医院</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行      ---医生</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div class="partwdone">
-               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">
-               <h4>我是文章标题最多显示一行    ---医生</h4>
-               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-             </div>
-             <div id="pagers"></div>
-         </div> 
-
-
+         </div>
 
       </div>
+
+
+
+
+
       <div class="hzwdrights">
           <div class="szzhuanjia">
               <h3><abbr>推荐百科</abbr> <a href="###">更多>></a></h3>
               <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0;">
-                 <h4 style="margin-top: 20px;">医生名称 <abbr>医生职位</abbr></h4>
-                 <p style=" font-size: 14px;">所在医院名称</p>
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
                  <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-                 <a href="###">向他提问</a>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
               </div>
           </div>
 
@@ -192,48 +144,57 @@
 
 
 
-
           <div class="szzhuanjia">
-              <h3><abbr>专业问题推荐</abbr> <a href="###">更多>></a></h3>
+              <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijian">
                  <ul>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签话题标签话题标签话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签话题标签话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题话题标签话题标签标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题话题标签标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
                    <li>
+                    <i class="layui-icon">&#xe615;</i>
                      <a href="###">话题标签</a>
                      <abbr>999个问答</abbr>
                    </li>
@@ -247,56 +208,32 @@
 
 
    <div class="szzhuanjia">
-              <h3><abbr>热点论坛推荐</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijianes">
+              <h3><abbr>专业论坛推荐</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijianes_new">
                  <ol>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                    <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
-                   </li>
-                   <li>
-                     <a href="###">百科关键词</a>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
                    </li>
                  </ol>
               </div>
@@ -308,57 +245,26 @@
 
 
 
-          
+
+
+
+
+
+
+
+
+
+
       </div>
     </div>
 
 
 
-
+   
 
 
      <!-- 底部 -->
-     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
-      <div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
-        <p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-        <div class="lianjieyq" style="margin-top: 30px;">
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-          <a href="">网上药店</a>
-        </div>
-      </div>
-      <p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
-         关于我们联系我们人才招聘法律申明网站地图<br>
-         地址：湖北省武汉市洪山区<br>
-         邮箱：123456@.com 招聘邮箱:123456.com<br>
-         copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
-      </p>
-     </div>
+  {% include 'footer.html' %}
      
       <script>
     var vm = avalon.define({
