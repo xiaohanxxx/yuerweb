@@ -34,7 +34,7 @@ def article(request):
 def error(func):
     def errorcase(request, *args, **kwargs):
         try:
-            func(request, *args, **kwargs)
+            return func(request, *args, **kwargs)
         except:
             data = {
                 'code':400,
@@ -46,11 +46,12 @@ def error(func):
 
 
 
+
 # 获取栏目api,1,2,3级栏目
 @error
 def baikemenuapi(request):
     if request.method == 'POST':
-        type = request.GET.get('type')
+        type = request.POST.get('type')
         code = 200
         msg = '成功'
         if int(type) == 1:
@@ -103,13 +104,13 @@ def sjldapi(request):
 # 获取分类文章列表
 @error
 def articlelistapi(request):
-    mid = request.GET.get('mid') # 获取栏目id
-    page = request.GET.get('page',1) # 获取页码
-    count = request.GET.get('count',10) # 获取每页数据条目，默认10条
+    mid = request.POST.get('mid') # 获取栏目id
+    page = request.POST.get('page',1) # 获取页码
+    count = request.POST.get('count',10) # 获取每页数据条目，默认10条
 
     menu_obj = models.Menu.objects.get(id=mid)
     menu_name = menu_obj.child_name # 三级栏目名
-    article_list = menu_obj.artical_set.all().values('id','title','category_id','author','excerpt','click_count','add_time') # 查询该三级栏目id下的文章数据
+    article_list = menu_obj.artical_set.all().values('id','title','category_id','author','thumb','excerpt','click_count','add_time') # 查询该三级栏目id下的文章数据
     paginator = Paginator(article_list,count) # 分页
     page_data = paginator.page(page) # 获取对应页码文章
     page_sum = paginator.num_pages  # 栏目下总页数
@@ -123,6 +124,22 @@ def articlelistapi(request):
 
     # print(json.dumps(data,cls=JsonCustomEncoder))
     return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
+
+
+
+
+@error
+def articletimelist(request):
+    count = request.POST.get('count', 10)  # 获取每页数据条目，默认10条
+    article_list = models.Artical.objects.all()[:int(count)].values()
+    data = {
+        'code':200,
+        'msg':'success',
+        'data':list(article_list)
+    }
+    print(data)
+    return HttpResponse(json.dumps(data,cls=JsonCustomEncoder), content_type="application/json")
+
 
 
 # 获取文章内容

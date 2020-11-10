@@ -259,8 +259,12 @@
         rollbacklogin:function(){
           vm.a == 1;
         },
-        getNewArtical:function(){
-             var count = 2;
+        newartical:[],
+        twotopNews:[],
+        getNewArtical:function(){//获取百科推荐和上半部分的数据
+             var count = {
+               count:10
+             };
              $.ajax({
               type: 'post',
               url: '/baike/api/articletimelist',
@@ -268,7 +272,22 @@
               dataType: "json",
               timeout: 10000,
               success: function(data) {
-                 console.log(data);
+                 vm.newartical = data.data;
+                 vm.twotopNews.push(vm.newartical[0]);
+                 vm.twotopNews.push(vm.newartical[1]);
+              }
+            });
+        },
+        allbaikeData:[],
+        getAllbaikeData:function(){//获取百科所有栏目
+             $.ajax({
+              type: 'post',
+              url: '/baike/api/sgbk_sjldapi',
+              data: {},
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                 vm.allbaikeData = data;
               }
             });
         },
@@ -287,7 +306,7 @@
                     clearInterval(time1);
                   }else{
                        $("#sendsms").attr("disabled","true");
-                       vm.getcodewenzi = "重新发送("+time+")";
+                      vm.getcodewenzi = "重新发送("+time+")";
                        time--;
                   }
                   }, 1000);
@@ -309,4 +328,5 @@
     })
     vm.changrightlm(1,0);
     vm.getNewArtical();
+    vm.getAllbaikeData();
     </script>

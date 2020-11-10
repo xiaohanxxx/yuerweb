@@ -279,9 +279,14 @@ body{ background: #f9f9f9; }
 
 
 
+.hotwdtuijianes_new ol li{ margin:10px 20px 10px 0;font-size: 12px; float: left; width: 100%; }
+.hotwdtuijianes_new ol li a:hover{ color: #ff44ad; }
+.hotwdtuijianes_new ol li abbr{ float: right;font-size: 12px; }
 
 
 
+.tjyylists{width: 100%; overflow: hidden;}
+.leftyytj{ width: 400px; overflow: hidden; }
 
 
 
