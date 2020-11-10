@@ -4,6 +4,7 @@
 	<title>首页</title>
 	<meta charset="utf-8">
         {% load static %}
+        
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
 	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
@@ -130,31 +131,21 @@
      		</div>
      		<div class="rightlists">
      			<div class="righttoptwo">
-     				<div class="ulli">
+     				<div class="ulli" ms-repeat="twotopNews">
+     					<img ms-attr-src="'http://127.0.0.1:8000/media/' + el.thumb" style="float: left; margin-right: 10px;">
+     					<h3>{el.title}</h3>
+     					<p>{el.excerpt}</p>
+     				</div>
+     				<!-- <div class="ulli">
      					<img src="{% static 'img/jixiefang.png' %}" style="float: left; margin-right: 10px;">
      					<h3>我是文章标题最多显示两行跳转至论坛社区文章，超出的部分用...代替</h3>
      					<p>我是文章正文内容，显示字段为文章正文部分开头截取内容，我最多显示四行，文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
-     				</div>
-     				<div class="ulli">
-     					<img src="{% static 'img/jixiefang.png' %}" style="float: left; margin-right: 10px;">
-     					<h3>我是文章标题最多显示两行跳转至论坛社区文章，超出的部分用...代替</h3>
-     					<p>我是文章正文内容，显示字段为文章正文部分开头截取内容，我最多显示四行，文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
-     				</div>
+     				</div> -->
      			</div>
      			<div class="rightbottmanther">
      				<ul>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
-     					<li><a href="">我是文章标题最多显示两行</a></li>
+     					<li ms-repeat="newartical"><a href="">{el.title}</a></li>
+     					<!-- <li><a href="">我是文章标题最多显示两行</a></li> -->
      				</ul>
      			</div>
      		</div>

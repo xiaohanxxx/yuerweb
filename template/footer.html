@@ -259,7 +259,9 @@
         rollbacklogin:function(){
           vm.a == 1;
         },
-        getNewArtical:function(){
+        newartical:[],
+        twotopNews:[],
+        getNewArtical:function(){//获取百科推荐和上半部分的数据
              var count = {
                count:10
              };
@@ -270,8 +272,22 @@
               dataType: "json",
               timeout: 10000,
               success: function(data) {
-               console.log(999);
+                 vm.newartical = data.data;
+                 vm.twotopNews.push(vm.newartical[0]);
+                 vm.twotopNews.push(vm.newartical[1]);
+              }
+            });
+        },
+        getAllbaikeData:function(){//获取百科所有栏目
+             $.ajax({
+              type: 'post',
+              url: '/baike/api/sgbk_sjldapi',
+              data: {},
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
                  console.log(data);
+                 console.log(8989);
               }
             });
         },
@@ -312,4 +328,5 @@
     })
     vm.changrightlm(1,0);
     vm.getNewArtical();
+    vm.getAllbaikeData();
     </script>
