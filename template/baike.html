@@ -152,14 +152,20 @@
      	</div>  
      </div>
 
-     <div class="biglists">
+     <div class="biglists" ms-repeat="allbaikeData">
      	<div class="partonebiglists">
      		<div class="padiaeone">
-     			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">备孕百科</h3></div>
+     			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">{el.menu_name}</h3></div>
      			<div class="beiyunbaikepart">
      				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
      				<div class="rightlistsa">
-     					<div class="ululli">
+     					<div class="ululli" ms-repeat-vw="el.children">
+     						<h4>{vw.menu_name}</h4>
+     						<div class="abq">
+     							<a href="" ms-repeat-vf="vw.children">{vf.menu_name}</a>
+     						</div>
+     					</div>
+     					<!-- <div class="ululli">
      						<h4>备孕指南</h4>
      						<div class="abq">
      							<a href="">男科检查</a>
@@ -233,27 +239,7 @@
      							<a href="">皮肤检查</a>
      							<a href="">糖耐量检查</a>
      						</div>
-     					</div>
-     					<div class="ululli">
-     						<h4>备孕指南</h4>
-     						<div class="abq">
-     							<a href="">男科检查</a>
-     							<a href="">妇科检查</a>
-     							<a href="">婚检</a>
-     							<a href="">孕前疫苗</a>
-     							<a href="">血液检查</a>
-     							<a href="">染色体检查</a>
-     							<a href="">TORCH检查</a>
-     							<a href="">牙齿检查</a>
-     							<a href="">皮肤检查</a>
-     							<a href="">糖耐量检查</a>
-     						</div>
-     					</div>
-
-
-
-
-
+     					</div> -->
 
      				</div>
      			</div>
@@ -264,7 +250,7 @@
 
 
 
- <div class="biglists">
+<!--  <div class="biglists">
      	<div class="partonebiglists">
      		<div class="padiaeone">
      			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">怀孕百科</h3></div>
@@ -373,10 +359,6 @@
      	</div>
      </div>
 
-
-
-
-
  <div class="biglists">
      	<div class="partonebiglists">
      		<div class="padiaeone">
@@ -482,7 +464,6 @@
      		</div>
      	</div>
      </div>
-
 
  <div class="biglists">
      	<div class="partonebiglists">
@@ -695,7 +676,7 @@
      		</div>
      	</div>
      </div>
-
+ -->
 
      <!-- 底部 -->
      {% include 'footer.html' %}

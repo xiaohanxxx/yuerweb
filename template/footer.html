@@ -278,6 +278,7 @@
               }
             });
         },
+        allbaikeData:[],
         getAllbaikeData:function(){//获取百科所有栏目
              $.ajax({
               type: 'post',
@@ -286,8 +287,7 @@
               dataType: "json",
               timeout: 10000,
               success: function(data) {
-                 console.log(data);
-                 console.log(8989);
+                 vm.allbaikeData = data;
               }
             });
         },
