@@ -8,6 +8,10 @@ from django.shortcuts import HttpResponse
 
 # Create your views here.
 
+# 获取范围
+class Index(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'yiyuantuijian.html')
 
 # 获取范围
 class Area(views.View):
