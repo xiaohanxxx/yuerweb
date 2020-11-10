@@ -44,82 +44,7 @@
 </head>
 
 <body  ms-controller="bodyconts">
-    <div class="header">
-       <div class="headerNav">
-         <div class="logos"><img src="img/logo.jpg"></div>
-         <div class="headerNav-ul">
-          <ul>
-            <li>
-              <a href="" class="nava">首页</a>
-            </li>
-            <li>
-              <a href="" class="acolor">试管婴儿  </a>
-              <div class="xialabox"  style="display: none;">
-                <p><a href="">海外试管</a></p>
-                <p><a href="">国内试管</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">育儿论坛</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">备孕交流圈</a></p>
-                <p><a href="">妈妈交流圈</a></p>
-                <p><a href="">试管婴儿交流圈</a></p>
-                <p><a href="">难孕交流圈</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">互助问答</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">试管婴儿</a></p>
-                <p><a href="">不孕不育</a></p>
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">医院推荐</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">海外医院</a></p>
-                <p><a href="">国内医院</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">百科知识</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-                <p><a href="">育儿</a></p>
-                <p><a href="">试管婴儿</a></p>
-                <p><a href="">不孕不育</a></p>
-              </div>
-            </li>
-          </ul>
-         </div>
-         <div class="denglu">
-          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                    <div class="yiyuansearch">
-                          <div  ms-click="showxiala">医院<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
-                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
-                              <li>医院</li>
-                              <li>医生</li>
-                              <li>问答</li>
-                              <li>百科</li>
-                          </ul>
-                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                          </ol>
-                    </div>
-                    <input type="" name="" id="blurfs">
-                    <i class="searchbox"></i>
-                </div>
-          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
-         </div>
-       </div>
-     </div>
+  {% include 'header.html' %}
      
    
     <div class="denglupage">
@@ -150,53 +75,8 @@
 
 
      <!-- 底部 -->
-     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
-     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
-     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-     		<div class="lianjieyq" style="margin-top: 30px;">
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     		</div>
-     	</div>
-     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
-     		 关于我们联系我们人才招聘法律申明网站地图<br>
-     		 地址：湖北省武汉市洪山区<br>
-     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
-     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
-     	</p>
-     </div>
-     
-      <script>
-    var vm = avalon.define({
-        $id: "bodyconts",
-        
-    })
+    {% include 'footer.html' %}
+    
 </script>
 </body>
 </html>

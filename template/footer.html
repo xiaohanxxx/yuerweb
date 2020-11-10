@@ -1,0 +1,315 @@
+
+ <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
+     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+     		<div class="lianjieyq" style="margin-top: 30px;">
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     			<a href="">网上药店</a>
+     		</div>
+     	</div>
+     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
+     		 关于我们联系我们人才招聘法律申明网站地图<br>
+     		 地址：湖北省武汉市洪山区<br>
+     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
+     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
+     	</p>
+     </div>
+<script type="text/javascript">
+     layui.use('layer', function(){
+       var layer = layui.layer;
+     }); 
+</script>
+<script type="text/javascript">
+     avalon.config({
+        interpolate: ["{", "}"]
+     });  
+    var vm = avalon.define({
+        $id: "bodycont",
+        names:'医院',
+        a: 1,
+        b:1,
+        getcodewenzi:'获取验证码',
+        datasgyes:[
+            {
+                "zhulanmu": "备孕百科",
+                "yijilanmu":1,
+                "list":[
+                         {
+                            "erjilanmu":"二级栏目2",
+                             "erjilanmuID":1,
+                             "list":[
+                                {
+                                    "erjilanmu":"三級栏目31",
+                                    "erjilanmuID":1,
+                                },{
+                                    "erjilanmu":"三級栏目32",
+                                    "erjilanmuID":2,
+                                }
+                              ],
+                        }
+                ]
+            },{
+                "zhulanmu": "备孕百科2",
+                "yijilanmu":2,
+                "list":[
+                         {
+                            "erjilanmu":"二级栏目22",
+                             "erjilanmuID":1,
+                             "list":[
+                                {
+                                    "erjilanmu":"三級栏目311",
+                                    "erjilanmuID":1,
+                                },{
+                                    "erjilanmu":"三級栏目322",
+                                    "erjilanmuID":2,
+                                }
+                              ],
+                        }
+                ]
+            },{
+                "zhulanmu": "备孕百科3",
+                "yijilanmu":3,
+                "list":[
+                         {
+                            "erjilanmu":"二级栏目23",
+                             "erjilanmuID":1,
+                             "list":[
+                                {
+                                    "erjilanmu":"三級栏目313",
+                                    "erjilanmuID":1,
+                                },{
+                                    "erjilanmu":"三級栏目323",
+                                    "erjilanmuID":2,
+                                }
+                              ],
+                        }
+                ]
+            }
+        ],
+        erjidatalist:[],
+        zhuceDatas:{
+          username:'',
+          phone:'',
+          password:'',
+          verification_Code:''
+        },
+        loginData:{
+          username:'',
+          password:''
+        },
+        loginFun:function(){
+            if(vm.loginData.username == '' || !vm.loginData.username){
+               layer.msg('请填写正确的用户名');
+               return;
+            }
+            if(vm.loginData.password == '' || !vm.loginData.password){
+               layer.msg('请填写正确的密码');
+               return;
+            }
+            $.ajax({
+              type: 'post',
+              url: 'users/login',
+              data: vm.loginData,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                  if(data.code == 200){
+                         layer.msg('登录成功，即将跳转到首页');
+                         setTimeout(function(){
+                              window.location.href="/"
+                         },2000)
+                  }else{
+                         layer.msg('登录不成功');
+                         return;
+                  }
+              }
+            });
+        },
+        mimayanzheng:function(ml){
+          var reg = /^[\w]{6,12}$/
+           if(ml.match(reg)){
+               return true;
+           }else{
+               return false;
+           }
+        },
+        register:function(){
+            if(vm.zhuceDatas.username == '' || !vm.zhuceDatas.username){
+               layer.msg('请填写正确的用户名');
+               return;
+            }
+            if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)){
+               layer.msg('请填写正确的手机号');
+               return;
+            }
+            if(vm.zhuceDatas.password == '' || !vm.zhuceDatas.password || !vm.mimayanzheng(vm.zhuceDatas.password)){
+               layer.msg('请填写正确的密码');
+               return;
+            }
+             if(vm.zhuceDatas.verification_Code == '' || !vm.zhuceDatas.verification_Code){
+               layer.msg('请填写验证码');
+               return;
+            }
+            $.ajax({
+              type: 'post',
+              url: '/users/register',
+              data: vm.zhuceDatas,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                  console.log(data,123);
+                  if(data.code == 200){
+                         layer.msg('注册成功，即将跳转到登录页面');
+                         setTimeout(function(){
+                               vm.a = 1;
+                         },2000)
+                  }else{
+                         layer.msg(data.msg);
+                         return;
+                  }
+              }
+            });
+        },
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+        validatorTel:function(content){
+             eval("var reg = /^1[34578]\\d{9}$/;");
+             return RegExp(reg).test(content);
+        },
+        changedlorzc:function(id){
+            vm.a = id;
+        },
+        changeSearch:function(els){
+           vm.names = '';
+           vm.names = els;
+           $(this).parent().addClass('hites');
+        },
+        shiguanyiner:[
+               {
+                  name:'试管社区',
+                  id:1,
+                  crruse:true
+               },
+               {
+                  name:'输卵管问题',
+                  id:2,
+                  crruse:false
+               },
+               {
+                  name:'子宫问题',
+                  id:3,
+                  crruse:false,
+               },
+               {
+                  name:'高龄试管',
+                  id:4,
+                  crruse:false
+               },
+               {
+                  name:'染色体异常',
+                  id:5,
+                  crruse:false
+               },
+               {
+                  name:'精子问题',
+                  id:6,
+                  crruse:false
+               }
+         ],
+        getDatasgye: function(el,index){
+            vm.a = el.id;
+        },
+        changrightlm:function(id,index){
+            vm.b = id
+            vm.erjidatalist = [];
+            vm.erjidatalist = vm.datasgyes[index].list;
+        },
+        rollbacklogin:function(){
+          vm.a == 1;
+        },
+        getNewArtical:function(){
+             var count = {
+               count:10
+             };
+             $.ajax({
+              type: 'post',
+              url: '/baike/api/articletimelist',
+              data: count,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+               console.log(999);
+                 console.log(data);
+              }
+            });
+        },
+        getCode:function(){ //获取验证码
+            if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)){
+               layer.msg('请填写正确的手机号');
+               return;
+            }
+            var time = 60;
+            if(time==60){
+            var time1=setInterval(function(){
+                  if(time==0){
+                    vm.getcodewenzi = '重新发送'
+                    $("#sendsms").removeAttr("disabled");
+                    time=60;
+                    clearInterval(time1);
+                  }else{
+                       $("#sendsms").attr("disabled","true");
+                      vm.getcodewenzi = "重新发送("+time+")";
+                       time--;
+                  }
+                  }, 1000);
+             }
+            var phone = {
+               phone:vm.zhuceDatas.phone
+            }
+             $.ajax({
+              type: 'post',
+              url: 'users/smsvif',
+              data: phone,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                 console.log(data);
+              }
+            });
+        }
+    })
+    vm.changrightlm(1,0);
+    vm.getNewArtical();
+    </script>

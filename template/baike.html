@@ -1,95 +1,23 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>首页</title>
 	<meta charset="utf-8">
+        {% load static %}
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 
 
 </head>
-<body  ms-controller="test">
-    <div class="header">
-       <div class="headerNav">
-         <div class="logos"><img src="img/logo.jpg"></div>
-         <div class="headerNav-ul">
-          <ul>
-            <li>
-              <a href="" class="nava">首页</a>
-            </li>
-            <li>
-              <a href="" class="acolor">试管婴儿  </a>
-              <div class="xialabox"  style="display: none;">
-                <p><a href="">海外试管</a></p>
-                <p><a href="">国内试管</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">育儿论坛</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">备孕交流圈</a></p>
-                <p><a href="">妈妈交流圈</a></p>
-                <p><a href="">试管婴儿交流圈</a></p>
-                <p><a href="">难孕交流圈</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">互助问答</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">试管婴儿</a></p>
-                <p><a href="">不孕不育</a></p>
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">医院推荐</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">海外医院</a></p>
-                <p><a href="">国内医院</a></p>
-              </div>
-            </li>
-            <li>
-              <a href="" class="acolor">百科知识</a>
-              <div class="xialabox" style="display: none;">
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-                <p><a href="">育儿</a></p>
-                <p><a href="">试管婴儿</a></p>
-                            <p><a href="">不孕不育</a></p>
-              </div>
-            </li>
-          </ul>
-         </div>
-         <div class="denglu">
-          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                    <div class="yiyuansearch">
-                          <div  ms-click="showxiala">医院</div>
-                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
-                              <li>医院</li>
-                              <li>医生</li>
-                              <li>问答</li>
-                              <li>百科</li>
-                          </ul>
-                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                              <li>我是关键词</li> 
-                          </ol>
-                    </div>
-                    <input type="" name="" id="blurfs">
-                    <i class="searchbox"></i>
-                </div>
-          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
-         </div>
-       </div>
-     </div>
+{% include 'header.html' %}
 <style>
 	.swiper-container {
       width: 100%;
@@ -132,9 +60,9 @@
      		<div class="partone" style="width: 1200px; height: 347px;">
  			    <div class="swiper-container gallery-top">
 				    <div class="swiper-wrapper">
-					      <div class="swiper-slide"><img src="img/banners.png"></div>
-					      <div class="swiper-slide"><img src="img/banners.png"></div>
-					      <div class="swiper-slide"><img src="img/banners.png"></div>
+					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
+					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
+					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
 				    </div>
 				</div>
 				<div class="swiper-container gallery-thumbs">
@@ -153,35 +81,35 @@
      	<div class="bkpartonfes">
      		<div class="haohengconts">
      			<ul style="overflow: hidden; width: 100%;">
-     				<li style="background: url(img/976.png) no-repeat center center; height: 200px; width: 238px;">
+     				<li style="background: url({% static 'img/976.png' %}) no-repeat center center; height: 200px; width: 238px;">
      					<p>
      						<a href="">备孕</a>
      						<a href="">孕前检查</a>
      						<a href="">孕前饮食</a>
      					</p>
      				</li>
-     				<li style="background: url(img/977.png) no-repeat center center; height: 200px; width: 238px;">
+     				<li style="background: url({% static 'img/977.png' %}) no-repeat center center; height: 200px; width: 238px;">
      					<p>
      						<a href="">怀孕</a>
      						<a href="">怀孕检查</a>
      						<a href="">生男生女</a>
      					</p>
      				</li>
-     				<li style="background: url(img/978.png) no-repeat center center; height: 200px; width: 238px;">
+     				<li style="background: url({% static 'img/978.png' %}) no-repeat center center; height: 200px; width: 238px;">
      					<p>
      						<a href="">不孕不育</a>
      						<a href="">孕前检查</a>
      						<a href="">孕前饮食</a>
      					</p>
      				</li>
-     				<li style="background: url(img/979.png) no-repeat center center; height: 200px; width: 238px;">
+     				<li style="background: url({% static 'img/979.png' %}) no-repeat center center; height: 200px; width: 238px;">
      					<p>
      						<a href="">试管婴儿</a>
      						<a href="">孕前检查</a>
      						<a href="">孕前饮食</a>
      					</p>
      				</li>
-     				<li style="background: url(img/980.png) no-repeat center center; height: 200px; width: 238px;">
+     				<li style="background: url({% static 'img/980.png' %}) no-repeat center center; height: 200px; width: 238px;">
      					<p>
      						<a href="">育儿百科</a>
      						<a href="">孕前检查</a>
@@ -198,17 +126,17 @@
      <div class="parttwo">
      	<div class="parttwopart">
      		<div class="guanggaocgl">
-     			<img src="img/cgl.png">
+     			<img src="{% static 'img/cgl.png' %}">
      		</div>
      		<div class="rightlists">
      			<div class="righttoptwo">
      				<div class="ulli">
-     					<img src="img/jixiefang.png" style="float: left; margin-right: 10px;">
+     					<img src="{% static 'img/jixiefang.png' %}" style="float: left; margin-right: 10px;">
      					<h3>我是文章标题最多显示两行跳转至论坛社区文章，超出的部分用...代替</h3>
      					<p>我是文章正文内容，显示字段为文章正文部分开头截取内容，我最多显示四行，文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
      				</div>
      				<div class="ulli">
-     					<img src="img/jixiefang.png" style="float: left; margin-right: 10px;">
+     					<img src="{% static 'img/jixiefang.png' %}" style="float: left; margin-right: 10px;">
      					<h3>我是文章标题最多显示两行跳转至论坛社区文章，超出的部分用...代替</h3>
      					<p>我是文章正文内容，显示字段为文章正文部分开头截取内容，我最多显示四行，文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
      				</div>
@@ -238,7 +166,7 @@
      		<div class="padiaeone">
      			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">备孕百科</h3></div>
      			<div class="beiyunbaikepart">
-     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="img/983.png"></div>
+     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
      				<div class="rightlistsa">
      					<div class="ululli">
      						<h4>备孕指南</h4>
@@ -350,7 +278,7 @@
      		<div class="padiaeone">
      			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">怀孕百科</h3></div>
      			<div class="beiyunbaikepart">
-     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="img/983.png"></div>
+     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
      				<div class="rightlistsa">
      					<div class="ululli">
      						<h4>备孕指南</h4>
@@ -463,7 +391,7 @@
      		<div class="padiaeone">
      			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">不孕不育</h3></div>
      			<div class="beiyunbaikepart">
-     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="img/983.png"></div>
+     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
      				<div class="rightlistsa">
      					<div class="ululli">
      						<h4>备孕指南</h4>
@@ -570,7 +498,7 @@
      		<div class="padiaeone">
      			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">试管婴儿</h3></div>
      			<div class="beiyunbaikepart">
-     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="img/983.png"></div>
+     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
      				<div class="rightlistsa">
      					<div class="ululli">
      						<h4>备孕指南</h4>
@@ -676,7 +604,7 @@
      		<div class="padiaeone">
      			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">育儿百科</h3></div>
      			<div class="beiyunbaikepart">
-     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="img/983.png"></div>
+     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
      				<div class="rightlistsa">
      					<div class="ululli">
      						<h4>备孕指南</h4>
@@ -779,47 +707,7 @@
 
 
      <!-- 底部 -->
-     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
-     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
-     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-     		<div class="lianjieyq" style="margin-top: 30px;">
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     		</div>
-     	</div>
-     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
-     		 关于我们联系我们人才招聘法律申明网站地图<br>
-     		 地址：湖北省武汉市洪山区<br>
-     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
-     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
-     	</p>
-     </div>
+     {% include 'footer.html' %}
      <script>
              var galleryThumbs = new Swiper('.gallery-thumbs', {
 		      spaceBetween: 3,

@@ -91,6 +91,16 @@ WSGI_APPLICATION = 'yuerweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'yuer_data',
+#         'HOST': '139.155.251.141',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'tbr@123456..',
+#     }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -172,4 +182,5 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 CKEDITOR_UPLOAD_PATH = "images"  # 上传图片保存路径
 
-LOGIN_URL = '/login' # 用户验证重定向界面
+LOGIN_URL = '/login'
+

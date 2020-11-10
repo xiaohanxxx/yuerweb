@@ -28,6 +28,7 @@ class MySmsSender:
         obj.send('手机号',conf.SMS_TEMPLATE_ID['login'],'短信验证码')
         """
         try:
+            print(phone_number)
             self.req.PhoneNumberSet = ["+86{}".format(phone_number.strip()), ]
             # 模板 ID: 必须填写已审核通过的模板 ID，可登录 [短信控制台] 查看模板 ID
             self.req.TemplateID = template_id

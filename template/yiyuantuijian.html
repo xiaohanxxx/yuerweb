@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>首页</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name=renderer content=webkit>
+   {% load static %}
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+<!--      <style type="text/css">
+      body{ background: #029EE9; }
+     </style>
+ -->
+</head>
+
+  {% include 'header.html' %}
+     
+    <div class="hzwdconts">
+      <div class="hzwdlefts">
+
+ 
+        <a href=""><img src="{% static 'img/hzwdbanner.png' %}" width="835" height="150"></a>
+
+         <h3 style="font-size: 16px; padding: 15px;">国内试管婴儿推荐医院</h3>
+         <div class="fenleiallswd">
+             <p>地区：</p>
+             <p class="allcurr">中国大陆</p>
+             <p>港澳台</p>
+         </div>
+          <div class="fenleiallswd">
+             <p style="float: left;">省份：</p>
+             <div>
+               <p class="allcurr">全部</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+               <p>港澳台</p>
+             </div>
+         </div>
+          <div class="fenleiallswd">
+             <p>城市：</p>
+             <p class="allcurr">
+               <select name="" id="">
+                   <option value="">请选择城市</option>
+                   <option value="1">1</option>
+                   <option value="2">2</option>
+                   <option value="3">3</option>
+                   <option value="4">4</option>
+                   <option value="5">5</option>
+               </select>
+             </p>
+             <!-- <p>港澳台</p> -->
+         </div>
+
+
+        <div class="fenleiallswd">
+             <p>等级：</p>
+             <p class="allcurr">全部</p>
+             <p>三级甲等</p>
+             <p>二级甲等</p>
+             <p>一级</p>
+             <p>未定级</p>
+         </div>
+
+
+         <div class="fenleiallswd">
+             <p>地区：</p>
+             <p class="allcurr">全部</p>
+             <p>第三代试管婴儿</p>
+             <p>第二代试管婴儿</p>
+             <p>第一代试管婴儿</p>
+             <p>夫精人工授精</p>
+             <p>供精人工授精</p>
+         </div>
+  
+
+
+         <div class="hzwdcontslist">
+             <div class="tjyylists">
+                  <div class="leftyytj">
+                     <img src="hospitals" alt="">
+                  </div>
+             </div>
+         </div>
+
+      </div>
+
+
+
+
+
+      <div class="hzwdrights">
+          <div class="szzhuanjia">
+              <h3><abbr>推荐百科</abbr> <a href="###">更多>></a></h3>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+          </div>
+
+
+
+
+
+          <div class="szzhuanjia">
+              <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijian">
+                 <ul>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签话题标签话题标签话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签话题标签话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题话题标签话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                 </ul>
+              </div>
+          </div>
+
+
+
+
+
+
+   <div class="szzhuanjia">
+              <h3><abbr>专业论坛推荐</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijianes_new">
+                 <ol>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                 </ol>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+   
+
+
+     <!-- 底部 -->
+  {% include 'footer.html' %}
+     
+      <script>
+    var vm = avalon.define({
+        $id: "bodyconts",
+        name:"医院",
+        intopages:function(){
+            layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'pagers'
+                ,count: 100
+                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                ,jump: function(obj){
+                  console.log(obj)
+                }
+              });
+            });
+        },
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+        changeSearch:function(els){
+            vm.name = '';
+            vm.name = els;
+            $(this).parent().addClass('hites');
+        },
+    })
+    vm.intopages();
+</script>
+</body>
+</html>

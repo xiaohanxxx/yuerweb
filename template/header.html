@@ -1,0 +1,83 @@
+ {% load static %}
+<body  ms-controller="bodycont">
+<div class="header">
+       <div class="headerNav">
+         <div class="logos"><a href="/"><img src="{% static 'img/logo.jpg' %}"></a></div>
+         <div class="headerNav-ul">
+          <ul>
+            <li>
+              <a href="/" class="nava">首页</a>
+            </li>
+            <li>
+              <a href="" class="acolor">试管婴儿</a>
+              <div class="xialabox"  style="display: none;">
+                <p><a href="">海外试管</a></p>
+                <p><a href="">国内试管</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">育儿论坛</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕交流圈</a></p>
+                <p><a href="">妈妈交流圈</a></p>
+                <p><a href="">试管婴儿交流圈</a></p>
+                <p><a href="">难孕交流圈</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">互助问答</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">医院推荐</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">海外医院</a></p>
+                <p><a href="">国内医院</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="/baike" class="acolor">百科知识</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+                <p><a href="">育儿</a></p>
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+              </div>
+            </li>
+          </ul>
+         </div>
+         <div class="denglu">
+          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+                    <div class="yiyuansearch">
+                          <div  ms-click="showxiala">{names}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
+                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
+                              <li ms-click="changeSearch('医院')">医院</li>
+                              <li ms-click="changeSearch('医生')">医生</li>
+                              <li ms-click="changeSearch('问答')">问答</li>
+                              <li ms-click="changeSearch('百科')">百科</li>
+                          </ul>
+                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 99; margin-top: 8px; border-radius: 3px;">
+                              <li><a href="">我是关键词</a></li>
+                              <li><a href="">我是关键词</a></li>
+                              <li><a href="">我是关键词</a></li>
+                              <li><a href="">我是关键词</a></li>
+                          </ol>
+                    </div>
+                    <input type="" name="" id="blurfs">
+                    <i class="searchbox"></i>
+                </div>
+          {% if request.user.is_active %}
+            <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">个人中心 | <a href="/users/outlogin" style="color:#F94479; text-decoration: none;">退出</a></a>
+          {% else %}
+            <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
+          {% endif %}
+         </div>
+       </div>
+     </div>
+

@@ -43,7 +43,6 @@ class Articles(models.Model):
 
     class Meta:
         verbose_name = "帖子"  # 在admin站点显示名称
-        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.title
@@ -62,7 +61,6 @@ class Comment(models.Model):
 
     class Meta:
         verbose_name = "评论"  # 在admin站点显示名称
-        verbose_name_plural = verbose_name
 
     def __str__(self):
         return self.comment
