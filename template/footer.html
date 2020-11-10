@@ -259,14 +259,24 @@
         rollbacklogin:function(){
           vm.a == 1;
         },
+        getNewArtical:function(){
+             var count = 2;
+             $.ajax({
+              type: 'post',
+              url: '/baike/api/articletimelist',
+              data: count,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                 console.log(data);
+              }
+            });
+        },
         getCode:function(){ //获取验证码
             if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)){
                layer.msg('请填写正确的手机号');
                return;
             }
-
-
-             
             var time = 60;
             if(time==60){
             var time1=setInterval(function(){
@@ -282,11 +292,6 @@
                   }
                   }, 1000);
              }
-
-
-
-
-
             var phone = {
                phone:vm.zhuceDatas.phone
             }
@@ -303,4 +308,5 @@
         }
     })
     vm.changrightlm(1,0);
+    vm.getNewArtical();
     </script>
