@@ -147,21 +147,3 @@ class Comment(views.View):
         luntanmodel.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
 
-# if __name__ == '__main__':
-#     models.Areas.objects.create(name="备孕交流圈")
-#     models.Areas.objects.create(name="妈妈交流圈")
-#     models.Areas.objects.create(name="试管婴儿交流圈")
-#     models.Areas.objects.create(name="难孕交流圈")
-#
-#     # 插分类
-#     for n in range(1, 5):
-#         data = models.Areas.objects.get(pk=n)
-#         for i in range(1, 4):
-#             k = str(data.name) + str(i)
-#             models.Topics.objects.create(name=k, area=data)
-#
-#     # 插帖子
-#     for i in range(1, 14):
-#         articles = luntanmodel.Articles.objects.create(title="xxxx", content="xxxx", user_id=2)
-#         topics = luntanmodel.Topics.objects.get(pk=i)
-#         articles.topics.add(topics)
