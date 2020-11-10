@@ -1,6 +1,7 @@
 import json
 
 from django.core.paginator import Paginator
+from django.db.models import Count
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 from . import models as luntanmodel
@@ -147,3 +148,30 @@ class Comment(views.View):
         luntanmodel.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
 
+
+# 获取热门文章
+class HotAritcles(views.View):
+    def get(self, request, *args, **kwargs):
+        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))
+        aidList = [i["articles_id"] for i in thumbList[:10]]
+        atList = luntanmodel.Articles.objects.filter(pk__in=aidList)
+        atDict = {}
+        for i in atList:
+            atDict[i.id] = {
+                "title": i.title,
+                "content": i.content,
+                "update_date": str(i.update_date),
+                "user": {
+                    "username": i.user.username,
+                }
+            }
+
+        resList = []
+        for i in thumbList[:10]:
+            data = {
+                "article": atDict[i["articles_id"]],
+                "thumb": i["count"]
+            }
+            resList.append(data)
+
+        return HttpResponse(json.dumps({"data": resList}))

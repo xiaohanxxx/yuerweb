@@ -11,4 +11,5 @@ urlpatterns = [
     path(r'articlelist/', views.ArticlesList.as_view(), name='articlelist'),
     path(r'articles/', views.Article.as_view(), name='articles'),
     path(r'comment/', views.Comment.as_view(), name='comment'),
+    path(r'hotarticles/', views.HotAritcles.as_view(), name='hotarticles'),
 ]
