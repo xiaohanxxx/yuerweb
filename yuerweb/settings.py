@@ -184,3 +184,5 @@ CKEDITOR_UPLOAD_PATH = "images"  # 上传图片保存路径
 
 LOGIN_URL = '/login'
 
+# 帖子分页
+PAGE_NUM = 10
