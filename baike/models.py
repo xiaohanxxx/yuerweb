@@ -57,6 +57,7 @@ class Artical(models.Model):
     title = models.CharField('标题',max_length=100)
     category = models.ForeignKey(Menu,on_delete=models.CASCADE, blank=True, null=True, verbose_name='文章栏目')
     author = models.CharField('作者',max_length=30,default='育儿网')
+    thumb = models.ImageField(upload_to='thumbnail')
     content = RichTextUploadingField('内容')
     excerpt = models.CharField('摘要',max_length=100,blank=True)
     click_count = models.IntegerField('点击次数',default=0)

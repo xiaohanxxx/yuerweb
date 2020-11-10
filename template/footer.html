@@ -54,6 +54,7 @@
         names:'医院',
         a: 1,
         b:1,
+        getcodewenzi:'获取验证码',
         datasgyes:[
             {
                 "zhulanmu": "备孕百科",
@@ -115,14 +116,14 @@
         zhuceDatas:{
           username:'',
           phone:'',
-          password:''
+          password:'',
+          verification_Code:''
         },
         loginData:{
           username:'',
           password:''
         },
         loginFun:function(){
-          console.log(999);
             if(vm.loginData.username == '' || !vm.loginData.username){
                layer.msg('请填写正确的用户名');
                return;
@@ -169,6 +170,10 @@
             }
             if(vm.zhuceDatas.password == '' || !vm.zhuceDatas.password || !vm.mimayanzheng(vm.zhuceDatas.password)){
                layer.msg('请填写正确的密码');
+               return;
+            }
+             if(vm.zhuceDatas.verification_Code == '' || !vm.zhuceDatas.verification_Code){
+               layer.msg('请填写验证码');
                return;
             }
             $.ajax({
@@ -250,6 +255,51 @@
             vm.b = id
             vm.erjidatalist = [];
             vm.erjidatalist = vm.datasgyes[index].list;
+        },
+        rollbacklogin:function(){
+          vm.a == 1;
+        },
+        getCode:function(){ //获取验证码
+            if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)){
+               layer.msg('请填写正确的手机号');
+               return;
+            }
+
+
+             
+            var time = 60;
+            if(time==60){
+            var time1=setInterval(function(){
+                  if(time==0){
+                    vm.getcodewenzi = '重新发送'
+                    $("#sendsms").removeAttr("disabled");
+                    time=60;
+                    clearInterval(time1);
+                  }else{
+                       $("#sendsms").attr("disabled","true");
+                      vm.getcodewenzi = "重新发送("+time+")";
+                       time--;
+                  }
+                  }, 1000);
+             }
+
+
+
+
+
+            var phone = {
+               phone:vm.zhuceDatas.phone
+            }
+             $.ajax({
+              type: 'post',
+              url: 'users/smsvif',
+              data: phone,
+              dataType: "json",
+              timeout: 10000,
+              success: function(data) {
+                 console.log(data);
+              }
+            });
         }
     })
     vm.changrightlm(1,0);

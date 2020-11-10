@@ -445,3 +445,5 @@ color: #666; font-size: 12px; }
 .abq{ width: 100%; overflow: hidden; }
 .ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; font-size: 14px; }
 .ululli h4{ margin-bottom: 10px; color: #ff44ad; font-size: 16px;}
+
+#sendsms{ float: right; width: 120px; margin-right: 50px; text-align: center; padding: 0; cursor: pointer; } 
