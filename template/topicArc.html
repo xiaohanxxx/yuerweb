@@ -7,20 +7,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="话题文章">
     <meta name="keywords" content="话题文章">
-    <link rel="stylesheet" href="{%static 'css/coment.css'%}">
-    <link rel="stylesheet" href="{%static 'css/yuerlt.css'%}">
-    <link rel="stylesheet" href="{%static 'css/iconfont.css'%}">
-    <script src="{%static 'js/uitls/jquery.min.js'%}"></script>
-    <script src="{%static 'js/uitls/avalon.js'%}"></script>
-    <script src="{%static 'js/uitls/tool.js'%}"></script>
+    <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/yuerlt.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
+    <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
+    <script src="{% static 'js/uitls/avalon.js' %}"></script>
+    <script src="{% static 'js/uitls/tool.js' %}"></script>
     <title>话题文章</title>
 </head>
-
 <body>
     <header style='width: 100%;height:150px;background-color:skyblue;position:absolute;top:0;'></header>
     <!-- 话题头部 -->
     <section class="topicHead wid" style='margin-top:150px;'>
-        <div class="currdis">
+        <div class="currdis clearfix">
             <div class="dqwz">当前位置：</div>
             <div class="lmmbx">
                 <a href="#">育儿论坛</a>
@@ -29,7 +28,7 @@
             </div>
         </div>
         <div class="imgbox">
-            <img src="{%static 'images/yuerlt/topic_bg.png'%}" alt="">
+            <img src="{% static 'images/yuerlt/topic_bg.png' %}" alt="">
         </div>
     </section>
     <!-- 话题主体部分 -->
@@ -40,7 +39,7 @@
                 <div class="userInfo">
                     <div class="Mtx">
                         <a href="#">
-                            <img src="{%static 'images/yuerlt/user02.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/user02.png' %}" alt="">
                         </a>
                     </div>
                     <div class="txInfo">
@@ -87,7 +86,7 @@
                     <div class="pl clearfix">
                         <div class="tx">
                             <a href="#">
-                                <img src="{%static 'images/yuerlt/user01.png'%}" alt="">
+                                <img src="{% static 'images/yuerlt/user01.png' %}" alt="">
                             </a>
                         </div>
                         <p class='plbg'>我是用户名</p>
@@ -140,35 +139,35 @@
                 <ul class='tjjlbox'>
                     <li>
                         <div>
-                            <img src="{%static 'images/yuerlt/zhiliao.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
                             <span>好孕妈妈交流圈</span>
                         </div>
                         <div>749 个话题</div>
                     </li>
                     <li>
                         <div>
-                            <img src="{%static 'images/yuerlt/zhiliao.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
                             <span>好孕妈妈交流圈</span>
                         </div>
                         <div>749 个话题</div>
                     </li>
                     <li>
                         <div>
-                            <img src="{%static 'images/yuerlt/zhiliao.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
                             <span>好孕妈妈交流圈</span>
                         </div>
                         <div>749 个话题</div>
                     </li>
                     <li>
                         <div>
-                            <img src="{%static 'images/yuerlt/zhiliao.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
                             <span>好孕妈妈交流圈</span>
                         </div>
                         <div>749 个话题</div>
                     </li>
                     <li>
                         <div>
-                            <img src="{%static 'images/yuerlt/zhiliao.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
                             <span>好孕妈妈交流圈</span>
                         </div>
                         <div>749 个话题</div>
@@ -180,9 +179,9 @@
                     <h6>热门话题</h6>
                 </div>
                 <ul class="topicBox">
-                    <li>
+                    <li class='clearfix'>
                         <a href="#">
-                            <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                         </a>
                         <div>
                             <p>
@@ -192,9 +191,105 @@
                             <span>2020.10.31</span>
                         </div>
                     </li>
-                    <li>
+                    <li class='clearfix'>
                         <a href="#">
-                            <img src="{%static 'images/yuerlt/img02.png'%}" alt="">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        </a>
+                        <div>
+                            <p>
+                                <a href="#">我是话题标题最多显示
+                                    两行，文章详情为论坛</a>
+                            </p>
+                            <span>2020.10.31</span>
+                        </div>
+                    </li>
+                    <li class='clearfix'>
+                        <a href="#">
+                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                         </a>
                         <div>
                             <p>

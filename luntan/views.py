@@ -87,7 +87,8 @@ class ArticlesList(views.View):
                 } for i in curuent_page
             ]
         }
-
+        if request.GET.get('all'):
+            return render(request, 'beiyunjiaoliu.html', {"data": res})
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
@@ -116,7 +117,7 @@ class Article(views.View):
         ]
 
         artData['comment'] = resComment
-        return HttpResponse(json.dumps(artData), content_type="application/json")
+        return render(request, 'topicArc.html', {"data": artData})
 
     def post(self, request, *args, **kwargs):
         article = form.ArticlesForm(request.POST)
@@ -156,8 +157,8 @@ class Comment(views.View):
 # 获取热门文章
 class HotAritcles(views.View):
     def get(self, request, *args, **kwargs):
-        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))
-        aidList = [i["articles_id"] for i in thumbList[:10]]
+        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))[:10]
+        aidList = [i["articles_id"] for i in thumbList]
         atList = luntanmodel.Articles.objects.filter(pk__in=aidList)
         atDict = {}
         for i in atList:
@@ -171,7 +172,7 @@ class HotAritcles(views.View):
             }
 
         resList = []
-        for i in thumbList[:10]:
+        for i in thumbList:
             data = {
                 "article": atDict[i["articles_id"]],
                 "thumb": i["count"]
