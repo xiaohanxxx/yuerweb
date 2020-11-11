@@ -117,7 +117,7 @@ class Article(views.View):
         ]
 
         artData['comment'] = resComment
-        return HttpResponse(json.dumps(artData), content_type="application/json")
+        return render(request, 'topicArc.html', {"data": artData})
 
     def post(self, request, *args, **kwargs):
         article = form.ArticlesForm(request.POST)
@@ -157,7 +157,7 @@ class Comment(views.View):
 # 获取热门文章
 class HotAritcles(views.View):
     def get(self, request, *args, **kwargs):
-        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))
+        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').limit(10).annotate(count=Count('articles_id'))
         aidList = [i["articles_id"] for i in thumbList[:10]]
         atList = luntanmodel.Articles.objects.filter(pk__in=aidList)
         atDict = {}
