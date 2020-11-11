@@ -88,7 +88,7 @@ class ArticlesList(views.View):
             ]
         }
         if request.GET.get('all'):
-            return render(request, 'byjl.html', {"data": res})
+            return render(request, 'beiyunjiaoliu.html', {"data": res})
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
