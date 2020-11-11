@@ -255,7 +255,7 @@ body{ background: #f9f9f9; }
 
 
 
-.hzwdcontslist{width: 100%; overflow: hidden; margin:25px 0;}
+.hzwdcontslist{width: 100%; overflow: hidden; margin:25px 0; background: red; min-height: 200px; padding: 20px 0;}
 .hzwdcontslist h4{ font-size: 16px; color: #333; margin-bottom: 5px;}
 .hzwdcontslist p{ color: #666; }
 .partwdone{ overflow: hidden; width: 100%; margin: 25px 0  70px 0; padding-left: 15px;}
@@ -285,19 +285,25 @@ body{ background: #f9f9f9; }
 
 
 
-.tjyylists{width: 100%; overflow: hidden;}
-.leftyytj{ width: 400px; overflow: hidden; }
+.tjyylists{width: 100%; overflow: hidden; margin-bottom: 35px;}
+.leftyytj{ width: 400px; overflow: hidden; float: left; }
+.leftyytj p{ margin:10px 0; }
+.leftyytj h3 abbr{ background-color: #ff44ad; color: #fff; padding: 5px 15px; height: 30px; line-height: 30px; border-radius: 10px; margin-left: 20px; }
+
+.rightyytj{float: right; width: 150px;}
+
+.rightyytj p{ text-align: center; }
+.rightyytj p  abbr{ border:1px solid #ff44ad; padding:2px 10px; border-radius: 10px; color:#ff44ad; cursor: pointer; }
 
 
 
+.topboxs{ overflow: hidden; min-height: 120px; background: #fff; margin: 25px auto; width: 1200px; height: 260px; padding:20px; }
 
+.topboxs .imgs{ float: left; margin-right: 25px; }
+.topboxs h3{ font-size: 20px;margin: 13px 0; }
 
-
-
-
-
-
-
+.topboxs p{ font-size: 14px; margin: 5px; overflow: hidden; } 
+.topboxs p a{display: block; width: 100px; height: 30px; line-height: 30px; text-align: center; border-radius: 5px; color: #ff44ad; float: left; border: 1px solid #ff44ad; margin-right: 15px;}
 
 
 
@@ -491,3 +497,6 @@ color: #666; font-size: 12px; }
 .ululli h4{ margin-bottom: 10px; color: #ff44ad; font-size: 16px;}
 
 #sendsms{ float: right; width: 120px; margin-right: 50px; text-align: center; padding: 0; cursor: pointer; } 
+
+.hzwdcontslistes{ width: 100%; overflow: hidden; background: #fff; padding: 15px 0 15px 0; }
+.hzwdcontslistes h3{ border-left: 3px solid #ff44ad; padding-left: 25px; font-size: 20px; }
