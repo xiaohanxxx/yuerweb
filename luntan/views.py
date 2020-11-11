@@ -1,4 +1,5 @@
 import json
+import os
 
 from django.core.paginator import Paginator
 from django.db.models import Count
@@ -178,3 +179,17 @@ class HotAritcles(views.View):
             resList.append(data)
 
         return HttpResponse(json.dumps({"data": resList}))
+
+
+class ImageUp(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'imageuptest.html')
+
+    def post(self, request):
+        avatar = request.FILES.get('file')
+        dir = 'media/luntan' + avatar.name
+        with open(dir, 'wb') as f:
+            for line in avatar:
+                f.write(line)
+
+        return HttpResponse(json.dumps({"data": dir}))
