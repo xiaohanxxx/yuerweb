@@ -157,8 +157,8 @@ class Comment(views.View):
 # 获取热门文章
 class HotAritcles(views.View):
     def get(self, request, *args, **kwargs):
-        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').limit(10).annotate(count=Count('articles_id'))
-        aidList = [i["articles_id"] for i in thumbList[:10]]
+        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))[:10]
+        aidList = [i["articles_id"] for i in thumbList]
         atList = luntanmodel.Articles.objects.filter(pk__in=aidList)
         atDict = {}
         for i in atList:
@@ -172,7 +172,7 @@ class HotAritcles(views.View):
             }
 
         resList = []
-        for i in thumbList[:10]:
+        for i in thumbList:
             data = {
                 "article": atDict[i["articles_id"]],
                 "thumb": i["count"]
