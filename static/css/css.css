@@ -511,6 +511,20 @@ color: #666; font-size: 12px; }
 .piaofubox{ display: none; }
 
 
+
+
+
+
+.listyishenges{ width: 100%; overflow: hidden; }
+.listyishenges ol{ overflow: hidden; width: 100%; padding: 15px; }
+.listyishenges ol li{width: 97%; overflow: hidden; margin: 10px 0 50px 0;}
+.listyishenges h4{ font-size: 18px; }
+.listyishenges h4 abbr{ float: right; font-size: 12px; background: #ff44ad; border-radius: 2px; color: #fff; padding: 3px 15px;}
+.listyishenges p{ margin-top: 15px; }
+
+
+
+
 .piaofubox{position: absolute;width: 100%; height: 100%; left: 0; top: 0; background: rgba(0,0,0,0.6); }
 
 .piaofubox{ color: #fff; }
@@ -537,3 +551,12 @@ color: #666; font-size: 12px; }
 .qwzhuanjia ol,.qwzhuanjia{ width: 100%; overflow: hidden; }
 .qwzhuanjia ol li{float: left; width: 50%;}
 .hd ul li{ width: 20px; line-height: 20px; height: 20px; text-align: center; }
+
+
+.pjjyy{ padding: 20px;}
+.pjjyy a{ color: #ff44ad; margin-top: 15px; }
+
+.listyisheng,.listyisheng ol{overflow: hidden;}
+.listyisheng ol{ margin: 25px 0; }
+.listyisheng ol li{ float: left; width: 16.6%; text-align: center; }
+.listyisheng ol li p{ text-align: center; padding: 15px 0; }
