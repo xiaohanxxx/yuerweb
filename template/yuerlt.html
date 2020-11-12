@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="quanmeta">
-                <a ms-attr-href="/articlelist/?tid={as.id}&all=1" ms-repeat-as="el.child">{as.name}</a>
+                <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1" ms-repeat-as="el.child">{as.name}</a>
             </div>
         </div>
     </div>
@@ -84,16 +84,16 @@
             <div class="yuermeta_h clearfix">
                 <h3><a href="javascript:;">备孕热点</a></h3>
                 <p>
-                    <a ms-attr-href="/articlelist/?tid={mainid}&all=1"></a>
+                    <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
                 </p>
             </div>
             <div class="byinfobox">
                 <div class="box_byinfo" ms-repeat-el="data">
-                    <a ms-attr-href="/articles/?aid={el.id}"><img src="{% static 'images/yuerlt/img02.png' %}" alt=""></a>
+                    <a ms-attr-href="/luntan/articles/?aid={el.id}"><img src="{% static 'images/yuerlt/img02.png' %}" alt=""></a>
                     <div class="byinfo_r">
-                        <p class="bytit"><a ms-attr-href="/articles/?aid={el.id}">{el.title}</a></p>
+                        <p class="bytit"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
                         <p>
-                            <a ms-attr-href="/articles/?aid={el.id}">
+                            <a ms-attr-href="/luntan/articles/?aid={el.id}">
                                 {el.content}
                             </a>
                         </p>
@@ -254,7 +254,7 @@
                 <div class="yuermeta_h clearfix">
                     <h3><a href="javascript:;">难孕治疗</a></h3>
                     <p>
-                        <a ms-attr-href="/articlelist/?tid={mainid}&all=1"></a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
                     </p>
                 </div>
                 <ul class="metalist">
@@ -269,9 +269,9 @@
                         <div class="info_h clearfix">
                             <img src="{% static 'images/yuerlt/hot.png' %}" alt="">
                             <div ms-repeat-hot="hotTitle">
-                                <p><a ms-attr-href="/articles/?aid={hot.id}">{hot.title}</a></p>
+                                <p><a ms-attr-href="/luntan/articles/?aid={hot.id}">{hot.title}</a></p>
                                 <p>
-                                    <a ms-attr-href="/articles/?aid={hot.id}">
+                                    <a ms-attr-href="/luntan/articles/?aid={hot.id}">
                                         {hot.content}
                                     </a>
                                 </p>
@@ -279,21 +279,21 @@
                         </div>
                         <ul class="info_lis" ms-repeat-lis="data">
                             <li>
-                                <a ms-attr-href="/articles/?aid={lis.id}"><i class='iconfont icon-wenhao'></i>{lis.title}</a>
+                                <a ms-attr-href="/luntan/articles/?aid={lis.id}"><i class='iconfont icon-wenhao'></i>{lis.title}</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="info_r fl">
                         <div class="r_imgbox">
-                            <a ms-attr-href="/articles/?aid={ims.id}" ms-repeat-ims="imgTitle">
+                            <a ms-attr-href="/luntan/articles/?aid={ims.id}" ms-repeat-ims="imgTitle">
                                 <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                                 <span>{ims.title}</span>
                             </a>
                         </div>
 
                         <div class="r_list">
-                            <a ms-attr-href="/articles/?aid={as.id}" ms-repeat-as="lisTitle"><i
+                            <a ms-attr-href="/luntan/articles/?aid={as.id}" ms-repeat-as="lisTitle"><i
                                     class='iconfont icon-dot'></i><span>{as.title}</span></a>
                         </div>
                     </div>
@@ -303,7 +303,7 @@
                 <div class="yuermeta_h clearfix">
                     <h3><a href="javascript:;">试管婴儿</a></h3>
                     <p>
-                        <a ms-attr-href="/articlelist/?tid={mainid}&all=1"></a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
                     </p>
                 </div>
                 <ul class="sgyer-h fl">
@@ -318,17 +318,17 @@
                         </a>
                         <div class='infolis-b'>
                             <h6>
-                                <a ms-attr-href="/articles/?aid={el.id}">{el.title}</a>
+                                <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
                             </h6>
                             <p>
-                                <a ms-attr-href="/articles/?aid={el.id}">
+                                <a ms-attr-href="/luntan/articles/?aid={el.id}">
                                     {el.content}
                                 </a>
                             </p>
                         </div>
                     </div>
                     <ul class="sgyer-lis" >
-                        <li ms-repeat-el="lisdata"><a ms-attr-href="/articles/?aid={el.id}"><span>{el.title}</span><span><i
+                        <li ms-repeat-el="lisdata"><a ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i
                                 class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
                     </ul>
                 </div>
