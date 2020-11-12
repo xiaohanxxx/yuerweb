@@ -64,8 +64,12 @@ class ArticlesList(views.View):
             articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
         # 热门
         elif int(type) == 2:
-            thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))[:30]
-
+            thumbList = luntanmodel.ThumbUp.objects.filter(articles__topics=topicsId, articles__isdelete=0).values('articles_id').annotate(count=Count('articles_id'))
+            aidList = [i["articles_id"] for i in thumbList]
+            articleList = luntanmodel.Articles.objects.filter(pk__in=aidList)
+        # 推荐
+        else:
+            articleList = luntanmodel.Articles.objects.all().order_by("read")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleList, num)
         pag_num = paginator.num_pages  # 获取整个表的总页数
