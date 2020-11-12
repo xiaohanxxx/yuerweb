@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="quanmeta">
-                <a href="javascript:;" ms-repeat-as="el.child">{as.name}</a>
+                <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1" ms-repeat-as="el.child">{as.name}</a>
             </div>
         </div>
     </div>
@@ -79,21 +79,21 @@
 <!-- 育儿论坛主体板块 -->
 <section id="yuermain" class='wid clearfix'>
     <!--备孕热点  -->
-    <div class="hotcontent clearfix" ms-controller="byhot">
-        <div class="byhot fl">
+    <div class="hotcontent clearfix" >
+        <div class="byhot fl" ms-controller="byhot">
             <div class="yuermeta_h clearfix">
                 <h3><a href="javascript:;">备孕热点</a></h3>
                 <p>
-                    <a href="javascript:;"></a>
+                    <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
                 </p>
             </div>
             <div class="byinfobox">
                 <div class="box_byinfo" ms-repeat-el="data">
-                    <a href="javascript:;"><img src="{% static 'images/yuerlt/img02.png' %}" alt=""></a>
+                    <a ms-attr-href="/luntan/articles/?aid={el.id}"><img src="{% static 'images/yuerlt/img02.png' %}" alt=""></a>
                     <div class="byinfo_r">
-                        <p class="bytit"><a href="javascript:;">{el.title}</a></p>
+                        <p class="bytit"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
                         <p>
-                            <a href="javascript:;">
+                            <a ms-attr-href="/luntan/articles/?aid={el.id}">
                                 {el.content}
                             </a>
                         </p>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="byhot_r fl">
+        <div class="byhot_r fl" ms-controller="hymm">
             <div class="rgt_tit">
                 <h4><span>好孕妈妈榜</span></h4>
             </div>
@@ -248,13 +248,13 @@
         </div>
     </div>
     <!-- 难孕治疗，试管婴儿主体 -->
-    <div class="mainbox wid clearfix" ms-controller="nyzl">
+    <div class="mainbox wid clearfix" >
         <div class="main_f fl">
-            <div class="nyzlbox">
+            <div class="nyzlbox" ms-controller="nyzl">
                 <div class="yuermeta_h clearfix">
                     <h3><a href="javascript:;">难孕治疗</a></h3>
                     <p>
-                        <a href="javascript:;"></a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
                     </p>
                 </div>
                 <ul class="metalist">
@@ -269,9 +269,9 @@
                         <div class="info_h clearfix">
                             <img src="{% static 'images/yuerlt/hot.png' %}" alt="">
                             <div ms-repeat-hot="hotTitle">
-                                <p><a href="#">{hot.title}</a></p>
+                                <p><a ms-attr-href="/luntan/articles/?aid={hot.id}">{hot.title}</a></p>
                                 <p>
-                                    <a href="#">
+                                    <a ms-attr-href="/luntan/articles/?aid={hot.id}">
                                         {hot.content}
                                     </a>
                                 </p>
@@ -279,77 +279,65 @@
                         </div>
                         <ul class="info_lis" ms-repeat-lis="data">
                             <li>
-                                <a href="#"><i class='iconfont icon-wenhao'></i>{lis.title}</a>
+                                <a ms-attr-href="/luntan/articles/?aid={lis.id}"><i class='iconfont icon-wenhao'></i>{lis.title}</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="info_r fl">
                         <div class="r_imgbox">
-                            <a ms-attr-href="{ims.id}.html" ms-repeat-ims="imgTitle">
+                            <a ms-attr-href="/luntan/articles/?aid={ims.id}" ms-repeat-ims="imgTitle">
                                 <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                                 <span>{ims.title}</span>
                             </a>
                         </div>
-                        <div class="r_list" >
-                            <a ms-attr-href="{as.id}.html" ms-repeat-as="lisTitle"><i class='iconfont icon-dot'></i><span>{as.title}</span></a>
+
+                        <div class="r_list">
+                            <a ms-attr-href="/luntan/articles/?aid={as.id}" ms-repeat-as="lisTitle"><i
+                                    class='iconfont icon-dot'></i><span>{as.title}</span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="sgyerbox">
+            <div class="sgyerbox" ms-controller="sgyer">
                 <div class="yuermeta_h clearfix">
                     <h3><a href="javascript:;">试管婴儿</a></h3>
                     <p>
-                        <a href="javascript:;"></a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
                     </p>
                 </div>
                 <ul class="sgyer-h fl">
-                    <li class='lisSelect'>人工授精</li>
-                    <li>试管成功率</li>
-                    <li>宫外孕试管</li>
-                    <li>取精取卵</li>
-                    <li>试管移植后</li>
-                    <li>保胎</li>
+                    <li ms-attr-class="el.id==pageNo?'lisSelect':''" ms-attr-dataid="el.id" ms-repeat-el="menudata"
+                        ms-click="goChange(el.id)">{el.name}
+                    </li>
                 </ul>
                 <div class="sgyer-infolis fl">
-                    <div class='clearfix'>
+                    <div class='clearfix' ms-repeat-el="hotdata">
                         <a href="#">
                             <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                         </a>
                         <div class='infolis-b'>
                             <h6>
-                                <a href="#">试管婴儿准备：做试管去哪里做更好呢？</a>
+                                <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
                             </h6>
                             <p>
-                                <a href="#">我是预览文案做多显示四行。我想做试管婴儿，在中国这样做比较方便，但恐怕不会成功。 出国成功率较高，但费用昂贵且不便。谁能帮助我分析我应该如何选择！
-                                    文案文案文案文案文案文案文案文案文案文案文案文案文案文案文案案文案文案文案文
+                                <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                                    {el.content}
                                 </a>
                             </p>
                         </div>
                     </div>
-                    <ul class="sgyer-lis">
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
-                        <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i
-                                class='iconfont icon-pinglun1'></i>236</span></a></li>
+                    <ul class="sgyer-lis" >
+                        <li ms-repeat-el="lisdata"><a ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i
+                                class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
                     </ul>
                 </div>
 
             </div>
         </div>
+
+
+
         <div class="main_r fl">
             <div class="quick_ask">
                 <div class="head">
@@ -390,33 +378,22 @@
                         <option value="audi">Audi</option>
                     </select>
                 </div>
+
                 <div class="lis-foot">
                     <span>今日1128位提问</span>
-                    <a href="">免费提问</a>
+                    {% if request.user.is_active %}
+                        <a href="/baike">免费提问</a>
+                    {% else %}
+                        <a href="/login">免费提问</a>
+                    {% endif %}
                 </div>
             </div>
-            <div class="hot_arc">
+            <div class="hot_arc" ms-controller="rmarc">
                 <div class="rgt_tit">
                     <h4><span>热门文章</span></h4>
                 </div>
                 <ul class='clearfix'>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
-                    </li>
-                    <li><a href="#"><span>做试管婴儿哪家医院最好？泰国做试管</span><span><i class='iconfont icon-pinglun1'></i>236</span></a>
+                    <li ms-repeat-el="data"><a ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title}</span><span><i class='iconfont icon-pinglun1'></i>{el.thumb}</span></a>
                     </li>
                 </ul>
                 <div class="sjchangebtn">
@@ -473,70 +450,96 @@
             $(this).find('.xialabox').hide();
         });
     })();
+</script>
+<script type="text/javascript">
     {#数据请求渲染相关#}
     (function () {
         avalon.config({
             interpolate: ["{", "}"]
         });
-
+        var api_mainmenu = 'http://127.0.0.1:8000/luntan/areas/',
+            api_articlelist = 'http://127.0.0.1:8000/luntan/articlelist/?tid=',
+            api_hotarticles = 'http://127.0.0.1:8000/luntan/hotarticles/',
+            api_articles = 'http://127.0.0.1:8000/luntan/articles/?aid=';
+        var nyzl_num = 17,//控制难孕治疗帖子展示条数
+            rmarc_num = 9;//热门文章展示条数
         var vm_areas = avalon.define({
             $id: "yuerltctr",
             yuerlt_data: [],
         });
         var vm_byhot = avalon.define({
             $id: 'byhot',
+            mainid: 0,
             data: [],
         });
         var vm_nyzl = avalon.define({
             $id: 'nyzl',
             data: [],
+            mainid: 0,
             hotTitle: [],
             imgTitle: [],
             lisTitle: [],
             pageNo: 0,
             metadata: [],
             goChange: function (menu_id) {
-                var lis = $('.metalist>li');
-                Toolfun.clearClass('yesSelect', lis);
-                $(this).addClass('yesSelect');
+                vm_nyzl.pageNo = $(this).attr('dataid');
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + menu_id + '',
+                    url: api_articlelist + menu_id + '&num='+nyzl_num+'',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {
-                        vm_nyzl.pageNo = this.dataid;
-                        vm_nyzl.data = ajax.data.curuent_page.splice(1, 6);
-                        vm_nyzl.hotTitle = ajax.data.curuent_page.splice(0, 1);
-                        $.ajax({
-                            url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + menu_id + '&page=' + 2 + '',
-                            type: 'get',
-                            dataType: 'json',
-                            success: function (ajax) {
-                                vm_nyzl.imgTitle = ajax.data.curuent_page.splice(0, 4);
-                                vm_nyzl.lisTitle = ajax.data.curuent_page.splice(5, 10);
-                                console.log(vm_nyzl.imgTitle, 111, ajax.data.curuent_page,)
-                            }, error: function (error) {
-                                console.log(error);
-                            }
-                        })
+                        vm_nyzl.hotTitle = ajax.data.curuent_page.slice(0,1);
+                        vm_nyzl.data = ajax.data.curuent_page.slice(1,7);
+                        vm_nyzl.imgTitle = ajax.data.curuent_page.slice(7, 11);
+                        vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11,17);
                     }, error: function (error) {
                         console.log(error)
                     }
                 })
             }
         });
+        var vm_sgyer = avalon.define({
+            $id: 'sgyer',
+            mainid: 0,
+            pageNo: 0,
+            menudata: [],
+            hotdata: [],
+            lisdata: [],
+            goChange: function (currentid) {
+                vm_sgyer.pageNo = $(this).attr('dataid');
+                $.ajax({
+                    url: api_articlelist + currentid + '',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        vm_sgyer.hotdata = ajax.data.curuent_page.slice(0, 1);
+                        vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
+        })
+        var vm_hymm = avalon.define({
+            $id:'hymm',
 
-        function arcAjax(tid, vm_arc) {//栏目对应文章列表数据
+        });
+        var vm_rmarc = avalon.define({
+            $id:'rmarc',
+            data:[],
+        })
+
+        function arcAjax(tid, vm_arc,num) {//栏目对应文章列表数据
             $.ajax({
-                url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + tid + '',
+                url: api_articlelist + tid + '',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     if (vm_arc.hotTitle) {
-                        vm_arc.hotTitle = ajax.data.curuent_page.splice(0, 1);
-                        vm_arc.data = ajax.data.curuent_page.splice(1, 6);
+                        vm_arc.hotTitle = ajax.data.curuent_page.slice(0, 1);
+                        vm_arc.data = ajax.data.curuent_page.slice(1, 7);
                     } else {
-                        vm_arc.data = ajax.data.curuent_page.splice(0, 6);
+                        vm_arc.data = ajax.data.curuent_page.slice(0, 6);
                     }
                 }, error: function (error) {
                     console.log(error)
@@ -545,39 +548,60 @@
         }
 
         {#热点推荐数据的请求#}
+
         $.ajax({
-            url: 'http://127.0.0.1:8000/luntan/hotarticles/',
+            url: api_hotarticles,
             type: 'get',
             dataType: 'json',
-            success: function (data) {
-                {#console.log(data,333)#}
+            success: function (ajax) {
+                vm_rmarc.data = ajax.data.slice(0,9);
+                console.log(ajax.data,5555)
             }, error: function (error) {
                 console.log(error);
             }
         });
         {#话题第一层的请求#}
         $.ajax({
-            url: 'http://127.0.0.1:8000/luntan/areas/',
+            url: api_mainmenu,
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
                 {#全局栏目数据#}
                 vm_areas.yuerlt_data = ajax.data;
                 {#备孕热点#}
-                byrdid = ajax.data[0].child[0].id;
+                vm_byhot.mainid=byrdid = ajax.data[0].child[0].id;
                 arcAjax(byrdid, vm_byhot)
                 {#难孕治疗#}
-                vm_nyzl.metadata = ajax.data[3].child.splice(0, 8);
+                vm_nyzl.metadata = ajax.data[3].child.slice(0, 8);
                 vm_nyzl.pageNo = vm_nyzl.metadata[0].id;
-                arcAjax(vm_nyzl.metadata[0].id, vm_nyzl);
+                vm_nyzl.mainid = ajax.data[3].id;
+                {#arcAjax(vm_nyzl.metadata[0].id, vm_nyzl);#}
                 {#初始化难孕治疗右侧数据#}
                 $.ajax({
-                    url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + vm_nyzl.metadata[0].id + '&page=' + 2 + '',
+                    url: api_articlelist + vm_nyzl.metadata[0].id+'&num='+nyzl_num+'',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {
-                        vm_nyzl.imgTitle = ajax.data.curuent_page.splice(0, 4);
-                        vm_nyzl.lisTitle = ajax.data.curuent_page.splice(5, 10);
+                        vm_nyzl.hotTitle = ajax.data.curuent_page.slice(0,1);
+                        vm_nyzl.data = ajax.data.curuent_page.slice(1,7);
+                        vm_nyzl.imgTitle = ajax.data.curuent_page.slice(7, 11);
+                        vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11,17);
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                });
+                {# 试管婴儿部分 #}
+                vm_sgyer.mainid = ajax.data[2].id;
+                vm_sgyer.menudata = ajax.data[2].child.slice(0, 6);
+                vm_sgyer.pageNo = vm_sgyer.menudata[0].id;
+                $.ajax({
+                    url: api_articlelist + ajax.data[2].child[0].id + '',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        vm_sgyer.hotdata = ajax.data.curuent_page.slice(0, 1);
+                        vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
+                        console.log(vm_sgyer.hotdata, 222)
                     }, error: function (error) {
                         console.log(error);
                     }

@@ -2,7 +2,7 @@ import json
 import os
 
 from django.core.paginator import Paginator
-from django.db.models import Count
+from django.db.models import Count, F
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 
@@ -56,10 +56,22 @@ class Topics(views.View):
 class ArticlesList(views.View):
     def get(self, request, *args, **kwargs):
         topicsId = request.GET.get('tid')
+        num = request.GET.get('num', 10)
+        type = request.GET.get('type', 1)
         topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
-        articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
+        # 最新
+        if int(type) == 1:
+            articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
+        # 热门
+        elif int(type) == 2:
+            thumbList = luntanmodel.ThumbUp.objects.filter(articles__topics=topicsId, articles__isdelete=0).values('articles_id').annotate(count=Count('articles_id'))
+            aidList = [i["articles_id"] for i in thumbList]
+            articleList = luntanmodel.Articles.objects.filter(pk__in=aidList)
+        # 推荐
+        else:
+            articleList = luntanmodel.Articles.objects.all().order_by("read")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
-        paginator = Paginator(articleList, settings.PAGE_NUM)
+        paginator = Paginator(articleList, num)
         pag_num = paginator.num_pages  # 获取整个表的总页数
         curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
         if pag_num < 11:  # 判断当前页是否小于11个
@@ -97,6 +109,8 @@ class Article(views.View):
     def get(self, request, *args, **kwargs):
         articleId = request.GET.get('aid')
         artObj = get_object_or_404(luntanmodel.Articles, pk=articleId)
+        # 阅读计数
+        luntanmodel.Articles.objects.update(read=F("read") + 1)
         # 获取帖子评论信息
         commentData = artObj.articles_comment.all()
         # 获取帖子发布人信息
@@ -157,12 +171,13 @@ class Comment(views.View):
 # 获取热门文章
 class HotAritcles(views.View):
     def get(self, request, *args, **kwargs):
-        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))[:10]
+        thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))[:30]
         aidList = [i["articles_id"] for i in thumbList]
         atList = luntanmodel.Articles.objects.filter(pk__in=aidList)
         atDict = {}
         for i in atList:
             atDict[i.id] = {
+                'id': i.id,
                 "title": i.title,
                 "content": i.content,
                 "update_date": str(i.update_date),
@@ -180,6 +195,44 @@ class HotAritcles(views.View):
             resList.append(data)
 
         return HttpResponse(json.dumps({"data": resList}))
+
+
+# 好运妈妈榜
+class GoodMother(views.View):
+    def get(self, request, *args, **kwargs):
+        aid = request.GET.get("aid")
+        num = request.GET.get("num", 10)
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        artclesList = luntanmodel.Articles.objects.filter(topics__area=aid).order_by("update_date")
+        paginator = Paginator(artclesList, num)
+        pag_num = paginator.num_pages  # 获取整个表的总页数
+        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
+        if pag_num < 11:  # 判断当前页是否小于11个
+            pag_range = paginator.page_range
+        else:
+            if curuent_page_num < 6:
+                pag_range = range(1, 11)
+            elif curuent_page_num > (paginator.num_pages) - 5:
+                pag_range = range(pag_num - 9, pag_num + 1)
+            else:
+                pag_range = range(curuent_page_num - 5, curuent_page_num + 5)  # 当前页+5大于最大页数时
+
+        res = {
+            "curuent_page_num": curuent_page_num,  # 当前页数
+            "page_num": pag_num,  # 总共页数
+            "page_range": [i for i in pag_range],  # 页码列表
+            "curuent_page": [
+                {
+                    "id": i.id,
+                    "title": i.title,
+                    # TODO 用户头像先给与一个默认值，待后续添加真实值
+                    "user": {"id": i.user.id, "username": i.user.username, "head": "media/xxx.png"},
+                    "commentnum": i.articles_comment.all().count()
+                } for i in curuent_page
+            ]
+        }
+
+        return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
 class ImageUp(views.View):
