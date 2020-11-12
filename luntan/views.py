@@ -56,10 +56,11 @@ class Topics(views.View):
 class ArticlesList(views.View):
     def get(self, request, *args, **kwargs):
         topicsId = request.GET.get('tid')
+        dataNum = request.GET.get('num')
         topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
         articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
-        paginator = Paginator(articleList, settings.PAGE_NUM)
+        paginator = Paginator(articleList, dataNum)
         pag_num = paginator.num_pages  # 获取整个表的总页数
         curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
         if pag_num < 11:  # 判断当前页是否小于11个
@@ -163,6 +164,7 @@ class HotAritcles(views.View):
         atDict = {}
         for i in atList:
             atDict[i.id] = {
+                'id': i.id,
                 "title": i.title,
                 "content": i.content,
                 "update_date": str(i.update_date),
