@@ -56,7 +56,7 @@ class Topics(views.View):
 class ArticlesList(views.View):
     def get(self, request, *args, **kwargs):
         topicsId = request.GET.get('tid')
-        dataNum = request.GET.get('num')
+        dataNum = request.GET.get('num', 10)
         topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
         articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
@@ -182,6 +182,17 @@ class HotAritcles(views.View):
             resList.append(data)
 
         return HttpResponse(json.dumps({"data": resList}))
+
+
+# 好运妈妈榜
+class GoodMother(views.View):
+    def get(self, request, *args, **kwargs):
+        aid = request.GET.get("aid")
+        num = request.GET.get("num", 10)
+        page = request.GET.get("page", 1)
+
+
+
 
 
 class ImageUp(views.View):
