@@ -2,7 +2,7 @@ import json
 import os
 
 from django.core.paginator import Paginator
-from django.db.models import Count
+from django.db.models import Count, F
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 
@@ -57,8 +57,15 @@ class ArticlesList(views.View):
     def get(self, request, *args, **kwargs):
         topicsId = request.GET.get('tid')
         num = request.GET.get('num', 10)
+        type = request.GET.get('type', 1)
         topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
-        articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
+        # 最新
+        if int(type) == 1:
+            articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
+        # 热门
+        elif int(type) == 2:
+            thumbList = luntanmodel.ThumbUp.objects.values('articles_id').annotate(count=Count('articles_id'))[:30]
+
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleList, num)
         pag_num = paginator.num_pages  # 获取整个表的总页数
@@ -98,6 +105,8 @@ class Article(views.View):
     def get(self, request, *args, **kwargs):
         articleId = request.GET.get('aid')
         artObj = get_object_or_404(luntanmodel.Articles, pk=articleId)
+        # 阅读计数
+        luntanmodel.Articles.objects.update(read=F("read") + 1)
         # 获取帖子评论信息
         commentData = artObj.articles_comment.all()
         # 获取帖子发布人信息
