@@ -224,6 +224,7 @@ class GoodMother(views.View):
             "curuent_page": [
                 {
                     "id": i.id,
+                    "topicname": list(i.topics.all().values()),
                     "title": i.title,
                     # TODO 用户头像先给与一个默认值，待后续添加真实值
                     "user": {"id": i.user.id, "username": i.user.username, "head": "media/xxx.png"},
