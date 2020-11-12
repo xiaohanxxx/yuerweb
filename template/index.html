@@ -669,7 +669,7 @@
  	 				<div class="lefth3list">
  	 					<ul>
  	 						<!-- <li class="currshequ">备孕</li> -->
- 	 						<li ms-repeat-el="datasgyes"  ms-class="currshequ:el.yijilanmu == b" ms-click="changrightlm(el.yijilanmu,$index)">{el.zhulanmu}</li>
+ 	 						<li ms-repeat-el="datasgyes"  ms-class="currshequ:el.id == b" ms-click="changrightlm(el.id,$index)">{el.menu_name}</li>
  	 						<!-- <li>输卵</li>
  	 						<li>子宫</li>
  	 						<li>试管</li>
@@ -684,9 +684,9 @@
 
  	 						<div class="fourpartg" ms-repeat-el="erjidatalist">
                                 <div>
- 	 							<h3>{el.erjilanmu}</h3>
+ 	 							<h3>{el.menu_name}</h3>
      	 							<div class="yunqq">
-     	 								<a ms-repeat-sanji="el.list" href="###" >{sanji.erjilanmu}</a>
+     	 								<a ms-repeat-sanji="el.children" href="###" >{sanji.menu_name}</a>
                                         <!-- <a href="###">孕前期</a> -->
      	 							</div>
                                 </div>

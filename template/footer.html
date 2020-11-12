@@ -55,63 +55,7 @@
         a: 1,
         b:1,
         getcodewenzi:'获取验证码',
-        datasgyes:[
-            {
-                "zhulanmu": "备孕百科",
-                "yijilanmu":1,
-                "list":[
-                         {
-                            "erjilanmu":"二级栏目2",
-                             "erjilanmuID":1,
-                             "list":[
-                                {
-                                    "erjilanmu":"三級栏目31",
-                                    "erjilanmuID":1,
-                                },{
-                                    "erjilanmu":"三級栏目32",
-                                    "erjilanmuID":2,
-                                }
-                              ],
-                        }
-                ]
-            },{
-                "zhulanmu": "备孕百科2",
-                "yijilanmu":2,
-                "list":[
-                         {
-                            "erjilanmu":"二级栏目22",
-                             "erjilanmuID":1,
-                             "list":[
-                                {
-                                    "erjilanmu":"三級栏目311",
-                                    "erjilanmuID":1,
-                                },{
-                                    "erjilanmu":"三級栏目322",
-                                    "erjilanmuID":2,
-                                }
-                              ],
-                        }
-                ]
-            },{
-                "zhulanmu": "备孕百科3",
-                "yijilanmu":3,
-                "list":[
-                         {
-                            "erjilanmu":"二级栏目23",
-                             "erjilanmuID":1,
-                             "list":[
-                                {
-                                    "erjilanmu":"三級栏目313",
-                                    "erjilanmuID":1,
-                                },{
-                                    "erjilanmu":"三級栏目323",
-                                    "erjilanmuID":2,
-                                }
-                              ],
-                        }
-                ]
-            }
-        ],
+        datasgyes:[],
         erjidatalist:[],
         zhuceDatas:{
           username:'',
@@ -254,7 +198,7 @@
         changrightlm:function(id,index){
             vm.b = id
             vm.erjidatalist = [];
-            vm.erjidatalist = vm.datasgyes[index].list;
+            vm.erjidatalist = vm.datasgyes[index].children;
         },
         rollbacklogin:function(){
           vm.a == 1;
@@ -288,6 +232,8 @@
               timeout: 10000,
               success: function(data) {
                  vm.allbaikeData = data;
+                 vm.datasgyes = data;
+                 vm.changrightlm(1,0);
               }
             });
         },
@@ -326,7 +272,6 @@
             });
         }
     })
-    vm.changrightlm(1,0);
-    vm.getNewArtical();
     vm.getAllbaikeData();
+    vm.getNewArtical();
     </script>
