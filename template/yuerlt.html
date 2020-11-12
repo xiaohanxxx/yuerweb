@@ -335,6 +335,9 @@
 
             </div>
         </div>
+
+
+
         <div class="main_r fl">
             <div class="quick_ask">
                 <div class="head">
@@ -375,9 +378,14 @@
                         <option value="audi">Audi</option>
                     </select>
                 </div>
+
                 <div class="lis-foot">
                     <span>今日1128位提问</span>
-                    <a href="">免费提问</a>
+                    {% if request.user.is_active %}
+                        <a href="/baike">免费提问</a>
+                    {% else %}
+                        <a href="/login">免费提问</a>
+                    {% endif %}
                 </div>
             </div>
             <div class="hot_arc" ms-controller="rmarc">
