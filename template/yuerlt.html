@@ -257,9 +257,10 @@
                         <a href="javascript:;"></a>
                     </p>
                 </div>
-                <ul class="metalist" >
-                    <li  ms-repeat-as="metadata" ms-click="goChange(as.id)"  ms-attr-dataid="{as.id}"  ms-attr-class="as.id==pageNo?'yesSelect':''">
-                        <a href="javascript:;" >{as.name}</a>
+                <ul class="metalist">
+                    <li ms-repeat-as="metadata" ms-click="goChange(as.id)" ms-attr-dataid="{as.id}"
+                        ms-attr-class="as.id==pageNo?'yesSelect':''">
+                        <a href="javascript:;">{as.name}</a>
                     </li>
 
                 </ul>
@@ -271,7 +272,7 @@
                                 <p><a href="#">{hot.title}</a></p>
                                 <p>
                                     <a href="#">
-                                    {hot.content}
+                                        {hot.content}
                                     </a>
                                 </p>
                             </div>
@@ -285,30 +286,13 @@
                     </div>
                     <div class="info_r fl">
                         <div class="r_imgbox">
-                            <a href="#" >
+                            <a ms-attr-href="{ims.id}.html" ms-repeat-ims="imgTitle">
                                 <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                                <span>我是育儿论坛文章标题最多显示一行....</span>
-                            </a>
-                            <a href="#">
-                                <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                                <span>我是育儿论坛文章标题最多显示一行....</span>
-                            </a>
-                            <a href="#">
-                                <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                                <span>我是育儿论坛文章标题最多显示一行....</span>
-                            </a>
-                            <a href="#">
-                                <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                                <span>我是育儿论坛文章标题最多显示一行....</span>
+                                <span>{ims.title}</span>
                             </a>
                         </div>
-                        <div class="r_list">
-                            <a href="#"><i class='iconfont icon-dot'></i><span>末次月经3.29今天测试纸...</span></a>
-                            <a href="#"><i class='iconfont icon-dot'></i><span>备孕两年都没怀上，郁闷...</span></a>
-                            <a href="#"><i class='iconfont icon-dot'></i><span>多囊卵巢综合征；输卵管...</span></a>
-                            <a href="#"><i class='iconfont icon-dot'></i><span>男人的精液是细腻的，如...</span></a>
-                            <a href="#"><i class='iconfont icon-dot'></i><span>姐妹们，卵巢功能可以改...</span></a>
-                            <a href="#"><i class='iconfont icon-dot'></i><span>这是哪种中药？这是干什...</span></a>
+                        <div class="r_list" >
+                            <a ms-attr-href="{as.id}.html" ms-repeat-as="lisTitle"><i class='iconfont icon-dot'></i><span>{as.title}</span></a>
                         </div>
                     </div>
                 </div>
@@ -408,7 +392,7 @@
                 </div>
                 <div class="lis-foot">
                     <span>今日1128位提问</span>
-                    <a href="#">免费提问</a>
+                    <a href="">免费提问</a>
                 </div>
             </div>
             <div class="hot_arc">
@@ -506,33 +490,35 @@
         var vm_nyzl = avalon.define({
             $id: 'nyzl',
             data: [],
-            hotTitle:[],
-            imgTitle:[],
-            lisTitle:[],
-            pageNo:0,
+            hotTitle: [],
+            imgTitle: [],
+            lisTitle: [],
+            pageNo: 0,
             metadata: [],
             goChange: function (menu_id) {
-                var lis=$('.metalist>li');
-                Toolfun.clearClass('yesSelect',lis);
+                var lis = $('.metalist>li');
+                Toolfun.clearClass('yesSelect', lis);
                 $(this).addClass('yesSelect');
                 $.ajax({
                     url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + menu_id + '',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {
-                       vm_nyzl.pageNo = this.dataid;
-                       vm_nyzl.data = ajax.data.curuent_page.splice(1, 6);
-                       vm_nyzl.hotTitle = ajax.data.curuent_page.splice(0,1);
-                       $.ajax({
-                           url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + menu_id + '&page='+2+'',
-                           type:'get',
-                           dataType:'json',
-                           success:function(res){
-                               console.log(res)
-                           },error:function(error){
-                               console.log(error);
-                           }
-                       })
+                        vm_nyzl.pageNo = this.dataid;
+                        vm_nyzl.data = ajax.data.curuent_page.splice(1, 6);
+                        vm_nyzl.hotTitle = ajax.data.curuent_page.splice(0, 1);
+                        $.ajax({
+                            url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + menu_id + '&page=' + 2 + '',
+                            type: 'get',
+                            dataType: 'json',
+                            success: function (ajax) {
+                                vm_nyzl.imgTitle = ajax.data.curuent_page.splice(0, 4);
+                                vm_nyzl.lisTitle = ajax.data.curuent_page.splice(5, 10);
+                                console.log(vm_nyzl.imgTitle, 111, ajax.data.curuent_page,)
+                            }, error: function (error) {
+                                console.log(error);
+                            }
+                        })
                     }, error: function (error) {
                         console.log(error)
                     }
@@ -546,10 +532,10 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
-                    if(vm_arc.hotTitle){
+                    if (vm_arc.hotTitle) {
                         vm_arc.hotTitle = ajax.data.curuent_page.splice(0, 1);
                         vm_arc.data = ajax.data.curuent_page.splice(1, 6);
-                    }else{
+                    } else {
                         vm_arc.data = ajax.data.curuent_page.splice(0, 6);
                     }
                 }, error: function (error) {
@@ -557,13 +543,14 @@
                 }
             })
         }
+
         {#热点推荐数据的请求#}
         $.ajax({
             url: 'http://127.0.0.1:8000/luntan/hotarticles/',
             type: 'get',
             dataType: 'json',
             success: function (data) {
-                console.log(data,333)
+                {#console.log(data,333)#}
             }, error: function (error) {
                 console.log(error);
             }
@@ -582,7 +569,19 @@
                 {#难孕治疗#}
                 vm_nyzl.metadata = ajax.data[3].child.splice(0, 8);
                 vm_nyzl.pageNo = vm_nyzl.metadata[0].id;
-                arcAjax(vm_nyzl.metadata[0].id, vm_nyzl)
+                arcAjax(vm_nyzl.metadata[0].id, vm_nyzl);
+                {#初始化难孕治疗右侧数据#}
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/luntan/articlelist/?tid=' + vm_nyzl.metadata[0].id + '&page=' + 2 + '',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        vm_nyzl.imgTitle = ajax.data.curuent_page.splice(0, 4);
+                        vm_nyzl.lisTitle = ajax.data.curuent_page.splice(5, 10);
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                })
             }
         });
     })()

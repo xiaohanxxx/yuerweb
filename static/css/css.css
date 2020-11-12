@@ -255,7 +255,7 @@ body{ background: #f9f9f9; }
 
 
 
-.hzwdcontslist{width: 100%; overflow: hidden; margin:25px 0; background: red; min-height: 200px; padding: 20px 0;}
+.hzwdcontslist{width: 100%; overflow: hidden; margin:25px 0; background: #fff; min-height: 200px; padding: 20px 0;}
 .hzwdcontslist h4{ font-size: 16px; color: #333; margin-bottom: 5px;}
 .hzwdcontslist p{ color: #666; }
 .partwdone{ overflow: hidden; width: 100%; margin: 25px 0  70px 0; padding-left: 15px;}
@@ -500,3 +500,63 @@ color: #666; font-size: 12px; }
 
 .hzwdcontslistes{ width: 100%; overflow: hidden; background: #fff; padding: 15px 0 15px 0; }
 .hzwdcontslistes h3{ border-left: 3px solid #ff44ad; padding-left: 25px; font-size: 20px; }
+
+.listyisheng{ width: 100%; overflow: hidden; }
+.listyisheng ul{ overflow: hidden; width: 100%; padding: 15px; }
+.listyisheng ul li{width: 21%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
+.listyisheng ul li img{ width: 100%; }
+.listyisheng ul li p{ width: 100%; font-size: 16px; }
+.listyisheng ul li p abbr{ font-size: 12px; }
+.listyisheng ul li:hover .piaofubox{ display: block; }
+.piaofubox{ display: none; }
+
+
+
+
+
+
+.listyishenges{ width: 100%; overflow: hidden; }
+.listyishenges ol{ overflow: hidden; width: 100%; padding: 15px; }
+.listyishenges ol li{width: 97%; overflow: hidden; margin: 10px 0 50px 0;}
+.listyishenges h4{ font-size: 18px; }
+.listyishenges h4 abbr{ float: right; font-size: 12px; background: #ff44ad; border-radius: 2px; color: #fff; padding: 3px 15px;}
+.listyishenges p{ margin-top: 15px; }
+
+
+
+
+.piaofubox{position: absolute;width: 100%; height: 100%; left: 0; top: 0; background: rgba(0,0,0,0.6); }
+
+.piaofubox{ color: #fff; }
+
+.biaoqiannz{font-size: 12px; padding-left: 17px; margin: 8px 0;}
+.biaoqiannz abbr{  margin-right: 6px; margin-bottom: 6px;}
+
+.zixunzhuanjia{ width: 80px; height: 30px; line-height: 30px; background: #ff44ad; color: #fff; text-align: center; border-radius: 5px; margin-left: 20px; }
+.yiyuanhuanjing,.qwzhuanjia {overflow: hidden;}
+.yiyuanhuanjing ul{ overflow: hidden; }
+.yiyuanhuanjing ul li{ float: left; width: 21%; }
+.yiyuanhuanjing ul li p{ height: 35px; line-height: 35px; text-align: center; margin-top: 10px; font-size: 16px; }
+.yiyuanhuanjing img{width: 100%; height: 100%;}
+.yiyuanhuanjing ul li .sgq{ position: relative; }
+.yiyuanhuanjing ul li:hover .shows{display: block;}
+.shows{display: none;}
+
+.yshione{ width: 326px; border-radius: 5px; float: left; height: 138px; background: #fff;box-shadow:0 0 10px #f1f1f1; margin: 25px; padding: 20px; }
+.yshione img{ width:86px; height: 88px;float: left; margin-left: 15px; margin-right: 15px; }
+.yshione h3{ font-size: 14px; border: none; }
+.yshione h3 abbr{ font-size: 12px; }
+.yshione p{ font-size: 12px; line-height: 15px; margin-top: 15px; }
+
+.qwzhuanjia ol,.qwzhuanjia{ width: 100%; overflow: hidden; }
+.qwzhuanjia ol li{float: left; width: 50%;}
+.hd ul li{ width: 20px; line-height: 20px; height: 20px; text-align: center; }
+
+
+.pjjyy{ padding: 20px;}
+.pjjyy a{ color: #ff44ad; margin-top: 15px; }
+
+.listyisheng,.listyisheng ol{overflow: hidden;}
+.listyisheng ol{ margin: 25px 0; }
+.listyisheng ol li{ float: left; width: 16.6%; text-align: center; }
+.listyisheng ol li p{ text-align: center; padding: 15px 0; }
