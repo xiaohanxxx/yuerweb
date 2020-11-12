@@ -13,4 +13,5 @@ urlpatterns = [
     path(r'comment/', views.Comment.as_view(), name='comment'),
     path(r'hotarticles/', views.HotAritcles.as_view(), name='hotarticles'),
     path(r'imageup/', views.ImageUp.as_view(), name='imageup'),
+    path(r'goodmother/', views.GoodMother.as_view(), name='goodmother'),
 ]
