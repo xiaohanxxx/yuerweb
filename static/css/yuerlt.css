@@ -520,7 +520,7 @@ div.box_byinfo:nth-child(even) {
     display: block;
     height: 19px;
     font-size: 14px;
-    overflow:hidden;
+    overflow: hidden;
     margin-bottom: 8px;
     line-height: 19px;
     letter-spacing: 0px;
@@ -531,8 +531,8 @@ div.box_byinfo:nth-child(even) {
     display: block;
     width: 228px;
     font-size: 12px;
-    height:48px;
-    overflow:hidden;
+    height: 48px;
+    overflow: hidden;
     line-height: 16px;
     letter-spacing: 0px;
     color: #ff44ad;
@@ -608,6 +608,7 @@ div.box_byinfo:nth-child(even) {
     opacity: 0.7;
     bottom: 0;
     left: 0;
+    overflow:hidden;
     font-family: Microsoft YaHei;
     font-size: 12px;
     text-align: center;
@@ -707,8 +708,9 @@ div.box_byinfo:nth-child(even) {
     display: block;
     max-width: 300px;
     height: 26px;
+    overflow: hidden;
     font-size: 16px;
-    line-height: 21px;
+    line-height: 26px;
     letter-spacing: 0px;
     color: #333;
     margin-bottom: 6px;
@@ -718,6 +720,8 @@ div.box_byinfo:nth-child(even) {
     width: 411px;
     height: 72px;
     font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: 16px;
     letter-spacing: 0px;
     color: #999;
@@ -736,20 +740,27 @@ div.box_byinfo:nth-child(even) {
 }
 
 .sgyer-lis > li > a {
+    display: block;
+    overflow: hidden;
     width: 291px;
     height: 23px;
 }
 
 .sgyer-lis > li > a span:nth-of-type(1) {
+    float:left;
     max-width: 230px;
     height: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: 1px;
 }
 
 .sgyer-lis > li > a span:nth-of-type(2) {
-    margin-left: 31px;
+    float:right;
+    margin-left: 20px;
+    padding-right: 10px;
     width: 25px;
     height: 14px;
     font-size: 12px;
@@ -915,7 +926,7 @@ div.box_byinfo:nth-child(even) {
 }
 
 .hot_arc > ul li > a span:nth-child(even) {
-    float: left;
+    float: right;
     height: 14px;
     font-size: 12px;
     margin-left: 30px;
