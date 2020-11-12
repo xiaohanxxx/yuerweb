@@ -12,5 +12,5 @@ urlpatterns = [
     path(r'articles/', views.Article.as_view(), name='articles'),
     path(r'comment/', views.Comment.as_view(), name='comment'),
     path(r'hotarticles/', views.HotAritcles.as_view(), name='hotarticles'),
-    # path(r'imageup/', views.ImageUp.as_view(), name='imageup'),
+    path(r'imageup/', views.ImageUp.as_view(), name='imageup'),
 ]
