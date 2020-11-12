@@ -23,7 +23,7 @@
 
   {% include 'header.html' %}
      
-    <div class="hzwdconts">
+    <div class="hzwdconts"   ms-controller="hzwdconts">
       <div class="hzwdlefts">
 
  
@@ -39,10 +39,6 @@
              <p style="float: left;">省份：</p>
              <div>
                <p class="allcurr">全部</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
                <p>港澳台</p>
                <p>港澳台</p>
                <p>港澳台</p>
@@ -207,6 +203,18 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
       <div class="hzwdrights">
           <div class="szzhuanjia">
               <h3><abbr>推荐百科</abbr> <a href="###">更多>></a></h3>
@@ -336,7 +344,7 @@
 
 
 
-        
+       
 
 
 
@@ -353,15 +361,18 @@
 
 
    
-
+{ namees }
 
      <!-- 底部 -->
   {% include 'footer.html' %}
      
       <script>
-    var vm = avalon.define({
-        $id: "bodyconts",
-        name:"医院",
+        avalon.config({
+            interpolate: ["{", "}"]
+        });  
+       var vmw = avalon.define({
+        $id: "hzwdconts",
+        namees:"医院",
         intopages:function(){
             layui.use(['laypage', 'layer'], function(){
               var laypage = layui.laypage
@@ -376,21 +387,9 @@
               });
             });
         },
-        showxiala:function(){
-            var _this = $(this);
-            if(_this.next('ul').hasClass('hites')){
-                _this.next('ul').removeClass('hites');
-            }else{
-                _this.next('ul').addClass('hites');
-            }
-        },
-        changeSearch:function(els){
-            vm.name = '';
-            vm.name = els;
-            $(this).parent().addClass('hites');
-        },
+
     })
-    vm.intopages();
+    vmw.intopages();
 </script>
 </body>
 </html>
