@@ -250,7 +250,7 @@ body{ background: #f9f9f9; }
 
 
 .fenleiallswd{width: 100%; overflow: hidden; padding-left: 16px; margin-top: 10px;}
-.fenleiallswd p{ float: left; margin-right: 30px; cursor: pointer; }
+.fenleiallswd p{ float: left; margin-right: 30px; cursor: pointer; height: 30px; line-height: 30px; text-align: center; border-bottom: 1px solid #fff; }
 .allcurr{ color: #ff44ad; border-bottom: 1px solid #ff44ad; }
 
 

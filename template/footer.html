@@ -81,7 +81,7 @@
               url: 'users/login',
               data: vm.loginData,
               dataType: "json",
-              timeout: 10000,
+              // timeout: 10000,
               success: function(data) {
                   if(data.code == 200){
                          layer.msg('登录成功，即将跳转到首页');
@@ -125,7 +125,7 @@
               url: '/users/register',
               data: vm.zhuceDatas,
               dataType: "json",
-              timeout: 10000,
+              // timeout: 10000,
               success: function(data) {
                   console.log(data,123);
                   if(data.code == 200){
@@ -214,7 +214,7 @@
               url: '/baike/api/articletimelist',
               data: count,
               dataType: "json",
-              timeout: 10000,
+              // timeout: 10000,
               success: function(data) {
                  vm.newartical = data.data;
                  vm.twotopNews.push(vm.newartical[0]);
@@ -229,7 +229,7 @@
               url: '/baike/api/sgbk_sjldapi',
               data: {},
               dataType: "json",
-              timeout: 10000,
+              // timeout: 10000,
               success: function(data) {
                  vm.allbaikeData = data;
                  vm.datasgyes = data;
@@ -265,7 +265,7 @@
               url: '/users/smsvif',
               data: phone,
               dataType: "json",
-              timeout: 10000,
+              // timeout: 10000,
               success: function(data) {
                  console.log(data);
               }
