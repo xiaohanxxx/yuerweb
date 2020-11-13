@@ -216,9 +216,14 @@
               dataType: "json",
               // timeout: 10000,
               success: function(data) {
+                 vm.newartical = [];
                  vm.newartical = data.data;
-                 vm.twotopNews.push(vm.newartical[0]);
-                 vm.twotopNews.push(vm.newartical[1]);
+                 if(vm.newartical.length>1){
+                    console.log(vm.newartical,999999999999999);
+                      vm.twotopNews.push(vm.newartical[0]);
+                      vm.twotopNews.push(vm.newartical[1]);
+                 }
+                 
               }
             });
         },

@@ -227,7 +227,7 @@ body{ background: #f9f9f9; }
 .baikelist{ width: 100%; overflow: hidden; }
 .fourpartg{ width: 42%; margin-left: 5%; margin-bottom: 20px; float: left; overflow: hidden; }
 .fourpartg h3{ font-size: 14px; color: #ff44ad; padding-left: 15px; margin-bottom: 10px;}
-.yunqq a{ text-decoration: none; display: block; float: left; color: #666; padding: 5px 15px; font-size: 12px; margin-bottom: 10px; }
+.yunqq a{ text-decoration: none; display: block; float: left; color: #666; padding: 5px 12px; font-size: 12px; margin-bottom: 10px; }
 
 .lianjieyq{ width: 100%; overflow: hidden; }
 .lianjieyq a{ float: left; margin: 10px 20px; text-decoration: none; color: #666; font-size: 14px; cursor: pointer; }
@@ -491,11 +491,11 @@ color: #666; font-size: 12px; }
 .beiyunbaikepart{ width: 100%; overflow: hidden; }
 .rightlistsa{ width: 995px; float: left; min-height: 200px; margin-top: 17px; }
 .rightlistsa ul{ width: 30%; float: left; overflow: hidden; }
-.ululli{ width: 30%; float: left; overflow: hidden; margin-bottom: 42px; margin-right: 2%; }
+.ululli{ width: 30%; float: left; overflow: hidden; margin-right: 2%; }
 .abq{ width: 100%; overflow: hidden; }
 .ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; font-size: 14px; }
 .ululli h4{ margin-bottom: 10px; color: #ff44ad; font-size: 16px;}
-
+.ululli h4 a{ color: #ff44ad; font-weight: bold; }
 #sendsms{ float: right; width: 120px; margin-right: 50px; text-align: center; padding: 0; cursor: pointer; } 
 
 .hzwdcontslistes{ width: 100%; overflow: hidden; background: #fff; padding: 15px 0 15px 0; }
@@ -510,11 +510,34 @@ color: #666; font-size: 12px; }
 .listyisheng ul li:hover .piaofubox{ display: block; }
 .piaofubox{ display: none; }
 
+.bodyartical{width: 1200px; overflow: hidden; margin: 0 auto;}
+.curposition{ margin: 20px 0; }
+.arctiacalbody{ width: 100%; overflow: hidden; margin: 20px 0;}
+.leftarcal{width: 840px; float: left; min-height: 200px; background: #fff;}
+.rightpart{ width: 350px; float: right; min-height: 200px; background: green; }
+
+.content{ overflow: hidden; width: 100%; }
+
+.content p{ padding: 10px 15px; font-size: 12px; line-height: 25px; }
+.title{ padding: 20px; }
+.time{  padding-left: 20px; }
+
+
+
+.baiketj{ width: 100%; overflow: hidden; }
+.baiketj h3{ border-bottom: 1px solid #f1f1f1; height: 50px; line-height: 50px; padding-left: 20px; font-size: 20px; }
+.baiketj h3  abbr{ border-bottom: 1px solid #ff44ad; height: 50px; line-height: 50px; text-align: center; display: block; width: 120px; }
 
 
 
 
 
+
+
+
+
+
+.pretitle,.nexttitle{ padding-left: 20px; padding-bottom: 10px; }
 .listyishenges{ width: 100%; overflow: hidden; }
 .listyishenges ol{ overflow: hidden; width: 100%; padding: 15px; }
 .listyishenges ol li{width: 97%; overflow: hidden; margin: 10px 0 50px 0;}
