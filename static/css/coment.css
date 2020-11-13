@@ -490,6 +490,7 @@ body .sjchangebtn {
     transform: translateX(-50%);
     width: 84px;
     height: 27px;
+    cursor:pointer;
 }
 
 
@@ -666,4 +667,8 @@ body .rightBtn {
     height: 50px;
     top: 50%;
     transform: translateY(-50%);
+}
+body .lis-select .askSelect{
+    border: 1px solid #FF44AD;
+    color: #FF44AD;
 }
