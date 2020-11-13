@@ -134,18 +134,16 @@ class Article(views.View):
         return render(request, 'topicArc.html', {"data": artData})
 
     def post(self, request, *args, **kwargs):
-        article = form.ArticlesForm(request.POST)
-        if not article.is_valid():
-            return HttpResponse("发布失败!!!!!,{}".format(article.errors))
-
-        articleData = article.cleaned_data
-        user_id = request.session.get("user_id", 0)
-        articleData['user_id'] = user_id
+        articleData = {
+            "user_id": request.user.id,
+            "title": request.POST.get("title"),
+            "content": request.POST.get("content")
+        }
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
-        topic = request.POST.get("topics", 0)
+        topic = request.POST.getlist("topics", [])
         if topic:
-            topicObj = luntanmodel.Topics.objects.get(pk=topic)
+            topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
             articleRes.topics.add(topicObj)
 
         return HttpResponse("发布成功！！！！！！")
