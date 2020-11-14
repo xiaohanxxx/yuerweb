@@ -6,7 +6,8 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('',views.baike),
-    re_path('baike_list',views.baike_list),
+    path('baike_list',views.baike_list),
+    re_path(r'article',views.article),
 
     path('api/menuapi',views.baikemenuapi),
     path('api/sgbk_sjldapi',views.sjldapi),
