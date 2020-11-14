@@ -48,16 +48,14 @@ def error(func):
 
 # 百科主页渲染
 def baike(request):
-    data = models.Bk_menu.objects.all()
-    article = models.Artical.objects.all()
-    return render(request, 'baike.html', {'data': data, 'article': article})
+    return render(request, 'baike.html')
 
 
 # 百科列表页渲染
 def baike_list(request):
-    t1 = time.time()
     type = request.GET.get('type')
     menuid = request.GET.get('menuid')
+
 
     return render(request, 'baike_list.html')
 
@@ -103,33 +101,37 @@ def baikemenuapi(request):
 # 获取百科全部三级栏目api
 @GetRunTime
 def sjldapi(request):
-    menu_one = models.Bk_menu.objects.all()
-    data = list()
-    for menu in menu_one:
-        data.append(
-            {
-                'mid': menu.id
-                , 'menu_name': menu.menu_name
-                , 'type': '1'
-                , 'children': list(
+    if request.method == "POST":
+        count = request.POST.get('count')
+        menu_one = models.Bk_menu.objects.all()
+        data = list()
+        for menu in menu_one:
+            data.append(
                 {
-                    'mid': child.id
-                    , 'menu_name': child.menu_name
-                    , 'type': '2'
+                    'mid': menu.id
+                    , 'menu_name': menu.menu_name
+                    , 'type': '1'
                     , 'children': list(
                     {
-                        'articleid': article['id']
-                        , 'title': article['title']
+                        'mid': child.id
+                        , 'menu_name': child.menu_name
+                        , 'type': '2'
+                        , 'children': list(
+                        {
+                            'articleid': article['id']
+                            , 'title': article['title']
+                        }
+                        for article in child.artical_set.all().values('id', 'title')[:int(count)]
+                    )
                     }
-                    for article in child.artical_set.all().values('id', 'title')[:9]
+                    for child in menu.child_menu_set.all()
                 )
                 }
-                for child in menu.child_menu_set.all()
             )
-            }
-        )
 
     return HttpResponse(json.dumps(data), content_type="application/json")
+
+
 
 
 # 获取分类文章列表
