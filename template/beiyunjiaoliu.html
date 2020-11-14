@@ -22,7 +22,8 @@
 <body>
 {% include 'header.html' %}
 <!-- 主体部分 -->
-<section class="byjlmain wid clearfix" style='margin-top:30px;' ms-controller="luntanbox">
+<section class="byjlmain wid clearfix" ms-controller="luntanbox" style='margin-top:30px;'>
+    {Mid}
     <!-- 左侧部分 -->
     <div class="byjl_l fl">
         <div class="byjl_l_h">
@@ -34,13 +35,9 @@
         <div class="byjl_l_main clearfix">
             <h3>备孕交流圈</h3>
             <div class="main_nav">
-                <div class="nav_as">
-                    <div><img src="" alt=""><a href="">孕前期</a></div>
-                    <div><img src="" alt=""><a href="">孕前期</a></div>
-                    <div><img src="" alt=""><a href="">孕前期</a></div>
-                    <div><img src="" alt=""><a href="">孕前期</a></div>
-                    <div><img src="" alt=""><a href="">孕前期</a></div>
-                </div>
+                <div><img src="{% static 'images/yuerlt/00.png' %}" alt=""><a href="">孕前期变为好不是不v</a></div>
+                <div><img src="{% static 'images/yuerlt/00.png' %}" alt=""><a href="">孕前期变为好不是不v</a></div>
+                <div><img src="{% static 'images/yuerlt/00.png' %}" alt=""><a href="">孕前期变为好不是不v</a></div>
             </div>
             {#                <div class="main_nav">#}
             {#                    <div class="nav_tit">#}
@@ -64,30 +61,30 @@
     <div class="byjl_main fl">
         <div class="main_btn">
             <div btnall='rand' class='btnSelect'>全部</div>
-            <div btndata='pubdata'>最新</div>
+            <div btndata='pubdata'>{ Mid }</div>
             <div btnhot='hotinfo'>热门</div>
             <div btntj='tjinfo'>推荐</div>
         </div>
         <ul class="main_lis fl">
-            <li>
+            <li ms-repeat-el="lisdata">
                 <div class="imgbox">
                     <img src="{% static 'images/yuerlt/pexels.png' %}" alt="">
                 </div>
                 <div class="lis_info">
                     <p>
-                        <a href="#">我是文章标题只显示一行点击跳转至文章详情鼠标悬浮悬浮显示当前色</a>
+                        <a href="/luntan/articles/?aid={el.id}">{el.title}</a>
                     </p>
                     <p class="desinfo">
-                        <a href="#">我是文章预览文字最多显示两行我是文章预览文字最多显示两行我是文章预我是文章预览文字最我是文章预览文字最多显示两行我是文章预览文字最多显示两行我是文章预我是文章预览文字最多显示两行我是文章预览文字最多显示两行我是文章预多显示两行我是文章预览文字最多显示两行我是文章预览文字最多显</a>
+                        <a href="/luntan/articles/?aid={el.id}">{el.content}</a>
                     </p>
                     <div class="byjl_userinfo clearfix">
                         <div class="byjl_info_l fl">
-                            <span>我是用户名</span>
-                            <span>2020.10.31</span>
+                            <span>{el.user.username}</span>
+                            <span>{el.publish_data.replace(/\d+:.*?/,'')}</span>
                         </div>
                         <div class="byjl_info_r fr">
-                            <span><i class='iconfont'>&#xe64c;</i>8808</span>
-                            <a href=""><span><i class='iconfont'>&#xe66a;</i>8808</span></a>
+                            <span><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span>
+                            <a href=""><span><i class='iconfont'>&#xe66a;</i>{el.commentnum}</span></a>
                         </div>
                     </div>
                 </div>
@@ -296,35 +293,62 @@
 </script>
 <script type="text/javascript">
     (function () {
-        layui.use('laypage', function () {// 分页
-            var laypage = layui.laypage;
-            laypage.render({
-                elem: 'test1',
-                count: 100,
-                limit: 10,
-                curr: location.hash.replace('#!page=', ''),
-                hash: 'page',
-                groups: 5,
-                prev: '上一页',
-                next: '下一页',
-                layout: ['prev', 'page', 'next']
-            });
-        });
-        var api_yuming = 'http://127.0.0.1:8000';
-        var vm_ltlist = avalon.define({
-            $id:'luntanbox',
-            lisdata:[],
-            navdata:[],
+        avalon.config({
+            interpolate: ["{", "}"]
         })
-        console.log(typeof(window.location.href));
-        var inturl = window.location.href.replace(/&all=1/,'');
+        var count = 1;
+
+        function render(count, limit, btnnum) {//count总条数，limit限定条数，btnnum按钮显示条数
+            layui.use('laypage', function () {// 分页
+                var laypage = layui.laypage;
+                laypage.render({
+                    elem: 'test1',
+                    count: count,
+                    limit: limit,
+                    curr: location.hash.replace('#!page=', ''),
+                    hash: 'page',
+                    groups: btnnum,
+                    prev: '上一页',
+                    next: '下一页',
+                    layout: ['prev', 'page', 'next']
+                });
+            });
+        }
+
+        var api_yuming = 'http://127.0.0.1:8000';
+        var inturl = window.location.href.replace(/&all=1&Mid=\d/, '');//初始化数据请求链接
+        var Mid = window.location.href.replace(/.*?&Mid=/, '');//对应主栏目id
+        var vm_ltlist = avalon.define({
+            $id: 'luntanbox',
+            lisdata: [],
+            Mid: 0,
+            navdata: [],
+            mainnav: [],
+            count: 0,
+        })
+        vm_ltlist.Mid = Mid;
         $.ajax({
-            url:inturl,
-            type:'get',
-            dataType:'json',
-            success:function(ajax){
-                console.log(ajax);
-            },error:function(error){
+            url: inturl,
+            type: 'get',
+            dataType: 'json',
+            success: function (ajax) {
+                var _this = vm_ltlist;
+                _this.lisdata = ajax.data.curuent_page;
+                _this.count = ajax.data.maxnum;
+                console.log(vm_ltlist.lisdata, 2);
+                render(vm_ltlist.count, 10, 5);
+            }, error: function (error) {
+                console.log(error);
+            }
+        })
+        $.ajax({
+            url: api_yuming + '/luntan/areas/',
+            type: 'get',
+            dataType: 'json',
+            success: function (ajax) {
+                vm_ltlist.navdata = ajax.data;
+                console.log(ajax, 22222, vm_ltlist.navdata);
+            }, error: function (error) {
                 console.log(error);
             }
         })

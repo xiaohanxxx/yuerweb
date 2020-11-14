@@ -610,7 +610,7 @@ div.box_byinfo:nth-child(even) {
     opacity: 0.7;
     bottom: 0;
     left: 0;
-    overflow:hidden;
+    overflow: hidden;
     font-family: Microsoft YaHei;
     font-size: 12px;
     text-align: center;
@@ -671,7 +671,7 @@ div.box_byinfo:nth-child(even) {
     border-radius: 5px;
     line-height: 60px;
     font-size: 16px;
-    cursor:pointer;
+    cursor: pointer;
     letter-spacing: 1px;
     color: #676767;
     text-align: center;
@@ -750,7 +750,7 @@ div.box_byinfo:nth-child(even) {
 }
 
 .sgyer-lis > li > a span:nth-of-type(1) {
-    float:left;
+    float: left;
     max-width: 230px;
     height: 14px;
     overflow: hidden;
@@ -761,7 +761,7 @@ div.box_byinfo:nth-child(even) {
 }
 
 .sgyer-lis > li > a span:nth-of-type(2) {
-    float:right;
+    float: right;
     margin-left: 20px;
     padding-right: 10px;
     width: 25px;
@@ -952,6 +952,8 @@ div.box_byinfo:nth-child(even) {
 
 .byjlmain .byjl_l {
     width: 235px;
+    max-height: 1360px;
+    overflow: auto;
     margin-right: 20px;
 }
 
@@ -1009,18 +1011,6 @@ body a:hover {
     color: #ff44ad;
 }
 
-.main_nav .nav_as {
-    width: 191px;
-    height: 100px;
-}
-
-.main_nav .nav_as > a {
-    float: left;
-    max-width: 55px;
-    margin-bottom: 20px;
-    padding: 0 6px 0 0;
-}
-
 .byjl_main {
     width: 602px;
     margin-right: 21px;
@@ -1029,6 +1019,30 @@ body a:hover {
 .byjl_main .main_btn {
     height: 30px;
     margin-bottom: 20px;
+}
+
+.main_nav > div {
+    height: 54px;
+    margin-bottom: 20px;
+}
+
+.main_nav > div > img {
+    float: left;
+    width: 53px;
+    height: 53px;
+    border-radius: 50%;
+}
+
+.main_nav > div > a {
+    float: left;
+    margin-left: 16px;
+    line-height: 53px;
+    height: 53px;
+    font-weight: bold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 110px;
+    color: #373737;
 }
 
 .main_btn .btnSelect {

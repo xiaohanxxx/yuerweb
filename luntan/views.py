@@ -139,11 +139,12 @@ class Article(views.View):
         articleData = {
             "user_id": request.user.id,
             "title": request.POST.get("title"),
-            "content": request.POST.get("content")
+            "content": request.POST.get("title")
         }
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
         topic = request.POST.getlist("topics", [])
+        print(topic)
         if topic:
             topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
             articleRes.topics.add(topicObj)

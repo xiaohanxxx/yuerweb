@@ -71,7 +71,7 @@
                 </div>
             </div>
             <div class="quanmeta">
-                <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1" ms-repeat-as="el.child">{as.name}</a>
+                <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={el.id}" ms-repeat-as="el.child">{as.name}</a>
             </div>
         </div>
     </div>
@@ -84,7 +84,7 @@
             <div class="yuermeta_h clearfix">
                 <h3><a href="javascript:;">备孕热点</a></h3>
                 <p>
-                    <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
+                    <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1&Mid={Mid}"></a>
                 </p>
             </div>
             <div class="byinfobox">
@@ -142,7 +142,7 @@
                 <div class="yuermeta_h clearfix">
                     <h3><a href="javascript:;">难孕治疗</a></h3>
                     <p>
-                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1&Mid={Mid}"></a>
                     </p>
                 </div>
                 <ul class="metalist">
@@ -191,7 +191,7 @@
                 <div class="yuermeta_h clearfix">
                     <h3><a href="javascript:;">试管婴儿</a></h3>
                     <p>
-                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1"></a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1&Mid={mainid}"></a>
                     </p>
                 </div>
                 <ul class="sgyer-h fl">
@@ -300,12 +300,14 @@
         });
         var vm_byhot = avalon.define({
             $id: 'byhot',
+            Mid:0,
             mainid: 0,
             data: [],
         });
         var vm_nyzl = avalon.define({
             $id: 'nyzl',
             data: [],
+            Mid:0,
             mainid: 0,
             hotTitle: [],
             imgTitle: [],
@@ -332,6 +334,7 @@
         var vm_sgyer = avalon.define({
             $id: 'sgyer',
             mainid: 0,
+            Mid:0,
             pageNo: 0,
             menudata: [],
             hotdata: [],
@@ -471,9 +474,12 @@
                 vm_areas.yuerlt_data = ajax.data;
                 {#备孕热点#}
                 vm_byhot.mainid = byrdid = ajax.data[0].child[0].id;
+                vm_byhot.Mid = ajax.data[0].id;
+
                 arcAjax(byrdid, vm_byhot)
                 {#难孕治疗#}
                 vm_nyzl.metadata = ajax.data[3].child.slice(0, 8);
+                vm_nyzl.Mid = ajax.data[3].id;
                 vm_nyzl.pageNo = vm_nyzl.metadata[0].id;
                 vm_nyzl.mainid = ajax.data[3].id;
                 $.ajax({//初始化数据
