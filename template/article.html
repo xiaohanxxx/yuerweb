@@ -44,8 +44,8 @@
                    {{ article_data.data.0.content | safe}}
 
                </div>
-                <div class="pretitle">上一篇：<abbr><a href="##">我是文章标题</a></abbr></div>
-                <div class="nexttitle">下一篇：<abbr><a href="##">我是文章标题</a></div>
+                <div class="pretitle">上一篇：<abbr><a href="\baike/article?aid={{ s_article.id }}">{{ s_article.title }}</a></abbr></div>
+                <div class="nexttitle">下一篇：<abbr><a href="\baike/article?aid={{ x_article.id }}">{{ x_article.title }}</a></div>
 
                 <div class="left_bottom_artctal">
                     <h3><abbr>相关百科推荐</abbr></h3>
