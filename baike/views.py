@@ -53,16 +53,32 @@ def baike(request):
 
 # 百科列表页渲染
 def baike_list(request):
-    type = request.GET.get('type')
-    menuid = request.GET.get('menuid')
-
-
     return render(request, 'baike_list.html')
 
 
 # 文章详情页渲染
 def article(request):
-    return render(request, 'article.html')
+    aid = request.GET.get('aid')
+    article_obj = models.Artical.objects.get(id=aid)
+    data = {
+        'code': 200,
+        'msg': 'success',
+        'data': [
+            {
+                'id': article_obj.id,
+                'category_id': article_obj.category_id,
+                'title': article_obj.title,
+                'author': article_obj.author,
+                'excerpt': article_obj.excerpt,
+                'thumb': article_obj.thumb,
+                'recommend': article_obj.recommend,
+                'content': article_obj.content,
+                'click_count': article_obj.click_count,
+                'add_time': article_obj.add_time
+            }
+        ]
+    }
+    return render(request, 'article.html',{'article_data':data})
 
 
 # 获取栏目api,1,2级栏目
@@ -128,8 +144,7 @@ def sjldapi(request):
                 )
                 }
             )
-
-    return HttpResponse(json.dumps(data), content_type="application/json")
+        return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 
