@@ -99,7 +99,7 @@
                             </a>
                         </p>
                         <div class="byuser">
-                            <div><img src="{% static 'images/yuerlt/user01.png' %}"
+                            <div><img src="{% static 'images/yuerlt/xxx.png' %}"
                                       alt=""><span>{el.user.username}</span></div>
                             <a href="javascript:;">
                                 <i class='iconfont icon-pinglun'
@@ -114,17 +114,17 @@
                 <h4><span>好孕妈妈榜</span></h4>
             </div>
             <ul class="rgt_infobox">
-                <li ms-attr-class="el.id==pageNow?'rgt_select':''" ms-repeat="data" ms-attr-dataid="{el.id}">
+                <li ms-attr-class="$index==pageNow?'rgt_select':''"  ms-repeat="data" ms-attr-dataid="{$index}" ms-mouseover="mouser()">
                     <div>
                         <div class='fl'><img ms-attr-src="\{el.user.head}" alt=""><span>{el.user.username}</span></div>
-                        <span class='fr'>胎心发芽</span>
+                        <span class='fr'>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span>
                     </div>
                     <div>
                         <img ms-attr-src="\{el.user.head}" alt="">
                         <div class='fl userinfo'>
                             <p class="rgt_t"><a href="javascript:;">{el.user.username}</a></p>
                             <p class='rgt_info'><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
-                            <div><span>胎心发芽</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span>
+                            <div><span>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span>
                             </div>
                         </div>
                     </div>
@@ -227,50 +227,23 @@
 
 
         <div class="main_r fl">
-            <div class="quick_ask">
+            <div class="quick_ask" ms-controller="freeAsk">
                 <div class="head">
                     <i class='iconfont'>&#xe640;</i>
                     <p>快速提问</p>
                 </div>
-                <textarea name="quick_ask" id="" cols="1" rows="3">
-                    </textarea>
-                <div class="lis-select">
-                    <select>
-                        <option value="volvo">备孕</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select>
-                        <option value="volvo">备孕</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select>
-                        <option value="volvo">试管</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select>
-                        <option value="volvo">不孕不育</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <select>
-                        <option value="volvo">其他</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
+                <textarea name="quick_ask" id="quick_ask" cols="1" rows="3">
+                </textarea>
+                <div class="lis-select" ms-each-items="data">
+                    <select ms-click="onChange()">
+                        <option ms-attr-value="el.id"   ms-repeat-el="items.child">{el.name}</option>
                     </select>
                 </div>
 
                 <div class="lis-foot">
-                    <span>今日1128位提问</span>
+                    <span>今日66位提问</span>
                     {% if request.user.is_active %}
-                        <a href="/baike">免费提问</a>
+                        <a href="javascript:;" ms-click="goAsk">免费提问</a>
                     {% else %}
                         <a href="/login">免费提问</a>
                     {% endif %}
@@ -311,11 +284,13 @@
         avalon.config({
             interpolate: ["{", "}"]
         });
-        var api_mainmenu = 'http://127.0.0.1:8000/luntan/areas/',
-            api_articlelist = 'http://127.0.0.1:8000/luntan/articlelist/?tid=',
-            api_hotarticles = 'http://127.0.0.1:8000/luntan/hotarticles/',
-            api_goodmother = 'http://127.0.0.1:8000/luntan/goodmother/?aid=',
-            api_articles = 'http://127.0.0.1:8000/luntan/articles/?aid=';
+        var wzyuming = 'http://127.0.0.1:8000';
+        var api_mainmenu = wzyuming+'/luntan/areas/',
+            api_articlelist = wzyuming+'/luntan/articlelist/?tid=',
+            api_hotarticles = wzyuming+'/luntan/hotarticles/',
+            api_goodmother = wzyuming+'/luntan/goodmother/?aid=',
+            api_ksAsk = wzyuming+'/luntan/articles/',
+            api_articles = wzyuming+'/luntan/articles/?aid=';
         var nyzl_num = 17,//控制难孕治疗帖子展示条数
             hymm_num = 8,//好孕妈妈的文章展示条数
             rmarc_num = 9;//热门文章展示条数
@@ -390,6 +365,9 @@
                     vm_hymm.pageOn = 1;
                 }
                 reshHymm(vm_hymm.aid, hymm_num, vm_hymm.pageOn);
+            },
+            mouser:function(){
+                vm_hymm.pageNow = $(this).attr('dataid');
             }
         });
         var vm_rmarc = avalon.define({
@@ -399,7 +377,34 @@
                 reshRmarc();
             }
         })
-
+        var vm_freeAsk = avalon.define({
+            $id:'freeAsk',
+            data:[],
+            selecid:4,
+            onChange:function(){
+                vm_freeAsk.selecid = $(this).find('option:selected').val();
+                var items = $('.lis-select>select');
+                Toolfun.clearClass('askSelect',items);
+                $(this).addClass('askSelect');
+            },
+            goAsk:function() {
+                var textval = $('#quick_ask').val().trim();
+                if(textval==''){
+                    return false;
+                }
+                $.ajax({
+                    url:api_ksAsk,
+                    type:'POST',
+                    data:{
+                        'title':textval,
+                        'topics':vm_freeAsk.selecid
+                    },
+                    success:function(msg){
+                        alert('提交成功');
+                    }
+                })
+            }
+        })
         function arcAjax(tid, vm_arc, num) {//栏目对应文章列表数据
             $.ajax({
                 url: api_articlelist + tid + '',
@@ -429,8 +434,6 @@
                     vm_hymm.pageAll = ajax.data.page_num;
                     vm_hymm.pageOn = page;
                     vm_hymm.data = ajax.data.curuent_page;
-                    vm_hymm.pageNow = vm_hymm.data[0].id;
-                    console.log(ajax, vm_hymm.pageNow);
                 },
                 error: function (error) {
                     console.log(error);
@@ -504,6 +507,8 @@
                 {# 好孕妈妈部分#}
                 vm_hymm.aid = ajax.data[1].id;
                 reshHymm(vm_hymm.aid, hymm_num, 1);//初始化好孕妈妈数据
+                {# 免费提问 #}
+                vm_freeAsk.data = ajax.data;
             }
         });
     })()
@@ -533,7 +538,6 @@
                     $(this).removeClass('yesShow');
                 });
             })
-            console.log($('.rgt_infobox>li'))
             $('.rgt_infobox>li').mouseover(function () {
 
                 Toolfun.clearClass('rgt_select', $('.rgt_infobox>li'))
@@ -547,7 +551,7 @@
         })
     })();
 </script>
-{#    {% include 'footer.html' %}#}
+{#{% include 'footer.html' %}#}
 
 </body>
 
