@@ -219,6 +219,7 @@
               success: function(data) {
                  vm.newartical = [];
                  vm.newartical = data.data;
+                 console.log(data,89898);
                  console.log(vm.newartical);
                  if(vm.newartical.length>1){
                       vm.twotopNews.push(vm.newartical[0]);
