@@ -60,6 +60,9 @@ def baike_list(request):
 def article(request):
     aid = request.GET.get('aid')
     article_obj = models.Artical.objects.get(id=aid)
+    x_article = models.Artical.objects.filter(id__gt=aid).order_by('id').first()
+    s_article = models.Artical.objects.filter(id__lt=aid).order_by('-id').first()
+
     data = {
         'code': 200,
         'msg': 'success',
@@ -78,7 +81,7 @@ def article(request):
             }
         ]
     }
-    return render(request, 'article.html',{'article_data':data})
+    return render(request, 'article.html',{'article_data':data,'s_article':s_article,'x_article':x_article})
 
 
 # 获取栏目api,1,2级栏目
