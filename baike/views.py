@@ -60,6 +60,8 @@ def baike_list(request):
 def article(request):
     aid = request.GET.get('aid')
     article_obj = models.Artical.objects.get(id=aid)
+    article_obj.click_count = article_obj.click_count+1 # 阅读数+1
+    article_obj.save()
     x_article = models.Artical.objects.filter(id__gt=aid).order_by('id').first()
     s_article = models.Artical.objects.filter(id__lt=aid).order_by('-id').first()
 
@@ -216,3 +218,16 @@ def articleapi(request):
         ]
     }
     return HttpResponse(json.dumps(data, cls=JsonCustomEncoder), content_type="application/json")
+
+
+# 获取最多阅读文章
+def articleread(request):
+    if request.method == "POST":
+        count = request.POST.get('count')
+        read_article = models.Artical.objects.all().order_by('-click_count')[:int(count)].values('id','title','click_count')
+        data = {
+            'code':200,
+            'msg':'成功',
+            'data':list(read_article)
+        }
+        return HttpResponse(json.dumps(data, cls=JsonCustomEncoder), content_type="application/json")
