@@ -29,7 +29,7 @@
 {#    {{ article.title }}#}
 {#{% endfor %}#}
 
-<div class="bodyartical">
+<div class="bodyartical"   ms-controller="bodyarical">
      <div class="curposition">
           当前位置： 百科知识 百科文章标题
      </div>
@@ -148,7 +148,24 @@
 {% include 'footer.html' %}
 <!-- 底部 -->
 <script>
-   
+   var vmm = avalon.define({
+       $id:'bodyarical',
+       get_baike_tuijian:function (){
+            var count = {
+                count:10
+            }
+             $.ajax({
+              type: 'get',
+              url: '/baike/api/articleread',
+              data: count,
+              dataType: "json",
+              success: function(data) {
+                  console.log(data,121212222222);
+              }
+            });
+       },
+   })
+   vmm.get_baike_tuijian();
 </script>
 </body>
 </html>
