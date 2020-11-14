@@ -18,72 +18,180 @@
 
 
 </head>
-<!-- 头部 -->
 {% include 'header.html' %}
- 
+<style>
+	.swiper-container {
+      width: 100%;
+      height: 300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-top .swiper-slide {
+      background-size: cover;
+      background-position: center;
+      height: 348px;
+    }
+
+    .gallery-top {
+      height: 80%;
+      width: 100%;
+    }
+
+    .gallery-thumbs {
+      height: 15%;
+      box-sizing: border-box;
+    }
+
+    .gallery-thumbs .swiper-slide {
+      width: 100%;
+      background: red;
+      cursor: pointer;
+      color: #fff; 
+      font-weight: 400;
+      font-family: "微软雅黑";
+    }
+
+    .gallery-thumbs .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+</style>
+     <div class="bodysae">
+     	<div class="bodysaeconts">
+     		<div class="partone" style="width: 1200px; height: 347px;">
+ 			    <div class="swiper-container gallery-top">
+				    <div class="swiper-wrapper">
+					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
+					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
+					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
+				    </div>
+				</div>
+				<div class="swiper-container gallery-thumbs">
+				      <div class="swiper-wrapper">
+					      <div class="swiper-slide" style="background:rgb(89,201,134,0.6); opacity: 0.6;">最新百科</div>
+					      <div class="swiper-slide" style="background:rgb(249,155,204,0.6); opacity: 0.6;">热门百科</div>
+					      <div class="swiper-slide" style="background:rgb(122,198,234,0.6); opacity: 0.6;">推荐百科</div>
+					  </div>
+			    </div>
+     		</div>
+     	</div>
+     </div>
+
+
+     <div class="baikepariton">
+     	<div class="bkpartonfes">
+     		<div class="haohengconts">
+     			<ul style="overflow: hidden; width: 100%;">
+     				<li style="background: url({% static 'img/976.png' %}) no-repeat center center; height: 200px; width: 238px;">
+     					<p>
+     						<a href="">备孕</a>
+     						<a href="">孕前检查</a>
+     						<a href="">孕前饮食</a>
+     					</p>
+     				</li>
+     				<li style="background: url({% static 'img/977.png' %}) no-repeat center center; height: 200px; width: 238px;">
+     					<p>
+     						<a href="">怀孕</a>
+     						<a href="">怀孕检查</a>
+     						<a href="">生男生女</a>
+     					</p>
+     				</li>
+     				<li style="background: url({% static 'img/978.png' %}) no-repeat center center; height: 200px; width: 238px;">
+     					<p>
+     						<a href="">不孕不育</a>
+     						<a href="">孕前检查</a>
+     						<a href="">孕前饮食</a>
+     					</p>
+     				</li>
+     				<li style="background: url({% static 'img/979.png' %}) no-repeat center center; height: 200px; width: 238px;">
+     					<p>
+     						<a href="">试管婴儿</a>
+     						<a href="">孕前检查</a>
+     						<a href="">孕前饮食</a>
+     					</p>
+     				</li>
+     				<li style="background: url({% static 'img/980.png' %}) no-repeat center center; height: 200px; width: 238px;">
+     					<p>
+     						<a href="">育儿百科</a>
+     						<a href="">孕前检查</a>
+     						<a href="">孕前饮食</a>
+     					</p>
+     				</li>
+     			</ul>
+     		</div>
+     	</div>		
+     </div>
      
-     <div class="curr_address">
-           当前位置：百科知识 百科分类
+
+
+     <div class="parttwo">
+     	<div class="parttwopart">
+     		<div class="guanggaocgl">
+     			<img src="{% static 'img/cgl.png' %}">
+     		</div>
+     		<div class="rightlists">
+     			<div class="righttoptwo">
+     				<div class="ulli" ms-repeat="twotopNews">
+     					<a ms-attr-href="/baike/artcal/?aid={el.id}">
+                                   <img ms-attr-src="'http://127.0.0.1:8000/media/' + el.thumb" style="float: left; margin-right: 10px;">
+                                   <h3>{el.title}</h3>
+                                   <p>{el.excerpt}</p>                    
+                              </a>
+     				</div>
+     				<!-- <div class="ulli">
+     					<img src="{% static 'img/jixiefang.png' %}" style="float: left; margin-right: 10px;">
+     					<h3>我是文章标题最多显示两行跳转至论坛社区文章，超出的部分用...代替</h3>
+     					<p>我是文章正文内容，显示字段为文章正文部分开头截取内容，我最多显示四行，文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
+     				</div> -->
+     			</div>
+     			<div class="rightbottmanther">
+     				<ul>
+     					<li ms-repeat="newartical"><a ms-attr-href="/baike/artcal/?aid={el.id}">{el.title}</a></li>
+     				</ul>
+     			</div>
+     		</div>
+     	</div>  
      </div>
 
-     <div class="artcalAll">
-          <div class="leftarcallist">
-                <ul>
-                    <li class="curre_dh">备孕百科</li>
-                    <li>怀孕百科</li>
-                    <li>不孕不育</li>
-                    <li>试管婴儿</li>
-                    <li>育儿百科</li>
-                </ul>
-
-                <div class="child_fl">
-                        <div class="fl_list">
-                            <h3>子分类名称</h3>
-                            <ol>
-                                <li>这里我是细分的关键词</li>
-                                <li>这里我是</li>
-                                <li>这里我是细分的</li>
-                                <li>这里我是细分的关键词</li>
-                                <li>这里我是细</li>
-                                <li>这里我是细分的关</li>
-                                <li>这里我是</li>
-                                <li>这里我是细</li>
-                                <li>这里我是细分的关键</li>
-                                <li>这里我是细分的关键词</li>
-                                <li>这里我是细分</li>
-                                <li>这里我是细分的关键词</li>
-                            </ol>
-                        </div>
-                        <div class="fl_list">
-                            <h3>子分类名称</h3>
-                            <ol>
-                                <li>这里我是细分的关键词</li>
-                                <li>这里我是</li>
-                                <li>这里我是细分的</li>
-                                <li>这里我是细分的关键词</li>
-                                <li>这里我是细</li>
-                                <li>这里我是细分的关</li>
-                                <li>这里我是</li>
-                                <li>这里我是细</li>
-                                <li>这里我是细分的关键</li>
-                                <li>这里我是细分的关键词</li>
-                                <li>这里我是细分</li>
-                                <li>这里我是细分的关键词</li>
-                            </ol>
-                        </div>
-                </div>
-
-
-
-
-
-
-          </div>
-         <div class="rightarclalist">
-
-         </div>
+     <div class="biglists" ms-repeat="allbaikeData">
+     	<div class="partonebiglists">
+     		<div class="padiaeone">
+     			<div class="h3"><h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad;">{el.menu_name}</h3></div>
+     			<div class="beiyunbaikepart">
+     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
+     				<div class="rightlistsa">
+     					<div class="ululli" ms-repeat-vw="el.children">
+     						<h4><a ms-attr-href="/baike/artcales/?aid={vw.mid}">{vw.menu_name}</a></h4>
+     						<div class="abq">
+     							<a ms-attr-href="/baike/api/articleapi?aid={vf.articleid}" ms-repeat-vf="vw.children">{vf.title}</a>
+     						</div>
+     					</div>
+     				</div>
+     			</div>
+     		</div>
+     	</div>
      </div>
-<!-- 底部 -->
-{% include 'footer.html' %}
+
+
+     <!-- 底部 -->
+     {% include 'footer.html' %}
+     <script>
+             var galleryThumbs = new Swiper('.gallery-thumbs', {
+		      spaceBetween: 3,
+		      slidesPerView: 3,
+		      freeMode: false,
+		      watchSlidesVisibility: false,
+		      watchSlidesProgress: false,
+		    });
+		    var galleryTop = new Swiper('.gallery-top', {
+		      spaceBetween: 10,
+		      navigation: {
+		       
+		      },
+		      thumbs: {
+		        swiper: galleryThumbs
+		      }
+		    });
+     </script>
 </body>
 </html>

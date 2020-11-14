@@ -230,13 +230,17 @@
         },
         allbaikeData:[],
         getAllbaikeData:function(){//获取百科所有栏目
+            var count = {
+                count:2
+            }
              $.ajax({
               type: 'post',
               url: '/baike/api/sgbk_sjldapi',
-              data: {},
+              data: count,
               dataType: "json",
               // timeout: 10000,
               success: function(data) {
+                  console.log(data,88888888888888);
                  vm.allbaikeData = data;
                  vm.datasgyes = data;
                  vm.changrightlm(1,0);
