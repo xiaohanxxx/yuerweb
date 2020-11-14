@@ -220,9 +220,7 @@ class GoodMother(views.View):
                 pag_range = range(curuent_page_num - 5, curuent_page_num + 5)  # 当前页+5大于最大页数时
 
         res = {
-            "curuent_page_num": curuent_page_num,  # 当前页数
-            "page_num": pag_num,  # 总共页数
-            "page_range": [i for i in pag_range],  # 页码列表
+            "maxnum": len(artclesList),
             "curuent_page": [
                 {
                     "id": i.id,
