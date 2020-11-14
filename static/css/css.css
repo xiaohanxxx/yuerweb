@@ -491,7 +491,7 @@ color: #666; font-size: 12px; }
 .beiyunbaikepart{ width: 100%; overflow: hidden; }
 .rightlistsa{ width: 995px; float: left; min-height: 200px; margin-top: 17px; }
 .rightlistsa ul{ width: 30%; float: left; overflow: hidden; }
-.ululli{ width: 30%; float: left; overflow: hidden; margin-right: 2%; }
+.ululli{ width: 30%; float: left; overflow: hidden; margin-right: 2%; height: 120px; }
 .abq{ width: 100%; overflow: hidden; }
 .ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; font-size: 14px; }
 .ululli h4{ margin-bottom: 10px; color: #ff44ad; font-size: 16px;}
@@ -514,7 +514,7 @@ color: #666; font-size: 12px; }
 .curposition{ margin: 20px 0; }
 .arctiacalbody{ width: 100%; overflow: hidden; margin: 20px 0;}
 .leftarcal{width: 840px; float: left; min-height: 200px; background: #fff;}
-.rightpart{ width: 350px; float: right; min-height: 200px; background: green; }
+.rightpart{ width: 350px; float: right; min-height: 200px; }
 
 .content{ overflow: hidden; width: 100%; }
 
@@ -583,3 +583,34 @@ color: #666; font-size: 12px; }
 .listyisheng ol{ margin: 25px 0; }
 .listyisheng ol li{ float: left; width: 16.6%; text-align: center; }
 .listyisheng ol li p{ text-align: center; padding: 15px 0; }
+
+
+
+.left_bottom_artctal,.left_bottom_artctal ul,.left_bottom_artctal_anather{ width: 100%;overflow: hidden; }
+.left_bottom_artctal h3{ width: 100%; overflow: hidden; height: 50px; line-height: 50px; border-bottom:1px solid #f1f1f1; padding-left: 20px; }
+.left_bottom_artctal h3 abbr{ height: 50px; line-height: 50px; width: 120px; text-align: center; border-bottom: 2px solid #ff44ad; display: block; margin-bottom: 15px; }
+.left_bottom_artctal ul{ padding: 20px; }
+.left_bottom_artctal ul li{ float: left; width: 25%; margin-bottom: 20px; }
+
+
+
+.left_bottom_artctal_anather h3{ width: 100%; overflow: hidden; height: 50px; line-height: 50px; border-bottom:1px solid #f1f1f1; padding-left: 20px; margin-bottom: 20px; }
+.left_bottom_artctal_anather h3 abbr{ height: 50px; line-height: 50px; width: 106px; text-align: center; border-bottom: 2px solid #ff44ad; display: block; margin-bottom: 15px; }
+.left_bottom_artctal_anather ul li{ margin-bottom: 20px; padding-left: 25px;}
+.suoyin{ width: 100%; overflow: hidden; }
+/*.suoyin img{ width: 100%; }*/
+
+.curr_address{ overflow: hidden; width: 1200px; margin: 20px auto; }
+.artcalAll{ width: 1200px; margin: 0 auto; overflow: hidden; min-height: 200px;}
+
+.leftarcallist{ width: 830px; overflow: hidden; float: left;min-height: 200px;}
+.rightarclalist{ float: right; min-height: 200px; background: green;overflow: hidden; width: 360px;}
+.leftarcallist ul{ margin: 15px 0; background: #fff; overflow: hidden;}
+.leftarcallist ul li{ float: left; cursor: pointer; font-size: 16px; margin-right:10px; width: 80px; height: 30px; line-height: 30px; text-align: center;}
+.curre_dh{ color: #FF44AD; border-bottom: 1px solid #FF44AD;}
+
+.child_fl{ overflow: hidden; width: 100%; float: left;}
+.fl_list{float: left; width: 50%;}
+.fl_list h3{ font-size: 16px; color:#FF44AD;}
+.fl_list ol{ overflow: hidden;}
+.fl_list ol li{ float: left; margin-right: 20px; line-height: 25px; list-style-type: disc;}
