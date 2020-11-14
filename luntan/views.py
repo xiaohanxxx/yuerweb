@@ -1,6 +1,7 @@
 import json
 import os
 
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Count, F
 from django.shortcuts import render, HttpResponse, get_object_or_404
@@ -64,7 +65,8 @@ class ArticlesList(views.View):
             articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
         # 热门
         elif int(type) == 2:
-            thumbList = luntanmodel.ThumbUp.objects.filter(articles__topics=topicsId, articles__isdelete=0).values('articles_id').annotate(count=Count('articles_id'))
+            thumbList = luntanmodel.ThumbUp.objects.filter(articles__topics=topicsId, articles__isdelete=0).values(
+                'articles_id').annotate(count=Count('articles_id'))
             aidList = [i["articles_id"] for i in thumbList]
             articleList = luntanmodel.Articles.objects.filter(pk__in=aidList)
         # 推荐
@@ -95,7 +97,8 @@ class ArticlesList(views.View):
                     "content": i.content,
                     "publish_date": str(i.publish_date),
                     "user": {"id": i.user.id, "username": i.user.username},
-                    "commentnum": i.articles_comment.all().count()
+                    "commentnum": i.articles_comment.all().count(),
+                    "thumbup": i.thumup_articles.all().count()
                 } for i in curuent_page
             ]
         }
@@ -232,6 +235,20 @@ class GoodMother(views.View):
         }
 
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
+
+
+class ThumbUp(views.View):
+    def get(self, request, *args, **kwargs):
+        aid = request.GET.get("aid")
+        artObj = get_object_or_404(luntanmodel.Articles, pk=aid)
+        # uid = request.user.id
+        uid = request.GET.get("uid")
+        userObj = get_object_or_404(User, pk=uid)
+        thumb = luntanmodel.ThumbUp()
+        thumb.articles = artObj
+        thumb.user = userObj
+        thumb.save()
+        return HttpResponse("点赞成功")
 
 
 class ImageUp(views.View):
