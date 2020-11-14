@@ -242,9 +242,11 @@ class ThumbUp(views.View):
     def get(self, request, *args, **kwargs):
         aid = request.GET.get("aid")
         artObj = get_object_or_404(luntanmodel.Articles, pk=aid)
-        # uid = request.user.id
-        uid = request.GET.get("uid")
+        uid = request.user.id
         userObj = get_object_or_404(User, pk=uid)
+        chk = luntanmodel.ThumbUp.objects.filter(article_id=aid, user_id=uid)
+        if chk:
+            return HttpResponse("已点赞, 无法重复点赞")
         thumb = luntanmodel.ThumbUp()
         thumb.articles = artObj
         thumb.user = userObj
