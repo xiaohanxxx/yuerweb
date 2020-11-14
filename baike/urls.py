@@ -14,6 +14,7 @@ urlpatterns = [
     path('api/articlelistapi',views.articlelistapi),
     path('api/articleapi',views.articleapi),
     path('api/articletimelist',views.articletimelist),
+    path('api/articleread',views.articleread),
 
     # path('api/sgbk_sjld',views.OrderView.as_view())
 ]

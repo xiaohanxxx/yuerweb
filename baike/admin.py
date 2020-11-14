@@ -21,6 +21,6 @@ class Child_Admin(admin.ModelAdmin):
 @admin.register(Artical)
 class Artical_Admin(admin.ModelAdmin):
     list_display = ('title','thumb', 'category', 'author', 'excerpt', 'click_count')
-    readonly_fields = ("excerpt", "click_count",)
+    # readonly_fields = ("excerpt", "click_count",)
     list_per_page = 10
 
