@@ -122,7 +122,8 @@ class Article(views.View):
             "title": artObj.title,
             "content": artObj.content,
             "publish_date": str(artObj.publish_date),
-            "user": {"id": artObj.user.id, "username": artObj.user.username}
+            "user": {"id": artObj.user.id, "username": artObj.user.username},
+            "thumbup": artObj.thumup_articles.all().count()
         }
         resComment = [
             {
