@@ -970,7 +970,7 @@ body a:hover {
     float: left;
     padding: 0 2px;
     height: 19px;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 19px;
     letter-spacing: 0px;
     color: #333;
@@ -989,11 +989,10 @@ body a:hover {
 
 .byjl_l_main h3 {
     height: 31px;
-    font-size: 24px;
+    font-size: 22px;
     line-height: 30px;
     margin-bottom: 20px;
     font-weight: normal;
-    letter-spacing: 6px;
     color: #333;
 }
 
@@ -1042,7 +1041,6 @@ body a:hover {
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 110px;
-    color: #373737;
 }
 
 .main_btn .btnSelect {
@@ -1733,4 +1731,7 @@ div.plinput {
     height: 940px;
     background-color: #fff;
     border-radius: 5px;
+}
+body .byjlmain .selectId>a{
+    color: red !important;
 }

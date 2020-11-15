@@ -576,15 +576,17 @@ body .sjchangebtn {
 }
 
 .tjjlbox li {
-    height: 40px;
+    height: 60px;
     margin-bottom: 30px;
 }
-
+.tjjlbox li a{
+    display:block;
+}
 .tjjlbox>li div {
     float: left;
 }
 
-.tjjlbox>li div>img {
+.tjjlbox>li div>a>img {
     float: left;
     margin-right: 10px;
     width: 40px;
@@ -592,7 +594,7 @@ body .sjchangebtn {
     border-radius: 35px;
 }
 
-.tjjlbox>li div>span {
+.tjjlbox>li div>a>span {
     position: relative;
     float: left;
     max-width: 126px;
