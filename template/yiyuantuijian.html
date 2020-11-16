@@ -38,25 +38,8 @@
           <div class="fenleiallswd">
              <p style="float: left;">省份：</p>
              <div>
-               <p class="allcurr">全部</p>
+               <p class="allcurr" ms-click="getAllshengfen(1)">全部</p>
                <p ms-repeat-el="datas" ms-class="allcurr:el.city == v" ms-click="getALLsmallcity(el.city,$index)">{el.city}</p>
-               <!-- <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p>
-               <p>港澳台</p> -->
              </div>
          </div>
           <div class="fenleiallswd">
@@ -66,10 +49,6 @@
                 <select name="" id="" ms-duplex="chengshi" data-duplex-changed="selectchange">
                    <option value="">请选择城市</option>
                    <option ms-repeat-el="vlist" ms-attr-value="{el}">{el}</option>
-                   <!-- <option value="2">2</option>
-                   <option value="3">3</option>
-                   <option value="4">4</option>
-                   <option value="5">5</option> -->
                </select>
              </p>
              <!-- <p>港澳台</p> -->
@@ -78,19 +57,15 @@
 
         <div class="fenleiallswd">
              <p>等级：</p>
-             <p class="allcurr">全部</p>
+             <p class="allcurr" ms-click="getAllshengfen(2)">全部</p>
              <p ms-repeat="dengji" ms-class="allcurr:$index == g" ms-click="getDengji(el,$index)">{el}</p>
          </div>
 
 
          <div class="fenleiallswd">
              <p>地区：</p>
-             <p class="allcurr">全部</p>
+             <p class="allcurr" ms-click="getAllshengfen(3)">全部</p>
              <p ms-repeat="jishu" ms-class="allcurr:$index == f" ms-click="getJishu(el,$index)">{el}</p>
-             <!-- <p>第二代试管婴儿</p>
-             <p>第一代试管婴儿</p>
-             <p>夫精人工授精</p>
-             <p>供精人工授精</p> -->
          </div>
   
 
@@ -337,30 +312,8 @@
               </div>
           </div>
 
-
-
-
-
-
-       
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
-
-
-
-   
-
-
      <!-- 底部 -->
   {% include 'footer.html' %}
      
@@ -521,20 +474,40 @@
                 }
         ],
         dengji:['三级甲等','二级甲等','一级','未定级'],
-        jishu:['第三代试管婴儿','第二代试管婴儿','第一代试管婴儿','夫精人工授精','夫精人工授精'],
+        jishu:['第三代试管婴儿','第二代试管婴儿','第一代试管婴儿','夫精人工授精','供精人工授精'],
         getDengji:function(data,index){
             vmw.dengjis = data;
             vmw.g = index;
-            console.log(vmw.dengjis,111)
+            vmw.getDatas();
+        },
+        getAllshengfen:function (data){
+            if (data == 1){
+                vmw.v = "";
+            }else if (data == 2){
+                vmw.dengjis = '';
+            }else if (data == 3){
+               vmw.jishus = '';
+            }
+            vmw.getDatas();
+        },
+        getDatas:function (){
+            var datas = {
+                shengfen:vmw.v,
+                chengshi:vmw.chengshi,
+                dengji:vmw.dengjis,
+                jishu: vmw.jishus
+            }
+            console.log(datas,'发送请求');
+
         },
          getJishu:function(data,index){
             vmw.jishus = data;
             vmw.f = index;
-            console.log(vmw.jishus,222)
+           vmw.getDatas();
         },
         selectchange:function(data){
           vmw.chengshi = data;
-           console.log(vmw.chengshi,99999999999999);
+           vmw.getDatas();
         },
         getAllcitys:function(res){
             if(res == 1){
@@ -550,6 +523,7 @@
            vmw.chengshi="",
            vmw.vlist = vmw.datas[index].list
            console.log(vmw.v,78787878);
+           vmw.getDatas();
         },
         intopages:function(){
             layui.use(['laypage', 'layer'], function(){

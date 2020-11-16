@@ -1,20 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>首页</title>
-	<meta charset="utf-8">
-        {% load static %}
-        
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <title>首页</title>
+    <meta charset="utf-8">
+    {% load static %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name=renderer content=webkit>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 
 
 </head>
@@ -29,141 +29,108 @@
 {#    {{ article.title }}#}
 {#{% endfor %}#}
 
-<div class="bodyartical"   ms-controller="bodyarical">
-     <div class="curposition">
-          当前位置： 百科知识 百科文章标题
-     </div>
-     <div class="arctiacalbody">
-          <div class="leftarcal">
-               <div class="title">{{ article_data.data.0.title }}</div>
-               <div class="time">发布：{{ article_data.data.0.add_time }}</div>
-               <div class="content">
-{#                    <p>#}
-{#                       现现实社会里，由于各种原因，很多女性患者就是不孕不育患者，但是他们根本不知道自己有这方面的问题，等到自己要生孩子的时候，被医生告知自己不能生育，是不孕不育患者，其实对于这一部分的人来说，如果能够日前掌握女性不孕不育的症状，那么相信他们不会那么苦恼，早发现问题早治疗，能够让我们规避很多风险，女生不孕不育症状有哪些？大家不妨来看一下！ <br>#}
-{#                    </p>#}
-                   {{ article_data.data.0.content | safe}}
+<div class="bodyartical" ms-controller="bodyarical">
+    <div class="curposition">
+        当前位置： 百科知识 百科文章标题
+    </div>
+    <div class="arctiacalbody">
+        <div class="leftarcal">
+            <div class="title" style="font-size: 18px; font-weight: bold;">{{ article_data.data.0.title }}</div>
+            <div class="time" style="margin-bottom: 30px;">发布：{{ article_data.data.0.add_time }}</div>
+            <div class="content">
+                {{ article_data.data.0.content | safe }}
+            </div>
+            <div class="pretitle">上一篇：
+                <abbr>
+                    {% if s_article %}
+                        <a href="\baike/article?aid={{ s_article.id }}">{{ s_article.title }}</a>
+                    {% else %}
+                        <a href="###">没有了</a>
+                    {% endif %}
+                </abbr>
+            </div>
+            <div class="nexttitle">下一篇：
+                <abbr>
+                    {% if x_article %}
+                      <a href="\baike/article?aid={{ x_article.id }}">{{ x_article.title }}</a>
+                      {% else %}
+                      <a href="###">没有了</a>
+                    {% endif %}
+                </abbr>
+            </div>
 
-               </div>
-                <div class="pretitle">上一篇：<abbr><a href="\baike/article?aid={{ s_article.id }}">{{ s_article.title }}</a></abbr></div>
-                <div class="nexttitle">下一篇：<abbr><a href="\baike/article?aid={{ x_article.id }}">{{ x_article.title }}</a></div>
-
-                <div class="left_bottom_artctal">
-                    <h3><abbr>相关百科推荐</abbr></h3>
-                     <ul>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                          <li>
-                               <a href="">我是相关百科关键词</a>
-                          </li>
-                     </ul>
-                </div>
+            <div class="left_bottom_artctal">
+                <h3><abbr>相关百科推荐</abbr></h3>
+                <ul>
+                    <li ms-repeat="get_rm_baike">
+                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
+                    </li>
+                </ul>
+            </div>
 
 
-          </div>
-          <div class="rightpart">
-               <div class="suoyin"><img src="{% static 'img/suoyin.png' %}"></div>
-               <div class="suoyin">
-                    <a href=""><img src="{% static 'img/doctor_more.png' %}"></a>
-                    <a href=""><img src="{% static 'img/doctor_zixun.png' %}"></a>
-               </div>
+        </div>
+        <div class="rightpart">
+            <div class="suoyin"><img src="{% static 'img/suoyin.png' %}"></div>
+            <div class="suoyin">
+                <a href="###"><img src="{% static 'img/doctor_more.png' %}"></a>
+                <a href=""><img src="{% static 'img/doctor_zixun.png' %}"></a>
+            </div>
 
 
-
-                <div class="left_bottom_artctal_anather">
-                    <h3><abbr>相关热门推荐</abbr></h3>
-                     <ul>
-                          <li ms-repeat="get_tj_baike">
-                               <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
-                          </li>
-                     </ul>
-                </div>
-
+            <div class="left_bottom_artctal_anather">
+                <h3><abbr>相关热门推荐</abbr></h3>
+                <ul>
+                    <li ms-repeat="get_tj_baike">
+                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
+                    </li>
+                </ul>
+            </div>
 
 
-
-
-
-
-
-          </div>
-     </div>
+        </div>
+    </div>
 </div>
 
 <!-- 底部 -->
 {% include 'footer.html' %}
 <!-- 底部 -->
 <script>
-   var vmm = avalon.define({
-       $id:'bodyarical',
-       get_tj_baike:[],
-       get_rm_baike:[],
-       get_baike_tuijian:function (){
+    var vmm = avalon.define({
+        $id: 'bodyarical',
+        get_tj_baike: [],
+        get_rm_baike: [],
+        get_baike_tuijian: function () {
             var count = {
-                count:10
+                count: 10
             }
-             $.ajax({
-              type: 'post',
-              url: '/baike/api/articleread',//热门文章
-              data: count,
-              dataType: "json",
-              success: function(data) {
-                  console.log(data,121212222222);
-                  vmm.get_tj_baike=data.data
-              }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articleread',//热门文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmm.get_tj_baike = data.data
+                }
             });
-       },
-       get_rm_baike:function (){
+        },
+        get_rm_baike: function () {
             var count = {
-                count:10
+                count: 10
             }
-             $.ajax({
-              type: 'post',
-              url: '/baike/api/articlecommend',//推荐文章
-              data: count,
-              dataType: "json",
-              success: function(data) {
-                  console.log(data,3333333333);
-                  vmm.get_rm_baike=data.data
-              }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articlecommend',//推荐文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmm.get_rm_baike = data.data
+                }
             });
-       }
-   })
-   vmm.get_baike_tuijian();
-   vmm.get_rm_baike();
+        }
+    })
+    vmm.get_baike_tuijian();
+    vmm.get_rm_baike();
 </script>
 </body>
 </html>

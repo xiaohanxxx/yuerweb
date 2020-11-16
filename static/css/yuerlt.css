@@ -1321,15 +1321,6 @@ body a:hover {
     color: #333;
 }
 
-.infolis > span {
-    float: left;
-}
-
-.infolis > span:nth-child(even) {
-    margin: 0 20px;
-}
-
-
 /* topicHead */
 
 .topicHead {
@@ -1734,4 +1725,7 @@ div.plinput {
 }
 body .byjlmain .selectId>a{
     color: red !important;
+}
+body .tjjlSelect>a{
+    color: pink !important;
 }

@@ -20,6 +20,7 @@
 </head>
 
 <body>
+{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 主体部分 -->
 <section class="byjlmain wid clearfix" ms-controller="luntanbox" style='margin-top:30px;'>
@@ -95,30 +96,8 @@
                 <img src="{% static 'images/yuerlt/greenthree_1.png' %}" alt="">
             </a>
         </div>
-        <div class="tjjlq">
-            <div class="tjjl-h">
-                <h3>推荐交流圈</h3>
-            </div>
-            <ul class='tjjlbox' ms-repeat="navdata">
-                <li>
-                    <div>
-                        <a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>{el.name}</span>
-                        </a>
-                    </div>
-                    <div>749 个话题</div>
-                </li>
-                {#                <li>#}
-                {#                    <div>#}
-                {#                        <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">#}
-                {#                        <span>好孕妈妈交流圈</span>#}
-                {#                    </div>#}
-                {#                    <div>749 个话题</div>#}
-                {#                </li>#}
 
-            </ul>
-        </div>
+        {% include 'mod_tjjl.html' %}
         <div class="hot_bq">
             <div class="rgt_tit">
                 <h4><span>热点话题</span></h4>
@@ -150,10 +129,13 @@
                             <span>我是用户名</span>
                         </a>
                     </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
+                </div>
+                <div class="drinfo">
+                    <div class="imgbox">
+                        <a href="javascript:;">
+                            <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
+                            <span>我是用户名</span>
+                        </a>
                     </div>
                 </div>
                 <div class="drinfo">
@@ -163,11 +145,6 @@
                             <span>我是用户名</span>
                         </a>
                     </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
-                    </div>
                 </div>
                 <div class="drinfo">
                     <div class="imgbox">
@@ -175,24 +152,6 @@
                             <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
                             <span>我是用户名</span>
                         </a>
-                    </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
-                    </div>
-                </div>
-                <div class="drinfo">
-                    <div class="imgbox">
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
-                            <span>我是用户名</span>
-                        </a>
-                    </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
                     </div>
                 </div>
             </div>
@@ -236,19 +195,17 @@
 </script>
 <script type="text/javascript">
     (function () {
-        var api_yuming = 'http://127.0.0.1:8000';
+        var api_yuming = root_Domain;
         var inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');//初始化数据请求链接
         console.log(inturl, 999);
         var Mid = window.location.href.substr(window.location.href.indexOf('Mid='), 5).replace('Mid=', '');//对应主栏目id
         var selectTid = window.location.href.substr(window.location.href.indexOf('tid'), 6).replace('&', '').replace(/tid=/, '');
-        avalon.config({
-            interpolate: ["{", "}"]
-        })
         var count = 1;
         var vm_ltlist = avalon.define({
             $id: 'luntanbox',
             lisdata: [],
             Mid: 0,
+            qndrData:[],
             selectTid: 0,
             typenum: 0,
             navdata: [],
@@ -301,7 +258,6 @@
             });
         }
 
-
         function init(inturl) {
             $.ajax({
                 url: inturl,
@@ -324,7 +280,6 @@
             dataType: 'json',
             success: function (ajax) {
                 vm_ltlist.navdata = ajax.data;
-                console.log(ajax, 22222, vm_ltlist.navdata);
             }, error: function (error) {
                 console.log(error);
             }
