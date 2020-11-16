@@ -119,14 +119,14 @@ class Article(views.View):
             "id": artObj.id,
             "title": artObj.title,
             "content": artObj.content,
-            "publish_date": str(artObj.publish_date),
+            "publish_date": artObj.publish_date,
             "user": {"id": artObj.user.id, "username": artObj.user.username, "head": str(artObj.user.info.user_avatar)},
             "thumbup": artObj.thumup_articles.all().count()
         }
         resComment = [
             {
                 "comment": i.comment,
-                "publish_date": str(i.publish_date),
+                "publish_date": i.publish_date,
                 "user": {"id": i.user.id, "username": i.user.username},
                 "parent": i.parent_id
             } for i in commentData
