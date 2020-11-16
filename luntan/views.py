@@ -120,7 +120,7 @@ class Article(views.View):
             "title": artObj.title,
             "content": artObj.content,
             "publish_date": str(artObj.publish_date),
-            "user": {"id": artObj.user.id, "username": artObj.user.username},
+            "user": {"id": artObj.user.id, "username": artObj.user.username, "head": str(artObj.user.info.user_avatar)},
             "thumbup": artObj.thumup_articles.all().count()
         }
         resComment = [
@@ -228,7 +228,7 @@ class GoodMother(views.View):
                     "id": i.id,
                     "topicname": list(i.topics.all().values()),
                     "title": i.title,
-                    "user": {"id": i.user.id, "username": i.user.username, "head": i.user.info.user_avatar},
+                    "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
                     "commentnum": i.articles_comment.all().count()
                 } for i in curuent_page
             ]
