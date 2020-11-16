@@ -20,50 +20,35 @@
 </head>
 
 <body>
+{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 主体部分 -->
 <section class="byjlmain wid clearfix" ms-controller="luntanbox" style='margin-top:30px;'>
-    {Mid}
     <!-- 左侧部分 -->
     <div class="byjl_l fl">
         <div class="byjl_l_h">
             <span>当前位置：</span>
-            <a href="#">育儿论坛</a>
+            <a href="javascript:;">育儿论坛</a>
             <span>></span>
-            <a href="#">备孕交流圈</a>
+            <a href="javascript:;">{navdata[Mid-1].name}</a>
         </div>
         <div class="byjl_l_main clearfix">
-            <h3>备孕交流圈</h3>
-            <div class="main_nav">
-                <div><img src="{% static 'images/yuerlt/00.png' %}" alt=""><a href="">孕前期变为好不是不v</a></div>
-                <div><img src="{% static 'images/yuerlt/00.png' %}" alt=""><a href="">孕前期变为好不是不v</a></div>
-                <div><img src="{% static 'images/yuerlt/00.png' %}" alt=""><a href="">孕前期变为好不是不v</a></div>
+            <h3>{navdata[Mid-1].name}</h3>
+            <div class="main_nav" ms-repeat-as="navdata[Mid-1].child">
+                <div ms-attr-class="selectTid==as.id?'selectId':''"><img
+                        src="{% static 'images/yuerlt/user01.png' %}" alt=""><a
+                        ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a></div>
             </div>
-            {#                <div class="main_nav">#}
-            {#                    <div class="nav_tit">#}
-            {#                        <a href="#">备孕饮食</a>#}
-            {#                    </div>#}
-            {#                    <div class="nav_as">#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                        <a href="#">孕前期</a>#}
-            {#                    </div>#}
-            {#                </div>#}
+
         </div>
     </div>
     <!-- 文章评论主体 -->
     <div class="byjl_main fl">
         <div class="main_btn">
-            <div btnall='rand' class='btnSelect'>全部</div>
-            <div btndata='pubdata'>{ Mid }</div>
-            <div btnhot='hotinfo'>热门</div>
-            <div btntj='tjinfo'>推荐</div>
+            <div ms-click="goChange(0)" ms-attr-class='typenum==0?"btnSelect":""'>全部</div>
+            <div ms-click="goChange(1)" ms-attr-class='typenum==1?"btnSelect":""'>最新</div>
+            <div ms-click="goChange(2)" ms-attr-class='typenum==2?"btnSelect":""'>热门</div>
+            <div ms-click="goChange(3)" ms-attr-class='typenum==3?"btnSelect":""'>推荐</div>
         </div>
         <ul class="main_lis fl">
             <li ms-repeat-el="lisdata">
@@ -72,46 +57,23 @@
                 </div>
                 <div class="lis_info">
                     <p>
-                        <a href="/luntan/articles/?aid={el.id}">{el.title}</a>
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
                     </p>
                     <p class="desinfo">
-                        <a href="/luntan/articles/?aid={el.id}">{el.content}</a>
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.content}</a>
                     </p>
                     <div class="byjl_userinfo clearfix">
                         <div class="byjl_info_l fl">
                             <span>{el.user.username}</span>
-                            <span>{el.publish_data.replace(/\d+:.*?/,'')}</span>
+                            <span>{el.publish_date.replace(/\d+:.*/,'')}</span>
                         </div>
                         <div class="byjl_info_r fr">
                             <span><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span>
-                            <a href=""><span><i class='iconfont'>&#xe66a;</i>{el.commentnum}</span></a>
+                            <a href="javascript:;"><span><i class='iconfont'>&#xe66a;</i>{el.commentnum}</span></a>
                         </div>
                     </div>
                 </div>
             </li>
-            {#                <li>#}
-            {#                    <div class="imgbox">#}
-            {#                        <img src="{%static 'images/yuerlt/pexels.png'%}" alt="">#}
-            {#                    </div>#}
-            {#                    <div class="lis_info">#}
-            {#                        <p>#}
-            {#                            <a href="#">我是文章标题只显示一行点击跳转至文章详情鼠标悬浮悬浮显示当前色</a>#}
-            {#                        </p>#}
-            {#                        <p class="desinfo">#}
-            {#                            <a href="#">我是文章预览文字最多显示两行我是文章预览文字最多显示两行我是文章预我是文章预览文字最我是文章预览文字最多显示两行我是文章预览文字最多显示两行我是文章预我是文章预览文字最多显示两行我是文章预览文字最多显示两行我是文章预多显示两行我是文章预览文字最多显示两行我是文章预览文字最多显</a>#}
-            {#                        </p>#}
-            {#                        <div class="byjl_userinfo clearfix">#}
-            {#                            <div class="byjl_info_l fl">#}
-            {#                                <span>我是用户名</span>#}
-            {#                                <span>2020.10.31</span>#}
-            {#                            </div>#}
-            {#                            <div class="byjl_info_r fr">#}
-            {#                                <span><i class='iconfont'>&#xe64c;</i>8808</span>#}
-            {#                                <a href=""><span><i class='iconfont'>&#xe66a;</i>8808</span></a>#}
-            {#                            </div>#}
-            {#                        </div>#}
-            {#                    </div>#}
-            {#                </li>#}
         </ul>
         <!-- 分页 -->
         <div id="test1"></div>
@@ -126,67 +88,27 @@
                 <span><i class='iconfont'>&#xe877;</i>7496 位医生回复</span>
             </p>
             <div class="postBtn">
-                <a href="#">发布新帖</a>
+                <a href="javascript:;">发布新帖</a>
             </div>
         </div>
         <div class="ad">
-            <a href="#">
+            <a href="javascript:;">
                 <img src="{% static 'images/yuerlt/greenthree_1.png' %}" alt="">
             </a>
         </div>
-        <div class="tjjlq">
-            <div class="tjjl-h">
-                <h3>推荐交流圈</h3>
-            </div>
-            <ul class='tjjlbox'>
-                <li>
-                    <div>
-                        <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                        <span>好孕妈妈交流圈</span>
-                    </div>
-                    <div>749 个话题</div>
-                </li>
-                <li>
-                    <div>
-                        <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                        <span>好孕妈妈交流圈</span>
-                    </div>
-                    <div>749 个话题</div>
-                </li>
-                <li>
-                    <div>
-                        <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                        <span>好孕妈妈交流圈</span>
-                    </div>
-                    <div>749 个话题</div>
-                </li>
-                <li>
-                    <div>
-                        <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                        <span>好孕妈妈交流圈</span>
-                    </div>
-                    <div>749 个话题</div>
-                </li>
-                <li>
-                    <div>
-                        <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                        <span>好孕妈妈交流圈</span>
-                    </div>
-                    <div>749 个话题</div>
-                </li>
-            </ul>
-        </div>
+
+        {% include 'mod_tjjl.html' %}
         <div class="hot_bq">
             <div class="rgt_tit">
                 <h4><span>热点话题</span></h4>
             </div>
             <ul class='hot_bqbox'>
-                <li><a href="#">试管婴儿</a></li>
-                <li><a href="#">试管婴儿</a></li>
-                <li><a href="#">试管婴儿</a></li>
-                <li><a href="#">试管婴儿而非个人各</a></li>
-                <li><a href="#">试管婴儿</a></li>
-                <li><a href="#">试管婴儿</a></li>
+                <li><a href="javascript:;">试管婴儿</a></li>
+                <li><a href="javascript:;">试管婴儿</a></li>
+                <li><a href="javascript:;">试管婴儿</a></li>
+                <li><a href="javascript:;">试管婴儿而非个人各</a></li>
+                <li><a href="javascript:;">试管婴儿</a></li>
+                <li><a href="javascript:;">试管婴儿</a></li>
             </ul>
         </div>
     </div>
@@ -202,54 +124,34 @@
             <div class="swiper-slide">
                 <div class="drinfo">
                     <div class="imgbox">
-                        <a href="#">
+                        <a href="javascript:;">
                             <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
                             <span>我是用户名</span>
                         </a>
-                    </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
                     </div>
                 </div>
                 <div class="drinfo">
                     <div class="imgbox">
-                        <a href="#">
+                        <a href="javascript:;">
                             <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
                             <span>我是用户名</span>
                         </a>
-                    </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
                     </div>
                 </div>
                 <div class="drinfo">
                     <div class="imgbox">
-                        <a href="#">
+                        <a href="javascript:;">
                             <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
                             <span>我是用户名</span>
                         </a>
-                    </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
                     </div>
                 </div>
                 <div class="drinfo">
                     <div class="imgbox">
-                        <a href="#">
+                        <a href="javascript:;">
                             <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
                             <span>我是用户名</span>
                         </a>
-                    </div>
-                    <div class="infolis">
-                        <span><a href='#'>发帖 50</a></span>
-                        <span><a href='#'>回复 50</a></span>
-                        <span><a href='#'>分享 50</a></span>
                     </div>
                 </div>
             </div>
@@ -293,10 +195,47 @@
 </script>
 <script type="text/javascript">
     (function () {
-        avalon.config({
-            interpolate: ["{", "}"]
-        })
+        var api_yuming = root_Domain;
+        var inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');//初始化数据请求链接
+        console.log(inturl, 999);
+        var Mid = window.location.href.substr(window.location.href.indexOf('Mid='), 5).replace('Mid=', '');//对应主栏目id
+        var selectTid = window.location.href.substr(window.location.href.indexOf('tid'), 6).replace('&', '').replace(/tid=/, '');
         var count = 1;
+        var vm_ltlist = avalon.define({
+            $id: 'luntanbox',
+            lisdata: [],
+            Mid: 0,
+            qndrData:[],
+            selectTid: 0,
+            typenum: 0,
+            navdata: [],
+            count: 0,
+            goChange(type_num) {
+                if (type_num == 0) {
+                    inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');
+                } else {
+                    inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '') + '&type=' + type_num;
+                }
+                vm_ltlist.typenum = type_num;
+                init(inturl);
+            }
+        });
+        vm_ltlist.selectTid = selectTid;
+        vm_ltlist.Mid = Mid;
+
+        function pageAjax(current) {
+            $.ajax({
+                url: inturl + '&page=' + current,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    var _this = vm_ltlist;
+                    _this.lisdata = ajax.data.curuent_page;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
 
         function render(count, limit, btnnum) {//count总条数，limit限定条数，btnnum按钮显示条数
             layui.use('laypage', function () {// 分页
@@ -310,44 +249,37 @@
                     groups: btnnum,
                     prev: '上一页',
                     next: '下一页',
-                    layout: ['prev', 'page', 'next']
+                    layout: ['prev', 'page', 'next'],
+                    jump: function (obj, first) {
+                        var curr = obj.curr;
+                        pageAjax(curr);
+                    }
                 });
             });
         }
 
-        var api_yuming = 'http://127.0.0.1:8000';
-        var inturl = window.location.href.replace(/&all=1&Mid=\d/, '');//初始化数据请求链接
-        var Mid = window.location.href.replace(/.*?&Mid=/, '');//对应主栏目id
-        var vm_ltlist = avalon.define({
-            $id: 'luntanbox',
-            lisdata: [],
-            Mid: 0,
-            navdata: [],
-            mainnav: [],
-            count: 0,
-        })
-        vm_ltlist.Mid = Mid;
-        $.ajax({
-            url: inturl,
-            type: 'get',
-            dataType: 'json',
-            success: function (ajax) {
-                var _this = vm_ltlist;
-                _this.lisdata = ajax.data.curuent_page;
-                _this.count = ajax.data.maxnum;
-                console.log(vm_ltlist.lisdata, 2);
-                render(vm_ltlist.count, 10, 5);
-            }, error: function (error) {
-                console.log(error);
-            }
-        })
+        function init(inturl) {
+            $.ajax({
+                url: inturl,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    var _this = vm_ltlist;
+                    _this.lisdata = ajax.data.curuent_page;
+                    _this.count = ajax.data.maxnum;
+                    render(vm_ltlist.count, 10, 5);
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+        };
+        init(inturl);//初始化
         $.ajax({
             url: api_yuming + '/luntan/areas/',
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
                 vm_ltlist.navdata = ajax.data;
-                console.log(ajax, 22222, vm_ltlist.navdata);
             }, error: function (error) {
                 console.log(error);
             }
