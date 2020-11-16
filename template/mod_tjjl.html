@@ -1,0 +1,39 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="tjjlq" ms-controller="model_tjjl">
+    <div class="tjjl-h">
+        <h3>推荐交流圈</h3>
+    </div>
+    <ul class='tjjlbox' ms-repeat="navdata">
+        <li>
+            <div ms-attr-class="Mid==el.id?'tjjlSelect':''">
+                <a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">
+                    <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
+                    <span>{el.name}</span>
+                </a>
+            </div>
+            <div>749 个话题</div>
+        </li>
+    </ul>
+</div>
+<script>
+    var vm_tjjl = avalon.define({
+        $id: 'model_tjjl',
+        navdata: [],
+        Mid:0,
+    })
+    var localhref = window.location.href;
+    vm_tjjl.Mid = localhref.substr(localhref.indexOf('Mid'),5).replace('Mid=','');
+
+    $.ajax({
+        url: root_Domain + '/luntan/areas/',
+        type: 'get',
+        dataType: 'json',
+        success: function (ajax) {
+            vm_tjjl.navdata = ajax.data;
+            console.log(vm_tjjl.navdata,ajax.data,1111111111)
+        }, error: function (error) {
+            console.log(error);
+        }
+    })
+</script>
