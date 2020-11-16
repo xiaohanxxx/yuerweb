@@ -184,7 +184,7 @@ class HotAritcles(views.View):
                 "update_date": str(i.update_date),
                 "user": {
                     "username": i.user.username,
-                    "head": i.user.info.user_avatar,
+                    "head": str(i.user.info.user_avatar),
                 }
             }
 
