@@ -21,6 +21,7 @@
 </head>
 
 <body id='body' ms-controller='yuerltctr'>
+{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 育儿论坛头部板块 -->
 <section id="yuerhead" class='wid yuerhead'>
@@ -281,10 +282,7 @@
 <script type="text/javascript">
     {#数据请求渲染相关#}
     (function () {
-        avalon.config({
-            interpolate: ["{", "}"]
-        });
-        var wzyuming = 'http://127.0.0.1:8000';
+        var wzyuming = root_Domain;
         var api_mainmenu = wzyuming+'/luntan/areas/',
             api_articlelist = wzyuming+'/luntan/articlelist/?tid=',
             api_hotarticles = wzyuming+'/luntan/hotarticles/',
