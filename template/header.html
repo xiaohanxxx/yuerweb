@@ -1,5 +1,6 @@
  {% load static %}
-<div class="header" >
+<body  ms-controller="bodycont">
+<div class="header" ms-controller="headercont">
        <div class="headerNav">
          <div class="logos"><a href="/"><img src="{% static 'img/logo.jpg' %}"></a></div>
          <div class="headerNav-ul">
@@ -42,11 +43,11 @@
             <li>
               <a href="/baike" class="acolor">百科知识</a>
               <div class="xialabox" style="display: none;">
-                <p><a href="">备孕</a></p>
-                <p><a href="">怀孕</a></p>
-                <p><a href="">育儿</a></p>
-                <p><a href="">试管婴儿</a></p>
-                <p><a href="">不孕不育</a></p>
+                <p><a href="/baike/baike_list?types=3" >备孕</a></p>
+                <p><a href="/baike/baike_list?types=4">怀孕</a></p>
+                <p><a href="/baike/baike_list?types=5">育儿</a></p>
+                <p><a href="/baike/baike_list?types=1">试管婴儿</a></p>
+                <p><a href="/baike/baike_list?types=2">不孕不育</a></p>
               </div>
             </li>
           </ul>
@@ -54,7 +55,7 @@
          <div class="denglu">
           <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
                     <div class="yiyuansearch">
-                          <div  ms-click="showxiala">{names}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
+                          <div  ms-click="showxiala">{namees}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
                           <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
                               <li ms-click="changeSearch('医院')">医院</li>
                               <li ms-click="changeSearch('医生')">医生</li>
@@ -80,3 +81,25 @@
        </div>
      </div>
 
+<script>
+     avalon.config({
+        interpolate: ["{", "}"]
+     });
+    var vmm = avalon.define({
+        $id:'headercont',
+        namees:'医院',
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+        changeSearch:function(els){
+           vmm.namees = '';
+           vmm.namees = els;
+           $(this).parent().addClass('hites');
+        }
+    })
+</script>
