@@ -125,6 +125,7 @@ class Article(views.View):
         }
         resComment = [
             {
+                "id": i.id,
                 "comment": i.comment,
                 "publish_date": i.publish_date,
                 "user": {"id": i.user.id, "username": i.user.username},
