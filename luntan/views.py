@@ -184,6 +184,7 @@ class HotAritcles(views.View):
                 "update_date": str(i.update_date),
                 "user": {
                     "username": i.user.username,
+                    "head": i.user.info.user_avatar,
                 }
             }
 
@@ -227,8 +228,7 @@ class GoodMother(views.View):
                     "id": i.id,
                     "topicname": list(i.topics.all().values()),
                     "title": i.title,
-                    # TODO 用户头像先给与一个默认值，待后续添加真实值
-                    "user": {"id": i.user.id, "username": i.user.username, "head": "media/xxx.png"},
+                    "user": {"id": i.user.id, "username": i.user.username, "head": i.user.info.user_avatar},
                     "commentnum": i.articles_comment.all().count()
                 } for i in curuent_page
             ]
