@@ -13,13 +13,17 @@
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
     <script src="{% static 'js/uitls/tool.js' %}"></script>
     <title>话题文章</title>
 </head>
 <body>
-    <header style='width: 100%;height:150px;background-color:skyblue;position:absolute;top:0;'></header>
+{#    <header style='width: 100%;height:150px;background-color:skyblue;position:absolute;top:0;'></header>#}
+{% include 'header.html' %}
     <!-- 话题头部 -->
-    <section class="topicHead wid" style='margin-top:150px;'>
+    <section class="topicHead wid" style=''>
         <div class="currdis clearfix">
             <div class="dqwz">当前位置：</div>
             <div class="lmmbx">
@@ -304,7 +308,8 @@
             </div>
         </div>
     </section>
-    <footer style='width: 100%;height:388px;background-color:skyblue;'></footer>
+{#    <footer style='width: 100%;height:388px;background-color:skyblue;'></footer>#}
+{% include 'footer.html' %}
 </body>
 
 </html>
