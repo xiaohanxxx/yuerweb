@@ -1,9 +1,12 @@
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
+from webmanage import models
 
 def index(request):
+    # 返回友情链接
+    friend_link = [i for i in models.FriendLink.objects.all().order_by('idx').values('link_name','link','idx')]
+    return render(request,'index.html',{"friendlink":friend_link})
 
-    return render(request,'index.html')
 
 def login(request):
     if list(request.session.values()) == []:
