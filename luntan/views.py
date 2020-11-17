@@ -144,7 +144,7 @@ class Article(views.View):
 # 评论
 class Comment(views.View):
     def get(self, request, *args, **kwargs):
-        articleId = request.GET.get('aid')
+        articleId = request.GET.get('articles_id')
         artObj = get_object_or_404(luntanmodel.Articles, pk=articleId)
         commentData = artObj.articles_comment.all()
         resComment = [
