@@ -495,20 +495,20 @@
             vmw.getDatas();
         },
         getDatas:function (){
+            var datas = {
+                worldarea:vmw.incurre == 1 ? '中国大陆' : '港澳台',
+                privincearea:vmw.v,
+                cityarea:vmw.chengshi,
+                hospitallv:vmw.dengjis,
+                hospitaltype: vmw.jishus
+            }
             // var datas = {
-            //     worldarea:vmw.incurre == 1 ? '中国大陆' : '港澳台',
-            //     privincearea:vmw.v,
-            //     cityarea:vmw.chengshi,
+            //     worldarea:5,
+            //     privincearea:13,
+            //     cityarea:7,
             //     hospitallv:vmw.dengjis,
             //     hospitaltype: vmw.jishus
             // }
-            var datas = {
-                worldarea:5,
-                privincearea:13,
-                cityarea:7,
-                hospitallv:,
-                hospitaltype: vmw.jishus
-            }
 
             $.ajax({
                 type: 'get',
