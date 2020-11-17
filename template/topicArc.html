@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-{{ data }}11111111111111111111111111111111111111111111111111111111111111111111111111111111111111
-{{ data.comment }}
 <head>
     <meta charset="UTF-8">
     {% load static %}
@@ -18,6 +16,7 @@
     <title>{{ data.title }}</title>
 </head>
 <body>
+{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 话题头部 -->
 <section class="topicHead wid" style='margin-top:30px;' ms-controller="topicArc">
@@ -84,27 +83,42 @@
                 </div>
             </div>
             <div class="pl_info">
-                {% for item in data.comment %}
-                    {% if item.parent == None %}
+
                         <div class="pl clearfix">
                             <div class="tx">
                                 <a href="javascript:;">
                                     {# 个人中心的链接地址要填到时候#}
-                                    <img src="{{ item.user.head }}" alt="">
+                                    <img src="" alt="">
                                 </a>
                             </div>
-                            <p class='plbg'>{{ item.user.username }}</p>
+                            <p class='plbg'>111111</p>
                             <ul class="plul">
                                 <p>
                                     {{ item.comment }}
                                 </p>
                                 <div class="date clearfix">
-                                    <span>{{ item.publish_date.date }}</span>
+                                    <span>131313</span>
                                     <span btn='reply'>回复</span>
                                 </div>
-                            {{ else}}
+                                {{ else }}
                                 <ul class='hfplbox'>
-                                    <div class="pl">
+                                    <div class="pl clearfix">
+                                        <p class='plbg plbg2'>
+                                            <span class='afuser'>用户名</span>
+                                            <span>回复了</span>
+                                            <span class='befuser'>用户名</span>
+                                        </p>
+                                        <ul class='plul'>
+                                            <p>我是用户评论文字文案</p>
+                                            <div class="date">
+                                                <span>2020.10.31</span>
+                                                <span btn='reply'>回复</span>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </ul>
+                                <ul class='hfplbox'>
+                                    <div class="pl clearfix">
                                         <p class='plbg plbg2'>
                                             <span class='afuser'>用户名</span>
                                             <span>回复了</span>
@@ -131,16 +145,10 @@
                                     <span id="plintBtn" class='fr'>发布</span>
                                 </div>
                             </ul>
-
                         </div>
-                    {% endif %}
-                {% endfor %}
             </div>
         </div>
     </div>
-
-    {#    {{ data.comment }}33333333333333333#}
-
 
     </div>
     <div class="topic_r fl">
@@ -275,11 +283,19 @@
         </div>
     </div>
 </section>
-<footer style='width: 100%;height:388px;background-color:skyblue;'></footer>
+{% include 'footer.html' %}
 <script>
     var vm_topicArc = avalon.define({
         $id: 'topicArc',
-
+        comment_one:[],
+        comment_two:[],
+        articles_id:0,//帖子id
+        parent_id:0,//回帖对应的父
+    });
+    vm_topicArc.articles_id = window.location.href.replace(/.*aid=/,'');
+    console.log(vm_topicArc.articles_id,222222)
+    $.ajax({
+        url:root_Domain +'/luntan/comment/'
     })
 </script>
 </body>

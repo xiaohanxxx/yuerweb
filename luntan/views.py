@@ -151,7 +151,7 @@ class Comment(views.View):
             {
                 "id": i.id,
                 "comment": i.comment,
-                "publish_date": i.publish_date,
+                "publish_date": str(i.publish_date),
                 "user": {"id": i.user.id, "username": i.user.username, "head": str(artObj.user.info.user_avatar)},
                 "parent": i.parent_id
             } for i in commentData

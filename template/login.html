@@ -1,87 +1,118 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>首页</title>
-	{% load static %}
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <title>首页</title>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name=renderer content=webkit>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
-	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
-	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
-     <style type="text/css">
-      body{ background: #029EE9; }
-          .swiper-container{
-               width: 100%;
-               min-height: 300px;
-               background: red;
-          }
-         .swiper-slide {
-                text-align: center;
-                font-size: 18px;
-                background: #fff;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                -webkit-align-items: center;
-                align-items: center;
-          }
-          .swiper-slide{ width: 1200px; height: 347px; }
-     </style>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+    <style type="text/css">
+        body {
+            background: #029EE9;
+        }
+
+        .swiper-container {
+            width: 100%;
+            min-height: 300px;
+            background: red;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .swiper-slide {
+            width: 1200px;
+            height: 347px;
+        }
+    </style>
 
 </head>
 
-<body  ms-controller="bodycont">
-  {% include 'header.html' %}
-   
-    <div class="denglupage">
-       
-       <div class="dengluandzc">
-            <p class="aaa" ms-class="currese:a==1" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;" ms-click="changedlorzc(1)">登录</p>
-            <p class="aaa" ms-class="currese:a==2" style =" border-top-right-radius: 3px; border-bottom-right-radius: 3px;" href=""  ms-click="changedlorzc(2)">注册</p>
-       </div>
-           
-       <div class="denglubox" ms-if="a==1">
-          <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name="" ms-duplex="loginData.username" placeholder="请输入用户名"></div>
-          <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="loginData.password" name="" placeholder="请输入密码"></div>
-          <div class="forgetmima" style="float: left; width: 592px; text-align: right; "><a style="margin-right: 25px;" href="">忘记密码</a></div>
-          <div class="denlguanniu">
-                <p style="width: 492px; height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;" ms-click="loginFun">登录</p>
-          </div>
-          <div class="weixinorqq">
-              <a href="##"><img src="{% static 'img/weixin.png' %}"></a>
-              <a href="##"><img src="{% static 'img/qq.png' %}"></a>
-          </div>
-       </div>
+<body ms-controller="bodycont">
+{% include 'header.html' %}
 
-        <div class="denglubox1" ms-if="a==2">
-           <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="text" name="" ms-duplex="zhuceDatas.username" placeholder="请输入用户名"></div>
-           <div class="yonghu">手机<i class="layui-icon">&#xe678;</i><input type=""  ms-duplex="zhuceDatas.phone" name="" placeholder="请输入手机号"></div>
-           <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password"  ms-duplex="zhuceDatas.password" name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
-           <div class="yonghu" style="margin-left: 25px;"><input type="" name=""  ms-duplex="zhuceDatas.verification_Code" placeholder="请输入验证码" style="width: 300px;"><abbr style="cursor: pointer;"><input  ms-click="getCode" id="sendsms" type="button" name="" ms-attr-value="getcodewenzi"></abbr></div>
+<div class="denglupage">
 
-           <div class="denlguanniu1">
-                <p style="width: 492px; height: 62px; line-height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;" ms-click="register">注册</p>
-                <p style="margin-top: 25px; padding-left: 25px; width: 492px;"><label><input type="checkbox" name="" title="用户协议" style="margin-right: 15px;">我同意  <abbr style="color: #ff44ad;">用户协议</abbr></label>      <a href="" style="float: right; color: #ff44ad;" ms-click="rollbacklogin">已有账号，返回登录</a></p>
-          </div>
-        </div> 
-
-
-
+    <div class="dengluandzc">
+        <p class="aaa" ms-class="currese:a==1" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;"
+           ms-click="changedlorzc(1)">登录</p>
+        <p class="aaa" ms-class="currese:a==2" style=" border-top-right-radius: 3px; border-bottom-right-radius: 3px;"
+           href="" ms-click="changedlorzc(2)">注册</p>
     </div>
-  {% include 'footer.html' %}
+
+    <div class="denglubox" ms-if="a==1">
+        <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name=""
+                                                                                   ms-duplex="loginData.username"
+                                                                                   placeholder="请输入用户名"></div>
+        <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="loginData.password"
+                                                                     name="" placeholder="请输入密码"></div>
+        <div class="forgetmima" style="float: left; width: 592px; text-align: right; "><a style="margin-right: 25px;"
+                                                                                          href="">忘记密码</a></div>
+        <div class="denlguanniu">
+            <p style="width: 492px; height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;"
+               ms-click="loginFun">登录</p>
+        </div>
+        <div class="weixinorqq">
+            <a href="##"><img src="{% static 'img/weixin.png' %}"></a>
+            <a href="##"><img src="{% static 'img/qq.png' %}"></a>
+        </div>
+    </div>
+
+    <div class="denglubox1" ms-if="a==2">
+        <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="text" name=""
+                                                                                   ms-duplex="zhuceDatas.username"
+                                                                                   placeholder="请输入用户名"></div>
+        <div class="yonghu">手机<i class="layui-icon">&#xe678;</i><input type="" ms-duplex="zhuceDatas.phone" name=""
+                                                                       placeholder="请输入手机号"></div>
+        <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="zhuceDatas.password"
+                                                                     name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
+        <div class="yonghu" style="margin-left: 25px;"><input type="" name="" ms-duplex="zhuceDatas.verification_Code"
+                                                              placeholder="请输入验证码" style="width: 300px;"><abbr
+                style="cursor: pointer;"><input ms-click="getCode" id="sendsms" type="button" name=""
+                                                ms-attr-value="getcodewenzi"></abbr></div>
+
+        <div class="denlguanniu1">
+            <p style="width: 492px; height: 62px; line-height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;"
+               ms-click="register">注册</p>
+            <p style="margin-top: 25px; padding-left: 25px; width: 492px;"><label><input type="checkbox" name=""
+                                                                                         title="用户协议"
+                                                                                         style="margin-right: 15px;">我同意
+                <abbr style="color: #ff44ad;">用户协议</abbr></label> <a href="" style="float: right; color: #ff44ad;"
+                                                                     ms-click="rollbacklogin">已有账号，返回登录</a></p>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+<script>
+    if (layui) {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+        });
+    }
+</script>
 </body>
 </html>

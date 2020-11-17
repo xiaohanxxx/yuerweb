@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'shiguanbaby',
     'taolun',
     'baike',
+    'webmanage', # 网站管理
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
