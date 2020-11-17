@@ -188,7 +188,6 @@
               dataType: "json",
               // timeout: 10000,
               success: function(data) {
-                  console.log(data,123);
                   if(data.code == 200){
                          layer.msg('注册成功，即将跳转到登录页面');
                          setTimeout(function(){
@@ -252,7 +251,6 @@
             if (vm.erjidatalist.length>4){
                 vm.erjidatalist = vm.erjidatalist.splice(0,4);
             }
-            // console.log(vm.erjidatalist,11111111);
         },
         getMorelist:function(){
              vm.erjidatalist = vm.datasgyes[vm.indexs].children;
@@ -290,7 +288,6 @@
                       vm.twotopNews.push(vm.newartical[1]);
                  }
                  // vm.newartical = vm.newartical.splice(2,14);
-                 
               }
             });
         },
@@ -335,7 +332,7 @@
              }
             var phone = {
                phone:vm.zhuceDatas.phone
-            }
+            } 
              $.ajax({
               type: 'post',
               url: '/users/smsvif',

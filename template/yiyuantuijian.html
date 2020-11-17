@@ -477,13 +477,11 @@
         getDengji:function(data,index){
             vmw.dengjis = data;
             vmw.g = index;
-            // console.log(vmw.g,'ggg');
             vmw.getDatas();
         },
          getJishu:function(data,index){
             vmw.jishus = data;
             vmw.f = index;
-            // console.log(vmw.f,'fff');
            vmw.getDatas();
         },
         getAllshengfen:function (data){
@@ -497,13 +495,31 @@
             vmw.getDatas();
         },
         getDatas:function (){
+            // var datas = {
+            //     worldarea:vmw.incurre == 1 ? '中国大陆' : '港澳台',
+            //     privincearea:vmw.v,
+            //     cityarea:vmw.chengshi,
+            //     hospitallv:vmw.dengjis,
+            //     hospitaltype: vmw.jishus
+            // }
             var datas = {
-                diqu:vmw.incurre == 1 ? '中国大陆' : '港澳台',
-                shengfen:vmw.v,
-                chengshi:vmw.chengshi,
-                dengji:vmw.dengjis,
-                jishu: vmw.jishus
+                worldarea:5,
+                privincearea:13,
+                cityarea:7,
+                hospitallv:,
+                hospitaltype: vmw.jishus
             }
+
+            $.ajax({
+                type: 'get',
+                url: '/hospital/areas/',
+                data: {},
+                dataType: "json",
+                // timeout: 10000,
+                success: function (data) {
+                    console.log(data,999966666666);
+                }
+            });
             console.log(datas,'发送请求');
 
         },
