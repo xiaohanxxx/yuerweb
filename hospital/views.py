@@ -32,6 +32,22 @@ class HospitalList(views.View):
         return HttpResponse(json.dumps({"data": resData}))
 
 
+# 获取医院等级
+class HospitalLv(views.View):
+    def get(self, request, *args, **kwargs):
+        rData = models.HospitalLv.objects.all()
+        resData = [{"id": i.id, "name": i.name} for i in rData]
+        return HttpResponse(json.dumps({"data": resData}))
+
+
+# 医院方向
+class HospitalType(views.View):
+    def get(self, request, *args, **kwargs):
+        rData = models.HospitalType.objects.all()
+        resData = [{"id": i.id, "name": i.name} for i in rData]
+        return HttpResponse(json.dumps({"data": resData}))
+
+
 # 获取指定医院
 class Hospital(views.View):
     def get(self, request, *args, **kwargs):
