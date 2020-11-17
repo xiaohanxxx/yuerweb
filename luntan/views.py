@@ -112,8 +112,6 @@ class Article(views.View):
         artObj = get_object_or_404(luntanmodel.Articles, pk=articleId)
         # 阅读计数
         luntanmodel.Articles.objects.update(read=F("read") + 1)
-        # 获取帖子评论信息
-        commentData = artObj.articles_comment.all()
         # 获取帖子发布人信息
         artData = {
             "id": artObj.id,
@@ -123,18 +121,7 @@ class Article(views.View):
             "user": {"id": artObj.user.id, "username": artObj.user.username, "head": str(artObj.user.info.user_avatar)},
             "thumbup": artObj.thumup_articles.all().count()
         }
-        resComment = [
-            {
-                "id": i.id,
-                "comment": i.comment,
-                "publish_date": i.publish_date,
-                "user": {"id": i.user.id, "username": i.user.username, "head": str(artObj.user.info.user_avatar)},
-                "parent": i.parent_id
-            } for i in commentData
-        ]
 
-        # resComment = commentData
-        artData['comment'] = resComment
         return render(request, 'topicArc.html', {"data": artData})
 
     def post(self, request, *args, **kwargs):
@@ -157,7 +144,19 @@ class Article(views.View):
 # 评论
 class Comment(views.View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse("ok!!!!!!")
+        articleId = request.GET.get('articles_id')
+        artObj = get_object_or_404(luntanmodel.Articles, pk=articleId)
+        commentData = artObj.articles_comment.all()
+        resComment = [
+            {
+                "id": i.id,
+                "comment": i.comment,
+                "publish_date": i.publish_date,
+                "user": {"id": i.user.id, "username": i.user.username, "head": str(artObj.user.info.user_avatar)},
+                "parent": i.parent_id
+            } for i in commentData
+        ]
+        return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
         user_id = request.session.get("user_id", 2)
