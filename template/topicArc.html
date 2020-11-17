@@ -14,18 +14,18 @@
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
     <script src="{% static 'js/uitls/tool.js' %}"></script>
-    <title>话题文章</title>
+    <title>{{ data.title }}</title>
 </head>
 <body>
     {% include 'header.html' %}
     <!-- 话题头部 -->
-    <section class="topicHead wid" style='margin-top:30px;'>
+    <section class="topicHead wid" style='margin-top:30px;' ms-controller="topicArc">
         <div class="currdis clearfix">
             <div class="dqwz">当前位置：</div>
             <div class="lmmbx">
                 <a href="javascript:;">育儿论坛</a>
                 <span>></span>
-                <a href="javascript:;">我是文章标题</a>
+                <a href="javascript:;">{{ data.title }}</a>
             </div>
         </div>
         <div class="imgbox">
@@ -36,7 +36,7 @@
     <section class="topicMain wid clearfix">
         <div class="topic_l fl">
             <div class='clearfix'>
-                <p class="topictit">我是话题文案</p>
+{#                <p class="topictit">{{ data.title }}</p>#}
                 <div class="userInfo">
                     <div class="Mtx">
                         <a href="javascript:;">
@@ -44,25 +44,23 @@
                         </a>
                     </div>
                     <div class="txInfo">
-                        <span>我是用户名</span>
-                        <span>2020.10.31</span>
+                        <span>{{ data.user.username }}</span>
+                        <span>{{ data.publish_date.date }}</span>
                     </div>
                     <div class="isFollow" data-isFollow='flase'>
                         关注作者
                     </div>
                 </div>
-                <p class='title'>我是文章标题</p>
+
+                <p class='title'>{{ data.title }}</p>
                 <div class="allInfo">
                     <p>
-                        对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，
-                        对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，
-                        对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，
+                        {{ data.content }}
                     </p>
                 </div>
                 <div class="plbox fr">
                     <div><span>评论</span><i>|</i><span>88</span></div>
                     <div><span>点赞</span><i>|</i><span>88</span></div>
-                    <div><span>分享</span></div>
                 </div>
             </div>
             <div class="plInpbox clearfix">
@@ -131,50 +129,15 @@
                 </div>
             </div>
         </div>
+        {{ data.comment }}
+        {% for i in data.comment %}
+            {{ i }}
+        {% endfor %}
+
         </div>
         <div class="topic_r fl">
-            <div class="tjjlq">
-                <div class="tjjl-h">
-                    <h3>推荐交流圈</h3>
-                </div>
-                <ul class='tjjlbox'>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                </ul>
-            </div>
+            {% include 'mod_tjjl.html' %}
+
             <div class="hotTopic">
                 <div class="topic_Head">
                     <h6>热门话题</h6>
@@ -305,6 +268,12 @@
         </div>
     </section>
     <footer style='width: 100%;height:388px;background-color:skyblue;'></footer>
+    <script>
+        var vm_topicArc = avalon.define({
+            $id:'topicArc',
+
+        })
+    </script>
 </body>
 
 </html>
