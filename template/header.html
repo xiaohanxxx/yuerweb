@@ -1,373 +1,105 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
-<script src="{% static 'layui/layui.all.js' %}"></script>
-<div class="header" ms-controller="bodycont">
-    <div class="headerNav">
-        <div class="logos"><a href="/"><img src="{% static 'img/logo.jpg' %}"></a></div>
-        <div class="headerNav-ul">
-            <ul>
-                <li>
-                    <a href="/" class="nava">首页</a>
-                </li>
-                <li>
-                    <a href="" class="acolor">试管婴儿</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="">海外试管</a></p>
-                        <p><a href="">国内试管</a></p>
+ {% load static %}
+<body  ms-controller="bodycont">
+<div class="header" ms-controller="headercont">
+       <div class="headerNav">
+         <div class="logos"><a href="/"><img src="{% static 'img/logo.jpg' %}"></a></div>
+         <div class="headerNav-ul">
+          <ul>
+            <li>
+              <a href="/" class="nava">首页</a>
+            </li>
+            <li>
+              <a href="" class="acolor">试管婴儿</a>
+              <div class="xialabox"  style="display: none;">
+                <p><a href="">海外试管</a></p>
+                <p><a href="">国内试管</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="/luntan" class="acolor">育儿论坛</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">备孕交流圈</a></p>
+                <p><a href="">妈妈交流圈</a></p>
+                <p><a href="">试管婴儿交流圈</a></p>
+                <p><a href="">难孕交流圈</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="" class="acolor">互助问答</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">试管婴儿</a></p>
+                <p><a href="">不孕不育</a></p>
+                <p><a href="">备孕</a></p>
+                <p><a href="">怀孕</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="/hospital" class="acolor">医院推荐</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="">海外医院</a></p>
+                <p><a href="">国内医院</a></p>
+              </div>
+            </li>
+            <li>
+              <a href="/baike" class="acolor">百科知识</a>
+              <div class="xialabox" style="display: none;">
+                <p><a href="/baike/baike_list?types=3" >备孕</a></p>
+                <p><a href="/baike/baike_list?types=4">怀孕</a></p>
+                <p><a href="/baike/baike_list?types=5">育儿</a></p>
+                <p><a href="/baike/baike_list?types=1">试管婴儿</a></p>
+                <p><a href="/baike/baike_list?types=2">不孕不育</a></p>
+              </div>
+            </li>
+          </ul>
+         </div>
+         <div class="denglu">
+          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+                    <div class="yiyuansearch">
+                          <div  ms-click="showxiala">{namees}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
+                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
+                              <li ms-click="changeSearch('医院')">医院</li>
+                              <li ms-click="changeSearch('医生')">医生</li>
+                              <li ms-click="changeSearch('问答')">问答</li>
+                              <li ms-click="changeSearch('百科')">百科</li>
+                          </ul>
+                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 99; margin-top: 8px; border-radius: 3px;">
+                              <li><a href="">我是关键词</a></li>
+                              <li><a href="">我是关键词</a></li>
+                              <li><a href="">我是关键词</a></li>
+                              <li><a href="">我是关键词</a></li>
+                          </ol>
                     </div>
-                </li>
-                <li>
-                    <a href="/luntan" class="acolor">育儿论坛</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="">备孕交流圈</a></p>
-                        <p><a href="">妈妈交流圈</a></p>
-                        <p><a href="">试管婴儿交流圈</a></p>
-                        <p><a href="">难孕交流圈</a></p>
-                    </div>
-                </li>
-                <li>
-                    <a href="" class="acolor">互助问答</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="">试管婴儿</a></p>
-                        <p><a href="">不孕不育</a></p>
-                        <p><a href="">备孕</a></p>
-                        <p><a href="">怀孕</a></p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/hospital" class="acolor">医院推荐</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="">海外医院</a></p>
-                        <p><a href="">国内医院</a></p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/baike" class="acolor">百科知识</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="">备孕</a></p>
-                        <p><a href="">怀孕</a></p>
-                        <p><a href="">育儿</a></p>
-                        <p><a href="">试管婴儿</a></p>
-                        <p><a href="">不孕不育</a></p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="denglu">
-            <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                <div class="yiyuansearch">
-                    <div ms-click="showxiala">{names}<i class="layui-icon"
-                                                        style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
-                    <ul class="hites"
-                        style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
-                        <li ms-click="changeSearch('医院')">医院</li>
-                        <li ms-click="changeSearch('医生')">医生</li>
-                        <li ms-click="changeSearch('问答')">问答</li>
-                        <li ms-click="changeSearch('百科')">百科</li>
-                    </ul>
-                    <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 99; margin-top: 8px; border-radius: 3px;">
-                        <li><a href="">我是关键词</a></li>
-                        <li><a href="">我是关键词</a></li>
-                        <li><a href="">我是关键词</a></li>
-                        <li><a href="">我是关键词</a></li>
-                    </ol>
+                    <input type="" name="" id="blurfs">
+                    <i class="searchbox"></i>
                 </div>
-                <input type="" name="" id="blurfs">
-                <i class="searchbox"></i>
-            </div>
-            {% if request.user.is_active %}
-                <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href=""
-                                                                                                               style="color:#F94479; text-decoration: none;">个人中心
-                    | <a href="/users/outlogin" style="color:#F94479; text-decoration: none;">退出</a></a>
-                    {% else %}
-                <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a
-                        href="/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href=""
-                                                                                                style="color:#F94479; text-decoration: none;">注册</a>
-                </p>
-            {% endif %}
-        </div>
-    </div>
-</div>
-<script type="text/javascript">
-    avalon.config({
+          {% if request.user.is_active %}
+            <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">个人中心 | <a href="/users/outlogin" style="color:#F94479; text-decoration: none;">退出</a></a>
+          {% else %}
+            <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
+          {% endif %}
+         </div>
+       </div>
+     </div>
+
+<script>
+     avalon.config({
         interpolate: ["{", "}"]
-    });
-    var vm = avalon.define({
-        $id: "bodycont",
-        names: '医院',
-        a: 1,
-        b: 1,
-        getcodewenzi: '获取验证码',
-        datasgyes: [],
-        erjidatalist: [],
-        zhuceDatas: {
-            username: '',
-            phone: '',
-            password: '',
-            verification_Code: ''
-        },
-        loginData: {
-            username: '',
-            password: ''
-        },
-        loginFun: function () {
-            if (vm.loginData.username == '' || !vm.loginData.username) {
-                layer.msg('请填写正确的用户名');
-                return;
-            }
-            if (vm.loginData.password == '' || !vm.loginData.password) {
-                layer.msg('请填写正确的密码');
-                return;
-            }
-            $.ajax({
-                type: 'post',
-                url: 'users/login',
-                data: vm.loginData,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
-                    if (data.code == 200) {
-                        layer.msg('登录成功，即将跳转到首页');
-                        setTimeout(function () {
-                            window.location.href = "/"
-                        }, 2000)
-                    } else {
-                        layer.msg('登录不成功');
-                        return;
-                    }
-                }
-            });
-        },
-        mimayanzheng: function (ml) {
-            var reg = /^[\w]{6,12}$/
-            if (ml.match(reg)) {
-                return true;
-            } else {
-                return false;
+     });
+    var vmm = avalon.define({
+        $id:'headercont',
+        namees:'医院',
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
             }
         },
-        register: function () {
-            if (vm.zhuceDatas.username == '' || !vm.zhuceDatas.username) {
-                layer.msg('请填写正确的用户名');
-                return;
-            }
-            if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
-                layer.msg('请填写正确的手机号');
-                return;
-            }
-            if (vm.zhuceDatas.password == '' || !vm.zhuceDatas.password || !vm.mimayanzheng(vm.zhuceDatas.password)) {
-                layer.msg('请填写正确的密码');
-                return;
-            }
-            if (vm.zhuceDatas.verification_Code == '' || !vm.zhuceDatas.verification_Code) {
-                layer.msg('请填写验证码');
-                return;
-            }
-            $.ajax({
-                type: 'post',
-                url: '/users/register',
-                data: vm.zhuceDatas,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
-                    console.log(data, 123);
-                    if (data.code == 200) {
-                        layer.msg('注册成功，即将跳转到登录页面');
-                        setTimeout(function () {
-                            vm.a = 1;
-                        }, 2000)
-                    } else {
-                        layer.msg(data.msg);
-                        return;
-                    }
-                }
-            });
-        },
-        validatorTel: function (content) {
-            eval("var reg = /^1[34578]\\d{9}$/;");
-            return RegExp(reg).test(content);
+        changeSearch:function(els){
+           vmm.namees = '';
+           vmm.namees = els;
+           $(this).parent().addClass('hites');
         }
-        ,
-        changedlorzc: function (id) {
-            vm.a = id;
-        }
-        ,
-        shiguanyiner: [
-            {
-                name: '试管社区',
-                id: 1,
-                crruse: true
-            },
-            {
-                name: '输卵管问题',
-                id: 2,
-                crruse: false
-            },
-            {
-                name: '子宫问题',
-                id: 3,
-                crruse: false,
-            },
-            {
-                name: '高龄试管',
-                id: 4,
-                crruse: false
-            },
-            {
-                name: '染色体异常',
-                id: 5,
-                crruse: false
-            },
-            {
-                name: '精子问题',
-                id: 6,
-                crruse: false
-            }
-        ],
-        getDatasgye
-    :
-
-    function (el, index) {
-        vm.a = el.id;
-    }
-
-    ,
-    indexs:'',
-        changrightlm
-    :
-
-    function (id, index) {
-        vm.b = id;
-        vm.indexs = index;
-        vm.erjidatalist = [];
-        vm.erjidatalist = vm.datasgyes[index].children;
-        if (vm.erjidatalist.length > 4) {
-            vm.erjidatalist = vm.erjidatalist.splice(0, 4);
-        }
-        console.log(vm.erjidatalist, 11111111);
-    }
-
-    ,
-    getMorelist:function () {
-        vm.erjidatalist = vm.datasgyes[vm.indexs].children;
-    }
-    ,
-    rollbacklogin:function () {
-        vm.a == 1;
-    }
-    ,
-    getQueryVariable:function (variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) {
-                return pair[1];
-            }
-        }
-        return (false);
-    }
-    ,
-    newartical:[],
-        twotopNews
-    :
-    [],
-        getNewArtical
-    :
-
-    function () {//获取百科推荐和上半部分的数据
-        var count = {
-            count: 10
-        };
-        $.ajax({
-            type: 'post',
-            url: '/baike/api/articletimelist',
-            data: count,
-            dataType: "json",
-            // timeout: 10000,
-            success: function (data) {
-                vm.newartical = [];
-                vm.newartical = data.data;
-                if (vm.newartical.length > 1) {
-                    vm.twotopNews.push(vm.newartical[0]);
-                    vm.twotopNews.push(vm.newartical[1]);
-                }
-
-            }
-        });
-    }
-
-    ,
-    allbaikeData:[],
-        getAllbaikeData
-    :
-
-    function () {//获取百科所有栏目
-        var count = {
-            count: 12
-        }
-        $.ajax({
-            type: 'post',
-            url: '/baike/api/sgbk_sjldapi',
-            data: count,
-            dataType: "json",
-            // timeout: 10000,
-            success: function (data) {
-                vm.allbaikeData = data;
-                vm.datasgyes = data;
-                var zhou = vm.getQueryVariable('types');
-                if (zhou > 0) {
-                    vm.changrightlm(zhou, zhou - 1);
-                } else {
-                    vm.changrightlm(1, 0);
-                }
-            }
-        });
-    }
-
-    ,
-    getCode:function () { //获取验证码
-        if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
-            layer.msg('请填写正确的手机号');
-            return;
-        }
-        var time = 60;
-        if (time == 60) {
-            var time1 = setInterval(function () {
-                if (time == 0) {
-                    vm.getcodewenzi = '重新发送'
-                    $("#sendsms").removeAttr("disabled");
-                    time = 60;
-                    clearInterval(time1);
-                } else {
-                    $("#sendsms").attr("disabled", "true");
-                    vm.getcodewenzi = "重新发送(" + time + ")";
-                    time--;
-                }
-            }, 1000);
-        }
-        var phone = {
-            phone: vm.zhuceDatas.phone
-        }
-        $.ajax({
-            type: 'post',
-            url: '/users/smsvif',
-            data: phone,
-            dataType: "json",
-            // timeout: 10000,
-            success: function (data) {
-                console.log(data);
-            }
-        });
-    }
-    }
-    )
-    vm.getAllbaikeData();
-    vm.getNewArtical();
+    })
 </script>
-<script type="text/javascript">
-    layui.use('layer', function () {
-        var layer = layui.layer;
-    });
-</script>
-
