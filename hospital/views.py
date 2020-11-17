@@ -8,6 +8,17 @@ from django.shortcuts import HttpResponse
 
 # Create your views here.
 
+def xTree(data):
+    resData = []
+    for i in data:
+        parent = {"id": i.id, "name": i.name, "child": []}
+        hChild = i.area_set.all().count()
+        if hChild:
+            parent['child'] = xTree(i.area_set.all())
+        resData.append(parent)
+    return resData
+
+
 # 获取医院推荐主页
 class Index(views.View):
     def get(self, request, *args, **kwargs):
@@ -17,8 +28,9 @@ class Index(views.View):
 # 获取范围
 class Area(views.View):
     def get(self, request, *args, **kwargs):
-        data = models.Area.objects.all()
-        resData = [{"id": i.id, "name": i.name, "parent_id": i.parent_id} for i in data]
+        data = models.Area.objects.filter(parent_id=None)
+        resData = xTree(data)
+        # resData = [{"id": i.id, "name": i.name, "parent_id": i.parent_id} for i in data]
         return HttpResponse(json.dumps({"data": resData}))
 
 
