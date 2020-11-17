@@ -1419,7 +1419,7 @@ body a:hover {
 }
 
 .topic_l .allInfo > p {
-    height: 200px;
+    /*height: 200px;*/
     width: 100%;
     overflow: auto;
     margin-bottom: 24px;

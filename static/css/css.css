@@ -7,7 +7,7 @@ body{ background: #f9f9f9; }
 .headerNav-ul{ float: left;  }
 .headerNav-ul ul{ margin-top: 65px; }
 .headerNav-ul ul li{ float: left; margin: 5px 17px; position: relative; }
-.xialabox{ position: absolute;  z-index: 999; left: -16px;top: 20px; background: #f2f2f2; width: 140px; padding:10px 0; border-radius: 5px; }
+.xialabox{ position: absolute;  z-index: 999; left: -16px;top: 19px; background: #f2f2f2; width: 140px; padding:10px 0; border-radius: 5px; }
 .xialabox p{ padding:5px 5px 5px 14px;  }
 .xialabox p a{ text-decoration: none; color: #333; }
 .shownone{display: none;}
@@ -225,7 +225,7 @@ body{ background: #f9f9f9; }
 .leftcontinfo123{float: left;overflow: hidden; width: 642px;  min-height: 200px; padding-left: 20px;}
 
 .baikelist{ width: 100%; overflow: hidden; }
-.fourpartg{ width: 42%; margin-left: 5%; margin-bottom: 20px; float: left; overflow: hidden; }
+.fourpartg{ width: 42%; margin-left: 5%; margin-bottom: 20px; float: left; overflow: hidden; height: 160px; }
 .fourpartg h3{ font-size: 14px; color: #ff44ad; padding-left: 15px; margin-bottom: 10px;}
 .yunqq a{ text-decoration: none; display: block; float: left; color: #666; padding: 5px 12px; font-size: 12px; margin-bottom: 10px; }
 
@@ -597,7 +597,7 @@ color: #666; font-size: 12px; }
 .left_bottom_artctal_anather h3{ width: 100%; overflow: hidden; height: 50px; line-height: 50px; border-bottom:1px solid #f1f1f1; padding-left: 20px; margin-bottom: 20px; }
 .left_bottom_artctal_anather h3 abbr{ height: 50px; line-height: 50px; width: 106px; text-align: center; border-bottom: 2px solid #ff44ad; display: block; margin-bottom: 15px; }
 .left_bottom_artctal_anather ul li{ margin-bottom: 20px; padding-left: 25px;}
-.suoyin{ width: 100%; overflow: hidden; }
+.suoyin{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
 /*.suoyin img{ width: 100%; }*/
 
 .curr_address{ overflow: hidden; width: 1200px; margin: 20px auto; }
@@ -626,3 +626,8 @@ color: #666; font-size: 12px; }
 .al_taolun ul li{ width: 100%; height: 40px; line-height: 40px;}
 
 .al_taolun ul li abbr{ float: right; font-size: 12px; width: 90px;}
+
+
+.show_sy{ overflow: hidden; width: 100%; }
+.show_sy ul{ overflow: hidden; width: 100%; padding-top: 18px; padding-left: 100px; }
+.show_sy ul li{ height: 40px; line-height: 0px; }

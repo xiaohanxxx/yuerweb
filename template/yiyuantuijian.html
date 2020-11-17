@@ -315,8 +315,7 @@
       </div>
     </div>
      <!-- 底部 -->
-  {% include 'footer.html' %}
-     
+    {% include 'footer.html' %}
       <script>
         avalon.config({
             interpolate: ["{", "}"]
@@ -478,7 +477,14 @@
         getDengji:function(data,index){
             vmw.dengjis = data;
             vmw.g = index;
+            // console.log(vmw.g,'ggg');
             vmw.getDatas();
+        },
+         getJishu:function(data,index){
+            vmw.jishus = data;
+            vmw.f = index;
+            // console.log(vmw.f,'fff');
+           vmw.getDatas();
         },
         getAllshengfen:function (data){
             if (data == 1){
@@ -492,6 +498,7 @@
         },
         getDatas:function (){
             var datas = {
+                diqu:vmw.incurre == 1 ? '中国大陆' : '港澳台',
                 shengfen:vmw.v,
                 chengshi:vmw.chengshi,
                 dengji:vmw.dengjis,
@@ -500,29 +507,27 @@
             console.log(datas,'发送请求');
 
         },
-         getJishu:function(data,index){
-            vmw.jishus = data;
-            vmw.f = index;
-           vmw.getDatas();
-        },
         selectchange:function(data){
           vmw.chengshi = data;
            vmw.getDatas();
         },
+        incurre:1,
         getAllcitys:function(res){
+            vmw.incurre = res;
             if(res == 1){
               vmw.datas = vmw.citya
             }else if(res == 2){
               vmw.datas = vmw.gangaotai
             }
             vmw.d = res;
+            vmw.getDatas();
         },
         getALLsmallcity:function(data,index){
            vmw.v = data,
            vmw.vlist=[],
            vmw.chengshi="",
            vmw.vlist = vmw.datas[index].list
-           console.log(vmw.v,78787878);
+           // console.log(vmw.v,78787878);
            vmw.getDatas();
         },
         intopages:function(){

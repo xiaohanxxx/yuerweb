@@ -1,5 +1,5 @@
 
- <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
+<div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
      	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
      		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
      		<div class="lianjieyq" style="margin-top: 30px;">
@@ -34,13 +34,13 @@
      		</div>
      	</div>
      	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
-     		 关于我们  |  联系我们  |  人才招聘  |  法律申明  |  网站地图<br>
+     		 <a href="">关于我们</a>  |   <a href="">联系我们</a>  |  <a href="">人才招聘</a>  |  <a href="">法律申明</a>  |  <a href="">网站地图</a><br>
      		 地址：湖北省武汉市洪山区<br>
      		 邮箱：123456@.com 招聘邮箱:123456.com<br>
      		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
                 <!-- {ceshi | truncate(15,'...')} -->
      	</p>
-     </div>
+</div>
 
 <script type="text/javascript">
      layui.use('layer', function(){
@@ -143,14 +143,6 @@
               }
             });
         },
-        {#showxiala:function(){#}
-        {#    var _this = $(this);#}
-        {#    if(_this.next('ul').hasClass('hites')){#}
-        {#        _this.next('ul').removeClass('hites');#}
-        {#    }else{#}
-        {#        _this.next('ul').addClass('hites');#}
-        {#    }#}
-        {#},#}
         validatorTel:function(content){
              eval("var reg = /^1[34578]\\d{9}$/;");
              return RegExp(reg).test(content);
@@ -158,11 +150,6 @@
         changedlorzc:function(id){
             vm.a = id;
         },
-        {#changeSearch:function(els){#}
-        {#   vm.names = '';#}
-        {#   vm.names = els;#}
-        {#   $(this).parent().addClass('hites');#}
-        {#},#}
         shiguanyiner:[
                {
                   name:'试管社区',
@@ -244,6 +231,7 @@
                       vm.twotopNews.push(vm.newartical[0]);
                       vm.twotopNews.push(vm.newartical[1]);
                  }
+                 // vm.newartical = vm.newartical.splice(2,14);
                  
               }
             });
