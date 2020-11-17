@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     {% load static %}
@@ -14,297 +13,292 @@
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
     <script src="{% static 'js/uitls/tool.js' %}"></script>
-    <title>话题文章</title>
+    <title>{{ data.title }}</title>
 </head>
 <body>
-    {% include 'header.html' %}
-    <!-- 话题头部 -->
-    <section class="topicHead wid" style='margin-top:30px;'>
-        <div class="currdis clearfix">
-            <div class="dqwz">当前位置：</div>
-            <div class="lmmbx">
-                <a href="javascript:;">育儿论坛</a>
-                <span>></span>
-                <a href="javascript:;">我是文章标题</a>
-            </div>
+{% include 'config.html' %}
+{% include 'header.html' %}
+<!-- 话题头部 -->
+<section class="topicHead wid" style='margin-top:30px;' ms-controller="topicArc">
+    <div class="currdis clearfix">
+        <div class="dqwz">当前位置：</div>
+        <div class="lmmbx">
+            <a href="javascript:;">育儿论坛</a>
+            <span>></span>
+            <a href="javascript:;">{{ data.title }}</a>
         </div>
-        <div class="imgbox">
-            <img src="{% static 'images/yuerlt/topic_bg.png' %}" alt="">
-        </div>
-    </section>
-    <!-- 话题主体部分 -->
-    <section class="topicMain wid clearfix">
-        <div class="topic_l fl">
-            <div class='clearfix'>
-                <p class="topictit">我是话题文案</p>
-                <div class="userInfo">
-                    <div class="Mtx">
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/user02.png' %}" alt="">
-                        </a>
-                    </div>
-                    <div class="txInfo">
-                        <span>我是用户名</span>
-                        <span>2020.10.31</span>
-                    </div>
-                    <div class="isFollow" data-isFollow='flase'>
-                        关注作者
-                    </div>
+    </div>
+    <div class="imgbox">
+        <img src="{% static 'images/yuerlt/topic_bg.png' %}" alt="">
+    </div>
+</section>
+<!-- 话题主体部分 -->
+<section class="topicMain wid clearfix">
+    <div class="topic_l fl">
+        <div class='clearfix'>
+            {#                <p class="topictit">{{ data.title }}</p>#}
+            <div class="userInfo">
+                <div class="Mtx">
+                    <a href="javascript:;">
+                        <img src="{{ data.user.head }}" alt="">
+                    </a>
                 </div>
-                <p class='title'>我是文章标题</p>
-                <div class="allInfo">
-                    <p>
-                        对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，
-                        对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望， 对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，
-                        对于很多生育困难的家庭来说，生育一个孩子是他们长久以来的愿望，
-                    </p>
+                <div class="txInfo">
+                    <span>{{ data.user.username }}</span>
+                    <span>{{ data.publish_date.date }}</span>
                 </div>
-                <div class="plbox fr">
-                    <div><span>评论</span><i>|</i><span>88</span></div>
-                    <div><span>点赞</span><i>|</i><span>88</span></div>
-                    <div><span>分享</span></div>
+                <div class="isFollow" data-isFollow='flase'>
+                    关注作者
                 </div>
             </div>
-            <div class="plInpbox clearfix">
-                <span>评论</span>
-                <div class="pl_head">
-                    <div class="bqBtn">
-                        <span id="bqcjBtn" class='iconfont'>&#xe64d;</span>
-                    </div>
-                    <textarea name="khlypl" id="khlypl"></textarea>
-                </div>
-                <div id="NopostBtn" class='fl'>取消评论</div>
-                <div id="postBtn" class='fr'>发布</div>
-            </div>
-            <div class="pl_lis">
-                <div class="pl_lis_h clearfix">
-                    <span class='fl'><em>99</em>条评论</span>
-                    <div class="fr">
-                        <span><i class='iconfont'>&#xe7d5;</i>切换为时间排序</span><span><i class='iconfont'>&#xe7d5;</i>切换为默认排序</span>
-                    </div>
-                </div>
-                <div class="pl_info">
-                    <div class="pl clearfix">
-                        <div class="tx">
-                            <a href="javascript:;">
-                                <img src="{% static 'images/yuerlt/xxx.png' %}" alt="">
-                            </a>
-                        </div>
-                        <p class='plbg'>我是用户名</p>
-                        <ul class="plul">
-                            <p>我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案我是用户评论文字文案</p>
-                            <div class="date clearfix">
-                                <span>2020.10.31</span>
-                                <span btn='reply'>回复</span>
-                            </div>
 
-                            <ul class='hfplbox'>
-                                <div class="pl">
-                                    <p class='plbg plbg2'>
-                                        <span class='afuser'>用户名</span>
-                                        <span>回复了</span>
-                                        <span class='befuser'>用户名</span>
-                                    </p>
-                                    <ul class='plul'>
-                                        <p>我是用户评论文字文案</p>
-                                        <div class="date">
-                                            <span>2020.10.31</span>
-                                            <span btn='reply'>回复</span>
+            <p class='title'>{{ data.title }}</p>
+            <div class="allInfo">
+                <p>
+                    {{ data.content }}
+                </p>
+            </div>
+            <div class="plbox fr">
+                <div><span>评论</span><i>|</i><span>88</span></div>
+                <div><span>点赞</span><i>|</i><span>88</span></div>
+            </div>
+        </div>
+        <div class="plInpbox clearfix">
+            <span>评论</span>
+            <div class="pl_head">
+                <div class="bqBtn">
+                    <span id="bqcjBtn" class='iconfont'>&#xe64d;</span>
+                </div>
+                <textarea name="khlypl" id="khlypl"></textarea>
+            </div>
+            <div id="NopostBtn" class='fl'>取消评论</div>
+            <div id="postBtn" class='fr'>发布</div>
+        </div>
+        <div class="pl_lis">
+            <div class="pl_lis_h clearfix">
+                <span class='fl'><em>99</em>条评论</span>
+                <div class="fr">
+                    <span><i class='iconfont'>&#xe7d5;</i>切换为时间排序</span><span><i
+                        class='iconfont'>&#xe7d5;</i>切换为默认排序</span>
+                </div>
+            </div>
+            <div class="pl_info">
+
+                        <div class="pl clearfix">
+                            <div class="tx">
+                                <a href="javascript:;">
+                                    {# 个人中心的链接地址要填到时候#}
+                                    <img src="" alt="">
+                                </a>
+                            </div>
+                            <p class='plbg'>111111</p>
+                            <ul class="plul">
+                                <p>
+                                    {{ item.comment }}
+                                </p>
+                                <div class="date clearfix">
+                                    <span>131313</span>
+                                    <span btn='reply'>回复</span>
+                                </div>
+                                {{ else }}
+                                <ul class='hfplbox'>
+                                    <div class="pl clearfix">
+                                        <p class='plbg plbg2'>
+                                            <span class='afuser'>用户名</span>
+                                            <span>回复了</span>
+                                            <span class='befuser'>用户名</span>
+                                        </p>
+                                        <ul class='plul'>
+                                            <p>我是用户评论文字文案</p>
+                                            <div class="date">
+                                                <span>2020.10.31</span>
+                                                <span btn='reply'>回复</span>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </ul>
+                                <ul class='hfplbox'>
+                                    <div class="pl clearfix">
+                                        <p class='plbg plbg2'>
+                                            <span class='afuser'>用户名</span>
+                                            <span>回复了</span>
+                                            <span class='befuser'>用户名</span>
+                                        </p>
+                                        <ul class='plul'>
+                                            <p>我是用户评论文字文案</p>
+                                            <div class="date">
+                                                <span>2020.10.31</span>
+                                                <span btn='reply'>回复</span>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </ul>
+                                <!-- 评论输入 -->
+                                <div class="pl_inpbox" style='display:none;'>
+                                    <div class="plinput">
+                                        <div class="plinput-h">
+                                            <span id="bqpl2" class='iconfont'>&#xe64d;</span>
                                         </div>
-                                    </ul>
+                                        <textarea name="" id="pl_Input"></textarea>
+                                    </div>
+                                    <span id="qxplBtn" class='fl'>取消评论</span>
+                                    <span id="plintBtn" class='fr'>发布</span>
                                 </div>
                             </ul>
-                            <!-- 评论输入 -->
-                            <div class="pl_inpbox" style='display:none;'>
-                                <div class="plinput">
-                                    <div class="plinput-h">
-                                        <span id="bqpl2" class='iconfont'>&#xe64d;</span>
-                                    </div>
-                                    <textarea name="" id="pl_Input"></textarea>
-                                </div>
-                                <span id="qxplBtn" class='fl'>取消评论</span>
-                                <span id="plintBtn" class='fr'>发布</span>
-                            </div>
-                        </ul>
 
+                        </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div class="topic_r fl">
+        {% include 'mod_tjjl.html' %}
+
+        <div class="hotTopic">
+            <div class="topic_Head">
+                <h6>热门话题</h6>
+            </div>
+            <ul class="topicBox">
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
                     </div>
-                </div>
-            </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+            </ul>
         </div>
-        </div>
-        <div class="topic_r fl">
-            <div class="tjjlq">
-                <div class="tjjl-h">
-                    <h3>推荐交流圈</h3>
-                </div>
-                <ul class='tjjlbox'>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                    <li>
-                        <div>
-                            <img src="{% static 'images/yuerlt/zhiliao.png' %}" alt="">
-                            <span>好孕妈妈交流圈</span>
-                        </div>
-                        <div>749 个话题</div>
-                    </li>
-                </ul>
-            </div>
-            <div class="hotTopic">
-                <div class="topic_Head">
-                    <h6>热门话题</h6>
-                </div>
-                <ul class="topicBox">
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                    <li class='clearfix'>
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
-                        </a>
-                        <div>
-                            <p>
-                                <a href="javascript:;">我是话题标题最多显示
-                                    两行，文章详情为论坛</a>
-                            </p>
-                            <span>2020.10.31</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <footer style='width: 100%;height:388px;background-color:skyblue;'></footer>
+    </div>
+</section>
+<footer style='width: 100%;height:388px;background-color:skyblue;'></footer>
+<script>
+    var vm_topicArc = avalon.define({
+        $id: 'topicArc',
+        comment_one:[],
+        comment_two:[],
+        articles_id:0,//帖子id
+        parent_id:0,//回帖对应的父
+    });
+    vm_topicArc.articles_id = window.location.href.replace(/.*aid=/,'');
+    console.log(vm_topicArc.articles_id,222222)
+    $.ajax({
+        url:root_Domain +'/luntan/comment/'
+    })
+</script>
 </body>
 
 </html>

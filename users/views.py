@@ -123,10 +123,10 @@ def outlogin(request):
     return redirect("/login")
 
 
+# 修改密码
 @error
 @login_required
 def changepwd(request):
-    print("aaaa")
     if request.method == 'POST':
         new_password = request.POST.get('new_password')
         request.user.set_password(new_password)
@@ -137,6 +137,13 @@ def changepwd(request):
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
+# 修改头像
+def changetx(request):
+    # avatar = request.POST.get('avatar')
+    file_obj = request.FILES.get('avatar')
+    Userinfo.user_avatar = file_obj
+    Userinfo.save()
+    print("ok")
 
 
 # 测试上传

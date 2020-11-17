@@ -1391,6 +1391,7 @@ body a:hover {
 }
 
 .txInfo span {
+    display:block;
     height: 16px;
     font-size: 12px;
     line-height: 16px;
@@ -1400,6 +1401,7 @@ body a:hover {
 
 .topic_l .isFollow {
     margin-top: 10px;
+    margin-left:50px;
     width: 66px;
     height: 20px;
     border-radius: 10px;
