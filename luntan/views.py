@@ -123,17 +123,17 @@ class Article(views.View):
             "user": {"id": artObj.user.id, "username": artObj.user.username, "head": str(artObj.user.info.user_avatar)},
             "thumbup": artObj.thumup_articles.all().count()
         }
-        # resComment = [
-        #     {
-        #         "id": i.id,
-        #         "comment": i.comment,
-        #         "publish_date": i.publish_date,
-        #         "user": {"id": i.user.id, "username": i.user.username,"head": str(artObj.user.info.user_avatar)},
-        #         "parent": i.parent_id
-        #     } for i in commentData
-        # ]
+        resComment = [
+            {
+                "id": i.id,
+                "comment": i.comment,
+                "publish_date": i.publish_date,
+                "user": {"id": i.user.id, "username": i.user.username, "head": str(artObj.user.info.user_avatar)},
+                "parent": i.parent_id
+            } for i in commentData
+        ]
 
-        resComment = commentData
+        # resComment = commentData
         artData['comment'] = resComment
         return render(request, 'topicArc.html', {"data": artData})
 
