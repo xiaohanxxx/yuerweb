@@ -84,68 +84,68 @@
             </div>
             <div class="pl_info">
 
-                        <div class="pl clearfix">
-                            <div class="tx">
-                                <a href="javascript:;">
-                                    {# 个人中心的链接地址要填到时候#}
-                                    <img src="" alt="">
-                                </a>
-                            </div>
-                            <p class='plbg'>111111</p>
-                            <ul class="plul">
-                                <p>
-                                    {{ item.comment }}
-                                </p>
-                                <div class="date clearfix">
-                                    <span>131313</span>
-                                    <span btn='reply'>回复</span>
-                                </div>
-                                {{ else }}
-                                <ul class='hfplbox'>
-                                    <div class="pl clearfix">
-                                        <p class='plbg plbg2'>
-                                            <span class='afuser'>用户名</span>
-                                            <span>回复了</span>
-                                            <span class='befuser'>用户名</span>
-                                        </p>
-                                        <ul class='plul'>
-                                            <p>我是用户评论文字文案</p>
-                                            <div class="date">
-                                                <span>2020.10.31</span>
-                                                <span btn='reply'>回复</span>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                </ul>
-                                <ul class='hfplbox'>
-                                    <div class="pl clearfix">
-                                        <p class='plbg plbg2'>
-                                            <span class='afuser'>用户名</span>
-                                            <span>回复了</span>
-                                            <span class='befuser'>用户名</span>
-                                        </p>
-                                        <ul class='plul'>
-                                            <p>我是用户评论文字文案</p>
-                                            <div class="date">
-                                                <span>2020.10.31</span>
-                                                <span btn='reply'>回复</span>
-                                            </div>
-                                        </ul>
-                                    </div>
-                                </ul>
-                                <!-- 评论输入 -->
-                                <div class="pl_inpbox" style='display:none;'>
-                                    <div class="plinput">
-                                        <div class="plinput-h">
-                                            <span id="bqpl2" class='iconfont'>&#xe64d;</span>
-                                        </div>
-                                        <textarea name="" id="pl_Input"></textarea>
-                                    </div>
-                                    <span id="qxplBtn" class='fl'>取消评论</span>
-                                    <span id="plintBtn" class='fr'>发布</span>
-                                </div>
-                            </ul>
+                <div class="pl clearfix">
+                    <div class="tx">
+                        <a href="javascript:;">
+                            {# 个人中心的链接地址要填到时候#}
+                            <img src="" alt="">
+                        </a>
+                    </div>
+                    <p class='plbg'>111111</p>
+                    <ul class="plul">
+                        <p>
+                            {{ item.comment }}
+                        </p>
+                        <div class="date clearfix">
+                            <span>131313</span>
+                            <span btn='reply'>回复</span>
                         </div>
+                        {{ else }}
+                        <ul class='hfplbox'>
+                            <div class="pl clearfix">
+                                <p class='plbg plbg2'>
+                                    <span class='afuser'>用户名</span>
+                                    <span>回复了</span>
+                                    <span class='befuser'>用户名</span>
+                                </p>
+                                <ul class='plul'>
+                                    <p>我是用户评论文字文案</p>
+                                    <div class="date">
+                                        <span>2020.10.31</span>
+                                        <span btn='reply'>回复</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </ul>
+                        <ul class='hfplbox'>
+                            <div class="pl clearfix">
+                                <p class='plbg plbg2'>
+                                    <span class='afuser'>用户名</span>
+                                    <span>回复了</span>
+                                    <span class='befuser'>用户名</span>
+                                </p>
+                                <ul class='plul'>
+                                    <p>我是用户评论文字文案</p>
+                                    <div class="date">
+                                        <span>2020.10.31</span>
+                                        <span btn='reply'>回复</span>
+                                    </div>
+                                </ul>
+                            </div>
+                        </ul>
+                        <!-- 评论输入 -->
+                        <div class="pl_inpbox" style='display:none;'>
+                            <div class="plinput">
+                                <div class="plinput-h">
+                                    <span id="bqpl2" class='iconfont'>&#xe64d;</span>
+                                </div>
+                                <textarea name="" id="pl_Input"></textarea>
+                            </div>
+                            <span id="qxplBtn" class='fl'>取消评论</span>
+                            <span id="plintBtn" class='fr'>发布</span>
+                        </div>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -287,15 +287,52 @@
 <script>
     var vm_topicArc = avalon.define({
         $id: 'topicArc',
-        comment_one:[],
-        comment_two:[],
-        articles_id:0,//帖子id
-        parent_id:0,//回帖对应的父
+        comment: [],
+        articles_id: 0,//帖子id
+        parent_id: 0,//回帖对应的父
     });
-    vm_topicArc.articles_id = window.location.href.replace(/.*aid=/,'');
-    console.log(vm_topicArc.articles_id,222222)
+
+    function diguiClass(data) {
+        if (data.length > 0) {
+            console.log(vm_topicArc.comment,66666,data);
+            for (let a = 0; a < data.length; a++) {
+                for (let b = 0; b < vm_topicArc.comment.length; b++) {
+                    if (data[a].parent != vm_topicArc.comment[b].id) {
+                        vm_topicArc.comment.push(data[a]);
+                    } else if(vm_topicArc.comment[b].child){
+                        vm_topicArc.comment[b].child.push([data[a]]);
+                    }else{
+                        Object.defineProperty(vm_topicArc.comment[b],"child",[data[a]])
+                    }
+                    data.splice(data.indexOf(data[a]), 1);
+                    diguiClass(data)
+                }
+            }
+        }
+    }
+
+    vm_topicArc.articles_id = window.location.href.replace(/.*aid=/, '');
+    console.log(vm_topicArc.articles_id, 222222)
     $.ajax({
-        url:root_Domain +'/luntan/comment/'
+        url: root_Domain + '/luntan/comment/?articles_id=' + vm_topicArc.articles_id,
+        type: 'get',
+        dataType: 'json',
+        success: function (ajax) {
+            var datalis = ajax.data;
+            for (let i = 0; i < datalis.length; i++) {
+                if (datalis[i].parent == null) {
+                    vm_topicArc.comment.push(datalis[i]);
+                    datalis.splice(datalis.indexOf(datalis[i]), 1);
+                } else {
+                    diguiClass(datalis);
+                    console.log(vm_topicArc.comment,5555555)
+                }
+            }
+
+            console.log(ajax, 111111)
+        }, error: function (error) {
+            console.log(error);
+        }
     })
 </script>
 </body>
