@@ -33,7 +33,7 @@
     </div>
 </section>
 <!-- 话题主体部分 -->
-<section class="topicMain wid clearfix">
+<section class="topicMain wid clearfix" ms-controller="topicArc">
     <div class="topic_l fl">
         <div class='clearfix'>
             {#                <p class="topictit">{{ data.title }}</p>#}
@@ -72,7 +72,11 @@
                 <textarea name="khlypl" id="khlypl"></textarea>
             </div>
             <div id="NopostBtn" class='fl'>取消评论</div>
-            <div id="postBtn" class='fr'>发布</div>
+            {% if request.user.is_active %}
+                <span id="plintBtn" class="fr" onclick="alert(1)"><a href="javascript:;">发布</a></span>
+            {% else %}
+                <span id="plintBtn" style="margin-top:10px;" class="fr" onclick=""><a href="/login">发布</a></span>
+            {% endif %}
         </div>
         <div class="pl_lis">
             <div class="pl_lis_h clearfix">
@@ -82,73 +86,12 @@
                         class='iconfont'>&#xe7d5;</i>切换为默认排序</span>
                 </div>
             </div>
-            <div class="pl_info">
+            <div class="pl_info" infobox="box">
+                {#  这是递归开始#}
 
-                <div class="pl clearfix">
-                    <div class="tx">
-                        <a href="javascript:;">
-                            {# 个人中心的链接地址要填到时候#}
-                            <img src="" alt="">
-                        </a>
-                    </div>
-                    <p class='plbg'>111111</p>
-                    <ul class="plul">
-                        <p>
-                            {{ item.comment }}
-                        </p>
-                        <div class="date clearfix">
-                            <span>131313</span>
-                            <span btn='reply'>回复</span>
-                        </div>
-                        {{ else }}
-                        <ul class='hfplbox'>
-                            <div class="pl clearfix">
-                                <p class='plbg plbg2'>
-                                    <span class='afuser'>用户名</span>
-                                    <span>回复了</span>
-                                    <span class='befuser'>用户名</span>
-                                </p>
-                                <ul class='plul'>
-                                    <p>我是用户评论文字文案</p>
-                                    <div class="date">
-                                        <span>2020.10.31</span>
-                                        <span btn='reply'>回复</span>
-                                    </div>
-                                </ul>
-                            </div>
-                        </ul>
-                        <ul class='hfplbox'>
-                            <div class="pl clearfix">
-                                <p class='plbg plbg2'>
-                                    <span class='afuser'>用户名</span>
-                                    <span>回复了</span>
-                                    <span class='befuser'>用户名</span>
-                                </p>
-                                <ul class='plul'>
-                                    <p>我是用户评论文字文案</p>
-                                    <div class="date">
-                                        <span>2020.10.31</span>
-                                        <span btn='reply'>回复</span>
-                                    </div>
-                                </ul>
-                            </div>
-                        </ul>
-                        <!-- 评论输入 -->
-                        <div class="pl_inpbox" style='display:none;'>
-                            <div class="plinput">
-                                <div class="plinput-h">
-                                    <span id="bqpl2" class='iconfont'>&#xe64d;</span>
-                                </div>
-                                <textarea name="" id="pl_Input"></textarea>
-                            </div>
-                            <span id="qxplBtn" class='fl'>取消评论</span>
-                            <span id="plintBtn" class='fr'>发布</span>
-                        </div>
-                    </ul>
-                </div>
+                {# 这是递归结束 #}
             </div>
         </div>
-    </div>
 
     </div>
     <div class="topic_r fl">
@@ -183,7 +126,7 @@
                         <span>2020.10.31</span>
                     </div>
                 </li>
-                <li class='clearfix'>
+                                <li class='clearfix'>
                     <a href="javascript:;">
                         <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                     </a>
@@ -207,7 +150,7 @@
                         <span>2020.10.31</span>
                     </div>
                 </li>
-                <li class='clearfix'>
+                                <li class='clearfix'>
                     <a href="javascript:;">
                         <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                     </a>
@@ -231,7 +174,7 @@
                         <span>2020.10.31</span>
                     </div>
                 </li>
-                <li class='clearfix'>
+                                <li class='clearfix'>
                     <a href="javascript:;">
                         <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                     </a>
@@ -255,7 +198,7 @@
                         <span>2020.10.31</span>
                     </div>
                 </li>
-                <li class='clearfix'>
+                                <li class='clearfix'>
                     <a href="javascript:;">
                         <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
                     </a>
@@ -292,48 +235,74 @@
         parent_id: 0,//回帖对应的父
     });
 
-    function diguiClass(data) {
-        if (data.length > 0) {
-            console.log(vm_topicArc.comment,66666,data);
-            for (let a = 0; a < data.length; a++) {
-                for (let b = 0; b < vm_topicArc.comment.length; b++) {
-                    if (data[a].parent != vm_topicArc.comment[b].id) {
-                        vm_topicArc.comment.push(data[a]);
-                    } else if(vm_topicArc.comment[b].child){
-                        vm_topicArc.comment[b].child.push([data[a]]);
-                    }else{
-                        Object.defineProperty(vm_topicArc.comment[b],"child",[data[a]])
-                    }
-                    data.splice(data.indexOf(data[a]), 1);
-                    diguiClass(data)
-                }
-            }
-        }
-    }
-
     vm_topicArc.articles_id = window.location.href.replace(/.*aid=/, '');
-    console.log(vm_topicArc.articles_id, 222222)
+    var infoBox = $('div[infobox="box"].pl_info');//评论父级盒子
     $.ajax({
         url: root_Domain + '/luntan/comment/?articles_id=' + vm_topicArc.articles_id,
         type: 'get',
         dataType: 'json',
         success: function (ajax) {
             var datalis = ajax.data;
+            var comment = [];
             for (let i = 0; i < datalis.length; i++) {
                 if (datalis[i].parent == null) {
-                    vm_topicArc.comment.push(datalis[i]);
-                    datalis.splice(datalis.indexOf(datalis[i]), 1);
+                    comment.push(datalis[i]);
                 } else {
-                    diguiClass(datalis);
-                    console.log(vm_topicArc.comment,5555555)
+                    Toolfun.diguiClass(datalis, comment);
+                    vm_topicArc.comment = comment;
                 }
             }
+            infoBox.html(html(comment));
 
-            console.log(ajax, 111111)
         }, error: function (error) {
             console.log(error);
         }
     })
+
+
+    function html(comment) {//第一个为数据，第二个为递归体
+        var htmldata = '';
+        for (const a in comment) {
+            var newstr = diguipilun(comment[a].child, comment[a]);
+            htmldata += '<div class="pl clearfix" ><div class="tx"><a href="javascript:;">';
+            htmldata += '<img src=' + comment[a].user.head + ' alt=""></a></div><p class="plbg">' + comment[a].user.username + '</p>';
+            htmldata += '<ul class="plul"><p commid=' + comment[a].id + '>　　' + comment[a].comment + '</p><div class="date clearfix">';
+            htmldata += '<span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span><span btn="reply">回复</span></div>';
+            htmldata += newstr;
+            htmldata += '<div class="pl_inpbox"><div class="plinput"><div class="plinput-h"><span id="bqpl2" class="iconfont">&#xe64d;</span>';
+            htmldata += '</div><textarea name="" id="pl_Input"></textarea></div><span id="qxplBtn" class="fl">取消评论</span>';
+            htmldata += '{% if request.user.is_active %}<span id = "plintBtn" class= "fr" onclick = "alert(1)"> <a href = "javascript:;"> 发布 </a></span> {% else %}<span id = "plintBtn" class= "fr" onclick = ""> <a href = "/login"> 发布 </a></span>{% endif %}';
+            htmldata += '</div></ul></div>';
+        }
+        return htmldata;
+    }
+
+    function diguipilun(comment, Mcomment) {
+        var diguistr = '';
+        if (!comment) {
+            return '　';
+        }
+        for (const a in comment) {
+            diguistr += '<ul class="hfplbox"><div class="pl clearfix"><p class="plbg plbg2"><span class="afuser">' + comment[a].user.username + '</span>';
+            diguistr += '<span>回复了</span><span class="befuser">' + Mcomment.user.username + '</span></p><ul class="plul">';
+            diguistr += '<p commid="' + comment[a].id + '">　　' + comment[a].comment + '</p><div class="date"><span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span>';
+            diguistr += '<span btn="reply">回复</span></div></ul></div>';
+            if (comment[a].child) {
+                for (const b in comment[a].child) {
+                    diguistr += '<ul class="hfplbox"><div class="pl clearfix"><p class="plbg plbg2"><span class="afuser">' + comment[a].child[b].user.username + '</span>';
+                    diguistr += '<span>回复了</span><span class="befuser">' + comment[a].user.username + '</span></p><ul class="plul">';
+                    diguistr += '<p commid="' + comment[a].child[b].id + '">　　' + comment[a].child[b].comment + '</p><div class="date"><span>' + comment[a].child[b].publish_date.replace(/\d+:.*/, '') + '</span>';
+                    diguistr += '<span btn="reply">回复</span></div></ul></div>';
+                    diguistr += diguipilun(comment[a].child[b].child, comment[a].child[b]);
+                    diguistr += '</ul>';
+                }
+            }
+            diguistr += '</ul>';
+        }
+        return diguistr;
+    }
+
+
 </script>
 </body>
 
