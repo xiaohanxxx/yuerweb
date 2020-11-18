@@ -4,10 +4,11 @@ from django.urls import re_path, path
 from users import views
 
 urlpatterns = [
+    path('', views.center),
     path('register', views.register),
-    path('login',views.userlogin),
+    path('login', views.userlogin),
     path('changepwd', views.changepwd),
-    path('smsvif',views.smsvif),
+    path('smsvif', views.smsvif),
 
     path('outlogin', views.outlogin),
 ]
