@@ -631,3 +631,50 @@ color: #666; font-size: 12px; }
 .show_sy{ overflow: hidden; width: 100%; }
 .show_sy ul{ overflow: hidden; width: 100%; padding-top: 18px; padding-left: 100px; }
 .show_sy ul li{ height: 40px; line-height: 0px; }
+
+
+.centers{ width: 1200px; margin: 0 auto; overflow: hidden; min-height: 200px; }
+.ctops{ width: 1200px; height: 188px; background: url('../img/bg18.png') center center no-repeat; position: relative; }
+.tuxiang{ width: 124px;height: 124px; position: absolute;left: 50px; top: 30px; }
+.iam_username{ width: 120px; position: absolute; left: 200px; top: 45px; font-size: 18px; color: #fff; }
+.jd_tiao{ width: 300px; height: 30px; position: absolute; top: 90px; left: 200px; }
+.jin_pai{ width: 40px; height: 30px; padding-left: 40px; line-height: 27px; background: url(../img/Badge.png) 0px center no-repeat; color: #fff; position: absolute; left: 185px; top: 110px; }
+.czz_czz{ width: 200px; height: 30px; line-height: 30px; color: #fff; position: absolute; left: 375px; bottom: 50px; }
+
+
+.nav_list{ width: 100%; overflow: hidden; }
+.nav_left{width: 840px; overflow: hidden; float: left; min-height: 200px; background: #fff;}
+.nav_right{ float: right;  min-height: 300px; width: 350px; }
+.navs ul{ width: 100%; overflow: hidden; background: #F2F2F2; margin-top: 15px; }
+.navs ul li{ float: left;height: 50px; cursor: pointer; line-height: 50px; margin-right: 55px; width: 130px; text-align: center;; }
+.bott_box{ width: 100%; overflow: hidden; }
+.bott_box ol{ overflow: hidden; width: 100%; }
+.bott_box ol li{ overflow: hidden; margin: 25px 0; }
+.bott_box ol li img{ float: left; margin-right: 15px; }
+.rights{ float: right; margin-right: 50px; }
+
+.my_answer,.my_answer ul{ overflow: hidden; width: 100%; }
+.my_answer ul li{  overflow: hidden; margin: 25px 0;  }
+
+.gz_cont{overflow: hidden; width: 100%; margin: 15px 0;}
+.gzlists{ width: 28%; overflow: hidden; padding: 15px; float: left; margin: 15px 0; }
+.gzlists_one{ width: 180px; overflow: hidden; padding: 10px; border-right: 1px solid #eee;float: left; }
+.lists_gz{  float: left; overflow: hidden; }
+.gzlists img{ float: left; margin-right: 15px;}
+.gzlists_one img{float: left; margin-right: 15px;}
+.curee_cener{ border-bottom: 1px solid #ff44ad; color: #ff44ad; }
+.four_hot{ width: 600px; float: left; min-height: 50px;  }
+.four_hot ul{ overflow: hidden; width: 100%; padding-left:4%; }
+.four_hot ul li{ width: 40%; height: 40px; line-height: 40px;  float: left; overflow: hidden; }
+
+
+.centerEdier,.sadfh{ overflow: hidden; width: 100%; }
+.sadfh p{ float: left; height: 60px; cursor: pointer; line-height: 60px; width: 50%; text-align: center; font-size: 18px; }
+
+.curr_set abbr{ color: #ff44ad; border-bottom: 1px solid #ff44ad; height: 59px; line-height: 60px; display: block; width: 120px; margin-left: 39px; }
+.ziliao_set{ overflow: hidden; width: 100%; }
+.ziliao_set p{ margin: 15px 0;  }
+.bangding{ width: 280px; }
+.bangding a{ text-align: center; padding: 8px 20px; color: #FF44AD; border: 1px solid #ff44ad; cursor: pointer; }
+.okedit{width: 100%; overflow: hidden;}
+.okedit abbr{ display: block; width: 100px; background: #FF44AD; color: #fff; text-align: center; height: 35px; line-height: 35px; border-radius: 3px; margin-left: 115px; margin-top: 30px; }
