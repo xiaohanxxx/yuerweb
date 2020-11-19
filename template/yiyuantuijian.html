@@ -72,8 +72,23 @@
       <div class="hzwdcontslist">
 
 
+         <div class="tjyylists" ms-repeat="getYYlist">
+              <div class="leftyytj">
+                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
+                 <h3>{el.title}     <abbr title="">三级甲等</abbr></h3>
+                 <p>地址：{el.address}</p>
+                 <p>电话：021 6659889</p>
+              </div>
+              <div class="rightyytj">
+                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
+                 <p>累计{el.doctornum}名医生</p>
+                 <p><abbr title="">在线咨询</abbr></p>
+              </div>
+         </div>
 
-         <div class="tjyylists">
+
+
+       <!--   <div class="tjyylists">
               <div class="leftyytj">
                  <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
                  <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
@@ -85,87 +100,9 @@
                  <p>累计20名医生</p>
                  <p><abbr title="">在线咨询</abbr></p>
               </div>
-         </div>
+         </div> -->
 
 
-
-         <div class="tjyylists">
-              <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                 <p>地址：我是医院地址文字信息</p>
-                 <p>电话：021 6659889</p>
-              </div>
-              <div class="rightyytj">
-                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                 <p>累计20名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
-              </div>
-         </div>
-
-
-
-
-
-         <div class="tjyylists">
-              <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                 <p>地址：我是医院地址文字信息</p>
-                 <p>电话：021 6659889</p>
-              </div>
-              <div class="rightyytj">
-                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                 <p>累计20名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
-              </div>
-         </div>
-
-
-
-         <div class="tjyylists">
-              <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                 <p>地址：我是医院地址文字信息</p>
-                 <p>电话：021 6659889</p>
-              </div>
-              <div class="rightyytj">
-                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                 <p>累计20名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
-              </div>
-         </div>
-
-
-          <div class="tjyylists">
-              <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                 <p>地址：我是医院地址文字信息</p>
-                 <p>电话：021 6659889</p>
-              </div>
-              <div class="rightyytj">
-                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                 <p>累计20名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
-              </div>
-         </div>
-
-
-         <div class="tjyylists">
-              <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                 <p>地址：我是医院地址文字信息</p>
-                 <p>电话：021 6659889</p>
-              </div>
-              <div class="rightyytj">
-                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                 <p>累计20名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
-              </div>
-         </div>
 
          <div id="pagers"></div>
 
@@ -302,6 +239,7 @@
 
      <!-- 底部 -->
     {% include 'footer.html' %}
+
       <script>
         avalon.config({
             interpolate: ["{", "}"]
@@ -391,6 +329,7 @@
             vmw.getDatas();
             {#console.log(vmw.dataslist.jishu,'vmw.dataslist.jishu');#}
         },
+        getYYlist:[],
         getDatas:function (){
             if (vmw.a == 0){
                var datas = vmw.dataslist;
@@ -404,16 +343,17 @@
                 dataType: "json",
                 // timeout: 10000,
                 success: function (data) {
-                    {#console.log(data,5555555555555555);#}
+                   vmw.getYYlist = data.data;
+                    console.log(data,5555555555555555);
                 }
             });
             console.log(datas,'发送请求');
         },
-        selectchange:function(data){
-            console.log(data,'selectchanges')
-            vmw.dataslist.cityarea = data;
-            vmw.getDatas();
-        },
+        // selectchange:function(data){
+        //     console.log(data,'selectchanges')
+        //     vmw.dataslist.cityarea = data;
+        //     vmw.getDatas();
+        // },
         intopages:function(){
             layui.use(['laypage', 'layer'], function(){
               var laypage = layui.laypage

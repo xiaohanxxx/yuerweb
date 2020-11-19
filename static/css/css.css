@@ -500,7 +500,7 @@ color: #666; font-size: 12px; }
 
 .hzwdcontslistes{ width: 100%; overflow: hidden; background: #fff; padding: 15px 0 15px 0; }
 .hzwdcontslistes h3{ border-left: 3px solid #ff44ad; padding-left: 25px; font-size: 20px; }
-
+.hzwdcontslistes p{ line-height: 30px; text-indent: 2em; padding: 5px 15px; }
 .listyisheng{ width: 100%; overflow: hidden; }
 .listyisheng ul{ overflow: hidden; width: 100%; padding: 15px; }
 .listyisheng ul li{width: 21%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
