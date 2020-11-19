@@ -38,7 +38,7 @@ class Area(views.View):
 class HospitalList(views.View):
     def get(self, request, *args, **kwargs):
         chk = request.GET
-        dict = {k: v for k, v in chk.items()}
+        dict = {k: v for k, v in chk.items() if v}
         rData = models.Hospital.objects.filter(**dict)
         resData = [{"id": i.id, "title": i.title, "content": i.content, "address": i.address} for i in rData]
         return HttpResponse(json.dumps({"data": resData}))
