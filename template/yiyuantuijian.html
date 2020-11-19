@@ -75,7 +75,7 @@
          <div class="tjyylists" ms-repeat="getYYlist">
               <div class="leftyytj">
                  <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>{el.title}     <abbr title="">三级甲等</abbr></h3>
+                 <h3>{el.title}     <abbr title="">{el.hospitallv}</abbr></h3>
                  <p>地址：{el.address}</p>
                  <p>电话：021 6659889</p>
               </div>
@@ -116,21 +116,11 @@
                  <h4 style="margin-top: 20px;">医生名称</h4>
                  <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
               </div>
-              <div class="doctorbox">
+              <!-- <div class="doctorbox">
                  <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
                  <h4 style="margin-top: 20px;">医生名称</h4>
                  <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">医生名称</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">医生名称</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div>
+              </div> -->
           </div>
 
 
@@ -321,13 +311,11 @@
             vmw.c = el;
             vmw.dataslist.hospitallv = vmw.dengjis[el].id;
             vmw.getDatas();
-            {#console.log(vmw.dataslist.dengji,'vmw.dataslist');#}
         },
         jishuFun:function (el){
             vmw.d = el;
             vmw.dataslist.hospitaltype = vmw.jishus[el].id;
             vmw.getDatas();
-            {#console.log(vmw.dataslist.jishu,'vmw.dataslist.jishu');#}
         },
         getYYlist:[],
         getDatas:function (){
@@ -344,16 +332,17 @@
                 // timeout: 10000,
                 success: function (data) {
                    vmw.getYYlist = data.data;
-                    console.log(data,5555555555555555);
                 }
             });
             console.log(datas,'发送请求');
         },
-        // selectchange:function(data){
-        //     console.log(data,'selectchanges')
-        //     vmw.dataslist.cityarea = data;
-        //     vmw.getDatas();
-        // },
+        selectchange:function(data){
+            console.log(data,'selectchanges')
+            vmw.dataslist.cityarea = data;
+            vmw.getDatas();
+        },
+        currpage:'',
+        pageNum:'',
         intopages:function(){
             layui.use(['laypage', 'layer'], function(){
               var laypage = layui.laypage
@@ -364,16 +353,35 @@
                 ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
                 ,jump: function(obj){
                   console.log(obj)
+                  vmw.currpage = obj.curr;
+                  vmw.pageNum = obj.limit; 
                 }
               });
             });
         },
+        getrmbaike:[],
+        get_rm_baike: function () {
+            var count = {
+                count: 10
+            }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articlecommend',//推荐文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmw.getrmbaike = data.data
+                    console.log(vmw.getrmbaike,"推荐文章");
+                }
+            });
+        }
 
     })
     vmw.intopages();
     vmw.getAllcity();
     vmw.getDengji();
     vmw.getJishu();
+    vmw.get_rm_baike();
 </script>
 </body>
 </html>

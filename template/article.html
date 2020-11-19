@@ -62,7 +62,7 @@
             <div class="left_bottom_artctal">
                 <h3><abbr>相关百科推荐</abbr></h3>
                 <ul>
-                    <li ms-repeat="get_rm_baike">
+                    <li ms-repeat="getrmbaike">
                         <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
                     </li>
                 </ul>
@@ -110,7 +110,7 @@
     var vmm = avalon.define({
         $id: 'bodyarical',
         get_tj_baike: [],
-        get_rm_baike: [],
+        getrmbaike: [],
         get_baike_tuijian: function () {
             var count = {
                 count: 10
@@ -135,8 +135,8 @@
                 data: count,
                 dataType: "json",
                 success: function (data) {
-                    vmm.get_rm_baike = data.data
-                    console.log(vmm.get_rm_baike,"推荐文章");
+                    vmm.getrmbaike = data.data
+                    console.log(vmm.getrmbaike,"推荐文章");
                 }
             });
         }
