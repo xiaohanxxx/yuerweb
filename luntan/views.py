@@ -159,11 +159,10 @@ class Comment(views.View):
         return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
-        data = json.loads(request.body)
-        article = get_object_or_404(luntanmodel.Articles, pk=data.get("articles_id", 0))
-        if data.get("parent_id", 0):
+        data = {k: v for k, v in request.POST.items()}
+        article = get_object_or_404(luntanmodel.Articles, pk=data.get('articles_id', 0))
+        if data.get('parent_id', 0):
             parent_comment = get_object_or_404(luntanmodel.Comment, pk=data['parent_id'])
-
         data['user_id'] = request.user.id
         luntanmodel.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
