@@ -1457,7 +1457,9 @@ body a:hover {
     color: #FF44AD;
     margin: 0 5px;
 }
-
+.plInpbox{
+    display:none;
+}
 .plInpbox .pl_head {
     height: 168px;
     border-radius: 8px;

@@ -41,7 +41,7 @@
             <div class="userInfo">
                 <div class="Mtx">
                     <a href="javascript:;">
-                        <img src="{{ data.user.head }}" alt="">
+                        <img src="/media/{{ data.user.head }}" alt="">
                     </a>
                 </div>
                 <div class="txInfo">
@@ -270,12 +270,12 @@
         for (const a in comment) {
             var newstr = diguipilun(comment[a].child, comment[a]);
             htmldata += '<div class="pl clearfix" ><div class="tx"><a href="javascript:;">';
-            htmldata += '<img src='+ comment[a].user.head + ' alt=""></a></div><p class="plbg">' + comment[a].user.username + '</p>';
+            htmldata += '<img src="/media'+ comment[a].user.head + '" alt=""></a></div><p class="plbg">' + comment[a].user.username + '</p>';
             htmldata += '<ul class="plul"><p commid=' + comment[a].id + '>　　' + comment[a].comment + '</p><div class="date clearfix">';
             htmldata += '<span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span><span btn="reply">回复</span></div>';
             htmldata += newstr;
-            htmldata += '<div class="pl_inpbox"><div class="plinput"><div class="plinput-h" style="position:relative;">';
-            htmldata += '</div><textarea name="" id="pl_Input"></textarea>';
+            htmldata += '<div class="pl_inpbox"><div class="plinput"><div class="plinput-h" style="position:relative;"><div bq_btn="emoji">😄</div>';
+            htmldata += '</div><textarea name="" id="pl_Input"></textarea><div name="result" contenteditable="true" style="display:none;"></div>';
             htmldata += '</div><span id="qxplBtn" class="fl">取消评论</span>';
             htmldata += '{% if request.user.is_active %}<span id = "plintBtn" class= "fr" onclick = "alert(1)"> <a href = "javascript:;"> 发布 </a></span> {% else %}<span id = "plintBtn" class= "fr" onclick = ""> <a href = "/login"> 发布 </a></span>{% endif %}';
             htmldata += '</div></ul></div>';
@@ -354,9 +354,9 @@
         return str;
     }
     {#帖子内容判断#}
-    function commIfpost(){
+    function commIfpost(topicid,commid,comment,dom){
         var truedata = {};
-        if(commid){
+        if(commid != ""){
             truedata ={
                 "articles_id":topicid,
                 "parent_id":commid,
@@ -368,13 +368,14 @@
                     "comment":comment
                 }
         }
-        if(topicid&&comment.length<1000){
+        if(topicid&&comment.length<1000&&comment!=""){
             $.ajax({
                 url: root_Domain+'/luntan/comment/',
                 type:'post',
                 data: truedata,
                 success:function(ajax){
                    initdataHtml();
+                   dom.hide();
                    alert("评论成功");
                 }
             })
@@ -384,23 +385,29 @@
             alert('只能输入1000个字符,');
         }
     }
+
+    $('.plbox>div').eq(0).click(function(){
+        $(this).parent().parent().next().show();
+    })
     //评论事件处理
     var Mpostbox = $('#khlypl');
     var emoji = $('#emoji');
     bqbaofunc(emoji,Mpostbox);//主评论
-     $("#plintBtn").click(function() {
+    $("#plintBtn").click(function() {
         var content = $("#khlypl").val();
         content = replace_em(content);
         $("div[name='result']").html(content);
         $("#khlypl").val('');
     });
+
 {# 父级一层回复#}
     function goPostcomm(ev){
         $(document).ready(function(){
             var _this = ev;
-            var topicid = $(_this).parent().prev().find("div.allInfo p").attr("commid");
+            var topicid = $(_this).parent().prev().find("div.allInfo p").attr("commid"),
+                commid='',
                 comment= $(_this).prev().prev().find("div[name='result']").html().replace(/\'/,"");
-            commIfpost(topicid,comment);
+            commIfpost(topicid,commid,comment,$(_this).parent());
         })
     }
 
