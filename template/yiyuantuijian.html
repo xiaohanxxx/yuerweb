@@ -111,10 +111,12 @@
       <div class="hzwdrights">
           <div class="szzhuanjia">
               <h3><abbr>推荐百科</abbr> <a href="###">更多>></a></h3>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">医生名称</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              <div class="doctorbox" ms-repeat="getrmbaike">
+                 <a ms-attr-href="/baike/article?aid={el.id}">
+                   <img ms-attr-src="'/media/' + el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                   <h4 style="margin-top: 20px;">{el.title}</h4>
+                   <p style=" font-size: 14px; margin-top: 10px;">{el.excerpt | truncate(33,'...')}</p>
+                 </a>
               </div>
               <!-- <div class="doctorbox">
                  <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
@@ -349,12 +351,14 @@
               ,layer = layui.layer;
               laypage.render({
                 elem: 'pagers'
-                ,count: 5
-                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                ,jump: function(obj){
-                  console.log(obj)
+                ,count: vmw.getrmbaike.length,
+                layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+                jump: function(obj){
+                  console.log(obj);
                   vmw.currpage = obj.curr;
-                  vmw.pageNum = obj.limit; 
+                  vmw.pageNum = obj.limit;
+                  vmw.get_rm_baike();
+                  console.log(vmw.currpage,vmw.pageNum);
                 }
               });
             });
@@ -362,6 +366,8 @@
         getrmbaike:[],
         get_rm_baike: function () {
             var count = {
+                currpage:vmw.currpage,
+                pageNum:vmw.pageNum,
                 count: 10
             }
             $.ajax({
