@@ -284,7 +284,7 @@ def articleread(request):
 def articlecommend(request):
     if request.method == "POST":
         count = request.POST.get('count')
-        read_article = models.Artical.objects.filter(recommend=True)[:int(count)].values('id','title','excerpt','click_count')
+        read_article = models.Artical.objects.filter(recommend=True)[:int(count)].values('id','title','thumb','excerpt','click_count')
         data = {
             'code':200,
             'msg':'成功',
