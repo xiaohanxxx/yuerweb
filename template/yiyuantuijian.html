@@ -32,23 +32,24 @@
          <h3 style="font-size: 16px; margin: 20px 0; border-left:2px solid #ff44ad; padding-left: 20px;">国内试管婴儿推荐医院</h3>
          <div class="fenleiallswd">
              <p>地区：</p>
-             <p ms-class="allcurr:d==1" ms-click="getAllcitys(1)">中国大陆</p>
-             <p ms-class="allcurr:d==2"  ms-click="getAllcitys(2)">港澳台</p>
+{#             <p class="allcurr">国内</p>#}
+             <p ms-repeat="arear" ms-class="allcurr:$index == a" ms-click="getcurreone($index)">{el.name}</p>
          </div>
           <div class="fenleiallswd">
-             <p style="float: left;">省份：</p>
+             <p style="float: left;" ms-click="clearShengfen">省份：</p>
              <div>
-               <p class="allcurr" ms-click="getAllshengfen(1)">全部</p>
-               <p ms-repeat-el="datas" ms-class="allcurr:el.city == v" ms-click="getALLsmallcity(el.city,$index)">{el.city}</p>
+               <p class="allcurr" ms-click="clearSf">全部</p>
+               <p ms-repeat="erjidatas" ms-class="allcurr:$index == b" ms-click="getcurcitys($index)">{el.name}</p>
              </div>
          </div>
+
+<div ms-if="a == 0">
           <div class="fenleiallswd">
              <p>城市：</p>
              <p class="allcurr">
-               <!-- <select name="" id="" ms-duplex="chengshi" > -->
                 <select name="" id="" ms-duplex="chengshi" data-duplex-changed="selectchange">
                    <option value="">请选择城市</option>
-                   <option ms-repeat-el="vlist" ms-attr-value="{el}">{el}</option>
+                   <option ms-repeat="citys"  ms-attr-value="el.id">{el.name}</option>
                </select>
              </p>
              <!-- <p>港澳台</p> -->
@@ -57,137 +58,56 @@
 
         <div class="fenleiallswd">
              <p>等级：</p>
-             <p class="allcurr" ms-click="getAllshengfen(2)">全部</p>
-             <p ms-repeat="dengji" ms-class="allcurr:$index == g" ms-click="getDengji(el,$index)">{el}</p>
+             <p class="allcurr">全部</p>
+             <p ms-repeat="dengjis" ms-class="allcurr:$index == c"  ms-click="dengjiFun($index)">{el.name}</p>
          </div>
 
 
-         <div class="fenleiallswd">
-             <p>地区：</p>
-             <p class="allcurr" ms-click="getAllshengfen(3)">全部</p>
-             <p ms-repeat="jishu" ms-class="allcurr:$index == f" ms-click="getJishu(el,$index)">{el}</p>
-         </div>
-  
-
-
-         <div class="hzwdcontslist">
-
-
-
-             <div class="tjyylists">
-                  <div class="leftyytj">
-                     <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                     <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                     <p>地址：我是医院地址文字信息</p>
-                     <p>电话：021 6659889</p>
-                  </div>
-                  <div class="rightyytj">
-                     <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                     <p>累计20名医生</p>
-                     <p><abbr title="">在线咨询</abbr></p>
-                  </div>
-             </div>
-
-
-             
-             <div class="tjyylists">
-                  <div class="leftyytj">
-                     <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                     <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                     <p>地址：我是医院地址文字信息</p>
-                     <p>电话：021 6659889</p>
-                  </div>
-                  <div class="rightyytj">
-                     <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                     <p>累计20名医生</p>
-                     <p><abbr title="">在线咨询</abbr></p>
-                  </div>
-             </div>
-
-
-
-
-
-             <div class="tjyylists">
-                  <div class="leftyytj">
-                     <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                     <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                     <p>地址：我是医院地址文字信息</p>
-                     <p>电话：021 6659889</p>
-                  </div>
-                  <div class="rightyytj">
-                     <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                     <p>累计20名医生</p>
-                     <p><abbr title="">在线咨询</abbr></p>
-                  </div>
-             </div>
-
-
-
-             <div class="tjyylists">
-                  <div class="leftyytj">
-                     <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                     <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                     <p>地址：我是医院地址文字信息</p>
-                     <p>电话：021 6659889</p>
-                  </div>
-                  <div class="rightyytj">
-                     <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                     <p>累计20名医生</p>
-                     <p><abbr title="">在线咨询</abbr></p>
-                  </div>
-             </div>
-
-
-              <div class="tjyylists">
-                  <div class="leftyytj">
-                     <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                     <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                     <p>地址：我是医院地址文字信息</p>
-                     <p>电话：021 6659889</p>
-                  </div>
-                  <div class="rightyytj">
-                     <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                     <p>累计20名医生</p>
-                     <p><abbr title="">在线咨询</abbr></p>
-                  </div>
-             </div>
-
-
-             <div class="tjyylists">
-                  <div class="leftyytj">
-                     <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                     <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                     <p>地址：我是医院地址文字信息</p>
-                     <p>电话：021 6659889</p>
-                  </div>
-                  <div class="rightyytj">
-                     <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                     <p>累计20名医生</p>
-                     <p><abbr title="">在线咨询</abbr></p>
-                  </div>
-             </div>
-
-             <div id="pagers"></div>
-
-         </div>
-
+       <div class="fenleiallswd">
+         <p>技术：</p>
+         <p class="allcurr">全部</p>
+         <p ms-repeat="jishus" ms-class="allcurr:$index == d"  ms-click="jishuFun($index)">{el.name}</p>
       </div>
+</div>
+      <div class="hzwdcontslist">
+
+
+         <div class="tjyylists" ms-repeat="getYYlist">
+              <div class="leftyytj">
+                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
+                 <h3>{el.title}     <abbr title="">{el.hospitallv}</abbr></h3>
+                 <p>地址：{el.address}</p>
+                 <p>电话：021 6659889</p>
+              </div>
+              <div class="rightyytj">
+                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
+                 <p>累计{el.doctornum}名医生</p>
+                 <p><abbr title="">在线咨询</abbr></p>
+              </div>
+         </div>
 
 
 
+       <!--   <div class="tjyylists">
+              <div class="leftyytj">
+                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
+                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
+                 <p>地址：我是医院地址文字信息</p>
+                 <p>电话：021 6659889</p>
+              </div>
+              <div class="rightyytj">
+                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
+                 <p>累计20名医生</p>
+                 <p><abbr title="">在线咨询</abbr></p>
+              </div>
+         </div> -->
 
 
 
+         <div id="pagers"></div>
 
-
-
-
-
-
-
-
-
+     </div>
+      </div>
       <div class="hzwdrights">
           <div class="szzhuanjia">
               <h3><abbr>推荐百科</abbr> <a href="###">更多>></a></h3>
@@ -196,21 +116,11 @@
                  <h4 style="margin-top: 20px;">医生名称</h4>
                  <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
               </div>
-              <div class="doctorbox">
+              <!-- <div class="doctorbox">
                  <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
                  <h4 style="margin-top: 20px;">医生名称</h4>
                  <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">医生名称</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">医生名称</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div>
+              </div> -->
           </div>
 
 
@@ -313,241 +223,165 @@
           </div>
 
       </div>
-    </div>
+      </div>
+
+
+
      <!-- 底部 -->
     {% include 'footer.html' %}
+
       <script>
         avalon.config({
             interpolate: ["{", "}"]
         });  
        var vmw = avalon.define({
         $id: "hzwdconts",
-        chengshi:'',//选择的城市
-        v:'',//选择的省份
-        dengjis:'',
-        jishus:'',
-        g:'',
-        f:'',
-        d:1,//用来分辨港澳台还是大陆的
-        vlist:[],//城市数据模拟
-        datas:[],//省份数据模拟
-        citya:[
-                {
-                "city":"北京",
-                "list": ["东城区", "西城区", "崇文区", "宣武区", "朝阳区", "海淀区", "丰台区", "石景山区", "房山区", "通州区", "顺义区", "昌平区", "大兴区", "怀柔区", "平谷区", "门头沟区", "密云县", "延庆县"],
-                },
-                {
-                "city":"天津",
-                "list":["和平区", "河东区", "河西区", "南开区", "河北区", "红桥区", "东丽区", "西青区", "北辰区", "津南区", "武清区", "宝坻区", "滨海新区", "静海县", "宁河县", "蓟县"],
-                },
-                {
-                "city":"上海",
-                "list":["黄浦区", "卢湾区", "徐汇区", "长宁区", "静安区", "普陀区", "闸北区", "虹口区", "杨浦区", "闵行区", "宝山区", "嘉定区", "浦东新区", "金山区", "松江区", "青浦区", "奉贤区", "崇明县"],
-                },
-                {
-                "city":"重庆",
-                "list":["渝中区", "大渡口区", "江北区", "南岸区", "北碚区", "渝北区", "巴南区", "长寿区", "双桥区", "沙坪坝区", "万盛区", "万州区", "涪陵区", "黔江区", "永川区", "合川区", "江津区", "九龙坡区", "南川区", "綦江县", "潼南县", "荣昌县", "璧山县", "大足县", "铜梁县", "梁平县", "开县", "忠县", "城口县", "垫江县", "武隆县", "丰都县", "奉节县", "云阳县", "巫溪县", "巫山县", "石柱土家族自治县", "秀山土家族苗族自治县", "酉阳土家族苗族自治县", "彭水苗族土家族自治县"],
-                },
-                {
-                "city":"河北",
-                "list":["石家庄", "唐山", "秦皇岛", "邯郸", "邢台", "保定", "张家口", "承德", "沧州", "廊坊", "衡水"],
-                },
-                {
-                "city":"山西",
-                "list":["太原", "大同", "阳泉", "长治", "晋城", "朔州", "晋中", "运城", "忻州", "临汾", "吕梁"],
-                },
-                {
-                "city":"辽宁",
-                "list": ["沈阳", "大连", "鞍山", "抚顺", "本溪", "丹东", "锦州", "营口", "阜新", "辽阳", "盘锦", "铁岭", "朝阳", "葫芦岛"],
-                },
-                {
-                "city":"吉林",
-                "list":["长春", "吉林", "四平", "辽源", "通化", "白山", "松原", "白城", "延边朝鲜族自治州"],
-                },
-                {
-                "city":"黑龙江",
-                "list": ["哈尔滨", "齐齐哈尔", "鹤岗", "双鸭山", "鸡西", "大庆", "伊春", "牡丹江", "佳木斯", "七台河", "黑河", "绥化", "大兴安岭"],
-                },
-                {
-                "city":"江苏",
-                "list":["南京", "苏州", "无锡", "常州", "镇江", "南通", "泰州", "扬州", "盐城", "连云港", "徐州", "淮安", "宿迁"],
-                },
-                {
-                "city":"浙江",
-                "list":["杭州", "宁波", "温州", "嘉兴", "湖州", "绍兴", "金华", "衢州", "舟山", "台州", "丽水"],
-                },
-                {
-                "city":"安徽",
-                "list": ["合肥", "芜湖", "蚌埠", "淮南", "马鞍山", "淮北", "铜陵", "安庆", "黄山", "滁州", "阜阳", "宿州", "巢湖", "六安", "亳州", "池州", "宣城"],
-                },
-                {
-                "city":"福建",
-                "list":  ["福州", "厦门", "莆田", "三明", "泉州", "漳州", "南平", "龙岩", "宁德"],
-                },
-                {
-                "city":"江西",
-                "list": ["南昌", "景德镇", "萍乡", "九江", "新余", "鹰潭", "赣州", "吉安", "宜春", "抚州", "上饶"],
-                },
-                {
-                "city":"山东",
-                "list":  ["济南", "青岛", "淄博", "枣庄", "东营", "烟台", "潍坊", "济宁", "泰安", "威海", "日照", "莱芜", "临沂", "德州", "聊城", "滨州", "菏泽"],
-                },
-                {
-                "city":"河南",
-                "list": ["郑州", "开封", "洛阳", "平顶山", "安阳", "鹤壁", "新乡", "焦作", "濮阳", "许昌", "漯河", "三门峡", "南阳", "商丘", "信阳", "周口", "驻马店"],
-                },
-                { 
-                "city":"湖北",
-                "list":  ["武汉", "黄石", "十堰", "荆州", "宜昌", "襄樊", "鄂州", "荆门", "孝感", "黄冈", "咸宁", "随州", "恩施", "麻城"],
-                },
-                {
-                "city":"湖南",
-                "list": ["长沙", "株洲", "湘潭", "衡阳", "邵阳", "岳阳", "常德", "张家界", "益阳", "郴州", "永州", "怀化", "娄底", "湘西"],
-                },
-                {
-                "city":"广东",
-                "list": ["广州", "深圳", "珠海", "汕头", "韶关", "佛山", "江门", "湛江", "茂名", "肇庆", "惠州", "梅州", "汕尾", "河源", "阳江", "清远", "东莞", "中山", "潮州", "揭阳", "云浮"],
-                },
-                {
-                "city":"海南",
-                "list": ["海口", "三亚"],
-                },
-                {   
-                "city":"四川",
-                "list": ["成都", "自贡", "攀枝花", "泸州", "德阳", "绵阳", "广元", "遂宁", "内江", "乐山", "南充", "眉山", "宜宾", "广安", "达州", "雅安", "巴中", "资阳", "阿坝", "甘孜", "凉山"],
-                },
-                { 
-                "city":"贵州",
-                "list":  ["贵阳", "六盘水", "遵义", "安顺", "铜仁", "毕节", "黔西南", "黔东南", "黔南"],
-                },
-                
-                { 
-                "city":"云南",
-                "list": ["昆明", "曲靖", "玉溪", "保山", "昭通", "丽江", "普洱", "临沧", "德宏", "怒江", "迪庆", "大理", "楚雄", "红河", "文山", "西双版纳"],
-                },
-                { 
-                "city":"陕西",
-                "list":["西安", "铜川", "宝鸡", "咸阳", "渭南", "延安", "汉中", "榆林", "安康", "商洛"],
-                },
-                { 
-                "city":"甘肃",
-                "list":["兰州", "嘉峪关", "金昌", "白银", "天水", "武威", "酒泉", "张掖", "庆阳", "平凉", "定西", "陇南", "临夏", "甘南"],
-                }, 
-                { 
-                "city":"青海",
-                "list":["西宁", "海东", "海北", "海南", "黄南", "果洛", "玉树", "海西"],
-                }, 
-                { 
-                "city":"内蒙古",
-                "list":["呼和浩特", "包头", "乌海", "赤峰", "通辽", "鄂尔多斯", "呼伦贝尔", "巴彦淖尔", "乌兰察布", "锡林郭勒盟", "兴安盟", "阿拉善盟"],
-                },  
-                { 
-                "city":"广西",
-                "list":["南宁", "柳州", "桂林", "梧州", "北海", "防城港", "钦州", "贵港", "玉林", "百色", "贺州", "河池", "来宾", "崇左"],
-                }, 
-                { 
-                "city":"西藏",
-                "list":["拉萨", "那曲", "昌都", "林芝", "山南", "日喀则", "阿里"],
-                },
-                { 
-                "city":"宁夏",
-                "list":["银川", "石嘴山", "吴忠", "固原", "中卫"],
-                },
-                { 
-                "city":"新疆维吾尔自治区",
-                "list":["乌鲁木齐", "克拉玛依", "吐鲁番", "哈密", "和田", "阿克苏", "喀什", "克孜勒苏", "巴音郭楞", "昌吉", "博尔塔拉", "伊犁", "塔城", "阿勒泰"],
-                }
-        ],
-        gangaotai:[
-                { 
-                "city":"香港",
-                "list":["香港岛", "九龙东", "九龙西", "新界东", "新界西"],
-                },
-                { 
-                "city":"澳门",
-                "list":["澳门半岛", "离岛"],
-                },
-                { 
-                "city":"台湾",
-                "list":["台北", "高雄", "基隆", "新竹", "台中", "嘉义", "台南市"],
-                }
-        ],
-        dengji:['三级甲等','二级甲等','一级','未定级'],
-        jishu:['第三代试管婴儿','第二代试管婴儿','第一代试管婴儿','夫精人工授精','供精人工授精'],
-        getDengji:function(data,index){
-            vmw.dengjis = data;
-            vmw.g = index;
-            // console.log(vmw.g,'ggg');
+        arear:[],
+        citys:[],
+        chengshi:'',
+        a:'',//地区
+        b:'',//省份
+        c:'',//等级
+        d:'',//技术
+        erjidatas:[],
+        dengjis:[],
+        jishus:[],
+        dataslist:{
+            worldarea:'',
+            privincearea:'',
+            cityarea:'',
+            hospitallv:'',
+            hospitaltype:""
+        },
+        dataslistout:{
+            worldarea:'',
+            privincearea:''
+        },
+        getcurreone:function (el){
+            vmw.a = el;
+            vmw.dataslist.worldarea = vmw.arear[el].id;
+            vmw.dataslistout.worldarea = vmw.arear[el].id;
+            vmw.erjidatas = vmw.arear[el].child;
             vmw.getDatas();
         },
-         getJishu:function(data,index){
-            vmw.jishus = data;
-            vmw.f = index;
-            // console.log(vmw.f,'fff');
-           vmw.getDatas();
-        },
-        getAllshengfen:function (data){
-            if (data == 1){
-                vmw.v = "";
-            }else if (data == 2){
-                vmw.dengjis = '';
-            }else if (data == 3){
-               vmw.jishus = '';
-            }
+        getcurcitys:function (el){//获取当前省的城市
+            vmw.b = el;
+            vmw.dataslist.privincearea =vmw.erjidatas[el].id;
+            vmw.dataslistout.privincearea =vmw.erjidatas[el].id;
+            vmw.citys = vmw.erjidatas[el].child;
             vmw.getDatas();
         },
+        getAllcity:function (){//获取地区省份城市
+             $.ajax({
+                type: 'get',
+                url: '/hospital/areas/',
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    vmw.arear = data.data;
+                    vmw.getcurreone(0);
+                    vmw.getcurcitys(0);
+                    //console.log(vmw.arear[1],'datas');
+                }
+            });
+        },
+        getDengji:function (){
+             $.ajax({
+                type: 'get',
+                url: '/hospital/hospitallv/',
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    vmw.dengjis = data.data;
+                }
+            });
+        },
+        getJishu:function (){
+                $.ajax({
+                type: 'get',
+                url: "/hospital/hospitaltype/",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    vmw.jishus = data.data;
+                }
+            });
+        },
+        dengjiFun:function (el){
+            vmw.c = el;
+            vmw.dataslist.hospitallv = vmw.dengjis[el].id;
+            vmw.getDatas();
+        },
+        jishuFun:function (el){
+            vmw.d = el;
+            vmw.dataslist.hospitaltype = vmw.jishus[el].id;
+            vmw.getDatas();
+        },
+        getYYlist:[],
         getDatas:function (){
-            var datas = {
-                diqu:vmw.incurre == 1 ? '中国大陆' : '港澳台',
-                shengfen:vmw.v,
-                chengshi:vmw.chengshi,
-                dengji:vmw.dengjis,
-                jishu: vmw.jishus
+            if (vmw.a == 0){
+               var datas = vmw.dataslist;
+            }else if (vmw.a == 1){
+               var datas = vmw.dataslistout;
             }
+             $.ajax({
+                type: 'get',
+                url: '/hospital/hospitallist/',
+                data: datas,
+                dataType: "json",
+                // timeout: 10000,
+                success: function (data) {
+                   vmw.getYYlist = data.data;
+                }
+            });
             console.log(datas,'发送请求');
-
         },
         selectchange:function(data){
-          vmw.chengshi = data;
-           vmw.getDatas();
-        },
-        incurre:1,
-        getAllcitys:function(res){
-            vmw.incurre = res;
-            if(res == 1){
-              vmw.datas = vmw.citya
-            }else if(res == 2){
-              vmw.datas = vmw.gangaotai
-            }
-            vmw.d = res;
+            console.log(data,'selectchanges')
+            vmw.dataslist.cityarea = data;
             vmw.getDatas();
         },
-        getALLsmallcity:function(data,index){
-           vmw.v = data,
-           vmw.vlist=[],
-           vmw.chengshi="",
-           vmw.vlist = vmw.datas[index].list
-           // console.log(vmw.v,78787878);
-           vmw.getDatas();
-        },
+        currpage:'',
+        pageNum:'',
         intopages:function(){
             layui.use(['laypage', 'layer'], function(){
               var laypage = layui.laypage
               ,layer = layui.layer;
               laypage.render({
                 elem: 'pagers'
-                ,count: 100
+                ,count: 5
                 ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
                 ,jump: function(obj){
                   console.log(obj)
+                  vmw.currpage = obj.curr;
+                  vmw.pageNum = obj.limit; 
                 }
               });
             });
         },
+        getrmbaike:[],
+        get_rm_baike: function () {
+            var count = {
+                count: 10
+            }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articlecommend',//推荐文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmw.getrmbaike = data.data
+                    console.log(vmw.getrmbaike,"推荐文章");
+                }
+            });
+        }
 
     })
     vmw.intopages();
-    vmw.getAllcitys(1);
+    vmw.getAllcity();
+    vmw.getDengji();
+    vmw.getJishu();
+    vmw.get_rm_baike();
 </script>
 </body>
 </html>

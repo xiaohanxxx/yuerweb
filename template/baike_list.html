@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>首页</title>
+	<meta charset="utf-8">
+        {% load static %}
+        
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<meta name=renderer content=webkit>
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+
+
+</head>
+<!-- 头部 -->
+{% include 'header.html' %}
+ 
+     
+     <div class="curr_address">
+           当前位置：百科知识 百科分类
+     </div>
+
+     <div class="artcalAll">
+          <div class="leftarcallist">
+                <ul>
+{#                    <li class="curre_dh">备孕百科</li>#}
+{#                    <li>怀孕百科</li>#}
+{#                    <li>不孕不育</li>#}
+{#                    <li>试管婴儿</li>#}
+{#                    <li>育儿百科</li>#}
+                    <li ms-repeat-el="datasgyes"  ms-class="curre_dh:el.mid == b" ms-click="changrightlm(el.mid,$index)">{el.menu_name}</li>
+                </ul>
+
+                <div class="child_fl">
+                        <div class="fl_list" ms-repeat-el="erjidatalist">
+                            <h3>{el.menu_name}</h3>
+                            <ol>
+                                <li ms-repeat-sanji="el.children" ><a ms-attr-href="/baike/article?aid={sanji.articleid}">{sanji.title}</a></li>
+                            </ol>
+                        </div>
+                </div>
+                <div class="zs_more">
+                    <p style="cursor: pointer;" ms-click="getMorelist">展示更多</p>
+                </div>
+          </div>
+         <div class="rightarclalist">
+             <a href="###"><img src="{% static 'img/jszx.png' %}" alt=""></a>
+             <div class="al_taolun">
+                  <h4><abbr title="">大家都在讨论</abbr> <a href="" style="float: right; margin-right:30px;">更多>></a></h4>
+                 <ul>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
+                 </ul>
+             </div>
+
+
+
+             <div class="al_taolun">
+                  <h4><abbr title="">相关问答推荐</abbr> <a href="" style="float: right; margin-right:30px;">更多</a></h4>
+                 <ul>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                     <li><a href="">我是文章标题文字信息只显示一行</a><abbr title="">999个回答</abbr></li>
+                 </ul>
+             </div>
+
+
+
+
+         </div>
+     </div>
+<!-- 底部 -->
+{% include 'footer.html' %}
+</body>
+</html>
