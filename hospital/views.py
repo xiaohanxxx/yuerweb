@@ -40,7 +40,16 @@ class HospitalList(views.View):
         chk = request.GET
         dict = {k: v for k, v in chk.items() if v}
         rData = models.Hospital.objects.filter(**dict)
-        resData = [{"id": i.id, "title": i.title, "content": i.content, "address": i.address} for i in rData]
+        resData = [
+            {"id": i.id,
+             "title": i.title,
+             "content": i.content,
+             "address": i.address,
+             "phone": i.phone,
+             # TODO 获取医院医生人数
+             "doctornum": 10
+             } for i in rData
+        ]
         return HttpResponse(json.dumps({"data": resData}))
 
 
