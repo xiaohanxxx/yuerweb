@@ -133,7 +133,7 @@ class Article(views.View):
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
         topic = request.POST.getlist("topics", [])
-        print(topic)
+
         if topic:
             topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
             articleRes.topics.add(topicObj)
@@ -159,13 +159,12 @@ class Comment(views.View):
         return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
-        user_id = request.session.get("user_id", 2)
-        data = json.loads(request.body)
+        data = {k: v for k, v in request.POST.items()}
         article = get_object_or_404(luntanmodel.Articles, pk=data.get("articles_id", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(luntanmodel.Comment, pk=data['parent_id'])
 
-        data['user_id'] = user_id
+        data['user_id'] = request.user.id
         luntanmodel.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
 
