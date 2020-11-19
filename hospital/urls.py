@@ -9,5 +9,7 @@ urlpatterns = [
     path(r'areas/', views.Area.as_view(), name='areas'),
     path(r'hospitallist/', views.HospitalList.as_view(), name='hospitallist'),
     path(r'hospitallv/', views.HospitalLv.as_view(), name='hospitallv'),
-    path(r'hospitaltype/', views.HospitalType.as_view(), name='hospitaltype')
+    path(r'hospitaltype/', views.HospitalType.as_view(), name='hospitaltype'),
+    path(r'doctorlist/', views.GetDoctorList.as_view(), name='doctorlist'),
+    path(r'doctor/', views.GetDoctor.as_view(), name='doctor')
 ]
