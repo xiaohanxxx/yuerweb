@@ -610,7 +610,7 @@ color: #666; font-size: 12px; }
 .curre_dh{ color: #FF44AD; border-bottom: 1px solid #FF44AD;}
 
 .child_fl{ overflow: hidden; width: 100%; float: left;}
-.fl_list{float: left; width: 50%; margin: 15px 0; height: 120px;}
+.fl_list{float: left; width: 50%; margin: 15px 0; height: 180px;}
 .fl_list h3{ font-size: 16px; color:#FF44AD;}
 .fl_list ol{ overflow: hidden;}
 .fl_list ol li{ float: left; margin-right: 20px; line-height: 25px; list-style-type: disc; margin: 8px 10px 8px 22px;}
