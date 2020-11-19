@@ -3,4 +3,4 @@ from . import models
 
 
 # Register your models here.
-admin.site.register([models.Area, models.Hospital, models.HospitalLv, models.HospitalType])
+admin.site.register([models.Area, models.Hospital, models.HospitalLv, models.HospitalType, models.Doctor, models.Mail])

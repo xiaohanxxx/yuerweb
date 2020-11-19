@@ -55,3 +55,40 @@ class Hospital(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Mail(models.Model):
+    username = models.CharField(max_length=32, verbose_name="名字")
+    userhead = models.TextField(verbose_name="头像地址")
+    mail = models.TextField(verbose_name="感谢信")
+    doctor = models.ForeignKey("Doctor", default=1, on_delete=models.CASCADE, verbose_name="医生")
+
+    class Meta:
+        verbose_name = "感谢信"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.mail
+
+
+class Doctor(models.Model):
+    name = models.CharField(max_length=32, verbose_name="名字")
+    choices = (
+        (1, '男'), (2, '女')
+    )
+    gender = models.IntegerField(choices=choices, verbose_name="性别")
+    area = models.CharField(max_length=32, verbose_name="地区")
+    keshi = models.CharField(max_length=32, verbose_name="所属科室")
+    zhiwei = models.CharField(max_length=32, verbose_name="职位")
+    goodjob = models.CharField(max_length=100, verbose_name="擅长领域")
+    title = models.CharField(max_length=100, verbose_name="荣誉称号")
+    details = models.TextField(verbose_name="详细介绍")
+    hospital = models.ForeignKey("Hospital", default=2, on_delete=models.CASCADE, verbose_name="所属医院")
+
+
+    class Meta:
+        verbose_name = "医生详情"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
