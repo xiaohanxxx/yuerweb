@@ -36,8 +36,8 @@
             <li>
               <a href="/hospital" class="acolor">医院推荐</a>
               <div class="xialabox" style="display: none;">
-                <p><a href="">海外医院</a></p>
-                <p><a href="">国内医院</a></p>
+                <p><a href="/hospital?type=2" >海外医院</a></p>
+                <p><a href="/hospital?type=1" >国内医院</a></p>
               </div>
             </li>
             <li>
@@ -100,6 +100,9 @@
            vmm.namees = '';
            vmm.namees = els;
            $(this).parent().addClass('hites');
+        },
+        intoAere:function(res){
+            
         }
     })
 </script>

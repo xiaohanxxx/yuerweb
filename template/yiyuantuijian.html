@@ -74,8 +74,8 @@
 
          <div class="tjyylists" ms-repeat="getYYlist">
               <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>{el.title}     <abbr title="">{el.hospitallv}</abbr></h3>
+                  <a href="###"><img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
+                 <h3><a href="###">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
                  <p>地址：{el.address}</p>
                  <p>电话：021 6659889</p>
               </div>
@@ -351,8 +351,8 @@
               ,layer = layui.layer;
               laypage.render({
                 elem: 'pagers'
-                ,count: vmw.getrmbaike.length,
-                layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
+                ,count: vmw.getrmbaike.length
+                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
                 jump: function(obj){
                   console.log(obj);
                   vmw.currpage = obj.curr;
