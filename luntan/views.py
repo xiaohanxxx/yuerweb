@@ -128,7 +128,7 @@ class Article(views.View):
         articleData = {
             "user_id": request.user.id,
             "title": request.POST.get("title"),
-            "content": request.POST.get("title")
+            "content": request.POST.get("content")
         }
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
