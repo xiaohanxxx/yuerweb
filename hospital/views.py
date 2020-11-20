@@ -40,7 +40,7 @@ class Area(views.View):
 class HospitalList(views.View):
     def get(self, request, *args, **kwargs):
         chk = request.GET
-        dict = {k: v for k, v in chk.items() if v and v not in ["num", "page"]}
+        dict = {k: v for k, v in chk.items() if v and k not in ["num", "page"]}
         rData = models.Hospital.objects.filter(**dict)
         num = request.GET.get('num', 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
