@@ -24,7 +24,6 @@
     })
     var localhref = window.location.href;
     vm_tjjl.Mid = localhref.substr(localhref.indexOf('Mid'),5).replace('Mid=','');
-    console.log(vm_tjjl.Mid)
     $.ajax({
         url: root_Domain + '/luntan/areas/',
         type: 'get',

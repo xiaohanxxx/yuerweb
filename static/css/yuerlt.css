@@ -1457,7 +1457,9 @@ body a:hover {
     color: #FF44AD;
     margin: 0 5px;
 }
-
+.plInpbox{
+    display:none;
+}
 .plInpbox .pl_head {
     height: 168px;
     border-radius: 8px;
@@ -1466,7 +1468,7 @@ body a:hover {
 .pl_head .bqBtn {
     width: 100%;
     left: 0;
-    height: 35px;
+    height: 42px;
     background-color: #c9c9c9;
 }
 
@@ -1589,14 +1591,17 @@ body a:hover {
 
 .plul > p {
     font-size: 14px;
-    line-height: 19px;
+    line-height: 24px;
     letter-spacing: 0px;
     color: #999;
     width: 50%;
     word-break: break-word;
     margin-bottom: 10px;
 }
-
+.plul > p>img{
+    width: 24px;
+    height: 24px;
+}
 .date > span {
     float: left;
 }
@@ -1727,4 +1732,15 @@ body .byjlmain .selectId>a{
 }
 body .tjjlSelect>a{
     color: pink !important;
+}
+body .plInpbox #openFace{
+    left:5px;
+}
+body .faceDivBox{
+    margin: 0;
+    width: 60%;
+    top:-5px;
+}
+body .plinput-h>img{
+    left: 5px;
 }
