@@ -17,7 +17,7 @@
 <body>
     {% include 'config.html' %}
     {% include 'header.html' %}
-    <section id="postMain" class='wid' style='margin-top:30px;'>
+    <section id="postMain" class='wid' style='margin-top:30px;' ms-controller="postart">
         <div class="currdis clearfix">
             <div class="dqwz">当前位置：</div>
             <div class="lmmbx">
@@ -47,69 +47,7 @@
                 </nav>
             </div>
             <div id="topicSelect">
-                <div class="tj_topic_name clearfix">
-                    <span id="topic_name">生男生女</span>
-                    <span class='iconfont'>&#xe665;</span>
-                </div>
-                <div class="topicitem_box" style='display:none;'>
-                    <div class="topic_menu">
-                        <div class='topicSelect'>推荐</div>
-                        <div>推荐推荐推荐推荐推荐推荐推荐</div>
-                        <div>推荐推荐推荐推荐推荐推荐推荐推荐</div>
-                        <div>推荐推荐推荐推荐</div>
-                        <div>推荐荐推荐推荐</div>
-                    </div>
-                    <ul class="tjTopic_box">
-                        <li>
-                            <span class="topic_item">
-                                #生男生女#
-                            </span>
-                            <span class="topic_per_num">
-                                999万人参与
-                            </span>
-                        </li>
-                        <li>
-                            <span class="topic_item">
-                                #生男生女#
-                            </span>
-                            <span class="topic_per_num">
-                                999万人参与
-                            </span>
-                        </li>
-                        <li>
-                            <span class="topic_item">
-                                #生男生女#
-                            </span>
-                            <span class="topic_per_num">
-                                999万人参与
-                            </span>
-                        </li>
-                        <li>
-                            <span class="topic_item">
-                                #生男生女#
-                            </span>
-                            <span class="topic_per_num">
-                                999万人参与
-                            </span>
-                        </li>
-                        <li>
-                            <span class="topic_item">
-                                #生男生女#
-                            </span>
-                            <span class="topic_per_num">
-                                999万人参与
-                            </span>
-                        </li>
-                        <li>
-                            <span class="topic_item">
-                                #生男生女#
-                            </span>
-                            <span class="topic_per_num">
-                                999万人参与
-                            </span>
-                        </li>
-                    </ul>
-                </div>
+
                 <div class="kindeitorbox">
                     <div class='fl'>内容：</div>
                     <div class='editorbox fl'>
@@ -142,8 +80,11 @@
             CKEDITOR.replace('editor_id');
             var mid = localStorage.getItem("Mid");
             var topicData = JSON.parse(localStorage.getItem("topicNavs"));
-            console.log(mid,999999999999999999,topicData)
+            var vm_postart = avalon.define({
+                $id: 'postart',
 
+            })
+            console.log(mid,999999999999999999,topicData)
         })
     </script>
 </body>
