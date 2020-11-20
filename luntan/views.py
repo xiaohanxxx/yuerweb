@@ -265,3 +265,8 @@ class ImageUp(views.View):
                 f.write(line)
 
         return HttpResponse(json.dumps({"data": dir}))
+
+
+class PostAritcle(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'post.html')
