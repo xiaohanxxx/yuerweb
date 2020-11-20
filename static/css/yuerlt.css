@@ -1,4 +1,13 @@
 /* yuerhead */
+body {
+    /* 禁止选中文本 */
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    -webkit-touch-callout: none;
+    user-select: none;
+}
 
 #yuerhead {
     margin: 0 auto;
@@ -1391,7 +1400,7 @@ body a:hover {
 }
 
 .txInfo span {
-    display:block;
+    display: block;
     height: 16px;
     font-size: 12px;
     line-height: 16px;
@@ -1401,7 +1410,7 @@ body a:hover {
 
 .topic_l .isFollow {
     margin-top: 10px;
-    margin-left:50px;
+    margin-left: 50px;
     width: 66px;
     height: 20px;
     border-radius: 10px;
@@ -1457,9 +1466,11 @@ body a:hover {
     color: #FF44AD;
     margin: 0 5px;
 }
-.plInpbox{
-    display:none;
+
+.plInpbox {
+    display: none;
 }
+
 .plInpbox .pl_head {
     height: 168px;
     border-radius: 8px;
@@ -1475,7 +1486,7 @@ body a:hover {
 .plInpbox > span {
     display: block;
     margin-bottom: 21px;
-    padding-top:20px;
+    padding-top: 20px;
 }
 
 .plInpbox #khlypl {
@@ -1598,10 +1609,12 @@ body a:hover {
     word-break: break-word;
     margin-bottom: 10px;
 }
-.plul > p>img{
+
+.plul > p > img {
     width: 24px;
     height: 24px;
 }
+
 .date > span {
     float: left;
 }
@@ -1629,6 +1642,7 @@ body a:hover {
 
 .pl_inpbox {
     height: 220px;
+    display: none;
 }
 
 div.plinput {
@@ -1654,18 +1668,19 @@ div.plinput {
     cursor: pointer;
 }
 
-.plinput #pl_Input {
+.plinput textarea[name="pl_Input"] {
     width: 748px;
     height: 132px;
     resize: none;
     border: 0;
 }
 
+
 .pl_inpbox > span {
     margin-top: 22px;
 }
 
-#qxplBtn {
+span[name="plintBtn"], #plintBtn {
     height: 30px;
     font-size: 12px;
     line-height: 30px;
@@ -1674,9 +1689,9 @@ div.plinput {
     cursor: pointer;
 }
 
-#plintBtn>a{
+span[name="plintBtn"] > a, #plintBtn > a {
     width: 59px;
-    display:block;
+    display: block;
     height: 30px;
     text-align: center;
     line-height: 30px;
@@ -1727,20 +1742,39 @@ div.plinput {
     margin: 0 0 18px 0;
 }
 
-body .byjlmain .selectId>a{
+body .byjlmain .selectId > a {
     color: red !important;
 }
-body .tjjlSelect>a{
+
+body .tjjlSelect > a {
     color: pink !important;
 }
-body .plInpbox #openFace{
-    left:5px;
+
+body .plInpbox #openFace {
+    left: 5px;
 }
-body .faceDivBox{
+
+body .faceDivBox {
     margin: 0;
     width: 60%;
-    top:-5px;
+    top: -5px;
 }
-body .plinput-h>img{
+
+body .plinput-h > img {
     left: 5px;
+}
+
+body .topicMain .commSelect {
+    background-color: #FF44AD;
+}
+
+body .topicMain .commSelect span {
+    color: #fff;
+}
+
+body div[bq_btn="emoji"] {
+    width: 35px;
+    font-size: 1.5em;
+    cursor: pointer;
+    float: left;
 }
