@@ -52,7 +52,6 @@
                    <option ms-repeat="citys"  ms-attr-value="el.id">{el.name}</option>
                </select>
              </p>
-             <!-- <p>港澳台</p> -->
          </div>
 
 
@@ -282,8 +281,7 @@
                 success: function (data) {
                     vmw.arear = data.data;
                     vmw.getcurreone(0);
-                    vmw.getcurcitys(0);
-                    //console.log(vmw.arear[1],'datas');
+                    // vmw.getcurcitys(0);
                 }
             });
         },
