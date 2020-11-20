@@ -952,3 +952,58 @@ em.tip2 {
     border: 1px solid blue;
 }
 /*biaoqingbao yangshi jieshu*/
+
+
+
+/* hot_arc */
+
+.hot_arc {
+    position: relative;
+    width: 296px;
+    height: 582px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 0 18px 0 24px;
+}
+
+.hot_arc > ul {
+    margin-top: 16px;
+}
+
+.hot_arc > ul li {
+    height: 24px;
+    margin-bottom: 30px;
+}
+
+.hot_arc > ul li > a span:nth-child(odd) {
+    float: left;
+    max-width: 220px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 24px;
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+}
+
+.hot_arc > ul li > a {
+    display: block;
+    height: 26px;
+}
+
+.hot_arc > ul li > a span:nth-child(even) {
+    float: right;
+    height: 14px;
+    font-size: 12px;
+    margin-left: 30px;
+    line-height: 26px;
+    letter-spacing: 1px;
+    color: #bebebe;
+}
+
+.hot_arc > ul li > a span:nth-of-type(2) i {
+    position: relative;
+    margin-right: 4px;
+    top: 2px;
+}
+

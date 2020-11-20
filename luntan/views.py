@@ -128,7 +128,7 @@ class Article(views.View):
         articleData = {
             "user_id": request.user.id,
             "title": request.POST.get("title"),
-            "content": request.POST.get("title")
+            "content": request.POST.get("content")
         }
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
@@ -243,7 +243,7 @@ class ThumbUp(views.View):
         artObj = get_object_or_404(luntanmodel.Articles, pk=aid)
         uid = request.user.id
         userObj = get_object_or_404(User, pk=uid)
-        chk = luntanmodel.ThumbUp.objects.filter(article_id=aid, user_id=uid)
+        chk = luntanmodel.ThumbUp.objects.filter(articles_id=aid, user_id=uid)
         if chk:
             return HttpResponse("已点赞, 无法重复点赞")
         thumb = luntanmodel.ThumbUp()
@@ -265,3 +265,8 @@ class ImageUp(views.View):
                 f.write(line)
 
         return HttpResponse(json.dumps({"data": dir}))
+
+
+class PostAritcle(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'post.html')
