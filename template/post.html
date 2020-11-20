@@ -135,12 +135,15 @@
             </div>
         </div>
     </section>
-
-
-    <footer style='width: 100%;height:388px;background-color:skyblue;'></footer>
+{# 底部调用 #}
+   {% include 'footer.html' %}
     <script>
         $(document).ready(function() {
             CKEDITOR.replace('editor_id');
+            var mid = localStorage.getItem("Mid");
+            var topicData = JSON.parse(localStorage.getItem("topicNavs"));
+            console.log(mid,999999999999999999,topicData)
+
         })
     </script>
 </body>
