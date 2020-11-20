@@ -40,8 +40,12 @@ class Area(views.View):
 class HospitalList(views.View):
     def get(self, request, *args, **kwargs):
         chk = request.GET
-        dict = {k: v for k, v in chk.items() if v}
+        dict = {k: v for k, v in chk.items() if v and v not in ["num", "page"]}
         rData = models.Hospital.objects.filter(**dict)
+        num = request.GET.get('num', 10)
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        paginator = Paginator(rData, num)
+        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
         resData = [
             {"id": i.id,
              "title": i.title,
@@ -50,9 +54,9 @@ class HospitalList(views.View):
              "phone": i.phone,
              "hospitallv": i.hospitallv.name,
              "doctornum": i.doctor_set.all().count()
-             } for i in rData
+             } for i in curuent_page
         ]
-        return HttpResponse(json.dumps({"data": resData}))
+        return HttpResponse(json.dumps({"data": resData, "allnum": len(rData)}))
 
 
 # 获取医院等级
@@ -103,7 +107,7 @@ class GetDoctorList(views.View):
             resData = model_to_dict(i)
             resData['gender'] = i.get_gender_display()
             doctorList.append(resData)
-        return HttpResponse(json.dumps({"data": doctorList}))
+        return HttpResponse(json.dumps({"data": doctorList, "allnum": len(doctorObjList)}))
 
 
 # 获取指定医院医生
