@@ -1,0 +1,44 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="hot_arc" ms-controller="rmarc">
+    <div class="rgt_tit">
+        <h4><span>热门文章</span></h4>
+    </div>
+    <ul class='clearfix'>
+        <li ms-repeat-el="data"><a
+                ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title}</span><span><i
+                class='iconfont icon-pinglun1'></i>{el.thumb}</span></a>
+        </li>
+    </ul>
+    <div class="sjchangebtn" ms-click="goChange()">
+        <img src="{% static 'images/yuerlt/change.png' %}" alt="">
+    </div>
+</div>
+<script>
+    var api_hotarticles = root_Domain + '/luntan/hotarticles/',
+        rmarc_num = 9;
+    var vm_rmarc = avalon.define({
+        $id: 'rmarc',
+        data: [],
+        goChange: function () {
+            reshRmarc();
+        }
+    })
+    function reshRmarc() {
+        $.ajax({
+            url: api_hotarticles,
+            type: 'get',
+            dataType: 'json',
+            success: function (ajax) {
+                var randomdata = [];
+                for (var i = 0; i < rmarc_num; i++) {
+                    randomdata.push(ajax.data[Math.floor(Math.random() * ajax.data.length)]);
+                }
+                vm_rmarc.data = randomdata;
+            }, error: function (error) {
+                console.log(error);
+            }
+        });
+    }
+    reshRmarc();//初始化热门新闻
+</script>

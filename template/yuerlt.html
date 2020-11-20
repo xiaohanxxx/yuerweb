@@ -118,11 +118,11 @@
             <ul class="rgt_infobox">
                 <li ms-attr-class="$index==pageNow?'rgt_select':''"  ms-repeat="data" ms-attr-dataid="{$index}" ms-mouseover="mouser()">
                     <div>
-                        <div class='fl'><img ms-attr-src="\{el.user.head}" alt=""><span>{el.user.username}</span></div>
+                        <div class='fl'><img ms-attr-src="/media/{el.user.head}" alt=""><span>{el.user.username}</span></div>
                         <span class='fr'>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span>
                     </div>
                     <div>
-                        <img ms-attr-src="\{el.user.head}" alt="">
+                        <img ms-attr-src="/media/{el.user.head}" alt="">
                         <div class='fl userinfo'>
                             <p class="rgt_t"><a href="javascript:;">{el.user.username}</a></p>
                             <p class='rgt_info'><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
@@ -251,19 +251,8 @@
                     {% endif %}
                 </div>
             </div>
-            <div class="hot_arc" ms-controller="rmarc">
-                <div class="rgt_tit">
-                    <h4><span>热门文章</span></h4>
-                </div>
-                <ul class='clearfix'>
-                    <li ms-repeat-el="data"><a ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title}</span><span><i
-                            class='iconfont icon-pinglun1'></i>{el.thumb}</span></a>
-                    </li>
-                </ul>
-                <div class="sjchangebtn" ms-click="goChange()">
-                    <img src="{% static 'images/yuerlt/change.png' %}" alt="">
-                </div>
-            </div>
+{#            热点文章#}
+            {% include 'mod_hotarticle.html' %}
             <div class="hot_bq">
                 <div class="rgt_tit">
                     <h4><span>热点标签</span></h4>
@@ -375,13 +364,13 @@
                 vm_hymm.pageNow = $(this).attr('dataid');
             }
         });
-        var vm_rmarc = avalon.define({
+       /* var vm_rmarc = avalon.define({
             $id: 'rmarc',
             data: [],
             goChange: function () {
                 reshRmarc();
             }
-        })
+        })*/
         var vm_freeAsk = avalon.define({
             $id:'freeAsk',
             data:[],
@@ -448,7 +437,7 @@
 
         {#热点推荐数据的请求#}
 
-        function reshRmarc() {
+       /* function reshRmarc() {
             $.ajax({
                 url: api_hotarticles,
                 type: 'get',
@@ -463,9 +452,9 @@
                     console.log(error);
                 }
             });
-        }
+        }*/
 
-        reshRmarc();//初始化热门新闻
+        {#reshRmarc();//初始化热门新闻#}
         {#话题第一层的请求#}
         $.ajax({
             url: api_mainmenu,
