@@ -400,9 +400,9 @@
             $.ajax({
                 url:root_Domain +'/luntan/thumbup/?aid='+vm_topicArc.articles_id,
                 type:'get',
-                dataType:'json',
+                dataType:'text',
                 success:function(ajax){
-                    layer.msg("点赞成功！！")
+                    layer.msg(ajax)
                 }
             })
         }

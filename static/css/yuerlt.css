@@ -1,4 +1,13 @@
 /* yuerhead */
+body {
+    /* 禁止选中文本 */
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    -webkit-touch-callout: none;
+    user-select: none;
+}
 
 #yuerhead {
     margin: 0 auto;
@@ -1633,7 +1642,7 @@ body a:hover {
 
 .pl_inpbox {
     height: 220px;
-    display:none;
+    display: none;
 }
 
 div.plinput {
@@ -1671,7 +1680,7 @@ div.plinput {
     margin-top: 22px;
 }
 
-span[name="plintBtn"],#plintBtn{
+span[name="plintBtn"], #plintBtn {
     height: 30px;
     font-size: 12px;
     line-height: 30px;
@@ -1680,7 +1689,7 @@ span[name="plintBtn"],#plintBtn{
     cursor: pointer;
 }
 
-span[name="plintBtn"] > a ,#plintBtn>a{
+span[name="plintBtn"] > a, #plintBtn > a {
     width: 59px;
     display: block;
     height: 30px;
