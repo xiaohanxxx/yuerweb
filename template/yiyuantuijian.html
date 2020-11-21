@@ -14,6 +14,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/coment.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 <!--      <style type="text/css">
       body{ background: #029EE9; }
@@ -85,6 +86,9 @@
               </div>
          </div>
 
+        <div class="tjyylists" ms-if="!getYYlist || getYYlist.length == 0">
+             <div class="leftyytjes" style="text-align: center; padding: 50px 0;">暂无数据</div>
+        </div>
 
 
        <!--   <div class="tjyylists">
@@ -192,7 +196,7 @@
 
 
    <div class="szzhuanjia">
-              <h3><abbr>专业论坛推荐</abbr> <a href="###">更多>></a></h3>
+      <!--         <h3><abbr>专业论坛推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijianes_new">
                  <ol>
                    <li>
@@ -221,7 +225,8 @@
                    </li>
                  </ol>
               </div>
-          </div>
+          </div> -->
+          {% include "mod_hotarticle.html" %}
 
       </div>
       </div>
@@ -248,6 +253,8 @@
         dengjis:[],
         jishus:[],
         dataslist:{
+            page:1,//当前页码
+            num:10,//一页显示多少条
             worldarea:'',
             privincearea:'',
             cityarea:'',
@@ -256,7 +263,9 @@
         },
         dataslistout:{
             worldarea:'',
-            privincearea:''
+            privincearea:'',
+            page:1,//当前页码
+            num:10,//一页显示多少条
         },
         getcurreone:function (el){
             vmw.a = el;
@@ -317,7 +326,43 @@
             vmw.dataslist.hospitaltype = vmw.jishus[el].id;
             vmw.getDatas();
         },
+        intopages:function(count){
+            layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'pagers'
+                ,count:count
+                ,layout: ['count', 'prev', 'page', 'next', 'limit'],
+                jump: function(obj,first){
+                  vmw.dataslist.page = obj.curr;
+                  vmw.dataslist.num = obj.limit;
+                  vmw.dataslistout.page = obj.curr;
+                  vmw.dataslistout.num = obj.limit;
+                  //vmw.getDatas();
+                  if (vmw.a == 0){
+                     var datas = vmw.dataslist;
+                  }else if (vmw.a == 1){
+                     var datas = vmw.dataslistout;
+                  }
+                   $.ajax({
+                      type: 'get',
+                      url: '/hospital/hospitallist/',
+                      data: datas,
+                      dataType: "json",
+                      // timeout: 10000,
+                      success: function (data) {
+                         vmw.getYYlist = data.data;
+                         //vmw.allnum = data.allnum;
+                      }
+                  });
+
+                }
+              });
+            });
+        },
         getYYlist:[],
+        allnum:'',
         getDatas:function (){
             if (vmw.a == 0){
                var datas = vmw.dataslist;
@@ -332,40 +377,19 @@
                 // timeout: 10000,
                 success: function (data) {
                    vmw.getYYlist = data.data;
+                   vmw.allnum = data.allnum;
+                   vmw.intopages(vmw.allnum);
                 }
             });
             console.log(datas,'发送请求');
         },
         selectchange:function(data){
-            console.log(data,'selectchanges')
             vmw.dataslist.cityarea = data;
             vmw.getDatas();
-        },
-        currpage:'',
-        pageNum:'',
-        intopages:function(){
-            layui.use(['laypage', 'layer'], function(){
-              var laypage = layui.laypage
-              ,layer = layui.layer;
-              laypage.render({
-                elem: 'pagers'
-                ,count: vmw.getrmbaike.length
-                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip'],
-                jump: function(obj){
-                  console.log(obj);
-                  vmw.currpage = obj.curr;
-                  vmw.pageNum = obj.limit;
-                  vmw.get_rm_baike();
-                  console.log(vmw.currpage,vmw.pageNum);
-                }
-              });
-            });
         },
         getrmbaike:[],
         get_rm_baike: function () {
             var count = {
-                currpage:vmw.currpage,
-                pageNum:vmw.pageNum,
                 count: 10
             }
             $.ajax({
@@ -375,16 +399,17 @@
                 dataType: "json",
                 success: function (data) {
                     vmw.getrmbaike = data.data
-                    console.log(vmw.getrmbaike,"推荐文章");
+                    //console.log(vmw.getrmbaike,"推荐文章");
                 }
             });
         }
 
     })
-    vmw.intopages();
     vmw.getAllcity();
     vmw.getDengji();
     vmw.getJishu();
+    vmw.getDatas();
+    vmw.intopages(vmw.allnum);
     vmw.get_rm_baike();
 </script>
 </body>

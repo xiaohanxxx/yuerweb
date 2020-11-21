@@ -266,8 +266,8 @@ body{ background: #f9f9f9; }
 
 .doctorbox{width: 100%; overflow: hidden;}
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
-
-.hotwdtuijian,.hotwdtuijian ul,.hotwdtuijian ol{ overflow: hidden; width: 100%; }
+.hotwdtuijian{ background: #fff; padding: 15px; overflow: hidden; width: 93%; }
+.hotwdtuijian ul,.hotwdtuijian ol{ overflow: hidden; width: 100%; }
 .hotwdtuijian ul li{ margin:20px 0;font-size: 12px;  }
 .hotwdtuijian ul li a:hover{ color: #ff44ad; }
 .hotwdtuijian ul li abbr{ float: right;font-size: 12px; }
