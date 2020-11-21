@@ -138,7 +138,7 @@ class Article(views.View):
             topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
             articleRes.topics.add(topicObj)
 
-        return HttpResponse("发布成功！！！！！！")
+        return HttpResponse({"data": articleRes.id})
 
 
 # 评论
