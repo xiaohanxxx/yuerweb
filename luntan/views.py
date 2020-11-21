@@ -258,15 +258,15 @@ class ImageUp(views.View):
         return render(request, 'imageuptest.html')
 
     def post(self, request):
-        avatar = request.FILES.get('file')
-        print(avatar)
-        dir = 'media/luntan' + avatar.name
+        avatar = request.FILES.get('upload')
+        dir = 'media/luntan/' + avatar.name
         # dir = 'media/luntan' + "aaaaaa.jpg"
         with open(dir, 'wb') as f:
             for line in avatar:
                 f.write(line)
 
-        return HttpResponse(json.dumps({"data": dir}))
+        print(dir)
+        return HttpResponse(json.dumps({"file":avatar.name,"uploaded":1,"url": "/"+dir}))
 
 
 class PostAritcle(views.View):
