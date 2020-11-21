@@ -20,5 +20,6 @@ CKEDITOR.editorConfig = function (config) {
         ['Maximize', 'ShowBlocks']
     ];
     config.filebrowserImageUploadUrl = '/luntan/imageup/';
-
+    config.resize_enabled = false;
+    config.height = 520;
 };
