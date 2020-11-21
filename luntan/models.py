@@ -32,8 +32,8 @@ class Topics(models.Model):
 
 # 帖子
 class Articles(models.Model):
-    title = models.CharField(max_length=255, verbose_name="帖子标题")
-    content = models.CharField(max_length=255, verbose_name="帖子内容")
+    title = models.CharField(max_length=100, verbose_name="帖子标题")
+    content = models.CharField(max_length=500, verbose_name="帖子内容")
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="发布日期")
     update_date = models.DateTimeField(auto_now=True, verbose_name="更新日期")
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")

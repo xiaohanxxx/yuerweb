@@ -95,8 +95,14 @@ class Hospital(views.View):
             "worldarea": hData.worldarea.name,
             "cityarea": hData.cityarea.name,
             "hospitallv": hData.hospitallv.name,
-            "hospitaltype": hData.hospitaltype.name,
+            "hospitaltype": [{"id": i.id, "name": i.name} for i in hData.hospitaltype.all()]
         }
+        doctorList = []
+        for i in hData.doctor_set.all():
+            data = model_to_dict(i)
+            data.update({"gender": i.get_gender_display()})
+            doctorList.append(data)
+        resData['dictorlist'] = doctorList
         return HttpResponse(json.dumps({"data": resData}))
 
 

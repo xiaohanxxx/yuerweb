@@ -266,7 +266,7 @@ class ImageUp(views.View):
                 f.write(line)
 
         print(dir)
-        return HttpResponse(json.dumps({"file":avatar.name,"uploaded":1,"url": "/"+dir}))
+        return HttpResponse(json.dumps({"file": avatar.name, "uploaded": 1, "url": "/" + dir}))
 
 
 class PostAritcle(views.View):
