@@ -81,14 +81,18 @@
     <!-- 右侧信息栏 -->
     <div class="byjl_r fl">
         <div class="pushpost">
-            <h4>备孕交流圈</h4>
-            <p>我是交流圈介绍最多显示两</p>
+            <h4>{navdata[Mid-1].name}</h4>
+            <p>这里可以解决你的问题，快和大家一起讨论吧！</p>
             <p class='post_info clearfix'>
                 <span><i class='iconfont'>&#xe60f;</i>7496 篇文章</span>
                 <span><i class='iconfont'>&#xe877;</i>7496 位医生回复</span>
             </p>
             <div class="postBtn">
-                <a href="/luntan/postarticle">发布新帖</a>
+                {% if request.user.is_active %}
+                    <a href="/luntan/postarticle">发布新帖</a>
+                {% else %}
+                    <a href="/login">发布新帖</a>
+                {% endif %}
             </div>
         </div>
         <div class="ad">
@@ -198,18 +202,17 @@
     (function () {
         var api_yuming = root_Domain;
         var inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');//初始化数据请求链接
-        console.log(inturl, 999);
         var Mid = window.location.href.substr(window.location.href.indexOf('Mid='), 5).replace('Mid=', '');//对应主栏目id
         var selectTid = window.location.href.substr(window.location.href.indexOf('tid'), 6).replace('&', '').replace(/tid=/, '');
         var count = 1;
         var vm_ltlist = avalon.define({
             $id: 'luntanbox',
             lisdata: [],
-            Mid: 0,
+            Mid: 0,//父id
             qndrData:[],
             selectTid: 0,
-            typenum: 0,
-            navdata: [],
+            typenum: 0,//子id
+            navdata: [],//父栏目数据
             count: 0,
             goChange(type_num) {
                 if (type_num == 0) {
@@ -281,6 +284,10 @@
             dataType: 'json',
             success: function (ajax) {
                 vm_ltlist.navdata = ajax.data;
+                localStorage.clear();
+                localStorage.setItem('Mid',vm_ltlist.Mid);
+                var navData = JSON.stringify(ajax.data[vm_ltlist.Mid-1].child);
+                localStorage.setItem('topicNavs',navData);
             }, error: function (error) {
                 console.log(error);
             }
