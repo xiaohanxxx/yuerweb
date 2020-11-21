@@ -92,7 +92,7 @@
         }
     })
     yesFbtn.click(function () {
-        var ckeData = toString(editor1.getData());
+        var ckeData = editor1.getData();
         var title = $('input[name="newTopic"]').val();
         if (!title) {
             layer.msg("请输入话题！！！")
@@ -110,7 +110,6 @@
                         "topic":vm_postart.topicId
                     },
                     success:function(ajax){
-
                         layer.open({
                             content:'发布成功',
                             btn:['继续发帖','查看帖子'],
@@ -123,7 +122,6 @@
                         })
                     }
                 })
-                console.log(ckeData, 99999999);
             }
             if (!ckeData) {
                 layer.msg("请输入内容,发布不能为空！！")
@@ -133,7 +131,6 @@
         }
 
     })
-    console.log(vm_postart.Mid, vm_postart.topicData, vm_postart.Mlanm, 99999999)
 
 </script>
 </body>

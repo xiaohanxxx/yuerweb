@@ -57,9 +57,7 @@
             <p class='title'>{{ data.title }}</p>
             <div class="allInfo">
                 <p commid="{{ data.id }}">
-
-                        {{ data.content }}
-
+                        {{ data.content | safe }}
                 </p>
             </div>
             <div class="plbox fr">
