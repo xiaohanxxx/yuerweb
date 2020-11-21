@@ -1802,7 +1802,10 @@ body div[bq_btn="emoji"] {
     margin-bottom: 14px;
     border: solid 1px #e1e1e1;
 }
-
+.postBox .topic_as .yesSelect{
+    background-color: pink;
+    color: #fff;
+}
 #topicSelect {
     position: relative;
 }
@@ -1967,4 +1970,10 @@ body div[bq_btn="emoji"] {
 .ke-container {
     width: 1098px !important;
     max-height: 711px !important;
+}
+.currdis{
+    margin-bottom: 20px;
+}
+.currdis>div{
+    float:left;
 }

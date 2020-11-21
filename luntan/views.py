@@ -259,7 +259,9 @@ class ImageUp(views.View):
 
     def post(self, request):
         avatar = request.FILES.get('file')
+        print(avatar)
         dir = 'media/luntan' + avatar.name
+        # dir = 'media/luntan' + "aaaaaa.jpg"
         with open(dir, 'wb') as f:
             for line in avatar:
                 f.write(line)

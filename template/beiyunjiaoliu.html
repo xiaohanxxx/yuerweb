@@ -284,7 +284,8 @@
             dataType: 'json',
             success: function (ajax) {
                 vm_ltlist.navdata = ajax.data;
-                localStorage.clear();
+                localStorage.clear();//清除localStorage中的缓存
+                localStorage.setItem('Mlanm',vm_ltlist.navdata[Mid-1].name);
                 localStorage.setItem('Mid',vm_ltlist.Mid);
                 var navData = JSON.stringify(ajax.data[vm_ltlist.Mid-1].child);
                 localStorage.setItem('topicNavs',navData);
