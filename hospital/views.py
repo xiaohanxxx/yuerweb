@@ -27,6 +27,12 @@ class Index(views.View):
         return render(request, "yiyuantuijian.html")
 
 
+# 获取医院主页
+class Hindex(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, "yiyuanxiangqing.html")
+
+
 # 获取范围
 class Area(views.View):
     def get(self, request, *args, **kwargs):
