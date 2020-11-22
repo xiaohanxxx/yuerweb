@@ -1958,12 +1958,11 @@ body div[bq_btn="emoji"] {
     border: 1px solid pink;
     text-align: center;
     line-height: 40px;
-    color: pink;
     margin-right: 20px;
 }
 
 .editor_footer #yesFbtn {
-    background-color: pink;
+    background-color: #FE43AC;
     color: #fff;
 }
 
