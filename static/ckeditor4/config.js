@@ -6,7 +6,7 @@
 CKEDITOR.editorConfig = function (config) {
     // Define changes to default configuration here. For example:
     config.language = 'zh-cn';
-    config.uiColor = '#6ebadc';
+    config.uiColor = '#D1D1D1';
     config.toolbar = [
         ['Source', 'NewPage', 'DocProps', 'Preview'],
         ['Copy', 'Undo', 'Redo'],
@@ -20,5 +20,6 @@ CKEDITOR.editorConfig = function (config) {
         ['Maximize', 'ShowBlocks']
     ];
     config.filebrowserImageUploadUrl = '/luntan/imageup/';
-
+    config.resize_enabled = false;
+    config.height = 520;
 };

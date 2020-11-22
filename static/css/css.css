@@ -55,11 +55,10 @@ body{ background: #f9f9f9; }
 .bannerwz:hover{ cursor: pointer;}
 .bannerwz img{ margin:45px 10px 0 15px; float: left; }
 .xmlist{ width: 180px; height: 120px; float: left;}
-.xmlist h3{ font-family: "Î¢ÈíÑÅºÚ"; font-size: 16px; margin:30px 0 5px 0; color:#ff44ad; }
-.xmlist p{}
-.xmlist p a {font-size: 14px; font-family: "Î¢ÈíÑÅºÚ";  color: #333; text-decoration: none;}
+.xmlist h3{  font-size: 16px; margin:30px 0 5px 0; color:#ff44ad; }
+.xmlist p a {float:left;font-size: 14px;margin-bottom:10px; padding:0 10px; color: #333; text-decoration: none;}
 .jticon{ float: right; width: 30px; text-align: center; height: 120px; line-height: 130px; }
-
+.xmlist p a:hover{color:#fff;}
 
 /**ÊÔ¹ÜÓ¤¶ù**/
 .shiguanyiner{ width: 100%; overflow: hidden; }
@@ -109,7 +108,19 @@ body{ background: #f9f9f9; }
 .hidebox .conts ul li{ float: left; margin: 5px 10px; }
 .hidebox .conts ul li a{ font-size: 14px; font-family: "Î¢ÈíÑÅºÚ"; text-decoration: none; color: #333; }
 .hidebox .conts h4 a{ text-decoration: none; position: absolute;right: 60px; top: 15px; color: #333; font-size: 16px; font-family: "Î¢ÈíÑÅºÚ";}
-
+.conts ul li a:hover{
+    color: red;
+}
+.asdlkfj ul>li>a>img{
+    width: 39px;
+    height: 39px;
+    border-radius:50%;
+}
+.asdlkfj ul>li>a>h3{
+    overflow: hidden;
+    height: 16px;
+    white-space:nowrap;
+}
 
 
 .shiguanyiner{ width: 100%; overflow: hidden; }

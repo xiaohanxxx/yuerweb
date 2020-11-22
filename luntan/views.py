@@ -122,7 +122,7 @@ class Article(views.View):
             "thumbup": artObj.thumup_articles.all().count()
         }
 
-        return render(request, 'topicArc.html', {"data": artData})
+        return render(request, 'topicArc.html', {"data": artData});
 
     def post(self, request, *args, **kwargs):
         articleData = {
@@ -138,7 +138,7 @@ class Article(views.View):
             topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
             articleRes.topics.add(topicObj)
 
-        return HttpResponse("发布成功！！！！！！")
+        return HttpResponse(json.dumps({"data": articleRes.id}))
 
 
 # 评论
@@ -260,7 +260,6 @@ class ImageUp(views.View):
     def post(self, request):
         avatar = request.FILES.get('upload')
         dir = 'media/luntan/' + avatar.name
-        # dir = 'media/luntan' + "aaaaaa.jpg"
         with open(dir, 'wb') as f:
             for line in avatar:
                 f.write(line)
