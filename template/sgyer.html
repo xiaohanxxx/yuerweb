@@ -22,6 +22,7 @@
 {% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 试管栏头部 -->
+<div ms-controller="sgyeres">
 <section class="sgyer_h wid clearfix" id='sgyer_h'>
     <p><span>当前位置：</span><a href="javascript:;">试管婴儿</a></p>
     <div class="sg_hot fl">
@@ -71,10 +72,11 @@
 </section>
 <!-- 试管栏主体 -->
 <section id="sgyer_main" class='wid clearfix'>
-    <div class="sgyer_main_l fl" ms-controller='mySingerCtrl'>
+{#    <div class="sgyer_main_l fl" ms-controller='mySingerCtrl'>#}
+    <div class="sgyer_main_l fl">
         <div class="sgbtn">
             <div class='sg_select'>国内试管婴儿</div>
-            <div>海外试管婴儿</div>
+            <div ms-repeat="aeraees" ms-click="getlists(el.id)">{el.name}</div>
         </div>
         <ul class="sginfo clearfix">
             <li>
@@ -641,6 +643,7 @@
         </div>
     </div>
 </section>
+</div>
 <!-- 底部 -->
 {% include 'footer.html' %}
 <script>
@@ -671,20 +674,6 @@
             adrassId:0,//获取国内国外范围id
         })
 
-        function pageAjax(current) {
-            $.ajax({
-                url: inturl + '&page=' + current,
-                type: 'get',
-                dataType: 'json',
-                success: function (ajax) {
-                    var _this = vm_ltlist;
-                    _this.lisdata = ajax.data.curuent_page;
-                }, error: function (error) {
-                    console.log(error);
-                }
-            })
-        }
-
         function render(count, limit, btnnum) {//count总条数，limit限定条数，btnnum按钮显示条数
             layui.use('laypage', function () {// 分页
                 var laypage = layui.laypage;
@@ -697,10 +686,11 @@
                     groups: btnnum,
                     prev: '上一页',
                     next: '下一页',
+                    next: '下一页',
                     layout: ['prev', 'page', 'next'],
                     jump: function (obj, first) {
-                        var curr = obj.curr;
-                        pageAjax(curr);
+                        //var curr = obj.curr;
+                       // pageAjax(curr);
                     }
                 });
             });
@@ -708,24 +698,30 @@
 
        render(100,10,5);
 
-        // 分页
-        layui.use('laypage', function () {
-            var laypage = layui.laypage;
-
-            laypage.render({
-                elem: 'test1',
-                count: 50100,
-                limit: 10,
-                curr: location.hash.replace('#!fenye=', ''),
-                hash: 'fenye',
-                groups: 5,
-                prev: '上一页',
-                next: '下一页',
-                layout: ['prev', 'page', 'next', 'skip']
-            });
-        });
 
     })();
+</script>
+<script>
+    var mew = avalon.define({
+        $id:'sgyeres',
+        zhou:'zhoubiwen',
+        aeraees:[],
+        getAerae:function (){
+              $.ajax({
+                url: '/shiguanbaby/areas/',
+                type: 'get',
+                dataType: 'json',
+                success: function (data) {
+                    mew.aeraees = data.data;
+                    console.log(mew.aeraees,'mew.aeraees');
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+    })
+    mew.getAerae();
 </script>
 </body>
 
