@@ -52,12 +52,12 @@ class ArticlesList(views.View):
                     "content": i.content,
                     "publish_date": str(i.publish_date),
                     "topics": i.topics,
-                    "user": {"id": i.user.id, "username": i.user.username},
+                    "user": i.user.id,
                 } for i in curuent_page
             ]
         }
-        if request.GET.get('all'):
-            return render(request, 'sgyer.html', {"data": res})
+        # if request.GET.get('all'):
+        #     return render(request, 'sgyer.html', {"data": res})
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
@@ -73,9 +73,9 @@ class Articles(views.View):
             "content": artObj.content,
             "publish_date": str(artObj.publish_date),
             "topics": artObj.topics,
-            "user": {"id": artObj.user.id, "username": artObj.user.username}
+            "user": artObj.user.id,
         }
-        return HttpResponse(json.dumps({"data": artData}), content_type="application/json")
+        return render(request, 'articles.html', {"data": artData})
 
 
 # 获取热点标签
