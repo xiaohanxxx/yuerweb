@@ -960,7 +960,7 @@ em.tip2 {
 .hot_arc {
     position: relative;
     width: 296px;
-    height: 582px;
+    height: 480px;
     background-color: #ffffff;
     border-radius: 5px;
     padding: 0 18px 0 24px;
@@ -972,7 +972,7 @@ em.tip2 {
 
 .hot_arc > ul li {
     height: 24px;
-    margin-bottom: 30px;
+    margin-bottom: 18px;
 }
 
 .hot_arc > ul li > a span:nth-child(odd) {

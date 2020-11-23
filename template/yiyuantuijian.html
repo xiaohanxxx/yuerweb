@@ -332,6 +332,7 @@
               laypage.render({
                 elem: 'pagers'
                 ,count:count
+                ,limit:10
                 ,layout: ['count', 'prev', 'page', 'next', 'limit'],
                 jump: function(obj,first){
                   vmw.dataslist.page = obj.curr;
