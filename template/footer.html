@@ -40,7 +40,10 @@
                     layer.msg('请填写正确的密码');
                     return;
                 }
-                $.ajax({
+                 vm.loginfunction();
+            },
+            loginfunction:function(){
+                 $.ajax({
                     type: 'post',
                     url: 'users/login',
                     data: vm.loginData,
@@ -49,6 +52,7 @@
                     success: function (data) {
                         if (data.code == 200) {
                             layer.msg('登录成功，即将跳转到首页');
+                            localStorage.setItem('username',vm.loginData.username);
                             setTimeout(function () {
                                 window.location.href = "/"
                             }, 2000)

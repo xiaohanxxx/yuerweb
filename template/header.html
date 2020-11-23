@@ -9,7 +9,7 @@
               <a href="/" class="nava">首页</a>
             </li>
             <li>
-              <a href="" class="acolor">试管婴儿</a>
+              <a href="/shiguanbaby" class="acolor">试管婴儿</a>
               <div class="xialabox"  style="display: none;">
                 <p><a href="">海外试管</a></p>
                 <p><a href="">国内试管</a></p>
@@ -73,14 +73,29 @@
                     <i class="searchbox"></i>
                 </div>
           {% if request.user.is_active %}
-            <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;"><a href="/users">个人中心</a> | <a href="/users/outlogin" style="color:#F94479; text-decoration: none;">退出</a></a>
+            <div style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">
+              <div class="xilainfocont">
+                  <a class="userses"><i style="color: #ff44ad;">{usernames}</i>个人中心</a>
+                  <p style=" position: absolute; display:none; margin-top: -2px; z-index: 9999;" class="xilainfo">
+                    <a href="/users">我的资料</a>
+                    <a href="">我的消息</a>
+                    <a href="/users/outlogin" style="color:#F94479; text-decoration: none;">退出</a>
+                  </p>
+              </div>
+            </div>
+            
           {% else %}
             <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
           {% endif %}
          </div>
        </div>
      </div>
-
+<style type="text/css">
+.xilainfo a{ height: 35px; line-height: 35px; display: block; width: 100%; text-align: center; }
+.xilainfo{ background: #fff; width: 110px; border-radius: 5px; }
+.abc { position: absolute; right: 50px; top: 10px;}
+.abc a{ color: #ff44ad; }
+</style>
 <script>
      avalon.config({
         interpolate: ["{", "}"]
@@ -88,6 +103,7 @@
     var vmm = avalon.define({
         $id:'headercont',
         namees:'医院',
+        usernames:localStorage.getItem('username'),
         showxiala:function(){
             var _this = $(this);
             if(_this.next('ul').hasClass('hites')){
@@ -110,6 +126,17 @@
 
 
 <script type="text/javascript">
+    $(function(){
+      
+    $('.xilainfocont').hover(function(){
+         $(this).find('.xilainfo').show();
+    },function(){
+          $(this).find('.xilainfo').hide();
+    })
+
+
+
+    })
      avalon.config({
         interpolate: ["{", "}"]
      });  

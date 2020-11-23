@@ -33,7 +33,6 @@
          <h3 style="font-size: 16px; margin: 20px 0; border-left:2px solid #ff44ad; padding-left: 20px;">国内试管婴儿推荐医院</h3>
          <div class="fenleiallswd">
              <p>地区：</p>
-{#             <p class="allcurr">国内</p>#}
              <p ms-repeat="arear" ms-class="allcurr:$index == a" ms-click="getcurreone($index)">{el.name}</p>
          </div>
           <div class="fenleiallswd">
@@ -74,8 +73,8 @@
 
          <div class="tjyylists" ms-repeat="getYYlist">
               <div class="leftyytj">
-                  <a href="###"><img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
-                 <h3><a href="###">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
+                  <a ms-attr-href="/hospital/hindex/?item={el.id}"><img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
+                 <h3><a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
                  <p>地址：{el.address}</p>
                  <p>电话：021 6659889</p>
               </div>
