@@ -59,6 +59,7 @@ class Hospital(models.Model):
     cityarea = models.ForeignKey("Area", related_name="cityarea", on_delete=models.CASCADE, verbose_name="地区")
     hospitallv = models.ForeignKey("HospitalLv", on_delete=models.CASCADE, verbose_name="等级")
     hospitaltype = models.ManyToManyField("HospitalType", verbose_name="类型")
+    thumb = models.ImageField(verbose_name='缩略图', default="/media/thumbnail/824.png", upload_to='thumbnail')
     power = models.ManyToManyField("Power", verbose_name="重点类型")
 
     class Meta:
@@ -96,6 +97,7 @@ class Doctor(models.Model):
     title = models.CharField(max_length=100, verbose_name="荣誉称号")
     details = models.TextField(verbose_name="详细介绍")
     hospital = models.ForeignKey("Hospital", default=2, on_delete=models.CASCADE, verbose_name="所属医院")
+    thumb = models.ImageField(verbose_name='缩略图', default="/media/thumbnail/824.png", upload_to='thumbnail')
     power = models.ManyToManyField("Power", verbose_name="重点类型")
 
     class Meta:

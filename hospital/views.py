@@ -95,7 +95,8 @@ class Hospital(views.View):
             "worldarea": hData.worldarea.name,
             "cityarea": hData.cityarea.name,
             "hospitallv": hData.hospitallv.name,
-            "hospitaltype": [{"id": i.id, "name": i.name} for i in hData.hospitaltype.all()]
+            "hospitaltype": [{"id": i.id, "name": i.name} for i in hData.hospitaltype.all()],
+            "thumb": hData.thumb.url,
         }
         doctorList = []
         for i in hData.doctor_set.all():
@@ -160,6 +161,7 @@ class PowerHospital(views.View):
                 "cityarea": i.cityarea.name,
                 "hospitallv": i.hospitallv.name,
                 "hospitaltype": i.hospitaltype.name,
+                "thumb": i.thumb.url,
             } for i in artObjList
         ]
         return HttpResponse(json.dumps({"data": res}))
@@ -182,7 +184,8 @@ class PowerDoctor(views.View):
                 "zhiwei": i.zhiwei,
                 "goodjob": i.goodjob,
                 "title": i.title,
-                "details": i.details
+                "details": i.details,
+                "thumb": i.thumb.url,
             } for i in artObjList
         ]
         return HttpResponse(json.dumps({"data": res}))
