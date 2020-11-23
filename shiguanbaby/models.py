@@ -31,6 +31,7 @@ class Articles(models.Model):
     title = models.CharField(max_length=255, verbose_name="文章标题")
     content = models.CharField(max_length=255, verbose_name="文章内容")
     area = models.ForeignKey("Areas", on_delete=models.CASCADE, verbose_name="所属地区")
+    thumb = models.ImageField(verbose_name='缩略图', default="/media/thumbnail/824.png", upload_to='thumbnail')
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="发布日期")
     update_date = models.DateTimeField(auto_now=True, verbose_name="更新日期")
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")
