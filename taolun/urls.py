@@ -12,4 +12,6 @@ urlpatterns = [
     path(r'postinglist/', views.PostingList.as_view(), name="postinglist"),
     path(r'posting/', views.Posting.as_view(), name="posting"),
     path(r'comment/', views.Comment.as_view(), name="comment"),
+    path(r'toposting/', views.ToPosting.as_view(), name="toposting"),
+    path(r'topost/', views.ToPost.as_view(), name="topost"),
 ]

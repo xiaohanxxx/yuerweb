@@ -20,6 +20,18 @@ class ToGroups(views.View):
         return render(request, 'huzhuluntanlist.html')
 
 
+# 帖子界面
+class ToPosting(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhulundainfo.html')
+
+
+# 发帖界面
+class ToPost(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhuwendaAddxz.html')
+
+
 # 获取讨论组
 class Groups(views.View):
     def get(self, request, *args, **kwargs):
@@ -114,7 +126,8 @@ class Posting(views.View):
             "content": postingObj.content,
             "read": postingObj.read,
             "publish_date": str(postingObj.publish_date),
-            "user": {"id": postingObj.user.id, "username": postingObj.user.username, "head": str(postingObj.user.info.user_avatar)},
+            "user": {"id": postingObj.user.id, "username": postingObj.user.username,
+                     "head": str(postingObj.user.info.user_avatar)},
         }
         return HttpResponse(json.dumps({"data": artData}))
 
