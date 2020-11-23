@@ -35,6 +35,7 @@ class Posting(models.Model):
     content = models.CharField(max_length=255, verbose_name="帖子内容")
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="发布日期")
     update_date = models.DateTimeField(auto_now=True, verbose_name="更新日期")
+    read = models.IntegerField(default=1, verbose_name="浏览量")
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")
     user = models.ForeignKey(User, related_name="posting_user",
                              verbose_name="用户", on_delete=models.CASCADE)
@@ -50,7 +51,7 @@ class Posting(models.Model):
 
 # 评论
 class Comment(models.Model):
-    comment = models.TextField(max_length=1000, verbose_name="内容")
+    comment = models.TextField(max_length=999, verbose_name="评论内容")
     articles = models.ForeignKey('Posting', related_name='posting_comment',
                                  on_delete=models.CASCADE, verbose_name="评论的帖子")
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="评论用户")
