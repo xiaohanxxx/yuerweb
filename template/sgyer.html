@@ -30,7 +30,6 @@
 
         <h4>
             <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a>
-            </a>
         </h4>
         <p><a>{el.content}</a></p>
     </div>
@@ -542,11 +541,28 @@
                 }
            })
         },
+        getTuijianyisheng:function (){
+            var data = {
+                type:1,
+                num:6
+            }
+           $.ajax({
+                url: '/hospital/powerdoctor/',
+                type: 'get',
+                dataType: 'json',
+                data:data,
+                success: function (data) {
+                    console.log(data,'data789')
+                }
+           })
+
+        }
     })
     mew.getAerae();
     mew.getDdatas();
     mew.gettypesarctical();
     mew.getSpeashoAtical();
+    mew.getTuijianyisheng();
 </script>
 </body>
 
