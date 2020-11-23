@@ -56,8 +56,8 @@ class ArticlesList(views.View):
                 } for i in curuent_page
             ]
         }
-        if request.GET.get('all'):
-            return render(request, 'sgyer.html', {"data": res})
+        # if request.GET.get('all'):
+        #     return render(request, 'sgyer.html', {"data": res})
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
@@ -75,7 +75,7 @@ class Articles(views.View):
             "topics": artObj.topics,
             "user": {"id": artObj.user.id, "username": artObj.user.username}
         }
-        return HttpResponse(json.dumps({"data": artData}), content_type="application/json")
+        return render(request, 'articles.html', {"data": artData})
 
 
 # 获取热点标签
