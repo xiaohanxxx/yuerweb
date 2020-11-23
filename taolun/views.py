@@ -93,6 +93,7 @@ class PostingList(views.View):
              "publish_date": str(i.publish_date),
              "update_date": str(i.update_date),
              "read": i.read,
+             "commentnum": i.posting_comment.all().count(),
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}
              } for i in curuent_page
         ]
