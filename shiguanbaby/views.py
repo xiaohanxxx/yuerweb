@@ -107,7 +107,7 @@ class TypeArticles(views.View):
         type = request.GET.get("type")
         num = request.GET.get("num", 10)
         typeObj = get_object_or_404(models.ArticleType, pk=type)
-        artObjList = typeObj.articles_set.all()[:num]
+        artObjList = typeObj.articles_set.all()[:int(num)]
         # artObjList = models.Articles.objects.filter(type_id=type)[:num]
         res = [
             {
