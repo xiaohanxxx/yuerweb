@@ -9,6 +9,12 @@ from . import models, form
 
 
 # Create your views here.
+
+class Index(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhuwenda.html')
+
+
 # 获取讨论组
 class Groups(views.View):
     def get(self, request, *args, **kwargs):
