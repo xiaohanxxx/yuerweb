@@ -52,7 +52,7 @@ class ArticlesList(views.View):
                     "content": i.content,
                     "publish_date": str(i.publish_date),
                     "topics": i.topics,
-                    "user": {"id": i.user.id, "username": i.user.username},
+                    "user": i.user.id,
                 } for i in curuent_page
             ]
         }
@@ -73,7 +73,7 @@ class Articles(views.View):
             "content": artObj.content,
             "publish_date": str(artObj.publish_date),
             "topics": artObj.topics,
-            "user": {"id": artObj.user.id, "username": artObj.user.username}
+            "user": artObj.user.id,
         }
         return render(request, 'articles.html', {"data": artData})
 
