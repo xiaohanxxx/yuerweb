@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path(r'', views.Index.as_view(), name="index"),
+    path(r'postindex/', views.ToGroups.as_view(), name="postindex"),
     path(r'groups/', views.Groups.as_view(), name="groups"),
     path(r'topics/', views.Topics.as_view(), name="topics"),
     path(r'postinglist/', views.PostingList.as_view(), name="postinglist"),

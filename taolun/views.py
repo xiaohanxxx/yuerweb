@@ -15,6 +15,11 @@ class Index(views.View):
         return render(request, 'huzhuwenda.html')
 
 
+class ToGroups(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhuluntanlist.html')
+
+
 # 获取讨论组
 class Groups(views.View):
     def get(self, request, *args, **kwargs):
