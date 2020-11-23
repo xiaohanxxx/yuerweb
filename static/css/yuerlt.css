@@ -1370,6 +1370,7 @@ body a:hover {
 .topic_l .title {
     height: 26px;
     font-size: 20px;
+    overflow: hidden;
     line-height: 26px;
     letter-spacing: 0px;
     color: #333;
