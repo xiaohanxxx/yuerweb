@@ -75,8 +75,8 @@
 {#    <div class="sgyer_main_l fl" ms-controller='mySingerCtrl'>#}
     <div class="sgyer_main_l fl">
         <div class="sgbtn">
-            <div class='sg_select'>国内试管婴儿</div>
-            <div ms-repeat="aeraees" ms-click="getlists(el.id)">{el.name}</div>
+{#            <div class='sg_select'>国内试管婴儿</div>#}
+            <div  ms-repeat="aeraees"  ms-class='sg_select:el.id == ids' ms-click="getlists(el.id)">{el.name}</div>
         </div>
         <ul class="sginfo clearfix">
             <li>
@@ -706,6 +706,7 @@
         $id:'sgyeres',
         zhou:'zhoubiwen',
         aeraees:[],
+        ids:1,
         getAerae:function (){
               $.ajax({
                 url: '/shiguanbaby/areas/',
@@ -719,7 +720,29 @@
                     console.log(error);
                 }
             })
-        }
+        },
+        getlists:function (id){
+          mew.ids = id;
+          var datas = {
+              aid:mew.ids,
+              num:10,
+              page:1
+          }
+            $.ajax({
+                    url: '/shiguanbaby/articleslist/',
+                    type: 'get',
+                    dataType: 'json',
+                    data:datas,
+                    success: function (data) {
+                        console.log(data,'dataes');
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+            })
+        },
+
+
     })
     mew.getAerae();
 </script>
