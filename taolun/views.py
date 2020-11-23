@@ -91,7 +91,7 @@ class PostingList(views.View):
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}
              } for i in curuent_page
         ]
-        return HttpResponse(json.dumps(res))
+        return HttpResponse(json.dumps({"data": res, "maxnum": len(postList)}))
 
 
 # 获取帖子
