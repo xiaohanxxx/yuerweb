@@ -2,6 +2,7 @@ import json
 
 from django.core.paginator import Paginator
 from django.db.models import Count
+from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 from . import models
@@ -51,7 +52,7 @@ class ArticlesList(views.View):
                     "title": i.title,
                     "content": i.content,
                     "publish_date": str(i.publish_date),
-                    "topics": i.topics,
+                    "topics": [{"id": i['id'], "name": i['name']} for i in i.topics.values()],
                     "user": i.user,
                 } for i in curuent_page
             ]
