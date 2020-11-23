@@ -50,6 +50,7 @@ class ArticlesList(views.View):
                     "title": i.title,
                     "content": i.content,
                     "publish_date": str(i.publish_date),
+                    "thumb": i.thumb,
                     "topics": [{"id": i['id'], "name": i['name']} for i in i.topics.values()],
                     "user": i.user,
                 } for i in curuent_page

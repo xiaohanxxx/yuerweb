@@ -15,6 +15,23 @@ class Index(views.View):
         return render(request, 'huzhuwenda.html')
 
 
+class ToGroups(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhuluntanlist.html')
+
+
+# 帖子界面
+class ToPosting(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhulundainfo.html')
+
+
+# 发帖界面
+class ToPost(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'huzhuwendaAddxz.html')
+
+
 # 获取讨论组
 class Groups(views.View):
     def get(self, request, *args, **kwargs):
@@ -88,10 +105,11 @@ class PostingList(views.View):
              "publish_date": str(i.publish_date),
              "update_date": str(i.update_date),
              "read": i.read,
+             "commentnum": i.posting_comment.all().count(),
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}
              } for i in curuent_page
         ]
-        return HttpResponse(json.dumps(res))
+        return HttpResponse(json.dumps({"data": res, "maxnum": len(postList)}))
 
 
 # 获取帖子
@@ -108,7 +126,8 @@ class Posting(views.View):
             "content": postingObj.content,
             "read": postingObj.read,
             "publish_date": str(postingObj.publish_date),
-            "user": {"id": postingObj.user.id, "username": postingObj.user.username, "head": str(postingObj.user.info.user_avatar)},
+            "user": {"id": postingObj.user.id, "username": postingObj.user.username,
+                     "head": str(postingObj.user.info.user_avatar)},
         }
         return HttpResponse(json.dumps({"data": artData}))
 
