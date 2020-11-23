@@ -131,3 +131,58 @@ class GetDoctor(views.View):
         resData['gender'] = dData.get_gender_display()
         resData['mail'] = [model_to_dict(i) for i in dData.mail_set.all()]
         return HttpResponse(json.dumps({"data": resData}))
+
+
+# 获取重要类型列表
+class GetPowerList(views.View):
+    def get(self, request, *args, **kwargs):
+        typeListObj = models.Power.objects.all()
+        res = [{"id": i.id, "name": i.name} for i in typeListObj]
+        return HttpResponse(json.dumps({"data": res}))
+
+
+# 指定重要类型的医院
+class PowerHospital(views.View):
+    def get(self, request, *args, **kwargs):
+        type = request.GET.get("type")
+        num = request.GET.get("num", 10)
+        typeObj = get_object_or_404(models.Power, pk=type)
+        artObjList = typeObj.hospital_set.all()[:int(num)]
+        res = [
+            {
+                "id": i.id,
+                "title": i.title,
+                "content": i.content,
+                "address": i.address,
+                "phone": i.phone,
+                "worldarea": i.worldarea.name,
+                "privincearea": i.privincearea.name,
+                "cityarea": i.cityarea.name,
+                "hospitallv": i.hospitallv.name,
+                "hospitaltype": i.hospitaltype.name,
+            } for i in artObjList
+        ]
+        return HttpResponse(json.dumps({"data": res}))
+
+
+# 指定重要类型的医生
+class PowerDoctor(views.View):
+    def get(self, request, *args, **kwargs):
+        type = request.GET.get("type")
+        num = request.GET.get("num", 10)
+        typeObj = get_object_or_404(models.Power, pk=type)
+        artObjList = typeObj.doctor_set.all()[:int(num)]
+        res = [
+            {
+                "id": i.id,
+                "name": i.title,
+                "gender": i.get_gender_display(),
+                "area": i.area,
+                "keshi": i.keshi,
+                "zhiwei": i.zhiwei,
+                "goodjob": i.goodjob,
+                "title": i.title,
+                "details": i.details
+            } for i in artObjList
+        ]
+        return HttpResponse(json.dumps({"data": res}))
