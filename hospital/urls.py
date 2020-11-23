@@ -13,5 +13,8 @@ urlpatterns = [
     path(r'hospitaltype/', views.HospitalType.as_view(), name='hospitaltype'),
     path(r'doctorlist/', views.GetDoctorList.as_view(), name='doctorlist'),
     path(r'doctor/', views.GetDoctor.as_view(), name='doctor'),
-    path(r'hindex/', views.Hindex.as_view(), name='hindex')
+    path(r'hindex/', views.Hindex.as_view(), name='hindex'),
+    path(r'powerlist/', views.GetPowerList.as_view(), name='powerlist'),
+    path(r'powerhospital/', views.PowerHospital.as_view(), name='powerhospital'),
+    path(r'powerdoctor/', views.PowerDoctor.as_view(), name='powerdoctor')
 ]

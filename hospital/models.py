@@ -37,6 +37,17 @@ class HospitalType(models.Model):
         return self.name
 
 
+class Power(models.Model):
+    name = models.CharField(max_length=100, verbose_name="名称")
+
+    class Meta:
+        verbose_name = "重点类型"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+
 class Hospital(models.Model):
     title = models.CharField(max_length=100, verbose_name="标题")
     content = models.TextField(verbose_name="正文")
@@ -48,6 +59,7 @@ class Hospital(models.Model):
     cityarea = models.ForeignKey("Area", related_name="cityarea", on_delete=models.CASCADE, verbose_name="地区")
     hospitallv = models.ForeignKey("HospitalLv", on_delete=models.CASCADE, verbose_name="等级")
     hospitaltype = models.ManyToManyField("HospitalType", verbose_name="类型")
+    power = models.ManyToManyField("Power", verbose_name="重点类型")
 
     class Meta:
         verbose_name = "医院介绍文章"  # 在admin站点显示名称
@@ -84,7 +96,7 @@ class Doctor(models.Model):
     title = models.CharField(max_length=100, verbose_name="荣誉称号")
     details = models.TextField(verbose_name="详细介绍")
     hospital = models.ForeignKey("Hospital", default=2, on_delete=models.CASCADE, verbose_name="所属医院")
-
+    power = models.ManyToManyField("Power", verbose_name="重点类型")
 
     class Meta:
         verbose_name = "医生详情"  # 在admin站点显示名称
