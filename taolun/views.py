@@ -1,6 +1,8 @@
 import json
 
 from django.core.paginator import Paginator
+from django.db.models import F
+from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 from . import models, form
@@ -11,91 +13,139 @@ from . import models, form
 class Groups(views.View):
     def get(self, request, *args, **kwargs):
         data = models.Groups.objects.all()
-        return HttpResponse("交流圈有：{}".format(data))
+        res = [{"id": i.id, "name": i.name} for i in data]
+        return HttpResponse(json.dumps(res))
 
 
 # 获取分类话题
 class Topics(views.View):
     def get(self, request, *args, **kwargs):
         groupId = request.GET.get('gid')
-        groupObj = get_object_or_404(models.Groups, pk=groupId)
-        topics = groupObj.group_topics.all()
-        return HttpResponse("{}包含的分类话题有：{}".format(groupObj.name, topics))
+        res = []
+        # 获取所有分类话题
+        if groupId == '999':
+            gList = models.Groups.objects.all()
+            for i in gList:
+                tList = i.group_topics.all()
+                for k in tList:
+                    res.append({"id": k.id, "name": k.name})
+
+        else:
+            groupObj = get_object_or_404(models.Groups, pk=groupId)
+            topics = groupObj.group_topics.all()
+            for i in topics:
+                res.append({"id": i.id, "name": i.name})
+
+        return HttpResponse(json.dumps(res))
 
 
 # 获取分类话题列表
 class PostingList(views.View):
     def get(self, request, *args, **kwargs):
-        topicsId = request.GET.get('tid')
-        topicsData = models.Topics.objects.get(pk=topicsId)
-        postingList = topicsData.posting_set.all().order_by("update_date")
-        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
-        paginator = Paginator(postingList, 10)
-        pag_num = paginator.num_pages  # 获取整个表的总页数
-        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
-        for i in curuent_page:
-            print(i.title)
-            print(i.content)
-        if pag_num < 11:  # 判断当前页是否小于11个
-            pag_range = paginator.page_range
-        else:
-            if curuent_page_num < 6:
-                pag_range = range(1, 11)
-            elif curuent_page_num > (paginator.num_pages) - 5:
-                pag_range = range(pag_num - 9, pag_num + 1)
-            else:
-                pag_range = range(curuent_page_num - 5, curuent_page_num + 5)  # 当前页+5大于最大页数时
+        topicsId = request.GET.get('tid', 0)
+        # 获取全部
+        if not topicsId:
+            # 最新
+            postList = models.Posting.objects.all().order_by('update_date')
+            chk = request.GET.get('order', 0)
+            # 热门
+            if chk == '1':
+                postList = models.Posting.objects.all().order_by('read')
+            # 等待回复
+            elif chk == '2':
+                postList = models.Posting.objects.filter(read__lte=10).order_by('read', 'update_date')
 
-        return HttpResponse(
-            "这是第{}页的数据，一共有{}页数据，页码列表是{}，本页数据内容是/r/n{}".format(
-                curuent_page_num, pag_num, pag_range, curuent_page
-            )
-        )
+            num = request.GET.get('num', 10)
+            curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+            paginator = Paginator(postList, num)
+            curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
+
+        # 获取指定分类话题列表
+        else:
+            topicObj = get_object_or_404(models.Topics, id=topicsId)
+            # 最新
+            postList = topicObj.topics_set.all().order_by('update_date')
+            chk = request.GET.get('order', 0)
+            # 热门
+            if chk == "1":
+                postList = topicObj.topics_set.all().order_by('read')
+
+            num = request.GET.get('num', 10)
+            curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+            paginator = Paginator(postList, num)
+            curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
+
+        res = [
+            {"id": i.id,
+             "title": i.title,
+             "content": i.content,
+             "publish_date": str(i.publish_date),
+             "update_date": str(i.update_date),
+             "read": i.read,
+             "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}
+             } for i in curuent_page
+        ]
+        return HttpResponse(json.dumps(res))
 
 
 # 获取帖子
 class Posting(views.View):
     def get(self, request, *args, **kwargs):
         postingId = request.GET.get('pid')
-        postingData = get_object_or_404(models.Posting, pk=postingId)
+        postingObj = get_object_or_404(models.Posting, pk=postingId)
+        # 阅读计数
+        models.Posting.objects.update(read=F("read") + 1)
         # 获取帖子发布人信息
-        postingData.userData = postingData.user
-        # 获取帖子评论信息
-        commentData = postingData.articles_comment.all()
-        for i in commentData:
-            commentData.userData = i.user
-        return HttpResponse("帖子：{}，评论：{}".format(postingData, commentData))
+        artData = {
+            "id": postingObj.id,
+            "title": postingObj.title,
+            "content": postingObj.content,
+            "read": postingObj.read,
+            "publish_date": str(postingObj.publish_date),
+            "user": {"id": postingObj.user.id, "username": postingObj.user.username, "head": str(postingObj.user.info.user_avatar)},
+        }
+        return HttpResponse(json.dumps({"data": artData}))
 
     def post(self, request, *args, **kwargs):
-        posting = form.PostingForm(request.POST)
-        if not posting.is_valid():
-            return HttpResponse("发布失败!!!!!,{}".format(posting.errors))
+        articleData = {
+            "user_id": request.user.id,
+            "title": request.POST.get("title"),
+            "content": request.POST.get("content")
+        }
+        postingRes = models.Posting.objects.create(**articleData)
 
-        postingData = posting.cleaned_data
-        user_id = request.session.get("user_id", 2)
-        postingData['user_id'] = user_id
-        postingRes = models.Posting.objects.create(**postingData)
+        topic = request.POST.getlist("topics", [])
 
-        topic = request.POST.get("topics", 0)
         if topic:
-            topicObj = models.Topics.objects.get(pk=topic)
+            topicObj = models.Topics.objects.get(pk__in=topic)
             postingRes.topics.add(topicObj)
 
-        return HttpResponse("发布成功！！！！！！")
+        return HttpResponse(json.dumps({"data": postingRes.id}))
 
 
 # 评论
 class Comment(views.View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse("ok!!!!!!")
+        postingId = request.GET.get('pid')
+        postingObj = get_object_or_404(models.Posting, pk=postingId)
+        commentData = postingObj.posting_comment.all()
+        resComment = [
+            {
+                "id": i.id,
+                "comment": i.comment,
+                "publish_date": str(i.publish_date),
+                "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
+                "parent": i.parent_id
+            } for i in commentData
+        ]
+        return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
-        user_id = request.session.get("user_id", 2)
-        data = json.loads(request.body)
-        article = get_object_or_404(models.Posting, pk=data.get("articles_id", 0))
+        data = {k: v for k, v in request.POST.items()}
+        postingObj = get_object_or_404(models.Posting, pk=data.get("pid", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(models.Comment, pk=data['parent_id'])
 
-        data['user_id'] = user_id
+        data['user_id'] = request.user.id
         models.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
