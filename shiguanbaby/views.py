@@ -126,3 +126,5 @@ class TypeArticles(views.View):
 
 
 
+
+
