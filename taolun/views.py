@@ -1,6 +1,7 @@
 import json
 
 from django.core.paginator import Paginator
+from django.db.models import F
 from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
@@ -91,45 +92,60 @@ class PostingList(views.View):
 class Posting(views.View):
     def get(self, request, *args, **kwargs):
         postingId = request.GET.get('pid')
-        postingData = get_object_or_404(models.Posting, pk=postingId)
+        postingObj = get_object_or_404(models.Posting, pk=postingId)
+        # 阅读计数
+        models.Posting.objects.update(read=F("read") + 1)
         # 获取帖子发布人信息
-        postingData.userData = postingData.user
-        # 获取帖子评论信息
-        commentData = postingData.articles_comment.all()
-        for i in commentData:
-            commentData.userData = i.user
-        return HttpResponse("帖子：{}，评论：{}".format(postingData, commentData))
+        artData = {
+            "id": postingObj.id,
+            "title": postingObj.title,
+            "content": postingObj.content,
+            "read": postingObj.read,
+            "publish_date": str(postingObj.publish_date),
+            "user": {"id": postingObj.user.id, "username": postingObj.user.username, "head": str(postingObj.user.info.user_avatar)},
+        }
+        return HttpResponse(json.dumps({"data": artData}))
 
     def post(self, request, *args, **kwargs):
-        posting = form.PostingForm(request.POST)
-        if not posting.is_valid():
-            return HttpResponse("发布失败!!!!!,{}".format(posting.errors))
+        articleData = {
+            "user_id": request.user.id,
+            "title": request.POST.get("title"),
+            "content": request.POST.get("content")
+        }
+        postingRes = models.Posting.objects.create(**articleData)
 
-        postingData = posting.cleaned_data
-        user_id = request.session.get("user_id", 2)
-        postingData['user_id'] = user_id
-        postingRes = models.Posting.objects.create(**postingData)
+        topic = request.POST.getlist("topics", [])
 
-        topic = request.POST.get("topics", 0)
         if topic:
-            topicObj = models.Topics.objects.get(pk=topic)
+            topicObj = models.Topics.objects.get(pk__in=topic)
             postingRes.topics.add(topicObj)
 
-        return HttpResponse("发布成功！！！！！！")
+        return HttpResponse(json.dumps({"data": postingRes.id}))
 
 
 # 评论
 class Comment(views.View):
     def get(self, request, *args, **kwargs):
-        return HttpResponse("ok!!!!!!")
+        postingId = request.GET.get('pid')
+        postingObj = get_object_or_404(models.Posting, pk=postingId)
+        commentData = postingObj.posting_comment.all()
+        resComment = [
+            {
+                "id": i.id,
+                "comment": i.comment,
+                "publish_date": str(i.publish_date),
+                "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
+                "parent": i.parent_id
+            } for i in commentData
+        ]
+        return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
-        user_id = request.session.get("user_id", 2)
-        data = json.loads(request.body)
-        article = get_object_or_404(models.Posting, pk=data.get("articles_id", 0))
+        data = {k: v for k, v in request.POST.items()}
+        postingObj = get_object_or_404(models.Posting, pk=data.get("pid", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(models.Comment, pk=data['parent_id'])
 
-        data['user_id'] = user_id
+        data['user_id'] = request.user.id
         models.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
