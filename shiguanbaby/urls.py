@@ -10,4 +10,6 @@ urlpatterns = [
     path(r"articleslist/", views.ArticlesList.as_view(), name="articleslist"),
     path(r"articles/", views.Articles.as_view(), name="article"),
     path(r"hottopics/", views.HotTopics.as_view(), name="hottopics"),
+    path(r"typelist/", views.TypeList.as_view(), name="typelist"),
+    path(r"typearticles/", views.TypeArticles.as_view(), name="typearticles"),
 ]
