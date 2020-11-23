@@ -26,6 +26,18 @@ class Topics(models.Model):
         return self.name
 
 
+# 文章类型
+class ArticleType(models.Model):
+    name = models.CharField(max_length=255, verbose_name="文章类型")
+
+    class Meta:
+        verbose_name = "文章类型"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
+
+
 # 文章
 class Articles(models.Model):
     title = models.CharField(max_length=255, verbose_name="文章标题")
@@ -37,6 +49,7 @@ class Articles(models.Model):
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")
     user = models.CharField(max_length=255, verbose_name="作者")
     topics = models.ManyToManyField("Topics", verbose_name='标签')
+    type = models.ManyToManyField("ArticleType", verbose_name="文章类型")
 
     class Meta:
         verbose_name = "文章"  # 在admin站点显示名称

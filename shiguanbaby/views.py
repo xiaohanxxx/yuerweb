@@ -50,7 +50,7 @@ class ArticlesList(views.View):
                     "title": i.title,
                     "content": i.content,
                     "publish_date": str(i.publish_date),
-                    "thumb": i.thumb,
+                    "thumb": i.thumb.url,
                     "topics": [{"id": i['id'], "name": i['name']} for i in i.topics.values()],
                     "user": i.user,
                 } for i in curuent_page
@@ -71,6 +71,7 @@ class Articles(views.View):
             "id": artObj.id,
             "title": artObj.title,
             "content": artObj.content,
+            "thumb": artObj.thumb.url,
             "publish_date": str(artObj.publish_date),
             "topics": artObj.topics,
             "user": artObj.user,
@@ -90,6 +91,38 @@ class HotTopics(views.View):
             i['name'] = topicsDic[i['topics']]
             res.append(i)
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
+
+
+# 获取文章类型列表
+class TypeList(views.View):
+    def get(self, request, *args, **kwargs):
+        typeListObj = models.ArticleType.objects.all()
+        res = [{"id": i.id, "name": i.name} for i in typeListObj]
+        return HttpResponse(json.dumps({"data": res}))
+
+
+# 获取文章类型
+class TypeArticles(views.View):
+    def get(self, request, *args, **kwargs):
+        type = request.GET.get("type")
+        num = request.GET.get("num", 10)
+        typeObj = get_object_or_404(models.ArticleType, pk=type)
+        artObjList = typeObj.articles_set.all()[:num]
+        # artObjList = models.Articles.objects.filter(type_id=type)[:num]
+        res = [
+            {
+                "id": i.id,
+                "title": i.title,
+                "content": i.content,
+                "publish_date": str(i.publish_date),
+                "thumb": i.thumb.url,
+                "topics": [{"id": i['id'], "name": i['name']} for i in i.topics.values()],
+                "user": i.user,
+            } for i in artObjList
+        ]
+        return HttpResponse(json.dumps({"data": res}))
+
+
 
 
 
