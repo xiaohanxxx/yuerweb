@@ -190,6 +190,7 @@ class PowerDoctor(views.View):
                 "title": i.title,
                 "details": i.details,
                 "thumb": i.thumb.url,
+                "hospital": i.hospital.title
             } for i in artObjList
         ]
         return HttpResponse(json.dumps({"data": res}))
