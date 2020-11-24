@@ -57,13 +57,13 @@ class Topics(views.View):
             for i in gList:
                 tList = i.group_topics.all()
                 for k in tList:
-                    res.append({"id": k.id, "name": k.name})
+                    res.append({"id": k.id, "name": k.name, "thumb": k.thumb.url})
 
         else:
             groupObj = get_object_or_404(models.Groups, pk=groupId)
             tList = groupObj.group_topics.all()
             for i in tList:
-                res.append({"id": i.id, "name": i.name})
+                res.append({"id": i.id, "name": i.name, "thumb": i.thumb.url})
 
         num = request.GET.get('num', 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
