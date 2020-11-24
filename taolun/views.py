@@ -115,6 +115,7 @@ class PostingList(views.View):
              "content": i.content,
              "publish_date": str(i.publish_date),
              "update_date": str(i.update_date),
+             "thumb": i.thumb.url,
              "read": i.read,
              "commentnum": i.posting_comment.all().count(),
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}

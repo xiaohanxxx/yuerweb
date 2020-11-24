@@ -18,6 +18,7 @@ class Groups(models.Model):
 # 分类话题
 class Topics(models.Model):
     name = models.CharField(max_length=255, unique=True, verbose_name="话题名称")
+    thumb = models.ImageField(verbose_name='缩略图', default="/media/thumbnail/824.png", upload_to='thumbnail')
     area = models.ForeignKey('Groups', related_name='group_topics',
                              verbose_name='所属讨论组', on_delete=models.CASCADE)
 
