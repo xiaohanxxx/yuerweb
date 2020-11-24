@@ -31,6 +31,11 @@ def smsvif(request):
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
+
+@login_required
+def center(request):
+    return render(request,'center.html')
+
 # 用户中心
 @login_required
 def centerMessage(request):
