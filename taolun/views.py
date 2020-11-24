@@ -98,7 +98,7 @@ class PostingList(views.View):
         else:
             topicObj = get_object_or_404(models.Topics, id=topicsId)
             # 最新
-            postList = topicObj.topics_set.all().order_by('update_date')
+            postList = topicObj.posting_set.all().order_by('update_date')
             chk = request.GET.get('order', 0)
             # 热门
             if chk == "1":
@@ -115,7 +115,6 @@ class PostingList(views.View):
              "content": i.content,
              "publish_date": str(i.publish_date),
              "update_date": str(i.update_date),
-             "thumb": i.thumb.url,
              "read": i.read,
              "commentnum": i.posting_comment.all().count(),
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}
