@@ -9,6 +9,9 @@ urlpatterns = [
     path('login', views.userlogin),
     path('changepwd', views.changepwd),
     path('smsvif', views.smsvif),
+    path('centerhim',views.centerhim), # 别人的个人中心
+    path('centerMessage',views.centerMessage), # 自己的个人中心
+
 
     path('outlogin', views.outlogin),
 ]

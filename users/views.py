@@ -33,8 +33,12 @@ def smsvif(request):
 
 # 用户中心
 @login_required
-def center(request):
-    return render(request,'center.html')
+def centerMessage(request):
+    return render(request,'centerMessage.html')
+
+# 别人的个人中心
+def centerhim(request):
+    return render(request,'centerhim.html')
 
 
 # 用户注册
