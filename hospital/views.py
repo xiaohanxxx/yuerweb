@@ -101,7 +101,9 @@ class Hospital(views.View):
         doctorList = []
         for i in hData.doctor_set.all():
             data = model_to_dict(i)
+            data['thumb'] = data['thumb'].url
             data.update({"gender": i.get_gender_display()})
+            del data['power']
             doctorList.append(data)
         resData['dictorlist'] = doctorList
         return HttpResponse(json.dumps({"data": resData}))
