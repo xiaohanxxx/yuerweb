@@ -38,7 +38,7 @@ class Areas(views.View):
     def get(self, request, *args, **kwargs):
         areasObjList = luntanmodel.Areas.objects.all()
         res = [{"id": i.id, "name": i.name,
-                "child": [{"id": k.id, "name": k.name, "child": []} for k in i.areas_topics.all()]} for i in
+                "child": [{"id": k.id, "name": k.name, "thumb": k.thumb.url, "child": []} for k in i.areas_topics.all()]} for i in
                areasObjList]
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
