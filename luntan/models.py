@@ -72,7 +72,7 @@ class ThumbUp(models.Model):
     articles = models.ForeignKey('Articles', related_name="thumup_articles",
                                  on_delete=models.CASCADE, verbose_name="点赞的文章")
     user = models.ForeignKey(User, related_name="thumup_user",
-                             on_delete=models.CASCADE, verbose_name="点赞用户")
+                             on_delete=models.CASCADE, verbose_name="点赞的用户")
     date = models.DateTimeField(auto_now=True)
 
     class Meta:
