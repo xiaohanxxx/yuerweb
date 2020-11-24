@@ -29,7 +29,13 @@ class ToPosting(views.View):
 # 发帖界面
 class ToPost(views.View):
     def get(self, request, *args, **kwargs):
-        return render(request, 'huzhuwendaAddxz.html')
+        return render(request, 'hzwdpost.html')
+
+
+# 栏目小组
+class GroupList(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'hzwdadd.html')
 
 
 # 获取讨论组
