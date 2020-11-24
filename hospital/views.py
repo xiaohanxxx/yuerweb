@@ -132,6 +132,7 @@ class GetDoctor(views.View):
         dData = get_object_or_404(models.Doctor, pk=did)
         resData = model_to_dict(dData)
         resData['gender'] = dData.get_gender_display()
+        resData['hospital'] = dData.hospital.title
         resData['thumb'] = resData['thumb'].url
         resData['mail'] = [model_to_dict(i) for i in dData.mail_set.all()]
         del resData['power']
