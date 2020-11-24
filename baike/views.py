@@ -200,7 +200,7 @@ def sjldapi(request):
 
 
 
-# 获取分类文章列表
+# 获取二级分类文章列表
 @error
 def articlelistapi(request):
     mid = request.POST.get('mid')  # 获取栏目id
@@ -224,6 +224,42 @@ def articlelistapi(request):
 
     # print(json.dumps(data,cls=JsonCustomEncoder))
     return HttpResponse(json.dumps(data, cls=JsonCustomEncoder), content_type="application/json")
+
+
+
+# 获取一级栏目下的分类id及文章
+@error
+def getmenuarticle(request):
+    if request.method == "POST":
+        mid = request.POST.get('mid')  # 获取栏目id
+        count = request.POST.get('count', 10)  # 获取每页数据条目，默认10条
+
+        menu_obj = models.Bk_menu.objects.get(id=mid)
+        child_menu = menu_obj.child_menu_set.all() # 该主栏目id下所有二级栏目
+
+        data = [
+            {
+                'code':200,
+                'msg':'成功',
+                'menu_name':menu_obj.menu_name,
+                'type':1,
+                'list_data':list(
+                    {
+                        'id':i.id,
+                        'menu_name':i.menu_name,
+                        'type':2,
+                        'list_data':list(
+                            i.artical_set.all().values('id','title')[:int(count)]
+                        )
+                    } for i in child_menu
+                )
+             }
+        ]
+
+
+        return HttpResponse(json.dumps(data, cls=JsonCustomEncoder), content_type="application/json")
+
+
 
 
 # 获取文章最新列表
