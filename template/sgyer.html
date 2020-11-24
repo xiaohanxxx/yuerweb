@@ -119,25 +119,13 @@
 
                 <li ms-repeat = "getPowerhospital">
                     <div class="hostitle">
-                        <a href="" class='titinfo fl'>{el.title}</a>
-                        <a href="" class="you fr"></a>
+                        <a ms-attr-href="/hospital/hindex/?item={el.id}" class='titinfo fl'>{el.title}</a>
+                        <a ms-attr-href="/hospital/hindex/?item={el.id}" class="you fr"></a>
                     </div>
-                    <a href="" hostimg='show' class='imgshow'>
-                        <img ms-attr-src="el.thumb" alt="">
+                    <a ms-attr-href="/hospital/hindex/?item={el.id}"  hostimg='show' class='imgshow'>
+                        <img ms-attr-src="el.thumb" alt="" width="355" height="140">
                     </a>
                 </li>
-
-
-{#                <li>#}
-{#                    <div class="hostitle">#}
-{#                        <a href="" class='titinfo fl'>我是医院名称</a>#}
-{#                        <a href="" class="you fr"></a>#}
-{#                    </div>#}
-{#                    <a href="" hostimg='show'>#}
-{#                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">#}
-{#                    </a>#}
-{#                </li>#}
-{#                #}
             </ul>
         </div>
         <div id="doctorinfo" class='rtglob'>
@@ -159,9 +147,11 @@
                         <p class="infolong">
                             <span>擅长：</span> {el.goodjob}
                         </p>
-                        <p><a href="">
-                            {el.details}
-                        </a></p>
+                        <p>
+                            <a href="">
+                                {el.details}
+                            </a>
+                        </p>
                     </div>
                 </li>
 {#                <li class='clearfix'>#}
@@ -506,7 +496,10 @@
                 }
            })
 
-        }
+        },
+
+
+
     })
     mew.getAerae();
     mew.getDdatas();
