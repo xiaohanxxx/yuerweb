@@ -115,60 +115,29 @@
                 <a href=""></a>
             </div>
             <ul class='hostinbox'>
-                <li>
+
+
+                <li ms-repeat = "getPowerhospital">
                     <div class="hostitle">
-                        <a href="" class='titinfo fl'>我是医院名称，鼠标悬浮显示医院图片</a>
+                        <a href="" class='titinfo fl'>{el.title}</a>
                         <a href="" class="you fr"></a>
                     </div>
                     <a href="" hostimg='show' class='imgshow'>
-                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">
+                        <img ms-attr-src="el.thumb" alt="">
                     </a>
                 </li>
-                <li>
-                    <div class="hostitle">
-                        <a href="" class='titinfo fl'>我是医院名称</a>
-                        <a href="" class="you fr"></a>
-                    </div>
-                    <a href="" hostimg='show'>
-                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">
-                    </a>
-                </li>
-                <li>
-                    <div class="hostitle">
-                        <a href="" class='titinfo fl'>武汉同济生殖医学专科医院</a>
-                        <a href="" class="you fr"></a>
-                    </div>
-                    <a href="" hostimg='show'>
-                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">
-                    </a>
-                </li>
-                <li>
-                    <div class="hostitle">
-                        <a href="" class='titinfo fl'>武汉大学人民医院</a>
-                        <a href="" class="you fr"></a>
-                    </div>
-                    <a href="" hostimg='show'>
-                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">
-                    </a>
-                </li>
-                <li>
-                    <div class="hostitle">
-                        <a href="" class='titinfo fl'>我是医院名称</a>
-                        <a href="" class="you fr"></a>
-                    </div>
-                    <a href="" hostimg='show'>
-                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">
-                    </a>
-                </li>
-                <li>
-                    <div class="hostitle">
-                        <a href="" class='titinfo fl'>武汉同济生殖医学专科医院</a>
-                        <a href="" class="you fr"></a>
-                    </div>
-                    <a href="" hostimg='show'>
-                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">
-                    </a>
-                </li>
+
+
+{#                <li>#}
+{#                    <div class="hostitle">#}
+{#                        <a href="" class='titinfo fl'>我是医院名称</a>#}
+{#                        <a href="" class="you fr"></a>#}
+{#                    </div>#}
+{#                    <a href="" hostimg='show'>#}
+{#                        <img src="{% static 'images/sgyer/img1.png' %}" alt="">#}
+{#                    </a>#}
+{#                </li>#}
+{#                #}
             </ul>
         </div>
         <div id="doctorinfo" class='rtglob'>
@@ -177,82 +146,43 @@
                 <a href=""></a>
             </div>
             <ul class="doctorlis">
-                <li class='clearfix'>
-                    <a href=""><img src="{% static 'images/sgyer/doctor1.png' %}" alt=""></a>
+                <li class='clearfix' ms-repeat="getpowerdoctor">
+                    <a href=""><img ms-attr-src="el.thumb" alt=""></a>
                     <div class="r_info">
                         <div class="docname">
                             <h5>
-                                <a href="">医生名称</a>
+                                <a href="">{el.name}</a>
                             </h5>
-                            <span>医生职位</span>
+                            <span>{el.zhiwei}</span>
                         </div>
-                        <p>所在医院</p>
+                        <p>{el.keshi}</p>
                         <p class="infolong">
-                            <span>擅长：</span> 医生特长字段，显示一行字段信息
+                            <span>擅长：</span> {el.goodjob}
                         </p>
                         <p><a href="">
-                            我是医生简介显示2行文案，点击名称和
-                            医生简介跳转至医生详情页面。
+                            {el.details}
                         </a></p>
                     </div>
                 </li>
-                <li class='clearfix'>
-                    <a href=""><img src="{% static 'images/sgyer/doctor2.png' %}" alt=""></a>
-                    <div class="r_info">
-                        <div class="docname">
-                            <h5>
-                                <a href="">医生名称</a>
-                            </h5>
-                            <span>医生职位</span>
-                        </div>
-                        <p>所在医院</p>
-                        <p class="infolong">
-                            <span>擅长：</span> 医生特长字段，显示一行字段信息
-                        </p>
-                        <p><a href="">
-                            我是医生简介显示2行文案，点击名称和
-                            医生简介跳转至医生详情页面。
-                        </a></p>
-                    </div>
-                </li>
-                <li class='clearfix'>
-                    <a href=""><img src="{% static 'images/sgyer/doctor1.png' %}" alt=""></a>
-                    <div class="r_info">
-                        <div class="docname">
-                            <h5>
-                                <a href="">医生名称</a>
-                            </h5>
-                            <span>医生职位</span>
-                        </div>
-                        <p>所在医院</p>
-                        <p class="infolong">
-                            <span>擅长：</span> 医生特长字段，显示一行字段信息
-                        </p>
-                        <p><a href="">
-                            我是医生简介显示2行文案，点击名称和
-                            医生简介跳转至医生详情页面。
-                        </a></p>
-                    </div>
-                </li>
-                <li class='clearfix'>
-                    <a href=""><img src="{% static 'images/sgyer/doctor2.png' %}" alt=""></a>
-                    <div class="r_info">
-                        <div class="docname">
-                            <h5>
-                                <a href="">医生名称</a>
-                            </h5>
-                            <span>医生职位</span>
-                        </div>
-                        <p>所在医院</p>
-                        <p class="infolong">
-                            <span>擅长：</span> 医生特长字段，显示一行字段信息
-                        </p>
-                        <p><a href="">
-                            我是医生简介显示2行文案，点击名称和
-                            医生简介跳转至医生详情页面。
-                        </a></p>
-                    </div>
-                </li>
+{#                <li class='clearfix'>#}
+{#                    <a href=""><img src="{% static 'images/sgyer/doctor2.png' %}" alt=""></a>#}
+{#                    <div class="r_info">#}
+{#                        <div class="docname">#}
+{#                            <h5>#}
+{#                                <a href="">医生名称</a>#}
+{#                            </h5>#}
+{#                            <span>医生职位</span>#}
+{#                        </div>#}
+{#                        <p>所在医院</p>#}
+{#                        <p class="infolong">#}
+{#                            <span>擅长：</span> 医生特长字段，显示一行字段信息#}
+{#                        </p>#}
+{#                        <p><a href="">#}
+{#                            我是医生简介显示2行文案，点击名称和#}
+{#                            医生简介跳转至医生详情页面。#}
+{#                        </a></p>#}
+{#                    </div>#}
+{#                </li>#}
             </ul>
         </div>
     </div>
@@ -541,7 +471,8 @@
                 }
            })
         },
-        getTuijianyisheng:function (){
+        getpowerdoctor:[],
+        getpowerdoctoar:function (){
             var data = {
                 type:1,
                 num:6
@@ -552,7 +483,26 @@
                 dataType: 'json',
                 data:data,
                 success: function (data) {
-                    console.log(data,'data789')
+                    mew.getpowerdoctor = data.data
+                    console.log(mew.getpowerdoctor,'mew.getpowerdoctormew.getpowerdoctor')
+                }
+           })
+
+        },
+        getPowerhospital:[],
+        getTuijianyisheng:function (){
+            var data = {
+                type:1,
+                num:6
+            }
+           $.ajax({
+                url: '/hospital/powerhospital/',
+                type: 'get',
+                dataType: 'json',
+                data:data,
+                success: function (data) {
+                    console.log(data,'getPowerhospital')
+                    mew.getPowerhospital = data.data
                 }
            })
 
@@ -563,6 +513,7 @@
     mew.gettypesarctical();
     mew.getSpeashoAtical();
     mew.getTuijianyisheng();
+    mew.getpowerdoctoar();
 </script>
 </body>
 
