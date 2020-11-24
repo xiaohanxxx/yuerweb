@@ -118,7 +118,9 @@ class GetDoctorList(views.View):
         doctorList = []
         for i in curuent_page:
             resData = model_to_dict(i)
+            resData['thumb'] = resData['thumb'].url
             resData['gender'] = i.get_gender_display()
+            del resData['power']
             doctorList.append(resData)
         return HttpResponse(json.dumps({"data": doctorList, "allnum": len(doctorObjList)}))
 
@@ -130,7 +132,9 @@ class GetDoctor(views.View):
         dData = get_object_or_404(models.Doctor, pk=did)
         resData = model_to_dict(dData)
         resData['gender'] = dData.get_gender_display()
+        resData['thumb'] = resData['thumb'].url
         resData['mail'] = [model_to_dict(i) for i in dData.mail_set.all()]
+        del resData['power']
         return HttpResponse(json.dumps({"data": resData}))
 
 
@@ -186,6 +190,7 @@ class PowerDoctor(views.View):
                 "title": i.title,
                 "details": i.details,
                 "thumb": i.thumb.url,
+                "hospital": i.hospital.title
             } for i in artObjList
         ]
         return HttpResponse(json.dumps({"data": res}))
