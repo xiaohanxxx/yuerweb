@@ -103,6 +103,7 @@ class Hospital(views.View):
             data = model_to_dict(i)
             data['thumb'] = data['thumb'].url
             data.update({"gender": i.get_gender_display()})
+            data['hospital'] = i.hospital.title
             del data['power']
             doctorList.append(data)
         resData['dictorlist'] = doctorList
