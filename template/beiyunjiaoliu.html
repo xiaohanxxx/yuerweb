@@ -35,8 +35,8 @@
         <div class="byjl_l_main clearfix">
             <h3>{navdata[Mid-1].name}</h3>
             <div class="main_nav" ms-repeat-as="navdata[Mid-1].child">
-                <div ms-attr-class="selectTid==as.id?'selectId':''"><img
-                        src="{% static 'images/yuerlt/user01.png' %}" alt=""><a
+                <div ms-attr-class="selectTid==as.id?'selectId':''">
+                    <img ms-attr-src="as.thumb" alt=""><a
                         ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a></div>
             </div>
 
@@ -53,7 +53,7 @@
         <ul class="main_lis fl">
             <li ms-repeat-el="lisdata">
                 <div class="imgbox">
-                    <img src="{% static 'images/yuerlt/pexels.png' %}" alt="">
+                    <img ms-attr-src="/media/{el.user.head}" alt="">
                 </div>
                 <div class="lis_info">
                     <p>
@@ -293,6 +293,7 @@
                 console.log(error);
             }
         })
+        console.log(vm_ltlist.lisdata,999999999999999999,vm_ltlist.navdata)
     })();
 </script>
 </body>

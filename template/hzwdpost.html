@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/yuerlt.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
+    <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
+    <script src="{% static 'ckeditor4/ckeditor.js' %}"></script>
+    <script src="{% static 'js/uitls/avalon.js' %}"></script>
+    <script src="{% static 'layui/layui.all.js' %}"></script>
+    <script src="{% static 'js/uitls/tool.js' %}"></script>
+    <title>发帖</title>
+</head>
+
+<body>
+{% include 'config.html' %}
+{% include 'header.html' %}
+<section id="postMain" class='wid' style='margin-top:30px;' ms-controller="postart">
+    <div class="currdis clearfix">
+        <div class="dqwz">当前位置：</div>
+        <div class="lmmbx">
+            <a href="javascript:;">互助问答</a>
+            <span>></span>
+            <a href="javascript:;">提问</a>
+        </div>
+    </div>
+    <div class="postBox">
+        <p class="newPost">问题标签<span></span></p>
+        <form>
+            <label for="newTopic">话题：</label>
+            <input type="text" name='newTopic'>
+        </form>
+        <div class="tjTopic">
+            <p>推荐话题所属栏目</p>
+            <nav class="topic_as clearfix">
+
+                <a href="javascript:;" ms-attr-class="topicId==el.id?'yesSelect':''" ms-repeat="topicData"
+                   ms-click="selectMenu(el.id)">{ el.name }</a>
+
+            </nav>
+        </div>
+        <div id="topicSelect">
+
+            <div class="kindeitorbox">
+                <div class='fl'>内容：</div>
+                <div class='editorbox fl'>
+                        <textarea id="editor_id" name="editor1">
+                        </textarea>
+                    <div class="editor_footer clearfix">
+                        <div class="yzm">
+                            <input type="text" placeholder="输入右侧验证码">
+                            <div class="data-yznum">
+                                { yzm }
+                            </div>
+                        </div>
+                        <div class="isFbtn fr">
+                            <div id="noFbtn" class='fl'>取消发布</div>
+                            <div id="yesFbtn" class='fl'>立即发布</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{# 底部调用 #}
+{% include 'footer.html' %}
+<script>
+    var editor1 = CKEDITOR.replace('editor_id');
+    var mid = localStorage.getItem("Mid");
+    var Mlanm = localStorage.getItem("Mlanm");
+    var yesFbtn = $('#yesFbtn'),
+        noFbtn = $('#noFbtn');
+    var topicData = JSON.parse(localStorage.getItem("topicNavs"));
+    window.addEventListener("beforeunload", () => {
+        localStorage.setItem("Mid", localStorage.getItem("Mid"));
+        localStorage.setItem("Mlanm", getItem("Mlanm"));
+        localStorage.setItem("topicNavs", ocalStorage.getItem("topicNavs"));
+    })
+
+    var vm_postart = avalon.define({
+        $id: 'postart',
+        Mid: mid,
+        topicId: null,
+        yzm: null,
+        Mlanm: Mlanm,
+        topicData: topicData,
+        selectMenu: function (a) {
+            vm_postart.topicId = a;
+        }
+    })
+    yesFbtn.click(function () {
+        var ckeData = editor1.getData();
+        var title = $('input[name="newTopic"]').val();
+        var yzmnow = $('.yzm input').val();
+
+        if (!title) {
+            layer.msg("请输入话题！！！");
+        } else if (title.length > 100) {
+            layer.msg("话题字数不能超过100！！！");
+        } else {
+            if (yzmnow == vm_postart.yzm) {
+                if (ckeData && ckeData.length < 800 && vm_postart.topicId) {
+                    $.ajax({
+                        url: root_Domain + '/luntan/articles/',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            "title": title,
+                            "content": ckeData,
+                            "topic": vm_postart.topicId
+                        },
+                        success: function (ajax) {
+                            layer.open({
+                                content: '发布成功',
+                                btn: ['继续发帖', '查看帖子'],
+                                yes: function (index, layero) {
+                                    window.location.reload();
+                                    ifTruePost();
+                                },
+                                btn2: function (index, layero) {
+                                    window.location.href = root_Domain + '/luntan/articles/?aid=' + ajax.data;
+                                }
+                            })
+                        }
+                    })
+                }
+            }else{
+                layer.msg("请输入正确的验证码！！！");
+            }
+
+            if (!ckeData) {
+                layer.msg("请输入内容,发布不能为空！！");
+            } else if (ckeData.length > 800) {
+                layer.msg("最大输入600个字！！");
+            }
+            if (!vm_postart.topicId) {
+                layer.msg("请选择要发帖的栏目");
+            }
+        }
+    })
+    {#    验证码函数,页面刷新时生成验证码#}
+
+    function ifTruePost() {
+        var yzm = Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9);
+        vm_postart.yzm = yzm;
+    }
+
+    ifTruePost();
+</script>
+</body>
+
+</html>

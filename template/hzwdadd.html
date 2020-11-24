@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>加入问答分类-问答小组列表</title>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name=renderer content=webkit>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/uitls/tool.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+    <!--      <style type="text/css">
+          body{ background: #029EE9; }
+         </style>
+     -->
+</head>
+
+{% include 'config.html' %}
+{% include 'header.html' %}
+<div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
+<div class="hzwdconts" ms-controller="hzwdadd">
+    <div class="hzwdleftse" style="min-height: 200px;">
+
+        <ul>
+            <li Mflid="999" ms-attr-class="mflid==999?'allList':''">全部</li>
+            <li ms-repeat="groupsdata" ms-attr-Mflid="el.id" ms-attr-class="mflid==el.id?'allList':''">
+                {el.name}{el.id}{mflid}
+            </li>
+        </ul>
+
+        <ol>
+            <li ms-repeat-as="allgroupData">
+                <img ms-attr-src="{as.thumb}" style="float: left; margin-right: 20px;">
+                <h3 style="font-size: 16px;">{as.name}</h3>
+                <p style="margin: 6px 0; font-size: 12px;">{as.topicontent.substr(0,60)}</p>
+                <p style=" font-size: 12px; margin-left: 80px;">999个回答</p>
+                <p style="margin-left:80px;">
+                    <a href="/taolun/toposting/?tid={as.id}">
+                        <abbr style=" border-radius: 8px; color: #fff; background: #ff44ad;height:30px; line-height: 30px; display: block; text-align: center; width: 100px; ">立即加入</abbr>
+                    </a>
+                </p>
+            </li>
+
+        </ol>
+
+        <div id="pagers"></div>
+
+    </div>
+    <div class="hzwdrights">
+        <div class="metry">
+            <a href="/taolun/topost/"><img src="{% static 'img/340.png' %}"></a>
+        </div>
+        <div class="szzhuanjia">
+            <h3><abbr>热门问答推荐</abbr> <a href="###">更多>></a></h3>
+            <div class="hotwdtuijian">
+                <ul>
+                    <li>
+                        <a href="###">话题标签话题标签话题标签话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签话题标签话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题话题标签话题标签标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题话题标签标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="szzhuanjia">
+            <h3><abbr>生殖医院推荐</abbr> <a href="###">更多>></a></h3>
+            <div class="hotwdtuijiana">
+                <div class="qiehuanhw">
+                    <p class="curraddw">国内医院</p>
+                    <p>国外医院</p>
+                </div>
+            </div>
+            <div class="listsqiehuanwh">
+                <div class="listqha">
+                    <a href="">
+                        <img src="{% static 'img/hospital.png' %}">
+                        <h4 style="font-size: 16px;">北京大学第三医院</h4>
+                        <p>地址：我是地址名称文案信息字段</p>
+                    </a>
+                </div>
+                <div class="listqha">
+                    <img src="{% static 'img/hospital.png' %}">
+                    <h4 style="font-size: 16px;">北京大学第三医院</h4>
+                    <p>地址：我是地址名称文案信息字段</p>
+                </div>
+                <div class="listqha">
+                    <img src="{% static 'img/hospital.png' %}">
+                    <h4 style="font-size: 16px;">北京大学第三医院</h4>
+                    <p>地址：我是地址名称文案信息字段</p>
+                </div>
+                <div class="listqha">
+                    <img src="{% static 'img/hospital.png' %}">
+                    <h4 style="font-size: 16px;">北京大学第三医院</h4>
+                    <p>地址：我是地址名称文案信息字段</p>
+                </div>
+                <div class="listqha">
+                    <img src="{% static 'img/hospital.png' %}">
+                    <h4 style="font-size: 16px;">北京大学第三医院</h4>
+                    <p>地址：我是地址名称文案信息字段</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 底部 -->
+{% include 'footer.html' %}
+<script>
+    var vm_hzwdadd = avalon.define({
+        $id: "hzwdadd",
+        count: 0,//数据总条数
+        mflid: 999,
+        limites: 14,//每一页显示多少条
+        btnnum: 5,//按钮显示个数
+        groupsdata: [],
+        allgroupData: [],
+        intopages: function () {
+            layui.use('laypage', function () {
+                var laypage = layui.laypage;
+                laypage.render({
+                    elem: 'pagers',
+                    count: vm_hzwdadd.count,
+                    limit: vm_hzwdadd.limites,
+                    curr: location.hash.replace('#!page=', ''),
+                    hash: 'page',
+                    groups: vm_hzwdadd.btnnum,
+                    layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip'],
+                    jump: function (obj) {
+                        vm_hzwdadd.goPage(obj.curr);
+                        {#console.log(obj)#}
+                    }
+                });
+            });
+        },
+        menuClick: function () {
+            var lisbtn = $('.hzwdleftse>ul>li');
+            for (let i = 0; i < lisbtn.length; i++) {
+                lisbtn.eq(i).click(function () {
+                    Toolfun.clearClass("allList", lisbtn);
+                    $(this).addClass('allList');
+                    vm_hzwdadd.mflid = $(this).attr('mflid');
+                    vm_hzwdadd.goMflid();
+                })
+            }
+        },
+        goMflid: function () {
+            $.ajax({
+                url: root_Domain + '/taolun/topics/?gid=' + vm_hzwdadd.mflid + '&num=' + vm_hzwdadd.limites,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwdadd.count = ajax.maxnum;
+                    location.hash = '';
+                    vm_hzwdadd.intopages();
+                    vm_hzwdadd.allgroupData = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+        },
+        goPage: function (page) {
+            $.ajax({
+                url: root_Domain + '/taolun/topics/?gid=' + vm_hzwdadd.mflid + '&num=' + vm_hzwdadd.limites + '&page=' + page,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwdadd.allgroupData = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+        },
+        init: function () {
+            var url = '';
+            if (!location.hash && location.href.indexOf('aid') > 0) {
+                vm_hzwdadd.mflid = location.href.replace(/.*aid=/, '');
+                url = root_Domain + '/taolun/topics/?gid='+vm_hzwdadd.mflid+'&num=' + vm_hzwdadd.limites;
+            }else{
+                url = root_Domain + '/taolun/topics/?gid=999&num=' + vm_hzwdadd.limites;
+            }
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwdadd.count = ajax.maxnum;
+                    vm_hzwdadd.allgroupData = ajax.data;
+                    vm_hzwdadd.menuClick();
+                    vm_hzwdadd.goMflid();
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
+            vm_hzwdadd.groupsdata = JSON.parse(localStorage.getItem("Mgroup"));
+
+        }
+    })
+    vm_hzwdadd.init();
+    console.log(vm_hzwdadd.allgroupData, vm_hzwdadd.groupsdata, 222222222)
+</script>
+</body>
+</html>
