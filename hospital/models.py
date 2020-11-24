@@ -60,7 +60,7 @@ class Hospital(models.Model):
     hospitallv = models.ForeignKey("HospitalLv", on_delete=models.CASCADE, verbose_name="等级")
     hospitaltype = models.ManyToManyField("HospitalType", verbose_name="类型")
     thumb = models.ImageField(verbose_name='缩略图', default="thumbnail/824.png", upload_to='thumbnail')
-    power = models.ManyToManyField("Power", verbose_name="重点类型")
+    power = models.ManyToManyField("Power", verbose_name="重点类型", blank=True)
 
     class Meta:
         verbose_name = "医院介绍文章"  # 在admin站点显示名称

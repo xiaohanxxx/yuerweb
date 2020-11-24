@@ -49,7 +49,7 @@ class Topics(views.View):
         areaId = request.GET.get('aid')
         areaObj = get_object_or_404(luntanmodel.Areas, pk=areaId)
         topics = areaObj.areas_topics.all()
-        areaData = [{"id": i.id, "name": i.name} for i in topics]
+        areaData = [{"id": i.id, "name": i.name, "thumb": i.thumb.url} for i in topics]
         return HttpResponse(json.dumps({"data": areaData}), content_type="application/json")
 
 
