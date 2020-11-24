@@ -70,7 +70,7 @@ class Topics(views.View):
         paginator = Paginator(res, num)
 
         curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
-        return HttpResponse(json.dumps(curuent_page.object_list))
+        return HttpResponse(json.dumps({"data": curuent_page.object_list, "maxnum": len(res)}))
 
 
 # 获取分类话题列表
