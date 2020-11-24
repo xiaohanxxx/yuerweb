@@ -135,7 +135,7 @@ class GetDoctor(views.View):
         resData['thumb'] = resData['thumb'].url
         resData['mail'] = [model_to_dict(i) for i in dData.mail_set.all()]
         del resData['power']
-        return render(request, 'yishengxiangqing.html', json.dumps({"data": resData}))
+        return render(request, 'yishengxiangqing.html', {"data": resData})
         # return HttpResponse(json.dumps({"data": resData}))
 
 
