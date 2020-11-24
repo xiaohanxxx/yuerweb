@@ -94,7 +94,7 @@ class ArticlesList(views.View):
                     "title": i.title,
                     "content": i.content,
                     "publish_date": str(i.publish_date),
-                    "user": {"id": i.user.id, "username": i.user.username},
+                    "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
                     "commentnum": i.articles_comment.all().count(),
                     "thumbup": i.thumup_articles.all().count()
                 } for i in curuent_page
