@@ -31,10 +31,19 @@ def smsvif(request):
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
-# 用户中心
+
 @login_required
 def center(request):
     return render(request,'center.html')
+
+# 用户中心
+@login_required
+def centerMessage(request):
+    return render(request,'centerMessage.html')
+
+# 别人的个人中心
+def centerhim(request):
+    return render(request,'centerhim.html')
 
 
 # 用户注册

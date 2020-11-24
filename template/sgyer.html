@@ -21,6 +21,9 @@
 <body id='body'>
 {% include 'config.html' %}
 {% include 'header.html' %}
+
+
+
 <!-- 试管栏头部 -->
 <div ms-controller="sgyeres">
 <section class="sgyer_h wid clearfix" id='sgyer_h'>
@@ -135,11 +138,11 @@
             </div>
             <ul class="doctorlis">
                 <li class='clearfix' ms-repeat="getpowerdoctor">
-                    <a href=""><img ms-attr-src="el.thumb" alt=""></a>
+                    <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
                     <div class="r_info">
                         <div class="docname">
                             <h5>
-                                <a href="">{el.name}</a>
+                                <a ms-attr-href="/hospital/doctor/?did={el.id}">{el.name}</a>
                             </h5>
                             <span>{el.zhiwei}</span>
                         </div>
@@ -148,7 +151,7 @@
                             <span>擅长：</span> {el.goodjob}
                         </p>
                         <p>
-                            <a href="">
+                            <a  ms-attr-href="/hospital/doctor/?did={el.id}">
                                 {el.details}
                             </a>
                         </p>
@@ -442,6 +445,9 @@
                 data:datas,
                 success: function (data) {
                     mew.tuijianartical = data.data;
+                    if (mew.tuijianartical.length>4){
+                        mew.tuijianartical = mew.tuijianartical.splice(0,4);
+                    }
                 }
            })
         },
