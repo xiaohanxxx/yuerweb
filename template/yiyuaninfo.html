@@ -1,0 +1,415 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>首页</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name=renderer content=webkit>
+   {% load static %}
+  <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/jquery.SuperSlide.2.1.1.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+<!--      <style type="text/css">
+      body{ background: #029EE9; }
+     </style>
+ -->
+</head>
+
+  {% include 'header.html' %}
+     <div class="topboxs">
+            <div class="imgs"><img src="{% static 'img/yymc.png' %}"></div>
+            <h3>我是医院名称</h3>
+            <p>地址：我是医院地址字段信息</p>
+            <p>电话：020 6989888</p>
+            <p style="margin: 15px 0;">
+              <a href="">我是医院标签</a>
+              <a href="">我是医院标签</a>
+              <a href="">我是医院标签</a>
+            </p>
+            <p>简介：首都医科大学附属，北京朝阳医院建设于1958年，是首都医科大学第三临床医院，北京市呼吸疾病研究所所在医院，是北京市市属集医疗，教学，科研，预防为一体的三级甲等医院，北京市医疗保险A类定点医疗机构，医院先为一院两址，医院总部占地面积10.28万平方米，建筑面积21万平方米。职工4300于人。临床1900张。</p>
+     </div>
+         
+    <div class="hzwdconts">
+          
+      <div class="hzwdlefts">
+
+ <div class="hzwdcontslistes">
+
+          <h3>详细介绍</h3>
+
+           <p>泰国BABY控制生殖中心，又被叫做爱宝贝生殖基因中心，前身是all生殖中心，成立于2010年，是一个致力于研究不孕不育病症的生殖机构，同时也是泰国十大试管婴儿医院之一；点击关键词跳转到百科知识文章</p>
+           <p>iBaby生殖中心第三代试管婴儿（PGD）技术此阿勇了NGS测序，能够检车23对染色，对家族遗传，父母性传染性疾病有着很好的克制作用，同事NGS技术降低了第三代试管婴儿价格，这也是iBaby费用低廉的一大原因。</p>
+
+  </div>
+
+
+
+         <div class="hzwdcontslistes">
+
+          <h3>医院内推荐专家</h3>
+          
+          <div class="listyisheng">
+              <ul>
+                <li>
+                   <img src="{% static 'img/nys.png' %}">
+                   <p>我是医生   <abbr>医生职位</abbr></p>
+                   <p style="font-size: 12px; margin: 5px 0;">医生所在医院</p>
+                   <p style="font-size: 12px; margin: 5px 0;">擅长：医生擅长领域信息文案显示两行</p>
+                    
+                    <div class="piaofubox">
+                        <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">我是医院名称</div>
+                        <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">我是医院职位</div>
+                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>
+                        <div class="zixunzhuanjia">咨询专家</div>
+                    </div>
+
+                </li>
+                <li>
+                   <img src="{% static 'img/nys.png' %}">
+                   <p>我是医生   <abbr>医生职位</abbr></p>
+                   <p style="font-size: 12px; margin: 5px 0;">医生所在医院</p>
+                   <p style="font-size: 12px; margin: 5px 0;">擅长：医生擅长领域信息文案显示两行</p>
+
+                   <div class="piaofubox">
+                        <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">我是医院名称</div>
+                        <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">我是医院职位</div>
+                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>
+                        <div class="zixunzhuanjia">咨询专家</div>
+                      
+                    </div>
+
+                </li>
+                <li>
+                   <img src="{% static 'img/nys.png' %}">
+                   <p>我是医生   <abbr>医生职位</abbr></p>
+                   <p style="font-size: 12px; margin: 5px 0;">医生所在医院</p>
+                   <p style="font-size: 12px; margin: 5px 0;">擅长：医生擅长领域信息文案显示两行</p>
+
+                    <div class="piaofubox">
+                        <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">我是医院名称</div>
+                        <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">我是医院职位</div>
+                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>
+                        <div class="zixunzhuanjia">咨询专家</div>
+                      
+                    </div>
+
+                </li>
+                <li>
+                   <img src="{% static 'img/nys.png' %}">
+                   <p>我是医生   <abbr>医生职位</abbr></p>
+                   <p style="font-size: 12px; margin: 5px 0;">医生所在医院</p>
+                   <p style="font-size: 12px; margin: 5px 0;">擅长：医生擅长领域信息文案显示两行</p>
+
+
+                    <div class="piaofubox">
+                        <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">我是医院名称</div>
+                        <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">我是医院职位</div>
+                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>
+                        <div class="zixunzhuanjia">咨询专家</div>
+                      
+                  </div>
+
+                </li>
+              </ul>
+          </div>
+
+           <div class="yiyuanhuanjing">
+             <h3 style="margin-bottom: 20px;">医院环境</h3>
+             <div>
+               <img src="{% static 'img/yyhuanjing1.png' %}" style="margin-bottom: 20px;">
+               <img src="{% static 'img/yyhuanjing2.png' %}">
+             </div>
+           </div>
+
+           <div class="yiyuanhuanjing">
+             <h3 style="margin-bottom: 20px; margin-top: 20px;">试管婴儿包成功服务</h3>
+             <ul>
+                 <li>
+                    <div class="sgq">
+                      <img src="{% static 'img/sgq1.png' %}" width="184" height="169">
+                      <div class="shows" style="position: absolute; width:154; height: 131px; left: 0; top: 0; background:rgba(0,0,0,0.6); color: #fff; padding: 15px;">
+                        这里是试管前的相关介绍，注意字数
+                      </div>
+                    </div>
+                    <p>试管前</p>
+                 </li>
+                 <li>
+                    <div class="sgq">
+                      <img src="{% static 'img/sgq2.png' %}" width="184" height="169">
+                      <div class="shows" style="position: absolute; width:154; height: 131px; left: 0; top: 0; background:rgba(0,0,0,0.6); color: #fff; padding: 15px;">
+                        这里是试管前的相关介绍，注意字数
+                      </div>
+                    </div>
+                    <p>试管进周</p>
+                 </li>
+                 <li>
+                    <div class="sgq">
+                      <img src="{% static 'img/sgq3.png' %}" width="184" height="169">
+                      <div class="shows" style="position: absolute; width:154; height: 131px; left: 0; top: 0; background:rgba(0,0,0,0.6); color: #fff; padding: 15px;">
+                        这里是试管前的相关介绍，注意字数
+                      </div>
+                    </div>
+                    <p>试管移植前</p>
+                 </li>
+                 <li>
+                    <div class="sgq">
+                      <img src="{% static 'img/sgq4.png' %}" width="184" height="169">
+                      <div class="shows" style="position: absolute; width:154; height: 131px; left: 0; top: 0; background:rgba(0,0,0,0.6); color: #fff; padding: 15px;">
+                        这里是试管前的相关介绍，注意字数
+                      </div>
+                    </div>
+                    <p>试管移植后</p>
+                 </li>
+             </ul>
+           </div>
+           
+          <div class="yiyuanhuanjing">
+             <h3 style="margin-bottom: 20px; margin-top: 20px;">优选权威专家</h3>
+             <div class="qwzhuanjia bd">
+               <ol>
+                <li>
+                  <div class="yshione">
+                      <img src="{% static 'img/ysthumb.png' %}">
+                      <h3>我是医生名称 <abbr>医生职位</abbr></h3>
+                      <p>医生所在医院</p>
+                      <div style="width: 100%; float: left; margin-left: 20px; margin-top: 20px;">
+                        擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
+                      </div>
+                  </div> 
+                </li> 
+                <li>
+                  <div class="yshione">
+                    <img src="{% static 'img/ysthumb.png' %}">
+                    <h3>我是医生名称 <abbr>医生职位</abbr></h3>
+                    <p>医生所在医院</p>
+                    <div style="width: 100%; float: left; margin-left: 20px; margin-top: 10px;">
+                      擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
+                    </div>
+                </div>  
+                </li>
+              </ol>
+                <div class="hd">
+                  <ul></ul>
+                </div>
+             </div>
+
+            <script type="text/javascript">
+               jQuery(".yiyuanhuanjing").slide({titCell:".hd ul",mainCell:".bd ol",autoPage:true,effect:"left",autoPlay:true,vis:2});
+            </script>
+
+           </div>
+
+
+
+
+
+
+         </div>
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+      <div class="hzwdrights">
+          <a href=""><img src="{% static 'img/zixuntai.png' %}"></a>
+          <div class="szzhuanjia">
+              <h3><abbr>相关报道新闻</abbr> <a href="###">更多>></a></h3>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+              <div class="doctorbox">
+                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">医生名称</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+              </div>
+          </div>
+
+
+   <div class="szzhuanjia">
+              <h3><abbr>海外医院推荐</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijianes_new">
+                 <ol>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                   <li>
+                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   </li>
+                 </ol>
+              </div>
+          </div>
+
+
+
+          <div class="szzhuanjia">
+              <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijian">
+                 <ul>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签话题标签话题标签话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签话题标签话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题话题标签话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题话题标签标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                   <li>
+                    <i class="layui-icon">&#xe615;</i>
+                     <a href="###">话题标签</a>
+                     <abbr>999个问答</abbr>
+                   </li>
+                 </ul>
+              </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+      </div>
+    </div>
+
+
+
+   
+
+
+     <!-- 底部 -->
+  {% include 'footer.html' %}
+     
+      <script>
+    var vm = avalon.define({
+        $id: "bodyconts",
+        name:"医院",
+        intopages:function(){
+            layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'pagers'
+                ,count: 100
+                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                ,jump: function(obj){
+                  console.log(obj)
+                }
+              });
+            });
+        },
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+        changeSearch:function(els){
+            vm.name = '';
+            vm.name = els;
+            $(this).parent().addClass('hites');
+        },
+    })
+    vm.intopages();
+</script>
+</body>
+</html>

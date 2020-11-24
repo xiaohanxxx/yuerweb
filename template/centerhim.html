@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+</head>
+<body>
+     {% include 'header.html' %}
+         <div class="centers" ms-controller="centeres">
+         	 <div class="ctops">
+         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"></div>
+         	 	 <div class="iam_username">我是用户名</div>
+         	 	 <div class="jd_tiao">
+         	 	 	<div class="jdt" id="slideTest18"></div>
+         	 	 </div>
+     	 	 	<div class="jin_pai">
+     	 	 		金牌
+     	 	 	</div>
+     	 	 	<div class="czz_czz">
+     	 	 		成长值  888 / 10000
+     	 	 	</div>
+     	 	 	<div class="guanzhus">
+     	 	 		关注他
+     	 	 	</div>
+         	 </div>
+
+
+             <div class="nav_list">
+               <div class="nav_left">
+	             	<div class="navs">
+	             		<ul>
+	             			<li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
+	             				我的论坛（999）
+	             			</li>
+	             			<li ms-class="curee_cener:aa==2"  ms-click="getBox(2)">
+	             				我的问答（999）
+	             			</li>
+	             			<li ms-class="curee_cener:aa==3"  ms-click="getBox(3)">
+	             				关注（999）
+	             			</li>
+	             			<li ms-class="curee_cener:aa==4"  ms-click="getBox(4)">
+	             				粉丝（999）
+	             			</li>
+	             		</ul>
+	             	</div>
+
+
+                    <div class="bott_box" ms-if="aa == 1">
+                    	<ol>
+                    		<li>
+                    			<img src="{% static 'img/pexels.png' %}">
+                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
+                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
+                    			<div style="margin-top: 15px;">2020.11.10   
+                    				<div class="rights">
+                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
+                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
+                    				</div>
+                    		    </div>
+                    		</li>
+                    		<li>
+                    			<img src="{% static 'img/pexels.png' %}">
+                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
+                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
+                    			<div style="margin-top: 15px;">2020.11.10   
+                    				<div class="rights">
+                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
+                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
+                    				</div>
+                    		    </div>
+                    		</li>
+                    		<li>
+                    			<img src="{% static 'img/pexels.png' %}">
+                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
+                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
+                    			<div style="margin-top: 15px;">2020.11.10   
+                    				<div class="rights">
+                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
+                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
+                    				</div>
+                    		    </div>
+                    		</li>
+                    	</ol>
+                    </div> 
+
+                    <div class="bott_box" ms-if="aa == 2">
+                    	<div class="my_answer">
+                    		<ul>
+                    			<li>
+                    				<p style="font-size: 14px;">我是问题标题文字</p>
+                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
+                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
+                    			</li>
+                    			<li>
+                    				<p style="font-size: 14px;">我是问题标题文字</p>
+                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
+                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
+                    			</li>
+                    			<li>
+                    				<p style="font-size: 14px;">我是问题标题文字</p>
+                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
+                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
+                    			</li>
+                    		</ul>
+                    	</div>
+                    </div>
+                    
+                     
+                     <div class="bott_box" ms-if="aa == 3">
+                     	<div class="gz_cont">
+                     		<div class="gzlists_one">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+                     		<div class="four_hot">
+                     			<ul>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     			</ul>
+                     		</div>
+                     	</div>
+                     	<div class="gz_cont">
+                     		<div class="gzlists_one">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+                     		<div class="four_hot">
+                     			<ul>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     			</ul>
+                     		</div>
+                     	</div>
+                     	<div class="gz_cont">
+                     		<div class="gzlists_one">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+                     		<div class="four_hot">
+                     			<ul>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     			</ul>
+                     		</div>
+                     	</div>
+                     	<div class="gz_cont">
+                     		<div class="gzlists_one">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+                     		<div class="four_hot">
+                     			<ul>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     				<li>
+                     					我是论坛帖子标题最多显示...
+                     				</li>
+                     			</ul>
+                     		</div>
+                     	</div>
+
+
+                     </div>
+
+
+                     <div class="bott_box" ms-if="aa == 4">
+                     	<div class="gz_cont">
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+
+                     		<div class="gzlists">
+                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                     			<p style="font-size: 16px;">我是用户名</p>
+                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
+                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     		</div>
+
+
+                     	</div>
+                     </div>
+
+
+                </div>	
+                <div class="nav_right">
+                	
+                    <div class="tuijianjjq">
+                    	 <h4><abbr>推荐交流圈</abbr></h4>
+                    	 <ul>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">好孕妈妈交流圈</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">好孕妈妈交流圈</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">好孕妈妈交流圈</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">好孕妈妈交流圈</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">好孕妈妈交流圈</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 </ul>
+                    </div>
+                    
+
+
+                    <div class="tuijianjjq">
+                    	 <h4><abbr>热门回答</abbr></h4>
+                    	 <ul>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 	<li>
+                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>
+                    	 		<abbr>999 个话题</abbr>
+                    	 	</li>
+                    	 </ul>
+                    </div>
+
+
+                </div>
+
+
+             </div>
+
+
+
+
+         </div>
+     {% include 'footer.html' %}
+     <script type="text/javascript">
+		layui.use('slider', function(){
+		  var slider = layui.slider;
+		       slider.render({
+		    		elem: '#slideTest18',
+		    		value: 888,
+		    		max:10000,
+		    		disabled: true, //禁用滑块
+		    		// showstep:false,
+		    		theme:"#FF44AD"
+			  });
+		});
+	</script>
+	<script>
+    if (layui) {
+        layui.use('layer', function () {
+            var layer = layui.layer;
+        });
+    }
+</script>
+	<script type="text/javascript">
+        avalon.config({
+            interpolate: ["{", "}"]
+        });  
+		var wvm = avalon.define({
+          $id: "centeres",
+          aa:1,
+          cc:1,
+          getcodewenzi: '获取验证',
+          edit_passwad:{
+          	phone:'',
+          	verification_Code:'',
+          	new_password:''
+          },
+          change_edit:function(res){
+              wvm.cc = res;
+          },
+          getBox:function(res){
+              wvm.aa = res;
+          },
+          validatorTel: function (content) {
+            eval("var reg = /^1[34578]\\d{9}$/;");
+            return RegExp(reg).test(content);
+          },
+            getCode: function () { //获取验证码
+                if (wvm.edit_passwad.phone == '' || !wvm.edit_passwad.phone || !wvm.validatorTel(wvm.edit_passwad.phone)) {
+                    layer.msg('请填写正确的手机号');
+                    return;
+                }
+                var time = 60;
+                if (time == 60) {
+                    var time1 = setInterval(function () {
+                        if (time == 0) {
+                            wvm.getcodewenzi = '重发'
+                            $("#sendsms").removeAttr("disabled");
+                            time = 60;
+                            clearInterval(time1);
+                        } else {
+                            $("#sendsms").attr("disabled", "true");
+                            wvm.getcodewenzi = "重发(" + time + ")";
+                            time--;
+                        }
+                    }, 1000);
+                }
+                var phone = {
+                    phone: wvm.edit_passwad.phone
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/smsvif',
+                    data: phone,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            },
+            okedit:function(){
+            	var new_password = {
+            		new_password:wvm.edit_passwad.password
+            	}
+                $.ajax({
+                    type: 'post',
+                    url: '/users/changepwd',
+                    data: new_password,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function (data) {
+                        console.log(data,99999999999999);
+                        layer.msg(data.msg);
+                    }
+                });
+
+            }
+        });
+	</script>
+</body>
+</html>

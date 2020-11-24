@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta charset="utf-8">
+    {% load static %}
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name=renderer content=webkit>
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+
+
+</head>
+<!-- 头部 -->
+{% include 'header.html' %}
+<!-- 头部 -->
+{#{{ article_data.data.0.title }}#}
+
+{#{{ data }}#}
+
+{#{% for article in article_data.data %}#}
+{#    {{ article.title }}#}
+{#{% endfor %}#}
+
+<div class="bodyartical" ms-controller="bodyarical">
+    <div class="curposition">
+        当前位置： 百科知识 百科文章标题
+    </div>
+    <div class="arctiacalbody">
+        <div class="leftarcal">
+            <div class="title" style="font-size: 18px; font-weight: bold;">{{ data.title }}</div>
+            <div class="time" style="margin-bottom: 30px;">发布：{{ data.publish_date }}</div>
+            <div class="content">
+                {{ data.content | safe }}
+            </div>
+            <div class="pretitle">上一篇：
+                <abbr>
+                    {% if s_article %}
+                        <a href="\baike/article?aid={{ s_article.id }}">{{ s_article.title }}</a>
+                    {% else %}
+                        <a href="###">没有了</a>
+                    {% endif %}
+                </abbr>
+            </div>
+            <div class="nexttitle">下一篇：
+                <abbr>
+                    {% if x_article %}
+                      <a href="\baike/article?aid={{ x_article.id }}">{{ x_article.title }}</a>
+                      {% else %}
+                      <a href="###">没有了</a>
+                    {% endif %}
+                </abbr>
+            </div>
+
+            <div class="left_bottom_artctal">
+                <h3><abbr>相关百科推荐</abbr></h3>
+                <ul>
+                    <li ms-repeat="getrmbaike">
+                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
+                    </li>  
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="rightpart">
+            <div class="suoyin">
+                <img src="{% static 'img/sypic.png' %}">
+                <div class="show_sy">
+                    <ul>
+                        <li><a href="#float1">段落一</a></li>
+                        <li><a href="#float2">段落二</a></li>
+                        <li><a href="#float3">段落三</a></li>
+                        <li><a href="#float4">段落四</a></li>
+                        <li><a href="#float5">段落五</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="suoyin">
+                <a href="###"><img src="{% static 'img/doctor_more.png' %}"></a>
+                <a href=""><img src="{% static 'img/doctor_zixun.png' %}"></a>
+            </div>
+
+
+            <div class="left_bottom_artctal_anather">
+                <h3><abbr>相关热门推荐</abbr></h3>
+                <ul>
+                    <li ms-repeat="get_tj_baike">
+                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!-- 底部 -->
+{% include 'footer.html' %}
+<!-- 底部 -->
+<script>
+    var vmm = avalon.define({
+        $id: 'bodyarical',
+        get_tj_baike: [],
+        getrmbaike: [],
+        get_baike_tuijian: function () {
+            var count = {
+                count: 10
+            }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articleread',//热门文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmm.get_tj_baike = data.data
+                }
+            });
+        },
+        get_rm_baike: function () {
+            var count = {
+                count: 10
+            }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articlecommend',//推荐文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmm.getrmbaike = data.data
+                    console.log(vmm.getrmbaike,"推荐文章");
+                }
+            });
+        }
+    })
+    vmm.get_baike_tuijian();
+    vmm.get_rm_baike();
+</script>
+</body>
+</html>
