@@ -181,7 +181,7 @@ class PowerDoctor(views.View):
         res = [
             {
                 "id": i.id,
-                "name": i.title,
+                "name": i.name,
                 "gender": i.get_gender_display(),
                 "area": i.area,
                 "keshi": i.keshi,
