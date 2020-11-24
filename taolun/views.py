@@ -61,11 +61,16 @@ class Topics(views.View):
 
         else:
             groupObj = get_object_or_404(models.Groups, pk=groupId)
-            topics = groupObj.group_topics.all()
-            for i in topics:
+            tList = groupObj.group_topics.all()
+            for i in tList:
                 res.append({"id": i.id, "name": i.name})
 
-        return HttpResponse(json.dumps(res))
+        num = request.GET.get('num', 10)
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        paginator = Paginator(res, num)
+
+        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
+        return HttpResponse(json.dumps(curuent_page.object_list))
 
 
 # 获取分类话题列表
