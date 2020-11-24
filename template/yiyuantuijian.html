@@ -76,7 +76,7 @@
                   <a ms-attr-href="/hospital/hindex/?item={el.id}"><img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
                  <h3><a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
                  <p>地址：{el.address}</p>
-                 <p>电话：021 6659889</p>
+                 <p>电话：{el.phone}</p>
               </div>
               <div class="rightyytj">
                  <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
@@ -353,6 +353,7 @@
                       // timeout: 10000,
                       success: function (data) {
                          vmw.getYYlist = data.data;
+                         console.log(vmw.getYYlist,'vmw.getYYlistvmw.getYYlistvmw.getYYlist')
                          //vmw.allnum = data.allnum;
                       }
                   });
