@@ -19,7 +19,7 @@
 </head>
 
 <body id='body'>
-{% include 'config.html' %}
+{#{% include 'config.html' %}#}
 {% include 'header.html' %}
 
 
@@ -118,8 +118,7 @@
                 <a href=""></a>
             </div>
             <ul class='hostinbox'>
-
-
+                <li></li>
                 <li ms-repeat = "getPowerhospital">
                     <div class="hostitle">
                         <a ms-attr-href="/hospital/hindex/?item={el.id}" class='titinfo fl'>{el.title}</a>
@@ -129,6 +128,7 @@
                         <img ms-attr-src="el.thumb" alt="" width="355" height="140">
                     </a>
                 </li>
+                <li></li>
             </ul>
         </div>
         <div id="doctorinfo" class='rtglob'>
