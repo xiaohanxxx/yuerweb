@@ -38,9 +38,14 @@ def smsvif(request):
 def center(request):
     user = request.user
     userinfo = Userinfo.objects.get(id=user.id)
-    level = userinfo.level
+    level = userinfo.get_level_display()
     integral = userinfo.integral
-    return render(request,'center.html',{'level':level,'integral':integral})
+    data = {
+        'user':user,
+        'level': level,
+        'integral': integral
+    }
+    return render(request,'center.html',{'data':data})
 
 # 用户中心
 @login_required
@@ -51,7 +56,7 @@ def centerMessage(request):
 def centerhim(request):
     user = request.user
     userinfo = Userinfo.objects.get(id=user.id)
-    level = userinfo.level
+    level = userinfo.get_level_display()
     integral = userinfo.integral
     return render(request,'centerhim.html',{'level':level,'integral':integral})
 
