@@ -9,4 +9,4 @@ class Admin(admin.ModelAdmin):
     list_display = ('id', '__str__',)
 
 
-admin.site.register([models.Area, models.Hospital, models.HospitalLv, models.HospitalType, models.Doctor, models.Mail, models.Power], Admin)
+admin.site.register([models.Area, models.Hospital, models.HospitalLv, models.HospitalType, models.Doctor, models.Mail, models.Power, models.ImageUp], Admin)

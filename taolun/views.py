@@ -107,7 +107,7 @@ class PostingList(views.View):
             chk = request.GET.get('order', 0)
             # 热门
             if chk == "1":
-                postList = topicObj.topics_set.all().order_by('read')
+                postList = topicObj.posting_set.all().order_by('read')
 
             num = request.GET.get('num', 10)
             curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
