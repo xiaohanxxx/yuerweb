@@ -235,6 +235,8 @@ class Followapi(View):
     # 获得粉丝3
     def getfollowedapi(self):
         follow_list = Follow.user_follower(self.user)
+
+        print(follow_list)
         data = {
             'code': 200,
             'msg': '成功',
