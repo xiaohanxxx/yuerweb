@@ -169,7 +169,7 @@ def changetx(request):
 
 #TODO 去TM的面向对象编程
 
-# @method_decorator(error, name='dispatch')
+@method_decorator(error, name='dispatch')
 @method_decorator(login_required, name='dispatch')
 class Followapi(View):
     def __init__(self,**kwargs):
@@ -177,7 +177,6 @@ class Followapi(View):
 
     def post(self,request):
         self.user = request.user
-        print(self.user)
         self.request = request
         Quser_id = request.POST.get("Quser_id",None)
         if Quser_id == None:
@@ -224,7 +223,6 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
-        print(follow_list)
         data = {
             'code': 200,
             'msg': '成功',
@@ -236,7 +234,6 @@ class Followapi(View):
     def getfollowedapi(self):
         follow_list = Follow.user_follower(self.user)
 
-        print(follow_list)
         data = {
             'code': 200,
             'msg': '成功',
