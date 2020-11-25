@@ -127,7 +127,8 @@ class PostingList(views.View):
              "read": i.read,
              "commentnum": i.posting_comment.all().count(),
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
-             "thumbup": i.thumup_articles.all().count()
+             "thumbup": i.thumup_articles.all().count(),
+             "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id, posting_id=i.id)) else 1
              } for i in curuent_page
         ]
         return HttpResponse(json.dumps({"data": res, "maxnum": len(postList)}))
