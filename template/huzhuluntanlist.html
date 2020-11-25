@@ -25,7 +25,7 @@
 
 <div class="hzwdconts" ms-controller="hzwdlist">
     <div class="hzwdlefts">
-        <h3 style="font-size: 16px; padding: 15px;">{groupsdata[0].name}</h3>
+        <h3 style="font-size: 16px; padding: 15px;" ms-repeat="groupsdata">{el.name}</h3>
         <ul>
             <li ms-attr-class="tid==el.id?'curreswd':''" ms-repeat="allgroupData">
                 <a ms-attr-href="/taolun/postindex/?tid={el.id}">{el.name}</a>
@@ -239,7 +239,7 @@
             vm_hzwdlist.Mid = localStorage.getItem('Mid');
             var Mgroupdata = JSON.parse(localStorage.getItem('Mgroup'));
             for (let i = 0; i < Mgroupdata.length; i++) {
-                if (Mgroupdata[i].id == vm_hzwdlist.Mid && vm_hzwdlist.groupsdata.length < 2) {
+                if (Mgroupdata[i].id == vm_hzwdlist.Mid) {
                     vm_hzwdlist.groupsdata.push(Mgroupdata[i]);
                 }
             }
@@ -259,7 +259,6 @@
                     vm_hzwdlist.lisdata = ajax.data;
                     vm_hzwdlist.intopages();
                     vm_hzwdlist.menuClick();
-                    console.log(vm_hzwdlist.lisdata, 6666666666)
                 },
                 error: function (error) {
                     console.log(error);
