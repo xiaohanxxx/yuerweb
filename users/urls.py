@@ -13,8 +13,5 @@ urlpatterns = [
     path('centerMessage',views.centerMessage), # 我的消息
 
 
-    path(r'followapi',views.Followapi.as_view()),
-
-
     path('outlogin', views.outlogin),
 ]

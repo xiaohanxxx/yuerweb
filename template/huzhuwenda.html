@@ -401,8 +401,7 @@
                     for (let i = 0; i < imgbox.length; i++) {
                         ajax[i].img = imgbox[i];
                     }
-
-                    vm_hzwda.groupsdata = ajax.reverse();
+                    vm_hzwda.groupsdata = ajax.reverse().sort();
                     localStorage.clear();
                     localStorage.setItem('Mgroup',JSON.stringify(ajax));
                 }, error: function (error) {

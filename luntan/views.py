@@ -1,6 +1,7 @@
 import json
 import os
 
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Count, F
@@ -264,10 +265,32 @@ class ImageUp(views.View):
             for line in avatar:
                 f.write(line)
 
-        print(dir)
         return HttpResponse(json.dumps({"file": avatar.name, "uploaded": 1, "url": "/" + dir}))
 
 
 class PostAritcle(views.View):
     def get(self, request, *args, **kwargs):
         return render(request, 'post.html')
+
+
+# 获取我的帖子
+class GetMyArticles(views.View):
+    @login_required
+    def get(self, request, *args, **kwargs):
+        uid = request.user.id
+        articleObjList = luntanmodel.Articles.objects.filter(user_id=uid)
+        num = request.GET.get("num", 10)
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        paginator = Paginator(articleObjList, num)
+        curuent_page = paginator.page(curuent_page_num)     # 获取当前页的数据
+        res = []
+        for i in curuent_page:
+            res.append({
+                "id": i.id,
+                "title": i.title,
+                "content": i.content,
+                "publish_date": str(i.publish_date),
+                "thumbup": i.thumup_articles.all().count(),
+                "commentnum": i.articles_comment.all().count(),
+            })
+        return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))

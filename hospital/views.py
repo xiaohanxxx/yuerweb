@@ -97,6 +97,7 @@ class Hospital(views.View):
             "hospitallv": hData.hospitallv.name,
             "hospitaltype": [{"id": i.id, "name": i.name} for i in hData.hospitaltype.all()],
             "thumb": hData.thumb.url,
+            "envpic": [{"id": i.id, "image": i.image.url} for i in hData.envpic.all()]
         }
         doctorList = []
         for i in hData.doctor_set.all():

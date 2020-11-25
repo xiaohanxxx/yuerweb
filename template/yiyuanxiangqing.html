@@ -29,7 +29,7 @@
         <div class="imgs"> <img ms-src="{yiyuaninfo.thumb}" width="338" height="252"></div>
             <h3>{yiyuaninfo.title}</h3>
             <p>地址：{yiyuaninfo.cityarea}</p>
-            <p>电话：020 6989888</p>
+            <p>电话：{yiyuaninfo.phone}</p>
             <p style="margin: 15px 0;">
               <a href="###" ms-repeat="yiyuaninfo.hospitaltype">{el.name}</a>
             </p>
@@ -43,7 +43,7 @@
  <div class="hzwdcontslistes">
 
           <h3>详细介绍</h3>
-          {yiyuaninfo.content}
+          <p>{yiyuaninfo.content}</p>
            <!-- <p>泰国BABY控制生殖中心，又被叫做爱宝贝生殖基因中心，前身是all生殖中心，成立于2010年，是一个致力于研究不孕不育病症的生殖机构，同时也是泰国十大试管婴儿医院之一；点击关键词跳转到百科知识文章</p>
            <p>iBaby生殖中心第三代试管婴儿（PGD）技术此阿勇了NGS测序，能够检车23对染色，对家族遗传，父母性传染性疾病有着很好的克制作用，同事NGS技术降低了第三代试管婴儿价格，这也是iBaby费用低廉的一大原因。</p> -->
 
@@ -66,11 +66,12 @@
                     <div class="piaofubox">
                         <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">{el.title}</div>
                         <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">{el.zhiwei}</div>
-                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>
-                        <div class="zixunzhuanjia">咨询专家</div>
+{#                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>#}
+                        <div class="zixunzhuanjia"><a ms-attr-href="/hospital/doctor/?did={el.id}">咨询专家</a></div>
                     </div>
 
                 </li>
+                  <div ms-if="!doctorlist || doctorlist.length==0" style="width: 100%; padding: 80px 0; text-align: center;"> 暂无数据 </div>
 {#                <li>#}
 {#                   <img src="{% static 'img/nys.png' %}">#}
 {#                   <p>我是医生   <abbr>医生职位</abbr></p>#}
@@ -404,6 +405,7 @@
                   if (vem.doctorlist.length>4){
                       vem.doctorlist = vem.doctorlist.splice(0,4);
                   }
+                  console.log(vem.doctorlist,'vem.doctorlistvem.doctorlist888');
               }
           });
 
