@@ -428,13 +428,27 @@
                     dataType: "json",
                     // timeout: 10000,
                     success: function (data) {
-                        console.log(data,99999999999999);
                         layer.msg(data.msg);
                     }
                 });
 
+            },
+            getAllguanzhu:function (){ //获取所有关注对象
+                var datas = {
+                    type:3,
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/followapi',
+                    data: datas,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data,'212121');
+                    }
+                });
             }
         });
+		wvm.getAllguanzhu();
 	</script>
 </body>
 </html>
