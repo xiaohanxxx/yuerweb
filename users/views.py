@@ -2,10 +2,12 @@ from django.core.exceptions import ValidationError
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth import authenticate,login
 from django.contrib.auth.models import User
-from users.models import Userinfo
+from users.models import Userinfo,Follow
 from django.contrib.auth.decorators import login_required
 import json
 from baike.views import error
+from django.views.generic import View
+from django.utils.decorators import method_decorator
 
 # Create your views here.
 from django.conf import settings
@@ -151,13 +153,98 @@ def changepwd(request):
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
+
 # 修改头像
+@login_required
 def changetx(request):
     # avatar = request.POST.get('avatar')
     file_obj = request.FILES.get('avatar')
     Userinfo.user_avatar = file_obj
     Userinfo.save()
     print("ok")
+
+
+
+
+
+#TODO 去TM的面向对象编程
+
+# @method_decorator(error, name='dispatch')
+@method_decorator(login_required, name='dispatch')
+class Followapi(View):
+    def __init__(self,**kwargs):
+        super(Followapi, self).__init__(**kwargs)
+
+    def post(self,request):
+        self.user = request.user
+        print(self.user)
+        self.request = request
+        Quser_id = request.POST.get("Quser_id",None)
+        if Quser_id == None:
+            pass
+        else:
+            self.Quser = User.objects.get(id=int(Quser_id))
+        type = int(request.POST.get('type'))
+        if type == 0:
+            return self.follow()
+        elif type == 1:
+            return self.unfollowapi()
+        elif type == 2:
+            return self.getfollowapi()
+        elif type == 3:
+            return self.getfollowedapi()
+        else:
+            return HttpResponse(json.dumps({'code':406,'msg':'参数错误'}))
+
+    # 关注0
+    def follow(self):
+        f = Follow.objects.filter(follower=self.user, followed=self.Quser)
+        if f:
+            pass
+        else:
+            Follow.objects.create(
+                follower=self.user,
+                followed=self.Quser
+            )
+        data = {
+            'code': 200,
+            'msg': '已关注'
+        }
+        return HttpResponse(json.dumps(data))
+
+    # 取消关注1
+    def unfollowapi(self):
+        Follow.unfollow(self.user, self.Quser)  # 取消关注
+        data = {
+            'code': 200,
+            'msg': '已取消'
+        }
+        return HttpResponse(json.dumps(data))
+
+    # 获得关所有已关注对象2
+    def getfollowapi(self):
+        follow_list = Follow.user_followed(self.user)
+        print(follow_list)
+        data = {
+            'code': 200,
+            'msg': '成功',
+            'data_list': follow_list
+        }
+        return HttpResponse(json.dumps(data))
+
+    # 获得粉丝3
+    def getfollowedapi(self):
+        follow_list = Follow.user_follower(self.user)
+        data = {
+            'code': 200,
+            'msg': '成功',
+            'data_list': follow_list
+        }
+        return HttpResponse(json.dumps(data))
+
+
+
+
 
 
 # 测试上传
