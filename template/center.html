@@ -446,9 +446,25 @@
                         console.log(data,'212121');
                     }
                 });
+            },
+            getAllmytiezi:function (){
+              var datas = {
+                    num:10,
+                    page:1
+                }
+                $.ajax({
+                    type: 'get',
+                    url: '/luntan/getmyarticles/',
+                    data: datas,
+                    dataType: "json",
+                    success: function (data) {
+                        console.log(data,'8888888888888');
+                    }
+                });
             }
         });
 		wvm.getAllguanzhu();
+		wvm.getAllmytiezi();//获取我发布的帖子
 	</script>
 </body>
 </html>

@@ -289,7 +289,7 @@ class GetMyArticles(views.View):
                 "id": i.id,
                 "title": i.id,
                 "content": i.content,
-                "publish_date": i.publish_date,
+                "publish_date": str(i.publish_date),
                 "thumbup": i.thumup_articles.all().count(),
                 "commentnum": i.articles_comment.all().count(),
             })
