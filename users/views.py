@@ -1,18 +1,18 @@
-from django.core.exceptions import ValidationError
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
-from users.models import Userinfo,Follow
+from users.models import Userinfo, Follow
 from django.contrib.auth.decorators import login_required
-import json
+import json, random
 from baike.views import error
 from django.views.generic import View
 from django.utils.decorators import method_decorator
-
-# Create your views here.
 from django.conf import settings
 from sms import tengxun
-import random
+from luntan import models
+
+
+# Create your views here.
 
 
 # 发送短信
@@ -21,15 +21,15 @@ def smsvif(request):
         phone = request.POST.get('phone')
         yzmlist = list()
         for i in range(4):
-            yzmlist.append(str(random.randint(0,9)))
+            yzmlist.append(str(random.randint(0, 9)))
         yzm = ''.join(yzmlist)
 
         request.session['smscode'] = yzm
         sms = tengxun.MySmsSender()
         sms.send(phone, settings.SMS_TEMPLATE_ID['register'], [yzm, '3'])
         data = {
-            'code':200,
-            'msg':'发送成功'
+            'code': 200,
+            'msg': '发送成功'
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
@@ -41,19 +41,30 @@ def center(request):
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
-        'user':user,
+        'user': user,
         'level': level,
         'integral': integral
     }
-    return render(request,'center.html',{'data':data})
+    return render(request, 'center.html', {'data': data})
+
 
 # 用户中心
 @login_required
 def centerMessage(request):
-    return render(request,'centerMessage.html')
+    user = request.user
+    userinfo = Userinfo.objects.get(id=user.id)
+    level = userinfo.get_level_display()
+    integral = userinfo.integral
+    data = {
+        'user': user,
+        'level': level,
+        'integral': integral
+    }
+    return render(request, 'centerMessage.html', {'data': data})
+
 
 # 别人的个人中心
-def centerhim(request,Quser_id):
+def centerhim(request, Quser_id):
     userinfo = Userinfo.objects.get(id=Quser_id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
@@ -62,7 +73,7 @@ def centerhim(request,Quser_id):
         'level': level,
         'integral': integral
     }
-    return render(request,'centerhim.html',{'data':data})
+    return render(request, 'centerhim.html', {'data': data})
 
 
 # 用户注册
@@ -77,8 +88,8 @@ def register(request):
         user_pd = User.objects.filter(username=username).exists()
         if user_pd == True:
             data = {
-                'code':400,
-                'msg':'用户名已存在'
+                'code': 400,
+                'msg': '用户名已存在'
             }
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
@@ -97,7 +108,7 @@ def register(request):
                 'code': 200,
                 'msg': '注册成功'
             }
-            return HttpResponse(json.dumps(data),content_type="application/json")
+            return HttpResponse(json.dumps(data), content_type="application/json")
 
             # 获取验证码是否正确
             yzm = request.session['smscode']
@@ -116,7 +127,7 @@ def register(request):
                     'code': 200,
                     'msg': '注册成功'
                 }
-                return HttpResponse(json.dumps(data),content_type="application/json")
+                return HttpResponse(json.dumps(data), content_type="application/json")
             else:
                 data = {
                     'code': 400,
@@ -134,7 +145,7 @@ def userlogin(request):
         user = authenticate(username=username, password=password)
         if user:
             # 查询密码是否正确
-            login(request,user)
+            login(request, user)
             data = {
                 'code': 200,
                 'msg': '登录成功'
@@ -165,8 +176,8 @@ def changepwd(request):
         request.user.set_password(new_password)
         request.user.save()
         data = {
-            'code':200,
-            'msg':'修改成功'
+            'code': 200,
+            'msg': '修改成功'
         }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
@@ -180,22 +191,18 @@ def changetx(request):
     Userinfo.save()
     print("ok")
 
+# @method_decorator(error, name='dispatch')
+# TODO 去TM的面向对象编程
 
-
-
-
-#TODO 去TM的面向对象编程
-
-@method_decorator(error, name='dispatch')
 @method_decorator(login_required, name='dispatch')
 class Followapi(View):
-    def __init__(self,**kwargs):
+    def __init__(self, **kwargs):
         super(Followapi, self).__init__(**kwargs)
 
-    def post(self,request):
+    def post(self, request):
         self.user = request.user
         self.request = request
-        Quser_id = request.POST.get("Quser_id",None)
+        Quser_id = request.POST.get("Quser_id", None)
         if Quser_id == None:
             pass
         else:
@@ -210,7 +217,7 @@ class Followapi(View):
         elif type == 3:
             return self.getfollowedapi()
         else:
-            return HttpResponse(json.dumps({'code':406,'msg':'参数错误'}))
+            return HttpResponse(json.dumps({'code': 406, 'msg': '参数错误'}))
 
     # 关注0
     def follow(self):
@@ -240,11 +247,22 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
+        for i in follow_list:
+            article_list = models.Articles.objects.filter(user_id=i['userid'])
+            print(article_list)
+
         data = {
             'code': 200,
             'msg': '成功',
-            'data_list': follow_list
+            'data_list': list({
+                'user':i['username'],
+                'userid':i['userid'],
+                'user_article':list(models.Articles.objects.filter(user_id=i['userid']).values('id','title'))
+            }
+                for i in follow_list
+            )
         }
+
         return HttpResponse(json.dumps(data))
 
     # 获得粉丝3
@@ -259,8 +277,6 @@ class Followapi(View):
         return HttpResponse(json.dumps(data))
 
 
-
-
 # 等级变更公用方法
 def public_level(request):
     user = request.user
@@ -268,7 +284,7 @@ def public_level(request):
     integral = userinfo.integral
     if integral < 500:
         userinfo.level = 0
-    elif integral > 500 and integral < 2000: # 大于500且小于2000积分,白银
+    elif integral > 500 and integral < 2000:  # 大于500且小于2000积分,白银
         userinfo.level = 1
     else:
         userinfo.level = 2
@@ -286,8 +302,3 @@ def upload(request):
                 f.write(line)
         return HttpResponse('ok')
     return render(request, 'picture_upload.html')
-
-
-
-
-
