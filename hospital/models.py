@@ -48,6 +48,17 @@ class Power(models.Model):
         return self.name
 
 
+class ImageUp(models.Model):
+    image = models.ImageField(verbose_name='图片', upload_to='thumbnail')
+
+    class Meta:
+        verbose_name = "图片"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.image.name
+
+
 class Hospital(models.Model):
     title = models.CharField(max_length=100, verbose_name="标题")
     content = models.TextField(verbose_name="正文")
@@ -60,6 +71,7 @@ class Hospital(models.Model):
     hospitallv = models.ForeignKey("HospitalLv", on_delete=models.CASCADE, verbose_name="等级")
     hospitaltype = models.ManyToManyField("HospitalType", verbose_name="类型")
     thumb = models.ImageField(verbose_name='缩略图', default="thumbnail/824.png", upload_to='thumbnail')
+    envpic = models.ManyToManyField("ImageUp", verbose_name="环境图片", blank=True)
     power = models.ManyToManyField("Power", verbose_name="重点类型", blank=True)
 
     class Meta:
