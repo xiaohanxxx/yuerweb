@@ -290,6 +290,7 @@ class GetMyArticles(views.View):
                 "title": i.id,
                 "content": i.content,
                 "publish_date": i.publish_date,
-                "read": i.read
+                "thumbup": i.thumup_articles.all().count(),
+                "commentnum": i.articles_comment.all().count(),
             })
-        return HttpResponse(json.dumps({"data": res}))
+        return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))
