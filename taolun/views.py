@@ -1,7 +1,8 @@
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.db.models import F
+from django.db.models import F, Count
 from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
@@ -57,13 +58,17 @@ class Topics(views.View):
             for i in gList:
                 tList = i.group_topics.all()
                 for k in tList:
-                    res.append({"id": k.id, "name": k.name, "thumb": k.thumb.url, "topicontent": k.topicontent})
+                    count = models.Topics.objects.filter(id=k.id).values("id", 'name').annotate(
+                        count=Count('posting__posting_comment__id'))
+                    res.append({"id": k.id, "name": k.name, "thumb": k.thumb.url, "topicontent": k.topicontent, "topicnum": count[0]['count']})
 
         else:
             groupObj = get_object_or_404(models.Groups, pk=groupId)
             tList = groupObj.group_topics.all()
             for i in tList:
-                res.append({"id": i.id, "name": i.name, "thumb": i.thumb.url, "topicontent": i.topicontent})
+                count = models.Topics.objects.filter(id=i.id).values("id", 'name').annotate(
+                    count=Count('posting__posting_comment__id'))
+                res.append({"id": i.id, "name": i.name, "thumb": i.thumb.url, "topicontent": i.topicontent, "topicnum": count[0]['count']})
 
         num = request.GET.get('num', 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
@@ -139,6 +144,7 @@ class Posting(views.View):
             "publish_date": str(postingObj.publish_date),
             "user": {"id": postingObj.user.id, "username": postingObj.user.username,
                      "head": str(postingObj.user.info.user_avatar)},
+            "thumbup": postingObj.thumbuparticle_set.all().count()
         }
         return HttpResponse(json.dumps({"data": artData}))
 
@@ -171,7 +177,8 @@ class Comment(views.View):
                 "comment": i.comment,
                 "publish_date": str(i.publish_date),
                 "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
-                "parent": i.parent_id
+                "parent": i.parent_id,
+                "thumbup": i.thumbupcomment_set.all().count()
             } for i in commentData
         ]
         return HttpResponse(json.dumps({"data": resComment}))
@@ -185,3 +192,41 @@ class Comment(views.View):
         data['user_id'] = request.user.id
         models.Comment.objects.create(**data)
         return HttpResponse("评论成功！！！！！！！！！！")
+
+
+# 热门标签
+class HotTopics(views.View):
+    def get(self, request, *args, **kwargs):
+        num = request.GET.get("num", 10)
+        countList = models.Topics.objects.values('id', 'name').annotate(count=Count('posting__posting_comment__id')).order_by('-count')[:int(num)]
+        return HttpResponse(json.dumps({"data": list(countList)}))
+
+
+# 热门话题
+class HotArticles(views.View):
+    def get(self, request, *args, **kwargs):
+        num = request.GET.get("num", 10)
+        countList = models.Posting.objects.values('id', 'title').annotate(count=Count('posting_comment__id')).order_by('-count')[:int(num)]
+        return HttpResponse(json.dumps({"data": list(countList)}))
+
+
+# 文章点赞
+class ThumbUp(views.View):
+    @login_required
+    def get(self, request, *args, **kwargs):
+        type = request.GET.get("type")
+        id = request.GET.get("id")
+        uid = request.user.id
+        if type == "article":
+            chk = models.ThumbUpArticle.objects.filter(user_id=uid, posting_id=id)
+            if chk:
+                return HttpResponse("已点赞，请勿重复点赞！")
+            models.ThumbUpArticle.objects.create({"user_id": uid, "articles_id": id})
+
+        elif type == "comment":
+            chk = models.ThumbUpComment.objects.filter(user_id=uid, comment_id=id)
+            if chk:
+                return HttpResponse("已点赞，请勿重复点赞！")
+            models.ThumbUpComment.objects.create({"user_id": uid, "comment_id": id})
+
+        return HttpResponse("点赞成功！")
