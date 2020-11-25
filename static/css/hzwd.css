@@ -40,3 +40,15 @@
     margin-top:30px;
     border-radius:50%;
 }
+.partwdone>img{
+    width: 36px;
+    height: 36px;
+    border-radius:50%;
+}
+partwdone>h3{
+    margin-bottom: 10px;
+}
+.partwdone>p>i{
+    margin-left: 15px;
+}
+

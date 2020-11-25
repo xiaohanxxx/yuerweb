@@ -11,6 +11,7 @@
     <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/avalon.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/uitls/tool.js" %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static  "css/swiper-bundle.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static  "css/css.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static  "css/index.css" %}">
@@ -22,111 +23,46 @@
      -->
 </head>
 
-<body ms-controller="bodyconts">
 {% include 'config.html' %}
 {% include 'header.html' %}
 <div class="hzwdbanner"><img src="{% static  "img/hzwdbanner.png" %}"></div>
 
-<div class="hzwdconts">
+<div class="hzwdconts" ms-controller="hzwdlist">
     <div class="hzwdlefts">
-        <h3 style="font-size: 16px; padding: 15px;">试管婴儿</h3>
+        <h3 style="font-size: 16px; padding: 15px;">{groupsdata[0].name}</h3>
         <ul>
-            <li class="curreswd">备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
-            <li>备孕期</li>
+            <li ms-attr-class="tid==el.id?'curreswd':''" ms-repeat="allgroupData">
+                <a ms-attr-href="/taolun/postindex/?tid={el.id}">{el.name}</a>
+            </li>
+
         </ul>
         <div class="fenleiallswd">
-            <p class="allcurr">全部</p>
-            <p>最新</p>
-            <p>热门</p>
-            <p>求助</p>
-            <p>发帖</p>
+            <p class="allcurr" order="">最新</p>
+            <p order="1">热门</p>
+            <p order="2">求助</p>
         </div>
 
         <div class="hzwdcontslist">
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+            <div class="partwdone" ms-repeat-its="lisdata">
+                <img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px;">
+                <h4><a ms-attr-href="/taolun/toposting/?pid={its.id}">{its.title}</a></h4>
+                <p>{its.user.username} <i class="layui-icon">&#xe68d;</i> {its.publish_date.replace(/:.*/,'')}
+                    {% if request.user.is_active %}
+                    <a href="javascript:;" ms-click="dianz(its.id,this)">
+                        <abbr style="float: right; margin-right: 48px;">
+                        <i class="layui-icon">&#xe6c6;</i>{its.commentnum}
+                        </abbr>
+                    </a>
+                    {% else %}
+                    <a href="/login/">
+                        <abbr style="float: right; margin-right: 48px;">
+                        <i class="layui-icon">&#xe6c6;</i>{its.commentnum}
+                        </abbr>
+                    </a>
+                    {% endif %}
+                </p>
             </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
-            <div class="partwdone">
-                <img src="{% static  "img/tuxiang.jpg" %}" style="float: left; margin-right: 10px;">
-                <h4>我是文章标题最多显示一行，鼠标炫富时候为当前颜色，点击标题跳转到文章详细页。</h4>
-                <p>我是用户名 <i class="layui-icon">&#xe68d;</i> 2020-10-15 <abbr
-                        style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-            </div>
+
             <div id="pagers"></div>
         </div>
 
@@ -201,24 +137,132 @@
 {% include 'footer.html' %}
 
 <script>
-    var vm = avalon.define({
-        $id: "bodyconts",
+    var vm_hzwdlist = avalon.define({
+        $id: "hzwdlist",
+        count: 0,//数据总条数
+        Mid: '',
+        tid: '',
+        order: '',
+        limites: 10,//每一页显示多少条
+        btnnum: 5,//按钮显示个数
+        groupsdata: [],
+        allgroupData: [],
+        lisdata: [],
         intopages: function () {
-            layui.use(['laypage', 'layer'], function () {
-                var laypage = layui.laypage
-                    , layer = layui.layer;
+            layui.use('laypage', function () {
+                var laypage = layui.laypage;
                 laypage.render({
-                    elem: 'pagers'
-                    , count: 100
-                    , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                    , jump: function (obj) {
-                        console.log(obj)
+                    elem: 'pagers',
+                    count: vm_hzwdlist.count,
+                    limit: vm_hzwdlist.limites,
+                    curr: location.hash.replace('#!page=', ''),
+                    hash: 'page',
+                    groups: vm_hzwdlist.btnnum,
+                    layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip'],
+                    jump: function (obj) {
+                        vm_hzwdlist.goPage(obj.curr);
                     }
                 });
             });
+        },
+        menuClick: function () {
+            var menuBtn = $('.fenleiallswd>p');
+            var url = '';
+            for (let i = 0; i < menuBtn.length; i++) {
+                menuBtn.eq(i).click(function () {
+                    Toolfun.clearClass("allcurr", menuBtn);
+                    vm_hzwdlist.order = $(this).attr('order');
+                    $(this).addClass('allcurr');
+                    if (vm_hzwdlist.order) {
+                        url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&order=' + vm_hzwdlist.order;
+                    } else {
+                        url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites;
+                    }
+                    $.ajax({
+                        url: url,
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (ajax) {
+                            location.hash = '';
+                            vm_hzwdlist.count = ajax.maxnum;
+                            vm_hzwdlist.lisdata = ajax.data;
+                            vm_hzwdlist.intopages();
+                        }, error: function (error) {
+                            console.log(error);
+                        }
+                    })
+                })
+            }
+        },
+        dianz:function(id,ev){
+            var _this = ev;
+            if(_this.onClick){
+                return false;
+            }
+            $.ajax({
+                url:root_Domain+'/taolun/thumbup/?type=article&id='+id,
+                type:'get',
+                dataType:'json',
+                success:function(ajax){
+                    _this.onClick = true;
+                    layer.msg("点赞成功！！！");
+                },
+                error:function(error){
+                    console.log(error);
+                }
+            })
+        },
+        goPage: function (page) {
+            var url = '';
+            if (vm_hzwdlist.order) {
+                url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page + '&order=' + vm_hzwdlist.order;
+            } else {
+                url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page;
+            }
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwdlist.lisdata = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+        },
+        init: function () {
+            vm_hzwdlist.Mid = localStorage.getItem('Mid');
+            var Mgroupdata = JSON.parse(localStorage.getItem('Mgroup'));
+            for (let i = 0; i < Mgroupdata.length; i++) {
+                if (Mgroupdata[i].id == vm_hzwdlist.Mid && vm_hzwdlist.groupsdata.length < 2) {
+                    vm_hzwdlist.groupsdata.push(Mgroupdata[i]);
+                }
+            }
+            vm_hzwdlist.allgroupData = JSON.parse(localStorage.getItem('sonGroup'));
+            if (location.hash) {
+                location.hash = '';
+                vm_hzwdlist.tid = location.href.replace(/.*tid=/, '').replace(/#/, '');
+            } else {
+                vm_hzwdlist.tid = location.href.replace(/.*tid=/, '').replace(/#/, '');
+            }
+            $.ajax({
+                url: root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwdlist.count = ajax.maxnum;
+                    vm_hzwdlist.lisdata = ajax.data;
+                    vm_hzwdlist.intopages();
+                    vm_hzwdlist.menuClick();
+                    console.log(vm_hzwdlist.lisdata,6666666666)
+                },
+                error: function (error) {
+                    console.log(error);
+                }
+            })
         }
     })
-    vm.intopages();
+    vm_hzwdlist.init();
 </script>
 </body>
 </html>
