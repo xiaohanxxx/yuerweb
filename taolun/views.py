@@ -244,7 +244,7 @@ class ThumbUp(views.View):
 class GetMyArticles(views.View):
     def get(self, request, *args, **kwargs):
         uid = request.user.id
-        articleObjList = models.Posting.objects.filter(user_id=uid)
+        articleObjList = models.Posting.objects.filter(user_id=uid, isdelete=0)
         num = request.GET.get("num", 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleObjList, num)
@@ -257,6 +257,6 @@ class GetMyArticles(views.View):
                 "content": i.content,
                 "publish_date": str(i.publish_date),
                 "thumbup": i.thumup_articles.all().count(),
-                "commentnum": i.articles_comment.all().count(),
+                "commentnum": i.posting_comment.all().count(),
             })
         return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))
