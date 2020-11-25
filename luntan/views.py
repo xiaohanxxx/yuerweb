@@ -293,4 +293,4 @@ class GetMyArticles(views.View):
                 "thumbup": i.thumup_articles.all().count(),
                 "commentnum": i.articles_comment.all().count(),
             })
-        return HttpResponse(json.dumps({"data": res}))
+        return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))
