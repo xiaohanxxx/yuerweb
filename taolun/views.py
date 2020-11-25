@@ -240,7 +240,7 @@ class ThumbUp(views.View):
 
 
 # 获取我的帖子
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class GetMyArticles(views.View):
     def get(self, request, *args, **kwargs):
         uid = request.user.id

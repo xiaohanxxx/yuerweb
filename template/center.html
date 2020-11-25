@@ -53,65 +53,33 @@
 
                     <div class="bott_box" ms-if="aa == 1">
                     	<ol>
-                    		<li>
+                    		<li ms-repeat="alltiezi">
                     			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
-                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
-                    			<div style="margin-top: 15px;">2020.11.10   
+                    			<p style="font-size: 16px;">{el.title}</p>
+                    			<p style="font-size: 12px;">{el.content}</p>
+                    			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
+                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
+                    					<abbr><i class="layui-icon">&#xe63a;</i>{el.commentnum}</abbr>
                     				</div>
                     		    </div>
                     		</li>
-                    		<li>
-                    			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
-                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
-                    			<div style="margin-top: 15px;">2020.11.10   
-                    				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
-                    				</div>
-                    		    </div>
-                    		</li>
-                    		<li>
-                    			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
-                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
-                    			<div style="margin-top: 15px;">2020.11.10   
-                    				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
-                    				</div>
-                    		    </div>
-                    		</li>
-                    	</ol>
-                    </div> 
+                 	   </ol>
+                    </div>
 
                     <div class="bott_box" ms-if="aa == 2">
                     	<div class="my_answer">
                     		<ul>
-                    			<li>
-                    				<p style="font-size: 14px;">我是问题标题文字</p>
-                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
-                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
-                    			</li>
-                    			<li>
-                    				<p style="font-size: 14px;">我是问题标题文字</p>
-                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
-                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
-                    			</li>
-                    			<li>
-                    				<p style="font-size: 14px;">我是问题标题文字</p>
-                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
-                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
+                    			<li ms-repeat-el="mywenda">
+                    				<p style="font-size: 14px;">{el.title}</p>
+                    				<p style="font-size: 12px; margin: 8px 0;">{el.content}</p>
+                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
                     		</ul>
                     	</div>
                     </div>
-                    
-                     
+
+
                      <div class="bott_box" ms-if="aa == 3">
                      	<div class="gz_cont">
                      		<div class="gzlists_one">
@@ -219,91 +187,83 @@
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
                      		</div>
 
 
 
                      		<div class="gzlists">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
+{#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
+                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
                      		</div>
 
 
                      	</div>
                      </div>
+                      <div id="demo8"></div>
 
-
-                </div>	
+                </div>
                 <div class="nav_right">
-                	
+
                         <div class="centerEdier">
                         	<div class="sadfh">
                         		<p ms-class="curr_set:cc==1" ms-click="change_edit(1)"><abbr>资料设置</abbr></p>
@@ -362,7 +322,7 @@
 	<script type="text/javascript">
         avalon.config({
             interpolate: ["{", "}"]
-        });  
+        });
 		var wvm = avalon.define({
           $id: "centeres",
           aa:1,
@@ -447,6 +407,8 @@
                     }
                 });
             },
+            alltiezi:[],
+            maxnum:0,
             getAllmytiezi:function (){
               var datas = {
                     num:10,
@@ -458,13 +420,79 @@
                     data: datas,
                     dataType: "json",
                     success: function (data) {
-                        console.log(data,'8888888888888');
+                        wvm.alltiezi = data.data;
+                        wvm.maxnum = data.maxnum;
+                        wvm.gontopage(wvm.maxnum);
                     }
                 });
+            },
+            gontopage:function (counta){
+              layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'demo8'
+                ,count:counta
+                ,limit:6
+                ,limits:[6,12,18,24]
+                ,layout: ['count', 'prev', 'page', 'next','limit'],
+                jump: function(obj,first){
+                      console.log(obj,'77777777777777');
+                      var datas = {
+                            num:obj.limit,
+                            page:obj.curr
+                      }
+                    $.ajax({
+                        type: 'get',
+                        url: '/luntan/getmyarticles/',
+                        data: datas,
+                        dataType: "json",
+                        success: function (data) {
+                            wvm.alltiezi = data.data;
+                            wvm.maxnum = data.maxnum;
+                        }
+                    });
+                }
+              });
+            });
+            },
+            mywenda:[],
+            getmywenda:function (){//获取我所有的问答
+                      var datas = {
+                            num:10,
+                            page:1
+                      }
+                    $.ajax({
+                        type: 'get',
+                        url: '/taolun/getmyarticles/',
+                        data: datas,
+                        dataType: "json",
+                        success: function (data) {
+                            wvm.mywenda = data.data
+                            console.log(wvm.mywenda,'wvm.mywendawvm.mywendawvm.mywendawvm.mywenda');
+                        }
+                    });
+            },
+            getguanzhuData:function (){
+                var datas = {
+                            type:3
+                      }
+                    $.ajax({
+                        type: 'post',
+                        url: '/users/followapi',
+                        data: datas,
+                        dataType: "json",
+                        success: function (data) {
+                            console.log(data,'345234234')
+                        }
+                    });
             }
         });
 		wvm.getAllguanzhu();
 		wvm.getAllmytiezi();//获取我发布的帖子
+        wvm.getmywenda();//获取我所有的问答
+        wvm.getguanzhuData();//获取所有关注对象
+        wvm.gontopage(wvm.maxnum);
 	</script>
 </body>
 </html>

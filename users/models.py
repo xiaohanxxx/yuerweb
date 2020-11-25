@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Userinfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='info')
     user_avatar = models.ImageField('用户头像', upload_to='user_avatar', default='/user_avatar/touxiang.jpg')
-    integral = models.IntegerField('积分', default=0)
+    # integral = models.IntegerField('积分', default=0)
     phone = models.CharField('手机号', max_length=20)
 
     def __str__(self):
