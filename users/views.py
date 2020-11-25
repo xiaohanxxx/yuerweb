@@ -36,17 +36,24 @@ def smsvif(request):
 
 @login_required
 def center(request):
-    return render(request,'center.html')
+    user = request.user
+    userinfo = Userinfo.objects.get(id=user.id)
+    level = userinfo.level
+    integral = userinfo.integral
+    return render(request,'center.html',{'level':level,'integral':integral})
 
 # 用户中心
 @login_required
 def centerMessage(request):
-
     return render(request,'centerMessage.html')
 
 # 别人的个人中心
 def centerhim(request):
-    return render(request,'centerhim.html')
+    user = request.user
+    userinfo = Userinfo.objects.get(id=user.id)
+    level = userinfo.level
+    integral = userinfo.integral
+    return render(request,'centerhim.html',{'level':level,'integral':integral})
 
 
 # 用户注册
