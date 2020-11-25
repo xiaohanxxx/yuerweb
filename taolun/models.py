@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 # Create your models here.
 
 # 讨论组
@@ -67,4 +68,28 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.comment
+
+
+# 文章点赞
+class ThumbUpArticle(models.Model):
+    posting = models.ForeignKey('Posting', related_name="thumup_articles",
+                                 on_delete=models.CASCADE, verbose_name="点赞的文章")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="点赞的用户")
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "文章点赞"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
+
+
+# 评论点赞
+class ThumbUpComment(models.Model):
+    Comment = models.ForeignKey('Comment', related_name="thumup_comment",
+                                 on_delete=models.CASCADE, verbose_name="点赞的评论")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="点赞的用户")
+    date = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "评论点赞"  # 在admin站点显示名称
+        verbose_name_plural = verbose_name
 
