@@ -3,4 +3,4 @@ from . import models
 
 
 # Register your models here.
-admin.site.register([models.Groups, models.Topics, models.Posting, models.Comment])
+admin.site.register([models.Groups, models.Topics, models.Posting, models.Comment, models.ThumbUpArticle, models.ThumbUpComment])
