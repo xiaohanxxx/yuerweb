@@ -287,9 +287,9 @@ class GetMyArticles(views.View):
         for i in curuent_page:
             res.append({
                 "id": i.id,
-                "title": i.id,
+                "title": i.title,
                 "content": i.content,
-                "publish_date": i.publish_date,
+                "publish_date": str(i.publish_date),
                 "thumbup": i.thumup_articles.all().count(),
                 "commentnum": i.articles_comment.all().count(),
             })
