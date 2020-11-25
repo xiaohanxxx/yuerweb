@@ -1719,7 +1719,9 @@ body .topicMain .commSelect {
 body .topicMain .commSelect span {
     color: #fff;
 }
-
+.ms-controller{
+   visibility: hidden
+}
 body div[bq_btn="emoji"] {
     width: 35px;
     font-size: 1.5em;

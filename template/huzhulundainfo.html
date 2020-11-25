@@ -2,229 +2,173 @@
 <html>
 <head>
     {% load static %}
-	<title>首页</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="{% static  "js/jquery.min.js"  %}"></script>
-  <script type="text/javascript" src="{% static  "layui/layui.js"  %}"></script>
-	<script type="text/javascript" src="{% static  "js/swiper-bundle.min.js"  %}"></script>
-    <script type="text/javascript" src="{% static  "js/avalon.js"  %}"></script>
-	<script type="text/javascript" src="{% static  "js/index.js"  %}"></script>
-	<link rel="stylesheet" type="text/css" href="{% static  "css/swiper-bundle.min.css"  %}">
-	<link rel="stylesheet" type="text/css" href="{% static  "css/css.css"  %}">
-  <link rel="stylesheet" type="text/css" href="{% static  "css/index.css"  %}">
-  <link rel="stylesheet" type="text/css" href="{% static  "layui/css/layui.css"  %}">
-<!--      <style type="text/css">
-      body{ background: #029EE9; }
-     </style>
- -->
+    <title>首页</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta name=renderer content=webkit>
+    <script type="text/javascript" src="{% static  "js/jquery.min.js" %}"></script>
+    <script type="text/javascript" src="{% static  "layui/layui.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/avalon.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static  "css/swiper-bundle.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static  "css/css.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static  "css/index.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static  "layui/css/layui.css" %}">
+    <!--      <style type="text/css">
+          body{ background: #029EE9; }
+         </style>
+     -->
 </head>
 
-<body  ms-controller="bodyconts">
-    {% include 'config.html' %}
-    {% include 'header.html' %}
-    <div class="hzwdbanner"><img src="{% static  "img/hzwdbanner.png"  %}"></div>
+<body ms-controller="bodyconts">
+{% include 'config.html' %}
+{% include 'header.html' %}
+<div class="hzwdbanner"><img src="{% static  "img/hzwdbanner.png" %}"></div>
 
-    <div class="hzwdconts">
-      <div class="hzwdleftse" style="min-height: 200px;">
-           <img src="{% static  "img/tuxiang.jpg"  %}" style="border-radius: 50%; float: left; margin-right: 10px;"/>
-           <h3>我是问题描述文字信息</h3>
-           <p style="margin-top: 15px; padding-left: 45px;"><i class="layui-icon">&#xe66f;</i>我是用户名  <i class="layui-icon">&#xe68d;</i>2020-10-24 10:52 <abbr style="float: right;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-
-
-            <div class="pinglunkk">
-               <h4>评论</h4>
-               <div class="fuwenben">
-                 <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
-                  <script>
-                  layui.use('layedit', function(){
-                    var layedit = layui.layedit;
-                    layedit.build('demo',{
-                      // tool: ['face','image']
-                      tool: ['face'],
-                      height: 100
-                    }); //建立编辑器
-                  });
-                  </script>
-                  <p style="margin-top: 15px;"><abbr style="float: right; cursor: pointer; display: block; padding: 5px 15px; border-radius: 4px; background: #ff44ad; color: #fff;">评论</abbr></p>
-               </div>
+<div class="hzwdconts"  ms-controller="hzwdinfo">
+    <div class="hzwdleftse" style="min-height: 200px;">
+        <img src="{% static  "img/tuxiang.jpg" %}" style="border-radius: 50%; float: left; margin-right: 10px;"/>
+        <h3>我是问题描述文字信息</h3>
+        <p style="margin-top: 15px; padding-left: 45px;"><i class="layui-icon">&#xe66f;</i>我是用户名 <i class="layui-icon">&#xe68d;</i>2020-10-24
+            10:52 <abbr style="float: right;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
 
 
-               
-
-
-
+        <div class="pinglunkk">
+            <h4>评论</h4>
+            <div class="fuwenben">
+                <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
+                <script>
+                    layui.use('layedit', function () {
+                        var layedit = layui.layedit;
+                        layedit.build('demo', {
+                            // tool: ['face','image']
+                            tool: ['face'],
+                            height: 100
+                        }); //建立编辑器
+                    });
+                </script>
+                <p style="margin-top: 15px;"><abbr
+                        style="float: right; cursor: pointer; display: block; padding: 5px 15px; border-radius: 4px; background: #ff44ad; color: #fff;">评论</abbr>
+                </p>
             </div>
 
 
+        </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-      </div>
-      <div class="hzwdrights">
-          <div class="metry">
-             <a href=""><img src="{% static  "img/340.png"  %}"></a>
-          </div>
-          <div class="szzhuanjia">
-              <h3><abbr>热门问答推荐</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijian">
-                 <ul>
-                   <li>
-                     <a href="###">话题标签话题标签话题标签话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题标签话题标签话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题话题标签话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                 </ul>
-              </div>
-          </div><div class="szzhuanjia">
-              <h3><abbr>相关问答</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijian">
-                 <ol>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签话题标签话题标签话题标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签话题标签话题标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签话题标签话题标签话题标签标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签话题标签标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
-                   </li>
-                   <li>
-                     <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
-                   </li>
-                 </ol>
-              </div>
-          </div>
-      </div>
     </div>
+    <div class="hzwdrights">
+        <div class="metry">
+            <a href=""><img src="{% static  "img/340.png" %}"></a>
+        </div>
+        <div class="szzhuanjia">
+            <h3><abbr>热门问答推荐</abbr> <a href="###">更多>></a></h3>
+            <div class="hotwdtuijian">
+                <ul>
+                    <li>
+                        <a href="###">话题标签话题标签话题标签话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签话题标签话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题话题标签话题标签标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题话题标签标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                    <li>
+                        <a href="###">话题标签</a>
+                        <abbr>999个问答</abbr>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="szzhuanjia">
+            <h3><abbr>相关问答</abbr> <a href="###">更多>></a></h3>
+            <div class="hotwdtuijian">
+                <ol>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签话题标签话题标签话题标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签话题标签话题标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签话题标签话题标签话题标签标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签话题标签标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题话题标签标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                    </li>
+                    <li>
+                        <a href="###"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>话题标签</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
 
 
+<!-- 底部 -->
+{% include 'footer.html' %}
 
-
-
-
-     <!-- 底部 -->
-     <div class="footer" style="width: 100%; overflow: hidden; border-top: 1px solid #ff44ad; padding-top: 30px; padding-bottom: 30px;" >
-     	<div style="width: 1200px; margin: 0 auto; overflow: hidden;" class="footeres">
-     		<p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-     		<div class="lianjieyq" style="margin-top: 30px;">
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     			<a href="">网上药店</a>
-     		</div>
-     	</div>
-     	<p style="text-align: center; margin-top: 30px; font-size: 12px;line-height: 25px; color: #666;">
-     		 关于我们联系我们人才招聘法律申明网站地图<br>
-     		 地址：湖北省武汉市洪山区<br>
-     		 邮箱：123456@.com 招聘邮箱:123456.com<br>
-     		 copyright @ 2000 - 2020 yuer.com ALL Rights Reserved 鄂ICP备123456号-1
-     	</p>
-     </div>
-     
-      <script>
+<script>
     var vm = avalon.define({
         $id: "bodyconts",
-        intopages:function(){
-            layui.use(['laypage', 'layer'], function(){
-              var laypage = layui.laypage
-              ,layer = layui.layer;
-              laypage.render({
-                elem: 'pagers'
-                ,count: 100
-                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                ,jump: function(obj){
-                  console.log(obj)
-                }
-              });
+        intopages: function () {
+            layui.use(['laypage', 'layer'], function () {
+                var laypage = layui.laypage
+                    , layer = layui.layer;
+                laypage.render({
+                    elem: 'pagers'
+                    , count: 100
+                    , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                    , jump: function (obj) {
+                        console.log(obj)
+                    }
+                });
             });
         }
     })
