@@ -212,7 +212,7 @@ class HotArticles(views.View):
 
 # 文章点赞
 class ThumbUp(views.View):
-    @login_required
+    # @login_required
     def get(self, request, *args, **kwargs):
         type = request.GET.get("type")
         id = request.GET.get("id")
@@ -221,12 +221,12 @@ class ThumbUp(views.View):
             chk = models.ThumbUpArticle.objects.filter(user_id=uid, posting_id=id)
             if chk:
                 return HttpResponse("已点赞，请勿重复点赞！")
-            models.ThumbUpArticle.objects.create({"user_id": uid, "articles_id": id})
+            models.ThumbUpArticle.objects.create(**{"user_id": uid, "articles_id": id})
 
         elif type == "comment":
             chk = models.ThumbUpComment.objects.filter(user_id=uid, comment_id=id)
             if chk:
                 return HttpResponse("已点赞，请勿重复点赞！")
-            models.ThumbUpComment.objects.create({"user_id": uid, "comment_id": id})
+            models.ThumbUpComment.objects.create(**{"user_id": uid, "comment_id": id})
 
         return HttpResponse("点赞成功！")

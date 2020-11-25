@@ -43,7 +43,7 @@
                 <p style="margin: 6px 0; font-size: 12px;">{as.topicontent.substr(0,60)}</p>
                 <p style=" font-size: 12px; margin-left: 80px;">999个回答</p>
                 <p style="margin-left:80px;">
-                    <a href="/taolun/toposting/?tid={as.id}">
+                    <a ms-attr-href="/taolun/postindex/?tid={as.id}">
                         <abbr style=" border-radius: 8px; color: #fff; background: #ff44ad;height:30px; line-height: 30px; display: block; text-align: center; width: 100px; ">立即加入</abbr>
                     </a>
                 </p>
@@ -196,6 +196,8 @@
                     location.hash = '';
                     vm_hzwdadd.intopages();
                     vm_hzwdadd.allgroupData = ajax.data;
+                    localStorage.setItem('Mid',vm_hzwdadd.mflid);
+                    localStorage.setItem('sonGroup',JSON.stringify(vm_hzwdadd.allgroupData));
                 }, error: function (error) {
                     console.log(error);
                 }
