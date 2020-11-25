@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 
 # 讨论组
@@ -92,4 +91,3 @@ class ThumbUpComment(models.Model):
     class Meta:
         verbose_name = "评论点赞"  # 在admin站点显示名称
         verbose_name_plural = verbose_name
-

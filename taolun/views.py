@@ -6,6 +6,8 @@ from django.db.models import F, Count
 from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
+from django.utils.decorators import method_decorator
+
 from . import models, form
 
 
@@ -60,7 +62,8 @@ class Topics(views.View):
                 for k in tList:
                     count = models.Topics.objects.filter(id=k.id).values("id", 'name').annotate(
                         count=Count('posting__posting_comment__id'))
-                    res.append({"id": k.id, "name": k.name, "thumb": k.thumb.url, "topicontent": k.topicontent, "topicnum": count[0]['count']})
+                    res.append({"id": k.id, "name": k.name, "thumb": k.thumb.url, "topicontent": k.topicontent,
+                                "topicnum": count[0]['count']})
 
         else:
             groupObj = get_object_or_404(models.Groups, pk=groupId)
@@ -68,7 +71,8 @@ class Topics(views.View):
             for i in tList:
                 count = models.Topics.objects.filter(id=i.id).values("id", 'name').annotate(
                     count=Count('posting__posting_comment__id'))
-                res.append({"id": i.id, "name": i.name, "thumb": i.thumb.url, "topicontent": i.topicontent, "topicnum": count[0]['count']})
+                res.append({"id": i.id, "name": i.name, "thumb": i.thumb.url, "topicontent": i.topicontent,
+                            "topicnum": count[0]['count']})
 
         num = request.GET.get('num', 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
@@ -122,7 +126,8 @@ class PostingList(views.View):
              "update_date": str(i.update_date),
              "read": i.read,
              "commentnum": i.posting_comment.all().count(),
-             "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)}
+             "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
+             "thumbup": i.thumbuparticle_set.all().count()
              } for i in curuent_page
         ]
         return HttpResponse(json.dumps({"data": res, "maxnum": len(postList)}))
@@ -198,7 +203,8 @@ class Comment(views.View):
 class HotTopics(views.View):
     def get(self, request, *args, **kwargs):
         num = request.GET.get("num", 10)
-        countList = models.Topics.objects.values('id', 'name').annotate(count=Count('posting__posting_comment__id')).order_by('-count')[:int(num)]
+        countList = models.Topics.objects.values('id', 'name').annotate(
+            count=Count('posting__posting_comment__id')).order_by('-count')[:int(num)]
         return HttpResponse(json.dumps({"data": list(countList)}))
 
 
@@ -206,13 +212,14 @@ class HotTopics(views.View):
 class HotArticles(views.View):
     def get(self, request, *args, **kwargs):
         num = request.GET.get("num", 10)
-        countList = models.Posting.objects.values('id', 'title').annotate(count=Count('posting_comment__id')).order_by('-count')[:int(num)]
+        countList = models.Posting.objects.values('id', 'title').annotate(count=Count('posting_comment__id')).order_by(
+            '-count')[:int(num)]
         return HttpResponse(json.dumps({"data": list(countList)}))
 
 
 # 文章点赞
+@method_decorator(login_required, name='dispatch')
 class ThumbUp(views.View):
-    @login_required
     def get(self, request, *args, **kwargs):
         type = request.GET.get("type")
         id = request.GET.get("id")
@@ -221,12 +228,35 @@ class ThumbUp(views.View):
             chk = models.ThumbUpArticle.objects.filter(user_id=uid, posting_id=id)
             if chk:
                 return HttpResponse("已点赞，请勿重复点赞！")
-            models.ThumbUpArticle.objects.create({"user_id": uid, "articles_id": id})
+            models.ThumbUpArticle.objects.create(user_id=uid, posting_id=id)
 
         elif type == "comment":
             chk = models.ThumbUpComment.objects.filter(user_id=uid, comment_id=id)
             if chk:
                 return HttpResponse("已点赞，请勿重复点赞！")
-            models.ThumbUpComment.objects.create({"user_id": uid, "comment_id": id})
+            models.ThumbUpComment.objects.create(user_id=uid, comment_id=id)
 
         return HttpResponse("点赞成功！")
+
+
+# 获取我的帖子
+@method_decorator(login_required, name='dispatch')
+class GetMyArticles(views.View):
+    def get(self, request, *args, **kwargs):
+        uid = request.user.id
+        articleObjList = models.Posting.objects.filter(user_id=uid, isdelete=0)
+        num = request.GET.get("num", 10)
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        paginator = Paginator(articleObjList, num)
+        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
+        res = []
+        for i in curuent_page:
+            res.append({
+                "id": i.id,
+                "title": i.title,
+                "content": i.content,
+                "publish_date": str(i.publish_date),
+                "thumbup": i.thumup_articles.all().count(),
+                "commentnum": i.posting_comment.all().count(),
+            })
+        return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))

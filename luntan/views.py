@@ -7,6 +7,7 @@ from django.core.paginator import Paginator
 from django.db.models import Count, F
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
+from django.utils.decorators import method_decorator
 
 from yuerweb import settings
 from . import models as luntanmodel
@@ -274,8 +275,8 @@ class PostAritcle(views.View):
 
 
 # 获取我的帖子
+@method_decorator(login_required, name='dispatch')
 class GetMyArticles(views.View):
-    @login_required
     def get(self, request, *args, **kwargs):
         uid = request.user.id
         articleObjList = luntanmodel.Articles.objects.filter(user_id=uid)
