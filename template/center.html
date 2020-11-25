@@ -18,15 +18,15 @@
          <div class="centers" ms-controller="centeres">
          	 <div class="ctops">
          	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"></div>
-         	 	 <div class="iam_username">我是用户名</div>
+         	 	 <div class="iam_username">{{ data.user }}</div>
          	 	 <div class="jd_tiao">
          	 	 	<div class="jdt" id="slideTest18"></div>
          	 	 </div>
      	 	 	<div class="jin_pai">
-     	 	 		金牌
+                    {{ data.level }}
      	 	 	</div>
      	 	 	<div class="czz_czz">
-     	 	 		成长值  888 / 10000
+     	 	 		成长值  {{ data.integral }}
      	 	 	</div>
          	 </div>
 
