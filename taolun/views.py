@@ -1,5 +1,6 @@
 import json
 
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.db.models import F, Count
 from django.forms import model_to_dict
@@ -143,6 +144,7 @@ class Posting(views.View):
             "publish_date": str(postingObj.publish_date),
             "user": {"id": postingObj.user.id, "username": postingObj.user.username,
                      "head": str(postingObj.user.info.user_avatar)},
+            "thumbup": postingObj.thumbuparticle_set.all().count()
         }
         return HttpResponse(json.dumps({"data": artData}))
 
@@ -175,7 +177,8 @@ class Comment(views.View):
                 "comment": i.comment,
                 "publish_date": str(i.publish_date),
                 "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
-                "parent": i.parent_id
+                "parent": i.parent_id,
+                "thumbup": i.thumbupcomment_set.all().count()
             } for i in commentData
         ]
         return HttpResponse(json.dumps({"data": resComment}))
@@ -205,3 +208,25 @@ class HotArticles(views.View):
         num = request.GET.get("num", 10)
         countList = models.Posting.objects.values('id', 'title').annotate(count=Count('posting_comment__id')).order_by('-count')[:int(num)]
         return HttpResponse(json.dumps({"data": list(countList)}))
+
+
+# 文章点赞
+class ThumbUp(views.View):
+    @login_required
+    def get(self, request, *args, **kwargs):
+        type = request.GET.get("type")
+        id = request.GET.get("id")
+        uid = request.user.id
+        if type == "article":
+            chk = models.ThumbUpArticle.objects.filter(user_id=uid, posting_id=id)
+            if chk:
+                return HttpResponse("已点赞，请勿重复点赞！")
+            models.ThumbUpArticle.objects.create({"user_id": uid, "articles_id": id})
+
+        elif type == "comment":
+            chk = models.ThumbUpComment.objects.filter(user_id=uid, comment_id=id)
+            if chk:
+                return HttpResponse("已点赞，请勿重复点赞！")
+            models.ThumbUpComment.objects.create({"user_id": uid, "comment_id": id})
+
+        return HttpResponse("点赞成功！")
