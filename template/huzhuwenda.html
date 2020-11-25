@@ -6,16 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
-    <script type="text/javascript" src="{% static  "js/jquery.min.js" %}"></script>
-    <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js" %}"></script>
+    <script type="text/javascript" src="{% static  "js/jquery.min.js"  %}"></script>
+    <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js"  %}"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/avalon.js/1.5.5/avalon.js"></script>
-    <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
-    <script type="text/javascript" src="{% static  "layui/layui.js" %}"></script>
-    <link rel="stylesheet" href="{% static  "layui/css/layui.css" %}" media="all">
-    <script src="{% static 'js/uitls/tool.js' %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static  "css/css.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static  "css/iconfont.css" %}">
+    <script type="text/javascript" src="{% static  "js/index.js"  %}"></script>
+    <script type="text/javascript" src="{% static  "layui/layui.js"  %}"></script>
+    <link rel="stylesheet" href="{% static  "layui/css/layui.css"  %}" media="all">
+    <link rel="stylesheet" type="text/css" href="{% static  "css/css.css"  %}">
+    <link rel="stylesheet" type="text/css" href="{% static  "css/iconfont.css"  %}">
 </head>
 {% include 'config.html' %}
 {% include 'header.html' %}
@@ -30,8 +28,7 @@
                             <img ms-attr-src="{el.img}" style="float: left; margin-right: 16px;">
                             <h4 style="font-size: 14px;">{el.name}</h4>
                             <p style="font-size: 12px;">9896位成员</p>
-                            <a ms-attr-href="/taolun/grouplist/?aid={el.id}" style="display:block;"><abbr
-                                    style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">
+                            <a ms-attr-href="/taolun/topost/?aid={el.id}" style="display:block;"><abbr style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">
                                 加入小组
                             </abbr></a>
                         </li>
@@ -40,34 +37,40 @@
                 </div>
             </div>
 
+
             <div class="liststitleconts">
                 <div class="titlestop">
-                    <p class="news" style="cursor:pointer;" order="0">最新</p>
-                    <p style="cursor:pointer;" order="1">热门</p>
-                    <p style="cursor:pointer;" order="2">等待回复</p>
-                    <a href="/taolun/grouplist/">更多>></a>
+                    <p class="news" style="cursor:pointer;">最新</p>
+                    <p style="cursor:pointer;">热门</p>
+                    <p style="cursor:pointer;">等待回复</p>
+                    <a href="##">更多>></a>
                 </div>
                 <div class="listswenda">
                     <ul>
                         <li ms-repeat-el='datasfsa'>
-                            <div class="tuxiangimgs" style="float: left;"><a href=""><img
-                                    ms-attr-src='/media/{el.user.head}' width="230" height="160"></a>
+                            <div class="tuxiangimgs" style="float: left;">
+                                <a href=""><img ms-attr-src='/media/{el.user.head}' width="30" height="30"></a>
                             </div>
                             <div class="floafright" style="float: left;">
-                                <a ms-attr-href="/taolun/toposting/?pid={el.id}" class="xuanfugh">
+                                <a ms-attr-href="/taolun/posting/?pid={el.id}" class="xuanfugh">
                                     <p style="font-size: 16px; margin-bottom: 10px;">{ el.title }</p>
                                 </a>
                                 <a ms-attr-href="/taolun/toposting/?pid={el.id}">
-                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">{el.content}</p>
+                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">{ el.content }</p>
                                 </a>
+                                <div class="imglists">
+                                    <img ms-attr-src="el.img1" width="230" height="160">
+                                    <img ms-attr-src="el.img2" width="230" height="160">
+                                    <img ms-attr-src="el.img3" width="230" height="160">
+                                </div>
                                 <div class="infousers">
                                     <div class="userone">
-                                        <i><img src="{% static  "img/user.png" %}">{ el.user.username }</i>
-                                        <i><img src="{% static  "img/time.png" %}">{ el.publish_date.replace(/:.*/,'') }</i>
+                                        <i><img src="{% static  "img/user.png"  %}">{ el.user.username }</i>
+                                        <i><img src="{% static  "img/time.png"  %}">{ el.publish_date.replace(/:.*/,'') }</i>
                                     </div>
                                     <div class="usertwo">
-                                        <i><img src="{% static  "img/yanjin.png" %}">{ el.read }</i>
-                                        <i><img src="{% static  "img/result.png" %}">{ el.commentnum }</i>
+                                        <i><img src="{% static  "img/yanjin.png"  %}">{ el.read }</i>
+                                        <i><img src="{% static  "img/result.png"  %}">{ el.commentnum }</i>
                                     </div>
                                 </div>
                             </div>
@@ -79,13 +82,8 @@
         </div>
         <div class="kjiarutlzright">
             <div class="fabuwenzhang">
-                <a href="/taolun/grouplist/"><p class="inlist">进入小组列表</p></a>
-                {% if request.user.is_active %}
-                    <a href="/taolun/topost/"><p class="pusharcal">文章发布</p></a>
-                {% else %}
-                    <a href="/login/"><p class="pusharcal">文章发布</p></a>
-                {% endif %}
-
+                <p class="inlist">进入小组列表</p>
+                <p class="pusharcal">文章发布</p>
             </div>
 
             <div class="remenhuati">
@@ -170,101 +168,101 @@
                 <ol>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
                     <li>
                         <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
+                            <img src="{% static  "img/rwtx.png"  %}" style="float: left; margin-right: 12px;">
                             <h4>我是文章标题只显示一行</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <i><img src="{% static  "img/ren.png"  %}"> 999</i>
+                                <i><img src="{% static  "img/result.png"  %}"> 999</i>
                             </div>
                         </a>
                     </li>
@@ -272,7 +270,7 @@
             </div>
             <div class="remenhuaties">
                 <h3>升值医院推荐 <a href="">更多>></a></h3>
-                <p style="margin:5px 0;"><img src="{% static  "img/04.jpg" %}"></p>
+                <p style="margin:5px 0;"><img src="{% static  "img/04.jpg"  %}"></p>
                 <ul>
                     <li>
                         <a href="">我是医院名称</a>
@@ -315,23 +313,12 @@
 {% include 'footer.html' %}
 
 <script>
-    var order = "";
-    var ps = $('.titlestop>p');
-    for (let i = 0; i < ps.length; i++) {
-        ps.eq(i).click(function () {
-            Toolfun.clearClass("news", ps);
-            $(this).addClass("news");
-            order = $(this).attr("order");
-            vm_hzwda.flxzmenu();
-        })
-    }
     var vm_hzwda = avalon.define({
         $id: "hzwda",
         count: 0,//数据总条数
-        url:'',//请求链接
-        limites: 8,//每一页显示多少条
-        btnnum: 5,//按钮显示个数
-        groupsdata: [],
+        limites: 6,//每一页显示多少条
+        btnnum:5,//按钮显示个数
+        groupsdata:[],
         datasfsa: [],
         showxiala: function () {
             var _this = $(this);
@@ -347,77 +334,44 @@
                 laypage.render({
                     elem: 'pagers',
                     count: vm_hzwda.count,
-                    limit: vm_hzwda.limites,
-                    curr: location.hash.replace('#!page=', ''),
+                    limit:vm_hzwda.limites,
+                    curr:location.hash.replace('#!page=', ''),
                     hash: 'page',
                     groups: vm_hzwda.btnnum,
                     layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip'],
                     jump: function (obj) {
-                        vm_hzwda.gopage(obj.curr);
+                        {#console.log(obj)#}
                     }
                 });
             });
         },
-        flxzmenu: function () {
-            if(order!=0){
-                vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites+'&order='+order;
-            }else{
-               vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
-            }
+        init:function(){
             $.ajax({
-                url: vm_hzwda.url,
-                type: 'get',
-                dataType: 'json',
-                success: function (ajax) {
-                    vm_hzwda.count = ajax.maxnum;
-                    vm_hzwda.datasfsa = ajax.data;
-                    vm_hzwda.intopages();
-                }, error: function (error) {
-                    console.log(error);
-                }
-            })
-        },
-        gopage:function(page){
-            var url = vm_hzwda.url+'&page='+page;
-            $.ajax({
-                url:url,
+                url:root_Domain+'/taolun/groups/',
                 type:'get',
                 dataType:'json',
                 success:function(ajax){
-                    vm_hzwda.datasfsa = ajax.data;
-                },error:function(error){
-                    console.log(error);
-                }
-            })
-        },
-        init: function () {
-            vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
-            $.ajax({
-                url: root_Domain + '/taolun/groups/',
-                type: 'get',
-                dataType: 'json',
-                success: function (ajax) {
-                    var imgbox = ['/static/img/933.png', '/static/img/932.png', '/static/img/931.png', '/static/img/930.png'];
+                    var imgbox = ['/static/img/933.png','/static/img/932.png','/static/img/931.png','/static/img/930.png'];
                     for (let i = 0; i < imgbox.length; i++) {
                         ajax[i].img = imgbox[i];
                     }
-
-                    vm_hzwda.groupsdata = ajax.reverse();
-                    localStorage.clear();
-                    localStorage.setItem('Mgroup',JSON.stringify(ajax));
-                }, error: function (error) {
+                    vm_hzwda.groupsdata =  ajax.reverse();
+                    console.log(vm_hzwda.groupsdata,99999999999,ajax)
+                },error:function(error){
                     console.log(error);
                 }
             });
             $.ajax({
-                url: vm_hzwda.url,
-                type: 'get',
+                url:root_Domain+'/taolun/postinglist/?num='+vm_hzwda.limites,
+                type:'get',
                 dataType: 'json',
-                success: function (ajax) {
+                success:function(ajax){
                     vm_hzwda.count = ajax.maxnum;
+
                     vm_hzwda.datasfsa = ajax.data;
+                    console.log(vm_hzwda.datasfsa,44444444444444)
                     vm_hzwda.intopages();
-                }, error: function (error) {
+                },error:function(error){
                     console.log(error);
                 }
             })

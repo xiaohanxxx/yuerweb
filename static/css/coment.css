@@ -10,7 +10,9 @@ h6,
 p {
     margin: 0;
 }
-
+.ms-controller{
+   visibility: hidden
+}
 body {
     background-color: #F9F9F9;
 }

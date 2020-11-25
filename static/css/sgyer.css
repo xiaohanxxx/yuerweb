@@ -303,7 +303,9 @@
     width: 1143px;
     padding: 0 18px 0 39px;
 }
-
+.ms-controller{
+   visibility: hidden
+}
 .bkinfobox .bkflbox {
     float: left;
     margin-right: 64px;
@@ -311,13 +313,14 @@
 
 .bkinfohead {
     width: 226px;
-    height: 22px;
+    height: 28px;
     font-size: 14px;
     line-height: 35px;
     letter-spacing: 1px;
     color: #ff44ad;
     padding-bottom: 8px;
     border-bottom: solid 1px #ededed;
+    margin-top: 15px;
 }
 
 .bkinfohead>img {
@@ -346,7 +349,7 @@
 
 .bkflbox {
     position: relative;
-    width: 312px;
+    /*width: 312px;*/
     height: 130px;
     margin-bottom: 20px;
     top: 0;
@@ -364,7 +367,11 @@
     letter-spacing: 1px;
     color: #ff44ad;
 }
-
+.bkmetalises a{
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
 .bkmetalis>div {
     float: left;
     line-height: 30px;
@@ -382,6 +389,6 @@
 .bkmetalis:hover {
     position: absolute;
     z-index: 10;
-    height: 300px;
+    /*height: 300px;*/
     background-color: #fff;
 }

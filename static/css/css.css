@@ -1,5 +1,8 @@
 *{ padding: 0; margin: 0; list-style: none; border: none; }
 body{ background: #f9f9f9; }
+.ms-controller{
+   visibility: hidden
+}
 /*Í·²¿CSS*/
 .header{ height: 150px; width: 100%; border-bottom: 1px solid #f8eaea;  background:#fff; }
 .headerNav{ height: 150px; width: 1200px; margin: 0 auto; background:#fff;}
@@ -566,7 +569,7 @@ color: #666; font-size: 12px; }
 .biaoqiannz{font-size: 12px; padding-left: 17px; margin: 8px 0;}
 .biaoqiannz abbr{  margin-right: 6px; margin-bottom: 6px;}
 
-.zixunzhuanjia{ width: 80px; height: 30px; line-height: 30px; background: #ff44ad; color: #fff; text-align: center; border-radius: 5px; margin-left: 20px; }
+.zixunzhuanjia{ width: 80px; height: 30px; line-height: 30px; background: #ff44ad; color: #fff; text-align: center; border-radius: 5px; margin-left: 20px; margin-top: 15px; }
 .yiyuanhuanjing,.qwzhuanjia {overflow: hidden;}
 .yiyuanhuanjing ul{ overflow: hidden; }
 .yiyuanhuanjing ul li{ float: left; width: 21%; }
@@ -621,7 +624,7 @@ color: #666; font-size: 12px; }
 .curre_dh{ color: #FF44AD; border-bottom: 1px solid #FF44AD;}
 
 .child_fl{ overflow: hidden; width: 100%; float: left;}
-.fl_list{float: left; width: 50%; margin: 15px 0; height: 180px;}
+.fl_list{float: left; width: 50%; margin: 15px 0; min-height: 180px; overflow: hidden;}
 .fl_list h3{ font-size: 16px; color:#FF44AD;}
 .fl_list ol{ overflow: hidden;}
 .fl_list ol li{ float: left; margin-right: 20px; line-height: 25px; list-style-type: disc; margin: 8px 10px 8px 22px;}

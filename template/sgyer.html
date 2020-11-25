@@ -19,7 +19,7 @@
 </head>
 
 <body id='body'>
-{% include 'config.html' %}
+{#{% include 'config.html' %}#}
 {% include 'header.html' %}
 
 
@@ -118,8 +118,7 @@
                 <a href=""></a>
             </div>
             <ul class='hostinbox'>
-
-
+                <li></li>
                 <li ms-repeat = "getPowerhospital">
                     <div class="hostitle">
                         <a ms-attr-href="/hospital/hindex/?item={el.id}" class='titinfo fl'>{el.title}</a>
@@ -129,6 +128,7 @@
                         <img ms-attr-src="el.thumb" alt="" width="355" height="140">
                     </a>
                 </li>
+                <li></li>
             </ul>
         </div>
         <div id="doctorinfo" class='rtglob'>
@@ -185,154 +185,31 @@
     <div class="sgbkhead">
         <h5>试管百科</h5>
         <ul>
-            <li><a href="">试管费用</a><span></span></li>
-            <li><a href="">试管流程</a><span></span></li>
-            <li><a href="">试管成功率</a><span></span></li>
-            <li><a href="">试管技术</a><span></span></li>
+            <li><a href="/baike/baike_list?types=1">试管费用</a><span></span></li>
+            <li><a href="/baike/baike_list?types=1">试管流程</a><span></span></li>
+            <li><a href="/baike/baike_list?types=1">试管成功率</a><span></span></li>
+            <li><a href="/baike/baike_list?types=1">试管技术</a><span></span></li>
         </ul>
     </div>
     <div class="bkinfobox">
-        <div class="bkflbox">
-            <div class="bkinfohead">
-                <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                <a href="" class="bkmetaname">试管技术</a>
-            </div>
-            <div class="bkmetalis">
-                <div>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
+
+
+
+
+        <div class="bkflbox" ms-repeat-el="list_data">
+            <div ms-repeat-item="el.list_data" style="float: left; width: 33%; height: 160px;">
+                <div class="bkinfohead">
+                    <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
+                    <a href="" class="bkmetaname">{item.menu_name}</a>
                 </div>
-                <div>
-                    <a href="">孕前期查询孕前期查询孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                </div>
-                <div>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
+                <div class="bkmetalises">
+                    <a ms-attr-href="/baike/article?aid={item.id}" ms-repeat-it="item.list_data">{it.title}</a>
                 </div>
             </div>
         </div>
-        <div class="bkflbox">
-            <div class="bkinfohead">
-                <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                <a href="" class="bkmetaname">试管技术</a>
-            </div>
-            <div class="bkmetalis">
-                <div>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
-                </div>
-                <div>
-                    <a href="">孕前期查询孕前期查询孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                </div>
-                <div>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                </div>
-            </div>
-        </div>
-        <div class="bkflbox">
-            <div class="bkinfohead">
-                <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                <a href="" class="bkmetaname">试管技术</a>
-            </div>
-            <div class="bkmetalis">
-                <div>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
-                </div>
-                <div>
-                    <a href="">孕前期查询孕前期查询孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                </div>
-                <div>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                </div>
-            </div>
-        </div>
-        <div class="bkflbox">
-            <div class="bkinfohead">
-                <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                <a href="" class="bkmetaname">试管技术</a>
-            </div>
-            <div class="bkmetalis">
-                <div>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
-                </div>
-                <div>
-                    <a href="">孕前期查询孕前期查询孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                </div>
-                <div>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                </div>
-            </div>
-        </div>
-        <div class="bkflbox">
-            <div class="bkinfohead">
-                <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                <a href="" class="bkmetaname">试管技术</a>
-            </div>
-            <div class="bkmetalis">
-                <div>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
-                </div>
-                <div>
-                    <a href="">孕前期查询孕前期查询孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                </div>
-                <div>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                </div>
-            </div>
-        </div>
-        <div class="bkflbox">
-            <div class="bkinfohead">
-                <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                <a href="" class="bkmetaname">试管技术</a>
-            </div>
-            <div class="bkmetalis">
-                <div>
-                    <a href="">孕前期 </a>
-                    <a href="">孕前期</a>
-                    <a href="">孕前期</a>
-                </div>
-                <div>
-                    <a href="">孕前期查询孕前期查询孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                    <a href="">孕前期查询</a>
-                </div>
-                <div>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                    <a href="">孕后期</a>
-                </div>
-            </div>
-        </div>
+
+
+
     </div>
 </section>
 </div>
@@ -480,7 +357,6 @@
                 data:data,
                 success: function (data) {
                     mew.getpowerdoctor = data.data
-                    console.log(mew.getpowerdoctor,'mew.getpowerdoctormew.getpowerdoctor')
                 }
            })
 
@@ -497,13 +373,26 @@
                 dataType: 'json',
                 data:data,
                 success: function (data) {
-                    console.log(data,'getPowerhospital')
                     mew.getPowerhospital = data.data
                 }
            })
 
         },
-
+        list_data:[],
+        getsgyeList:function (){
+            var data = {
+                mid:1
+            }
+           $.ajax({
+                url: 'baike/api/getmenuarticle',
+                type: 'post',
+                dataType: 'json',
+                data:data,
+                success: function (data) {
+                    mew.list_data = data;
+                }
+           })
+        }
 
 
     })
@@ -513,6 +402,7 @@
     mew.getSpeashoAtical();
     mew.getTuijianyisheng();
     mew.getpowerdoctoar();
+    mew.getsgyeList();
 </script>
 </body>
 
