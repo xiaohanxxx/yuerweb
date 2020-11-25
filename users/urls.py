@@ -9,7 +9,7 @@ urlpatterns = [
     path('login', views.userlogin),
     path('changepwd', views.changepwd),
     path('smsvif', views.smsvif),
-    path('centerhim',views.centerhim), # 别人的个人中心
+    re_path(r'^centerhim/(\d+)',views.centerhim), # 别人的个人中心
     path('centerMessage',views.centerMessage), # 我的消息
     path(r'followapi',views.Followapi.as_view()), # 关注功能接口
 

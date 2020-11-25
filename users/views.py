@@ -36,7 +36,16 @@ def smsvif(request):
 
 @login_required
 def center(request):
-    return render(request,'center.html')
+    user = request.user
+    userinfo = Userinfo.objects.get(id=user.id)
+    level = userinfo.get_level_display()
+    integral = userinfo.integral
+    data = {
+        'user':user,
+        'level': level,
+        'integral': integral
+    }
+    return render(request,'center.html',{'data':data})
 
 # 用户中心
 @login_required
@@ -44,8 +53,16 @@ def centerMessage(request):
     return render(request,'centerMessage.html')
 
 # 别人的个人中心
-def centerhim(request):
-    return render(request,'centerhim.html')
+def centerhim(request,Quser_id):
+    userinfo = Userinfo.objects.get(id=Quser_id)
+    level = userinfo.get_level_display()
+    integral = userinfo.integral
+    data = {
+        'user': userinfo.user,
+        'level': level,
+        'integral': integral
+    }
+    return render(request,'centerhim.html',{'data':data})
 
 
 # 用户注册
@@ -244,6 +261,18 @@ class Followapi(View):
 
 
 
+# 等级变更公用方法
+def public_level(request):
+    user = request.user
+    userinfo = Userinfo.objects.get(id=user.id)
+    integral = userinfo.integral
+    if integral < 500:
+        userinfo.level = 0
+    elif integral > 500 and integral < 2000: # 大于500且小于2000积分,白银
+        userinfo.level = 1
+    else:
+        userinfo.level = 2
+    userinfo.save()
 
 
 # 测试上传
