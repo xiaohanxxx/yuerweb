@@ -93,9 +93,9 @@
 
            <div class="yiyuanhuanjing">
              <h3 style="margin-bottom: 20px;">医院环境</h3>
-             <div>
-               <img src="{% static 'img/yyhuanjing1.png' %}" style="margin-bottom: 20px;">
-               <img src="{% static 'img/yyhuanjing2.png' %}">
+             <div ms-repeat="evnhospital">
+               <img ms-attr-src="el.image" style="margin-bottom: 20px;">
+{#               <img src="{% static 'img/yyhuanjing2.png' %}">#}
              </div>
            </div>
 
@@ -389,6 +389,7 @@
           localStorage.setItem('item',vem.getQueryVariable('item'));
         },
         doctorlist:[],
+        evnhospital:[],
         geiyyinfo:function(){
           var data = {
             hid:localStorage.getItem('item')
@@ -402,6 +403,7 @@
                   vem.yiyuaninfo = data.data
                   console.log(vem.yiyuaninfo ,'vem.yiyuaninfo vem.yiyuaninfo ');
                   vem.doctorlist = data.data.dictorlist
+                  vem.evnhospital = data.data.envpic
                   if (vem.doctorlist.length>4){
                       vem.doctorlist = vem.doctorlist.splice(0,4);
                   }

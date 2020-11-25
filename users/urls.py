@@ -14,5 +14,8 @@ urlpatterns = [
     path(r'followapi',views.Followapi.as_view()), # 关注功能接口
 
 
+    path(r'followapi',views.Followapi.as_view()),
+
+
     path('outlogin', views.outlogin),
 ]
