@@ -6,6 +6,8 @@ from django.db.models import F, Count
 from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
+from django.utils.decorators import method_decorator
+
 from . import models, form
 
 
@@ -211,8 +213,8 @@ class HotArticles(views.View):
 
 
 # 文章点赞
+@method_decorator(login_required, name='dispatch')
 class ThumbUp(views.View):
-    @login_required
     def get(self, request, *args, **kwargs):
         type = request.GET.get("type")
         id = request.GET.get("id")
