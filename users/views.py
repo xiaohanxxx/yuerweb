@@ -53,12 +53,16 @@ def centerMessage(request):
     return render(request,'centerMessage.html')
 
 # 别人的个人中心
-def centerhim(request):
-    user = request.user
-    userinfo = Userinfo.objects.get(id=user.id)
+def centerhim(request,Quser_id):
+    userinfo = Userinfo.objects.get(id=Quser_id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
-    return render(request,'centerhim.html',{'level':level,'integral':integral})
+    data = {
+        'user': userinfo.user,
+        'level': level,
+        'integral': integral
+    }
+    return render(request,'centerhim.html',{'data':data})
 
 
 # 用户注册
