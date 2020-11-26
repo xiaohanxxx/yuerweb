@@ -112,7 +112,7 @@
       </div>
       <div class="hzwdrights">
           <div class="szzhuanjia">
-              <h3><abbr>推荐百科</abbr> <a href="###">更多>></a></h3>
+              <h3><abbr>推荐百科</abbr> <a href="/baike">更多>></a></h3>
               <div class="doctorbox" ms-repeat="getrmbaike">
                  <a ms-attr-href="/baike/article?aid={el.id}">
                    <img ms-attr-src="'/media/' + el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
@@ -135,56 +135,17 @@
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijian">
                  <ul>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签话题标签话题标签话题标签</a>
-                     <abbr>999个问答</abbr>
+                   <li ms-repeat-el="getwendaes">
+                      <i class="layui-icon">&#xe615;</i>
+                      <a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.name}</a>
+                      <abbr>{el.count}个问答</abbr>
                    </li>
                    <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签话题标签话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题话题标签话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
+{#                    <i class="layui-icon">&#xe615;</i>#}
+{#                     <a href="###">话题标签话题标签话题标签</a>#}
+{#                     <abbr>999个问答</abbr>#}
+{#                   </li>#}
+
                  </ul>
               </div>
           </div>
@@ -265,6 +226,19 @@
             privincearea:'',
             page:1,//当前页码
             num:10,//一页显示多少条
+        },
+        getwendaes:[],
+        getwenda:function (){
+            $.ajax({
+              type: 'get',
+              url: '/taolun/hottopics/',
+              data: {},
+              dataType: "json",
+              success: function (data) {
+                  vmw.getwendaes = data.data
+                  console.log(vmw.getwendaes,'datadatadatadatadata999ese');
+              }
+          });
         },
         getcurreone:function (el){
             vmw.a = el;
@@ -412,6 +386,7 @@
     vmw.getDatas();
     vmw.intopages(vmw.allnum);
     vmw.get_rm_baike();
+    vmw.getwenda();
 </script>
 </body>
 </html>
