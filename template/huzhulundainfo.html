@@ -62,7 +62,7 @@
                 </select>
             </div>
             <ul class="plinfobox">
-                <li ms-repeat-as="pldata">
+                <li ms-repeat-as="pldata" data-repeat-rendered="plisShow">
                     <img ms-attr-src="/media/{as.user.head}" alt="">
                     <div class="userinfo">
                         <p>{as.user.username}</p>
@@ -254,7 +254,7 @@
                     var off = $(this).attr('isShow');
                     if (off == 'false') {
                         $(this).html('<span><i class="iconfont">&#xe65a;</i><span>收起</span> </span>');
-                        allinfobox.eq(i).css({'height': '300px'});
+                        allinfobox.eq(i).css({'height': '200px'});
                         $(this).attr('isShow', 'true');
                     } else {
                         $(this).html('<span><i class="iconfont">&#xe665;</i><span>点击显示更多</span> </span>');
@@ -263,7 +263,7 @@
                     }
                 });
                 console.log(allinfobox.eq(i).html(),55555555555555555555)
-                if (allinfobox.eq(i).html().trim('').length > 60) {
+                if (allinfobox.eq(i).html().trim('').match(/[\u4e00-\u9fa5]/g).length > 100) {
                     console.log(66666666666666666666666666666)
                     nowLi.show();
                 }
