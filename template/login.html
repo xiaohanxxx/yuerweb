@@ -112,6 +112,13 @@
             var layer = layui.layer;
         });
     }
+
+     //回车登陆
+ $("body").keyup(function(event){
+   if(event.keyCode==13) {//keyCode=13是回车键
+       vm.loginFun();
+   }
+ });
 </script>
 </body>
 </html>
