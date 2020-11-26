@@ -201,7 +201,7 @@ class Comment(views.View):
 
     def post(self, request, *args, **kwargs):
         data = {k: v for k, v in request.POST.items()}
-        postingObj = get_object_or_404(models.Posting, pk=data.get("pid", 0))
+        postingObj = get_object_or_404(models.Posting, pk=data.get("articles_id", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(models.Comment, pk=data['parent_id'])
 
