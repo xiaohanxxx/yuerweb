@@ -150,7 +150,7 @@ class Posting(views.View):
             "publish_date": str(postingObj.publish_date),
             "user": {"id": postingObj.user.id, "username": postingObj.user.username,
                      "head": str(postingObj.user.info.user_avatar)},
-            "thumbup": postingObj.thumbuparticle_set.all().count()
+            "thumbup": postingObj.thumup_articles.all().count()
         }
         return HttpResponse(json.dumps({"data": artData}))
 
