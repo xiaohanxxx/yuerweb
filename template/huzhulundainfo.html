@@ -2,24 +2,18 @@
 <html>
 <head>
     {% load static %}
-    <title>首页</title>
+    <title>问题帖子信息</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
     <script type="text/javascript" src="{% static  "js/jquery.min.js" %}"></script>
-    <script type="text/javascript" src="{% static  "layui/layui.js" %}"></script>
-    <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js" %}"></script>
+    <script type="text/javascript" src="{% static  "layui/layui.all.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/avalon.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static  "css/swiper-bundle.min.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static  "css/css.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static  "css/index.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static  "layui/css/layui.css" %}">
-    <!--      <style type="text/css">
-          body{ background: #029EE9; }
-         </style>
-     -->
 </head>
 
 <body ms-controller="bodyconts">
@@ -27,37 +21,56 @@
 {% include 'header.html' %}
 <div class="hzwdbanner"><img src="{% static  "img/hzwdbanner.png" %}"></div>
 
-<div class="hzwdconts"  ms-controller="hzwdinfo">
+<div class="hzwdconts" ms-controller="hzwdinfo">
     <div class="hzwdleftse" style="min-height: 200px;">
-        <img src="{% static  "img/tuxiang.jpg" %}" style="border-radius: 50%; float: left; margin-right: 10px;"/>
-        <h3>我是问题描述文字信息</h3>
-        <p style="margin-top: 15px; padding-left: 45px;"><i class="layui-icon">&#xe66f;</i>我是用户名 <i class="layui-icon">&#xe68d;</i>2020-10-24
-            10:52 <abbr style="float: right;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
-
-
-        <div class="pinglunkk">
-            <h4>评论</h4>
-            <div class="fuwenben">
-                <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
-                <script>
-                    layui.use('layedit', function () {
-                        var layedit = layui.layedit;
-                        layedit.build('demo', {
-                            // tool: ['face','image']
-                            tool: ['face'],
-                            height: 100
-                        }); //建立编辑器
-                    });
-                </script>
-                <p style="margin-top: 15px;"><abbr
-                        style="float: right; cursor: pointer; display: block; padding: 5px 15px; border-radius: 4px; background: #ff44ad; color: #fff;">评论</abbr>
-                </p>
-            </div>
-
-
+        <div class="Muserinfo">
+            <img src="{% static  "img/tuxiang.jpg" %}"/>
+            <h3>我是问题描述文字信息</h3>
+            <p style="margin-top: 15px; padding-left: 45px;">
+                <i class="layui-icon">&#xe66f;</i>
+                <span>我是用户名</span>
+                <i class="layui-icon">&#xe68d;</i>
+                <span>时间</span>
+                <abbr style="float: right;">
+                    <i class="layui-icon">&#xe6c6;</i>
+                    <span>999</span>
+                </abbr>
+            </p>
         </div>
 
 
+        <div class="pinglunkk" style="margin-top:20px;">
+            <h4>评论</h4>
+            <div class="fuwenben">
+                <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
+                <p style="margin-top: 15px;">
+                    <span class="same">取消评论</span>
+                    <abbr class="same">评论</abbr>
+                </p>
+            </div>
+        </div>
+        <div class="plbox">
+            <div class="plhead">
+                <span>评论&nbsp;(999)</span>
+                <select name="dzpx" id="dzpx">
+                    <option value="dz">点赞排序</option>
+                    <option value="time">时间排序</option>
+                </select>
+            </div>
+            <ul class="plinfobox">
+                <li>
+                    <img src="" alt="">
+                    <div class="userinfo">
+                        <p>我是用户名</p>
+                        <p>2020.11.4   12:25:56</p>
+                        <div class="plinfobox">
+                            <p>我是用户评论信息文字</p>
+                            <span><i class="layui-icon">&#xe6c6;</i>&nbsp;999</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="hzwdrights">
         <div class="metry">
@@ -154,24 +167,24 @@
 {% include 'footer.html' %}
 
 <script>
-    var vm = avalon.define({
-        $id: "bodyconts",
-        intopages: function () {
-            layui.use(['laypage', 'layer'], function () {
-                var laypage = layui.laypage
-                    , layer = layui.layer;
-                laypage.render({
-                    elem: 'pagers'
-                    , count: 100
-                    , layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
-                    , jump: function (obj) {
-                        console.log(obj)
-                    }
-                });
+    var vm_hzwdinfo = avalon.define({
+        $id: 'hzwdinfo',
+        pid: '',
+        init: function () {
+            console.log(this, 666)
+            layui.use('layedit', function () {
+                var layedit = layui.layedit;
+                layedit.build('demo', {
+                    tool: ['face'],
+                    height: 100
+                }); //建立编辑器
             });
+        },
+        isthump: function (ev) {
+            var _this = ev;
         }
     })
-    vm.intopages();
+    vm_hzwdinfo.init();
 </script>
 </body>
 </html>

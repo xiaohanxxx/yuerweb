@@ -127,7 +127,7 @@
 
 <script type="text/javascript">
     $(function(){
-      
+
     $('.xilainfocont').hover(function(){
          $(this).find('.xilainfo').show();
     },function(){
@@ -135,11 +135,10 @@
     })
 
 
-
     })
      avalon.config({
         interpolate: ["{", "}"]
-     });  
+     });
     var vm = avalon.define({
         $id: "bodycont",
         names:'医院',
@@ -159,6 +158,7 @@
           password:''
         },
         loginFun:function(){
+            console.log(vm.loginData.username,33333)
             if(vm.loginData.username == '' || !vm.loginData.username){
                layer.msg('请填写正确的用户名');
                return;
@@ -172,12 +172,12 @@
               url: 'users/login',
               data: vm.loginData,
               dataType: "json",
-              // timeout: 10000,
               success: function(data) {
+                  console.log(data,99999);
                   if(data.code == 200){
-                         layer.msg('登录成功，即将跳转到首页');
+                         layer.msg('登录成功，即将跳转到当前页');
                          setTimeout(function(){
-                              window.location.href="/"
+                               history.back();
                          },2000)
                   }else{
                          layer.msg('登录不成功');
@@ -221,6 +221,7 @@
                   if(data.code == 200){
                          layer.msg('注册成功，即将跳转到登录页面');
                          setTimeout(function(){
+                             alert(11111);
                                vm.a = 1;
                          },2000)
                   }else{
@@ -362,7 +363,7 @@
              }
             var phone = {
                phone:vm.zhuceDatas.phone
-            } 
+            }
              $.ajax({
               type: 'post',
               url: '/users/smsvif',

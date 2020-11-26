@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>首页</title>
+    <title>互助问答列表</title>
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
     <script type="text/javascript" src="{% static  "js/jquery.min.js" %}"></script>
-    <script type="text/javascript" src="{% static  "layui/layui.js" %}"></script>
+    <script type="text/javascript" src="{% static  "layui/layui.all.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/avalon.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/index.js" %}"></script>
@@ -17,10 +17,6 @@
     <link rel="stylesheet" type="text/css" href="{% static  "css/index.css" %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static  "layui/css/layui.css" %}">
-    <!--      <style type="text/css">
-          body{ background: #029EE9; }
-         </style>
-     -->
 </head>
 
 {% include 'config.html' %}
@@ -29,7 +25,7 @@
 
 <div class="hzwdconts" ms-controller="hzwdlist">
     <div class="hzwdlefts">
-        <h3 style="font-size: 16px; padding: 15px;">{groupsdata[0].name}</h3>
+        <h3 style="font-size: 16px; padding: 15px;" ms-repeat="groupsdata">{el.name}</h3>
         <ul>
             <li ms-attr-class="tid==el.id?'curreswd':''" ms-repeat="allgroupData">
                 <a ms-attr-href="/taolun/postindex/?tid={el.id}">{el.name}</a>
@@ -48,17 +44,17 @@
                 <h4><a ms-attr-href="/taolun/toposting/?pid={its.id}">{its.title}</a></h4>
                 <p>{its.user.username} <i class="layui-icon">&#xe68d;</i> {its.publish_date.replace(/:.*/,'')}
                     {% if request.user.is_active %}
-                    <a href="javascript:;" ms-click="dianz(its.id,this)">
-                        <abbr style="float: right; margin-right: 48px;">
-                        <i class="layui-icon">&#xe6c6;</i>{its.commentnum}
-                        </abbr>
-                    </a>
+                        <a href="javascript:;" ms-click="dianz(its.id,this)" ms-attr-isthumup="its.isthumbup" ms-attr-class="its.isthumbup==1?'isthumbup':''">
+                            <abbr style="float: right; margin-right: 48px;">
+                                <i class="layui-icon">&#xe6c6;</i>{its.thumbup}
+                            </abbr>
+                        </a>
                     {% else %}
-                    <a href="/login/">
-                        <abbr style="float: right; margin-right: 48px;">
-                        <i class="layui-icon">&#xe6c6;</i>{its.commentnum}
-                        </abbr>
-                    </a>
+                        <a href="/login">
+                            <abbr style="float: right; margin-right: 48px;">
+                                <i class="layui-icon">&#xe6c6;</i>
+                            </abbr>
+                        </a>
                     {% endif %}
                 </p>
             </div>
@@ -70,7 +66,11 @@
     </div>
     <div class="hzwdrights">
         <div class="metry">
-            <a href=""><img src="{% static  "img/340.png" %}"></a>
+            {% if request.user.is_active %}
+                <a href="/taolun/topost/"><img src="{% static  "img/340.png" %}"></a>
+            {% else %}
+                <a href="/login"><img src="{% static  "img/340.png" %}"></a>
+            {% endif %}
         </div>
         <div class="szzhuanjia">
             <h3><abbr>生殖专家推荐</abbr> <a href="###">更多>></a></h3>
@@ -194,23 +194,28 @@
                 })
             }
         },
-        dianz:function(id,ev){
+        dianz: function (id, ev) {
             var _this = ev;
-            if(_this.onClick){
-                return false;
+            if ($(_this).attr('isthumup')==1) {
+                layer.msg('请勿重复点赞！！！', {time: 1000});
+                return '';
+            } else {
+                vm_hzwdlist.dzid = id;
+                $.ajax({
+                    url: root_Domain + '/taolun/thumbup/?type=article&id=' + id,
+                    type: 'get',
+                    dataType: 'text',
+                    success: function (ajax) {
+                        layer.msg(ajax, {time: 1000});
+                        setTimeout(function () {
+                            location.reload();
+                        }, 2000)
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
             }
-            $.ajax({
-                url:root_Domain+'/taolun/thumbup/?type=article&id='+id,
-                type:'get',
-                dataType:'json',
-                success:function(ajax){
-                    _this.onClick = true;
-                    layer.msg("点赞成功！！！");
-                },
-                error:function(error){
-                    console.log(error);
-                }
-            })
         },
         goPage: function (page) {
             var url = '';
@@ -234,7 +239,7 @@
             vm_hzwdlist.Mid = localStorage.getItem('Mid');
             var Mgroupdata = JSON.parse(localStorage.getItem('Mgroup'));
             for (let i = 0; i < Mgroupdata.length; i++) {
-                if (Mgroupdata[i].id == vm_hzwdlist.Mid && vm_hzwdlist.groupsdata.length < 2) {
+                if (Mgroupdata[i].id == vm_hzwdlist.Mid) {
                     vm_hzwdlist.groupsdata.push(Mgroupdata[i]);
                 }
             }
@@ -254,7 +259,6 @@
                     vm_hzwdlist.lisdata = ajax.data;
                     vm_hzwdlist.intopages();
                     vm_hzwdlist.menuClick();
-                    console.log(vm_hzwdlist.lisdata,6666666666)
                 },
                 error: function (error) {
                     console.log(error);
