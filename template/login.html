@@ -65,13 +65,9 @@
     </div>
 
     <div class="denglubox" ms-if="a==1">
-        <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name=""
-                                                                                   ms-duplex="loginData.username"
-                                                                                   placeholder="请输入用户名"></div>
-        <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="loginData.password"
-                                                                     name="" placeholder="请输入密码"></div>
-        <div class="forgetmima" style="float: left; width: 592px; text-align: right; "><a style="margin-right: 25px;"
-                                                                                          href="">忘记密码</a></div>
+        <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name="" ms-duplex="loginData.username" placeholder="请输入用户名"></div>
+        <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="loginData.password" name="" placeholder="请输入密码"></div>
+        <div class="forgetmima" style="float: left; width: 592px; text-align: right; "><a style="margin-right: 25px;"  href="">忘记密码</a></div>
         <div class="denlguanniu">
             <p style="width: 492px; height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;"
                ms-click="loginFun">登录</p>
@@ -83,17 +79,19 @@
     </div>
 
     <div class="denglubox1" ms-if="a==2">
-        <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="text" name=""
-                                                                                   ms-duplex="zhuceDatas.username"
-                                                                                   placeholder="请输入用户名"></div>
-        <div class="yonghu">手机<i class="layui-icon">&#xe678;</i><input type="" ms-duplex="zhuceDatas.phone" name=""
-                                                                       placeholder="请输入手机号"></div>
-        <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="zhuceDatas.password"
-                                                                     name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
-        <div class="yonghu" style="margin-left: 25px;"><input type="" name="" ms-duplex="zhuceDatas.verification_Code"
-                                                              placeholder="请输入验证码" style="width: 300px;"><abbr
-                style="cursor: pointer;"><input ms-click="getCode" id="sendsms" type="button" name=""
-                                                ms-attr-value="getcodewenzi"></abbr></div>
+        <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i>
+            <input type="text" name="" ms-duplex="zhuceDatas.username" placeholder="请输入用户名">
+        </div>
+        <div class="yonghu">手机<i class="layui-icon">&#xe678;</i>
+            <input type="" ms-duplex="zhuceDatas.phone" name="" placeholder="请输入手机号">
+        </div>
+
+        <div class="mima">密码<i class="layui-icon">&#xe673;</i>
+            <input type="password" ms-duplex="zhuceDatas.password" name="" placeholder="请输入6-20位密码，由数字和字母组成">
+        </div>
+        <div class="yonghu" style="margin-left: 25px;">
+            <input type="" name="" ms-duplex="zhuceDatas.verification_Code" placeholder="请输入验证码" style="width: 300px;">
+            <abbr  style="cursor: pointer;"><input ms-click="getCode" id="sendsms" type="button" name="" ms-attr-value="getcodewenzi"></abbr></div>
 
         <div class="denlguanniu1">
             <p style="width: 492px; height: 62px; line-height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;"

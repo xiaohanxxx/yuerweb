@@ -33,7 +33,7 @@
             <p style="margin: 15px 0;">
               <a href="###" ms-repeat="yiyuaninfo.hospitaltype">{el.name}</a>
             </p>
-            <p>简介：{yiyuaninfo.content}</p>
+            <p>简介：{yiyuaninfo.content | truncate(30,'...')}</p>
      </div>
 
     <div class="hzwdconts">
@@ -97,6 +97,7 @@
                <img ms-attr-src="el.image" style="margin-bottom: 20px;">
 {#               <img src="{% static 'img/yyhuanjing2.png' %}">#}
              </div>
+             <div ms-if="!evnhospital || evnhospital.length==0" style="width: 100%; padding: 80px 0; text-align: center;">暂无数据</div>
            </div>
 
            <div class="yiyuanhuanjing">
@@ -307,26 +308,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </div>
     </div>
 
@@ -388,6 +369,22 @@
           localStorage.setItem('item','');
           localStorage.setItem('item',vem.getQueryVariable('item'));
         },
+        getHaiwai:function (){
+            var data = {
+                page:1,
+                num:6,
+                worldarea:6
+            }
+            $.ajax({
+              type: 'get',
+              url: '/hospital/powerhospital/',
+              data: data,
+              dataType: "json",
+              success: function (data) {
+                  console.log(data,'datadatadatadatadata');
+              }
+          });
+        },
         doctorlist:[],
         evnhospital:[],
         geiyyinfo:function(){
@@ -417,6 +414,7 @@
     vem.intopages();
     vem.getItem();
     vem.geiyyinfo();
+    vem.getHaiwai();
 </script>
 </body>
 </html>
