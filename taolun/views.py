@@ -150,7 +150,8 @@ class Posting(views.View):
             "publish_date": str(postingObj.publish_date),
             "user": {"id": postingObj.user.id, "username": postingObj.user.username,
                      "head": str(postingObj.user.info.user_avatar)},
-            "thumbup": postingObj.thumup_articles.all().count()
+            "thumbup": postingObj.thumup_articles.all().count(),
+            "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id, posting_id=postingId)) else 1
         }
         return HttpResponse(json.dumps({"data": artData}))
 
@@ -184,7 +185,9 @@ class Comment(views.View):
                 "publish_date": str(i.publish_date),
                 "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
                 "parent": i.parent_id,
-                "thumbup": i.thumbupcomment_set.all().count()
+                "thumbup": i.thumup_comment.all().count(),
+                "isthumbup": 0 if not (request.user.id and models.ThumbUpComment.objects.filter(user_id=request.user.id,
+                                                                                                comment_id=i.id)) else 1
             } for i in commentData
         ]
         return HttpResponse(json.dumps({"data": resComment}))
