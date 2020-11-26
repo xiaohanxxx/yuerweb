@@ -25,5 +25,4 @@
             return comment = resData;
         }
     }
-
 })();

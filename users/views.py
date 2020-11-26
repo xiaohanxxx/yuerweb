@@ -37,7 +37,9 @@ def smsvif(request):
 @login_required
 def center(request):
     user = request.user
+    print(user,user.id)
     userinfo = Userinfo.objects.get(id=user.id)
+    print(userinfo)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -142,6 +144,7 @@ def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        print(username,password)
         user = authenticate(username=username, password=password)
         if user:
             # 查询密码是否正确

@@ -33,7 +33,7 @@
             <p style="margin: 15px 0;">
               <a href="###" ms-repeat="yiyuaninfo.hospitaltype">{el.name}</a>
             </p>
-            <p>简介：{yiyuaninfo.content}</p>
+            <p>简介：{yiyuaninfo.content | truncate(30,'...')}</p>
      </div>
 
     <div class="hzwdconts">
@@ -97,6 +97,7 @@
                <img ms-attr-src="el.image" style="margin-bottom: 20px;">
 {#               <img src="{% static 'img/yyhuanjing2.png' %}">#}
              </div>
+             <div ms-if="!evnhospital || evnhospital.length==0" style="width: 100%; padding: 80px 0; text-align: center;">暂无数据</div>
            </div>
 
            <div class="yiyuanhuanjing">
@@ -165,6 +166,26 @@
                     </div>
                 </div>
                 </li>
+                <li>
+                  <div class="yshione">
+                    <img src="{% static 'img/ysthumb.png' %}">
+                    <h3>我是医生名称 <abbr>医生职位</abbr></h3>
+                    <p>医生所在医院</p>
+                    <div style="width: 100%; float: left; margin-left: 20px; margin-top: 10px;">
+                      擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
+                    </div>
+                </div>
+                </li>
+                <li>
+                  <div class="yshione">
+                    <img src="{% static 'img/ysthumb.png' %}">
+                    <h3>我是医生名称 <abbr>医生职位</abbr></h3>
+                    <p>医生所在医院</p>
+                    <div style="width: 100%; float: left; margin-left: 20px; margin-top: 10px;">
+                      擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
+                    </div>
+                </div>
+                </li>
               </ol>
                 <div class="hd">
                   <ul></ul>
@@ -200,16 +221,16 @@
           <a href=""><img src="{% static 'img/zixuntai.png' %}"></a>
           <div class="szzhuanjia">
               <h3><abbr>相关报道新闻</abbr> <a href="###">更多>></a></h3>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">我是新闻标题只显示一行</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">我是新闻标题详情部分文字信息最多显示两行字段...</p>
+              <div class="doctorbox" ms-repeat="curuent_page">
+                 <img ms-attr-src="el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
+                 <h4 style="margin-top: 20px;">{el.title}</h4>
+                 <p style=" font-size: 14px; margin-top: 10px;">{el.content}...</p>
               </div>
-              <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">我是新闻标题只显示一行</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">我是新闻标题详情部分文字信息最多显示两行字段...</p>
-              </div>
+{#              <div class="doctorbox">#}
+{#                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">#}
+{#                 <h4 style="margin-top: 20px;">我是新闻标题只显示一行</h4>#}
+{#                 <p style=" font-size: 14px; margin-top: 10px;">我是新闻标题详情部分文字信息最多显示两行字段...</p>#}
+{#              </div>#}
           </div>
 
 
@@ -217,30 +238,12 @@
               <h3><abbr>海外医院推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijianes_new">
                  <ol>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   <li ms-repeat="haiwai">
+                     <a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>
                    </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
                  </ol>
               </div>
           </div>
@@ -251,79 +254,14 @@
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijian">
                  <ul>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签话题标签话题标签话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签话题标签话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题话题标签话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题话题标签标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
-                   </li>
-                   <li>
-                    <i class="layui-icon">&#xe615;</i>
-                     <a href="###">话题标签</a>
-                     <abbr>999个问答</abbr>
+                   <li ms-repeat-el="getwendaes">
+                      <i class="layui-icon">&#xe615;</i>
+                      <a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.name}</a>
+                      <abbr>{el.count}个问答</abbr>
                    </li>
                  </ul>
               </div>
           </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -360,6 +298,36 @@
               });
             });
         },
+        getwendaes:[],
+        getwenda:function (){
+            $.ajax({
+              type: 'get',
+              url: '/taolun/hottopics/',
+              data: {},
+              dataType: "json",
+              success: function (data) {
+                  vem.getwendaes = data.data
+                  console.log(vem.getwendaes,'datadatadatadatadata999ese');
+              }
+          });
+        },
+        curuent_page:[],
+        getLikeartical:function (){
+             var data = {
+                aid:2,
+                num:6,
+                page:1
+             }
+            $.ajax({
+              type: 'get',
+              url: '/shiguanbaby/articleslist/',
+              data: data,
+              dataType: "json",
+              success: function (data) {
+                  vem.curuent_page = data.data.curuent_page
+              }
+          });
+        },
         showxiala:function(){
             var _this = $(this);
             if(_this.next('ul').hasClass('hites')){
@@ -388,6 +356,23 @@
           localStorage.setItem('item','');
           localStorage.setItem('item',vem.getQueryVariable('item'));
         },
+        haiwai:[],
+        getHaiwai:function (){
+            var data = {
+                type:1,
+                num:6,
+                worldarea:6
+            }
+            $.ajax({
+              type: 'get',
+              url: '/hospital/powerhospital/',
+              data: data,
+              dataType: "json",
+              success: function (data) {
+                  vem.haiwai = data.data
+              }
+          });
+        },
         doctorlist:[],
         evnhospital:[],
         geiyyinfo:function(){
@@ -401,13 +386,11 @@
               dataType: "json",
               success: function (data) {
                   vem.yiyuaninfo = data.data
-                  console.log(vem.yiyuaninfo ,'vem.yiyuaninfo vem.yiyuaninfo ');
                   vem.doctorlist = data.data.dictorlist
                   vem.evnhospital = data.data.envpic
                   if (vem.doctorlist.length>4){
                       vem.doctorlist = vem.doctorlist.splice(0,4);
                   }
-                  console.log(vem.doctorlist,'vem.doctorlistvem.doctorlist888');
               }
           });
 
@@ -417,6 +400,9 @@
     vem.intopages();
     vem.getItem();
     vem.geiyyinfo();
+    vem.getHaiwai();
+    vem.getwenda();
+    vem.getLikeartical();
 </script>
 </body>
 </html>
