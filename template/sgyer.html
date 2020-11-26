@@ -23,229 +23,205 @@
 {% include 'header.html' %}
 
 
-
 <!-- 试管栏头部 -->
 <div ms-controller="sgyeres">
-<section class="sgyer_h wid clearfix" id='sgyer_h'>
-    <p><span>当前位置：</span><a href="javascript:;">试管婴儿</a></p>
-    <div class="sg_hot fl" ms-repeat="tebietuijian">
-        <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="{el.thumb}" alt="hot图片"></a>
+    <section class="sgyer_h wid clearfix" id='sgyer_h'>
+        <p><span>当前位置：</span><a href="javascript:;">试管婴儿</a></p>
+        <div class="sg_hot fl" ms-repeat="tebietuijian">
+            <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="{el.thumb}" alt="hot图片"></a>
 
-        <h4>
-            <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a>
-        </h4>
-        <p><a>{el.content}</a></p>
-    </div>
-    <ul class="sg_hot_r fr">
-        <li ms-repeat="tuijianartical">
-            <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">
-{#                <img ms-attr-src="{% static 'images/sgyer/imgh1.png' %}" alt="">#}
-                  <img ms-attr-src="{el.thumb}" alt="" width="270" height="200">
-            </a>
-            <span>
-                    <a  ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}...</a>
+            <h4>
+                <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a>
+            </h4>
+            <p><a>{el.content}</a></p>
+        </div>
+        <ul class="sg_hot_r fr">
+            <li ms-repeat="tuijianartical">
+                <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">
+                    {#                <img ms-attr-src="{% static 'images/sgyer/imgh1.png' %}" alt="">#}
+                    <img ms-attr-src="{el.thumb}" alt="" width="270" height="200">
+                </a>
+                <span>
+                    <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}...</a>
                 </span>
-        </li>
-
-    </ul>
-</section>
-<!-- 试管栏主体 -->
-<section id="sgyer_main" class='wid clearfix'>
-{#    <div class="sgyer_main_l fl" ms-controller='mySingerCtrl'>#}
-    <div class="sgyer_main_l fl">
-        <div class="sgbtn">
-{#            <div class='sg_select'>国内试管婴儿</div>#}
-            <div  ms-repeat="aeraees"  ms-class='sg_select:el.id == ids' ms-click="getlists(el.id)">{el.name}</div>
-        </div>
-        <ul class="sginfo clearfix">
-            <li ms-repeat="listsgye">
-                <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
-                <div class='sginfo_r fr'>
-                    <h4><a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a></p>
-                        <p><a href="javascript:;">{el.content | truncate(30, '...')}</a></p>
-                    <div class='sg_tag'>
-                        <span ms-repeat-item="el.topics"><a href="javascript:;">{item.name}</a></span>
-                    </div>
-                    <div class='sg_userinfo'>
-                        <div class='fl'>
-                            <span>{el.user}</span>
-                            <span>{el.publish_date}</span>
-                        </div>
-                        <div class='fr'>
-                            <a href="">
-                                <span class='iconfont'>&#xe605;</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </li>
+
         </ul>
-        <!-- 分页 -->
-        <div id="test1"></div>
-    </div>
-    <div class="sger_main_r fl">
-        <!-- 热点栏 -->
-        <div id="hotinfo" class='clearfix rtglob'>
-{#            <div class="tit_head">#}
-{#                <h3>热点新闻</h3>#}
-{#                <a href=""></a>#}
-{#            </div>#}
-{#            <div class="newinfo clearfix">#}
-{#                <a href=""><img src="{% static 'images/sgyer/img2.png' %}" alt=""></a>#}
-{#                <div>#}
-{#                    <h4>#}
-{#                        <a href=""> <span>官方</span>我是文章标题最多显示2行跳转至试管婴儿文章超出用...</a>#}
-{#                    </h4>#}
-{#                    <p><a href="">#}
-{#                        我是文章正文内容，显示字段为文章正#}
-{#                        部分开头截取内容，我最多显示三行，#}
-{#                        案文案文案文案文案案文案案文案文案#}
-{#                    </a></p>#}
-{#                </div>#}
-{#            </div>#}
-{#            <ul class='hotlist'>#}
-{#                <li><span></span><a href="">我是文章标题最多显示一行？</a></li>#}
-{#                <li><span></span><a href="">我是文章标题最多显示一行？</a></li>#}
-{#                <li><span></span><a href="">导致隐性流产的原因有哪些？</a></li>#}
-{#                <li><span></span><a href="">意外流产对孕妇的身心影响有多大？</a></li>#}
-{#                <li><span></span><a href="">女性黄体功能不足应该如何改善?</a></li>#}
-{#            </ul>#}
-            {% include "mod_hotarticle.html" %}
-        </div>
-        <div id="hospitalinfo" class='rtglob'>
-            <div class="tit_head">
-                <h3>生殖医院推荐</h3>
-                <a href=""></a>
+    </section>
+    <!-- 试管栏主体 -->
+    <section id="sgyer_main" class='wid clearfix'>
+        {#    <div class="sgyer_main_l fl" ms-controller='mySingerCtrl'>#}
+        <div class="sgyer_main_l fl">
+            <div class="sgbtn">
+                {#            <div class='sg_select'>国内试管婴儿</div>#}
+                <div ms-repeat="aeraees" ms-class='sg_select:el.id == ids' ms-click="getlists(el.id)">{el.name}</div>
             </div>
-            <ul class='hostinbox'>
-                <li></li>
-                <li ms-repeat = "getPowerhospital">
-                    <div class="hostitle">
-                        <a ms-attr-href="/hospital/hindex/?item={el.id}" class='titinfo fl'>{el.title}</a>
-                        <a ms-attr-href="/hospital/hindex/?item={el.id}" class="you fr"></a>
+            <ul class="sginfo clearfix">
+                <li ms-repeat="listsgye">
+                    <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
+                    <div class='sginfo_r fr'>
+                        <h4><a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a></p>
+                            <p><a href="javascript:;">{el.content | truncate(30, '...')}</a></p>
+                            <div class='sg_tag'>
+                                <span ms-repeat-item="el.topics"><a href="javascript:;">{item.name}</a></span>
+                            </div>
+                            <div class='sg_userinfo'>
+                                <div class='fl'>
+                                    <span>{el.user}</span>
+                                    <span>{el.publish_date}</span>
+                                </div>
+                                <div class='fr'>
+                                    <a href="">
+                                        <span class='iconfont'>&#xe605;</span>
+                                    </a>
+                                </div>
+                            </div>
                     </div>
-                    <a ms-attr-href="/hospital/hindex/?item={el.id}"  hostimg='show' class='imgshow'>
-                        <img ms-attr-src="el.thumb" alt="" width="355" height="140">
-                    </a>
                 </li>
-                <li></li>
             </ul>
+            <!-- 分页 -->
+            <div id="test1"></div>
         </div>
-        <div id="doctorinfo" class='rtglob'>
-            <div class="tit_head">
-                <h3>医生推荐</h3>
-                <a href=""></a>
+        <div class="sger_main_r fl">
+            <!-- 热点栏 -->
+            <div id="hotinfo" class='clearfix rtglob'>
+                {#            <div class="tit_head">#}
+                {#                <h3>热点新闻</h3>#}
+                {#                <a href=""></a>#}
+                {#            </div>#}
+                {#            <div class="newinfo clearfix">#}
+                {#                <a href=""><img src="{% static 'images/sgyer/img2.png' %}" alt=""></a>#}
+                {#                <div>#}
+                {#                    <h4>#}
+                {#                        <a href=""> <span>官方</span>我是文章标题最多显示2行跳转至试管婴儿文章超出用...</a>#}
+                {#                    </h4>#}
+                {#                    <p><a href="">#}
+                {#                        我是文章正文内容，显示字段为文章正#}
+                {#                        部分开头截取内容，我最多显示三行，#}
+                {#                        案文案文案文案文案案文案案文案文案#}
+                {#                    </a></p>#}
+                {#                </div>#}
+                {#            </div>#}
+                {#            <ul class='hotlist'>#}
+                {#                <li><span></span><a href="">我是文章标题最多显示一行？</a></li>#}
+                {#                <li><span></span><a href="">我是文章标题最多显示一行？</a></li>#}
+                {#                <li><span></span><a href="">导致隐性流产的原因有哪些？</a></li>#}
+                {#                <li><span></span><a href="">意外流产对孕妇的身心影响有多大？</a></li>#}
+                {#                <li><span></span><a href="">女性黄体功能不足应该如何改善?</a></li>#}
+                {#            </ul>#}
+                {% include "mod_hotarticle.html" %}
             </div>
-            <ul class="doctorlis">
-                <li class='clearfix' ms-repeat="getpowerdoctor">
-                    <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
-                    <div class="r_info">
-                        <div class="docname">
-                            <h5>
-                                <a ms-attr-href="/hospital/doctor/?did={el.id}">{el.name}</a>
-                            </h5>
-                            <span>{el.zhiwei}</span>
+            <div id="hospitalinfo" class='rtglob'>
+                <div class="tit_head">
+                    <h3>生殖医院推荐</h3>
+                    <a href=""></a>
+                </div>
+                <ul class='hostinbox'>
+                    <li></li>
+                    <li ms-repeat="getPowerhospital" ms-mouseover="isShow(el.id)">
+                        <div class="hostitle">
+                            <a ms-attr-href="/hospital/hindex/?item={el.id}" class='titinfo fl'>{el.title}</a>
+                            <a ms-attr-href="/hospital/hindex/?item={el.id}" class="you fr"></a>
                         </div>
-                        <p>{el.keshi}</p>
-                        <p class="infolong">
-                            <span>擅长：</span> {el.goodjob}
-                        </p>
-                        <p>
-                            <a  ms-attr-href="/hospital/doctor/?did={el.id}">
-                                {el.details}
-                            </a>
-                        </p>
-                    </div>
-                </li>
-{#                <li class='clearfix'>#}
-{#                    <a href=""><img src="{% static 'images/sgyer/doctor2.png' %}" alt=""></a>#}
-{#                    <div class="r_info">#}
-{#                        <div class="docname">#}
-{#                            <h5>#}
-{#                                <a href="">医生名称</a>#}
-{#                            </h5>#}
-{#                            <span>医生职位</span>#}
-{#                        </div>#}
-{#                        <p>所在医院</p>#}
-{#                        <p class="infolong">#}
-{#                            <span>擅长：</span> 医生特长字段，显示一行字段信息#}
-{#                        </p>#}
-{#                        <p><a href="">#}
-{#                            我是医生简介显示2行文案，点击名称和#}
-{#                            医生简介跳转至医生详情页面。#}
-{#                        </a></p>#}
-{#                    </div>#}
-{#                </li>#}
-            </ul>
-        </div>
-    </div>
-</section>
-<!-- 试管百科知识 -->
-<section id="sgbkbox" class='wid'>
-    <div class="sgbkhead">
-        <h5>试管百科</h5>
-        <ul>
-            <li><a href="/baike/baike_list?types=1">试管费用</a><span></span></li>
-            <li><a href="/baike/baike_list?types=1">试管流程</a><span></span></li>
-            <li><a href="/baike/baike_list?types=1">试管成功率</a><span></span></li>
-            <li><a href="/baike/baike_list?types=1">试管技术</a><span></span></li>
-        </ul>
-    </div>
-    <div class="bkinfobox">
-
-
-
-
-        <div class="bkflbox" ms-repeat-el="list_data">
-            <div ms-repeat-item="el.list_data" style="float: left; width: 33%; height: 160px;">
-                <div class="bkinfohead">
-                    <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
-                    <a href="" class="bkmetaname">{item.menu_name}</a>
+                        <a ms-attr-href="/hospital/hindex/?item={el.id}" hostimg='show'  ms-attr-class="ysecid==el.id?'imgshow':''">
+                            <img ms-attr-src="el.thumb" alt="" width="355" height="140">
+                        </a>
+                    </li>
+                    <li></li>
+                </ul>
+            </div>
+            <div id="doctorinfo" class='rtglob'>
+                <div class="tit_head">
+                    <h3>医生推荐</h3>
+                    <a href=""></a>
                 </div>
-                <div class="bkmetalises">
-                    <a ms-attr-href="/baike/article?aid={item.id}" ms-repeat-it="item.list_data">{it.title}</a>
-                </div>
+                <ul class="doctorlis">
+                    <li class='clearfix' ms-repeat="getpowerdoctor">
+                        <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
+                        <div class="r_info">
+                            <div class="docname">
+                                <h5>
+                                    <a ms-attr-href="/hospital/doctor/?did={el.id}">{el.name}</a>
+                                </h5>
+                                <span>{el.zhiwei}</span>
+                            </div>
+                            <p>{el.keshi}</p>
+                            <p class="infolong">
+                                <span>擅长：</span> {el.goodjob}
+                            </p>
+                            <p>
+                                <a ms-attr-href="/hospital/doctor/?did={el.id}">
+                                    {el.details}
+                                </a>
+                            </p>
+                        </div>
+                    </li>
+                    {#                <li class='clearfix'>#}
+                    {#                    <a href=""><img src="{% static 'images/sgyer/doctor2.png' %}" alt=""></a>#}
+                    {#                    <div class="r_info">#}
+                    {#                        <div class="docname">#}
+                    {#                            <h5>#}
+                    {#                                <a href="">医生名称</a>#}
+                    {#                            </h5>#}
+                    {#                            <span>医生职位</span>#}
+                    {#                        </div>#}
+                    {#                        <p>所在医院</p>#}
+                    {#                        <p class="infolong">#}
+                    {#                            <span>擅长：</span> 医生特长字段，显示一行字段信息#}
+                    {#                        </p>#}
+                    {#                        <p><a href="">#}
+                    {#                            我是医生简介显示2行文案，点击名称和#}
+                    {#                            医生简介跳转至医生详情页面。#}
+                    {#                        </a></p>#}
+                    {#                    </div>#}
+                    {#                </li>#}
+                </ul>
             </div>
         </div>
+    </section>
+    <!-- 试管百科知识 -->
+    <section id="sgbkbox" class='wid'>
+        <div class="sgbkhead">
+            <h5>试管百科</h5>
+            <ul>
+                <li><a href="/baike/baike_list?types=1">试管费用</a><span></span></li>
+                <li><a href="/baike/baike_list?types=1">试管流程</a><span></span></li>
+                <li><a href="/baike/baike_list?types=1">试管成功率</a><span></span></li>
+                <li><a href="/baike/baike_list?types=1">试管技术</a><span></span></li>
+            </ul>
+        </div>
+        <div class="bkinfobox">
 
 
+            <div class="bkflbox" ms-repeat-el="list_data">
+                <div ms-repeat-item="el.list_data" style="float: left; width: 33%; height: 160px;">
+                    <div class="bkinfohead">
+                        <img src="{% static 'images/sgyer/sgjs.png' %}" alt="">
+                        <a href="" class="bkmetaname">{item.menu_name}</a>
+                    </div>
+                    <div class="bkmetalises">
+                        <a ms-attr-href="/baike/article?aid={item.id}" ms-repeat-it="item.list_data">{it.title}</a>
+                    </div>
+                </div>
+            </div>
 
-    </div>
-</section>
+
+        </div>
+    </section>
 </div>
 <!-- 底部 -->
 {% include 'footer.html' %}
-<script>
-    (function () {
-        $(document).ready(function () {
-            var sgtbns = $('.sgbtn>div');
-            var pagelis = $('.pagelist>li>a');
-            var sz_lis = $('.hostinbox>li');
-            var img_as = $('[hostimg="show"]');
-            sgtbns.click(function () {
-                Toolfun.clearClass('sg_select', sgtbns);
-                $(this).addClass('sg_select');
-            });
-            pagelis.click(function () {
-                Toolfun.clearClass('pageSelect', pagelis);
-                $(this).addClass('pageSelect');
-            });
-            sz_lis.mouseover(function () {
-                Toolfun.clearClass('imgshow', img_as)
-                $(this).children(2).addClass('imgshow');
-            })
-        })
-    })();
-</script>
+
 <script>
     var mew = avalon.define({
-        $id:'sgyeres',
-        aeraees:[],
-        ids:1,
-        listsgye:[],
-        totals:0,
-        getAerae:function (){ //获取类型医院
-              $.ajax({
+        $id: 'sgyeres',
+        aeraees: [],
+        ids: 1,
+        ysecid:'',
+        listsgye: [],
+        totals: 0,
+        getAerae: function () { //获取类型医院
+            $.ajax({
                 url: '/shiguanbaby/areas/',
                 type: 'get',
                 dataType: 'json',
@@ -257,141 +233,147 @@
                 }
             })
         },
-        getlists:function (id){//获取列表数据
-          mew.ids = id;
-          mew.getDdatas();
+        getlists: function (id) {//获取列表数据
+            mew.ids = id;
+            mew.getDdatas();
         },
-        getDdatas:function (){//获取列表数据
-              var datas = {
-                  aid:mew.ids,
-                  num:10,
-                  page:1
-              }
-               $.ajax({
-                    url: '/shiguanbaby/articleslist/',
-                    type: 'get',
-                    dataType: 'json',
-                    data:datas,
-                    success: function (data) {
-                        mew.listsgye = data.data.curuent_page;
-                        mew.totals = data.data.maxnum;
-                        mew.intopages(mew.totals);
-                    }
+        getDdatas: function () {//获取列表数据
+            var datas = {
+                aid: mew.ids,
+                num: 10,
+                page: 1
+            }
+            $.ajax({
+                url: '/shiguanbaby/articleslist/',
+                type: 'get',
+                dataType: 'json',
+                data: datas,
+                success: function (data) {
+                    mew.listsgye = data.data.curuent_page;
+                    mew.totals = data.data.maxnum;
+                    mew.intopages(mew.totals);
+                }
             })
         },
-        intopages:function(counta){
-            layui.use(['laypage', 'layer'], function(){
-              var laypage = layui.laypage
-              ,layer = layui.layer;
-              laypage.render({
-                elem: 'test1'
-                ,count:counta
-                ,limit:10
-                ,limits:[10,20,30,40]
-                ,layout: ['count', 'prev', 'page', 'next','limit'],
-                jump: function(obj,first){
-                   var datas = {
-                      aid:mew.ids,
-                      num:obj.limit,
-                      page:obj.curr
-                  }
-                   $.ajax({
-                        url: '/shiguanbaby/articleslist/',
-                        type: 'get',
-                        dataType: 'json',
-                        data:datas,
-                        success: function (data) {
-                            mew.listsgye = data.data.curuent_page;
-                            mew.totals = data.data.maxnum;
+        isShow: function (ev) {
+            mew.ysecid = ev;
+        },
+        intopages: function (counta) {
+            layui.use(['laypage', 'layer'], function () {
+                var laypage = layui.laypage
+                    , layer = layui.layer;
+                laypage.render({
+                    elem: 'test1'
+                    , count: counta
+                    , limit: 10
+                    , limits: [10, 20, 30, 40]
+                    , layout: ['count', 'prev', 'page', 'next', 'limit'],
+                    jump: function (obj, first) {
+                        var datas = {
+                            aid: mew.ids,
+                            num: obj.limit,
+                            page: obj.curr
                         }
-                   })
-                }
-              });
+                        $.ajax({
+                            url: '/shiguanbaby/articleslist/',
+                            type: 'get',
+                            dataType: 'json',
+                            data: datas,
+                            success: function (data) {
+                                mew.listsgye = data.data.curuent_page;
+                                mew.totals = data.data.maxnum;
+                            }
+                        })
+                    }
+                });
             });
         },
-        tuijianartical:[],
-        gettypesarctical:function (){//获取推荐文章
+        tuijianartical: [],
+        gettypesarctical: function () {//获取推荐文章
             var datas = {
-                type:3, //文章类型ID
-                num:10  //文章数量
+                type: 3, //文章类型ID
+                num: 10  //文章数量
             }
-           $.ajax({
+            $.ajax({
                 url: '/shiguanbaby/typearticles/',
                 type: 'get',
                 dataType: 'json',
-                data:datas,
+                data: datas,
                 success: function (data) {
                     mew.tuijianartical = data.data;
-                    if (mew.tuijianartical.length>4){
-                        mew.tuijianartical = mew.tuijianartical.splice(0,4);
+                    if (mew.tuijianartical.length > 4) {
+                        mew.tuijianartical = mew.tuijianartical.splice(0, 4);
                     }
                 }
-           })
+            })
         },
-        tebietuijian:[],
-        getSpeashoAtical:function (){
+        tebietuijian: [],
+        getSpeashoAtical: function () {
             var datas = {
-                type:5, //文章类型ID
-                num:1  //文章数量
+                type: 5, //文章类型ID
+                num: 1  //文章数量
             }
-           $.ajax({
+            $.ajax({
                 url: '/shiguanbaby/typearticles/',
                 type: 'get',
                 dataType: 'json',
-                data:datas,
+                data: datas,
                 success: function (data) {
                     mew.tebietuijian = data.data;
                 }
-           })
+            })
         },
-        getpowerdoctor:[],
-        getpowerdoctoar:function (){
+        getpowerdoctor: [],
+        getpowerdoctoar: function () {
             var data = {
-                type:1,
-                num:6
+                type: 1,
+                num: 6
             }
-           $.ajax({
+            $.ajax({
                 url: '/hospital/powerdoctor/',
                 type: 'get',
                 dataType: 'json',
-                data:data,
+                data: data,
                 success: function (data) {
                     mew.getpowerdoctor = data.data
                 }
-           })
+            })
 
         },
-        getPowerhospital:[],
-        getTuijianyisheng:function (){
+        getPowerhospital: [],
+        getTuijianyisheng: function () {
             var data = {
-                type:1,
-                num:6
+                type: 1,
+                num: 6
             }
-           $.ajax({
+            $.ajax({
                 url: '/hospital/powerhospital/',
                 type: 'get',
                 dataType: 'json',
-                data:data,
+                data: data,
                 success: function (data) {
-                    mew.getPowerhospital = data.data
+                    mew.getPowerhospital = data.data;
+
+
+                    mew.ysecid = data.data[0].id;
                 }
-           })
+            })
 
         },
-        list_data:[],
-        getsgyeList:function (){
+        list_data: [],
+        getsgyeList: function () {
             var data = {
-                mid:1
+                mid: 1
             }
-           $.ajax({
+            $.ajax({
                 url: 'baike/api/getmenuarticle',
                 type: 'post',
                 dataType: 'json',
-                data:data,
+                data: data,
                 success: function (data) {
                     mew.list_data = data;
                 }
-           })
+            })
         }
 
 
