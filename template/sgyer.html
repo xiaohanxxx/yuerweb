@@ -112,23 +112,22 @@
 {#            </ul>#}
             {% include "mod_hotarticle.html" %}
         </div>
+
         <div id="hospitalinfo" class='rtglob'>
             <div class="tit_head">
                 <h3>生殖医院推荐</h3>
                 <a href=""></a>
             </div>
             <ul class='hostinbox'>
-                <li></li>
-                <li ms-repeat = "getPowerhospital" ms-mouseleave="isShow(el.id)">
+                <li ms-repeat = "getPowerhospital">
                     <div class="hostitle">
                         <a ms-attr-href="/hospital/hindex/?item={el.id}" class='titinfo fl'>{el.title}</a>
                         <a ms-attr-href="/hospital/hindex/?item={el.id}" class="you fr"></a>
                     </div>
-                    <a ms-attr-href="/hospital/hindex/?item={el.id}"  hostimg='show' ms-attr-class="ystjid==el.id?'imgshow':''">
+                    <a ms-attr-href="/hospital/hindex/?item={el.id}"  hostimg='show' class='imgshow'>
                         <img ms-attr-src="el.thumb" alt="" width="355" height="140">
                     </a>
                 </li>
-                <li></li>
             </ul>
         </div>
         <div id="doctorinfo" class='rtglob'>
@@ -157,25 +156,6 @@
                         </p>
                     </div>
                 </li>
-{#                <li class='clearfix'>#}
-{#                    <a href=""><img src="{% static 'images/sgyer/doctor2.png' %}" alt=""></a>#}
-{#                    <div class="r_info">#}
-{#                        <div class="docname">#}
-{#                            <h5>#}
-{#                                <a href="">医生名称</a>#}
-{#                            </h5>#}
-{#                            <span>医生职位</span>#}
-{#                        </div>#}
-{#                        <p>所在医院</p>#}
-{#                        <p class="infolong">#}
-{#                            <span>擅长：</span> 医生特长字段，显示一行字段信息#}
-{#                        </p>#}
-{#                        <p><a href="">#}
-{#                            我是医生简介显示2行文案，点击名称和#}
-{#                            医生简介跳转至医生详情页面。#}
-{#                        </a></p>#}
-{#                    </div>#}
-{#                </li>#}
             </ul>
         </div>
     </div>
@@ -215,13 +195,33 @@
 </div>
 <!-- 底部 -->
 {% include 'footer.html' %}
-
+<script>
+    (function () {
+        $(document).ready(function () {
+            var sgtbns = $('.sgbtn>div');
+            var pagelis = $('.pagelist>li>a');
+            var sz_lis = $('.hostinbox>li');
+            var img_as = $('[hostimg="show"]');
+            sgtbns.click(function () {
+                Toolfun.clearClass('sg_select', sgtbns);
+                $(this).addClass('sg_select');
+            });
+            pagelis.click(function () {
+                Toolfun.clearClass('pageSelect', pagelis);
+                $(this).addClass('pageSelect');
+            });
+            sz_lis.mouseover(function () {
+                Toolfun.clearClass('imgshow', img_as)
+                $(this).children(2).addClass('imgshow');
+            })
+        })
+    })();
+</script>
 <script>
     var mew = avalon.define({
         $id:'sgyeres',
         aeraees:[],
         ids:1,
-        ystjid:'',
         listsgye:[],
         totals:0,
         getAerae:function (){ //获取类型医院
@@ -289,9 +289,6 @@
               });
             });
         },
-        isShow:function(ev){
-          mew.ystjid = ev;
-        },
         tuijianartical:[],
         gettypesarctical:function (){//获取推荐文章
             var datas = {
@@ -356,9 +353,7 @@
                 dataType: 'json',
                 data:data,
                 success: function (data) {
-                    mew.getPowerhospital = data.data;
-
-                    mew.ystjid = data.data[0].id;
+                    mew.getPowerhospital = data.data
                 }
            })
         },

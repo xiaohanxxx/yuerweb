@@ -83,7 +83,7 @@ class ThumbUpArticle(models.Model):
 
 # 评论点赞
 class ThumbUpComment(models.Model):
-    Comment = models.ForeignKey('Comment', related_name="thumup_comment",
+    comment = models.ForeignKey('Comment', related_name="thumup_comment",
                                  on_delete=models.CASCADE, verbose_name="点赞的评论")
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="点赞的用户")
     date = models.DateTimeField(auto_now=True)
