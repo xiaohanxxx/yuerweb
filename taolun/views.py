@@ -180,10 +180,10 @@ class Comment(views.View):
         postingObj = get_object_or_404(models.Posting, pk=postingId)
         orderby = request.GET.get('orderby')
         if orderby == '1':
-            commentData = postingObj.posting_comment.all().order_by('publish_date')
+            commentData = postingObj.posting_comment.all().order_by('-publish_date')
 
         else:
-            commentData = postingObj.posting_comment.all().annotate(count=Count('thumup_comment'))
+            commentData = postingObj.posting_comment.all().annotate(count=Count('thumup_comment')).order_by("-count", "-publish_date")
 
         resComment = [
             {
