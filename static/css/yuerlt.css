@@ -1071,13 +1071,15 @@ body a:hover {
     display: block;
     font-size: 12px;
     line-height: 18px;
-    max-height: 36px;
     overflow: hidden;
     text-overflow: ellipsis;
     letter-spacing: 0px;
     color: #999;
 }
-
+.desinfo a img{
+    max-width: 484px;
+    max-height: 300px;
+}
 .lis_info .byjl_userinfo {
     height: 20px;
 }

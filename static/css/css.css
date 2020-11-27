@@ -395,15 +395,21 @@ body{ background: #f9f9f9; }
 
 
 
-.remenhuaties{ width: 320px; overflow: hidden; min-height: 200px; background: #fff; border-radius: 5px; margin-top: 20px; padding: 10px; }
+.remenhuaties{ width: 320px; overflow: hidden; min-height: 300px; background: #fff; border-radius: 5px; margin-top: 20px; padding: 10px; }
 .remenhuaties h3{ font-size: 24px; padding: 15px 0; border-bottom: 1px solid #f1f1f1; }
 .remenhuaties h3 a{ float: right; margin-right: 15px; text-decoration: none; font-size: 14px; color:#333; }
 .remenhuaties ul{ width: 100%; overflow: hidden; padding: 10px; }
 .remenhuaties ul li{ float: left; width: 100%; margin-bottom: 20px; background: url('../img/right.png') no-repeat 273px  center; }
 .remenhuaties ul li a{ font-size: 14px; text-decoration: none; color: #666; }
 .remenhuaties ul li a:hover{ color: #FF44AD;}
+.hosadress>ul:nth-of-type(1){position:absolute;top:24px;padding:0;padding-top:10px;max-width:30%;max-height:200px;overflow:auto;background-color:#fff;border-radius:5px;box-shadow:0px 0px 2px 2px rgba(10,3,5,0.3);display:none;}
+.hosadress>ul:nth-of-type(1)>li{text-align:center;height:24px;width:100%;height: 30px;line-height:30px;}
+.hosadress>ul li:hover{background-color:#fff;color:#fff;background-color:#F94479;}
+.hosadress>ul:nth-of-type(2){position:absolute;display:none;background-color:grey;left:30%;width:60%;top:24px;padding:0;max-height:200px;overflow: auto;}
+.hosadress>ul:nth-of-type(2)>li{floa:left;padding:5px 10px;margin-right:10px;max-width:30%;text-align:center;}
+
 .xuanfugh:hover{ color:#FF44AD;  }
-.beirenyhudain { width:100%; overflow: hidden;  }
+.beirenyhudain { width:100%; overflow: hidden;}
 .beirencont { width: 1200px; overflow: hidden; min-height: 200px; margin:0 auto; }
 .bairenlieft{ width: 848px; overflow: hidden; float: left; min-height: 300px; }
 .leftpartone{width: 100%; overflow: hidden;}
