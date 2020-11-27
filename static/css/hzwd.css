@@ -1,59 +1,240 @@
-.listswenda li>div>a>img{
+.listswenda li>div>a>img {
     width: 36px;
     height: 36px;
-    border-radius:50%;
+    border-radius: 50%;
 }
-.floafright>a:nth-of-type(2)>p{
-    height:100px;
-    overflow:hidden;
+
+.floafright>a:nth-of-type(2)>p {
+    height: 100px;
+    overflow: hidden;
 }
-#pagers{
-    margin-left:50px;
-    margin-top:20px;
+
+#pagers {
+    margin-left: 50px;
+    margin-top: 20px;
 }
-.hzwdleftse>ol>li{
-    padding:30px;
+
+.hzwdleftse>ol>li {
+    padding: 30px;
     width: 324px;
     height: 175px;
     margin: 0;
-    margin-top:20px;
-    background-color:#fff;
-    border-radius:5px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 5px;
 }
-.hzwdleftse h3{
-    font-weight:bold;
+
+.hzwdleftse h3 {
+    font-weight: bold;
     margin-bottom: 12px;
 }
-.hzwdleftse>ol>li:nth-child(odd){
+
+.hzwdleftse>ol>li:nth-child(odd) {
     margin-right: 62px;
 }
-.hzwdleftse>ol>li>p:nth-of-type(1){
+
+.hzwdleftse>ol>li>p:nth-of-type(1) {
     height: 60px;
-    overflow:hidden;
+    overflow: hidden;
 }
-.hzwdleftse>ol>li>p:nth-of-type(2){
+
+.hzwdleftse>ol>li>p:nth-of-type(2) {
     margin-bottom: 18px;
 }
-.hzwdleftse>ol>li>img{
+
+.hzwdleftse>ol>li>img {
     width: 60px;
     height: 60px;
-    margin-top:30px;
-    border-radius:50%;
+    margin-top: 30px;
+    border-radius: 50%;
 }
-.partwdone>img{
+
+.partwdone>img {
     width: 36px;
     height: 36px;
-    border-radius:50%;
+    border-radius: 50%;
 }
-.partwdone>h3{
+
+.partwdone>h3 {
     margin-bottom: 10px;
 }
-.partwdone>p>i{
+
+.partwdone>p>i {
     margin-left: 15px;
 }
-#postMain .postBox .newPost{
+
+#postMain .postBox .newPost {
     width: 50%;
 }
-.partwdone>p>a.isthumbup{
-    color:red;
+
+.partwdone>p>a.isthumbup {
+    color: red;
+}
+
+.fuwenda>p>abbr {
+    float: right;
+    cursor: pointer;
+    display: block;
+    padding: 5px 15px;
+    border-radius: 4px;
+    background: #ff44ad;
+    color: #fff;
+}
+
+.hzwdleftse {
+    margin-top: 28px;
+}
+
+.Muserinfo>img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+.Muserinfo>p:nth-of-type(2){
+    margin-top: 22px;
+    text-indent: 2em;
+    color:#aaa;
+    overflow: hidden;
+}
+.Muserinfo>p:nth-of-type(2)>img{
+    max-width:600px;
+    max-height:800px;
+}
+.Muserinfo>h3 {
+    margin-bottom: 20px;
+}
+
+.Muserinfo>p>i {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.Muserinfo>p>i:nth-of-type(2) {
+    margin-left: 36px;
+}
+
+.Muserinfo>p>abbr>i {
+    display: inline-block;
+    margin-right: 13px;
+    font-size: 20px;
+}
+
+
+
+.fuwenben>p>a {
+    float: right;
+}
+.plinfobox .isShow>span i {
+    margin-right: 30px;
+    font-size:18px;
+}
+.plinfobox>li>img{
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+.fuwenben>p .same {
+    float:left;
+    max-width: 100px;
+    padding: 0 10px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 8px;
+    background-color: #FF44AD;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.fuwenben>p>span {
+    float: left;
+}
+
+.plbox {
+    margin-top: 100px;
+}
+
+.plbox .plhead {
+    padding-top: 10px;
+    height: 27px;
+    background-color: #C9C9C9;
+    opacity: 0.5;
+}
+
+.plbox .plhead>select {
+    background-color: #C9C9C9;
+}
+
+#hzwdinfo .plinfobox>li {
+    margin: 0;
+    width: 100%;
+    margin-bottom: 48px;
+}
+
+.plinfobox>li>img {
+    float: left;
+    margin-right: 12px;
+}
+
+.userinfo>p:nth-of-type(1) {
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.userinfo>p:nth-of-type(2) {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.userinfo .plinfobox>div>p {
+    float: left;
+    width: 90%;
+    font-size: 14px;
+    height: 24px;
+    margin-right: 30px;
+    line-height: 20px;
+    overflow: auto;
+}
+
+.userinfo .plinfobox>div>span i {
+    font-size: 18px;
+}
+
+.userinfo .plinfobox>span {
+    float: right;
+}
+
+.plinfobox>p {
+    float:left;
+    height: 20px;
+    width: 100%;
+    background-color: #d2d2d2;
+    opacity: 0.5;
+}
+.plinfobox .isShow{
+    display: none;
+}
+.plinfobox .isShow>span {
+    display: block;
+    height:20px;
+    width: 20%;
+    margin: 0 auto;
+    color: #000;
+}
+
+.plinfobox .isShow>span i {
+    margin-right: 30px;
+    font-size:18px;
 }

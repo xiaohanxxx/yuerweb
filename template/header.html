@@ -135,7 +135,6 @@
     })
 
 
-
     })
      avalon.config({
         interpolate: ["{", "}"]
@@ -159,6 +158,7 @@
           password:''
         },
         loginFun:function(){
+            console.log(vm.loginData.username,33333)
             if(vm.loginData.username == '' || !vm.loginData.username){
                layer.msg('请填写正确的用户名');
                return;
@@ -173,6 +173,7 @@
               data: vm.loginData,
               dataType: "json",
               success: function(data) {
+                  console.log(data,99999);
                   if(data.code == 200){
                          layer.msg('登录成功，即将跳转到当前页');
                          setTimeout(function(){

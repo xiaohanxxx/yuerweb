@@ -150,7 +150,9 @@ class Posting(views.View):
             "publish_date": str(postingObj.publish_date),
             "user": {"id": postingObj.user.id, "username": postingObj.user.username,
                      "head": str(postingObj.user.info.user_avatar)},
-            "thumbup": postingObj.thumbuparticle_set.all().count()
+            "commentnum": postingObj.posting_comment.all().count(),
+            "thumbup": postingObj.thumup_articles.all().count(),
+            "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id, posting_id=postingId)) else 1
         }
         return HttpResponse(json.dumps({"data": artData}))
 
@@ -176,7 +178,13 @@ class Comment(views.View):
     def get(self, request, *args, **kwargs):
         postingId = request.GET.get('pid')
         postingObj = get_object_or_404(models.Posting, pk=postingId)
-        commentData = postingObj.posting_comment.all()
+        orderby = request.GET.get('orderby')
+        if orderby == '1':
+            commentData = postingObj.posting_comment.all().orderby('publish_date')
+
+        else:
+            commentData = postingObj.posting_comment.all().annotate(count=Count('thumup_comment'))
+
         resComment = [
             {
                 "id": i.id,
@@ -184,14 +192,16 @@ class Comment(views.View):
                 "publish_date": str(i.publish_date),
                 "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
                 "parent": i.parent_id,
-                "thumbup": i.thumbupcomment_set.all().count()
+                "thumbup": i.thumup_comment.all().count(),
+                "isthumbup": 0 if not (request.user.id and models.ThumbUpComment.objects.filter(user_id=request.user.id,
+                                                                                                comment_id=i.id)) else 1
             } for i in commentData
         ]
         return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
         data = {k: v for k, v in request.POST.items()}
-        postingObj = get_object_or_404(models.Posting, pk=data.get("pid", 0))
+        postingObj = get_object_or_404(models.Posting, pk=data.get("articles_id", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(models.Comment, pk=data['parent_id'])
 
