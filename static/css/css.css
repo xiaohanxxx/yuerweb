@@ -527,7 +527,7 @@ color: #666; font-size: 12px; }
 .curposition{ margin: 20px 0; }
 .arctiacalbody{ width: 100%; overflow: hidden; margin: 20px 0;}
 .leftarcal{width: 840px; float: left; min-height: 200px; background: #fff;}
-.rightpart{ width: 350px; float: right; min-height: 200px; }
+.rightpart{ width: 350px; float: right; min-height: 200px; position: relative; }
 
 .content{ overflow: hidden; width: 100%; margin-bottom:20px;}
 
@@ -612,7 +612,7 @@ color: #666; font-size: 12px; }
 .left_bottom_artctal_anather ul li{ margin-bottom: 20px; padding-left: 25px;}
 .suoyin{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
 /*.suoyin img{ width: 100%; }*/
-
+.suoyins{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
 .curr_address{ overflow: hidden; width: 1200px; margin: 20px auto; }
 .artcalAll{ width: 1200px; margin: 0 auto; overflow: hidden; min-height: 200px;}
 
