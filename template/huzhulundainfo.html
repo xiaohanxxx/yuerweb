@@ -24,7 +24,7 @@
 <div class="hzwdconts" ms-controller="hzwdinfo" id="hzwdinfo">
     <div class="hzwdleftse" style="min-height: 200px;">
         <div class="Muserinfo">
-            <img src="{% static  "img/tuxiang.jpg" %}"/>
+            <img ms-attr-src="/media/{askdata.user.head}"/>
             <h3>{askdata.title}</h3>
             <p style="margin-top: 15px; padding-left: 45px;">
                 <i class="layui-icon">&#xe66f;</i>
@@ -36,8 +36,8 @@
                     <span>{askdata.thumbup}</span>
                 </abbr>
             </p>
+            <p>{askdata.content|safe}</p>
         </div>
-
 
         <div class="pinglunkk" style="margin-top:20px;">
                 <h4 style="margin-bottom:10px;">评论</h4>
@@ -62,36 +62,20 @@
                 </select>
             </div>
             <ul class="plinfobox">
-                <li>
-                    <img src="{% static 'img/tuxiang.jpg' %}" alt="">
+                <li ms-repeat-as="pldata" data-repeat-rendered="plisShow">
+                    <img ms-attr-src="/media/{as.user.head}" alt="">
                     <div class="userinfo">
-                        <p>我是用户名</p>
-                        <p>2020.11.4 12:25:56</p>
+                        <p>{as.user.username}</p>
+                        <p>{as.publish_date.replace(/\..*/,'')}</p>
                         <div class="plinfobox">
                             <div>
                                 <p>
-                                    我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文
-                                    字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字
-                                    我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我
-                                    是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是
-                                    用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用
-                                    户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户
-                                    评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评
-                                    论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论
-                                    信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信
-                                    息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息
-                                    文字我是用户评论信息文字我
-                                    是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是
-                                    用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户
-                                    评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论
-                                    信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息
-                                    文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字
-                                    我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是
-                                    用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字我是用户评论信息文字
+                                    {as.comment.replace(/(<\p>)/,'')|html}
                                 </p>
-                                <span><i class="layui-icon">&#xe6c6;</i>&nbsp;999</span>
+                                <span><i class="layui-icon">&#xe6c6;</i>&nbsp;{as.thumbup}</span>
                             </div>
-                            <p class="isShow" isShow="false"><span><i class="iconfont">&#xe665;</i><span>点击显示更多</span> </span>
+                            <p class="isShow" isShow="false">
+                                <span><i class="iconfont">&#xe665;</i><span>点击显示更多</span> </span>
                             </p>
                         </div>
                     </div>
@@ -201,7 +185,6 @@
         pldata:[],
         init: function () {
             var qxpl = $('#qxpl');
-
             qxpl.click(function () {
                 layui.layedit.setContent(vm_hzwdinfo.ditsl,'欢迎留言评论~！');
             })
@@ -223,6 +206,17 @@
                 },error:function(error){
                     console.log(error);
                 }
+            });
+            $.ajax({
+                url:root_Domain+'/taolun/comment/?pid='+vm_hzwdinfo.pid,
+                type:'get',
+                dataType: 'json',
+                success:function(ajax){
+                    vm_hzwdinfo.pldata = ajax.data;
+                    console.log(vm_hzwdinfo.pldata,2222222222222222)
+                },error:function(error){
+                    console.log(error);
+                }
             })
             this.plisShow();
         },
@@ -231,6 +225,25 @@
         },
         isPost: function (ev) {
             var _this = ev;
+            var value = layui.layedit.getContent(vm_hzwdinfo.ditsl);
+            console.log(value,898989898)
+            if(value!='欢迎留言评论~！'){
+                $.ajax({
+                    url:root_Domain+'/taolun/comment/',
+                    type:'post',
+                    data:{
+                        'articles_id': vm_hzwdinfo.pid,
+                        'comment':value
+                    },
+                    success:function(ajax){
+                        layer.msg(ajax,{'time':1000});
+                    },error:function(error){
+                        layer.msg(error);
+                    }
+                })
+            }else{
+                layer.msg('请输入评论内容！！',{'time':1000});
+            }
             console.log(layui.layedit.getText(vm_hzwdinfo.ditsl),66666666666666);
         },
         plisShow: function () {
@@ -249,7 +262,9 @@
                         $(this).attr('isShow', 'false');
                     }
                 });
-                if (allinfobox.eq(i).html().trim('').length > 60) {
+                console.log(allinfobox.eq(i).html(),55555555555555555555)
+                if (allinfobox.eq(i).html().trim('').match(/[\u4e00-\u9fa5]/g).length > 100) {
+                    console.log(66666666666666666666666666666)
                     nowLi.show();
                 }
             }
@@ -257,6 +272,7 @@
         }
     })
     vm_hzwdinfo.init();
+
 </script>
 </body>
 </html>
