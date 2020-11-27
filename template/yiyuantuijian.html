@@ -208,6 +208,8 @@
                         name:'全部'
                     }
             vmw.a = el;
+            vmw.dataslist.page = 1;
+            vmw.dataslistout.page = 1;
             vmw.dataslist.worldarea = vmw.arear[el].id;
             vmw.dataslistout.worldarea = vmw.arear[el].id;
             vmw.erjidatas = vmw.arear[el].child;
@@ -215,6 +217,8 @@
             vmw.getDatas();
         },
         getcurcitys:function (el){//获取当前省的城市
+            vmw.dataslist.page = 1;
+            vmw.dataslistout.page = 1;
             vmw.b = el;
             if (el == '' || !el){
                 vmw.chengshi = ''
@@ -225,6 +229,8 @@
             vmw.getDatas();
         },
         getAllcity:function (){//获取地区省份城市
+            vmw.dataslist.page = 1;
+            vmw.dataslistout.page = 1;
              $.ajax({
                 type: 'get',
                 url: '/hospital/areas/',
@@ -256,6 +262,8 @@
         },
         dengjiFun:function (el){
             vmw.c = el;
+            vmw.dataslist.page = 1;
+            vmw.dataslistout.page = 1;
             vmw.dataslist.hospitallv = vmw.dengjis[el].id;
             vmw.getDatas();
         },
@@ -277,6 +285,8 @@
         },
         jishuFun:function (el){
             vmw.d = el;
+            vmw.dataslist.page = 1;
+            vmw.dataslistout.page = 1;
             vmw.dataslist.hospitaltype = vmw.jishus[el].id;
             vmw.getDatas();
         },
@@ -287,8 +297,8 @@
               laypage.render({
                 elem: 'pagers'
                 ,count:count
-                ,limit:10
-                ,limits:[10,20,30,40]
+                ,limit:9
+                ,limits:[9,20,30,40]
                 ,layout: ['count', 'prev', 'page', 'next', 'limit'],
                 jump: function(obj,first){
                   vmw.dataslist.page = obj.curr;
@@ -309,7 +319,7 @@
                       success: function (data) {
                           vmw.getYYlist = [];
                          vmw.getYYlist = data.data;
-                         //vmw.allnum = data.allnum;
+                         vmw.allnum = data.allnum;
                       }
                   });
 
@@ -332,7 +342,7 @@
                 dataType: "json",
                 // timeout: 10000,
                 success: function (data) {
-                          vmw.getYYlist = [];
+                   vmw.getYYlist = [];
                    vmw.getYYlist = data.data;
                    vmw.allnum = data.allnum;
                    vmw.intopages(vmw.allnum);
@@ -365,9 +375,9 @@
     vmw.getDengji();
     vmw.getJishu();
     vmw.getDatas();
-    vmw.intopages(vmw.allnum);
     vmw.get_rm_baike();
     vmw.getwenda();
+    vmw.intopages(vmw.allnum);
 </script>
 </body>
 </html>

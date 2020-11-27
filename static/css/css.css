@@ -257,7 +257,7 @@ body{ background: #f9f9f9; }
 .hzwdrights{float: right; width: 340px; min-height: 200px; }
 .hzwdlefts ul{ overflow: hidden; width: 100%; padding-left: 15px; }
 
-.hzwdlefts ul li{ float: left; cursor: pointer; margin-right: 15px; margin-bottom: 10px; border:1px solid #fff; padding: 0 5px; border-radius: 3px; }
+.hzwdlefts ul li{ float: left; cursor: pointer; margin-right: 15px; margin-bottom: 10px; border:1px solid #fff;  border-radius: 3px; }
 .hzwdlefts ul li.curreswd{ border-radius: 8px; color: #ff44ad; border:1px solid #ff44ad; }
 
 
@@ -516,7 +516,7 @@ color: #666; font-size: 12px; }
 .hzwdcontslistes p{ line-height: 30px; padding: 5px 15px; }
 .listyisheng{ width: 100%; overflow: hidden; }
 .listyisheng ul{ overflow: hidden; width: 100%; padding: 15px; }
-.listyisheng ul li{width: 21%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
+.listyisheng ul li{width: 22%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
 .listyisheng ul li img{ width: 100%; }
 .listyisheng ul li p{ width: 100%; font-size: 16px; }
 .listyisheng ul li p abbr{ font-size: 12px; }
