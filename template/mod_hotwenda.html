@@ -4,8 +4,8 @@
          <ul>
            <li ms-repeat-item="getwendaese">
               <i class="layui-icon">&#xe615;</i>
-              <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.name}</a>
-              <abbr>{item.count}个问答</abbr>
+              <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.title}</a>
+              <abbr>{item.commentnum}个问答</abbr>
            </li>
          </ul>
 </div>
@@ -17,7 +17,7 @@
         getwenda:function (){
             $.ajax({
               type: 'get',
-              url: '/taolun/hottopics/',
+              url: '/taolun/hotarticles/',
               data: {},
               dataType: "json",
               success: function (data) {
