@@ -19,6 +19,7 @@
 
 </head>
 <!-- 头部 -->
+<body style="position: relative;">
 {% include 'header.html' %}
 <!-- 头部 -->
 {#{{ article_data.data.0.title }}#}
@@ -70,20 +71,20 @@
 
 
         </div>
-        <div class="rightpart">
+        <div class="rightpart" >
             <div class="suoyin">
                 <img src="{% static 'img/sypic.png' %}">
                 <div class="show_sy">
                     <ul>
-                        <li><a href="#float1">段落一</a></li>
-                        <li><a href="#float2">段落二</a></li>
-                        <li><a href="#float3">段落三</a></li>
-                        <li><a href="#float4">段落四</a></li>
-                        <li><a href="#float5">段落五</a></li>
+                        <li><a ms-class="currsse:aaa == 200" ms-click="scrfoll(200)">段落一</a></li>
+                        <li><a ms-class="currsse:aaa == 1200" ms-click="scrfoll(1200)">段落二</a></li>
+                        <li><a ms-class="currsse:aaa == 2400" ms-click="scrfoll(2400)">段落三</a></li>
+                        <li><a ms-class="currsse:aaa == 4000" ms-click="scrfoll(4000)">段落四</a></li>
+                        <li><a ms-class="currsse:aaa == 10000" ms-click="scrfoll(10000)">段落五</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="suoyin">
+            <div class="suoyins">
                 <a href="###"><img src="{% static 'img/doctor_more.png' %}"></a>
                 <a href=""><img src="{% static 'img/doctor_zixun.png' %}"></a>
             </div>
@@ -102,15 +103,39 @@
         </div>
     </div>
 </div>
-
+<style>
+.abcoletion{ position: fixed; top: 0; right: 335px;z-index: 9999; width: 340px;    }
+.suoyin ul li a{cursor: pointer;}
+.currsse{ color: #FF44AD;}
+</style>
 <!-- 底部 -->
 {% include 'footer.html' %}
 <!-- 底部 -->
+<script>
+   $(function (){
+       $(window).scroll( function() {
+           var $scroll=$(this).scrollTop();
+            if($scroll>=200){
+              $('.suoyin').addClass('abcoletion');
+            }else{
+              $('.suoyin').removeClass('abcoletion');
+              $('.suoyin').show();
+            }
+       } );
+   })
+</script>
 <script>
     var vmm = avalon.define({
         $id: 'bodyarical',
         get_tj_baike: [],
         getrmbaike: [],
+        aaa:200,
+        scrfoll:function (data){
+            vmm.aaa = data
+           $('html,body').animate({
+                scrollTop:data
+           })
+        },
         get_baike_tuijian: function () {
             var count = {
                 count: 10

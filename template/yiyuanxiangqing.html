@@ -222,8 +222,8 @@
           <div class="szzhuanjia">
               <h3><abbr>相关报道新闻</abbr> <a href="###">更多>></a></h3>
               <div class="doctorbox" ms-repeat="curuent_page">
-                 <img ms-attr-src="el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">{el.title}</h4>
+                 <a ms-attr-href="/shiguanbaby/articles/?aid={el.id}"><img ms-attr-src="el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;"></a>
+                 <h4 style="margin-top: 20px;"><a ms-attr-href="/shiguanbaby/articles/?aid={el.id}">{el.title}</a></h4>
                  <p style=" font-size: 14px; margin-top: 10px;">{el.content}...</p>
               </div>
 {#              <div class="doctorbox">#}
@@ -252,15 +252,16 @@
 
           <div class="szzhuanjia">
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijian">
-                 <ul>
-                   <li ms-repeat-el="getwendaes">
-                      <i class="layui-icon">&#xe615;</i>
-                      <a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.name}</a>
-                      <abbr>{el.count}个问答</abbr>
-                   </li>
-                 </ul>
-              </div>
+              {% include "mod_hotwenda.html" %}
+{#              <div class="hotwdtuijian">#}
+{#                 <ul>#}
+{#                   <li ms-repeat-el="getwendaes">#}
+{#                      <i class="layui-icon">&#xe615;</i>#}
+{#                      <a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.name}</a>#}
+{#                      <abbr>{el.count}个问答</abbr>#}
+{#                   </li>#}
+{#                 </ul>#}
+{#              </div>#}
           </div>
 
 
@@ -307,7 +308,6 @@
               dataType: "json",
               success: function (data) {
                   vem.getwendaes = data.data
-                  console.log(vem.getwendaes,'datadatadatadatadata999ese');
               }
           });
         },
