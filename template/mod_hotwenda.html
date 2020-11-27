@@ -1,0 +1,31 @@
+{% load static %}
+{% include 'config.html' %}
+ <div class="hotwdtuijian"  ms-controller="rmarcs">
+         <ul>
+           <li ms-repeat-item="getwendaese">
+              <i class="layui-icon">&#xe615;</i>
+              <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.name}</a>
+              <abbr>{item.count}个问答</abbr>
+           </li>
+         </ul>
+</div>
+<script>
+    var vm_rmarESc = avalon.define({
+        $id: 'rmarcs',
+        data: [],
+        getwendaese:[],
+        getwenda:function (){
+            $.ajax({
+              type: 'get',
+              url: '/taolun/hottopics/',
+              data: {},
+              dataType: "json",
+              success: function (data) {
+                  vm_rmarESc.getwendaese = data.data
+                  console.log(vm_rmarESc.getwendaese,'999ese');
+              }
+          });
+        },
+    })
+   vm_rmarESc.getwenda();
+</script>

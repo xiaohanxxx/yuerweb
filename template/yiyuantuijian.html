@@ -38,7 +38,7 @@
           <div class="fenleiallswd">
              <p style="float: left;" ms-click="clearShengfen">省份：</p>
              <div>
-               <p class="allcurr" ms-click="clearSf">全部</p>
+{#               <p class="allcurr" ms-click="clearSf">全部</p>#}
                <p ms-repeat="erjidatas" ms-class="allcurr:$index == b" ms-click="getcurcitys($index)">{el.name}</p>
              </div>
          </div>
@@ -47,7 +47,8 @@
           <div class="fenleiallswd">
              <p>城市：</p>
              <p class="allcurr">
-                <select name="" id="" ms-duplex="chengshi" data-duplex-changed="selectchange">
+{#                <select name="" id="" ms-duplex="chengshi" data-duplex-changed="selectchange">#}
+                 <select name="" id="" ms-duplex="chengshi" data-duplex-changed="selectchange">
                    <option value="">请选择城市</option>
                    <option ms-repeat="citys"  ms-attr-value="el.id">{el.name}</option>
                </select>
@@ -57,14 +58,14 @@
 
         <div class="fenleiallswd">
              <p>等级：</p>
-             <p class="allcurr">全部</p>
+{#             <p class="allcurr">全部</p>#}
              <p ms-repeat="dengjis" ms-class="allcurr:$index == c"  ms-click="dengjiFun($index)">{el.name}</p>
          </div>
 
 
        <div class="fenleiallswd">
          <p>技术：</p>
-         <p class="allcurr">全部</p>
+{#         <p class="allcurr">全部</p>#}
          <p ms-repeat="jishus" ms-class="allcurr:$index == d"  ms-click="jishuFun($index)">{el.name}</p>
       </div>
 </div>
@@ -90,22 +91,6 @@
         </div>
 
 
-       <!--   <div class="tjyylists">
-              <div class="leftyytj">
-                 <img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;">
-                 <h3>我是医院名称     <abbr title="">三级甲等</abbr></h3>
-                 <p>地址：我是医院地址文字信息</p>
-                 <p>电话：021 6659889</p>
-              </div>
-              <div class="rightyytj">
-                 <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
-                 <p>累计20名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
-              </div>
-         </div> -->
-
-
-
          <div id="pagers"></div>
 
      </div>
@@ -120,34 +105,12 @@
                    <p style=" font-size: 14px; margin-top: 10px;">{el.excerpt | truncate(33,'...')}</p>
                  </a>
               </div>
-              <!-- <div class="doctorbox">
-                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                 <h4 style="margin-top: 20px;">医生名称</h4>
-                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-              </div> -->
           </div>
-
-
-
-
 
           <div class="szzhuanjia">
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijian">
-                 <ul>
-                   <li ms-repeat-el="getwendaes">
-                      <i class="layui-icon">&#xe615;</i>
-                      <a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.name}</a>
-                      <abbr>{el.count}个问答</abbr>
-                   </li>
-                   <li>
-{#                    <i class="layui-icon">&#xe615;</i>#}
-{#                     <a href="###">话题标签话题标签话题标签</a>#}
-{#                     <abbr>999个问答</abbr>#}
-{#                   </li>#}
-
-                 </ul>
-              </div>
+                  {% include 'mod_hotwenda.html' %}
           </div>
 
 
@@ -236,19 +199,26 @@
               dataType: "json",
               success: function (data) {
                   vmw.getwendaes = data.data
-                  console.log(vmw.getwendaes,'datadatadatadatadata999ese');
               }
           });
         },
         getcurreone:function (el){
+            var dataes ={
+                        id:'',
+                        name:'全部'
+                    }
             vmw.a = el;
             vmw.dataslist.worldarea = vmw.arear[el].id;
             vmw.dataslistout.worldarea = vmw.arear[el].id;
             vmw.erjidatas = vmw.arear[el].child;
+            vmw.erjidatas.unshift(dataes);
             vmw.getDatas();
         },
         getcurcitys:function (el){//获取当前省的城市
             vmw.b = el;
+            if (el == '' || !el){
+                vmw.chengshi = ''
+            }
             vmw.dataslist.privincearea =vmw.erjidatas[el].id;
             vmw.dataslistout.privincearea =vmw.erjidatas[el].id;
             vmw.citys = vmw.erjidatas[el].child;
@@ -261,6 +231,7 @@
                 data: {},
                 dataType: "json",
                 success: function (data) {
+
                     vmw.arear = data.data;
                     vmw.getcurreone(0);
                     // vmw.getcurcitys(0);
@@ -275,17 +246,11 @@
                 dataType: "json",
                 success: function (data) {
                     vmw.dengjis = data.data;
-                }
-            });
-        },
-        getJishu:function (){
-                $.ajax({
-                type: 'get',
-                url: "/hospital/hospitaltype/",
-                data: {},
-                dataType: "json",
-                success: function (data) {
-                    vmw.jishus = data.data;
+                    var data ={
+                        id:'',
+                        name:'全部'
+                    }
+                    vmw.dengjis.unshift(data);
                 }
             });
         },
@@ -293,6 +258,22 @@
             vmw.c = el;
             vmw.dataslist.hospitallv = vmw.dengjis[el].id;
             vmw.getDatas();
+        },
+        getJishu:function (){
+                   var dataes ={
+                        id:'',
+                        name:'全部'
+                    }
+                $.ajax({
+                type: 'get',
+                url: "/hospital/hospitaltype/",
+                data: {},
+                dataType: "json",
+                success: function (data) {
+                    vmw.jishus = data.data;
+                    vmw.jishus.unshift(dataes);
+                }
+            });
         },
         jishuFun:function (el){
             vmw.d = el;
@@ -307,13 +288,13 @@
                 elem: 'pagers'
                 ,count:count
                 ,limit:10
+                ,limits:[10,20,30,40]
                 ,layout: ['count', 'prev', 'page', 'next', 'limit'],
                 jump: function(obj,first){
                   vmw.dataslist.page = obj.curr;
                   vmw.dataslist.num = obj.limit;
                   vmw.dataslistout.page = obj.curr;
                   vmw.dataslistout.num = obj.limit;
-                  //vmw.getDatas();
                   if (vmw.a == 0){
                      var datas = vmw.dataslist;
                   }else if (vmw.a == 1){
@@ -326,8 +307,8 @@
                       dataType: "json",
                       // timeout: 10000,
                       success: function (data) {
+                          vmw.getYYlist = [];
                          vmw.getYYlist = data.data;
-                         console.log(vmw.getYYlist,'vmw.getYYlistvmw.getYYlistvmw.getYYlist')
                          //vmw.allnum = data.allnum;
                       }
                   });
@@ -351,6 +332,7 @@
                 dataType: "json",
                 // timeout: 10000,
                 success: function (data) {
+                          vmw.getYYlist = [];
                    vmw.getYYlist = data.data;
                    vmw.allnum = data.allnum;
                    vmw.intopages(vmw.allnum);
@@ -360,7 +342,7 @@
         },
         selectchange:function(data){
             vmw.dataslist.cityarea = data;
-            vmw.getDatas();
+            //vmw.getDatas();
         },
         getrmbaike:[],
         get_rm_baike: function () {
@@ -374,7 +356,6 @@
                 dataType: "json",
                 success: function (data) {
                     vmw.getrmbaike = data.data
-                    //console.log(vmw.getrmbaike,"推荐文章");
                 }
             });
         }
