@@ -189,3 +189,5 @@ SMS_TEMPLATE_ID = {
     # 'register': '123456',  # 注册模板ID
     # 're_password': '123456',  # 改密模板ID
 }
+
+AUTH_PROFILE_MODULE = 'djangoadmin.users.Userinfo' # User扩展表userinfo

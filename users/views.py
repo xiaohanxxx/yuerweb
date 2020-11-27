@@ -37,7 +37,7 @@ def smsvif(request):
 @login_required
 def center(request):
     user = request.user
-    userinfo = Userinfo.objects.get(id=user.id)
+    userinfo = Userinfo.objects.get(user_id=user.id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -52,7 +52,7 @@ def center(request):
 @login_required
 def centerMessage(request):
     user = request.user
-    userinfo = Userinfo.objects.get(id=user.id)
+    userinfo = Userinfo.objects.get(user_id=user.id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -142,7 +142,9 @@ def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
+        print(username,password)
         user = authenticate(username=username, password=password)
+        print(user)
         if user:
             # 查询密码是否正确
             login(request, user)
@@ -150,12 +152,14 @@ def userlogin(request):
                 'code': 200,
                 'msg': '登录成功'
             }
+            print(data)
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             data = {
                 'code': 400,
                 'msg': '登录失败'
             }
+            print(data)
             return HttpResponse(json.dumps(data), content_type="application/json")
 
     return render(request, "login.html")
@@ -191,9 +195,9 @@ def changetx(request):
     Userinfo.save()
     print("ok")
 
-# @method_decorator(error, name='dispatch')
-# TODO 去TM的面向对象编程
 
+# TODO 去TM的面向对象编程
+@method_decorator(error, name='dispatch')
 @method_decorator(login_required, name='dispatch')
 class Followapi(View):
     def __init__(self, **kwargs):

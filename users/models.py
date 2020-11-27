@@ -19,7 +19,8 @@ class Userinfo(models.Model):
     phone = models.CharField('手机号', max_length=20)
 
     def __str__(self):
-        return self.user
+        return self.user.username
+    #     return User.username
 
     class Meta:
         verbose_name = '用户信息'
