@@ -207,12 +207,14 @@ class Followapi(View):
     def post(self, request):
         self.user = request.user
         self.request = request
-        Quser_id = request.POST.get("Quser_id", None)
+        Quser_id = request.GET.get("Quser_id", None)
+        type = int(request.GET.get('type'))
         if Quser_id == None:
             pass
         else:
             self.Quser = User.objects.get(id=int(Quser_id))
-        type = int(request.POST.get('type'))
+
+
         if type == 0:
             return self.follow()
         elif type == 1:
@@ -228,16 +230,19 @@ class Followapi(View):
     def follow(self):
         f = Follow.objects.filter(follower=self.user, followed=self.Quser)
         if f:
-            pass
+            data = {
+                'code': 400,
+                'msg': '你已经关注过该用户'
+            }
         else:
             Follow.objects.create(
                 follower=self.user,
                 followed=self.Quser
             )
-        data = {
-            'code': 200,
-            'msg': '已关注'
-        }
+            data = {
+                'code': 200,
+                'msg': '已关注'
+            }
         return HttpResponse(json.dumps(data))
 
     # 取消关注1
@@ -252,6 +257,7 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
+        print(follow_list)
         for i in follow_list:
             article_list = models.Articles.objects.filter(user_id=i['userid'])
             print(article_list)
@@ -300,12 +306,12 @@ def public_level(request):
 
 
 # 公用通知方法
-def public_send_notice(user,Quser,article,comment):
+def public_send_notice(user,Quser,article,comment,other):
     try:
         notify.send(
             user, # 发送通知的人
             recipient=Quser, # 接收通知的对象
-            verb='评论了你的帖子',
+            verb=other, # 自定义动态对象
             target=article, # 动作对象
             action_object=comment, # 通知文本
         )
