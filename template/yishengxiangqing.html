@@ -224,30 +224,12 @@
               <h3><abbr>相关医院推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijianes_new">
                  <ol>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
+                   <li ms-repeat="getPowerhospital">
+                     <a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>
                    </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
                  </ol>
               </div>
           </div>
@@ -256,15 +238,7 @@
 
           <div class="szzhuanjia">
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijian">
-                 <ul>
-                   <li ms-repeat-item="getwendaese">
-                      <i class="layui-icon">&#xe615;</i>
-                      <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.name}</a>
-                      <abbr>{item.count}个问答</abbr>
-                   </li>
-                 </ul>
-              </div>
+              {% include 'mod_hotwenda.html' %}
           </div>
 
 
@@ -348,18 +322,22 @@
               });
             });
         },
-        getwendaese:[],
-        getwenda:function (){
-            $.ajax({
-              type: 'get',
-              url: '/taolun/hottopics/',
-              data: {},
-              dataType: "json",
-              success: function (data) {
-                  vmc.getwendaese = data.data
-                  console.log(vmc.getwendaese,'999ese');
-              }
-          });
+        getPowerhospital:[],
+        getTuijianyisheng:function (){
+            var data = {
+                type:1,
+                num:8
+            }
+           $.ajax({
+                url: '/hospital/powerhospital/',
+                type: 'get',
+                dataType: 'json',
+                data:data,
+                success: function (data) {
+                    vmc.getPowerhospital = data.data;
+                    console.log(vmc.getPowerhospital,'vmc.getPowerhospital666')
+                }
+           })
         },
         showxiala:function(){
             var _this = $(this);
@@ -375,7 +353,8 @@
             $(this).parent().addClass('hites');
         },
     })
-    vmc.getwenda();
+    //vmc.getwenda();
+    vmc.getTuijianyisheng();
     vmc.intopages();
 </script>
 </body>

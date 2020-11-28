@@ -142,6 +142,7 @@
         count: 0,//数据总条数
         Mid: '',
         tid: '',
+        page:1,
         order: '',
         limites: 10,//每一页显示多少条
         btnnum: 5,//按钮显示个数
@@ -160,6 +161,7 @@
                     groups: vm_hzwdlist.btnnum,
                     layout: ['count', 'prev', 'page', 'next', 'refresh', 'skip'],
                     jump: function (obj) {
+                        vm_hzwdlist.page = obj.curr;
                         vm_hzwdlist.goPage(obj.curr);
                     }
                 });
@@ -208,7 +210,7 @@
                     success: function (ajax) {
                         layer.msg(ajax, {time: 1000});
                         setTimeout(function () {
-                            location.reload();
+                            vm_hzwdlist.goPage(vm_hzwdlist.page)
                         }, 2000)
                     },
                     error: function (error) {

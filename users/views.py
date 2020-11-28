@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from users.models import Userinfo, Follow
 from django.contrib.auth.decorators import login_required
+from notifications.signals import notify
 import json, random
 from baike.views import error
 from django.views.generic import View
@@ -37,9 +38,7 @@ def smsvif(request):
 @login_required
 def center(request):
     user = request.user
-    print(user,user.id)
-    userinfo = Userinfo.objects.get(id=user.id)
-    print(userinfo)
+    userinfo = Userinfo.objects.get(user_id=user.id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -54,7 +53,7 @@ def center(request):
 @login_required
 def centerMessage(request):
     user = request.user
-    userinfo = Userinfo.objects.get(id=user.id)
+    userinfo = Userinfo.objects.get(user_id=user.id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -144,8 +143,9 @@ def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username,password)
+        print(username, password)
         user = authenticate(username=username, password=password)
+        print(user)
         if user:
             # 查询密码是否正确
             login(request, user)
@@ -153,12 +153,14 @@ def userlogin(request):
                 'code': 200,
                 'msg': '登录成功'
             }
+            print(data)
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             data = {
                 'code': 400,
                 'msg': '登录失败'
             }
+            print(data)
             return HttpResponse(json.dumps(data), content_type="application/json")
 
     return render(request, "login.html")
@@ -194,9 +196,9 @@ def changetx(request):
     Userinfo.save()
     print("ok")
 
-# @method_decorator(error, name='dispatch')
-# TODO 去TM的面向对象编程
 
+# TODO 去TM的面向对象编程
+@method_decorator(error, name='dispatch')
 @method_decorator(login_required, name='dispatch')
 class Followapi(View):
     def __init__(self, **kwargs):
@@ -205,12 +207,14 @@ class Followapi(View):
     def post(self, request):
         self.user = request.user
         self.request = request
-        Quser_id = request.POST.get("Quser_id", None)
+        Quser_id = request.GET.get("Quser_id", None)
+        type = int(request.GET.get('type'))
         if Quser_id == None:
             pass
         else:
             self.Quser = User.objects.get(id=int(Quser_id))
-        type = int(request.POST.get('type'))
+
+
         if type == 0:
             return self.follow()
         elif type == 1:
@@ -226,16 +230,19 @@ class Followapi(View):
     def follow(self):
         f = Follow.objects.filter(follower=self.user, followed=self.Quser)
         if f:
-            pass
+            data = {
+                'code': 400,
+                'msg': '你已经关注过该用户'
+            }
         else:
             Follow.objects.create(
                 follower=self.user,
                 followed=self.Quser
             )
-        data = {
-            'code': 200,
-            'msg': '已关注'
-        }
+            data = {
+                'code': 200,
+                'msg': '已关注'
+            }
         return HttpResponse(json.dumps(data))
 
     # 取消关注1
@@ -250,6 +257,7 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
+        print(follow_list)
         for i in follow_list:
             article_list = models.Articles.objects.filter(user_id=i['userid'])
             print(article_list)
@@ -258,12 +266,13 @@ class Followapi(View):
             'code': 200,
             'msg': '成功',
             'data_list': list({
-                'user':i['username'],
-                'userid':i['userid'],
-                'user_article':list(models.Articles.objects.filter(user_id=i['userid']).values('id','title'))
-            }
-                for i in follow_list
-            )
+                                  'user': i['username'],
+                                  'userid': i['userid'],
+                                  'user_article': list(
+                                      models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
+                              }
+                              for i in follow_list
+                              )
         }
 
         return HttpResponse(json.dumps(data))
@@ -283,7 +292,7 @@ class Followapi(View):
 # 等级变更公用方法
 def public_level(request):
     user = request.user
-    userinfo = Userinfo.objects.get(id=user.id)
+    userinfo = Userinfo.objects.get(user_id=user.id)
     integral = userinfo.integral
     if integral < 500:
         userinfo.level = 0
@@ -292,6 +301,24 @@ def public_level(request):
     else:
         userinfo.level = 2
     userinfo.save()
+
+
+
+
+# 公用通知方法
+def public_send_notice(user,Quser,article,comment,other):
+    try:
+        notify.send(
+            user, # 发送通知的人
+            recipient=Quser, # 接收通知的对象
+            verb=other, # 自定义动态对象
+            target=article, # 动作对象
+            action_object=comment, # 通知文本
+        )
+        return 1
+    except:
+        return 0
+
 
 
 # 测试上传

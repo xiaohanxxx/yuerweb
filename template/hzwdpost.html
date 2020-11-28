@@ -29,22 +29,22 @@
         </div>
     </div>
     <div class="postBox">
-        <p class="newPost">问题标签<span></span></p>
         <form>
-            <label for="newTopic">话题：</label>
-            <input type="text" name='newTopic'>
+            <label for="newTopic">问题描述：</label>
+            <input type="text" name='newTopic' placeholder="问题标题长度不得超过100个字">
         </form>
         <div class="tjTopic">
-            <p>推荐话题所属栏目</p>
-            <nav class="topic_as clearfix">
-
-                <a href="javascript:;" ms-attr-class="topicId==el.id?'yesSelect':''" ms-repeat="topicData"
-                   ms-click="selectMenu(el.id)">{ el.name }</a>
-
-            </nav>
+            <div ms-click="flselect(this)"><span>话题分类选择</span><i class="iconfont">&#xe665;</i></div>
+            <ul class="navbox">
+                <li ms-repeat="topicData" ms-attr-Mid="el.id" ms-click="getSondata(this)">
+                    {el.name}
+                </li>
+            </ul>
+            <ul class="sonbox" >
+                <li ms-repeat-its="sontopicData" ms-attr-pid="{its.id}" ms-click="sonSelcet(this)">{its.name}</li>
+            </ul>
         </div>
         <div id="topicSelect">
-
             <div class="kindeitorbox">
                 <div class='fl'>内容：</div>
                 <div class='editorbox fl'>
@@ -71,33 +71,57 @@
 {% include 'footer.html' %}
 <script>
     var editor1 = CKEDITOR.replace('editor_id');
-    var mid = localStorage.getItem("Mid");
-    var Mlanm = localStorage.getItem("Mlanm");
     var yesFbtn = $('#yesFbtn'),
         noFbtn = $('#noFbtn');
-    var topicData = JSON.parse(localStorage.getItem("topicNavs"));
-    window.addEventListener("beforeunload", () => {
-        localStorage.setItem("Mid", localStorage.getItem("Mid"));
-        localStorage.setItem("Mlanm", getItem("Mlanm"));
-        localStorage.setItem("topicNavs", ocalStorage.getItem("topicNavs"));
-    })
-
     var vm_postart = avalon.define({
         $id: 'postart',
-        Mid: mid,
         topicId: null,
         yzm: null,
-        Mlanm: Mlanm,
-        topicData: topicData,
-        selectMenu: function (a) {
-            vm_postart.topicId = a;
+        mid: '',
+        topicData: [],
+        sontopicData: [],
+        flselect: function (ev) {
+            var _this = ev;
+            $('.navbox').show();
+        },
+        sonSelcet:function(ev){
+            var that = ev;
+            vm_postart.topicId=$(that).attr('pid');
+            $('.tjTopic>div>span').html($(that).html());
+            $('.navbox').hide();
+            $('.sonbox').hide();
+        },
+        ifTruePost: function () {
+            var yzm = Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9);
+            vm_postart.yzm = yzm;
+        },
+        getSondata: function (ev) {
+            var _this = ev;
+            $('.sonbox').show();
+            vm_postart.mid = $(_this).attr('mid');
+            $.ajax({
+                url: root_Domain + '/taolun/topics/?gid=' + vm_postart.mid,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    console.log(ajax,3333333)
+                    vm_postart.sontopicData = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+            console.log(_this, 1111);
+        },
+        init: function () {
+            this.topicData = JSON.parse(localStorage.getItem('Mgroup'));
+            console.log(vm_postart.topicData, 54545454545)
+            vm_postart.ifTruePost();
         }
     })
     yesFbtn.click(function () {
         var ckeData = editor1.getData();
         var title = $('input[name="newTopic"]').val();
         var yzmnow = $('.yzm input').val();
-
         if (!title) {
             layer.msg("请输入话题！！！");
         } else if (title.length > 100) {
@@ -106,7 +130,7 @@
             if (yzmnow == vm_postart.yzm) {
                 if (ckeData && ckeData.length < 800 && vm_postart.topicId) {
                     $.ajax({
-                        url: root_Domain + '/luntan/articles/',
+                        url: root_Domain + '/taolun/posting/',
                         type: 'post',
                         dataType: 'json',
                         data: {
@@ -123,13 +147,13 @@
                                     ifTruePost();
                                 },
                                 btn2: function (index, layero) {
-                                    window.location.href = root_Domain + '/luntan/articles/?aid=' + ajax.data;
+                                    window.location.href = root_Domain + '/taolun/toposting/?pid=' + ajax.data;
                                 }
                             })
                         }
                     })
                 }
-            }else{
+            } else {
                 layer.msg("请输入正确的验证码！！！");
             }
 
@@ -144,13 +168,7 @@
         }
     })
     {#    验证码函数,页面刷新时生成验证码#}
-
-    function ifTruePost() {
-        var yzm = Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9) + '' + Math.floor(Math.random() * 9);
-        vm_postart.yzm = yzm;
-    }
-
-    ifTruePost();
+    vm_postart.init();
 </script>
 </body>
 

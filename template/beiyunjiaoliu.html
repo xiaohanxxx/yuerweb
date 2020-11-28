@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>备孕交流</title>
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -60,7 +61,7 @@
                         <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
                     </p>
                     <p class="desinfo">
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.content}</a>
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.content|html}</a>
                     </p>
                     <div class="byjl_userinfo clearfix">
                         <div class="byjl_info_l fl">

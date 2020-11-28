@@ -58,7 +58,8 @@
                                     <p style="font-size: 16px; margin-bottom: 10px;">{ el.title }</p>
                                 </a>
                                 <a ms-attr-href="/taolun/toposting/?pid={el.id}">
-                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">{el.content}</p>
+                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">
+                                        {el.content|html}</p>
                                 </a>
                                 <div class="infousers">
                                     <div class="userone">
@@ -85,231 +86,42 @@
                 {% else %}
                     <a href="/login"><p class="pusharcal">文章发布</p></a>
                 {% endif %}
-
             </div>
 
             <div class="remenhuati">
-                <h3>热门话题 <a href="">更多>></a></h3>
+                <h3>热门话题 <a href="/taolun/grouplist/">更多>></a></h3>
                 <ul>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">最多显示六个字</a>
+                    <li ms-repeat-its="bqdata">
+                        <a ms-attr-href="/taolun/postindex/?tid={its.id}">{its.name}</a>
                     </li>
                 </ul>
             </div>
             <div class="remenhuati">
                 <h3>精华推荐</h3>
                 <ol>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
+                    <li ms-repeat-as="jhtopicdata">
+                        <a ms-attr-href="/taolun/toposting/?pid={as.id}">
+                            <img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;">
+                            <h4 style="margin-bottom:10px;height: 38px;overflow: hidden;">{as.title}</h4>
                             <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <img src="{% static  "img/rwtx.png" %}" style="float: left; margin-right: 12px;">
-                            <h4>我是文章标题只显示一行</h4>
-                            <div class="tubiaoousrt">
-                                <i><img src="{% static  "img/ren.png" %}"> 999</i>
-                                <i><img src="{% static  "img/result.png" %}"> 999</i>
+                                <span class="fl">
+                                    <i class="iconfont">&#xe71b;</i>
+                                    <span>{as.user.username}</span>
+                                </span>
+                                <span class="fr" style="margin-right:20px;">
+                                    <i class="iconfont">&#xe6d9;</i>
+                                    <span>{as.commentnum}</span>
+                                </span>
                             </div>
                         </a>
                     </li>
                 </ol>
             </div>
-            <div class="remenhuaties">
-                <h3>升值医院推荐 <a href="">更多>></a></h3>
-                <p style="margin:5px 0;"><img src="{% static  "img/04.jpg" %}"></p>
-                <ul>
-                    <li>
-                        <a href="">我是医院名称</a>
-                    </li>
-                    <li>
-                        <a href="">武汉大学人民医院</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">武汉大学人民医院</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">武汉大学人民医院</a>
-                    </li>
-                    <li>
-                        <a href="">我是医院名称</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                    <li>
-                        <a href="">武汉大学人民医院</a>
-                    </li>
-                    <li>
-                        <a href="">话题标签</a>
-                    </li>
-                </ul>
-            </div>
+            {#  生殖医院推荐 #}
+            {% include 'mod_hospital.html' %}
         </div>
     </div>
 </div>
-
 
 <!-- 底部 -->
 {% include 'footer.html' %}
@@ -328,8 +140,10 @@
     var vm_hzwda = avalon.define({
         $id: "hzwda",
         count: 0,//数据总条数
-        url:'',//请求链接
+        url: '',//请求链接
         limites: 8,//每一页显示多少条
+        bqdata: [],//话题标签
+        jhtopicdata: [],//精华帖子
         btnnum: 5,//按钮显示个数
         groupsdata: [],
         datasfsa: [],
@@ -359,10 +173,10 @@
             });
         },
         flxzmenu: function () {
-            if(order!=0){
-                vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites+'&order='+order;
-            }else{
-               vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
+            if (order != 0) {
+                vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites + '&order=' + order;
+            } else {
+                vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
             }
             $.ajax({
                 url: vm_hzwda.url,
@@ -377,15 +191,15 @@
                 }
             })
         },
-        gopage:function(page){
-            var url = vm_hzwda.url+'&page='+page;
+        gopage: function (page) {
+            var url = vm_hzwda.url + '&page=' + page;
             $.ajax({
-                url:url,
-                type:'get',
-                dataType:'json',
-                success:function(ajax){
+                url: url,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
                     vm_hzwda.datasfsa = ajax.data;
-                },error:function(error){
+                }, error: function (error) {
                     console.log(error);
                 }
             })
@@ -403,7 +217,7 @@
                     }
                     vm_hzwda.groupsdata = ajax.reverse().sort();
                     localStorage.clear();
-                    localStorage.setItem('Mgroup',JSON.stringify(ajax));
+                    localStorage.setItem('Mgroup', JSON.stringify(ajax));
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -416,6 +230,26 @@
                     vm_hzwda.count = ajax.maxnum;
                     vm_hzwda.datasfsa = ajax.data;
                     vm_hzwda.intopages();
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
+            $.ajax({
+                url: root_Domain + '/taolun/hottopics/?num=20',
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwda.bqdata = ajax.data;
+                }, error: function (error) {
+                    console.log(error)
+                }
+            });
+            $.ajax({
+                url: root_Domain + '/taolun/hotarticles/?num=10',
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwda.jhtopicdata = ajax.data;
                 }, error: function (error) {
                     console.log(error);
                 }

@@ -31,13 +31,14 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'simpleui',  # 后台模板
-    'users',
+    'notifications', # 通知功能
+    'users', # 用户app
     'luntan',
     'hospital',
     'shiguanbaby',
     'taolun',
-    'baike',
-    'webmanage', # 网站管理
+    'baike', # 百科app
+    'webmanage', # 网站管理 app
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -189,3 +190,5 @@ SMS_TEMPLATE_ID = {
     # 'register': '123456',  # 注册模板ID
     # 're_password': '123456',  # 改密模板ID
 }
+
+AUTH_PROFILE_MODULE = 'djangoadmin.users.Userinfo' # User扩展表userinfo
