@@ -31,12 +31,13 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'simpleui',  # 后台模板
-    'users',
+    'notifications', # 通知功能
+    'users', # 用户app
     'luntan',
     'hospital',
     'shiguanbaby',
     'taolun',
-    'baike',
+    'baike', # 百科app
     'webmanage', # 网站管理
     'django.contrib.admin',
     'django.contrib.auth',

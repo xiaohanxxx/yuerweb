@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from users.models import Userinfo, Follow
 from django.contrib.auth.decorators import login_required
+from notifications.signals import notify
 import json, random
 from baike.views import error
 from django.views.generic import View
@@ -142,7 +143,7 @@ def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username,password)
+        print(username, password)
         user = authenticate(username=username, password=password)
         print(user)
         if user:
@@ -259,12 +260,13 @@ class Followapi(View):
             'code': 200,
             'msg': '成功',
             'data_list': list({
-                'user':i['username'],
-                'userid':i['userid'],
-                'user_article':list(models.Articles.objects.filter(user_id=i['userid']).values('id','title'))
-            }
-                for i in follow_list
-            )
+                                  'user': i['username'],
+                                  'userid': i['userid'],
+                                  'user_article': list(
+                                      models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
+                              }
+                              for i in follow_list
+                              )
         }
 
         return HttpResponse(json.dumps(data))
@@ -284,7 +286,7 @@ class Followapi(View):
 # 等级变更公用方法
 def public_level(request):
     user = request.user
-    userinfo = Userinfo.objects.get(id=user.id)
+    userinfo = Userinfo.objects.get(user_id=user.id)
     integral = userinfo.integral
     if integral < 500:
         userinfo.level = 0
@@ -293,6 +295,24 @@ def public_level(request):
     else:
         userinfo.level = 2
     userinfo.save()
+
+
+
+
+# 公用通知方法
+def public_send_notice(user,Quser,article,comment):
+    try:
+        notify.send(
+            user, # 发送通知的人
+            recipient=Quser, # 接收通知的对象
+            verb='评论了你的帖子',
+            target=article, # 动作对象
+            action_object=comment, # 通知文本
+        )
+        return 1
+    except:
+        return 0
+
 
 
 # 测试上传

@@ -19,6 +19,8 @@ from django.conf.urls import url, include
 from django.conf import settings
 from django.views.static import serve
 from yuerweb import views
+import notifications.urls
+import notifications
 from webmanage import views as manageviews
 
 urlpatterns = [
@@ -40,6 +42,7 @@ urlpatterns = [
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),  # 富文本路由
+    path('notifications/', include(notifications.urls, namespace='notifications')),
 
     # url(r'^upload', views.upload)  # 测试路由
 
