@@ -59,7 +59,8 @@ class HospitalList(views.View):
              "address": i.address,
              "phone": i.phone,
              "hospitallv": i.hospitallv.name,
-             "doctornum": i.doctor_set.all().count()
+             "doctornum": i.doctor_set.all().count(),
+             "thumb": i.thumb.url,
              } for i in curuent_page
         ]
         return HttpResponse(json.dumps({"data": resData, "allnum": len(rData)}))

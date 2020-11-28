@@ -207,8 +207,9 @@ class Followapi(View):
     def post(self, request):
         self.user = request.user
         self.request = request
-        Quser_id = request.GET.get("Quser_id", None)
-        type = int(request.GET.get('type'))
+        Quser_id = request.POST.get("Quser_id", None)
+        type = int(request.POST.get('type'))
+        print(Quser_id,type)
         if Quser_id == None:
             pass
         else:
