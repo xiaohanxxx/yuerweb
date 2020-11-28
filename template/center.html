@@ -54,8 +54,8 @@
                     <div class="bott_box" ms-if="aa == 1">
                     	<ol>
                     		<li ms-repeat="alltiezi">
-                    			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;">{el.title}</p>
+                                <a ms-attr-href="/luntan/articles/?aid={el.id}"><img src="{% static 'img/pexels.png' %}"></a>
+                    			<p style="font-size: 16px;"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
                     			<p style="font-size: 12px;">{el.content}</p>
                     			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
@@ -71,7 +71,7 @@
                     	<div class="my_answer">
                     		<ul>
                     			<li ms-repeat-el="mywenda">
-                    				<p style="font-size: 14px;">{el.title}</p>
+                    				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
                     				<p style="font-size: 12px; margin: 8px 0;">{el.content}</p>
                     				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
@@ -81,102 +81,35 @@
 
 
                      <div class="bott_box" ms-if="aa == 3">
-                     	<div class="gz_cont">
+
+
+
+                     	<div class="gz_cont" ms-repeat="guanzhus">
                      		<div class="gzlists_one">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">{el.user}</p>
+{#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
+                     			<abbr style="margin-left: 3px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
                      		</div>
                      		<div class="four_hot">
                      			<ul>
                      				<li>
-                     					我是论坛帖子标题最多显示...
+                                        <a href="">我是论坛帖子标题最多显示...</a>
                      				</li>
                      				<li>
-                     					我是论坛帖子标题最多显示...
+                     					<a href="">我是论坛帖子标题最多显示...</a>
                      				</li>
                      				<li>
-                     					我是论坛帖子标题最多显示...
+                     					<a href="">我是论坛帖子标题最多显示...</a>
                      				</li>
                      				<li>
-                     					我是论坛帖子标题最多显示...
+                     					<a href="">我是论坛帖子标题最多显示...</a>
                      				</li>
                      			</ul>
                      		</div>
                      	</div>
-                     	<div class="gz_cont">
-                     		<div class="gzlists_one">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-                     		<div class="four_hot">
-                     			<ul>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     			</ul>
-                     		</div>
-                     	</div>
-                     	<div class="gz_cont">
-                     		<div class="gzlists_one">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-                     		<div class="four_hot">
-                     			<ul>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     			</ul>
-                     		</div>
-                     	</div>
-                     	<div class="gz_cont">
-                     		<div class="gzlists_one">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-                     		<div class="four_hot">
-                     			<ul>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     				<li>
-                     					我是论坛帖子标题最多显示...
-                     				</li>
-                     			</ul>
-                     		</div>
-                     	</div>
+
+
 
 
                      </div>
@@ -402,20 +335,6 @@
                 });
 
             },
-            getAllguanzhu:function (){ //获取所有关注对象
-                var datas = {
-                    type:3,
-                }
-                $.ajax({
-                    type: 'post',
-                    url: '/users/followapi',
-                    data: datas,
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data,'212121');
-                    }
-                });
-            },
             alltiezi:[],
             maxnum:0,
             getAllmytiezi:function (){
@@ -520,7 +439,7 @@
                     });
             }
         });
-		wvm.getAllguanzhu();
+		//wvm.getAllguanzhu();
 		wvm.getAllmytiezi();//获取我发布的帖子
         //wvm.getmywenda();//获取我所有的问答
         //wvm.getguanzhuData();//获取所有关注对象
