@@ -31,20 +31,21 @@
                 <span>{askdata.user.username}</span>
                 <i class="layui-icon">&#xe68d;</i>
                 <span>{askdata.publish_date.replace(/\..*/,'')}</span>
-                <abbr style="float: right;">
+                <abbr style="float: right;" ms-attr-class="askdata.isthumbup == 1?'isthumb':''" ms-attr-tid="askdata.id"
+                      ms-click="isthumbup(this)" ms-attr-thumb="askdata.isthumbup">
                     <i class="layui-icon">&#xe6c6;</i>
                     <span>{askdata.thumbup}</span>
                 </abbr>
             </p>
-            <p>{askdata.content|safe}</p>
+            <p>{askdata.content|html}</p>
         </div>
 
         <div class="pinglunkk" style="margin-top:20px;">
-                <h4 style="margin-bottom:10px;">评论</h4>
-            <div class="fuwenben" >
+            <h4 style="margin-bottom:10px;">评论</h4>
+            <div class="fuwenben">
                 <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
                 <p style="margin-top: 15px;">
-                    <span id="qxpl" >取消评论</span>
+                    <span id="qxpl">取消评论</span>
                     {% if request.user.is_active %}
                         <a href="javascript:;" ms-click="isPost(this)"><span class="same">评论</span></a>
                     {% else %}
@@ -55,10 +56,10 @@
         </div>
         <div class="plbox">
             <div class="plhead">
-                <span class="fl">评论&nbsp;(999)</span>
-                <select name="dzpx" id="dzpx" class="fr">
-                    <option value="dz">点赞排序</option>
-                    <option value="time">时间排序</option>
+                <span class="fl">评论&nbsp;({askdata.commentnum})</span>
+                <select name="dzpx" id="dzpx" class="fr" ms-click="plpaixu(this)">
+                    <option value="dz" orderby="1">时间排序</option>
+                    <option value="time" orderby="2">点赞排序</option>
                 </select>
             </div>
             <ul class="plinfobox">
@@ -72,7 +73,8 @@
                                 <p>
                                     {as.comment.replace(/(<\p>)/,'')|html}
                                 </p>
-                                <span><i class="layui-icon">&#xe6c6;</i>&nbsp;{as.thumbup}</span>
+                                <span ms-attr-class="as.isthumbup==1?'isthumb':''" ms-attr-commentid="as.id"
+                                      ms-click="isthumbup(this)" ms-attr-thumb="as.isthumbup"><i class="layui-icon">&#xe6c6;</i>&nbsp;{as.thumbup}</span>
                             </div>
                             <p class="isShow" isShow="false">
                                 <span><i class="iconfont">&#xe665;</i><span>点击显示更多</span> </span>
@@ -85,54 +87,59 @@
     </div>
     <div class="hzwdrights">
         <div class="metry">
-            <a href=""><img src="{% static  "img/340.png" %}"></a>
+            {% if request.user.is_active %}
+                <a href="/taolun/topost/"><img src="{% static  "img/340.png" %}"></a>
+            {% else %}
+                <a href="/login"><img src="{% static  "img/340.png" %}"></a>
+            {% endif %}
         </div>
         <div class="szzhuanjia">
             <h3><abbr>热门问答推荐</abbr> <a href="###">更多>></a></h3>
-            <div class="hotwdtuijian">
-                <ul>
-                    <li>
-                        <a href="###">话题标签话题标签话题标签话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题标签话题标签话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题话题标签话题标签话题标签话题标签标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题话题标签话题标签标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题话题标签标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                    <li>
-                        <a href="###">话题标签</a>
-                        <abbr>999个问答</abbr>
-                    </li>
-                </ul>
-            </div>
+{#            <div class="hotwdtuijian">#}
+{#                <ul>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签话题标签话题标签话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签话题标签话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题话题标签话题标签话题标签话题标签标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题话题标签话题标签标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题话题标签标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <a href="###">话题标签</a>#}
+{#                        <abbr>999个问答</abbr>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+            {% include "mod_hotwenda.html" %}
         </div>
         <div class="szzhuanjia">
             <h3><abbr>相关问答</abbr> <a href="###">更多>></a></h3>
@@ -181,12 +188,13 @@
     var vm_hzwdinfo = avalon.define({
         $id: 'hzwdinfo',
         pid: '',
-        askdata:[],
-        pldata:[],
+        askdata: [],
+        pldata: [],
+        orderby:1,
         init: function () {
             var qxpl = $('#qxpl');
             qxpl.click(function () {
-                layui.layedit.setContent(vm_hzwdinfo.ditsl,'欢迎留言评论~！');
+                layui.layedit.setContent(vm_hzwdinfo.ditsl, '欢迎留言评论~！');
             })
             layui.use('layedit', function () {
                 var layedit = layui.layedit;
@@ -196,55 +204,109 @@
                 }); //建立编辑器
             });
             vm_hzwdinfo.pid = JSON.stringify(location.href.match(/pid=\d+/)).match(/\d+/g)[0];
+            this.tidresh();
+            this.plresh();
+        },
+        plresh: function () {
             $.ajax({
-                url:root_Domain+'/taolun/posting/?pid='+ vm_hzwdinfo.pid,
-                type:'get',
-                dataType:'json',
-                success:function(ajax){
-                    vm_hzwdinfo.askdata = ajax.data;
-                    console.log(ajax,111111);
-                },error:function(error){
-                    console.log(error);
-                }
-            });
-            $.ajax({
-                url:root_Domain+'/taolun/comment/?pid='+vm_hzwdinfo.pid,
-                type:'get',
+                url: root_Domain + '/taolun/comment/?pid=' + vm_hzwdinfo.pid+'&orderby=1',
+                type: 'get',
                 dataType: 'json',
-                success:function(ajax){
+                success: function (ajax) {
                     vm_hzwdinfo.pldata = ajax.data;
-                    console.log(vm_hzwdinfo.pldata,2222222222222222)
-                },error:function(error){
+                }, error: function (error) {
                     console.log(error);
                 }
             })
-            this.plisShow();
         },
-        isthump: function (ev) {
+        tidresh: function () {
+            $.ajax({
+                url: root_Domain + '/taolun/posting/?pid=' + vm_hzwdinfo.pid,
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm_hzwdinfo.askdata = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
+        },
+        plpaixu:function(ev){
+            if($('.plhead>span').html().match(/\d/g)<1){
+               return false;
+            }
             var _this = ev;
+            var orderby = $(_this).find('option:selected').attr('orderby');
+            if(vm_hzwdinfo.orderby==orderby){
+                return false;
+            }else{
+                vm_hzwdinfo.orderby = orderby;
+                $.ajax({
+                    url:root_Domain+'/taolun/comment/?pid='+vm_hzwdinfo.pid+'&orderby='+vm_hzwdinfo.orderby,
+                    type:'get',
+                    dataType:'json',
+                    success:function(ajax){
+                        vm_hzwdinfo.pldata = ajax.data;
+                    },error:function(error){
+                        console.log(error);
+                    }
+                })
+            }
+        },
+        isthumbup: function (ev) {
+            var _this = ev;
+            var type = '';
+            var id = '';
+            if ($(_this).attr('thumb') == 1) {
+                layer.msg("已点赞请勿重复点赞！！", {'time': 1000});
+                return false;
+            }
+            if ($(_this).attr('tid')) {
+                type = 'article';
+                id = $(_this).attr('tid');
+            } else {
+                type = 'comment';
+                id = $(_this).attr('commentid');
+            }
+            $.ajax({
+                url: root_Domain + '/taolun/thumbup/?type=' + type + '&id=' + id,
+                type: 'get',
+                dataType: 'text',
+                success: function (ajax) {
+                    layer.msg(ajax, {'time': 1000});
+                    setTimeout(function () {
+                        vm_hzwdinfo.tidresh();
+                        vm_hzwdinfo.plresh();
+                    }, 1000)
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
         },
         isPost: function (ev) {
             var _this = ev;
             var value = layui.layedit.getContent(vm_hzwdinfo.ditsl);
-            console.log(value,898989898)
-            if(value!='欢迎留言评论~！'){
+            if (value != '欢迎留言评论~！') {
                 $.ajax({
-                    url:root_Domain+'/taolun/comment/',
-                    type:'post',
-                    data:{
+                    url: root_Domain + '/taolun/comment/',
+                    type: 'post',
+                    data: {
                         'articles_id': vm_hzwdinfo.pid,
-                        'comment':value
+                        'comment': value
                     },
-                    success:function(ajax){
-                        layer.msg(ajax,{'time':1000});
-                    },error:function(error){
+                    success: function (ajax) {
+                        layer.msg(ajax, {'time': 1000});
+                        setTimeout(function(){
+                            layui.layedit.setContent(vm_hzwdinfo.ditsl,'欢迎留言评论~！');
+                            vm_hzwdinfo.plresh();
+                        },1500)
+                    }, error: function (error) {
                         layer.msg(error);
                     }
                 })
-            }else{
-                layer.msg('请输入评论内容！！',{'time':1000});
+            } else {
+                layer.msg('请输入评论内容！！', {'time': 1000});
             }
-            console.log(layui.layedit.getText(vm_hzwdinfo.ditsl),66666666666666);
         },
         plisShow: function () {
             var allinfobox = $('.plinfobox>div>p');
@@ -262,9 +324,8 @@
                         $(this).attr('isShow', 'false');
                     }
                 });
-                console.log(allinfobox.eq(i).html(),55555555555555555555)
-                if (allinfobox.eq(i).html().trim('').match(/[\u4e00-\u9fa5]/g).length > 100) {
-                    console.log(66666666666666666666666666666)
+                console.log(allinfobox.eq(i).html().trim('').match(/([\u4e00-\u9fa5]|\w)/g))
+                if (allinfobox.eq(i).html().trim('').match(/([\u4e00-\u9fa5]|\w)/g).length > 240) {
                     nowLi.show();
                 }
             }

@@ -257,7 +257,7 @@ body{ background: #f9f9f9; }
 .hzwdrights{float: right; width: 340px; min-height: 200px; }
 .hzwdlefts ul{ overflow: hidden; width: 100%; padding-left: 15px; }
 
-.hzwdlefts ul li{ float: left; cursor: pointer; margin-right: 15px; margin-bottom: 10px; border:1px solid #fff; padding: 0 5px; border-radius: 3px; }
+.hzwdlefts ul li{ float: left; cursor: pointer; margin-right: 15px; margin-bottom: 10px; border:1px solid #fff;  border-radius: 3px; }
 .hzwdlefts ul li.curreswd{ border-radius: 8px; color: #ff44ad; border:1px solid #ff44ad; }
 
 
@@ -299,7 +299,7 @@ body{ background: #f9f9f9; }
 
 
 .tjyylists{width: 100%; overflow: hidden; margin-bottom: 35px;}
-.leftyytj{ width: 400px; overflow: hidden; float: left; }
+.leftyytj{ width: 485px; overflow: hidden; float: left; }
 .leftyytj p{ margin:10px 0; }
 .leftyytj h3 abbr{ background-color: #ff44ad; color: #fff; padding: 5px 15px; height: 30px; line-height: 30px; border-radius: 10px; margin-left: 20px; }
 
@@ -395,15 +395,21 @@ body{ background: #f9f9f9; }
 
 
 
-.remenhuaties{ width: 320px; overflow: hidden; min-height: 200px; background: #fff; border-radius: 5px; margin-top: 20px; padding: 10px; }
+.remenhuaties{ width: 320px; overflow: hidden; min-height: 300px; background: #fff; border-radius: 5px; margin-top: 20px; padding: 10px; }
 .remenhuaties h3{ font-size: 24px; padding: 15px 0; border-bottom: 1px solid #f1f1f1; }
 .remenhuaties h3 a{ float: right; margin-right: 15px; text-decoration: none; font-size: 14px; color:#333; }
 .remenhuaties ul{ width: 100%; overflow: hidden; padding: 10px; }
 .remenhuaties ul li{ float: left; width: 100%; margin-bottom: 20px; background: url('../img/right.png') no-repeat 273px  center; }
 .remenhuaties ul li a{ font-size: 14px; text-decoration: none; color: #666; }
 .remenhuaties ul li a:hover{ color: #FF44AD;}
+.hosadress>ul:nth-of-type(1){position:absolute;top:24px;padding:0;padding-top:10px;max-width:30%;max-height:200px;overflow:auto;background-color:#fff;border-radius:5px;box-shadow:0px 0px 2px 2px rgba(10,3,5,0.3);display:none;}
+.hosadress>ul:nth-of-type(1)>li{text-align:center;height:24px;width:100%;height: 30px;line-height:30px;}
+.hosadress>ul li:hover{background-color:#fff;color:#fff;background-color:#F94479;}
+.hosadress>ul:nth-of-type(2){position:absolute;display:none;background-color:grey;left:30%;width:60%;top:24px;padding:0;max-height:200px;overflow: auto;}
+.hosadress>ul:nth-of-type(2)>li{floa:left;padding:5px 10px;margin-right:10px;max-width:30%;text-align:center;}
+
 .xuanfugh:hover{ color:#FF44AD;  }
-.beirenyhudain { width:100%; overflow: hidden;  }
+.beirenyhudain { width:100%; overflow: hidden;}
 .beirencont { width: 1200px; overflow: hidden; min-height: 200px; margin:0 auto; }
 .bairenlieft{ width: 848px; overflow: hidden; float: left; min-height: 300px; }
 .leftpartone{width: 100%; overflow: hidden;}
@@ -516,7 +522,7 @@ color: #666; font-size: 12px; }
 .hzwdcontslistes p{ line-height: 30px; padding: 5px 15px; }
 .listyisheng{ width: 100%; overflow: hidden; }
 .listyisheng ul{ overflow: hidden; width: 100%; padding: 15px; }
-.listyisheng ul li{width: 21%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
+.listyisheng ul li{width: 22%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
 .listyisheng ul li img{ width: 100%; }
 .listyisheng ul li p{ width: 100%; font-size: 16px; }
 .listyisheng ul li p abbr{ font-size: 12px; }
@@ -527,7 +533,7 @@ color: #666; font-size: 12px; }
 .curposition{ margin: 20px 0; }
 .arctiacalbody{ width: 100%; overflow: hidden; margin: 20px 0;}
 .leftarcal{width: 840px; float: left; min-height: 200px; background: #fff;}
-.rightpart{ width: 350px; float: right; min-height: 200px; }
+.rightpart{ width: 350px; float: right; min-height: 200px; position: relative; }
 
 .content{ overflow: hidden; width: 100%; margin-bottom:20px;}
 
@@ -612,7 +618,7 @@ color: #666; font-size: 12px; }
 .left_bottom_artctal_anather ul li{ margin-bottom: 20px; padding-left: 25px;}
 .suoyin{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
 /*.suoyin img{ width: 100%; }*/
-
+.suoyins{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
 .curr_address{ overflow: hidden; width: 1200px; margin: 20px auto; }
 .artcalAll{ width: 1200px; margin: 0 auto; overflow: hidden; min-height: 200px;}
 
@@ -636,7 +642,7 @@ color: #666; font-size: 12px; }
 .al_taolun h4{ height: 35px; line-height: 35px; border-bottom: 1px solid #f1f1f1; width: 100%;}
 .al_taolun h4 abbr{ border-bottom: 1px solid #FF44AD; width: 100px; float: left; display: block; height: 35px; line-height: 35px;text-align: center;}
 .al_taolun ul{ overflow: hidden; width: 100%; padding: 15px;}
-.al_taolun ul li{ width: 100%; height: 40px; line-height: 40px;}
+.al_taolun ul li{ width: 100%; }
 
 .al_taolun ul li abbr{ float: right; font-size: 12px; width: 90px;}
 

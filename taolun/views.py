@@ -128,7 +128,8 @@ class PostingList(views.View):
              "commentnum": i.posting_comment.all().count(),
              "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
              "thumbup": i.thumup_articles.all().count(),
-             "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id, posting_id=i.id)) else 1
+             "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id,
+                                                                                             posting_id=i.id)) else 1
              } for i in curuent_page
         ]
         return HttpResponse(json.dumps({"data": res, "maxnum": len(postList)}))
@@ -152,7 +153,8 @@ class Posting(views.View):
                      "head": str(postingObj.user.info.user_avatar)},
             "commentnum": postingObj.posting_comment.all().count(),
             "thumbup": postingObj.thumup_articles.all().count(),
-            "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id, posting_id=postingId)) else 1
+            "isthumbup": 0 if not (request.user.id and models.ThumbUpArticle.objects.filter(user_id=request.user.id,
+                                                                                            posting_id=postingId)) else 1
         }
         return HttpResponse(json.dumps({"data": artData}))
 
@@ -180,10 +182,11 @@ class Comment(views.View):
         postingObj = get_object_or_404(models.Posting, pk=postingId)
         orderby = request.GET.get('orderby')
         if orderby == '1':
-            commentData = postingObj.posting_comment.all().orderby('publish_date')
+            commentData = postingObj.posting_comment.all().order_by('-publish_date')
 
         else:
-            commentData = postingObj.posting_comment.all().annotate(count=Count('thumup_comment'))
+            commentData = postingObj.posting_comment.all().annotate(count=Count('thumup_comment')).order_by("-count",
+                                                                                                            "-publish_date")
 
         resComment = [
             {
@@ -223,9 +226,18 @@ class HotTopics(views.View):
 class HotArticles(views.View):
     def get(self, request, *args, **kwargs):
         num = request.GET.get("num", 10)
-        countList = models.Posting.objects.values('id', 'title').annotate(count=Count('posting_comment__id')).order_by(
+        countList = models.Posting.objects.all().annotate(count=Count('posting_comment__id')).order_by(
             '-count')[:int(num)]
-        return HttpResponse(json.dumps({"data": list(countList)}))
+
+        res = [
+            {"id": i.id,
+             "title": i.title,
+             "read": i.read,
+             "commentnum": i.posting_comment.all().count(),
+             "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
+             } for i in countList
+        ]
+        return HttpResponse(json.dumps({"data": res}))
 
 
 # 文章点赞
