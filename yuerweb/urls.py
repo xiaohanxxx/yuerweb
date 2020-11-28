@@ -39,6 +39,7 @@ urlpatterns = [
 
     url(r'baike/', include('baike.urls')),
     url(r'users/', include('users.urls')),
+    url(r'webmanage/', include('webmanage.urls')),
 
     re_path(r'^media/(?P<path>.*)', serve, {"document_root": settings.MEDIA_ROOT}),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),  # 富文本路由
