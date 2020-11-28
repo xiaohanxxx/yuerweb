@@ -36,16 +36,16 @@
 	             	<div class="navs">
 	             		<ul>
 	             			<li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
-	             				我的论坛（999）
+	             				我的论坛（{allmaxnum}）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==2"  ms-click="getBox(2)">
-	             				我的问答（999）
+	             				我的问答（{allmywenda}）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==3"  ms-click="getBox(3)">
-	             				关注（999）
+	             				关注（{guanzhuNum}）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==4"  ms-click="getBox(4)">
-	             				粉丝（999）
+	             				粉丝（{allfensi}）
 	             			</li>
 	             		</ul>
 	             	</div>
@@ -89,7 +89,7 @@
                      			<img src="{% static 'img/tuxiang.jpg' %}">
                      			<p style="font-size: 16px; margin-bottom: 15px;">{el.user}</p>
 {#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
-                     			<abbr ms-click="guanzhuhim(el)" style="margin-left: 3px; cursor: pointer; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<abbr ms-click="overguanzhuhim(el)" style="margin-left: 3px; cursor: pointer; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">已关注</abbr>
                      		</div>
                      		<div class="four_hot">
                      			<ul>
@@ -118,76 +118,20 @@
                      <div class="bott_box" ms-if="aa == 4">
                      	<div class="gz_cont">
 
-                     		<div class="gzlists">
+                     		<div class="gzlists" ms-repeat="data_list">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
+                     			<p style="font-size: 16px; margin-bottom: 15px;">{el.username}</p>
+                     			<abbr ms-if="el.mutualfollower == 1" style="margin-left: 3px; cursor: pointer; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;" ms-click="guanzhuhim(el,$index)">关注</abbr><!--粉丝-->
+                     			<abbr ms-if="el.mutualfollower == 0" style="margin-left: 3px; cursor: pointer; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;" ms-click="overguanzhuhim(el,$index)">相互关注</abbr> <!--//相互关注-->
                      		</div>
 
 
 
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>
-                     		</div>
-
-
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>
-{#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
-                     			<abbr style="margin-left: 3px; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
+{#                     		<div class="gzlists">#}
+{#                     			<img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>#}
+{#                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>#}
+{#                     		</div>#}
 
 
                      	</div>
@@ -337,6 +281,7 @@
             },
             alltiezi:[],
             maxnum:0,
+            allmaxnum:0,
             getAllmytiezi:function (){
               var datas = {
                     num:10,
@@ -350,6 +295,8 @@
                     success: function (data) {
                         wvm.alltiezi = data.data;
                         wvm.maxnum = data.maxnum;
+                        wvm.allmaxnum = data.maxnum;
+                        wvm.getmywenda();
                         wvm.gontopage(wvm.maxnum);
                     }
                 });
@@ -401,6 +348,7 @@
             });
             },
             mywenda:[],
+            allmywenda:0,
             getmywenda:function (){//获取我所有的问答
                       var datas = {
                             num:10,
@@ -414,12 +362,15 @@
                         success: function (data) {
                             wvm.mywenda = data.data;
                             wvm.maxnum = data.maxnum;
+                            wvm.allmywenda = data.maxnum;
+                            wvm.getguanzhuData();
                             wvm.gontopage(wvm.maxnum);
                             console.log(wvm.maxnum,'wvm.maxnumwvm.maxnumwvm.maxnum')
                         }
                     });
             },
             guanzhus:[],
+            guanzhuNum:0,
             getguanzhuData:function (){
                 var datas = {
                             type:2
@@ -432,17 +383,17 @@
                         success: function (data) {
                             console.log(data,'9999999');
                             wvm.guanzhus = data.data_list;
+                            wvm.guanzhuNum = data.data_list.length;
                             {#wvm.maxnum = data.maxnum;#}
                             {#console.log(data,'345234234')#}
                             {#wvm.gontopage(wvm.maxnum);#}
                         }
                     });
             },
-            guanzhuhim:function (res){
-                console.log(res);
-                 var datas = {
+            guanzhuhim:function (data,index){
+                  var datas = {
                             type:0,
-                            Quser_id:res.userid
+                            Quser_id:data.userid
                       }
                     $.ajax({
                         type: 'post',
@@ -450,19 +401,18 @@
                         data: datas,
                         dataType: "json",
                         success: function (data) {
-                            console.log(data,'10100');
-                            if (data.code == 200){
-                                layer.msg('关注成功');
-                                return;
-                            }else{
-                                layer.msg('关注失败');
-                            }
+                            //关注接口
+                            console.log(data,'789456');
+                            layer.msg('关注成功');
+                            wvm.getAllfensi();
+                            wvm.getguanzhuData();
+                            wvm.data_list[index].mutualfollower = 1;
                         }
                     });
             },
-            getAllfensi:function (){
-               var datas = {
-                            type:0,
+            overguanzhuhim:function (res,index){//取消关注
+                 var datas = {
+                            type:1,
                             Quser_id:res.userid
                       }
                     $.ajax({
@@ -471,19 +421,37 @@
                         data: datas,
                         dataType: "json",
                         success: function (data) {
+                            //后端添加一个取消关注接口
+                            console.log(data);
+                            layer.msg('取消关注成功');
+                            wvm.getAllfensi();
+                            wvm.getguanzhuData();
+                            wvm.data_list[index].mutualfollower = 0;
+                        }
+                    });
+            },
+            data_list:[],
+            allfensi:0,
+            getAllfensi:function (){
+               var datas = {
+                            type:3
+                      }
+                    $.ajax({
+                        type: 'post',
+                        url: '/users/followapi',
+                        data: datas,
+                        dataType: "json",
+                        success: function (data) {
                             console.log(data,'10100');
-                            if (data.code == 200){
-                                layer.msg('关注成功');
-                                return;
-                            }else{
-                                layer.msg('关注失败');
-                            }
+                            wvm.data_list = data.data_list;
+                            wvm.allfensi = data.data_list.length;
                         }
                     });
             }
         });
 		//wvm.getAllguanzhu();
 		wvm.getAllmytiezi();//获取我发布的帖子
+        wvm.getAllfensi();
         //wvm.getmywenda();//获取我所有的问答
         //wvm.getguanzhuData();//获取所有关注对象
         wvm.gontopage(wvm.maxnum);
