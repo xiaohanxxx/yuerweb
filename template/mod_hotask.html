@@ -1,0 +1,33 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="szzhuanjia rmwdtj" ms-controller="hotask">
+    <h3><abbr>热门问答推荐</abbr> <a href="/taolun/postindex/?tid=1">更多>></a></h3>
+    <div class="hotwdtuijian">
+        <ul>
+            <li ms-repeat-as="hotaskdata">
+                <a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title}</a>
+                <abbr>{as.commentnum}个问答</abbr>
+            </li>
+        </ul>
+    </div>
+</div>
+<script>
+    var vm_hotask = avalon.define({
+        $id:'hotask',
+        hotaskdata:[],
+        init:function(){
+            $.ajax({
+                url:root_Domain+'/taolun/hotarticles/?num=10',
+                type:'get',
+                dataType:'json',
+                success:function(ajax){
+                    vm_hotask.hotaskdata = ajax.data;
+                    console.log(ajax,656565656556)
+                },error:function(error){
+                    console.log(error);
+                }
+            })
+        }
+    })
+    vm_hotask.init();
+</script>

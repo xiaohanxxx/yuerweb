@@ -1,0 +1,33 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="szzhuanjia" ms-controller="bklm">
+    <h3><abbr>推荐百科</abbr> <a href="/baike/baike_list">更多>></a></h3>
+    <div class="hotwdtuijian">
+        <ol>
+            <li ms-repeat-as="menudata">
+                <a ms-attr-href="/baike/article?aid={as.id}"><i class="layui-icon" style="color: #009CE7; margin-right: 10px;">&#xe615;</i>{as.title.substr(0,20)}..</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<script>
+    var vm_bklm = avalon.define({
+        $id:'bklm',
+        menudata:[],
+        init:function(){
+            $.ajax({
+                url:root_Domain+'/baike/api/articlecommend',
+                type:'post',
+                data:{
+                    'count':10,//百科推荐条数
+                },
+                success:function(ajax){
+                    vm_bklm.menudata = ajax.data;
+                },error:function (error){
+                    console.log(error);
+                }
+            })
+        },
+    })
+    vm_bklm.init();
+</script>

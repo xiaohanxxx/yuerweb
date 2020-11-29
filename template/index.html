@@ -11,6 +11,7 @@
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
     <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
@@ -183,24 +184,7 @@
 
 
         <!--  生殖医院推荐 -->
-
-        <div class="szdoctorhot">
-            <div class="doctorhottitle">
-                生殖医院推荐 <abbr><a href="###" style="text-decoration: none; color: #666;">更多>></a></abbr>
-            </div>
-            <div class="cityhologe">
-                <ul>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">武汉大学人民医院</a><abbr>></abbr></li>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">武汉人大人民医院</a><abbr>></abbr></li>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                </ul>
-            </div>
-        </div>
-
+        {% include 'mod_hospital.html' %}
     </div>
 </div>
 
@@ -563,47 +547,7 @@
                                    <a href="###">孕前期</a>
                                </div>
                            </div>
-                           <div class="fourpartg">
-                               <h3>备孕</h3>
-                               <div class="yunqq">
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                               </div>
-                           </div>
-                           <div class="fourpartg">
-                               <h3>备孕</h3>
-                               <div class="yunqq">
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                                   <a href="###">孕前期</a>
-                               </div>
+
                            </div> -->
 
 
@@ -615,30 +559,7 @@
 
 
         <!--  热门知识推荐 -->
-
-        <div class="szdoctorhot">
-            <div class="doctorhottitle">
-                热门知识
-                <abbr>
-                    <a href="###"
-                       style="text-decoration: none; color: #fff; background: #ff44ad; border-radius: 3px; padding: 3px 8px;">换一批</a>
-                </abbr>
-            </div>
-            <div class="cityhologe">
-                <!-- <img src="{% static 'img/04.jpg' %}" style="margin-left: 20px;"> -->
-                <ul>
-                    <li><a href="">1.我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">2.武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">3.武汉大学人民医院</a><abbr>></abbr></li>
-                    <li><a href="">4.我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">5.武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">6.武汉人大人民医院</a><abbr>></abbr></li>
-                    <li><a href="">7.我是医院名称</a><abbr>></abbr></li>
-                </ul>
-            </div>
-        </div>
-
-    </div>
+        {% include 'mod_hotwenda.html' %}
 </div>
 
 

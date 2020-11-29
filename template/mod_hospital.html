@@ -3,63 +3,68 @@
 <div class="remenhuaties" ms-controller="hothospital">
     <h3>医院推荐 <a href="/hospital/">更多>></a></h3>
     <div class="hosadress">
-        <p><i class="iconfont">&#xe61f;</i><span class="diqu">13131</span></p>
+        <p><i class="iconfont">&#xe61f;</i><span class="diqu" style="color:red;">武汉</span></p>
         <ul class="diqubox">
             <li ms-repeat-its="diqudata.child" ms-click="getSon(this,$index)">{its.name}</li>
         </ul>
-        <ul >
+        <ul>
             <li ms-repeat-as="diqudata.child[index].child" ms-click="diquSelect(as.id,this)">{as.name}</li>
         </ul>
     </div>
     <ul>
-        <li>
-            <a href="">我是医院名称</a>
+        <li ms-repeat-lp="hositaldata">
+            <a ms-attr-href="/hospital/hindex/?item={lp.id}">{lp.title.substr(0,20)}...</a>
         </li>
     </ul>
 </div>
 <script>
     var vm_hothospital = avalon.define({
         $id: 'hothospital',
-        diqudata:[],
-        index:0,
-        hositaldata:[],
-        diquid:7,
+        diqudata: [],
+        index: 0,
+        hositaldata: [],
+        diquid: 7,//城市id
         init: function () {
-            $('.hosadress>p').click(function(){
+            $('.hosadress>p').click(function () {
                 $('.diqubox').show();
-            })
+            });
             $.ajax({
-                url:root_Domain+'/hospital/areas/',
-                type:'get',
-                dataType:'json',
-                success:function(ajax){
-                    vm_hothospital.diqudata = ajax.data[0];
-                    console.log(vm_hothospital.diqudata,6666666)
-                },error:function(error){
-                    console.log(error);
-                }
-            })
-        },
-        gethosdata:function(){
-            $.ajax({
-                url:root_Domain+'/hospital/hospitallist/?cityarea='+vm_hothospital.diquid+'&hospitallv=3',
-                type:'get',
+                url: root_Domain + '/hospital/areas/',
+                type: 'get',
                 dataType: 'json',
-                success:function(ajax){
+                success: function (ajax) {
+                    vm_hothospital.diqudata = ajax.data[0];//国内医院数据
+                    vm_hothospital.gethosdata();
+                    console.log(vm_hothospital.diqudata, 6666666)
+                }, error: function (error) {
+                    console.log(error);
+                }
+            });
+        },
+        gethosdata: function () {
+            $.ajax({
+                url: root_Domain + '/hospital/hospitallist/?cityarea=' + vm_hothospital.diquid + '&hospitallv=3',
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
                     vm_hothospital.hositaldata = ajax.data;
-                },error:function (error){
+                }, error: function (error) {
                     console.log(error);
                 }
             })
         },
-        getSon:function(ev,index){
+        getSon: function (ev, index) {
             var _this = ev;
             $(_this).parent().next().show();
             vm_hothospital.index = index;
-
         },
-        diquSelect:function(id,ev){
+        diquSelect: function (id, ev) {
             var _this = ev;
+            var value = $(_this).html();
+            $('.diqu').html(value);
+            $(_this).parent().hide();
+            $(_this).parent().prev().hide();
+            vm_hothospital.diquid = id;
             vm_hothospital.gethosdata();
         }
     })
