@@ -23,6 +23,16 @@
                 resData.push(comment[a])
             }
             return comment = resData;
+        },
+        snimgzsClass: function (data) {//data为数组
+            for (let i = 0; i < data.length; i++) {
+                if (data[i].content.indexOf('<img') != '-1') {
+                    var snimg = JSON.stringify(data[i].content.match(/src=".*\.(jpg|png)"/g)).match(/\/media\/.*\.(jpg|png)/);
+                    data[i].snimg = snimg[0];
+                } else {
+                    data[i].snimg = '/media/luntan/moren.jpg';
+                }
+            }
         }
     }
 })();

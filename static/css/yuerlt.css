@@ -230,13 +230,20 @@ div.box_byinfo:nth-child(even) {
     float: left;
     width: 176px;
 }
-
+.box_byinfo>a img{
+    width: 180px;
+    height: 100px;
+    border-radius: 8px;
+}
 .box_byinfo .byinfo_r {
     float: left;
     width: 192px;
     margin-left: 17px;
 }
-
+.byinfo_r>p a>img{
+    width: 50px;
+    height: 50px;
+}
 .byinfo_r .bytit > a {
     display: inline-block;
     height: 21px;
@@ -508,7 +515,10 @@ div.box_byinfo:nth-child(even) {
 .info_h {
     margin-bottom: 36px;
 }
-
+.info_h>div>p a>img{
+    width: 30px;
+    height: 30px;
+}
 .info_h > img {
     float: left;
     display: inline;
@@ -608,6 +618,7 @@ div.box_byinfo:nth-child(even) {
 .r_imgbox > a > img {
     width: 220px;
     height: 140px;
+    border-radius: 8px;
 }
 
 .r_imgbox > a > span {
@@ -738,7 +749,10 @@ div.box_byinfo:nth-child(even) {
     letter-spacing: 0px;
     color: #999;
 }
-
+.infolis-b > p a img{
+    width: 40px;
+    height: 40px;
+}
 .sgyer-lis {
     width: 659px;
     height: 166px;
@@ -1273,6 +1287,7 @@ body a:hover {
     max-width: 90px;
     height: 24px;
     padding-left: 12px;
+    text-align:center;
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 0px;
@@ -1417,9 +1432,6 @@ body a:hover {
     margin: 0 5px;
 }
 
-.plInpbox {
-    display: none;
-}
 
 .plInpbox .pl_head {
     height: 168px;
