@@ -306,15 +306,4 @@
     width: 50px;
     height: 50px;
 }
-.remenhuaties>div{
-    position:relative;
-    height: 24px;
-}
-.remenhuaties>div>p{
-    margin-top:10px;
-}
-.remenhuaties>div>p i{
-    font-size: 16px;
-    margin-right:5px;
-    color:red;
-}
+

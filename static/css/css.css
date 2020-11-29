@@ -272,11 +272,11 @@ body{ background: #f9f9f9; }
 .hzwdcontslist h4{ font-size: 16px; color: #333; margin-bottom: 5px;}
 .hzwdcontslist p{ color: #666; }
 .partwdone{ overflow: hidden; width: 100%; margin: 25px 0  70px 0; padding-left: 15px;}
-.doctorbox,.metry,.szzhuanjia{ overflow: hidden; width: 100%; }
+.doctorbox,.metry,.szzhuanjia{ overflow: hidden; width:100%;}
 .szzhuanjia h3{height: 53px; line-height: 53px; font-size: 16px; border-bottom:1px solid #666;}
 .szzhuanjia h3 a{float: right; font-size: 12px; margin-right: 10px; display: block; width: 60px; height: 53px; line-height: 53px; }
 .szzhuanjia h3 abbr{ height: 53px; line-height: 53px; display: block; width: 102px;float: left; border-bottom: 1px solid #ff44ad; }
-
+.rmwdtj{width:320px;padding:5px 10px;background-color:#fff;border-radius: 8px;margin-top:20px;}
 .doctorbox{width: 100%; overflow: hidden;}
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
 .hotwdtuijian{ background: #fff; padding: 15px; overflow: hidden; width: 93%; }
@@ -284,7 +284,7 @@ body{ background: #f9f9f9; }
 .hotwdtuijian ul li{ margin:20px 0;font-size: 12px;  }
 .hotwdtuijian ul li a:hover{ color: #ff44ad; }
 .hotwdtuijian ul li abbr{ float: right;font-size: 12px; }
-
+.szyytj{width:320px;background-color:#fff;border-radius: 8px;margin-top:20px;padding:5px 10px;}
 
 .hotwdtuijianes ol li{ margin:10px 20px 10px 0;font-size: 12px; float: left;  }
 .hotwdtuijianes ol li a:hover{ color: #ff44ad; }
@@ -394,11 +394,11 @@ body{ background: #f9f9f9; }
 .remenhuati h4{ text-decoration: none; }
 
 
-
-.remenhuaties{ width: 320px; overflow: hidden; min-height: 300px; background: #fff; border-radius: 5px; margin-top: 20px; padding: 10px; }
+.sgyecontanather .remenhuaties{width:350px;transform: translateX(8px);}
+.remenhuaties{ width: 320px; overflow: auto; height: 518px; background: #fff; border-radius: 5px; margin-top: 20px; padding: 10px; }
 .remenhuaties h3{ font-size: 24px; padding: 15px 0; border-bottom: 1px solid #f1f1f1; }
 .remenhuaties h3 a{ float: right; margin-right: 15px; text-decoration: none; font-size: 14px; color:#333; }
-.remenhuaties ul{ width: 100%; overflow: hidden; padding: 10px; }
+.remenhuaties ul{ width: 92%; overflow: hidden; padding: 10px; }
 .remenhuaties ul li{ float: left; width: 100%; margin-bottom: 20px; background: url('../img/right.png') no-repeat 273px  center; }
 .remenhuaties ul li a{ font-size: 14px; text-decoration: none; color: #666; }
 .remenhuaties ul li a:hover{ color: #FF44AD;}
@@ -407,6 +407,9 @@ body{ background: #f9f9f9; }
 .hosadress>ul li:hover{background-color:#fff;color:#fff;background-color:#F94479;}
 .hosadress>ul:nth-of-type(2){position:absolute;display:none;background-color:grey;left:30%;width:60%;top:24px;padding:0;max-height:200px;overflow: auto;}
 .hosadress>ul:nth-of-type(2)>li{floa:left;padding:5px 10px;margin-right:10px;max-width:30%;text-align:center;}
+.remenhuaties>div{position:relative;height: 24px;}
+.remenhuaties>div>p{margin-top:10px;}
+.remenhuaties>div>p i{font-size: 16px;margin-right:5px;color:red;}
 
 .xuanfugh:hover{ color:#FF44AD;  }
 .beirenyhudain { width:100%; overflow: hidden;}
@@ -751,7 +754,7 @@ color: #666; font-size: 12px; }
 
 .listsqiehuanwh,.listqha{width: 100%; overflow: hidden;}
 .listqha{ margin-bottom: 15px; }
-.listqha img{float: left; margin-right: 10px;}
+.listqha img{float: left; margin-right: 10px;width:123px;height:76px;}
 .hzwdleftse ul{ overflow: hidden; width: 100%; margin-top: 15px; }
 .allList{color: #ff44ad; border-bottom: 1px solid #ff44ad;}
 .hzwdleftse ul li{float: left; margin: 0 20px; cursor: pointer;}

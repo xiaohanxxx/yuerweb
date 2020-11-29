@@ -1,0 +1,59 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="szzhuanjia szyytj" ms-controller="diquhospital">
+    <h3><abbr>生殖医院推荐</abbr> <a href="/hospital/">更多>></a></h3>
+    <div class="hotwdtuijiana">
+        <div class="qiehuanhw">
+            <p ms-attr-class="diquid==its.id?'curraddw':''" ms-repeat-its="diqudata" ms-click="goChange(its.id)">{its.name}</p>
+        </div>
+    </div>
+    <div class="listsqiehuanwh">
+        <div class="listqha" ms-repeat-item="hosdata">
+            <a ms-attr-href="/hospital/hindex/?item={item.id}">
+                <img ms-attr-src="{item.thumb}">
+                <h4 style="font-size: 14px;font-weight:bold;">{item.title}</h4>
+                <p>地址：{item.address.substr(0,20)}</p>
+            </a>
+        </div>
+    </div>
+</div>
+<script>
+    var vm_diquhospital = avalon.define({
+        $id:'diquhospital',
+        diquid:'',
+        diqudata:[],
+        hosdata:[],
+        init:function(){
+            $.ajax({
+                url:root_Domain+'/hospital/areas/',
+                type:'get',
+                dataType:'json',
+                success:function(ajax){
+                    vm_diquhospital.diqudata = ajax.data;
+                    vm_diquhospital.diquid = ajax.data[0].id;
+                    vm_diquhospital.gethosdata();
+                },error:function(error){
+                    console.log(error)
+                }
+            })
+        },
+        goChange:function(ev){
+            vm_diquhospital.diquid = ev;
+            vm_diquhospital.gethosdata();
+        },
+        gethosdata:function(){
+          $.ajax({
+              url:root_Domain+'/hospital/hospitallist/?worldarea='+vm_diquhospital.diquid+'&hospitallv=3',
+              type:'get',
+              dataType: 'json',
+              success:function(ajax){
+                  vm_diquhospital.hosdata = ajax.data.splice(0,10);
+                  console.log(vm_diquhospital.hosdata,595959595959595)
+              },error:function(error){
+                  console.log(error);
+              }
+          })
+        },
+    })
+    vm_diquhospital.init();
+</script>

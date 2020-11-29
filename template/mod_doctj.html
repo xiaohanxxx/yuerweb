@@ -1,0 +1,21 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="szzhuanjia" ms-controller="doctj">
+    <h3><abbr>生殖专家推荐</abbr> <a href="###">更多>></a></h3>
+    <div class="doctorbox">
+        <img src="{% static  "img/doctor.png" %}" style="float: left; margin: 20px 15px 0 0;">
+        <h4 style="margin-top: 20px;">医生名称 <abbr>医生职位</abbr></h4>
+        <p style=" font-size: 14px;">所在医院名称</p>
+        <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
+        <a href="###">向他提问</a>
+    </div>
+</div>
+<script>
+    var vm_doctj=avalon.define({
+        $id:'doctj',
+        init:function(){
+
+        }
+    })
+    vm_doctj.init();
+</script>
