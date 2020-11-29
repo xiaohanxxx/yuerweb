@@ -82,8 +82,6 @@
 
                      <div class="bott_box" ms-if="aa == 3">
 
-
-
                      	<div class="gz_cont" ms-repeat="guanzhus">
                      		<div class="gzlists_one">
                      			<img src="{% static 'img/tuxiang.jpg' %}">
@@ -295,9 +293,9 @@
                     success: function (data) {
                         wvm.alltiezi = data.data;
                         wvm.maxnum = data.maxnum;
-                        wvm.allmaxnum = data.maxnum;
-                        wvm.getmywenda();
                         wvm.gontopage(wvm.maxnum);
+                        wvm.allmaxnum = data.maxnum;
+                        //wvm.getmywenda();
                     }
                 });
             },
@@ -365,7 +363,6 @@
                             wvm.allmywenda = data.maxnum;
                             wvm.getguanzhuData();
                             wvm.gontopage(wvm.maxnum);
-                            console.log(wvm.maxnum,'wvm.maxnumwvm.maxnumwvm.maxnum')
                         }
                     });
             },
@@ -421,7 +418,7 @@
                         data: datas,
                         dataType: "json",
                         success: function (data) {
-                            //后端添加一个取消关注接口
+                            //取消关注接口
                             console.log(data);
                             layer.msg('取消关注成功');
                             wvm.getAllfensi();
@@ -452,7 +449,7 @@
 		//wvm.getAllguanzhu();
 		wvm.getAllmytiezi();//获取我发布的帖子
         wvm.getAllfensi();
-        //wvm.getmywenda();//获取我所有的问答
+        wvm.getmywenda();//获取我所有的问答
         //wvm.getguanzhuData();//获取所有关注对象
         wvm.gontopage(wvm.maxnum);
 	</script>
