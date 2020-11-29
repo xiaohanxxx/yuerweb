@@ -44,10 +44,7 @@
 
           <h3>详细介绍</h3>
           <p>{yiyuaninfo.content}</p>
-           <!-- <p>泰国BABY控制生殖中心，又被叫做爱宝贝生殖基因中心，前身是all生殖中心，成立于2010年，是一个致力于研究不孕不育病症的生殖机构，同时也是泰国十大试管婴儿医院之一；点击关键词跳转到百科知识文章</p>
-           <p>iBaby生殖中心第三代试管婴儿（PGD）技术此阿勇了NGS测序，能够检车23对染色，对家族遗传，父母性传染性疾病有着很好的克制作用，同事NGS技术降低了第三代试管婴儿价格，这也是iBaby费用低廉的一大原因。</p> -->
-
-  </div>
+   </div>
 
 
 
@@ -72,22 +69,6 @@
 
                 </li>
                   <div ms-if="!doctorlist || doctorlist.length==0" style="width: 100%; padding: 80px 0; text-align: center;"> 暂无数据 </div>
-{#                <li>#}
-{#                   <img src="{% static 'img/nys.png' %}">#}
-{#                   <p>我是医生   <abbr>医生职位</abbr></p>#}
-{#                   <p style="font-size: 12px; margin: 5px 0;">医生所在医院</p>#}
-{#                   <p style="font-size: 12px; margin: 5px 0;">擅长：医生擅长领域信息文案显示两行</p>#}
-{##}
-{#                   <div class="piaofubox">#}
-{#                        <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">我是医院名称</div>#}
-{#                        <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">我是医院职位</div>#}
-{#                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>#}
-{#                        <div class="zixunzhuanjia">咨询专家</div>#}
-{##}
-{#                    </div>#}
-{##}
-{#                </li>#}
-
               </ul>
           </div>
 
@@ -141,82 +122,31 @@
                  </li>
              </ul>
            </div>
-
           <div class="yiyuanhuanjing">
              <h3 style="margin-bottom: 20px; margin-top: 20px;">优选权威专家</h3>
              <div class="qwzhuanjia bd">
                <ol>
-                <li>
+                <li ms-repeat="getpowerdoctor">
                   <div class="yshione">
-                      <img src="{% static 'img/ysthumb.png' %}">
-                      <h3>我是医生名称 <abbr>医生职位</abbr></h3>
-                      <p>医生所在医院</p>
+                      <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb"></a>
+                      <h3><a ms-attr-href="/hospital/doctor/?did={el.id}">{el.name} </a><abbr>{el.zhiwei}</abbr></h3>
+                      <p>{el.hospital}</p>
                       <div style="width: 100%; float: left; margin-left: 20px; margin-top: 20px;">
-                        擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
+                        擅长：{el.goodjob}
                       </div>
                   </div>
-                </li>
-                <li>
-                  <div class="yshione">
-                    <img src="{% static 'img/ysthumb.png' %}">
-                    <h3>我是医生名称 <abbr>医生职位</abbr></h3>
-                    <p>医生所在医院</p>
-                    <div style="width: 100%; float: left; margin-left: 20px; margin-top: 10px;">
-                      擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
-                    </div>
-                </div>
-                </li>
-                <li>
-                  <div class="yshione">
-                    <img src="{% static 'img/ysthumb.png' %}">
-                    <h3>我是医生名称 <abbr>医生职位</abbr></h3>
-                    <p>医生所在医院</p>
-                    <div style="width: 100%; float: left; margin-left: 20px; margin-top: 10px;">
-                      擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
-                    </div>
-                </div>
-                </li>
-                <li>
-                  <div class="yshione">
-                    <img src="{% static 'img/ysthumb.png' %}">
-                    <h3>我是医生名称 <abbr>医生职位</abbr></h3>
-                    <p>医生所在医院</p>
-                    <div style="width: 100%; float: left; margin-left: 20px; margin-top: 10px;">
-                      擅长：输卵管不通个，空腔镜，腹腔镜，卵巢早衰，人工授精，试管婴儿，试管婴儿，排卵障碍。
-                    </div>
-                </div>
                 </li>
               </ol>
                 <div class="hd">
                   <ul></ul>
                 </div>
              </div>
-
             <script type="text/javascript">
                jQuery(".yiyuanhuanjing").slide({titCell:".hd ul",mainCell:".bd ol",autoPage:true,effect:"left",autoPlay:true,vis:2});
             </script>
-
            </div>
-
-
-
-
-
-
          </div>
-
-
-
-
-
-
-
-
-
       </div>
-
-
-
       <div class="hzwdrights">
           <a href=""><img src="{% static 'img/zixuntai.png' %}"></a>
           <div class="szzhuanjia">
@@ -226,11 +156,6 @@
                  <h4 style="margin-top: 20px;"><a ms-attr-href="/shiguanbaby/articles/?aid={el.id}">{el.title}</a></h4>
                  <p style=" font-size: 14px; margin-top: 10px;">{el.content}...</p>
               </div>
-{#              <div class="doctorbox">#}
-{#                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">#}
-{#                 <h4 style="margin-top: 20px;">我是新闻标题只显示一行</h4>#}
-{#                 <p style=" font-size: 14px; margin-top: 10px;">我是新闻标题详情部分文字信息最多显示两行字段...</p>#}
-{#              </div>#}
           </div>
 
 
@@ -241,9 +166,6 @@
                    <li ms-repeat="haiwai">
                      <a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>
                    </li>
-{#                   <li>#}
-{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
-{#                   </li>#}
                  </ol>
               </div>
           </div>
@@ -253,15 +175,6 @@
           <div class="szzhuanjia">
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
               {% include "mod_hotwenda.html" %}
-{#              <div class="hotwdtuijian">#}
-{#                 <ul>#}
-{#                   <li ms-repeat-el="getwendaes">#}
-{#                      <i class="layui-icon">&#xe615;</i>#}
-{#                      <a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.name}</a>#}
-{#                      <abbr>{el.count}个问答</abbr>#}
-{#                   </li>#}
-{#                 </ul>#}
-{#              </div>#}
           </div>
 
 
@@ -298,6 +211,24 @@
                 }
               });
             });
+        },
+        getpowerdoctor:[],
+        getpowerdoctoar:function (){
+            var data = {
+                type:1,
+                num:6
+            }
+           $.ajax({
+                url: '/hospital/powerdoctor/',
+                type: 'get',
+                dataType: 'json',
+                data:data,
+                success: function (data) {
+                    vem.getpowerdoctor = data.data
+                    console.log(vem.getpowerdoctor,'vem.getpowerdoctor');
+                }
+           })
+
         },
         getwendaes:[],
         getwenda:function (){
@@ -403,6 +334,7 @@
     vem.getHaiwai();
     vem.getwenda();
     vem.getLikeartical();
+    vem.getpowerdoctoar();
 </script>
 </body>
 </html>

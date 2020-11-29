@@ -39,16 +39,16 @@
 	             	<div class="navs">
 	             		<ul>
 	             			<li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
-	             				我的论坛（999）
+	             				他的论坛（999）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==2"  ms-click="getBox(2)">
-	             				我的问答（999）
+	             				他的问答（999）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==3"  ms-click="getBox(3)">
-	             				关注（999）
+	             				他的关注（999）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==4"  ms-click="getBox(4)">
-	             				粉丝（999）
+	             				他的粉丝（999）
 	             			</li>
 	             		</ul>
 	             	</div>
@@ -56,7 +56,8 @@
 
                     <div class="bott_box" ms-if="aa == 1">
                     	<ol>
-                    		<li>
+
+                    		<li ms-repeat="">
                     			<img src="{% static 'img/pexels.png' %}">
                     			<p style="font-size: 16px;">我是文章标题只显示一行</p>
                     			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
@@ -67,28 +68,18 @@
                     				</div>
                     		    </div>
                     		</li>
-                    		<li>
-                    			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
-                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
-                    			<div style="margin-top: 15px;">2020.11.10   
-                    				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
-                    				</div>
-                    		    </div>
-                    		</li>
-                    		<li>
-                    			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>
-                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>
-                    			<div style="margin-top: 15px;">2020.11.10   
-                    				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>
-                    				</div>
-                    		    </div>
-                    		</li>
+
+{#                    		<li>#}
+{#                    			<img src="{% static 'img/pexels.png' %}">#}
+{#                    			<p style="font-size: 16px;">我是文章标题只显示一行</p>#}
+{#                    			<p style="font-size: 12px;">我是文章详情部分文字信息最多显示一行字段</p>#}
+{#                    			<div style="margin-top: 15px;">2020.11.10   #}
+{#                    				<div class="rights">#}
+{#                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>999</abbr>#}
+{#                    					<abbr><i class="layui-icon">&#xe63a;</i>999</abbr>#}
+{#                    				</div>#}
+{#                    		    </div>#}
+{#                    		</li>#}
                     	</ol>
                     </div> 
 

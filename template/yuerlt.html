@@ -122,9 +122,9 @@
                         <span class='fr'>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span>
                     </div>
                     <div>
-                        <img ms-attr-src="/media/{el.user.head}" alt="">
+                        <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                         <div class='fl userinfo'>
-                            <p class="rgt_t"><a href="javascript:;">{el.user.username}</a></p>
+                            <p class="rgt_t">{el.user.username}</p>
                             <p class='rgt_info'><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
                             <div><span>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span>
                             </div>

@@ -20,7 +20,8 @@
 <body>
 {% include 'config.html' %}
 {% include 'header.html' %}
-<!-- 话题头部 -->
+{#{{ data }}#}
+<!-- 话题头部  -->
 <section class="topicHead wid" style='margin-top:30px;' ms-controller="topicArc">
     <div class="currdis clearfix">
         <div class="dqwz">当前位置：</div>
@@ -49,7 +50,7 @@
                     <span>{{ data.user.username }}</span>
                     <span>{{ data.publish_date.date }}</span>
                 </div>
-                <div class="isFollow" data-isFollow='flase'>
+                <div class="isFollow" style="cursor: pointer;" data-isFollow='flase' ms-click="">
                     关注作者
                 </div>
             </div>
@@ -63,8 +64,8 @@
                 </p>
             </div>
             <div class="plbox fr">
-                <div><span>评论</span><i>|</i><span>88</span></div>
-                <div><span>点赞</span><i>|</i><span>88</span></div>
+                <div style="cursor: pointer;"><span>评论</span><i>|</i><span>88</span></div>
+                <div style="cursor: pointer;"><span>点赞</span><i>|</i><span>88</span></div>
             </div>
         </div>
         <div class="plInpbox clearfix">
