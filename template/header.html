@@ -83,7 +83,7 @@
                   </p>
               </div>
             </div>
-            
+
           {% else %}
             <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>
           {% endif %}
@@ -118,7 +118,7 @@
            $(this).parent().addClass('hites');
         },
         intoAere:function(res){
-            
+
         }
     })
 </script>
@@ -175,6 +175,7 @@
                   console.log(data,99999);
                   if(data.code == 200){
                          layer.msg('登录成功，即将跳转到当前页');
+                         localStorage.setItem('username',vm.loginData.username);
                          setTimeout(function(){
                                history.back();
                          },2000)
@@ -220,7 +221,6 @@
                   if(data.code == 200){
                          layer.msg('注册成功，即将跳转到登录页面');
                          setTimeout(function(){
-                             alert(11111);
                                vm.a = 1;
                          },2000)
                   }else{
@@ -340,6 +340,22 @@
               }
             });
         },
+        gettopimg:[],
+        gettopimgs:function (){
+             var datas = {
+                 bannertype:3
+             }
+             $.ajax({
+              type: 'post',
+              url: '/users/login',
+              data: datas,
+              dataType: "json",
+              // timeout: 10000,
+              success: function(data) {
+                 console.log(data,'123456');
+              }
+            });
+        },
         getCode:function(){ //获取验证码
             if(vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)){
                layer.msg('请填写正确的手机号');
@@ -377,4 +393,5 @@
     })
     vm.getAllbaikeData();
     vm.getNewArtical();
+    vm.gettopimgs();
     </script>

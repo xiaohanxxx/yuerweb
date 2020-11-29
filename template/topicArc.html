@@ -49,26 +49,22 @@
                     <span>{{ data.user.username }}</span>
                     <span>{{ data.publish_date.date }}</span>
                 </div>
-                {% if request.user.is_active %}
-                    <div class="isFollow" userid="{{ data.user.id }}" data-isFollow='flase' ms-click="posgz(this)">
-                        关注作者
-                    </div>
-                {% else %}
-                    <div class="isFollow" data-isFollow='flase'>
-                        <a href="/login">关注作者</a>
-                    </div>
-                {% endif %}
+                <div class="isFollow" data-isFollow='flase'>
+                    关注作者
+                </div>
             </div>
 
             <p class='title'>{{ data.title }}</p>
             <div class="allInfo">
                 <p commid="{{ data.id }}">
+
                         {{ data.content |safe }}
+
                 </p>
             </div>
             <div class="plbox fr">
                 <div><span>评论</span><i>|</i><span>88</span></div>
-                <div><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></div>
+                <div><span>点赞</span><i>|</i><span>88</span></div>
             </div>
         </div>
         <div class="plInpbox clearfix">
@@ -90,6 +86,10 @@
         <div class="pl_lis">
             <div class="pl_lis_h clearfix">
                 <span class='fl'><em>99</em>条评论</span>
+                <div class="fr">
+                    <span><i class='iconfont'>&#xe7d5;</i>切换为时间排序</span><span><i
+                        class='iconfont'>&#xe7d5;</i>切换为默认排序</span>
+                </div>
             </div>
             <div class="pl_info" infobox="box">
                 {#  这是递归开始#}
@@ -101,8 +101,134 @@
     </div>
     <div class="topic_r fl">
         {% include 'mod_tjjl.html' %}
-        {# 热门话题调用 #}
-        {% include 'mod_yuerlthot.html' %}
+
+        <div class="hotTopic">
+            <div class="topic_Head">
+                <h6>热门话题</h6>
+            </div>
+            <ul class="topicBox">
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+                <li class='clearfix'>
+                    <a href="javascript:;">
+                        <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                    </a>
+                    <div>
+                        <p>
+                            <a href="javascript:;">我是话题标题最多显示
+                                两行，文章详情为论坛</a>
+                        </p>
+                        <span>2020.10.31</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </section>
 {% include 'footer.html' %}
@@ -113,23 +239,6 @@
         comment: [],
         articles_id: 0,//帖子id
         parent_id: 0,//回帖对应的父id
-        posgz:function(ev){
-            var _this=ev;
-            $.ajax({
-                url:root_Domain+'users/followapi',
-                type:'post',
-                data:{
-                   'type':0,
-                   'Quser_id':$(_this).attr('userid')
-                },
-                success:function(ajax){
-                    layer.msg("关注成功！！！");
-                    console.log(ajax);
-                },error:function(error){
-                    console.log(error);
-                }
-            })
-        }
     });
 
     vm_topicArc.articles_id = window.location.href.replace(/.*aid=/, '');
@@ -281,6 +390,10 @@
         }
     }
     {#点赞与评论#}
+    $('.plbox>div').eq(0).click(function(){//评论
+        $(this).parent().parent().next().show();
+        $(this).addClass('commSelect');
+    })
     $('.plbox>div').eq(1).click(function(){//点赞
         if(this.onSelect){
            return false;
@@ -291,17 +404,14 @@
                 type:'get',
                 dataType:'text',
                 success:function(ajax){
-                    layer.msg(ajax,{'time':1000});
-                    if(ajax.length>5){
-                        return false;
-                    }
-                    location.reload();
+                    layer.msg(ajax)
                 }
             })
         }
     })
     $('#NopostBtn').click(function(){
-        $('#khlypl').val('');
+        $(this).parent().hide();
+        $('.plbox>div').eq(0).removeClass('commSelect');
     })
     //评论事件处理
     var Mpostbox = $('#khlypl');

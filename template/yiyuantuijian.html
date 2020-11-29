@@ -74,7 +74,7 @@
 
          <div class="tjyylists" ms-repeat="getYYlist">
               <div class="leftyytj">
-                  <a ms-attr-href="/hospital/hindex/?item={el.id}"><img src="{% static 'img/hospitals.png' %}" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
+                  <a ms-attr-href="/hospital/hindex/?item={el.id}"><img ms-attr-src="el.thumb" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
                  <h3><a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
                  <p>地址：{el.address}</p>
                  <p>电话：{el.phone}</p>
@@ -82,7 +82,7 @@
               <div class="rightyytj">
                  <p><img src="{% static 'img/alltuxiang.png' %}" alt=""></p>
                  <p>累计{el.doctornum}名医生</p>
-                 <p><abbr title="">在线咨询</abbr></p>
+                 <p><abbr title=""><a href="###">在线咨询</a></abbr></p>
               </div>
          </div>
 
@@ -152,9 +152,8 @@
           {% include "mod_hotarticle.html" %}
 
       </div>
-      </div>
-
-
+     </div>
+   </div>
 
      <!-- 底部 -->
     {% include 'footer.html' %}
@@ -178,20 +177,20 @@
         dataslist:{
             page:1,//当前页码
             num:10,//一页显示多少条
-            worldarea:'',
-            privincearea:'',
-            cityarea:'',
-            hospitallv:'',
-            hospitaltype:""
+            worldarea:'',//区域
+            privincearea:'',//省份
+            cityarea:'',//城市
+            hospitallv:'',//医院
+            hospitaltype:""//医院类型
         },
         dataslistout:{
-            worldarea:'',
-            privincearea:'',
+            worldarea:'',//区域
+            privincearea:'',//省份
             page:1,//当前页码
             num:10,//一页显示多少条
         },
         getwendaes:[],
-        getwenda:function (){
+        getwenda:function (){//获取问答数据
             $.ajax({
               type: 'get',
               url: '/taolun/hottopics/',
@@ -244,7 +243,7 @@
                 }
             });
         },
-        getDengji:function (){
+        getDengji:function (){ //获取等级数据
              $.ajax({
                 type: 'get',
                 url: '/hospital/hospitallv/',
@@ -260,14 +259,14 @@
                 }
             });
         },
-        dengjiFun:function (el){
+        dengjiFun:function (el){ //等级点击事件
             vmw.c = el;
             vmw.dataslist.page = 1;
             vmw.dataslistout.page = 1;
             vmw.dataslist.hospitallv = vmw.dengjis[el].id;
             vmw.getDatas();
         },
-        getJishu:function (){
+        getJishu:function (){  //获取技术数据
                    var dataes ={
                         id:'',
                         name:'全部'
@@ -283,14 +282,14 @@
                 }
             });
         },
-        jishuFun:function (el){
+        jishuFun:function (el){  //技术点击事件
             vmw.d = el;
             vmw.dataslist.page = 1;
             vmw.dataslistout.page = 1;
             vmw.dataslist.hospitaltype = vmw.jishus[el].id;
             vmw.getDatas();
         },
-        intopages:function(count){
+        intopages:function(count){  //分页初始化
             layui.use(['laypage', 'layer'], function(){
               var laypage = layui.laypage
               ,layer = layui.layer;
@@ -320,6 +319,7 @@
                           vmw.getYYlist = [];
                          vmw.getYYlist = data.data;
                          vmw.allnum = data.allnum;
+                         console.log(vmw.getYYlist,'vmw.getYYlist');
                       }
                   });
 
@@ -328,7 +328,7 @@
             });
         },
         getYYlist:[],
-        allnum:'',
+        allnum:'',//数据总条数
         getDatas:function (){
             if (vmw.a == 0){
                var datas = vmw.dataslist;
@@ -350,12 +350,12 @@
             });
             console.log(datas,'发送请求');
         },
-        selectchange:function(data){
+        selectchange:function(data){  //城市列 事件监控
             vmw.dataslist.cityarea = data;
             vmw.getDatas();
         },
         getrmbaike:[],
-        get_rm_baike: function () {
+        get_rm_baike: function () { //获取热门百科列表
             var count = {
                 count: 10
             }
@@ -371,13 +371,13 @@
         }
 
     })
-    vmw.getAllcity();
-    vmw.getDengji();
-    vmw.getJishu();
-    vmw.getDatas();
-    vmw.get_rm_baike();
-    vmw.getwenda();
-    vmw.intopages(vmw.allnum);
+    vmw.getAllcity();//获取城市
+    vmw.getDengji();//获取等级
+    vmw.getJishu();//获取技术
+    vmw.getDatas();//获取数据
+    vmw.get_rm_baike();//获取热门百科
+    vmw.getwenda();//获取问答数据
+    vmw.intopages(vmw.allnum);//初始化分页
 </script>
 </body>
 </html>

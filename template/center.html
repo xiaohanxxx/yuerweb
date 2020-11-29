@@ -154,6 +154,7 @@
                         		<p class="bangding" style="margin: 15px 0; padding: 15px;">绑定  QQ：<a title="">点击绑定</a></p>
                         	</div>
                         	<div class="ziliao_set" style="padding: 25px;"  ms-if="cc ==2">
+                        		<p>用户名：{usernames}</p>
                         		<p>手机号：<input type="text" placeholder="请填写手机号" style="height: 30px; line-height: 30px;" ms-duplex="edit_passwad.phone"></p>
                         		<p>验证码：
                         			<input type="text" name="" style="height: 35px; line-height: 35px;" ms-duplex="edit_passwad.verification_Code" >
@@ -203,6 +204,7 @@
           aa:1,
           cc:1,
           getcodewenzi: '获取验证',
+          usernames:localStorage.getItem('username'),
           edit_passwad:{
           	phone:'',
           	verification_Code:'',

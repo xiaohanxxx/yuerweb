@@ -35,11 +35,8 @@
             </p>
             <p>简介：首都医科大学附属，北京朝阳医院建设于1958年，是首都医科大学第三临床医院，北京市呼吸疾病研究所所在医院，是北京市市属集医疗，教学，科研，预防为一体的三级甲等医院，北京市医疗保险A类定点医疗机构，医院先为一院两址，医院总部占地面积10.28万平方米，建筑面积21万平方米。职工4300于人。临床1900张。</p>
      </div> -->
-
     <div class="hzwdconts">
-
       <div class="hzwdlefts">
-
           <div class="hzwdcontslistes">
 
                     <h3>基本信息</h3>
@@ -237,70 +234,57 @@
 
 
           <div class="szzhuanjia">
-              <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
+              <h3><abbr>专业问答推荐</abbr> <a href="/taolun/">更多>></a></h3>
               {% include 'mod_hotwenda.html' %}
           </div>
 
 
+     <style>
+        .hot_arc .clearfix{ padding: 0 15px; width: 100%;}
+        .hot_arc .clearfix { overflow: hidden;}
+        .hot_arc .clearfix li{ height: 30px; line-height: 30px; margin: 15px 0;}
+        .rgt_tit h4{ height: 30px; line-height: 30px; padding-left: 12px;}
+        .hot_arc{ background: #fff; margin-top: 15px; border-radius: 5px; padding-bottom: 25px;}
+        .sjchangebtn{ margin-left: 40%; margin-bottom: 20px; }
+        .rgt_tit h4 span{ display: block; width: 100px; height: 30px; line-height: 30px; border-bottom: 1px solid #FF44AD; text-align: center;}
+     </style>
 
+     {% include 'mod_hotarticle.html' %}
 
-
-
-   <div class="szzhuanjia">
-              <h3><abbr>热点论坛推荐</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijianes_new">
-                 <ol>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                 </ol>
-              </div>
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </div>
+{#   <div class="szzhuanjia">#}
+{#              <h3><abbr>热点论坛推荐</abbr> <a href="/luntan/">更多>></a></h3>#}
+{#              <div class="hotwdtuijianes_new">#}
+{#                 <ol>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                   <li>#}
+{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
+{#                   </li>#}
+{#                 </ol>#}
+{#              </div>#}
+{#          </div>#}
+{#      </div>#}
     </div>
-
-
 </div>
-
-
-
      <!-- 底部 -->
   {% include 'footer.html' %}
 
@@ -335,7 +319,6 @@
                 data:data,
                 success: function (data) {
                     vmc.getPowerhospital = data.data;
-                    console.log(vmc.getPowerhospital,'vmc.getPowerhospital666')
                 }
            })
         },
