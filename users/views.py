@@ -66,7 +66,8 @@ def centerMessage(request):
 
 # 别人的个人中心
 def centerhim(request, Quser_id):
-    userinfo = Userinfo.objects.get(id=Quser_id)
+    print("dsssssssssss")
+    userinfo = Userinfo.objects.get(user_id=Quser_id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
