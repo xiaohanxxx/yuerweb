@@ -1091,8 +1091,12 @@ body a:hover {
     color: #999;
 }
 .desinfo a img{
-    max-width: 484px;
-    max-height: 300px;
+    float:left;
+    max-width: 242px;
+    max-height: 150px;
+}
+.desinfo a p{
+    float:left;
 }
 .lis_info .byjl_userinfo {
     height: 20px;
