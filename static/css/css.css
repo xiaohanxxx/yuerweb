@@ -55,7 +55,7 @@ body{ background: #f9f9f9; }
 .qiehuanimg img{ float: right; }
 .bannerwz{width: 290px;height: 120px; }
 .bannerwz:hover{ cursor: pointer;}
-.bannerwz img{ margin:45px 10px 0 15px; float: left; }
+.bannerwz img{ margin:45px 10px 0 15px; float: left;width:36px;height:36px;border-radius:50%;}
 .xmlist{ width: 180px; height: 120px; float: left;}
 .xmlist h3{  font-size: 16px; margin:30px 0 5px 0; color:#ff44ad; }
 .xmlist p a {float:left;font-size: 14px;margin-bottom:10px; padding:0 10px; color: #333; text-decoration: none;}
@@ -754,7 +754,7 @@ color: #666; font-size: 12px; }
 
 .listsqiehuanwh,.listqha{width: 100%; overflow: hidden;}
 .listqha{ margin-bottom: 15px; }
-.listqha img{float: left; margin-right: 10px;width:123px;height:76px;}
+.listqha img{float: left; margin-right: 10px;width:123px;height:76px;border-radius: 10px;}
 .hzwdleftse ul{ overflow: hidden; width: 100%; margin-top: 15px; }
 .allList{color: #ff44ad; border-bottom: 1px solid #ff44ad;}
 .hzwdleftse ul li{float: left; margin: 0 20px; cursor: pointer;}

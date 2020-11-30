@@ -62,7 +62,9 @@
                         <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
                     </p>
                     <p class="desinfo">
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.content|html}</a>
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                            {el.content|html}
+                        </a>
                     </p>
                     <div class="byjl_userinfo clearfix">
                         <div class="byjl_info_l fl">
@@ -119,7 +121,7 @@
             <div class="swiper-slide" ms-repeat-as="qndrData">
                 <div class="drinfo" ms-repeat-its="as">
                     <div class="imgbox">
-                        <a href="javascript:;">
+                        <a ms-attr-href="/users/centerhim/{its.article.id}">
                             <img ms-attr-src="/media/{its.article.user.head}" alt="">
                             <span>{its.article.user.username}</span>
                         </a>
@@ -134,31 +136,30 @@
     </div>
 
 </section>
-<!-- <footer style='width: 100%;height:388px;background-color:skyblue;margin-top:45px;'></footer> -->
 {% include 'footer.html' %}
 <script>
     (function () {
-            var lb_btn = $('.lb_btn');
-            var drSwiper = new Swiper('.swiper-container', {
-                loop: true,
-                // autoplay: 5000,
-                speed: 2000,
+        var lb_btn = $('.lb_btn');
+        var drSwiper = new Swiper('.swiper-container', {
+            loop: true,
+            // autoplay: 5000,
+            speed: 2000,
+        });
+        $('.leftBtn').click(function () {
+            drSwiper.swipePrev();
+        });
+        $('.rightBtn').click(function () {
+            drSwiper.swipeNext();
+        });
+        $('.swiper-container').mousemove(function () {
+            lb_btn.each(function () {
+                $(this).addClass('yesShow');
             });
-            $('.leftBtn').click(function () {
-                drSwiper.swipePrev();
+        }).mouseleave(function () {
+            lb_btn.each(function () {
+                $(this).removeClass('yesShow');
             });
-            $('.rightBtn').click(function () {
-                drSwiper.swipeNext();
-            });
-            $('.swiper-container').mousemove(function () {
-                lb_btn.each(function () {
-                    $(this).addClass('yesShow');
-                });
-            }).mouseleave(function () {
-                lb_btn.each(function () {
-                    $(this).removeClass('yesShow');
-                });
-            })
+        })
     })();
 </script>
 <script type="text/javascript">
@@ -202,7 +203,18 @@
                                 type: 'get',
                                 dataType: 'json',
                                 success: function (ajax) {
-                                    vm_ltlist.lisdata = ajax.data.curuent_page;
+                                    var lisdata = ajax.data.curuent_page;
+                                    for (let i = 0; i < lisdata.length; i++) {
+                                        var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
+                                        if (lisdata[i].content.match(/<img.*\/>/g)) {
+                                            var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
+                                            lisdata[i].content = constr + snimg
+                                        } else {
+                                            lisdata[i].content = constr;
+                                        }
+                                    }
+                                    vm_ltlist.lisdata = lisdata;
+
                                 }, error: function (error) {
                                     console.log(error)
                                 }
@@ -218,28 +230,28 @@
         vm_ltlist.selectTid = selectTid;
         vm_ltlist.Mid = Mid;
         var vm_qndrbox = avalon.define({
-            $id:'qndrbox',
+            $id: 'qndrbox',
             qndrData: [],
-            init:function(){
+            init: function () {
                 $.ajax({
-                    url:root_Domain+'/luntan/hotarticles/?num=12',
-                    type:'get',
-                    dataType:'json',
-                    success:function(ajax){
+                    url: root_Domain + '/luntan/hotarticles/?num=12',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
                         var userdata = [];
                         for (let i = 0; i < 3; i++) {
-                            var qrdardata = ajax.data.splice(0,4);
+                            var qrdardata = ajax.data.splice(0, 4);
                             userdata.push(qrdardata);
                         }
                         vm_qndrbox.qndrData = userdata;
-                        console.log(vm_qndrbox.qndrData,99999999999999)
-                    },error:function(error){
+                    }, error: function (error) {
                         console.log(error);
                     }
                 })
-            }
+            },
         })
         vm_qndrbox.init();
+
         function pageAjax(current) {
             $.ajax({
                 url: inturl + '&page=' + current,
@@ -247,7 +259,17 @@
                 dataType: 'json',
                 success: function (ajax) {
                     var _this = vm_ltlist;
-                    _this.lisdata = ajax.data.curuent_page;
+                    var lisdata = ajax.data.curuent_page;
+                    for (let i = 0; i < lisdata.length; i++) {
+                        var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
+                        if (lisdata[i].content.match(/<img.*\/>/g)) {
+                            var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
+                            lisdata[i].content = constr + snimg
+                        } else {
+                            lisdata[i].content = constr;
+                        }
+                    }
+                    vm_ltlist.lisdata = lisdata;
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -282,7 +304,17 @@
                 dataType: 'json',
                 success: function (ajax) {
                     var _this = vm_ltlist;
-                    _this.lisdata = ajax.data.curuent_page;
+                    var lisdata = ajax.data.curuent_page;
+                    for (let i = 0; i < lisdata.length; i++) {
+                        var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
+                        if (lisdata[i].content.match(/<img.*\/>/g)) {
+                            var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
+                            lisdata[i].content = constr + snimg
+                        } else {
+                            lisdata[i].content = constr;
+                        }
+                    }
+                    vm_ltlist.lisdata = lisdata;
                     _this.count = ajax.data.maxnum;
                     render(vm_ltlist.count, 10, 5);
                 }, error: function (error) {
