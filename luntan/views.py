@@ -64,7 +64,7 @@ class ArticlesList(views.View):
         topicsData = luntanmodel.Topics.objects.get(pk=int(topicsId))
         # 最新
         if int(type) == 1:
-            articleList = topicsData.articles_set.exclude(isdelete=1).order_by("update_date")
+            articleList = topicsData.articles_set.filter(isdelete=0).order_by("-publish_date")
         # 热门
         elif int(type) == 2:
             thumbList = luntanmodel.ThumbUp.objects.filter(articles__topics=topicsId, articles__isdelete=0).values(
@@ -73,7 +73,7 @@ class ArticlesList(views.View):
             articleList = luntanmodel.Articles.objects.filter(pk__in=aidList)
         # 推荐
         else:
-            articleList = luntanmodel.Articles.objects.all().order_by("read")
+            articleList = topicsData.articles_set.filter(isdelete=0).order_by("read")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleList, num)
         pag_num = paginator.num_pages  # 获取整个表的总页数
@@ -134,7 +134,7 @@ class Article(views.View):
         }
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
-        topic = request.POST.getlist("topics", [])
+        topic = request.POST.getlist("topic", [])
 
         if topic:
             topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
