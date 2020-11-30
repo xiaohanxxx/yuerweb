@@ -6,16 +6,22 @@
     </div>
     <ul class='tjjlbox' ms-repeat="navdata">
         <li>
-            <div ms-attr-class="Mid==el.id?'tjjlSelect':''">
+            <div ms-attr-class="Mid==el.id?'tjjlSelect':''" style="float: left;">
                 <a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">
-                    <img ms-attr-src="{el.child[0].thumb}" alt="">
+                    <img ms-attr-src="{el.child[0].thumb}" alt="" height="40" width="40" style="margin-right: 15px;">
                     <span>{el.name}</span>
                 </a>
             </div>
-            <div>749 个话题</div>
+            <div style="float: right;">749 个话题</div>
         </li>
     </ul>
 </div>
+<style>
+    .tjjlbox img{ float: left;}
+    .tjjlbox li{ height: 40px; line-height: 40px; margin: 20px 0; font-size: 14px;}
+    .tjjl-h{ border-bottom: 1px solid #eee;}
+    .tjjl-h h3{ height: 40px; line-height: 40px; border-bottom: 1px solid #FF44AD; width: 100px; text-align: center; font-size: 18px;}
+</style>
 <script>
     var vm_tjjl = avalon.define({
         $id: 'model_tjjl',

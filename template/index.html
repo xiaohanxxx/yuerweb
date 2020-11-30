@@ -24,7 +24,7 @@
         <div class="bannerboxleft">
             <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this)"
                  ms-on-mouseleave="navsHide(this)">
-                <img ms-attr-src="{el.child[0].thumb}">
+                <img src="{% static 'img/ban1.png' %}">
                 <div class="xmlist">
                     <h3>{ el.name }</h3>
                     <p>
@@ -499,10 +499,15 @@
             <div class="hhgihtlefth3">
                 <div class="lefth3list">
                     <ul>
+                        <!-- <li class="currshequ">备孕</li> -->
                         <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b"
                             ms-click="changrightlm(el.mid,$index)">{el.menu_name}
                         </li>
-
+                        <!-- <li>输卵</li>
+                        <li>子宫</li>
+                        <li>试管</li>
+                        <li>染色体</li>
+                        <li>精子</li> -->
                     </ul>
                 </div>
                 <div class="leftcontinfo123">
@@ -515,9 +520,37 @@
                                 <div class="yunqq">
                                     <a ms-repeat-sanji="el.children"
                                        ms-attr-href="/baike/article?aid={sanji.articleid}">{sanji.title}</a>
+                                    <!-- <a href="###">孕前期</a> -->
                                 </div>
                             </div>
                         </div>
+
+
+                        <!--  <div class="fourpartg">
+                               <h3>备孕</h3>
+                               <div class="yunqq">
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                                   <a href="###">孕前期</a>
+                               </div>
+                           </div>
+
+                           </div> -->
+
+
                     </div>
                 </div>
 
@@ -611,6 +644,37 @@
             console.log(error);
         }
     })
+    {#hy滚动#}
+    {#$.ajax({#}
+    {#    url: api_userActive,#}
+    {#    type: 'get',#}
+    {#    dataType: 'json',#}
+    {#    success: function (ajax) {#}
+    {#        var hydata = ajax.data.curuent_page;#}
+    {#        var hybox = $(".haoyunboxos .asdlkfj").eq(0);#}
+    {#        var hystr = '<ul id="baoxi_scroll_ul1" style="position: absolute; top: 10px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">';#}
+    {#        for (let i = 0; i < hydata.length; i++) {#}
+    {#            hystr += '<li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">';#}
+    {#            hystr += '<a href="/luntan/articles/?aid='+hydata[i].id+'" style="text-decoration: none; color: #666;">';#}
+    {#            hystr += '<img src="/media/' + hydata[i].user.head + '" style="float: left; margin-right: 8px;">';#}
+    {#            hystr += '<h3 style="font-size: 12px; margin-top: 14px;">' + hydata[i].user.username + ':<abbr style="color: #ff44ad;">' + hydata[i].title.substr(0, 10) + '...</abbr>'#}
+    {#            hystr += '</h3></a></li>';#}
+    {#        }#}
+    {#        hystr += '</ul><ul id="baoxi_scroll_ul2"  style="position: absolute; bottom: 10px; padding-top: 5px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">';#}
+    {#        for (let i = 0; i < hydata.length; i++) {#}
+    {#            hystr += '<li style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">';#}
+    {#            hystr += '<a href="/luntan/articles/?aid='+hydata[i].id+'" style="text-decoration: none; color: #666;">';#}
+    {#            hystr += '<img src="/media/' + hydata[i].user.head + '" style="float: left; margin-right: 8px;">';#}
+    {#            hystr += '<h3 style="font-size: 12px; margin-top: 14px;">' + hydata[i].user.username + ':<abbr style="color: #ff44ad;">' + hydata[i].title.substr(0, 10) + '...</abbr>'#}
+    {#            hystr += '</h3></a></li>';#}
+    {#        }#}
+    {#        hystr += '</ul>';#}
+    {#        hybox.html(hystr);#}
+    {#        console.log(hydata)#}
+    {#    },#}
+    {#    error: function (error) {#}
+    {#        console.log(error);#}
+    {#    }#}
 </script>
 <script>
     $(function () {
