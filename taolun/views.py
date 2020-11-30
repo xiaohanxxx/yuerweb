@@ -89,14 +89,14 @@ class PostingList(views.View):
         # 获取全部
         if not topicsId:
             # 最新
-            postList = models.Posting.objects.all().order_by('update_date')
+            postList = models.Posting.objects.all().order_by('-publish_date')
             chk = request.GET.get('order', 0)
             # 热门
             if chk == '1':
                 postList = models.Posting.objects.all().order_by('read')
             # 等待回复
             elif chk == '2':
-                postList = models.Posting.objects.filter(read__lte=10).order_by('read', 'update_date')
+                postList = models.Posting.objects.filter(read__lte=10).order_by('read', '-publish_date')
 
             num = request.GET.get('num', 10)
             curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
@@ -107,7 +107,7 @@ class PostingList(views.View):
         else:
             topicObj = get_object_or_404(models.Topics, id=topicsId)
             # 最新
-            postList = topicObj.posting_set.all().order_by('update_date')
+            postList = topicObj.posting_set.all().order_by('-publish_date')
             chk = request.GET.get('order', 0)
             # 热门
             if chk == "1":
