@@ -166,7 +166,7 @@ class Posting(views.View):
         }
         postingRes = models.Posting.objects.create(**articleData)
 
-        topic = request.POST.getlist("topics", [])
+        topic = request.POST.getlist("topic", [])
 
         if topic:
             topicObj = models.Topics.objects.get(pk__in=topic)
