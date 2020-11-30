@@ -68,7 +68,7 @@
                 </p>
             </div>
             <div class="plbox fr">
-                <div><span>评论</span><i>|</i><span>88</span></div>
+                <div><span>评论</span><i>|</i><span>{{ data.commentnum }}</span></div>
                 <div><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></div>
             </div>
         </div>
@@ -271,7 +271,6 @@
                 data: truedata,
                 success:function(ajax){
                    initdataHtml();
-                   dom.hide();
                    layer.msg("评论成功");
                 }
             })
@@ -317,7 +316,6 @@
 
 {# 父级一层回复#}
     function goPostcomm(ev){
-        $('.plbox>div').eq(0).removeClass('commSelect');
         $(document).ready(function(){
             var _this = ev;
             var topicid = $(_this).parent().prev().find("div.allInfo p").attr("commid"),

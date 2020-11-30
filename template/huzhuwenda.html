@@ -59,7 +59,8 @@
                                 </a>
                                 <a ms-attr-href="/taolun/toposting/?pid={el.id}">
                                     <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">
-                                        {el.content|html}</p>
+                                        {el.content|html}
+                                    </p>
                                 </a>
                                 <div class="infousers">
                                     <div class="userone">
@@ -229,6 +230,7 @@
                 success: function (ajax) {
                     vm_hzwda.count = ajax.maxnum;
                     vm_hzwda.datasfsa = ajax.data;
+                    console.log(vm_hzwda.datasfsa,66666668888888)
                     vm_hzwda.intopages();
                 }, error: function (error) {
                     console.log(error);

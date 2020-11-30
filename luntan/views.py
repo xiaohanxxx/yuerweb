@@ -121,7 +121,8 @@ class Article(views.View):
             "content": artObj.content,
             "publish_date": artObj.publish_date,
             "user": {"id": artObj.user.id, "username": artObj.user.username, "head": str(artObj.user.info.user_avatar)},
-            "thumbup": artObj.thumup_articles.all().count()
+            "thumbup": artObj.thumup_articles.all().count(),
+            "commentnum": artObj.articles_comment.all().count()
         }
 
         return render(request, 'topicArc.html', {"data": artData})

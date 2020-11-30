@@ -230,20 +230,24 @@ div.box_byinfo:nth-child(even) {
     float: left;
     width: 176px;
 }
-.box_byinfo>a img{
+
+.box_byinfo > a img {
     width: 180px;
     height: 100px;
     border-radius: 8px;
 }
+
 .box_byinfo .byinfo_r {
     float: left;
     width: 192px;
     margin-left: 17px;
 }
-.byinfo_r>p a>img{
+
+.byinfo_r > p a > img {
     width: 50px;
     height: 50px;
 }
+
 .byinfo_r .bytit > a {
     display: inline-block;
     height: 21px;
@@ -515,10 +519,12 @@ div.box_byinfo:nth-child(even) {
 .info_h {
     margin-bottom: 36px;
 }
-.info_h>div>p a>img{
+
+.info_h > div > p a > img {
     width: 30px;
     height: 30px;
 }
+
 .info_h > img {
     float: left;
     display: inline;
@@ -749,10 +755,12 @@ div.box_byinfo:nth-child(even) {
     letter-spacing: 0px;
     color: #999;
 }
-.infolis-b > p a img{
+
+.infolis-b > p a img {
     width: 40px;
     height: 40px;
 }
+
 .sgyer-lis {
     width: 659px;
     height: 166px;
@@ -1085,19 +1093,28 @@ body a:hover {
     display: block;
     font-size: 12px;
     line-height: 18px;
+    text-align: left !important;
     overflow: hidden;
     text-overflow: ellipsis;
     letter-spacing: 0px;
     color: #999;
 }
-.desinfo a img{
-    float:left;
-    max-width: 242px;
-    max-height: 150px;
-}
 .desinfo a p{
-    float:left;
+    width: 100%;
 }
+
+.desinfo a img {
+    display: block;
+    margin: 10px auto;
+    border-radius: 10px;
+    max-width: 242px !important;
+    max-height: 150px !important;
+}
+
+.desinfo a p {
+    text-align: left !important;
+}
+
 .lis_info .byjl_userinfo {
     height: 20px;
 }
@@ -1203,7 +1220,7 @@ body a:hover {
 }
 
 .postBtn > a {
-    display:block;
+    display: block;
     color: #fff;
 }
 
@@ -1291,7 +1308,7 @@ body a:hover {
     max-width: 90px;
     height: 24px;
     padding-left: 12px;
-    text-align:center;
+    text-align: center;
     font-size: 18px;
     line-height: 24px;
     letter-spacing: 0px;
@@ -1397,14 +1414,25 @@ body a:hover {
     color: #333;
     margin: 21px 0 12px 0;
 }
-
+.topic_l .allInfo{
+    max-height: 500px;
+    overflow: auto;
+}
 .topic_l .allInfo > p {
     /*height: 200px;*/
     width: 100%;
     overflow: auto;
+    text-align: left !important;
     margin-bottom: 24px;
 }
-
+.topic_l .allInfo > p img{
+    display: block;
+    margin:0px auto;
+    margin-top: 20px;
+    width: 484px !important;
+    height: 300px !important;
+    border-radius: 10px;
+}
 .topic_l .plbox {
     height: 24px;
     margin-bottom: 14px;
@@ -1737,9 +1765,11 @@ body .topicMain .commSelect {
 body .topicMain .commSelect span {
     color: #fff;
 }
-.ms-controller{
-   visibility: hidden
+
+.ms-controller {
+    visibility: hidden
 }
+
 body div[bq_btn="emoji"] {
     width: 35px;
     font-size: 1.5em;
@@ -1823,10 +1853,12 @@ body div[bq_btn="emoji"] {
     margin-bottom: 14px;
     border: solid 1px #e1e1e1;
 }
-.postBox .topic_as .yesSelect{
+
+.postBox .topic_as .yesSelect {
     background-color: pink;
     color: #fff;
 }
+
 #topicSelect {
     position: relative;
 }
@@ -1991,9 +2023,11 @@ body div[bq_btn="emoji"] {
     width: 1098px !important;
     max-height: 711px !important;
 }
-.currdis{
+
+.currdis {
     margin-bottom: 20px;
 }
-.currdis>div{
-    float:left;
+
+.currdis > div {
+    float: left;
 }

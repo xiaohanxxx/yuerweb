@@ -63,7 +63,7 @@
     <div class="jlquan">
         <div class="jlqunClass" ms-repeat-el="yuerlt_data">
             <div class="quanTitle">
-                <a href="javascript:;"><img src="{% static 'images/yuerlt/zhiliao.png' %}" alt=""></a>
+                <a href="javascript:;"><img ms-attr-src="{el.child[0].thumb}" alt=""></a>
                 <div class="quaninfo">
                     <h5>
                         <a href="javascript:;">{el.name}</a>
@@ -391,7 +391,6 @@
         })
 
         {#好孕妈妈数据请求#}
-
         function reshHymm(aid, num, page) {
             $.ajax({
                 url: api_goodmother + aid + '&num=' + num + '&page' + page,
@@ -416,7 +415,7 @@
             success: function (ajax) {
                 {#全局栏目数据#}
                 vm_areas.yuerlt_data = ajax.data;
-
+                console.log(vm_areas.yuerlt_data,565656565655)
                 {#备孕热点#}
                 vm_byhot.mainid = ajax.data[0].child[0].id;
                 vm_byhot.Mid = ajax.data[0].id;
