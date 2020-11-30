@@ -1,0 +1,49 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="hotTopic" ms-controller="hotTopic">
+    <div class="topic_Head">
+        <h6>热门话题</h6>
+    </div>
+    <ul class="topicBox">
+        <li class='clearfix' ms-repeat-as="hotTopicdata">
+            <a href="javascript:;">
+                <img ms-attr-src="{as.article.snimg}" alt="">
+            </a>
+            <div>
+                <p>
+                    <a ms-attr-href="/luntan/articles/?aid={as.article.id}">{as.article.title.substr(0,20)}..</a>
+                </p>
+                <span>{as.article.update_date.replace(/\..*/,'')}</span>
+            </div>
+        </li>
+
+    </ul>
+</div>
+<script>
+    var vm_hotTopic = avalon.define({
+        $id: 'hotTopic',
+        hotTopicdata: [],
+        init: function () {
+            $.ajax({
+                url: root_Domain + '/luntan/hotarticles/?num=10',
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                     var hotdata= ajax.data.splice(0, 10);
+                    for (let i = 0; i < hotdata.length; i++) {
+                        if (hotdata[i].article.content.indexOf('<img') != '-1') {
+                            var snimg = JSON.stringify(hotdata[i].article.content.match(/src=".*\.(jpg|png)"/g)).match(/\/media\/.*\.(jpg|png)/);
+                            hotdata[i].article.snimg = snimg[0];
+                        } else {
+                            hotdata[i].article.snimg = '/media/luntan/moren.jpg';
+                        }
+                    }
+                    vm_hotTopic.hotTopicdata= hotdata;
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
+        }
+    })
+    vm_hotTopic.init();
+</script>

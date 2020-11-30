@@ -70,7 +70,7 @@
                             <span>{el.publish_date.replace(/\d+:.*/,'')}</span>
                         </div>
                         <div class="byjl_info_r fr">
-                            <span><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span>
+                            <span ms-click="gothumup(el.id)"><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span>
                             <a href="javascript:;"><span><i class='iconfont'>&#xe66a;</i>{el.commentnum}</span></a>
                         </div>
                     </div>
@@ -104,65 +104,28 @@
         </div>
 
         {% include 'mod_tjjl.html' %}
-        <div class="hot_bq">
-            <div class="rgt_tit">
-                <h4><span>热点话题</span></h4>
-            </div>
-            <ul class='hot_bqbox'>
-                <li><a href="javascript:;">试管婴儿</a></li>
-                <li><a href="javascript:;">试管婴儿</a></li>
-                <li><a href="javascript:;">试管婴儿</a></li>
-                <li><a href="javascript:;">试管婴儿而非个人各</a></li>
-                <li><a href="javascript:;">试管婴儿</a></li>
-                <li><a href="javascript:;">试管婴儿</a></li>
-            </ul>
-        </div>
+        {#        热点标签#}
+        {% include 'mod_hotbq.html' %}
     </div>
 </section>
 <!-- 底部轮播 -->
-<section class='qndr'>
+<section class='qndr' ms-controller="qndrbox">
     <div class="qndr-h">
         <h4>圈内达人</h4>
     </div>
     <!-- 达人轮播 -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <div class="drinfo">
+            <div class="swiper-slide" ms-repeat-as="qndrData">
+                <div class="drinfo" ms-repeat-its="as">
                     <div class="imgbox">
                         <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
-                            <span>我是用户名</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="drinfo">
-                    <div class="imgbox">
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
-                            <span>我是用户名</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="drinfo">
-                    <div class="imgbox">
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
-                            <span>我是用户名</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="drinfo">
-                    <div class="imgbox">
-                        <a href="javascript:;">
-                            <img src="{% static 'images/yuerlt/user03.png' %}" alt="">
-                            <span>我是用户名</span>
+                            <img ms-attr-src="/media/{its.article.user.head}" alt="">
+                            <span>{its.article.user.username}</span>
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
         </div>
         <!-- 导航按钮 -->
         <div class="leftBtn iconfont lb_btn">&#xe609;</div>
@@ -175,12 +138,11 @@
 {% include 'footer.html' %}
 <script>
     (function () {
-        $(document).ready(function () {
             var lb_btn = $('.lb_btn');
             var drSwiper = new Swiper('.swiper-container', {
                 loop: true,
                 // autoplay: 5000,
-                speed: 1000,
+                speed: 2000,
             });
             $('.leftBtn').click(function () {
                 drSwiper.swipePrev();
@@ -197,7 +159,6 @@
                     $(this).removeClass('yesShow');
                 });
             })
-        });
     })();
 </script>
 <script type="text/javascript">
@@ -211,12 +172,12 @@
             $id: 'luntanbox',
             lisdata: [],
             Mid: 0,//父id
-            qndrData:[],
             selectTid: 0,
             typenum: 0,//子id
             navdata: [],//父栏目数据
             count: 0,
-            goChange(type_num) {
+            goChange: function (type_num) {
+                location.hash = '';
                 if (type_num == 0) {
                     inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');
                 } else {
@@ -224,11 +185,61 @@
                 }
                 vm_ltlist.typenum = type_num;
                 init(inturl);
-            }
+            },
+            gothumup: function (id) {
+                $.ajax({
+                    url: root_Domain + '/luntan/thumbup/?aid=' + id,
+                    type: 'get',
+                    dataType: 'text',
+                    success: function (ajax) {
+                        if (ajax.length > 4) {
+                            layer.msg(ajax);
+                            return false;
+                        } else {
+                            layer.msg(ajax);
+                            $.ajax({
+                                url: inturl,
+                                type: 'get',
+                                dataType: 'json',
+                                success: function (ajax) {
+                                    vm_ltlist.lisdata = ajax.data.curuent_page;
+                                }, error: function (error) {
+                                    console.log(error)
+                                }
+                            })
+                        }
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                })
+            },
+
         });
         vm_ltlist.selectTid = selectTid;
         vm_ltlist.Mid = Mid;
-
+        var vm_qndrbox = avalon.define({
+            $id:'qndrbox',
+            qndrData: [],
+            init:function(){
+                $.ajax({
+                    url:root_Domain+'/luntan/hotarticles/?num=12',
+                    type:'get',
+                    dataType:'json',
+                    success:function(ajax){
+                        var userdata = [];
+                        for (let i = 0; i < 3; i++) {
+                            var qrdardata = ajax.data.splice(0,4);
+                            userdata.push(qrdardata);
+                        }
+                        vm_qndrbox.qndrData = userdata;
+                        console.log(vm_qndrbox.qndrData,99999999999999)
+                    },error:function(error){
+                        console.log(error);
+                    }
+                })
+            }
+        })
+        vm_qndrbox.init();
         function pageAjax(current) {
             $.ajax({
                 url: inturl + '&page=' + current,
@@ -287,15 +298,14 @@
             success: function (ajax) {
                 vm_ltlist.navdata = ajax.data;
                 localStorage.clear();//清除localStorage中的缓存
-                localStorage.setItem('Mlanm',vm_ltlist.navdata[Mid-1].name);
-                localStorage.setItem('Mid',vm_ltlist.Mid);
-                var navData = JSON.stringify(ajax.data[vm_ltlist.Mid-1].child);
-                localStorage.setItem('topicNavs',navData);
+                localStorage.setItem('Mlanm', vm_ltlist.navdata[Mid - 1].name);
+                localStorage.setItem('Mid', vm_ltlist.Mid);
+                var navData = JSON.stringify(ajax.data[vm_ltlist.Mid - 1].child);
+                localStorage.setItem('topicNavs', navData);
             }, error: function (error) {
                 console.log(error);
             }
         })
-        console.log(vm_ltlist.lisdata,999999999999999999,vm_ltlist.navdata)
     })();
 </script>
 </body>

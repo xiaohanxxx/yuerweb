@@ -1,0 +1,29 @@
+{% load static %}
+{% include 'config.html' %}
+<div class="hot_bq" ms-controller="hotbq">
+    <div class="rgt_tit">
+        <h4><span>热点标签</span></h4>
+    </div>
+    <ul class='hot_bqbox'>
+        <li ms-repeat="bqdata"><a href="javascript:;">{el.name}</a></li>
+    </ul>
+</div>
+<script>
+    var vm_hotbq=avalon.define({
+        $id:'hotbq',
+        bqdata:[],
+        init:function(){
+            $.ajax({
+                url:root_Domain+'/shiguanbaby/hottopics/?num=10',
+                type:'get',
+                dataType:'json',
+                success:function(ajax){
+                    vm_hotbq.bqdata = ajax.data;
+                },error:function(error){
+                    console.log(error);
+                }
+            })
+        }
+    })
+    vm_hotbq.init();
+</script>
