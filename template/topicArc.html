@@ -46,11 +46,12 @@
                         <img src="/media/{{ data.user.head }}" alt="">
                     </a>
                 </div>
+{#                {{ data }}#}
                 <div class="txInfo">
                     <span>{{ data.user.username }}</span>
                     <span>{{ data.publish_date.date }}</span>
                 </div>
-                <div class="isFollow" data-isFollow='flase'>
+                <div class="isFollow" data-isFollow='flase' ms-click="guanzhuhim({{ data.user.id }})" style="cursor: pointer;">
                     关注作者
                 </div>
             </div>
@@ -240,6 +241,21 @@
         comment: [],
         articles_id: 0,//帖子id
         parent_id: 0,//回帖对应的父id
+        guanzhuhim:function (res){
+                var datas = {
+                    type:0,
+                    Quser_id:res
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/followapi',
+                    data: datas,
+                    dataType: "json",
+                    success: function (data) {
+                        layer.msg(data.msg);
+                    }
+                });
+        }
     });
 
     vm_topicArc.articles_id = window.location.href.replace(/.*aid=/, '');
