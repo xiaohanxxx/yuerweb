@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
+    <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/uitls/tool.js' %}"></script>
     <script src="{% static 'js/uitls/jquery.emoji.js' %}"></script>
     <script src="{% static 'layui/layui.all.js' %}"></script>
@@ -214,7 +215,7 @@
                 max_number	-- 图片的最大个数
 */
 //表情包函数,绑定挂载
-    function bqbaofunc(bqbtn, textbox) {//bqbtn为表情显示按钮，textbox为文本存储盒子
+    function bqbaofunc(bqbtn, textbox) {//bqbtn 为表情显示按钮，textbox为文本存储盒子
         bqbtn.emoji({
             content_el: textbox,
             list: [{
