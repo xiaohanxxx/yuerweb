@@ -127,6 +127,7 @@
                     } else {
                         url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites;
                     }
+                    Toolfun.iszhezClass();
                     $.ajax({
                         url: url,
                         type: 'get',
@@ -136,6 +137,7 @@
                             vm_hzwdlist.count = ajax.maxnum;
                             vm_hzwdlist.lisdata = ajax.data;
                             vm_hzwdlist.intopages();
+                            Toolfun.qxzheClass();
                         }, error: function (error) {
                             console.log(error);
                         }
@@ -171,12 +173,14 @@
             } else {
                 url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page;
             }
+            Toolfun.iszhezClass();
             $.ajax({
                 url: url,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdlist.lisdata = ajax.data;
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }

@@ -105,17 +105,14 @@
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
-                    console.log(ajax,3333333)
                     vm_postart.sontopicData = ajax.data;
                 }, error: function (error) {
                     console.log(error);
                 }
             })
-            console.log(_this, 1111);
         },
         init: function () {
             this.topicData = JSON.parse(localStorage.getItem('Mgroup'));
-            console.log(vm_postart.topicData, 54545454545)
             vm_postart.ifTruePost();
         }
     })
@@ -130,6 +127,7 @@
         } else {
             if (yzmnow == vm_postart.yzm) {
                 if (ckeData && ckeData.length < 800 && vm_postart.topicId) {
+                    Toolfun.iszhezClass();
                     $.ajax({
                         url: root_Domain + '/taolun/posting/',
                         type: 'post',
@@ -140,6 +138,7 @@
                             "topic": vm_postart.topicId
                         },
                         success: function (ajax) {
+                            Toolfun.qxzheClass();
                             layer.open({
                                 content: '发布成功',
                                 btn: ['继续发帖', '查看帖子'],
@@ -151,6 +150,8 @@
                                     window.location.href = root_Domain + '/taolun/toposting/?pid=' + ajax.data;
                                 }
                             })
+                        },error:function(error){
+                            layer.msg("最大内容长度为800！！！")
                         }
                     })
                 }
@@ -161,7 +162,7 @@
             if (!ckeData) {
                 layer.msg("请输入内容,发布不能为空！！");
             } else if (ckeData.length > 800) {
-                layer.msg("最大输入600个字！！");
+                layer.msg("最大输入1000个字！！");
             }
             if (!vm_postart.topicId) {
                 layer.msg("请选择要发帖的栏目");

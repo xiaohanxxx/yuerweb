@@ -33,6 +33,13 @@
                     data[i].snimg = '/media/luntan/moren.jpg';
                 }
             }
+        },
+        iszhezClass:function(){
+            $('.mainzz').height(document.body.scrollHeight);
+            $('.mainzz').fadeIn();
+        },
+        qxzheClass:function(){
+            $('.mainzz').fadeOut();
         }
     }
 })();

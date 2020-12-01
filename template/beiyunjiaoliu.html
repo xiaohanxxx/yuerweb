@@ -38,7 +38,7 @@
             <h3>{navdata[Mid-1].name}</h3>
             <div class="main_nav" ms-repeat-as="navdata[Mid-1].child">
                 <div ms-attr-class="selectTid==as.id?'selectId':''">
-                    <img ms-attr-src="as.thumb" alt=""><a
+                    <img ms-attr-src="as.thumb" ms-attr-alt="{as.name}"><a
                         ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a></div>
             </div>
 
@@ -253,6 +253,7 @@
         vm_qndrbox.init();
 
         function pageAjax(current) {
+            Toolfun.iszhezClass();
             $.ajax({
                 url: inturl + '&page=' + current,
                 type: 'get',
@@ -270,6 +271,7 @@
                         }
                     }
                     vm_ltlist.lisdata = lisdata;
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -298,6 +300,7 @@
         }
 
         function init(inturl) {
+            Toolfun.iszhezClass();
             $.ajax({
                 url: inturl,
                 type: 'get',
@@ -317,6 +320,7 @@
                     vm_ltlist.lisdata = lisdata;
                     _this.count = ajax.data.maxnum;
                     render(vm_ltlist.count, 10, 5);
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }

@@ -11,6 +11,7 @@
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
     <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/uitls/tool.js' %}"></script>
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
@@ -19,655 +20,685 @@
 {% include 'config.html' %}
 {% include 'header.html' %}
 <div ms-controller="indexhedes">
-<div class="banners">
-    <div class="bannersBox">
-        <div class="bannerboxleft">
-            <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this)"
-                 ms-on-mouseleave="navsHide(this)">
-                <img ms-attr-src="{el.child[0].thumb}">
-                <div class="xmlist">
-                    <h3>{ el.name }</h3>
-                    <p>
-                        <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={el.id}"
-                           ms-repeat-as="el.child">{as.name}</a>
-                    </p>
-                </div>
-                <div class="jticon"> ></div>
-
-                <!-- 隐藏 -->
-                <div class="hidebox" style="display: none;">
-                    <div class="hideboxlist">
-                        <div class="conts" style="width: 100%; overflow: hidden;">
-                            <ul>
-                                <li ms-repeat-it="el.allchild"><a
-                                        ms-attr-href="/luntan/articlelist/?tid={it.id}&all=1&Mid={el.id}">{it.name}</a>
-                                </li>
-                            </ul>
-                            <h4><a href="/luntan">更多>></a></h4>
-                        </div>
-
-
+    <div class="banners">
+        <div class="bannersBox">
+            <div class="bannerboxleft">
+                <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this)"
+                     ms-on-mouseleave="navsHide(this)">
+                    <img ms-attr-src="{el.child[0].thumb}">
+                    <div class="xmlist">
+                        <h3>{ el.name }</h3>
+                        <p>
+                            <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={el.id}"
+                               ms-repeat-as="el.child">{as.name}</a>
+                        </p>
                     </div>
+                    <div class="jticon"> ></div>
+
+                    <!-- 隐藏 -->
+                    <div class="hidebox" style="display: none;">
+                        <div class="hideboxlist">
+                            <div class="conts" style="width: 100%; overflow: hidden;">
+                                <ul>
+                                    <li ms-repeat-it="el.allchild"><a
+                                            ms-attr-href="/luntan/articlelist/?tid={it.id}&all=1&Mid={el.id}">{it.name}</a>
+                                    </li>
+                                </ul>
+                                <h4><a href="/luntan">更多>></a></h4>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
 
             </div>
 
-
-        </div>
-
-        <div class="qiehuanimg">
-            <!-- <img src="{% static 'img/banner1.jpg' %}" width="890" height="360"> -->
-            <!-- Swiper -->
-            <div class="swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
-                    <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
-                    <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360"></div>
-
+            <div class="qiehuanimg">
+                <!-- <img src="{% static 'img/banner1.jpg' %}" width="890" height="360"> -->
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360">
+                        </div>
+                        <div class="swiper-slide"><img src="{% static 'img/banner1.jpg' %}" width="890" height="360">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
             </div>
-
-        </div>
-
-    </div>
-</div>
-
-
-<div class="haoyunxibao" style="width: 100%; overflow: hidden; margin: 30px 0 10px 0;">
-    <div class="haoyunboxos"
-         style="margin: 0 auto; overflow: hidden; width: 1200px; height: 137px; background: #f9f1f5;">
-        <div class="xibaobox" style="float: left; width: 302px;"><img src="{% static 'img/xibao.jpg' %}"></div>
-        <div class="asdlkfj" style="width: 898px; float: left; height: 137px; position: relative; overflow: hidden;">
-            <ul id="baoxi_scroll_ul1"
-                style="position: absolute; top: 10px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
-                <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
-                <li ms-repeat-el="curuent_pagees"
-                    style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
-                    <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="'/media/' + el.user.head" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;" ></a>
-                    <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
-                        <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
-                        </h3>
-                    </a>
-                </li>
-                <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
-            </ul>
-            <ul id="baoxi_scroll_ul2"
-                style="position: absolute; bottom: 10px; padding-top: 5px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
-                <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
-                <li ms-repeat-el="curuent_pagees"
-                    style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
-                        <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="'/media/' + el.user.head" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;" ></a>
-                    <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
-                        <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
-                        </h3>
-                    </a>
-                </li>
-                <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
-            </ul>
         </div>
     </div>
-</div>
 
 
-<div class="shiguanyiner">
-    <div class="sgyecontanather">
-        <div class="sgyghhight">
-            <div class="hhightleft">
-                <h3><abbr>试管婴儿</abbr><a href="">试管论坛</a>|<a href="">试管医院</a>|<a href="">试管技术</a></h3>
-            </div>
-            <div class="hhgihtlefth3">
-                <div class="lefth3list">
-                    <ul>
-                        <li ms-repeat="shiguanyiner" ms-class="currshequ:el.id == a" ms-click="getDatasgye(el,$index)">
-                            {el.name}
-                        </li>
-                    </ul>
-                </div>
-                <div class="leftcontinfo">
-                    <div class="hotinfo">
-                        <div class="infoone">
-                            <img src="{% static 'img/02.png' %}">
-                            <p>我是文章标题，最多显示一行，多余部分显示...</p>
-                        </div>
-                        <div class="infoone">
-                            <img src="{% static 'img/02.png' %}">
-                            <p>我是文章标题，最多显示一行，多余部分显示...</p>
-                        </div>
-                    </div>
-                    <div class="rightinfonews">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="moreall"><a href="">更多</a></div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <!--  生殖医院推荐 -->
-        {% include 'mod_hospital.html' %}
-    </div>
-</div>
-
-<!-- partthree 开始-->
-
-<div class="shiguanyiner">
-    <div class="sgyecontanather">
-        <div class="sgyghhight">
-            <div class="hhightleft">
-                <h3><abbr>好孕社区</abbr><a href="">备孕交流</a>|<a href="">难孕治疗</a>|<a href="">好孕妈妈</a></h3>
-            </div>
-            <div class="hhgihtlefth3">
-                <div class="leftcontinfoes">
-                    <div class="hotinfo" style="width: 167px;">
-                        <div class="infoone" style="margin-top: 30px;">
-                            <img src="{% static 'img/022.png' %}" width="167" height="170">
-                            <p>我是文章标题，最多显示一行，多余部分显示...</p>
-                        </div>
-                        <div class="infoone" style="margin-top: 30px;">
-                            <img src="{% static 'img/022.png' %}" width="167" height="170">
-                            <p>我是文章标题，最多显示一行，多余部分显示...</p>
-                        </div>
-                    </div>
-                    <div class="rightinfonewses">
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <img src="{% static 'img/03.png' %}">
-                                    <h3>我还文章标题显示一行，文案...</h3>
-                                    <p>我还文章标题显示一行文案文案文案...</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="hotbeiyun">
-                        <a href=""><img src="{% static 'img/05.jpg' %}" height="409" width="100%;">
-                            <p>我是文章最多显示一行，其它用...</p></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <!--  备孕头条 -->
-
-        <div class="szdoctorhot">
-            <div class="doctorhottitle">
-                备孕头条 <abbr>更多>></abbr>
-            </div>
-            <div class="cityhologe">
-                <img src="{% static 'img/04.jpg' %}" style="margin-left: 20px;">
-                <ul>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">武汉大学人民医院</a><abbr>></abbr></li>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">武汉人大人民医院</a><abbr>></abbr></li>
-                    <!-- <li><a href="">我是医院名称</a><abbr>></abbr></li> -->
+    <div class="haoyunxibao" style="width: 100%; overflow: hidden; margin: 30px 0 10px 0;">
+        <div class="haoyunboxos"
+             style="margin: 0 auto; overflow: hidden; width: 1200px; height: 137px; background: #f9f1f5;">
+            <div class="xibaobox" style="float: left; width: 302px;"><img src="{% static 'img/xibao.jpg' %}"></div>
+            <div class="asdlkfj"
+                 style="width: 898px; float: left; height: 137px; position: relative; overflow: hidden;">
+                <ul id="baoxi_scroll_ul1"
+                    style="position: absolute; top: 10px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
+                    <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
+                    <li ms-repeat-el="curuent_pagees"
+                        style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
+                        <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="'/media/' + el.user.head"
+                                                                           style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
+                            <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
+                            </h3>
+                        </a>
+                    </li>
+                    <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
+                </ul>
+                <ul id="baoxi_scroll_ul2"
+                    style="position: absolute; bottom: 10px; padding-top: 5px; width: 10000px; min-height: 60px; overflow: hidden; padding-left: 20px;">
+                    <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
+                    <li ms-repeat-el="curuent_pagees"
+                        style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
+                        <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="'/media/' + el.user.head"
+                                                                           style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
+                            <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
+                            </h3>
+                        </a>
+                    </li>
+                    <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
                 </ul>
             </div>
         </div>
-
     </div>
-</div>
 
-
-<!-- 不孕不育 -->
-
-<div class="shiguanyiner">
-    <div class="sgyecontanather">
-        <div class="sgyghhight">
-            <div class="hhightleft" style="margin-bottom: 20px;">
-                <h3><abbr>不孕不育</abbr><a href="">女性不孕</a>|<a href="">男性不育</a>|<a href="">病理性不孕</a> <a href=""
-                                                                                                     style="float: right; margin-right: 50px;">更多>></a>
-                </h3>
-            </div>
-            <div class="hhgihtlefth3">
-                <div class="leftcontinfoes">
-                    <div class="lwzlist">
-                        <div class="h3tgoplis">
-                            <div class="tupianhost">
-                                <a href="##">
-                                    <img src="{% static 'img/010.png' %}" alt="">
-                                    <p>我是育儿文章标题</p>
-                                </a>
-                            </div>
-                            <div class="tupianhost">
-                                <a href="##">
-                                    <img src="{% static 'img/011.png' %}" alt="">
-                                    <p>我是育儿文章标题</p>
+    <div class="shiguanyiner" ms-controller="sgyercrl">
+        <div class="sgyecontanather">
+            <div class="sgyghhight">
+                <div class="hhightleft">
+                    <h3><abbr>试管婴儿</abbr><a href="/luntan/">试管论坛</a>|<a href="/hospital/">试管医院</a>|<a
+                            href="/shiguanbaby/">试管技术</a></h3>
+                </div>
+                <div class="hhgihtlefth3">
+                    <div class="lefth3list">
+                        <ul>
+                            <li ms-repeat="sgyerdata" ms-class="currshequ:el.id == curid" ms-click="goChange(el.id)">
+                                {el.name}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="leftcontinfo">
+                        <div class="hotinfo">
+                            <div class="infoone" ms-repeat-its="imgdata">
+                                <a ms-attr-href="/luntan/articles/?aid={its.id}">
+                                    <img ms-attr-src="{its.snimg}">
+                                    <p>{its.title.substr(0,20)}...</p>
                                 </a>
                             </div>
                         </div>
-                        <div class="listh3hasdf">
+                        <div class="rightinfonews">
+                            <ul>
+                                <li ms-repeat="lisdata">
+                                    <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                                        <img ms-attr-src="/media/{el.user.head}">
+                                        <h3>{el.title.substr(0,15)}...</h3>
+                                        <p>
+                                            {el.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,15)}...</p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="moreall"><a href="/luntan/">更多</a></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--  生殖医院推荐 -->
+            {% include 'mod_hospital.html' %}
+        </div>
+    </div>
+
+    <!-- partthree 开始-->
+    <div class="shiguanyiner" ms-controller="hysqctl">
+        <div class="sgyecontanather">
+            <div class="sgyghhight">
+                <div class="hhightleft">
+                    <h3><abbr>好孕社区</abbr><a href="">备孕交流</a>|<a href="">难孕治疗</a>|<a href="">好孕妈妈</a></h3>
+                </div>
+                <div class="hhgihtlefth3">
+                    <div class="leftcontinfoes">
+                        <div class="hotinfo" style="width: 167px;">
+                            <div class="infoone" style="margin-top: 30px;" ms-repeat-as="imgdata">
+                                <a ms-attr-href="/luntan/articles/?aid={as.id}" style="display:block;">
+                                    <img ms-attr-src="{as.snimg}" width="167" height="170">
+                                    <p>{as.title.substr(0,15)}...</p>
+                                </a>
+                            </div>
+
+                        </div>
+                        <div class="rightinfonewses">
                             <ul>
                                 <li>
-                                    <a href="##">
-                                        <img src="{% static 'img/03.png' %}" alt="">
+                                    <a href="">
+                                        <img src="{% static 'img/03.png' %}">
                                         <h3>我还文章标题显示一行，文案...</h3>
-                                        <p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
+                                        <p>我还文章标题显示一行文案文案文案...</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="##">
-                                        <img src="{% static 'img/03.png' %}" alt="">
+                                    <a href="">
+                                        <img src="{% static 'img/03.png' %}">
                                         <h3>我还文章标题显示一行，文案...</h3>
-                                        <p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
+                                        <p>我还文章标题显示一行文案文案文案...</p>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="##">
-                                        <img src="{% static 'img/03.png' %}" alt="">
+                                    <a href="">
+                                        <img src="{% static 'img/03.png' %}">
                                         <h3>我还文章标题显示一行，文案...</h3>
-                                        <p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
+                                        <p>我还文章标题显示一行文案文案文案...</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="{% static 'img/03.png' %}">
+                                        <h3>我还文章标题显示一行，文案...</h3>
+                                        <p>我还文章标题显示一行文案文案文案...</p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <img src="{% static 'img/03.png' %}">
+                                        <h3>我还文章标题显示一行，文案...</h3>
+                                        <p>我还文章标题显示一行文案文案文案...</p>
                                     </a>
                                 </li>
                             </ul>
                         </div>
+
+                        <div class="hotbeiyun">
+                            <a href=""><img src="{% static 'img/05.jpg' %}" height="409" width="100%;">
+                                <p>我是文章最多显示一行，其它用...</p></a>
+                        </div>
                     </div>
-                    <div class="rwzlist">
-                        <div class="ahfljks">
-                            <div class="fsaldkjf">
-                                <a href="##">
-                                    <img src="{% static 'img/jj01.png' %}" alt="" width="133" height="60"
-                                         style="float: left; margin-right: 8px;">
-                                    <h3>我还文章标题显示...</h3>
-                                    <p>我还文章标题显示一行文案文案文案文案文...</p>
-                                </a>
+
+                </div>
+            </div>
+
+
+            <!--  备孕头条 -->
+
+            <div class="szdoctorhot">
+                <div class="doctorhottitle">
+                    备孕头条 <abbr>更多>></abbr>
+                </div>
+                <div class="cityhologe">
+                    <img src="{% static 'img/04.jpg' %}" style="margin-left: 20px;">
+                    <ul>
+                        <li><a href="">我是医院名称</a><abbr>></abbr></li>
+                        <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
+                        <li><a href="">武汉大学人民医院</a><abbr>></abbr></li>
+                        <li><a href="">我是医院名称</a><abbr>></abbr></li>
+                        <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
+                        <li><a href="">武汉人大人民医院</a><abbr>></abbr></li>
+                        <!-- <li><a href="">我是医院名称</a><abbr>></abbr></li> -->
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 不孕不育 -->
+    <div class="shiguanyiner">
+        <div class="sgyecontanather">
+            <div class="sgyghhight">
+                <div class="hhightleft" style="margin-bottom: 20px;">
+                    <h3><abbr>不孕不育</abbr><a href="">女性不孕</a>|<a href="">男性不育</a>|<a href="">病理性不孕</a> <a href=""
+                                                                                                         style="float: right; margin-right: 50px;">更多>></a>
+                    </h3>
+                </div>
+                <div class="hhgihtlefth3">
+                    <div class="leftcontinfoes">
+                        <div class="lwzlist">
+                            <div class="h3tgoplis">
+                                <div class="tupianhost">
+                                    <a href="##">
+                                        <img src="{% static 'img/010.png' %}" alt="">
+                                        <p>我是育儿文章标题</p>
+                                    </a>
+                                </div>
+                                <div class="tupianhost">
+                                    <a href="##">
+                                        <img src="{% static 'img/011.png' %}" alt="">
+                                        <p>我是育儿文章标题</p>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="fsaldkjf">
-                                <a href="##">
-                                    <img src="{% static 'img/jj01.png' %}" alt="" width="133" height="60"
-                                         style="float: left; margin-right: 8px;">
-                                    <h3>我还文章标题显示...</h3>
-                                    <p>我还文章标题显示一行文案文案文案文案文...</p>
-                                </a>
+                            <div class="listh3hasdf">
+                                <ul>
+                                    <li>
+                                        <a href="##">
+                                            <img src="{% static 'img/03.png' %}" alt="">
+                                            <h3>我还文章标题显示一行，文案...</h3>
+                                            <p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="{% static 'img/03.png' %}" alt="">
+                                            <h3>我还文章标题显示一行，文案...</h3>
+                                            <p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="{% static 'img/03.png' %}" alt="">
+                                            <h3>我还文章标题显示一行，文案...</h3>
+                                            <p>我还文章标题显示一行文案文案文案文案文案文案文案文案文案...</p>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
-
-
-                        <div class="listh3hasdf">
-                            <ul>
-                                <li>
+                        <div class="rwzlist">
+                            <div class="ahfljks">
+                                <div class="fsaldkjf">
                                     <a href="##">
-                                        <img src="{% static 'img/03.png' %}" alt="">
-                                        <h3>我还文章标题显示一行，文案...</h3>
-                                        <p>我还文章标题显示一行文案文案文案文案文案文案...</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="##">
-                                        <img src="{% static 'img/03.png' %}" alt="">
-                                        <h3>我还文章标题显示一行，文案...</h3>
-                                        <p>我还文章标题显示一行文案文案文案文案文案文...</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="##">
-                                        <img src="{% static 'img/03.png' %}" alt="">
-                                        <h3>我还文章标题显示一行，文案...</h3>
+                                        <img src="{% static 'img/jj01.png' %}" alt="" width="133" height="60"
+                                             style="float: left; margin-right: 8px;">
+                                        <h3>我还文章标题显示...</h3>
                                         <p>我还文章标题显示一行文案文案文案文案文...</p>
                                     </a>
-                                </li>
-                            </ul>
+                                </div>
+                                <div class="fsaldkjf">
+                                    <a href="##">
+                                        <img src="{% static 'img/jj01.png' %}" alt="" width="133" height="60"
+                                             style="float: left; margin-right: 8px;">
+                                        <h3>我还文章标题显示...</h3>
+                                        <p>我还文章标题显示一行文案文案文案文案文...</p>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div class="listh3hasdf">
+                                <ul>
+                                    <li>
+                                        <a href="##">
+                                            <img src="{% static 'img/03.png' %}" alt="">
+                                            <h3>我还文章标题显示一行，文案...</h3>
+                                            <p>我还文章标题显示一行文案文案文案文案文案文案...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="{% static 'img/03.png' %}" alt="">
+                                            <h3>我还文章标题显示一行，文案...</h3>
+                                            <p>我还文章标题显示一行文案文案文案文案文案文...</p>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="##">
+                                            <img src="{% static 'img/03.png' %}" alt="">
+                                            <h3>我还文章标题显示一行，文案...</h3>
+                                            <p>我还文章标题显示一行文案文案文案文案文...</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+
                         </div>
-
-
                     </div>
                 </div>
             </div>
-        </div>
 
 
-        <!--  生殖医院推荐 -->
+            <!--  生殖医院推荐 -->
 
-        <div class="szdoctorhot">
-            <div class="cityhologe">
-                <a href="##"><img src="{% static 'img/07.jpg' %}" style="margin-left: 20px;"></a>
-                <p>病理性不孕 <abbr title="">换一批</abbr></p>
-                <ul>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                    <li><a href="">武汉大学人民医院</a><abbr>></abbr></li>
-                    <li><a href="">我是医院名称</a><abbr>></abbr></li>
-                    <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- 热点回答 -->
-<div class="hotanwser">
-    <div class="hotanwsercont">
-        <h3 class="h3frist">热点回答 <a href="">更多>></a></h3>
-        <p class="ppart">
-            <abbr title="" class="currpaitp">问题标签</abbr>
-            <abbr title="">子宫问题</abbr>
-            <abbr title="">不孕问题</abbr>
-            <abbr title="">男性问题</abbr>
-            <abbr title="">手术问题</abbr>
-            <abbr title="">费用问题</abbr>
-            <abbr title="">流程问题</abbr>
-            <abbr title="">时间问题</abbr>
-        </p>
-        <div class="wentiwa">
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="" class="hides">888位医生回答</abbr>
-                <p>我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="" class="hides">888位医生回答</abbr>
-                <p>我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="" class="hides">888位医生回答</abbr>
-                <p>我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-            <div class="titleanswer">
-                <h3>我是问题文案，最多显示一行字数到这里哟</h3>
-                <abbr title="">888位医生回答</abbr>
-                <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- 百科知识 -->
-<div class="shiguanyiner">
-    <div class="sgyecontanather">
-        <div class="sgyghhight">
-            <div class="hhightleft">
-                <h3><abbr>百科知识</abbr><a href="">备孕</a>|<a href="">怀孕</a>|<a href="">育儿</a>|<a href="">试管婴儿</a>|<a
-                        href="">不孕不育</a></h3>
-            </div>
-            <div class="hhgihtlefth3">
-                <div class="lefth3list">
+            <div class="szdoctorhot">
+                <div class="cityhologe">
+                    <a href="##"><img src="{% static 'img/07.jpg' %}" style="margin-left: 20px;"></a>
+                    <p>病理性不孕 <abbr title="">换一批</abbr></p>
                     <ul>
-                        <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b"
-                            ms-click="changrightlm(el.mid,$index)">{el.menu_name}
-                        </li>
-
+                        <li><a href="">我是医院名称</a><abbr>></abbr></li>
+                        <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
+                        <li><a href="">武汉大学人民医院</a><abbr>></abbr></li>
+                        <li><a href="">我是医院名称</a><abbr>></abbr></li>
+                        <li><a href="">武汉同济生殖医学专科医院</a><abbr>></abbr></li>
                     </ul>
                 </div>
-                <div class="leftcontinfo123">
-                    <div class="baikelist" style="padding-top: 30px;">
+            </div>
+        </div>
+    </div>
 
+    <!-- 热点回答 -->
+    <div class="hotanwser">
+        <div class="hotanwsercont">
+            <h3 class="h3frist">热点回答 <a href="">更多>></a></h3>
+            <p class="ppart">
+                <abbr title="" class="currpaitp">问题标签</abbr>
+                <abbr title="">子宫问题</abbr>
+                <abbr title="">不孕问题</abbr>
+                <abbr title="">男性问题</abbr>
+                <abbr title="">手术问题</abbr>
+                <abbr title="">费用问题</abbr>
+                <abbr title="">流程问题</abbr>
+                <abbr title="">时间问题</abbr>
+            </p>
+            <div class="wentiwa">
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="" class="hides">888位医生回答</abbr>
+                    <p>我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="" class="hides">888位医生回答</abbr>
+                    <p>我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="" class="hides">888位医生回答</abbr>
+                    <p>我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+                <div class="titleanswer">
+                    <h3>我是问题文案，最多显示一行字数到这里哟</h3>
+                    <abbr title="">888位医生回答</abbr>
+                    <p class="hides">我是回答问题文案，最多显示两行默认展示两个问答，鼠标悬浮和滑过颜色发生变化...</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                        <div class="fourpartg" ms-repeat-el="erjidatalist">
-                            <div>
-                                <h3>{el.menu_name}</h3>
-                                <div class="yunqq">
-                                    <a ms-repeat-sanji="el.children"
-                                       ms-attr-href="/baike/article?aid={sanji.articleid}">{sanji.title}</a>
+    <!-- 百科知识 -->
+    <div class="shiguanyiner">
+        <div class="sgyecontanather">
+            <div class="sgyghhight">
+                <div class="hhightleft">
+                    <h3><abbr>百科知识</abbr><a href="">备孕</a>|<a href="">怀孕</a>|<a href="">育儿</a>|<a href="">试管婴儿</a>|<a
+                            href="">不孕不育</a></h3>
+                </div>
+                <div class="hhgihtlefth3">
+                    <div class="lefth3list">
+                        <ul>
+                            <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b"
+                                ms-click="changrightlm(el.mid,$index)">{el.menu_name}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="leftcontinfo123">
+                        <div class="baikelist" style="padding-top: 30px;">
+                            <div class="fourpartg" ms-repeat-el="erjidatalist">
+                                <div>
+                                    <h3>{el.menu_name}</h3>
+                                    <div class="yunqq">
+                                        <a ms-repeat-sanji="el.children"
+                                           ms-attr-href="/baike/article?aid={sanji.articleid}">{sanji.title}</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+            </div>
+            <!--  热门知识推荐 -->
+            {% include 'mod_hotwenda.html' %}
+        </div>
+        <!-- 底部 -->
+        <div style="width: 1200px; margin: 0 auto; overflow: hidden;margin-bottom: 50px;" class="footeres">
+            <p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
+            <div class="lianjieyq" style="margin-top: 30px;">
+                {% for item in friendlink %}
+                    <a href="{{ link }}">{{ item.link_name }}</a>
+                {% endfor %}
             </div>
         </div>
-
-
-        <!--  热门知识推荐 -->
-        {% include 'mod_hotwenda.html' %}
-</div>
-
-
-<!-- 底部 -->
-<div style="width: 1200px; margin: 0 auto; overflow: hidden;margin-bottom: 50px;" class="footeres">
-    <p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
-    <div class="lianjieyq" style="margin-top: 30px;">
-        {% for item in friendlink %}
-            <a href="{{ link }}">{{ item.link_name }}</a>
-        {% endfor %}
-
-
     </div>
-</div>
-</div>
-{% include 'footer.html' %}
-<script>
-    var swiper = new Swiper('.swiper-container', {
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-    });
-</script>
+    {% include 'footer.html' %}
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
 
-<script>
-    var vm_indexhedes = avalon.define({
-        $id: 'indexhedes',
-        navdata: [],
-        navsShow: function (ev) {
-            var _this = ev;
-            $(_this).css("background-color", "#e2afd6");
-            $(_this).find('.hidebox').show();
+    <script>
+        var vm_indexhedes = avalon.define({
+            $id: 'indexhedes',
+            navdata: [],
+            navsShow: function (ev) {
+                var _this = ev;
+                $(_this).css("background-color", "#e2afd6");
+                $(_this).find('.hidebox').show();
 
-        },
-        navsHide: function (ev) {
-            var _this = ev;
-            $(_this).css("background-color", "");
-            $(_this).find('.hidebox').hide();
-        },
-        curuent_pagees: [],
-        getGdt: function () {
-            $.ajax({
-                url: '/luntan/goodmother/?aid=2&num=10&page=1',
-                type: 'get',
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data, 'datas');
-                    vm_indexhedes.curuent_pagees = data.data.curuent_page
-                    console.log(vm_indexhedes.curuent_pagees, 11111111);
-                },
-                error: function (error) {
-                    console.log(error);
-                }
-            })
-        }
-    })
-    vm_indexhedes.getGdt();
-    var api_indexhed = root_Domain + '/luntan/areas/',
-        api_userActive = root_Domain + '/luntan/goodmother/?aid=2&num=10&page=1';
-
-    $.ajax({
-        url: api_indexhed,
-        type: 'get',
-        dataType: 'json',
-        success: function (ajax) {
-            localStorage.setItem("navdata", JSON.stringify(ajax.data));
-            var newdata = [];
-            for (let i = 0; i < ajax.data.length; i++) {
-                if (i != 1) {
-                    newdata.push(ajax.data[i]);
-                }
+            },
+            navsHide: function (ev) {
+                var _this = ev;
+                $(_this).css("background-color", "");
+                $(_this).find('.hidebox').hide();
+            },
+            curuent_pagees: [],
+            getGdt: function () {
+                $.ajax({
+                    url: '/luntan/goodmother/?aid=2&num=10&page=1',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        vm_indexhedes.curuent_pagees = data.data.curuent_page
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                })
             }
-            for (let j = 0; j < newdata.length; j++) {
-                newdata[j].child = newdata[j].child.splice(0, 4);
-                newdata[j].allchild = JSON.parse(localStorage.getItem("navdata"))[j].child;
-            }
-            localStorage.clear();
-            vm_indexhedes.navdata = newdata;
-        },
-        error: function (error) {
-            console.log(error);
-        }
-    })
-</script>
-<script>
-    $(function () {
-        if ($('body').width() > 768) {
-            var scroll1 = true, scroll2 = true;
-            (function () {
-                var _x = 0;
-                var _width = parseFloat($('#baoxi_scroll_ul1 li:first-child').css('width')) + 20;
-                console.log(_width, '999')
+        })
+        vm_indexhedes.getGdt();
+        var api_indexhed = root_Domain + '/luntan/areas/',
+            api_userActive = root_Domain + '/luntan/goodmother/?aid=2&num=10&page=1';
 
-                function setTime() {
-                    if (scroll1) {
-                        _x--;
-                        var fushu = _width * 1.0 * _width;
-                        if (_x * _x * 1.0 >= fushu) {
-                            _x = 0;
-                            $("#baoxi_scroll_ul1 li:last-child").after($("#baoxi_scroll_ul1 li:first-child"));
-                            _width = parseFloat($('#baoxi_scroll_ul1 li:first-child').css('width')) + 20;
-                        }
-                        $('#baoxi_scroll_ul1').css({'left': _x});
+        $.ajax({
+            url: api_indexhed,
+            type: 'get',
+            dataType: 'json',
+            success: function (ajax) {
+                localStorage.setItem("navdata", JSON.stringify(ajax.data));
+                var newdata = [];
+                for (let i = 0; i < ajax.data.length; i++) {
+                    if (i != 1) {
+                        newdata.push(ajax.data[i]);
                     }
                 }
-
-                setInterval(setTime, 15);
-            })();
-            (function () {
-                var _x = 0;
-                var _width = parseFloat($('#baoxi_scroll_ul2 li:first-child').css('width')) + 20;
-
-                function setTime() {
-                    if (scroll2) {
-                        _x--;
-                        var fushu = _width * 1.0 * _width;
-                        if (_x * _x * 1.0 >= fushu) {
-                            _x = 0;
-                            $("#baoxi_scroll_ul2 li:last-child").after($("#baoxi_scroll_ul2 li:first-child"));
-                            _width = parseFloat($('#baoxi_scroll_ul2 li:first-child').css('width')) + 20;
-                        }
-                        $('#baoxi_scroll_ul2').css({'left': _x});
-                    }
+                for (let j = 0; j < newdata.length; j++) {
+                    newdata[j].child = newdata[j].child.splice(0, 4);
+                    newdata[j].allchild = JSON.parse(localStorage.getItem("navdata"))[j].child;
                 }
+                localStorage.clear();
+                vm_indexhedes.navdata = newdata;
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+        {#    试管婴儿板块视图#}
+        var vm_sgyercrl = avalon.define({
+            $id: 'sgyercrl',
+            sgyerdata: [],
+            curid: '',
+            imgdata: [],
+            lisdata: [],
+            init: function () {
+                $.ajax({
+                    url: root_Domain + '/luntan/areas/',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        localStorage.setItem('lunnav', JSON.stringify(ajax.data))
+                        $.ajax({
+                            url: root_Domain + '/luntan/topics/?aid=' + ajax.data[2].id,
+                            type: 'get',
+                            dataType: 'json',
+                            success: function (ajax) {
+                                vm_sgyercrl.sgyerdata = ajax.data;
+                                vm_sgyercrl.curid = ajax.data[0].id;
+                                vm_sgyercrl.getlidata();
+                            }, error: function (error) {
+                                console.log(error);
+                            }
+                        })
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                })
+            },
+            goChange: function (id) {
+                vm_sgyercrl.curid = id;
+                vm_sgyercrl.getlidata();
+            },
+            getlidata: function () {
+                $.ajax({
+                    url: root_Domain + '/luntan/articlelist/?tid=' + vm_sgyercrl.curid + '&num=7&page=1',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        var data = ajax.data.curuent_page.splice(0, 2);
+                        Toolfun.snimgzsClass(data);
+                        vm_sgyercrl.imgdata = data;
+                        vm_sgyercrl.lisdata = ajax.data.curuent_page;
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
+        })
+        vm_sgyercrl.init();
+        var vm_hysqctl = avalon.define({
+            $id: 'hysqctl',
+            imgdata: [],
+            lisdata: [],
+            hotimg: [],
+            init: function () {
+                var navs = JSON.parse(localStorage.getItem('lunnav'));
+                $.ajax({
+                    url: root_Domain + '/luntan/articlelist/?tid=' + navs[3].child[0].id + '&num=8',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        var imgdata = ajax.data.curuent_page.splice(0, 2);
+                        Toolfun.snimgzsClass(imgdata);
+                        vm_hysqctl.imgdata = imgdata;
+                        vm_hysqctl.lisdata = ajax.data.curuent_page.splice(0, 5);
+                        var hotdata = ajax.data.curuent_page;
+                        Toolfun.snimgzsClass(hotdata)
+                        vm_hysqctl.hotimg = hotdata;
+                        console.log(vm_hysqctl.imgdata, vm_hysqctl.hotimg, 5656559595)
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                })
+            }
+        })
+        vm_hysqctl.init();
+    </script>
+    <script>
+        $(function () {
+            if ($('body').width() > 768) {
+                var scroll1 = true, scroll2 = true;
+                (function () {
+                    var _x = 0;
+                    var _width = parseFloat($('#baoxi_scroll_ul1 li:first-child').css('width')) + 20;
 
-                setInterval(setTime, 10);
-            })();
-            $('#baoxi_scroll_ul1').mouseenter(function () {
-                scroll1 = false;
-            }).mouseleave(function () {
-                scroll1 = true;
-            });
-            $('#baoxi_scroll_ul2').mouseenter(function () {
-                scroll2 = false;
-            }).mouseleave(function () {
-                scroll2 = true;
-            })
-        }
-    })
+                    function setTime() {
+                        if (scroll1) {
+                            _x--;
+                            var fushu = _width * 1.0 * _width;
+                            if (_x * _x * 1.0 >= fushu) {
+                                _x = 0;
+                                $("#baoxi_scroll_ul1 li:last-child").after($("#baoxi_scroll_ul1 li:first-child"));
+                                _width = parseFloat($('#baoxi_scroll_ul1 li:first-child').css('width')) + 20;
+                            }
+                            $('#baoxi_scroll_ul1').css({'left': _x});
+                        }
+                    }
 
-</script>
+                    setInterval(setTime, 15);
+                })();
+                (function () {
+                    var _x = 0;
+                    var _width = parseFloat($('#baoxi_scroll_ul2 li:first-child').css('width')) + 20;
+
+                    function setTime() {
+                        if (scroll2) {
+                            _x--;
+                            var fushu = _width * 1.0 * _width;
+                            if (_x * _x * 1.0 >= fushu) {
+                                _x = 0;
+                                $("#baoxi_scroll_ul2 li:last-child").after($("#baoxi_scroll_ul2 li:first-child"));
+                                _width = parseFloat($('#baoxi_scroll_ul2 li:first-child').css('width')) + 20;
+                            }
+                            $('#baoxi_scroll_ul2').css({'left': _x});
+                        }
+                    }
+
+                    setInterval(setTime, 10);
+                })();
+                $('#baoxi_scroll_ul1').mouseenter(function () {
+                    scroll1 = false;
+                }).mouseleave(function () {
+                    scroll1 = true;
+                });
+                $('#baoxi_scroll_ul2').mouseenter(function () {
+                    scroll2 = false;
+                }).mouseleave(function () {
+                    scroll2 = true;
+                })
+            }
+        })
+
+    </script>
 </div>
 </html>

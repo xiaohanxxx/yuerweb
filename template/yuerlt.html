@@ -301,6 +301,7 @@
             metadata: [],
             goChange: function (menu_id) {
                 vm_nyzl.pageNo = $(this).attr('dataid');
+                Toolfun.iszhezClass();
                 $.ajax({
                     url: api_articlelist + menu_id + '&num=' + nyzl_num,
                     type: 'get',
@@ -311,6 +312,7 @@
                         vm_nyzl.imgTitle = ajax.data.curuent_page.slice(7, 11);
                         Toolfun.snimgzsClass(vm_nyzl.imgTitle);
                         vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11, 17);
+                        Toolfun.qxzheClass();
                     }, error: function (error) {
                         console.log(error)
                     }
@@ -326,6 +328,7 @@
             hotdata: [],
             lisdata: [],
             goChange: function (currentid) {
+                Toolfun.iszhezClass();
                 vm_sgyer.pageNo = $(this).attr('dataid');
                 $.ajax({
                     url: api_articlelist + currentid,
@@ -335,6 +338,7 @@
                         vm_sgyer.hotdata = ajax.data.curuent_page.slice(0, 1);
                         Toolfun.snimgzsClass(vm_sgyer.hotdata);
                         vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
+                        Toolfun.qxzheClass();
                     }, error: function (error) {
                         console.log(error);
                     }
@@ -392,6 +396,7 @@
 
         {#好孕妈妈数据请求#}
         function reshHymm(aid, num, page) {
+            Toolfun.iszhezClass();
             $.ajax({
                 url: api_goodmother + aid + '&num=' + num + '&page' + page,
                 type: 'get',
@@ -400,6 +405,7 @@
                     vm_hymm.pageAll = ajax.data.page_num;
                     vm_hymm.pageOn = page;
                     vm_hymm.data = ajax.data.curuent_page;
+                    Toolfun.qxzheClass();
                 },
                 error: function (error) {
                     console.log(error);
@@ -415,7 +421,6 @@
             success: function (ajax) {
                 {#全局栏目数据#}
                 vm_areas.yuerlt_data = ajax.data;
-                console.log(vm_areas.yuerlt_data,565656565655)
                 {#备孕热点#}
                 vm_byhot.mainid = ajax.data[0].child[0].id;
                 vm_byhot.Mid = ajax.data[0].id;

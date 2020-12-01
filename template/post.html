@@ -125,6 +125,8 @@
                                     window.location.href = root_Domain + '/luntan/articles/?aid=' + ajax.data;
                                 }
                             })
+                        },error:function(error){
+                            layer.msg('输入内容长度不得超过800长度！！！')
                         }
                     })
                 }
