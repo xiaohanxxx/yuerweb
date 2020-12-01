@@ -265,7 +265,7 @@ button {
     font-weight: normal;
     padding-bottom: 12px;
     font-family: Microsoft YaHei;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 31px;
     letter-spacing: 0px;
     color: #333333;
@@ -556,7 +556,7 @@ html body .yesShow {
 
 .yuermeta_h > h3 > a {
     display: block;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 28px;
     letter-spacing: 2px;
     color: #ff44ad;

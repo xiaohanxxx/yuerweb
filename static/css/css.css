@@ -273,6 +273,7 @@ body{ background: #f9f9f9; }
 .hzwdcontslist p{ color: #666; }
 .partwdone{ overflow: hidden; width: 100%; margin: 25px 0  70px 0; padding-left: 15px;}
 .doctorbox,.metry,.szzhuanjia{ overflow: hidden; width:100%;}
+.szzhuanjia{ overflow: hidden; width:100%; background: #fff; padding: 15px;}
 .szzhuanjia h3{height: 53px; line-height: 53px; font-size: 16px; border-bottom:1px solid #666;}
 .szzhuanjia h3 a{float: right; font-size: 12px; margin-right: 10px; display: block; width: 60px; height: 53px; line-height: 53px; }
 .szzhuanjia h3 abbr{ height: 53px; line-height: 53px; display: block; width: 102px;float: left; border-bottom: 1px solid #ff44ad; }
@@ -285,6 +286,9 @@ body{ background: #f9f9f9; }
 .hotwdtuijian ul li a:hover{ color: #ff44ad; }
 .hotwdtuijian ul li abbr{ float: right;font-size: 12px; }
 .szyytj{width:320px;background-color:#fff;border-radius: 8px;margin-top:20px;padding:5px 10px;}
+
+.hotwdtuijian ol li{ margin:20px 0;font-size: 12px;  }
+
 
 .hotwdtuijianes ol li{ margin:10px 20px 10px 0;font-size: 12px; float: left;  }
 .hotwdtuijianes ol li a:hover{ color: #ff44ad; }
@@ -598,7 +602,7 @@ color: #666; font-size: 12px; }
 .hd ul li{ width: 20px; line-height: 20px; height: 20px; text-align: center; }
 
 
-.pjjyy{ padding: 20px;}
+.pjjyy{ padding: 20px; background: #fff;}
 .pjjyy a{ color: #ff44ad; margin-top: 15px; }
 
 .listyisheng,.listyisheng ol{overflow: hidden;}
@@ -644,8 +648,8 @@ color: #666; font-size: 12px; }
 .al_taolun{width: 100%; overflow: hidden;}
 .al_taolun h4{ height: 35px; line-height: 35px; border-bottom: 1px solid #f1f1f1; width: 100%;}
 .al_taolun h4 abbr{ border-bottom: 1px solid #FF44AD; width: 100px; float: left; display: block; height: 35px; line-height: 35px;text-align: center;}
-.al_taolun ul{ overflow: hidden; width: 100%; padding: 15px;}
-.al_taolun ul li{ width: 100%; }
+.al_taolun ul{ overflow: hidden; width: 100%; padding: 15px 15px 15px 0;}
+.al_taolun ul li{ width: 100%;  }
 
 .al_taolun ul li abbr{ float: right; font-size: 12px; width: 90px;}
 
