@@ -112,6 +112,7 @@
             }
         },
         goMflid: function () {
+            Toolfun.iszhezClass();
             $.ajax({
                 url: root_Domain + '/taolun/topics/?gid=' + vm_hzwdadd.mflid + '&num=' + vm_hzwdadd.limites,
                 type: 'get',
@@ -123,18 +124,21 @@
                     vm_hzwdadd.allgroupData = ajax.data;
                     localStorage.setItem('Mid',vm_hzwdadd.mflid);
                     localStorage.setItem('sonGroup',JSON.stringify(vm_hzwdadd.allgroupData));
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }
             })
         },
         goPage: function (page) {
+            Toolfun.iszhezClass();
             $.ajax({
                 url: root_Domain + '/taolun/topics/?gid=' + vm_hzwdadd.mflid + '&num=' + vm_hzwdadd.limites + '&page=' + page,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdadd.allgroupData = ajax.data;
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -157,6 +161,7 @@
                     vm_hzwdadd.allgroupData = ajax.data;
                     vm_hzwdadd.menuClick();
                     vm_hzwdadd.goMflid();
+
                 },
                 error: function (error) {
                     console.log(error);
