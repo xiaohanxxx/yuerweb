@@ -1422,7 +1422,6 @@ body a:hover {
     width: 100%;
     overflow: auto;
     text-align: left !important;
-    margin-bottom: 24px;
 }
 .topic_l .allInfo > p img{
     display: block;
@@ -1435,6 +1434,7 @@ body a:hover {
 .topic_l .plbox {
     height: 24px;
     margin-bottom: 14px;
+    margin-top: 25px;
 }
 
 .plbox > div {

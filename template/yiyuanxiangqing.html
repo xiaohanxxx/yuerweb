@@ -40,11 +40,11 @@
 
       <div class="hzwdlefts">
 
- <div class="hzwdcontslistes">
+       <div class="hzwdcontslistes">
 
           <h3>详细介绍</h3>
           <p>{yiyuaninfo.content}</p>
-   </div>
+       </div>
 
 
 
@@ -59,14 +59,12 @@
                    <p>{el.name}   <abbr>{el.zhiwei}</abbr></p>
                    <p style="font-size: 12px; margin: 5px 0;">{el.hospital}</p>
                    <p style="font-size: 12px; margin: 5px 0;">擅长：{el.goodjob}</p>
-
                     <div class="piaofubox">
                         <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">{el.title}</div>
                         <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">{el.zhiwei}</div>
 {#                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>#}
                         <div class="zixunzhuanjia"><a ms-attr-href="/hospital/doctor/?did={el.id}">咨询专家</a></div>
                     </div>
-
                 </li>
                   <div ms-if="!doctorlist || doctorlist.length==0" style="width: 100%; padding: 80px 0; text-align: center;"> 暂无数据 </div>
               </ul>
@@ -125,7 +123,7 @@
           <div class="yiyuanhuanjing">
              <h3 style="margin-bottom: 20px; margin-top: 20px;">优选权威专家</h3>
              <div class="qwzhuanjia bd">
-               <ol>
+               <ol style="height: 220px; overflow: hidden;">
                 <li ms-repeat="getpowerdoctor">
                   <div class="yshione">
                       <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb"></a>

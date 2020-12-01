@@ -285,7 +285,7 @@ body{ background: #f9f9f9; }
 .doctorbox{width: 100%; overflow: hidden;}
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
 .hotwdtuijian{ background: #fff; padding: 15px; overflow: hidden; width: 93%; }
-.hotwdtuijian ul,.hotwdtuijian ol{ overflow: hidden; width: 100%; }
+.hotwdtuijian ul,.hotwdtuijian ol{ overflow: hidden; width: 97%; }
 .hotwdtuijian ul li{ margin:20px 0;font-size: 12px;  }
 .hotwdtuijian ul li a:hover{ color: #ff44ad; }
 .hotwdtuijian ul li abbr{ float: right;font-size: 12px; }
@@ -530,7 +530,10 @@ color: #666; font-size: 12px; }
 
 .hzwdcontslistes{ width: 100%; overflow: hidden; background: #fff; padding: 15px 0 15px 0; }
 .hzwdcontslistes h3{ border-left: 3px solid #ff44ad; padding-left: 25px; font-size: 20px; }
-.hzwdcontslistes p{ line-height: 30px; padding: 5px 15px; }
+.hzwdcontslistes p{ line-height: 30px; padding: 5px 30px; }
+.hzwdcontslisteszhou { background: #fff; padding: 20px 20px 20px 0; }
+.hzwdcontslisteszhou h3{ padding-left: 23px; font-size: 20px; margin-bottom: 20px;}
+.hzwdcontslisteszhou p{ line-height: 10px; padding: 5px 15px; }
 .listyisheng{ width: 100%; overflow: hidden; }
 .listyisheng ul{ overflow: hidden; width: 100%; padding: 15px; }
 .listyisheng ul li{width: 22%; overflow: hidden; box-shadow: 0 0 10px #999; position: relative;}
@@ -735,8 +738,8 @@ color: #666; font-size: 12px; }
 .okedit abbr{ display: block; width: 100px; background: #FF44AD; color: #fff; text-align: center; height: 35px; line-height: 35px; border-radius: 3px; margin-left: 115px; margin-top: 30px; }
 
 .ysinfo{ width: 100%; height: 250px; background: url(../img/ysinfo.png) left center no-repeat; margin-top: 25px; }
-.yishenginfo{ width: 578px; height: 220px; padding-top: 15px; }
-.yishenginfo p{ float: left; width: 44%; color: #fff; }
+.yishenginfo{ width: 740px; height: 220px; padding-top: 15px; }
+.yishenginfo p{ float: left; width: 38%; color: #fff; }
 
 .doctorlists{ width: 100%; overflow: hidden; }
 .dclist{ width: 50%; overflow: hidden; float: left; margin-bottom: 25px; margin-top: 25px; }

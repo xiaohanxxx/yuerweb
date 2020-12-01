@@ -9,13 +9,11 @@ def index(request):
     # print(friend_link)
     return render(request,'index.html',{"friendlink":friend_link})
 
-
 def login(request):
     if list(request.session.values()) == []:
         return render(request,'login.html')
     else:
         return redirect('/')
-
 
 def register(request):
     return render(request,'register.html')

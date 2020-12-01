@@ -91,18 +91,12 @@
                      		</div>
                      		<div class="four_hot">
                      			<ul>
-                     				<li>
-                                        <a href="">我是论坛帖子标题最多显示...</a>
+                     				<li ms-repeat-item="el.user_article">
+                                        <a ms-attr-href="/luntan/articles/?aid={item.id}">{item.title | truncate(16,'...')}</a>
                      				</li>
-                     				<li>
-                     					<a href="">我是论坛帖子标题最多显示...</a>
-                     				</li>
-                     				<li>
-                     					<a href="">我是论坛帖子标题最多显示...</a>
-                     				</li>
-                     				<li>
-                     					<a href="">我是论坛帖子标题最多显示...</a>
-                     				</li>
+{#                     				<li>#}
+{#                     					<a href="">我是论坛帖子标题最多显示...</a>#}
+{#                     				</li>#}
                      			</ul>
                      		</div>
                      	</div>
