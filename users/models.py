@@ -75,3 +75,19 @@ class Follow(models.Model):
                      'mutualfollower': 1})  # 1表示未关注粉丝
 
         return user_followed  # 得到from_user关注的人，返回列表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

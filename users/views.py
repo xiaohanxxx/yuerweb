@@ -66,7 +66,6 @@ def centerMessage(request):
 
 # 别人的个人中心
 def centerhim(request, Quser_id):
-    print("dsssssssssss")
     userinfo = Userinfo.objects.get(user_id=Quser_id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
@@ -144,9 +143,8 @@ def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        print(username, password)
+        # 验证密码
         user = authenticate(username=username, password=password)
-        print(user)
         if user:
             # 查询密码是否正确
             login(request, user)
@@ -154,14 +152,12 @@ def userlogin(request):
                 'code': 200,
                 'msg': '登录成功'
             }
-            print(data)
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             data = {
                 'code': 400,
                 'msg': '登录失败'
             }
-            print(data)
             return HttpResponse(json.dumps(data), content_type="application/json")
 
     return render(request, "login.html")
@@ -173,18 +169,26 @@ def outlogin(request):
     return redirect("/login")
 
 
+
 # 修改密码
 @error
 @login_required
 def changepwd(request):
     if request.method == 'POST':
-        new_password = request.POST.get('new_password')
-        request.user.set_password(new_password)
-        request.user.save()
-        data = {
-            'code': 200,
-            'msg': '修改成功'
-        }
+        print('aaaaa')
+        new_password = request.POST.get('new_password',None)
+        if new_password == None:
+            data = {
+                'code': 400,
+                'msg': '修改失败'
+            }
+        else:
+            request.user.set_password(new_password)
+            request.user.save()
+            data = {
+                'code': 200,
+                'msg': '修改成功'
+            }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
 
@@ -226,7 +230,7 @@ class Followapi(View):
         elif type == 3:
             return self.getfollowedapi()
         else:
-            return HttpResponse(json.dumps({'code': 406, 'msg': '参数错误'}))
+            return HttpResponse(json.dumps({'code': 406, 'msg': '参数错误'}), content_type="application/json")
 
     # 关注0
     def follow(self):
@@ -245,7 +249,7 @@ class Followapi(View):
                 'code': 200,
                 'msg': '已关注'
             }
-        return HttpResponse(json.dumps(data))
+        return HttpResponse(json.dumps(data), content_type="application/json")
 
     # 取消关注1
     def unfollowapi(self):
@@ -254,7 +258,7 @@ class Followapi(View):
             'code': 200,
             'msg': '已取消'
         }
-        return HttpResponse(json.dumps(data))
+        return HttpResponse(json.dumps(data), content_type="application/json")
 
     # 获得关所有已关注对象2
     def getfollowapi(self):
@@ -277,7 +281,7 @@ class Followapi(View):
                               )
         }
 
-        return HttpResponse(json.dumps(data))
+        return HttpResponse(json.dumps(data), content_type="application/json")
 
     # 获得粉丝3
     def getfollowedapi(self):
@@ -288,7 +292,7 @@ class Followapi(View):
             'msg': '成功',
             'data_list': follow_list
         }
-        return HttpResponse(json.dumps(data))
+        return HttpResponse(json.dumps(data), content_type="application/json")
 
 
 # 等级变更公用方法
@@ -308,18 +312,28 @@ def public_level(request):
 
 
 # 公用通知方法
-def public_send_notice(user,Quser,article,comment,other):
-    try:
-        notify.send(
-            user, # 发送通知的人
-            recipient=Quser, # 接收通知的对象
-            verb=other, # 自定义动态对象
-            target=article, # 动作对象
-            action_object=comment, # 通知文本
-        )
-        return 1
-    except:
-        return 0
+def public_send_notice(user,recipient):
+
+    notify.send(
+        user, # 发送通知的人
+        recipient=recipient, # 接收通知的对象
+        verb="sdasdasdasd", # 自定义动态对象(信息,回复,评论)
+    )
+    return 1
+
+
+
+
+# 获取通知信息
+def getnoticate(request):
+    user = 21
+    recipient = 1
+    verb = '回复了你'
+    ret = public_send_notice(user, recipient)
+    print("ok",ret)
+
+
+
 
 
 
@@ -328,7 +342,6 @@ def upload(request):
     if request.method == 'POST':
         name = request.POST.get('username')
         avatar = request.FILES.get('avatar')
-        print(avatar)
         with open(avatar.name, 'wb') as f:
             for line in avatar:
                 f.write(line)
