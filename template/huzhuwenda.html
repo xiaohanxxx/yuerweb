@@ -49,6 +49,7 @@
                 </div>
                 <div class="listswenda">
                     <ul>
+
                         <li ms-repeat-el='datasfsa'>
                             <div class="tuxiangimgs" style="float: left;"><a href=""><img
                                     ms-attr-src='/media/{el.user.head}' width="230" height="160"></a>
@@ -58,9 +59,9 @@
                                     <p style="font-size: 16px; margin-bottom: 10px;">{ el.title }</p>
                                 </a>
                                 <a ms-attr-href="/taolun/toposting/?pid={el.id}">
-                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">
-                                        {el.content|html}
-                                    </p>
+{#                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">#}
+                                        {el.content|html|truncate(260,'...')}
+{#                                    </p>#}
                                 </a>
                                 <div class="infousers">
                                     <div class="userone">
@@ -74,6 +75,7 @@
                                 </div>
                             </div>
                         </li>
+
                     </ul>
                     <div id="pagers"></div>
                 </div>

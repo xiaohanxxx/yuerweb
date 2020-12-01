@@ -5,7 +5,7 @@
 }
 
 .floafright > a:nth-of-type(2) > p {
-    min-height: 80px;
+    /*min-height: 80px;*/
     overflow: auto;
 }
 .floafright>a img{

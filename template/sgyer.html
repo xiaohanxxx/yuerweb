@@ -62,14 +62,14 @@
                 <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
                 <div class='sginfo_r fr'>
                     <h4><a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a></p>
-                        <p><a href="javascript:;">{el.content | truncate(30, '...')}</a></p>
+                        <p><a href="javascript:;">{el.content | truncate(60, '...')}</a></p>
                     <div class='sg_tag'>
                         <span ms-repeat-item="el.topics"><a href="javascript:;">{item.name}</a></span>
                     </div>
                     <div class='sg_userinfo'>
                         <div class='fl'>
                             <span>{el.user}</span>
-                            <span>{el.publish_date}</span>
+                            <span>{el.publish_date.replace(/\..*/,'')}</span>
                         </div>
                         <div class='fr'>
                             <a href="">

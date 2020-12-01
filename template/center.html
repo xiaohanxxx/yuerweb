@@ -56,7 +56,7 @@
                     		<li ms-repeat="alltiezi">
                                 <a ms-attr-href="/luntan/articles/?aid={el.id}"><img src="{% static 'img/pexels.png' %}"></a>
                     			<p style="font-size: 16px;"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
-                    			<p style="font-size: 12px;">{el.content}</p>
+                    			<p style="font-size: 12px;">{el.content | truncate(40,'...') | html}</p>
                     			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
                     					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
@@ -72,7 +72,7 @@
                     		<ul>
                     			<li ms-repeat-el="mywenda">
                     				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
-                    				<p style="font-size: 12px; margin: 8px 0;">{el.content}</p>
+                    				<p style="font-size: 12px; margin: 8px 0;">{el.content | truncate(60,'...') | html}</p>
                     				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
                     		</ul>
@@ -265,7 +265,7 @@
             },
             okedit:function(){
             	var new_password = {
-            		new_password:wvm.edit_passwad.password
+            		new_password:wvm.edit_passwad.password       //密码修改参数
             	}
                 $.ajax({
                     type: 'post',
