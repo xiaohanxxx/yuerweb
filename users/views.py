@@ -178,13 +178,20 @@ def outlogin(request):
 @login_required
 def changepwd(request):
     if request.method == 'POST':
-        new_password = request.POST.get('new_password')
-        request.user.set_password(new_password)
-        request.user.save()
-        data = {
-            'code': 200,
-            'msg': '修改成功'
-        }
+        new_password = request.POST.get('new_password',None)
+        print(new_password)
+        if new_password == None:
+            data = {
+                'code': 400,
+                'msg': '修改失败'
+            }
+        else:
+            request.user.set_password(new_password)
+            request.user.save()
+            data = {
+                'code': 200,
+                'msg': '修改成功'
+            }
         return HttpResponse(json.dumps(data), content_type="application/json")
 
 

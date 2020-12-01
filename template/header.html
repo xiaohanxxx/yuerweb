@@ -103,7 +103,7 @@
     var vmm = avalon.define({
         $id:'headercont',
         namees:'医院',
-        usernames:localStorage.getItem('username'),
+        usernames:sessionStorage.getItem("username"),
         showxiala:function(){
             var _this = $(this);
             if(_this.next('ul').hasClass('hites')){
@@ -173,6 +173,7 @@
                   if(data.code == 200){
                          layer.msg('登录成功，即将跳转到当前页');
                          localStorage.setItem('username',vm.loginData.username);
+                         sessionStorage.setItem("username", vm.loginData.username);
                          setTimeout(function(){
                                history.back();
                          },2000)

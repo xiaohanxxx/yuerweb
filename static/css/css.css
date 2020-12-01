@@ -517,7 +517,7 @@ color: #666; font-size: 12px; }
 .beiyunbaikepart{ width: 100%; overflow: hidden; }
 .rightlistsa{ width: 995px; float: left; min-height: 200px; margin-top: 17px; }
 .rightlistsa ul{ width: 30%; float: left; overflow: hidden; }
-.ululli{ width: 30%; float: left; overflow: hidden; margin-right: 2%; height: 120px; }
+.ululli{ width: 30%; float: left; overflow: hidden; margin-right: 2%; height: 160px; }
 .abq{ width: 100%; overflow: hidden; }
 .ululli a{ text-decoration: none;margin-right: 15px; color: #666;margin-bottom: 10px; font-size: 14px; }
 .ululli h4{ margin-bottom: 10px; color: #ff44ad; font-size: 16px;}
@@ -624,7 +624,6 @@ color: #666; font-size: 12px; }
 .left_bottom_artctal_anather h3 abbr{ height: 50px; line-height: 50px; width: 106px; text-align: center; border-bottom: 2px solid #ff44ad; display: block; margin-bottom: 15px; }
 .left_bottom_artctal_anather ul li{ margin-bottom: 20px; padding-left: 25px;}
 .suoyin{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
-/*.suoyin img{ width: 100%; }*/
 .suoyins{ width: 100%; overflow: hidden; background:#fff url('../img/duanluo.png') no-repeat 60px 50px;min-height:0px; }
 .curr_address{ overflow: hidden; width: 1200px; margin: 20px auto; }
 .artcalAll{ width: 1200px; margin: 0 auto; overflow: hidden; min-height: 200px;}

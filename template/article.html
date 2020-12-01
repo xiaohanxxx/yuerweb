@@ -94,7 +94,7 @@
                 <h3><abbr>相关热门推荐</abbr></h3>
                 <ul>
                     <li ms-repeat="get_tj_baike">
-                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
+                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title | html}</a>
                     </li>
                 </ul>
             </div>
