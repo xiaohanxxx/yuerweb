@@ -164,6 +164,7 @@ class Posting(views.View):
             "title": request.POST.get("title"),
             "content": request.POST.get("content")
         }
+        print(len(articleData['content']))
         postingRes = models.Posting.objects.create(**articleData)
 
         topic = request.POST.getlist("topic", [])

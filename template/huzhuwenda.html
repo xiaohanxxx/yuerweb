@@ -158,6 +158,18 @@
                 _this.next('ul').addClass('hites');
             }
         },
+        contentcl: function (lisdata) {
+            for (let i = 0; i < lisdata.length; i++) {
+                var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
+                if (lisdata[i].content.match(/<img.*\/>/g)) {
+                    var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
+                    lisdata[i].content = constr + snimg
+                } else {
+                    lisdata[i].content = constr;
+                }
+            }
+            vm_hzwda.datasfsa = lisdata;
+        },
         intopages: function () {
             layui.use('laypage', function () {
                 var laypage = layui.laypage;
@@ -181,14 +193,16 @@
             } else {
                 vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
             }
+            Toolfun.iszhezClass();
             $.ajax({
                 url: vm_hzwda.url,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwda.count = ajax.maxnum;
-                    vm_hzwda.datasfsa = ajax.data;
+                    vm_hzwda.contentcl(ajax.data);
                     vm_hzwda.intopages();
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -196,12 +210,14 @@
         },
         gopage: function (page) {
             var url = vm_hzwda.url + '&page=' + page;
+            Toolfun.iszhezClass();
             $.ajax({
                 url: url,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
-                    vm_hzwda.datasfsa = ajax.data;
+                    vm_hzwda.contentcl(ajax.data);
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -209,6 +225,7 @@
         },
         init: function () {
             vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
+            Toolfun.iszhezClass();
             $.ajax({
                 url: root_Domain + '/taolun/groups/',
                 type: 'get',
@@ -231,9 +248,9 @@
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwda.count = ajax.maxnum;
-                    vm_hzwda.datasfsa = ajax.data;
-                    console.log(vm_hzwda.datasfsa,66666668888888)
+                    vm_hzwda.contentcl(ajax.data);
                     vm_hzwda.intopages();
+                    Toolfun.qxzheClass();
                 }, error: function (error) {
                     console.log(error);
                 }
