@@ -44,7 +44,8 @@ def center(request):
     data = {
         'user': user,
         'level': level,
-        'integral': integral
+        'integral': integral,
+        'userinfo':userinfo
     }
     return render(request, 'center.html', {'data': data})
 
@@ -59,7 +60,8 @@ def centerMessage(request):
     data = {
         'user': user,
         'level': level,
-        'integral': integral
+        'integral': integral,
+        'userinfo': userinfo
     }
     return render(request, 'centerMessage.html', {'data': data})
 
@@ -325,7 +327,6 @@ def noticate(user,recipient,target,message):
 
 # 获取通知信息
 def getnoticate(request):
-
     return HttpResponse('ok')
 
 
