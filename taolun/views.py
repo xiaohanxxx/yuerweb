@@ -1,4 +1,5 @@
 import json
+import random
 
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
@@ -264,7 +265,7 @@ class ThumbUp(views.View):
 
 
 # 获取我的帖子
-# @method_decorator(login_required, name='dispatch')
+@method_decorator(login_required, name='dispatch')
 class GetMyArticles(views.View):
     def get(self, request, *args, **kwargs):
         uid = request.user.id
@@ -284,3 +285,25 @@ class GetMyArticles(views.View):
                 "commentnum": i.posting_comment.all().count(),
             })
         return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))
+
+
+# 获取热门问答
+class GetHotQuestion(views.View):
+    def get(self, request, *args, **kwargs):
+        groups = models.Groups.objects.all()
+        if not groups:
+            return HttpResponse(json.dumps({"data": []}))
+        group = groups[0]
+        topics = group.group_topics.all()
+        res = []
+        for i in topics:
+            data = {"id": i.id, "name": i.name, "child":[]}
+            postList = i.posting_set.order_by("-read")[:12]
+            for k in postList:
+                comment = k.posting_comment.values().annotate(count=Count('thumup_comment')).order_by('-count')[:1]
+                postData = {"id": k.id, "title": k.title, "comment": {}}
+                if comment:
+                    postData["comment"] = {"id": comment[0]["id"], "comment": comment[0]["comment"]}
+                data["child"].append(postData)
+            res.append(data)
+        return HttpResponse(json.dumps({"data": res}))
