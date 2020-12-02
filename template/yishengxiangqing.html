@@ -190,7 +190,7 @@
 
          <div class="hzwdcontslistes">
 
-          <h3>咨询评价</h3>
+          <h3>感谢信</h3>
 
           <div class="listyishenges">
                <ol>
@@ -206,6 +206,25 @@
                </ol>
           </div>
          </div>
+
+
+
+          <div class="hzwdcontslisteszhou">
+
+          <h3 style="border-left: 3px solid #FF44AD;">医生名录</h3>
+
+          <div class="listyishengeszhou">
+              <ul style="padding: 15px;">
+                  <li style="width: 28%; margin-bottom: 55px;" ms-repeat="getpowerdoctor">
+                      <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb" alt="" style="float: left;margin-right: 20px; width: 30px; height: 30px; border-radius: 30px;"></a>
+                      <p><a  ms-attr-href="/hospital/doctor/?did={el.id}">{el.name}</a></p>
+                      <p style="padding-left: 49px;">{el.hospital}</p>
+                  </li>
+              </ul>
+          </div>
+         </div>
+
+
 
 
 
@@ -306,6 +325,23 @@
               });
             });
         },
+        getpowerdoctor:[],
+        getpowerdoctoar:function (){
+            var data = {
+                type:1,
+                num:12
+            }
+           $.ajax({
+                url: '/hospital/powerdoctor/',
+                type: 'get',
+                dataType: 'json',
+                data:data,
+                success: function (data) {
+                    vmc.getpowerdoctor = data.data
+                }
+           })
+
+        },
         getPowerhospital:[],
         getTuijianyisheng:function (){
             var data = {
@@ -338,6 +374,7 @@
     })
     //vmc.getwenda();
     vmc.getTuijianyisheng();
+    vmc.getpowerdoctoar();
     vmc.intopages();
 </script>
 </body>

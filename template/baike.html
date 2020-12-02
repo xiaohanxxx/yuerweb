@@ -145,7 +145,7 @@
      			</div>
      			<div class="rightbottmanther">
      				<ul>
-     					<li ms-repeat="newartical"><a ms-attr-href="/baike/article?aid={el.id}">{el.title | safe }</a></li>
+     					<li ms-repeat="newartical"><a ms-attr-href="/baike/article?aid={el.id}">{el.title  |  html  | truncate(20,'...')}</a></li>
      				</ul>
      			</div>
      		</div>
@@ -165,7 +165,7 @@
      					<div class="ululli" ms-repeat-vw="el.children">
                             <h4><a href="###">{vw.menu_name}</a></h4>
      						<div class="abq">
-     							<a ms-attr-href="/baike/article?aid={vf.articleid}" ms-repeat-vf="vw.children">{vf.title}</a>
+     							<a ms-attr-href="/baike/article?aid={vf.articleid}" ms-repeat-vf="vw.children">{vf.title | html}</a>
      						</div>
      					</div>
      				</div>
