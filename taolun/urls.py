@@ -19,4 +19,5 @@ urlpatterns = [
     path(r'hotarticles/', views.HotArticles.as_view(), name="hotarticles"),
     path(r'thumbup/', views.ThumbUp.as_view(), name="thumbup"),
     path(r'getmyarticles/', views.GetMyArticles.as_view(), name="getmyarticles"),
+    path(r'gethotquestion/', views.GetHotQuestion.as_view(), name="gethotquestion"),
 ]
