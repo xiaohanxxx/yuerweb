@@ -17,7 +17,7 @@
      {% include 'header.html' %}
          <div class="centers" ms-controller="centeres">
          	 <div class="ctops">
-         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"></div>
+         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}" height="124" width="124"></div>
          	 	 <div class="iam_username">我是用户名</div>
          	 	 <div class="jd_tiao">
          	 	 	<div class="jdt" id="slideTest18"></div>
@@ -373,6 +373,13 @@
                         success: function (data) {
                             console.log(data,'9999999');
                             wvm.guanzhus = data.data_list;
+                            console.log(wvm.guanzhus,'wvm.guanzhuswvm.guanzhuswvm.guanzhus');
+                            $.each(wvm.guanzhus,function(index,value){
+                                if(value.user_article.length>4){
+                                     value.user_article = value.user_article.splice(0,4);
+                                     wvm.guanzhus[index].user_article = value.user_article;
+                                }
+                            });
                             wvm.guanzhuNum = data.data_list.length;
                             {#wvm.maxnum = data.maxnum;#}
                             {#console.log(data,'345234234')#}

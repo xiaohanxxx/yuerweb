@@ -101,8 +101,8 @@
               <div class="doctorbox" ms-repeat="getrmbaike">
                  <a ms-attr-href="/baike/article?aid={el.id}">
                    <img ms-attr-src="'/media/' + el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
-                   <h4 style="margin-top: 20px;">{el.title}</h4>
-                   <p style=" font-size: 14px; margin-top: 10px;">{el.excerpt | truncate(33,'...')}</p>
+                   <h4 style="margin-top: 20px; font-size: 14px; padding-right: 15px;">{el.title}</h4>
+                   <p style=" font-size: 12px; margin-top: 10px; padding-right: 15px;">{el.excerpt | truncate(33,'...')}</p>
                  </a>
               </div>
           </div>
@@ -374,7 +374,7 @@
     vmw.getAllcity();//获取城市
     vmw.getDengji();//获取等级
     vmw.getJishu();//获取技术
-    vmw.getDatas();//获取数据
+    //vmw.getDatas();//获取数据
     vmw.get_rm_baike();//获取热门百科
     vmw.getwenda();//获取问答数据
     vmw.intopages(vmw.allnum);//初始化分页

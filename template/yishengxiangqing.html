@@ -243,30 +243,22 @@
                    <li ms-repeat="getPowerhospital">
                      <a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>
                    </li>
-{#                   <li>#}
-{#                     <a href="###">我是论坛文章标题，只能显示第一行</a>#}
-{#                   </li>#}
                  </ol>
               </div>
           </div>
-
-
-
           <div class="szzhuanjia">
               <h3><abbr>专业问答推荐</abbr> <a href="/taolun/">更多>></a></h3>
               {% include 'mod_hotwenda.html' %}
           </div>
-
-
-     <style>
-        .hot_arc .clearfix{ padding: 0 15px; width: 100%;}
-        .hot_arc .clearfix { overflow: hidden;}
-        .hot_arc .clearfix li{ height: 30px; line-height: 30px; margin: 15px 0;}
-        .rgt_tit h4{ height: 30px; line-height: 30px; padding-left: 12px;}
-        .hot_arc{ background: #fff; margin-top: 15px; border-radius: 5px; padding-bottom: 25px;}
-        .sjchangebtn{ margin-left: 40%; margin-bottom: 20px; }
-        .rgt_tit h4 span{ display: block; width: 100px; height: 30px; line-height: 30px; border-bottom: 1px solid #FF44AD; text-align: center;}
-     </style>
+          <style>
+            .hot_arc .clearfix{ padding: 0 15px; width: 100%;}
+            .hot_arc .clearfix { overflow: hidden;}
+            .hot_arc .clearfix li{ height: 30px; line-height: 30px; margin: 15px 0;}
+            .rgt_tit h4{ height: 30px; line-height: 30px; padding-left: 12px;}
+            .hot_arc{ background: #fff; margin-top: 15px; border-radius: 5px; padding-bottom: 25px;}
+            .sjchangebtn{ margin-left: 40%; margin-bottom: 20px; }
+            .rgt_tit h4 span{ display: block; width: 100px; height: 30px; line-height: 30px; border-bottom: 1px solid #FF44AD; text-align: center;}
+          </style>
 
      {% include 'mod_hotarticle.html' %}
 
