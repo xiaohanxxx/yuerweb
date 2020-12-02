@@ -310,27 +310,23 @@ def public_level(request):
 
 
 
-
 # 公用通知方法
-def public_send_notice(user,recipient):
-
+def noticate(user,recipient,target,message):
+    # target 主题
+    # message 评论消息
+    verb = '在{0}回复了你{1}'.format(target, message)
     notify.send(
-        user, # 发送通知的人
-        recipient=recipient, # 接收通知的对象
-        verb="sdasdasdasd", # 自定义动态对象(信息,回复,评论)
+        user,  # 消息发送者
+        recipient=recipient,  # 消息接收者
+        verb=verb,  # 分情况；评论或回复
     )
-    return 1
-
 
 
 
 # 获取通知信息
 def getnoticate(request):
-    user = 21
-    recipient = 1
-    verb = '回复了你'
-    ret = public_send_notice(user, recipient)
-    print("ok",ret)
+
+    return HttpResponse('ok')
 
 
 
