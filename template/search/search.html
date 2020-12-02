@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title></title>
+   <style>
+       span.highlighted {
+           color: red;
+       }
+   </style>
+</head>
+<body>
+{% if query %}
+   <h3>搜索结果如下：</h3>
+   {% for result in page.object_list %}
+       <p>{{ result.object.content }}</p>
+   {% empty %}
+       <p>啥也没找到</p>
+   {% endfor %}
+{% endif %}
+</body>
+</html>
