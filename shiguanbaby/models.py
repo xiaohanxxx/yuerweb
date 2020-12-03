@@ -50,6 +50,7 @@ class Articles(models.Model):
     user = models.CharField(max_length=255, verbose_name="作者")
     topics = models.ManyToManyField("Topics", verbose_name='标签')
     type = models.ManyToManyField("ArticleType", verbose_name="文章类型")
+    read = models.IntegerField(default=1, verbose_name="浏览量")
 
     class Meta:
         verbose_name = "文章"  # 在admin站点显示名称

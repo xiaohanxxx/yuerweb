@@ -1,7 +1,7 @@
 import json
 
 from django.core.paginator import Paginator
-from django.db.models import Count
+from django.db.models import Count, F
 from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
@@ -66,6 +66,8 @@ class Articles(views.View):
     def get(self, request, *args, **kwargs):
         articleId = request.GET.get('aid')
         artObj = get_object_or_404(models.Articles, pk=articleId)
+        # 阅读计数
+        models.Articles.objects.update(read=F("read") + 1)
         x_article = models.Articles.objects.filter(id__gt=articleId).order_by('id').first()
         s_article = models.Articles.objects.filter(id__lt=articleId).order_by('-id').first()
         # 获取帖子发布人信息
@@ -77,6 +79,7 @@ class Articles(views.View):
             "publish_date": str(artObj.publish_date),
             "topics": artObj.topics,
             "user": artObj.user,
+            "read": artObj.read
         }
         return render(request, 'articles.html', {"data": artData, 's_article': s_article, 'x_article': x_article})
 
