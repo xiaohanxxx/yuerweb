@@ -323,7 +323,8 @@
         list_data:[],
         getsgyeList:function (){
             var data = {
-                mid:1
+                mid:1,
+                'csrfmiddlewaretoken':glob_csrftoken
             }
            $.ajax({
                 url: 'baike/api/getmenuarticle',

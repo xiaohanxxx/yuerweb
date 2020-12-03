@@ -387,7 +387,8 @@
                     type: 'POST',
                     data: {
                         'title': textval,
-                        'topics': vm_freeAsk.selecid
+                        'topics': vm_freeAsk.selecid,
+                        'csrfmiddlewaretoken':glob_csrftoken
                     },
                     success: function (msg) {
                         alert('提交成功');

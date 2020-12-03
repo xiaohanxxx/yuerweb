@@ -360,6 +360,7 @@
                     type: 'post',
                     data: {
                         'bannertype': 1,
+                        'csrfmiddlewaretoken':glob_csrftoken
                     },
                     success: function(ajax) {
                         console.log(ajax.data,'ajax')

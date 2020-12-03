@@ -218,7 +218,8 @@
                     type: 'post',
                     data: {
                         'articles_id': vm_hzwdinfo.pid,
-                        'comment': value
+                        'comment': value,
+                        'csrfmiddlewaretoken':glob_csrftoken
                     },
                     success: function (ajax) {
                         layer.msg(ajax, {'time': 1000});
