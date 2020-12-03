@@ -177,7 +177,7 @@ def sjldapi(request):
                 {
                     'mid': menu.id
                     , 'menu_name': menu.menu_name
-                    , 'baike_images': menu.images
+                    , 'baike_images': menu.baike_images
                     , 'type': '1'
                     , 'children': list(
                     {
