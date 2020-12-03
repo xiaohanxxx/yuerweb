@@ -237,7 +237,7 @@
         },
         plisShow: function () {
             var allinfobox = $('.plinfobox>div>p');
-            for (let i = 0; i < allinfobox.length; i++) {
+            for (var i = 0; i < allinfobox.length; i++) {
                 var nowLi = allinfobox.eq(i).parent().next();
                 nowLi.click(function () {
                     var off = $(this).attr('isShow');

@@ -1,7 +1,6 @@
 .listswenda li > div > a > img {
     width: 36px;
     height: 36px;
-    /*border-radius: 50%;*/
 }
 
 .floafright > a:nth-of-type(2) > p {
@@ -10,7 +9,7 @@
 }
 .floafright>a img{
     display: block;
-    /*margin: 0 auto;*/
+    margin: 0 auto;
     margin-top:20px;
     max-width:242px;
     max-height:150px;
@@ -40,7 +39,7 @@
 }
 
 .hzwdleftse > ol > li > p:nth-of-type(1) {
-    height: 20px;
+    height: 19px;
     overflow: hidden;
 }
 
