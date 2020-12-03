@@ -20,10 +20,11 @@ class FriendLink(models.Model):
 class Banner(models.Model):
     title = models.CharField('标题', max_length=50)
     cover = models.ImageField('轮播图', upload_to='banner/index')
+    banner_link = models.URLField('对应链接',default='https://www.zhimeiai.cn')
     idx = models.IntegerField('索引')
     is_active = models.BooleanField('是否是active', default=False)
-
     add_time = models.DateTimeField('添加时间',auto_now_add=True)
+
 
     def __str__(self):
         return self.title
@@ -48,6 +49,7 @@ class Banner(models.Model):
 class BaikeBanner(models.Model):
     title = models.CharField('标题', max_length=50)
     cover = models.ImageField('轮播图', upload_to='banner/index')
+    baikebanner_link = models.URLField('对应链接',default='https://www.zhimeiai.cn')
     idx = models.IntegerField('索引')
     is_active = models.BooleanField('是否是active', default=False)
 
@@ -76,6 +78,7 @@ class BaikeBanner(models.Model):
 class YuerBanner(models.Model):
     title = models.CharField('标题', max_length=50)
     cover = models.ImageField('轮播图', upload_to='banner/index')
+    yuerbanner_link = models.URLField('对应链接',default='http://www.zhimeiai.cn')
     idx = models.IntegerField('索引')
     is_active = models.BooleanField('是否是active', default=False)
 

@@ -166,7 +166,7 @@ def baikemenuapi(request):
 
 
 # 获取百科全部三级栏目api
-@error
+# @error
 def sjldapi(request):
     if request.method == "POST":
         count = request.POST.get('count')
@@ -177,7 +177,7 @@ def sjldapi(request):
                 {
                     'mid': menu.id
                     , 'menu_name': menu.menu_name
-                    , 'baike_images': menu.images
+                    , 'baike_images': menu.baike_images.url
                     , 'type': '1'
                     , 'children': list(
                     {
@@ -196,6 +196,7 @@ def sjldapi(request):
                 )
                 }
             )
+
         return HttpResponse(json.dumps(data), content_type="application/json")
 
 

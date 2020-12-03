@@ -44,22 +44,26 @@
                     <li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
                         全部（{{ unread_count }}）
                     </li>
-                    <li ms-class="curee_cener:aa==2" ms-click="getBox(2)">
-                        通知（1）<span class="layui-badge-dot"></span>
-                    </li>
-                    <li ms-class="curee_cener:aa==3" ms-click="getBox(3)">
-                        评论（999）<span class="layui-badge-dot"></span>
-                    </li>
-                    <li ms-class="curee_cener:aa==4" ms-click="getBox(4)">
-                        回复（1）<span class="layui-badge-dot"></span>
-                    </li>
-                    <li ms-class="curee_cener:aa==5" ms-click="getBox(5)">
-                        点赞（1）<span class="layui-badge-dot"></span>
-                    </li>
+{#                    <li ms-class="curee_cener:aa==2" ms-click="getBox(2)">#}
+{#                        通知（1）<span class="layui-badge-dot"></span>#}
+{#                    </li>#}
+{#                    <li ms-class="curee_cener:aa==3" ms-click="getBox(3)">#}
+{#                        评论（999）<span class="layui-badge-dot"></span>#}
+{#                    </li>#}
+{#                    <li ms-class="curee_cener:aa==4" ms-click="getBox(4)">#}
+{#                        回复（1）<span class="layui-badge-dot"></span>#}
+{#                    </li>#}
+{#                    <li ms-class="curee_cener:aa==5" ms-click="getBox(5)">#}
+{#                        点赞（1）<span class="layui-badge-dot"></span>#}
+{#                    </li>#}
                 </ul>
             </div>
 
-
+  <style>
+      .tjjlq{ background: #fff;}
+      .tjjlbox{ padding-left: 20px; width: 95%;}
+      .tuijianjjq ul{ width: 91%;}
+  </style>
             <div class="bott_box" ms-if="aa == 1">
                 <div class="partonecont">
                     <ul>
@@ -94,155 +98,155 @@
                 </div>
             </div>
 
-            <div class="bott_box" ms-if="aa == 2">
-                <div class="my_answer">
-                    <ul>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">系统通知</p>
-                            <p style="margin-top: 21px;">
-                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">系统通知</p>
-                            <p style="margin-top: 21px;">
-                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">系统通知</p>
-                            <p style="margin-top: 21px;">
-                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">系统通知</p>
-                            <p style="margin-top: 21px;">
-                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">系统通知</p>
-                            <p style="margin-top: 21px;">
-                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                    </ul>
-
-
-                </div>
-            </div>
-
-
-            <div class="bott_box" ms-if="aa == 3">
-
-                <ul class="lwconts">
-                    <li>
-                        <img src="{% static 'img/tuxiang.jpg' %}">
-                        <p style="padding-top: 10px;">我是用户名</p>
-                        <p style="margin-top: 21px;">
-                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                    </li>
-                    <li>
-                        <img src="{% static 'img/tuxiang.jpg' %}">
-                        <p style="padding-top: 10px;">我是用户名</p>
-                        <p style="margin-top: 21px;">
-                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                    </li>
-                    <li>
-                        <img src="{% static 'img/tuxiang.jpg' %}">
-                        <p style="padding-top: 10px;">我是用户名</p>
-                        <p style="margin-top: 21px;">
-                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                    </li>
-                    <li>
-                        <img src="{% static 'img/tuxiang.jpg' %}">
-                        <p style="padding-top: 10px;">我是用户名</p>
-                        <p style="margin-top: 21px;">
-                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                    </li>
-                    <li>
-                        <img src="{% static 'img/tuxiang.jpg' %}">
-                        <p style="padding-top: 10px;">我是用户名</p>
-                        <p style="margin-top: 21px;">
-                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                    </li>
-                </ul>
-
-            </div>
-
-
-            <div class="bott_box" ms-if="aa == 4">
-                <div class="gz_cont">
-
-
-                    <ul class="lwconts">
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">
-                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">
-                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">
-                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">
-                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">
-                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
-
-
-            <div class="bott_box" ms-if="aa == 5">
-                <div class="gz_cont">
-
-
-                    <ul class="lwconts">
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">【点赞】赞了您的评论</p>
-                        </li>
-                        <li>
-                            <img src="{% static 'img/tuxiang.jpg' %}">
-                            <p style="padding-top: 10px;">我是用户名</p>
-                            <p style="margin-top: 21px;">【点赞】赞了您的评论</p>
-                        </li>
-                        <!-- <li>
-                                    <img src="{% static 'img/tuxiang.jpg' %}">
-                                    <p style="padding-top: 10px;">我是用户名</p>
-                                    <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                                </li>
-                                <li>
-                                    <img src="{% static 'img/tuxiang.jpg' %}">
-                                    <p style="padding-top: 10px;">我是用户名</p>
-                                    <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                                </li> -->
-
-                    </ul>
-
-                </div>
-            </div>
+{#            <div class="bott_box" ms-if="aa == 2">#}
+{#                <div class="my_answer">#}
+{#                    <ul>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">系统通知</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">系统通知</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">系统通知</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">系统通知</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">系统通知</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                    </ul>#}
+{##}
+{##}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="bott_box" ms-if="aa == 3">#}
+{##}
+{#                <ul class="lwconts">#}
+{#                    <li>#}
+{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                        <p style="padding-top: 10px;">我是用户名</p>#}
+{#                        <p style="margin-top: 21px;">#}
+{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                        <p style="padding-top: 10px;">我是用户名</p>#}
+{#                        <p style="margin-top: 21px;">#}
+{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                        <p style="padding-top: 10px;">我是用户名</p>#}
+{#                        <p style="margin-top: 21px;">#}
+{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                        <p style="padding-top: 10px;">我是用户名</p>#}
+{#                        <p style="margin-top: 21px;">#}
+{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                    </li>#}
+{#                    <li>#}
+{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                        <p style="padding-top: 10px;">我是用户名</p>#}
+{#                        <p style="margin-top: 21px;">#}
+{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                    </li>#}
+{#                </ul>#}
+{##}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="bott_box" ms-if="aa == 4">#}
+{#                <div class="gz_cont">#}
+{##}
+{##}
+{#                    <ul class="lwconts">#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">#}
+{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                        </li>#}
+{#                    </ul>#}
+{##}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="bott_box" ms-if="aa == 5">#}
+{#                <div class="gz_cont">#}
+{##}
+{##}
+{#                    <ul class="lwconts">#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">【点赞】赞了您的评论</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                            <p style="padding-top: 10px;">我是用户名</p>#}
+{#                            <p style="margin-top: 21px;">【点赞】赞了您的评论</p>#}
+{#                        </li>#}
+{#                        <!-- <li>#}
+{#                                    <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                                    <p style="padding-top: 10px;">我是用户名</p>#}
+{#                                    <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                                </li>#}
+{#                                <li>#}
+{#                                    <img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                                    <p style="padding-top: 10px;">我是用户名</p>#}
+{#                                    <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
+{#                                </li> -->#}
+{##}
+{#                    </ul>#}
+{##}
+{#                </div>#}
+{#            </div>#}
 
 
         </div>
@@ -253,7 +257,7 @@
 
 
                 <div class="tuijianjjq">
-                    <h4><abbr>热门回答</abbr></h4>
+                    <h4 style="background: #fff; height: 40px; line-height: 40px; padding-left: 20px"><abbr>热门回答</abbr></h4>
                     {% include 'mod_hotwenda.html' %}
                     {#                    	 <ul>#}
                     {#                    	 	<li>#}
