@@ -289,7 +289,7 @@
         <div class="sgyecontanather">
             <div class="sgyghhight" style="margin-right:20px;">
                 <div class="hhightleft">
-                    <h3><abbr>百科知识111</abbr><a href="">备孕</a>|<a href="">怀孕</a>|<a href="">育儿</a>|<a href="">试管婴儿</a>|<a href="">不孕不育</a></h3>
+                    <h3><abbr>百科知识</abbr><a href="">备孕</a>|<a href="">怀孕</a>|<a href="">育儿</a>|<a href="">试管婴儿</a>|<a href="">不孕不育</a></h3>
                 </div>
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
@@ -360,6 +360,7 @@
                     type: 'post',
                     data: {
                         'bannertype': 1,
+                        'csrfmiddlewaretoken':glob_csrftoken
                     },
                     success: function(ajax) {
                         console.log(ajax.data,'ajax')

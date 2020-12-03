@@ -20,6 +20,7 @@
                 type:'post',
                 data:{
                     'count':10,//百科推荐条数
+                    'csrfmiddlewaretoken':glob_csrftoken
                 },
                 success:function(ajax){
                     vm_bklm.menudata = ajax.data;

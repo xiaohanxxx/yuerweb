@@ -21,7 +21,7 @@
      </style>
  -->
 </head>
-
+    {% include 'config.html' %}
   {% include 'header.html' %}
      
     <div class="hzwdconts"   ms-controller="hzwdconts">
@@ -111,7 +111,7 @@
               <h3><abbr>专业问答推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijian">
                   {% include 'mod_hotwenda.html' %}
-          </div>
+             </div>
 
 
 
@@ -357,7 +357,8 @@
         getrmbaike:[],
         get_rm_baike: function () { //获取热门百科列表
             var count = {
-                count: 10
+                count: 10,
+                'csrfmiddlewaretoken':glob_csrftoken
             }
             $.ajax({
                 type: 'post',
