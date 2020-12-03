@@ -59,9 +59,9 @@
                                     <p style="font-size: 16px; margin-bottom: 10px;">{ el.title }</p>
                                 </a>
                                 <a ms-attr-href="/taolun/toposting/?pid={el.id}">
-{#                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">#}
-                                        {el.content|html|truncate(260,'...')}
-{#                                    </p>#}
+                                    {#                                    <p style="font-size: 12px; line-height: 20px; margin-bottom: 15px;">#}
+                                    {el.content|html|truncate(260,'...')}
+                                    {#                                    </p>#}
                                 </a>
                                 <div class="infousers">
                                     <div class="userone">
@@ -132,7 +132,7 @@
 <script>
     var order = "";
     var ps = $('.titlestop>p');
-    for (let i = 0; i < ps.length; i++) {
+    for (var i = 0; i < ps.length; i++) {
         ps.eq(i).click(function () {
             Toolfun.clearClass("news", ps);
             $(this).addClass("news");
@@ -140,6 +140,9 @@
             vm_hzwda.flxzmenu();
         })
     }
+    var navsdata = JSON.parse(localStorage.getItem('navdata'));
+    localStorage.clear();
+    localStorage.setItem('navdata', JSON.stringify(navsdata));
     var vm_hzwda = avalon.define({
         $id: "hzwda",
         count: 0,//数据总条数
@@ -159,7 +162,7 @@
             }
         },
         contentcl: function (lisdata) {
-            for (let i = 0; i < lisdata.length; i++) {
+            for (var i = 0; i < lisdata.length; i++) {
                 var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                 if (lisdata[i].content.match(/<img.*\/>/g)) {
                     var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
@@ -225,18 +228,16 @@
         },
         init: function () {
             vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
-            Toolfun.iszhezClass();
             $.ajax({
                 url: root_Domain + '/taolun/groups/',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     var imgbox = ['/static/img/933.png', '/static/img/932.png', '/static/img/931.png', '/static/img/930.png'];
-                    for (let i = 0; i < imgbox.length; i++) {
+                    for (var i = 0; i < imgbox.length; i++) {
                         ajax[i].img = imgbox[i];
                     }
                     vm_hzwda.groupsdata = ajax.reverse().sort();
-                    localStorage.clear();
                     localStorage.setItem('Mgroup', JSON.stringify(ajax));
                 }, error: function (error) {
                     console.log(error);

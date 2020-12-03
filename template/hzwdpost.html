@@ -3,17 +3,19 @@
     <meta charset="UTF-8">
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv=X-UA-Compatible content=IE=EmulateIE7>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{% static 'css/coment.css' %}">
     <link rel="stylesheet" href="{% static 'css/yuerlt.css' %}">
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" href="{% static 'css/hzwd.css' %}">
-    <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
-    <script src="{% static 'ckeditor4/ckeditor.js' %}"></script>
-    <script src="{% static 'js/uitls/avalon.js' %}"></script>
-    <script src="{% static 'js/index.js' %}"></script>
-    <script src="{% static 'layui/layui.all.js' %}"></script>
-    <script src="{% static 'js/uitls/tool.js' %}"></script>
+{#    <script type="text/javascript" src="{% static 'js/uitls/jquery.min.js' %}"></script>#}
+    <script src="https://www.jq22.com/jquery/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="{% static 'ckeditor4/ckeditor.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/uitls/avalon.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.all.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/uitls/tool.js' %}"></script>
     <title>提问</title>
 </head>
 
@@ -41,7 +43,7 @@
                     {el.name}
                 </li>
             </ul>
-            <ul class="sonbox" >
+            <ul class="sonbox">
                 <li ms-repeat-its="sontopicData" ms-attr-pid="{its.id}" ms-click="sonSelcet(this)">{its.name}</li>
             </ul>
         </div>
@@ -85,9 +87,9 @@
             var _this = ev;
             $('.navbox').show();
         },
-        sonSelcet:function(ev){
+        sonSelcet: function (ev) {
             var that = ev;
-            vm_postart.topicId=$(that).attr('pid');
+            vm_postart.topicId = $(that).attr('pid');
             $('.tjTopic>div>span').html($(that).html());
             $('.navbox').hide();
             $('.sonbox').hide();
@@ -150,7 +152,7 @@
                                     window.location.href = root_Domain + '/taolun/toposting/?pid=' + ajax.data;
                                 }
                             })
-                        },error:function(error){
+                        }, error: function (error) {
                             layer.msg("最大内容长度为800！！！")
                         }
                     })
