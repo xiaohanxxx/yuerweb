@@ -66,6 +66,8 @@ class Articles(views.View):
     def get(self, request, *args, **kwargs):
         articleId = request.GET.get('aid')
         artObj = get_object_or_404(models.Articles, pk=articleId)
+        x_article = models.Articles.objects.filter(id__gt=articleId).order_by('id').first()
+        s_article = models.Articles.objects.filter(id__lt=articleId).order_by('-id').first()
         # 获取帖子发布人信息
         artData = {
             "id": artObj.id,
@@ -76,7 +78,7 @@ class Articles(views.View):
             "topics": artObj.topics,
             "user": artObj.user,
         }
-        return render(request, 'articles.html', {"data": artData})
+        return render(request, 'articles.html', {"data": artData, 's_article': s_article, 'x_article': x_article})
 
 
 # 获取热点标签
@@ -121,10 +123,3 @@ class TypeArticles(views.View):
             } for i in artObjList
         ]
         return HttpResponse(json.dumps({"data": res}))
-
-
-
-
-
-
-
