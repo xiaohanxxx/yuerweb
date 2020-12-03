@@ -277,11 +277,14 @@
         var nyzl_num = 17,//控制难孕治疗帖子展示条数
             hymm_num = 8,//好孕妈妈的文章展示条数
             rmarc_num = 9;//热门文章展示条数
-        localStorage.clear();
         var vm_areas = avalon.define({
             $id: "yuerltctr",
             yuerlt_data: [],
         });
+
+        var navsdata = JSON.parse(localStorage.getItem('navdata'));
+        localStorage.clear();
+        localStorage.setItem('navdata',JSON.stringify(navsdata));
         var vm_byhot = avalon.define({
             $id: 'byhot',
             Mid: 0,

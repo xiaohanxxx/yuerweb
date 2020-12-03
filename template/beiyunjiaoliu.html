@@ -204,7 +204,7 @@
                                 dataType: 'json',
                                 success: function (ajax) {
                                     var lisdata = ajax.data.curuent_page;
-                                    for (let i = 0; i < lisdata.length; i++) {
+                                    for (var i = 0; i < lisdata.length; i++) {
                                         var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                                         if (lisdata[i].content.match(/<img.*\/>/g)) {
                                             var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
@@ -239,7 +239,7 @@
                     dataType: 'json',
                     success: function (ajax) {
                         var userdata = [];
-                        for (let i = 0; i < 3; i++) {
+                        for (var i = 0; i < 3; i++) {
                             var qrdardata = ajax.data.splice(0, 4);
                             userdata.push(qrdardata);
                         }
@@ -261,7 +261,7 @@
                 success: function (ajax) {
                     var _this = vm_ltlist;
                     var lisdata = ajax.data.curuent_page;
-                    for (let i = 0; i < lisdata.length; i++) {
+                    for (var i = 0; i < lisdata.length; i++) {
                         var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                         if (lisdata[i].content.match(/<img.*\/>/g)) {
                             var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
@@ -308,7 +308,7 @@
                 success: function (ajax) {
                     var _this = vm_ltlist;
                     var lisdata = ajax.data.curuent_page;
-                    for (let i = 0; i < lisdata.length; i++) {
+                    for (var i = 0; i < lisdata.length; i++) {
                         var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                         if (lisdata[i].content.match(/<img.*\/>/g)) {
                             var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
@@ -333,7 +333,6 @@
             dataType: 'json',
             success: function (ajax) {
                 vm_ltlist.navdata = ajax.data;
-                localStorage.clear();//清除localStorage中的缓存
                 localStorage.setItem('Mlanm', vm_ltlist.navdata[Mid - 1].name);
                 localStorage.setItem('Mid', vm_ltlist.Mid);
                 var navData = JSON.stringify(ajax.data[vm_ltlist.Mid - 1].child);

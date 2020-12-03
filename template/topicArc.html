@@ -115,19 +115,17 @@
         articles_id: 0,//帖子id
         parent_id: 0,//回帖对应的父id
         posgz:function(ev){
-            Toolfun.iszhezClass();
             var _this=ev;
             $.ajax({
-                url:root_Domain+'users/followapi',
+                url:root_Domain+'/users/followapi',
                 type:'post',
                 data:{
                    'type':0,
                    'Quser_id':$(_this).attr('userid')
                 },
                 success:function(ajax){
-                    layer.msg("关注成功！！！");
-                    Toolfun.qxzheClass();
-                },error:function(error){
+                    layer.msg(ajax.msg);
+                }, error:function(error){
                     console.log(error);
                 }
             })
@@ -148,7 +146,7 @@
             success: function (ajax) {
                 var datalis = ajax.data;
                 var comment = [];
-                for (let i = 0; i < datalis.length; i++) {
+                for (var i = 0; i < datalis.length; i++) {
                     if (datalis[i].parent == null) {
                         comment.push(datalis[i]);
                     } else {
@@ -166,7 +164,7 @@
     {#评论递归一层#}
     function html(comment) {//第一个为数据，第二个为递归体
         var htmldata = '';
-        for (const a in comment) {
+        for (var a in comment) {
             var newstr = diguipilun(comment[a].child, comment[a],a);
             htmldata += '<div class="pl clearfix" ><div class="tx"><a href="javascript:;">';
             htmldata += '<img src="/media'+ comment[a].user.head + '" alt=""></a></div><p class="plbg">' + comment[a].user.username + '</p>';
@@ -187,13 +185,13 @@
         if (!comment) {
             return '　';
         }
-        for (const a in comment) {
+        for (var a in comment) {
             diguistr += '<ul class="hfplbox"><div class="pl clearfix"><p class="plbg plbg2"><span class="afuser">' + comment[a].user.username + '</span>';
             diguistr += '<span>回复了</span><span class="befuser">' + Mcomment.user.username + '</span></p><ul class="plul">';
             diguistr += '<p commid="' + comment[a].id + '">　　' + comment[a].comment + '</p><div class="date"><span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span>';
             diguistr += '<span btn="reply" dataInp="'+Mid+'" onclick="sonIfshow(this)">回复</span></div></ul></div>';
             if (comment[a].child) {
-                for (const b in comment[a].child) {
+                for (var b in comment[a].child) {
                     diguistr += '<ul class="hfplbox"><div class="pl clearfix"><p class="plbg plbg2"><span class="afuser">' + comment[a].child[b].user.username + '</span>';
                     diguistr += '<span>回复了</span><span class="befuser">' + comment[a].user.username + '</span></p><ul class="plul">';
                     diguistr += '<p commid="' + comment[a].child[b].id + '">　　' + comment[a].child[b].comment + '</p><div class="date"><span>' + comment[a].child[b].publish_date.replace(/\d+:.*/, '') + '</span>';
@@ -367,7 +365,7 @@
     function readyClick(){//对渲染后的表情绑定事件
         $(document).ready(function(){
             var pls = $('.pl_info>div.pl');
-            for (let i = 0; i < pls.length; i++) {
+            for (var i = 0; i < pls.length; i++) {
                 var emibtn = pls.eq(i).find('div[bq_btn="emoji"]');
                 var textBox = pls.eq(i).find('textarea[name="pl_Input"]');
                 var result = pls.eq(i).find('div[name="result"]');

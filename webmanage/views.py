@@ -32,4 +32,4 @@ def banner(request):
             'msg':'成功',
             'data':banners
         }
-        return HttpResponse(json.dumps(data))
+        return HttpResponse(json.dumps(data),content_type="application/json")

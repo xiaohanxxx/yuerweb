@@ -117,7 +117,7 @@
         menuClick: function () {
             var menuBtn = $('.fenleiallswd>p');
             var url = '';
-            for (let i = 0; i < menuBtn.length; i++) {
+            for (var i = 0; i < menuBtn.length; i++) {
                 menuBtn.eq(i).click(function () {
                     Toolfun.clearClass("allcurr", menuBtn);
                     vm_hzwdlist.order = $(this).attr('order');
@@ -189,7 +189,7 @@
         init: function () {
             vm_hzwdlist.Mid = localStorage.getItem('Mid');
             var Mgroupdata = JSON.parse(localStorage.getItem('Mgroup'));
-            for (let i = 0; i < Mgroupdata.length; i++) {
+            for (var i = 0; i < Mgroupdata.length; i++) {
                 if (Mgroupdata[i].id == vm_hzwdlist.Mid) {
                     vm_hzwdlist.groupsdata.push(Mgroupdata[i]);
                 }
