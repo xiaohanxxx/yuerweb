@@ -39,7 +39,7 @@
             <li ms-repeat-as="allgroupData">
                 <img ms-attr-src="{as.thumb}" style="float: left; margin-right: 20px;">
                 <h3 style="font-size: 16px;">{as.name}</h3>
-                <p style="margin: 6px 0; font-size: 12px;">{as.topicontent.substr(0,60)}</p>
+                <p style="margin: 6px 0; font-size: 12px; overflow: hidden; height: 50px;">{as.topicontent.substr(0,60)}</p>
                 <p style=" font-size: 12px; margin-left: 80px;">{as.topicnum}个回答</p>
                 <p style="margin-left:80px;">
                     <a ms-attr-href="/taolun/postindex/?tid={as.id}">

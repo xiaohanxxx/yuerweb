@@ -54,27 +54,34 @@
          </div>
          <div class="denglu">
           <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                    <div class="yiyuansearch">
-                          <div  ms-click="showxiala">{namees}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>
-                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">
-                              <li ms-click="changeSearch('医院')">医院</li>
-                              <li ms-click="changeSearch('医生')">医生</li>
-                              <li ms-click="changeSearch('问答')">问答</li>
-                              <li ms-click="changeSearch('百科')">百科</li>
-                          </ul>
-                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 99; margin-top: 8px; border-radius: 3px;">
-                              <li><a href="">我是关键词</a></li>
-                              <li><a href="">我是关键词</a></li>
-                              <li><a href="">我是关键词</a></li>
-                              <li><a href="">我是关键词</a></li>
-                          </ol>
-                    </div>
-                   <form method="get" action="/search/">
-                        {% csrf_token %}
-                        <input type="text" name="q" id="blurfs">
-                        <i class="searchbox"></i>
-                   </form>
-                </div>
+{#                    <div class="yiyuansearch">#}
+{#                          <div  ms-click="showxiala">{namees}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>#}
+{#                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">#}
+{#                              <li ms-click="changeSearch('医院')">医院</li>#}
+{#                              <li ms-click="changeSearch('医生')">医生</li>#}
+{#                              <li ms-click="changeSearch('问答')">问答</li>#}
+{#                              <li ms-click="changeSearch('百科')">百科</li>#}
+{#                          </ul>#}
+{#                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 99; margin-top: 8px; border-radius: 3px;">#}
+{#                              <li><a href="">我是关键词</a></li>#}
+{#                              <li><a href="">我是关键词</a></li>#}
+{#                              <li><a href="">我是关键词</a></li>#}
+{#                              <li><a href="">我是关键词</a></li>#}
+{#                          </ol>#}
+{#                    </div>#}
+
+
+{#              <form method="get" action="/search/">       此处可删除        #}
+{#                    {% csrf_token %}#}
+{#                    <input type="text" name="q" placeholder="搜索">#}
+{#              </form>#}
+
+
+                 <form method="get" action="/search/">
+                    <input type="text" name="q" id="blurfs"  placeholder="搜索">
+                    <i class="searchbox"></i>
+                 </form>
+          </div>
           {% if request.user.is_active %}
             <div style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#f94479; text-decoration: none;">
               <div class="xilainfocont">
