@@ -60,8 +60,8 @@
                     			<p style="font-size: 12px;">{el.content | truncate(40,'...') | html}</p>
                     			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>{el.commentnum}</abbr>
+                    					<abbr style="margin-right: 20px;" ms-click="dianzanfun(el.id,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
+                    					<abbr><a ms-attr-href="/luntan/articles/?aid={el.id}"><i class="layui-icon">&#xe63a;</i>{el.commentnum}</a></abbr>
                     				</div>
                     		    </div>
                     		</li>
@@ -183,7 +183,7 @@
 			  });
 		});
 	</script>
-	<script>
+<script>
     if (layui) {
         layui.use('layer', function () {
             var layer = layui.layer;
@@ -198,6 +198,21 @@
           $id: "centeres",
           aa:1,
           cc:1,
+          dianzanfun:function(res,index){
+              var datas= {
+                   aid:res
+               }
+                $.ajax({
+                    type: 'get',
+                    url: '/luntan/thumbup/',
+                    data: datas,
+                    dataType: "json",
+                    success: function (data) {
+
+                    }
+                });
+
+          },
           getcodewenzi: '获取验证',
           usernames:sessionStorage.getItem("username"),
           edit_passwad:{
@@ -289,6 +304,8 @@
                         wvm.maxnum = data.maxnum;
                         wvm.gontopage(wvm.maxnum);
                         wvm.allmaxnum = data.maxnum;
+
+                        console.log(wvm.alltiezi,'wvm.alltiezi');
                         //wvm.getmywenda();
                     }
                 });
@@ -440,7 +457,6 @@
                         data: datas,
                         dataType: "json",
                         success: function (data) {
-                            console.log(data,'10100');
                             wvm.data_list = data.data_list;
                             wvm.allfensi = data.data_list.length;
                         }
