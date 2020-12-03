@@ -96,12 +96,12 @@ body {
 }
 
 .denglu .pps {
-    width: 162px;
+    width: 216px;
     height: 32px;
     border-radius: 5px;
     color: #ff44ad;
     background: url('../img/searchbg.png') no-repeat;
-    padding-left: 54px;
+    /*padding-left: 54px;*/
 }
 
 /*.denglu p input{ width: 162px; height: 32px;  border-radius: 5px; outline: none;}*/
