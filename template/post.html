@@ -112,7 +112,8 @@
                         data: {
                             "title": title,
                             "content": ckeData,
-                            "topic": vm_postart.topicId
+                            "topic": vm_postart.topicId,
+                            'csrfmiddlewaretoken':glob_csrftoken
                         },
                         success: function (ajax) {
                             layer.open({

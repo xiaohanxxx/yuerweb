@@ -134,7 +134,8 @@
         },
         get_baike_tuijian: function () {
             var count = {
-                count: 10
+                'count': 10,
+                'csrfmiddlewaretoken':glob_csrftoken
             }
             $.ajax({
                 type: 'post',
@@ -148,7 +149,8 @@
         },
         get_rm_baike: function () {
             var count = {
-                count: 10
+                'count': 10,
+                'csrfmiddlewaretoken':glob_csrftoken
             }
             $.ajax({
                 type: 'post',
