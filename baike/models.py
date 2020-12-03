@@ -9,6 +9,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 class Bk_menu(models.Model):
     menu_name = models.CharField('栏目名称',max_length=50)
     is_active = models.BooleanField('显示',default=True)
+    baike_images = models.ImageField('栏目图片', upload_to='baike', default='/baike/default.png')
 
     def __str__(self):
         return self.menu_name

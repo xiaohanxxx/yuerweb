@@ -30,7 +30,7 @@
                 dataType: 'json',
                 success: function (ajax) {
                      var hotdata= ajax.data.splice(0, 10);
-                    for (let i = 0; i < hotdata.length; i++) {
+                    for (var i = 0; i < hotdata.length; i++) {
                         if (hotdata[i].article.content.indexOf('<img') != '-1') {
                             var snimg = JSON.stringify(hotdata[i].article.content.match(/src=".*\.(jpg|png)"/g)).match(/\/media\/.*\.(jpg|png)/);
                             hotdata[i].article.snimg = snimg[0];

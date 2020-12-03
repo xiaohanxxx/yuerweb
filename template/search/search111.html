@@ -9,10 +9,13 @@
    </style>
 </head>
 <body>
+{{ page }}
 {% if query %}
    <h3>搜索结果如下：</h3>
    {% for result in page.object_list %}
-       <p>{{ result.object.content }}</p>
+         <p>{{ result.object.title | safe}}</p>
+{#       <p>{{ result.object.content }}</p>#}
+{#       <p>{{ result.object.id }}</p>#}
    {% empty %}
        <p>啥也没找到</p>
    {% endfor %}
