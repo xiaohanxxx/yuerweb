@@ -20,7 +20,7 @@
 <div class="centers" ms-controller="centeres">
     <div class="ctops">
         {{ data.userinfo }}
-        <div class="tuxiang"><img src="\media/{{ data.userinfo.user_avatar }}"></div>
+        <div class="tuxiang"><img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;"></div>
         <div class="iam_username">{{ user }}</div>
         <div class="jd_tiao">
             <div class="jdt" id="slideTest18"></div>
@@ -31,9 +31,9 @@
         <div class="czz_czz">
             成长值 {{ data.integral }}
         </div>
-        <div class="guanzhus">
-            关注他
-        </div>
+{#        <div class="guanzhus">#}
+{#            关注他#}
+{#        </div>#}
     </div>
 
 
@@ -70,12 +70,13 @@
                                     <p style="padding-top: 10px;">{{ notification.actor }}</p>
                                     <p style="margin-top: 21px;">
                                         【{{ notification.timesince }}之前】{{ notification.actor }}在{{ notification.target }}{{ notification.verb }}
-                                        <abbr class="abc" style="float: right; color: #FF44AD;"><a href="">查看</a> | <a
-                                                href="">已读</a></abbr>
+                                        <abbr class="abc" style="float: right; color: #FF44AD;"><a href="">查看</a> | <a href="">已读</a></abbr>
                                 </li>
+
                             {% empty %}
                                 暂无消息
                             {% endfor %}
+
 
 
 {#                            <li>#}
@@ -85,6 +86,7 @@
 {#                                    【最新评论】我是用户评论消息字段，最多显示两行，点击查看对话跳转至文章详情界面点击标注已读消息提示消失，最多显示两行，超出部分用...代替 </p>#}
 {#                                <abbr class="abc" style="float: right; color: #FF44AD;"><a href="">查看</a> | <a href="">已读</a></abbr>#}
 {#                            </li>#}
+
                         {% endif %}
 
 
@@ -230,7 +232,7 @@
                                     <img src="{% static 'img/tuxiang.jpg' %}">
                                     <p style="padding-top: 10px;">我是用户名</p>
                                     <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>
-                                </li> 
+                                </li>
                                 <li>
                                     <img src="{% static 'img/tuxiang.jpg' %}">
                                     <p style="padding-top: 10px;">我是用户名</p>
@@ -291,7 +293,7 @@
             var slider = layui.slider;
             slider.render({
                 elem: '#slideTest18',
-                value: 888,
+                value: {{ data.integral }},
                 max: 10000,
                 disabled: true, //禁用滑块
                 // showstep:false,

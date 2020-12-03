@@ -45,6 +45,7 @@ urlpatterns = [
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),  # 富文本路由
     path('notifications/', include(notifications.urls, namespace='notifications')),
 
+    path('search/', include('haystack.urls'))
     # url(r'^upload', views.upload)  # 测试路由
 
 ]
