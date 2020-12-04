@@ -235,8 +235,10 @@
       <div class="hzwdrights">
           <img src="{% static 'img/yyjjtop.png' %}">
           <div class="pjjyy"><img src="{%  static 'img/yyjj.png' %}" style="margin-bottom: 15px;">我是医院简介文字显示字数有为文本框范围内人字数。首都医科大学附属北京朝阳医院建于1958年。是首都医科大学第三临床医学院，北京市呼吸疾病研究所所在医院，是北京市市属集医疗，教学，科研，预防为一体的三级甲等医院，北京市医疗保险A类定点医疗机构，医院现...</br></br><a href="">查看详情>></a></div>
-
-   <div class="szzhuanjia">
+  <style>
+      .mar{ margin: 20px 0;}
+  </style>
+   <div class="szzhuanjia mar">
               <h3><abbr>相关医院推荐</abbr> <a href="###">更多>></a></h3>
               <div class="hotwdtuijianes_new">
                  <ol>
@@ -248,10 +250,13 @@
           </div>
           <div class="szzhuanjia">
               <h3><abbr>专业问答推荐</abbr> <a href="/taolun/">更多>></a></h3>
-              {% include 'mod_hotarticle.html' %}
+              {% include 'mod_hotwenda.html' %}
           </div>
           <style>
-            .hot_arc .clearfix{ padding: 0 15px; width: 100%;}
+             .strsub{}
+          </style>
+          <style>
+            .hot_arc .clearfix{ padding: 0 15px; width: 85%;}
             .hot_arc .clearfix { overflow: hidden;}
             .hot_arc .clearfix li{ height: 30px; line-height: 30px; margin: 15px 0;}
             .rgt_tit h4{ height: 30px; line-height: 30px; padding-left: 12px;}

@@ -373,7 +373,7 @@
             },
             okedit: function () {
                 var new_password = {
-                    new_password: wvm.edit_passwad.password,
+                    'new_password': wvm.edit_passwad.password,
                     'csrfmiddlewaretoken':glob_csrftoken
                 }
                 $.ajax({
@@ -383,7 +383,6 @@
                     dataType: "json",
                     // timeout: 10000,
                     success: function (data) {
-                        console.log(data, 99999999999999);
                         layer.msg(data.msg);
                     }
                 });

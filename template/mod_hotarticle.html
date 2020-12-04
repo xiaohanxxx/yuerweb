@@ -1,19 +1,22 @@
 {% load static %}
 {% include 'config.html' %}
-<div class="hot_arc" ms-controller="rmarc">
+<div class="hot_arc  hotarcs" ms-controller="rmarc">
     <div class="rgt_tit">
         <h4><span>热门文章</span></h4>
     </div>
     <ul class='clearfix'>
-        <li ms-repeat-el="data"><a
-                ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title}</span><span><i
-                class='iconfont icon-pinglun1'></i>{el.thumb}</span></a>
+        <li ms-repeat-el="data" style="line-height: 15px;"><a
+                ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title | truncate(18,'...')}</span><span style="float: right;"><i class="layui-icon">&#xe6c6;</i>{el.thumb}</span></a>
         </li>
     </ul>
     <div class="sjchangebtn" ms-click="goChange()">
         <img src="{% static 'images/yuerlt/change.png' %}" alt="">
     </div>
 </div>
+{#<style>#}
+{#    .hotarcs .rgt_tit{ margin: 0;}#}
+{#    .hotarcs{ width: 338px; padding:0 18px 0 16px}#}
+{#</style>#}
 <script>
     var api_hotarticles = root_Domain + '/luntan/hotarticles/',
         rmarc_num = 9;

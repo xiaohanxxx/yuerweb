@@ -1287,9 +1287,9 @@ body .ppart .currpaitp {
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
 .hotwdtuijian {
     background: #fff;
-    padding: 15px;
+    padding: 15px 0;
     overflow: hidden;
-    width: 93%;
+    width: 85%;
 }
 
 .hotwdtuijian ul, .hotwdtuijian ol {
@@ -2455,7 +2455,7 @@ body .ppart .currpaitp {
 
 .hzwdcontslistes p {
     line-height: 30px;
-    padding: 5px 30px;
+    padding: 5px 15px;
 }
 
 .hzwdcontslisteszhou {
@@ -2787,7 +2787,7 @@ body .ppart .currpaitp {
     width: 100%;
     overflow: hidden;
 }
-
+ .left_bottom_artctal_anather{ background: #fff;}
 .left_bottom_artctal h3 {
     width: 100%;
     overflow: hidden;
@@ -2830,7 +2830,7 @@ body .ppart .currpaitp {
 }
 
 .left_bottom_artctal_anather h3 abbr {
-    height: 50px;
+    height: 49px;
     line-height: 50px;
     width: 106px;
     text-align: center;
