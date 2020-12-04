@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
 from django.db.models import Count, F
+from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 from django.utils.decorators import method_decorator
@@ -40,7 +41,8 @@ class Areas(views.View):
     def get(self, request, *args, **kwargs):
         areasObjList = luntanmodel.Areas.objects.all()
         res = [{"id": i.id, "name": i.name,
-                "child": [{"id": k.id, "name": k.name, "thumb": k.thumb.url, "child": []} for k in i.areas_topics.all()]} for i in
+                "child": [{"id": k.id, "name": k.name, "thumb": k.thumb.url, "child": []} for k in
+                          i.areas_topics.all()]} for i in
                areasObjList]
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
@@ -285,7 +287,7 @@ class GetMyArticles(views.View):
         num = request.GET.get("num", 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleObjList, num)
-        curuent_page = paginator.page(curuent_page_num)     # 获取当前页的数据
+        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
         res = []
         for i in curuent_page:
             res.append({
@@ -297,3 +299,23 @@ class GetMyArticles(views.View):
                 "commentnum": i.articles_comment.all().count(),
             })
         return HttpResponse(json.dumps({"data": res, "maxnum": len(articleObjList)}))
+
+
+# 主页轮播图
+class GetLunbo(views.View):
+    def get(self, request, *args, **kwargs):
+        areaObjList = luntanmodel.Areas.objects.all()
+        res = []
+        for i in areaObjList:
+            areaData = {"id": i.id, "name": i.name, "article": {}}
+            data = luntanmodel.Articles.objects.filter(topics__area=i).annotate(count=Count("articles_comment")).order_by("-count")[:1]
+            if data:
+                areaData["article"] = {
+                    "id": data[0].id,
+                    "title": data[0].title,
+                    "content": data[0].content,
+                    "user": {"id": data[0].user.id, "username": data[0].user.username, "head": str(data[0].user.info.user_avatar)},
+                    "count": data[0].count
+                }
+            res.append(areaData)
+        return HttpResponse(json.dumps({"data": res}))

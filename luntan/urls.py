@@ -17,4 +17,5 @@ urlpatterns = [
     path(r'thumbup/', views.ThumbUp.as_view(), name='thumbup'),
     path(r'postarticle/', views.PostAritcle.as_view(), name='postarticle'),
     path(r'getmyarticles/', views.GetMyArticles.as_view(), name='getmyarticles'),
+    path(r'getlunbo/', views.GetLunbo.as_view(), name='getlunbo'),
 ]
