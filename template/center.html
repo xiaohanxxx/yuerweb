@@ -60,7 +60,7 @@
                     			<p style="font-size: 12px;">{el.content | truncate(40,'...') | html}</p>
                     			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
-                    					<abbr style="margin-right: 20px;" ms-click="dianzanfun(el.id,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
+                    					<abbr style="margin-right: 20px; display: block; width: 50px; float: left;" ms-click="dianzanfun(el,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
                     					<abbr><a ms-attr-href="/luntan/articles/?aid={el.id}"><i class="layui-icon">&#xe63a;</i>{el.commentnum}</a></abbr>
                     				</div>
                     		    </div>
@@ -178,7 +178,6 @@
 		    		value: {{ data.integral }},
 		    		max:10000,
 		    		disabled: true, //禁用滑块
-		    		// showstep:false,
 		    		theme:"#FF44AD"
 			  });
 		});
@@ -198,17 +197,43 @@
           $id: "centeres",
           aa:1,
           cc:1,
+          {#dianzanfunes:function(res,index){#}
+          {#    var datas= {#}
+          {#         'aid':res,#}
+          {#     }#}
+          {#    $.ajax({#}
+          {#          type: 'get',#}
+          {#          url: '/luntan/thumbup/',#}
+          {#          data: datas,#}
+          {#          dataType: "text",#}
+          {#          success: function (result) {#}
+          {#              layer.msg(result);#}
+          {#              alert(result);#}
+          {#          },error:function(error){#}
+          {#            console.log(error,15151515)#}
+          {#        }#}
+          {#      });#}
+          {##}
+          {#},#}
           dianzanfun:function(res,index){
               var datas= {
-                   aid:res
+                   'aid':res.id,
                }
-                $.ajax({
+              $.ajax({
                     type: 'get',
                     url: '/luntan/thumbup/',
                     data: datas,
-                    dataType: "json",
-                    success: function (data) {
-
+                    dataType: "text", //返回的是TEXT字符串
+                    success: function (result) {
+                        if(result == '点赞成功'){
+                            wvm.alltiezi[index].thumbup = wvm.alltiezi[index].thumbup + 1
+                            layer.msg(result);
+                        }else{
+                          layer.msg(result);
+                           return ;
+                        }
+                        //wvm.alltiezi[index].thumbup = wvm.alltiezi[index].thumbup + 1
+                        layer.msg(result);
                     }
                 });
 
@@ -216,9 +241,10 @@
           getcodewenzi: '获取验证',
           usernames:sessionStorage.getItem("username"),
           edit_passwad:{
-          	phone:'',
-          	verification_Code:'',
-          	new_password:''
+          	'phone':'',
+          	'verification_Code':'',
+          	'new_password':'',
+            'csrfmiddlewaretoken':glob_csrftoken
           },
           change_edit:function(res){
               wvm.cc = res;
@@ -381,7 +407,8 @@
             guanzhuNum:0,
             getguanzhuData:function (){
                 var datas = {
-                            type:2
+                            'type':2,
+                            'csrfmiddlewaretoken':glob_csrftoken
                       }
                     $.ajax({
                         type: 'post',
@@ -407,8 +434,9 @@
             },
             guanzhuhim:function (data,index){
                   var datas = {
-                            type:0,
-                            Quser_id:data.userid
+                            'type':0,
+                            'Quser_id':data.userid,
+                            'csrfmiddlewaretoken':glob_csrftoken
                       }
                     $.ajax({
                         type: 'post',
@@ -427,8 +455,9 @@
             },
             overguanzhuhim:function (res,index){//取消关注
                  var datas = {
-                            type:1,
-                            Quser_id:res.userid
+                            'type':1,
+                            'Quser_id':res.userid,
+                            'csrfmiddlewaretoken':glob_csrftoken
                       }
                     $.ajax({
                         type: 'post',
@@ -449,7 +478,8 @@
             allfensi:0,
             getAllfensi:function (){
                var datas = {
-                            type:3
+                            type:3,
+                            'csrfmiddlewaretoken':glob_csrftoken
                       }
                     $.ajax({
                         type: 'post',

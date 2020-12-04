@@ -422,7 +422,8 @@
                     }, 1000);
                 }
                 var phone = {
-                    phone: wvm.edit_passwad.phone
+                    'phone': wvm.edit_passwad.phone,
+                    //'csrfmiddlewaretoken':glob_csrftoken
                 }
                 $.ajax({
                     type: 'post',
@@ -437,7 +438,8 @@
             },
             okedit:function(){
             	var new_password = {
-            		new_password:wvm.edit_passwad.password
+            		'new_password':wvm.edit_passwad.password,
+                    'csrfmiddlewaretoken':glob_csrftoken
             	}
                 $.ajax({
                     type: 'post',
