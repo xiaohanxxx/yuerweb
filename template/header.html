@@ -131,7 +131,7 @@
         var vmm = avalon.define({
             $id: 'headercont',
             namees: '医院',
-            usernames: sessionStorage.getItem("username"),
+            usernames: localStorage.getItem('username'),
             showxiala: function() {
                 var _this = $(this);
                 if (_this.next('ul').hasClass('hites')) {

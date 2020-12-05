@@ -85,7 +85,7 @@
 
                      	<div class="gz_cont" ms-repeat="guanzhus">
                      		<div class="gzlists_one">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                                <a  ms-attr-href="'/users/centerhim/' + el.userid"><img src="{% static 'img/tuxiang.jpg' %}"></a>
                      			<p style="font-size: 16px; margin-bottom: 15px;">{el.user}</p>
 {#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
                      			<abbr ms-click="overguanzhuhim(el)" style="margin-left: 3px; cursor: pointer; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">已关注</abbr>
@@ -110,9 +110,8 @@
 
                      <div class="bott_box" ms-if="aa == 4">
                      	<div class="gz_cont">
-
                      		<div class="gzlists" ms-repeat="data_list">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
+                                <a  ms-attr-href="'/users/centerhim/' + el.userid"><img src="{% static 'img/tuxiang.jpg' %}"></a>
                      			<p style="font-size: 16px; margin-bottom: 15px;">{el.username}</p>
                      			<abbr ms-if="el.mutualfollower == 1" style="margin-left: 3px; cursor: pointer; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;" ms-click="guanzhuhim(el,$index)">关注</abbr><!--粉丝-->
                      			<abbr ms-if="el.mutualfollower == 0" style="margin-left: 3px; cursor: pointer; margin-top: 15px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;" ms-click="overguanzhuhim(el,$index)">相互关注</abbr> <!--//相互关注-->
@@ -416,7 +415,6 @@
                         data: datas,
                         dataType: "json",
                         success: function (data) {
-                            console.log(data,'9999999');
                             wvm.guanzhus = data.data_list;
                             console.log(wvm.guanzhus,'wvm.guanzhuswvm.guanzhuswvm.guanzhus');
                             $.each(wvm.guanzhus,function(index,value){
