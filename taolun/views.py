@@ -267,7 +267,7 @@ class ThumbUp(views.View):
 @method_decorator(login_required, name='dispatch')
 class GetMyArticles(views.View):
     def get(self, request, *args, **kwargs):
-        uid = request.user.id
+        uid = request.GET.get("uid", request.user.id)
         articleObjList = models.Posting.objects.filter(user_id=uid, isdelete=0)
         num = request.GET.get("num", 10)
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
@@ -306,3 +306,8 @@ class GetHotQuestion(views.View):
                 data["child"].append(postData)
             res.append(data)
         return HttpResponse(json.dumps({"data": res}))
+
+
+class TestSc(views.View):
+    def get(self, request, *args, **kwargs):
+        return render(request, 'testsearch.html')
