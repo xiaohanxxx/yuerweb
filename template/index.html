@@ -71,8 +71,18 @@
                     <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
                     <li ms-repeat-el="curuent_pagees"
                         style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
-                        <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="'/media/' + el.user.head"
-                                                                           style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
+                        {% if request.user.is_active %}
+                            <a ms-attr-href="'/users/centerhim/' + el.id">
+                                <img ms-attr-src="'/media/' + el.user.head"
+                                     style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;">
+                            </a>
+                        {% else %}
+                            <a ms-attr-href='/login'>
+                                <img ms-attr-src="'/media/' + el.user.head"
+                                     style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;">
+                            </a>
+                        {% endif %}
+
                         <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
                             <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
                             </h3>
@@ -455,9 +465,6 @@
             lisdata: [],
             init: function () {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                localStorage.clear();
-                localStorage.setItem('navdata', JSON.stringify(navs));
-
                 $.ajax({
                     url: root_Domain + '/luntan/topics/?aid=' + navs[2].id,
                     type: 'get',
@@ -471,7 +478,6 @@
                         console.log(error);
                     }
                 })
-
             },
             goChange: function (id) {
                 vm_sgyercrl.curid = id;
@@ -505,9 +511,11 @@
             beiydata: [],
             init: function () {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                localStorage.clear();
-                localStorage.setItem('navdata', JSON.stringify(navs));
-
+                localStorage.removeItem('Mgroup');
+                localStorage.removeItem('sonGroup');
+                localStorage.removeItem('topicNavs');
+                localStorage.removeItem('Mid');
+                localStorage.removeItem('Mlanm');
                 $.ajax({
                     url: root_Domain + '/luntan/articlelist/?tid=' + navs[3].child[0].id + '&num=8',
                     type: 'get',

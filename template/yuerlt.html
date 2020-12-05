@@ -294,10 +294,6 @@
             $id: "yuerltctr",
             yuerlt_data: [],
         });
-
-        var navsdata = JSON.parse(localStorage.getItem('navdata'));
-        localStorage.clear();
-        localStorage.setItem('navdata',JSON.stringify(navsdata));
         var vm_byhot = avalon.define({
             $id: 'byhot',
             Mid: 0,
@@ -429,7 +425,9 @@
             })
         }
         {#论坛轮播图请求#}
-
+        localStorage.removeItem('navdata');
+        localStorage.removeItem('Mgroup');
+        localStorage.removeItem('sonGroup');
         {#话题第一层的请求#}
         $.ajax({
             url: api_mainmenu,

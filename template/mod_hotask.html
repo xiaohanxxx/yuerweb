@@ -3,9 +3,9 @@
 <div class="szzhuanjia rmwdtj" ms-controller="hotask">
     <h3><abbr>热门问答推荐</abbr> <a href="/taolun/postindex/?tid=1">更多>></a></h3>
     <div class="hotwdtuijian">
-        <ul>
+        <ul class="hotaskbigbox">
             <li ms-repeat-as="hotaskdata">
-                <a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title}</a>
+                <a ms-attr-href="/taolun/toposting/?pid={as.id}" class="fl">{as.title}</a>
                 <abbr>{as.commentnum}个问答</abbr>
             </li>
         </ul>

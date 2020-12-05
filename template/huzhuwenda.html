@@ -161,9 +161,6 @@
             vm_hzwda.flxzmenu();
         })
     }
-    var navsdata = JSON.parse(localStorage.getItem('navdata'));
-    localStorage.clear();
-    localStorage.setItem('navdata', JSON.stringify(navsdata));
     var vm_hzwda = avalon.define({
         $id: "hzwda",
         count: 0,//数据总条数
@@ -306,6 +303,10 @@
                     console.log(error);
                 }
             })
+            localStorage.removeItem('topicNavs');
+            localStorage.removeItem('Mid');
+            localStorage.removeItem('Mlanm');
+
         }
     })
     vm_hzwda.init();
