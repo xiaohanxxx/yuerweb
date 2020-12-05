@@ -250,10 +250,6 @@ button {
     width: 365px;
 }
 
-#hotinfo {
-    height: 479px;
-}
-
 .tit_head {
     height: 43px;
     padding-top: 25px;
@@ -970,12 +966,14 @@ em.tip2 {
 .hot_arc {
     position: relative;
     width: 296px;
-    height: 480px;
+    height: 520px;
     background-color: #ffffff;
     border-radius: 5px;
-    padding: 0 18px 0 2px;
+    padding: 0px 18px 0 24px;
 }
-
+.hot_arc .rgt_tit{
+    padding-top:25px;
+}
 .hot_arc > ul {
     margin-top: 16px;
 }
