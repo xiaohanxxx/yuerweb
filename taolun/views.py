@@ -165,7 +165,6 @@ class Posting(views.View):
             "title": request.POST.get("title"),
             "content": request.POST.get("content")
         }
-        print(len(articleData['content']))
         postingRes = models.Posting.objects.create(**articleData)
 
         topic = request.POST.getlist("topic", [])
@@ -205,7 +204,7 @@ class Comment(views.View):
         return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
-        data = {k: v for k, v in request.POST.items()}
+        data = {k: v for k, v in request.POST.items() if k != "csrfmiddlewaretoken"}
         postingObj = get_object_or_404(models.Posting, pk=data.get("articles_id", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(models.Comment, pk=data['parent_id'])

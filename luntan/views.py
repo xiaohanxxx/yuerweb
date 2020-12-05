@@ -164,7 +164,7 @@ class Comment(views.View):
         return HttpResponse(json.dumps({"data": resComment}))
 
     def post(self, request, *args, **kwargs):
-        data = {k: v for k, v in request.POST.items()}
+        data = {k: v for k, v in request.POST.items() if k != "csrfmiddlewaretoken"}
         article = get_object_or_404(luntanmodel.Articles, pk=data.get("articles_id", 0))
         if data.get("parent_id", 0):
             parent_comment = get_object_or_404(luntanmodel.Comment, pk=data['parent_id'])
