@@ -3121,6 +3121,7 @@ body .ppart .currpaitp {
 .bott_box ol {
     overflow: hidden;
     width: 100%;
+    padding: 0 20px;
 }
 
 .bott_box ol li {
@@ -3224,6 +3225,7 @@ body .ppart .currpaitp {
 }
 
 .my_answer {
+    padding: 0 15px;
 }
 
 .my_answer ul li {
