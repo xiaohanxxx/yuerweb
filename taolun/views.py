@@ -211,6 +211,15 @@ class Comment(views.View):
 
         data['user_id'] = request.user.id
         models.Comment.objects.create(**data)
+
+        # 消息通知
+        from users.views import noticate
+        noticate(
+            request.user,
+            postingObj.user if not data.get("parent_id", 0) else parent_comment.user,
+            postingObj.title,
+            data["comment"]
+        )
         return HttpResponse("评论成功！！！！！！！！！！")
 
 

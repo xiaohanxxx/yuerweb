@@ -171,6 +171,16 @@ class Comment(views.View):
 
         data['user_id'] = request.user.id
         luntanmodel.Comment.objects.create(**data)
+
+        # 消息通知
+        from users.views import noticate
+        noticate(
+            request.user,
+            article.user if not data.get("parent_id", 0) else parent_comment.user,
+            article.title,
+            data["comment"]
+        )
+
         return HttpResponse("评论成功！！！！！！！！！！")
 
 
