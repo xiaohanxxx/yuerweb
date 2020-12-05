@@ -39,7 +39,6 @@
 <section class="topicMain wid clearfix" ms-controller="topicArc">
     <div class="topic_l fl">
         <div class='clearfix'>
-            {#                <p class="topictit">{{ data.title }}</p>#}
             <div class="userInfo">
                 <div class="Mtx">
                     <a href="javascript:;">
@@ -69,7 +68,11 @@
             </div>
             <div class="plbox fr">
                 <div><span>评论</span><i>|</i><span>{{ data.commentnum }}</span></div>
+                {% if request.user.is_active %}
                 <div><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></div>
+                {% else %}
+                    <div><a href="/login"><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></a></div>
+                {% endif %}
             </div>
         </div>
         <div class="plInpbox clearfix">
@@ -128,16 +131,39 @@
                 type:'post',
                 data:{
                    'type':0,
-                   'Quser_id':$(_this).attr('userid')
+                   'Quser_id':$(_this).attr('userid'),
+                    'csrfmiddlewaretoken':glob_csrftoken
                 },
                 success:function(ajax){
+                    $('.userInfo .isFollow').html('已关注')
                     layer.msg(ajax.msg);
                 }, error:function(error){
                 }
             })
+        },
+        guzhuinit:function(){
+            var userid = $('.isFollow').attr('userid');
+            $.ajax({
+                url:root_Domain+'/users/followapi',
+                type:'post',
+                data:{
+                    'type':2,
+                    'Quser_id':userid,
+                    'csrfmiddlewaretoken':glob_csrftoken
+                },
+                success:function(ajax){
+                    for(var i =0;i<ajax.data_list.length;i++){
+                        if(ajax.data_list[i].userid==userid){
+                            $('.userInfo .isFollow').html('已关注');
+                        }
+                    }
+                },error:function(error){
+                    console.log(error);
+                }
+            })
         }
     });
-
+    vm_topicArc.guzhuinit();
     vm_topicArc.articles_id = window.location.href.replace(/.*aid=/, '');
     var infoBox = $('div[infobox="box"].pl_info');//评论父级盒子
 
@@ -159,7 +185,7 @@
                         Toolfun.diguiClass(datalis, comment);
                     }
                 }
-                infoBox.html(html(comment));
+                infoBox.html(html(comment.reverse()));
                 readyClick();
                 Toolfun.qxzheClass();
             }, error: function (error) {
@@ -264,11 +290,13 @@
                 "articles_id":topicid,
                 "parent_id":commid,
                 "comment":comment,
+                'csrfmiddlewaretoken':glob_csrftoken
             }
         }else{
             truedata = {
                     "articles_id":topicid,
-                    "comment":comment
+                    "comment":comment,
+                    'csrfmiddlewaretoken':glob_csrftoken
                 }
         }
         if(topicid&&comment.length<1000&&comment!=""){

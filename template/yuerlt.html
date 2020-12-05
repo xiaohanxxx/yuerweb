@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{% static 'css/coment.css' %}">
     <link rel="stylesheet" href="{% static 'css/idangerous.swiper.css' %}">
     <link rel="stylesheet" href="{% static 'css/yuerlt.css' %}">
-    {#    <link rel="stylesheet" href="{% static 'css/css.css' %}">#}
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/idangerous.swiper2.7.6.min.js' %}"></script>
@@ -22,10 +21,14 @@
 </head>
 
 <body id='body' ms-controller='yuerltctr'>
-{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 育儿论坛头部板块 -->
 <section id="yuerhead" class='wid yuerhead'>
+
+
+
+
+
     <div class="swiper-container">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
@@ -59,6 +62,16 @@
         <!-- 分页器 -->
         <div class="pagination"></div>
     </div>
+
+
+
+
+
+
+
+
+
+
     <div class="jlquan">
         <div class="jlqunClass" ms-repeat-el="yuerlt_data">
             <div class="quanTitle">
@@ -254,7 +267,7 @@
                     {% endif %}
                 </div>
             </div>
-            {#            热点文章#}
+            {#热点文章#}
             {% include 'mod_hotarticle.html' %}
             {# 热门标签 #}
             {% include 'mod_hotbq.html' %}
@@ -415,6 +428,7 @@
                 }
             })
         }
+        {#论坛轮播图请求#}
 
         {#话题第一层的请求#}
         $.ajax({

@@ -333,6 +333,7 @@
                     success: function(data) {
                         vm.allbaikeData = data;
                         vm.datasgyes = data;
+                        console.log(vm.datasgyes);
                         var zhou = vm.getQueryVariable('types');
                         if (zhou > 0) {
                             vm.changrightlm(zhou, zhou - 1);

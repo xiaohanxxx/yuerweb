@@ -53,31 +53,34 @@
             <div ms-click="goChange(3)" ms-attr-class='typenum==3?"btnSelect":""'>推荐</div>
         </div>
         <ul class="main_lis fl">
-            <li ms-repeat-el="lisdata">
-                <div class="imgbox">
-                    <img ms-attr-src="/media/{el.user.head}" alt="">
-                </div>
-                <div class="lis_info">
-                    <p>
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
-                    </p>
-                    <p class="desinfo">
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}">
-                            {el.content|html}
-                        </a>
-                    </p>
-                    <div class="byjl_userinfo clearfix">
-                        <div class="byjl_info_l fl">
+
+            <li ms-repeat-el='lisdata' class="clearfix">
+                <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                    {el.snimg|html}
+                </a>
+                <div class="topicbox">
+                    <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                        <h3>{ el.title.substr(0,30)}..</h3>
+                        <div class="userleft">
+                            <img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}">
                             <span>{el.user.username}</span>
-                            <span>{el.publish_date.replace(/\d+:.*/,'')}</span>
+                            <span>{el.publish_date.replace(/\..*/,'')}</span>
                         </div>
-                        <div class="byjl_info_r fr">
-                            <span ms-click="gothumup(el.id)"><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span>
-                            <a href="javascript:;"><span><i class='iconfont'>&#xe66a;</i>{el.commentnum}</span></a>
-                        </div>
+                        <p>{el.content.substr(0,100)}..</p>
+                    </a>
+                    <div class="userright">
+                        {% if request.user.is_active %}
+                        <span ms-click="gothumup(el.id)"><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span>
+                        {% else %}
+                            <a href="/login"><span><i class='iconfont'>&#xe64c;</i>{el.thumbup}</span></a>
+                        {% endif %}
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}" class="fl">
+                            <span><i class="iconfont">&#xe66a;</i>{el.commentnum}</span>
+                        </a>
                     </div>
                 </div>
             </li>
+
         </ul>
         <!-- 分页 -->
         <div id="test1"></div>
@@ -208,7 +211,12 @@
                                         var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                                         if (lisdata[i].content.match(/<img.*\/>/g)) {
                                             var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
-                                            lisdata[i].content = constr + snimg
+                                            if (lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g)) {
+                                                lisdata[i].snimg = snimg;
+                                                lisdata[i].content = constr;
+                                            } else {
+                                                lisdata[i].content = '该问题暂时还没有评论'
+                                            }
                                         } else {
                                             lisdata[i].content = constr;
                                         }
@@ -265,7 +273,12 @@
                         var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                         if (lisdata[i].content.match(/<img.*\/>/g)) {
                             var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
-                            lisdata[i].content = constr + snimg
+                            if (lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g)) {
+                                lisdata[i].snimg = snimg;
+                                lisdata[i].content = constr;
+                            } else {
+                                lisdata[i].content = '该问题暂时还没有评论'
+                            }
                         } else {
                             lisdata[i].content = constr;
                         }
@@ -312,9 +325,15 @@
                         var constr = lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g).toString().replace(/(,|\w)/g, '').substr(0, 200);
                         if (lisdata[i].content.match(/<img.*\/>/g)) {
                             var snimg = lisdata[i].content.match(/<img.*\/>/g)[0];
-                            lisdata[i].content = constr + snimg
+                            if (lisdata[i].content.match(/[\u4e00-\u9fa5]|\w/g)) {
+                                lisdata[i].snimg = snimg;
+                                lisdata[i].content = constr;
+                            } else {
+                                lisdata[i].content = '该问题暂时还没有评论'
+                            }
                         } else {
                             lisdata[i].content = constr;
+                            lisdata[i].snimg = '';
                         }
                     }
                     vm_ltlist.lisdata = lisdata;

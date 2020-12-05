@@ -94,6 +94,8 @@
         limites: 10,//每一页显示多少条
         btnnum: 5,//按钮显示个数
         groupsdata: [],
+        lunboimg:[],
+        lunboinfo:[],
         allgroupData: [],
         lisdata: [],
         intopages: function () {
@@ -184,6 +186,22 @@
                 }, error: function (error) {
                     console.log(error);
                 }
+            })
+        },
+        lunboget:function(){
+            $.ajax({
+                url:root_Domain+'/luntan/getlunbo/',
+                type:'get',
+                dataType:'json',
+                success:function(ajax){
+                    vm_hzwdlist.lunboinfo = ajax.data;
+                    console.log(vm_hzwdlist.lunboinfo,595959595955959)
+                },error:function(error){
+                    console.log(error);
+                }
+            });
+            $.ajax({
+                url:root_Domain+''
             })
         },
         init: function () {

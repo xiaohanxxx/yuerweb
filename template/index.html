@@ -529,13 +529,13 @@
             blxbydata: [],
             init: function() {
                 $.ajax({
-                    url: root_Domain + '/taolun/postinglist/?num=10',
+                    url: root_Domain + '/taolun/postinglist/?num=12',
                     type: 'get',
                     dataType: 'json',
                     success: function(ajax) {
                         var limgdata = ajax.data.splice(0, 2),
                             rimgdata = ajax.data.splice(0, 2),
-                            llisdata = ajax.data.splice(0, 3),
+                            llisdata = ajax.data.splice(0, 4),
                             rlisdata = ajax.data;
                         Toolfun.snimgzsClass(limgdata);
                         Toolfun.snimgzsClass(rimgdata);
