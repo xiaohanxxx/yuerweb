@@ -15,6 +15,7 @@
 </head>
 <body>
      {% include 'header.html' %}
+ 
          <div class="centers" ms-controller="centeres">
          	 <div class="ctops">
          	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"  height="124" width="124"></div>
@@ -28,8 +29,9 @@
      	 	 	<div class="czz_czz">
      	 	 		成长值  {{ data.integral }}
      	 	 	</div>
-     	 	 	<div class="guanzhus">
-     	 	 		关注他
+     	 	 	<div class="guanzhus" ms-click="guanzhuhims">
+{#     	 	 		关注他#}
+                    {guanzhuh}
      	 	 	</div>
          	 </div>
 
@@ -39,14 +41,14 @@
 	             	<div class="navs">
 	             		<ul>
 	             			<li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
-	             				他的论坛（999）
+	             				他的论坛（{ maxnumes }）
 	             			</li>
 	             			<li ms-class="curee_cener:aa==2"  ms-click="getBox(2)">
-	             				他的问答（999）
+	             				他的问答（{ maxnumwd }）
 	             			</li>
-	             			<li ms-class="curee_cener:aa==3"  ms-click="getBox(3)">
-	             				他的关注（999）
-	             			</li>
+{#	             			<li ms-class="curee_cener:aa==3"  ms-click="getBox(3)">#}
+{#	             				他的关注（999）#}
+{#	             			</li>#}
 {#	             			<li ms-class="curee_cener:aa==4"  ms-click="getBox(4)">#}
 {#	             				他的粉丝（999）#}
 {#	             			</li>#}
@@ -73,14 +75,16 @@
                     	</ol>
                     </div>
 
-
+                    <style>
+                        .imgs img{  width: 300px; height: 260px; }
+                    </style>
                     <div class="bott_box" ms-if="aa == 2">
                     	<div class="my_answer">
                     		<ul>
-                    			<li>
-                    				<p style="font-size: 14px;">我是问题标题文字</p>
-                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>
-                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>
+                    			<li ms-repeat="himswenda">
+                    				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
+                    				<p style="font-size: 12px; margin: 8px 0;" class="imgs">{el.content | html | truncate(260,'...')}</p>
+                    				<div>{el.publish_date}  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
 {#                    			<li>#}
 {#                    				<p style="font-size: 14px;">我是问题标题文字</p>#}
@@ -95,26 +99,18 @@
 
 
 
-                     <div class="bott_box" ms-if="aa == 3">
-                     	<div class="gz_cont">
-
-                     		<div class="gzlists">
-                     			<img src="{% static 'img/tuxiang.jpg' %}">
-                     			<p style="font-size: 16px;">我是用户名</p>
-                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>
-                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>
-                     		</div>
-
+{#                     <div class="bott_box" ms-if="aa == 3">#}
+{#                     	<div class="gz_cont">#}
+{##}
 {#                     		<div class="gzlists">#}
 {#                     			<img src="{% static 'img/tuxiang.jpg' %}">#}
 {#                     			<p style="font-size: 16px;">我是用户名</p>#}
 {#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
 {#                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>#}
 {#                     		</div>#}
-
-
-                     	</div>
-                     </div>
+{##}
+{#                     	</div>#}
+{#                     </div>#}
 
 
                 </div>
@@ -194,12 +190,32 @@
           $id: "centeres",
           aa:1,
           cc:1,
+          guanzhuh:'关注他',
           getcodewenzi: '获取验证',
           edit_passwad:{
           	phone:'',
           	verification_Code:'',
           	new_password:''
           },
+            guanzhuhims:function (data,index){
+                  var datas = {
+                            'type':0,
+                            'Quser_id':localStorage.getItem("uid"),
+                            'csrfmiddlewaretoken':glob_csrftoken
+                      }
+                    $.ajax({
+                        type: 'post',
+                        url: '/users/followapi',
+                        data: datas,
+                        dataType: "json",
+                        success: function (data) {
+                            //关注接口
+                            console.log(data,'data3333333');
+                            layer.msg('关注成功');
+                            wvm.guanzhuh = '已关注';
+                        }
+                    });
+            },
           change_edit:function(res){
               wvm.cc = res;
           },
@@ -239,7 +255,6 @@
                     url: '/users/smsvif',
                     data: phone,
                     dataType: "json",
-                    // timeout: 10000,
                     success: function (data) {
                         console.log(data);
                     }
@@ -257,28 +272,65 @@
                     dataType: "json",
                     // timeout: 10000,
                     success: function (data) {
-                        console.log(data,99999999999999);
                         layer.msg(data.msg);
                     }
                 });
             },
             gethimtiezies:[],
             totalNum:0,
-            gethimtiezi:function (){
-            	var uid = {
-            		'uid':1,
-                    page:1,
-                    num:10
+            getQueryVariable: function(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return (false);
+            },
+            getparase:function (variable){
+                var query = window.location.pathname;
+                var vars = query.split("/");
+                localStorage.setItem('uid',vars[vars.length-1]);
+            },
+            himswenda:[],
+            maxnumwd:0,
+            gethimwenda:function(){
+              var uides = {
+            		'uid':localStorage.getItem('uid'),
+                    'page':1,
+                    'num':10
             	}
-            	console.log(uid,'uiduiduid')
+                $.ajax({
+                    type: 'get',
+                    url: '/taolun/getmyarticles/',
+                    data: uides,
+                    dataType: "json",
+                    success: function (data) {
+                        wvm.himswenda = data.data
+                        wvm.maxnumwd = data.maxnum
+                        console.log(wvm.himswenda,'himswendahimswendahimswenda')
+                    },error:function(error){
+
+                    }
+                });
+            },
+            maxnumes:0,
+            gethimtiezi:function (){
+            	var uides = {
+            		'uid':localStorage.getItem('uid'),
+                    'page':1,
+                    'num':10
+            	}
                 $.ajax({
                     type: 'get',
                     url: '/luntan/getmyarticles/',
-                    data: uid,
+                    data: uides,
                     dataType: "json",
                     success: function (data) {
-                        console.log(data,'asdfsafdsafd')
                         wvm.gethimtiezies = data.data
+                        wvm.maxnumes = data.maxnum
                         console.log(wvm.gethimtiezies,'asdfsafdsafd')
                     },error:function(error){
 
@@ -286,6 +338,8 @@
                 });
             }
         });
+         wvm.getparase();
+         wvm.gethimwenda();
          wvm.gethimtiezi();
 	</script>
 </body>

@@ -60,9 +60,9 @@
      		<div class="partone" style="width: 1200px; height: 347px;">
  			    <div class="swiper-container gallery-top">
 				    <div class="swiper-wrapper">
-					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
-					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
-					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>
+					      <div class="swiper-slide" ms-repeat="baikebanner"><img ms-attr-src="'/media/' + el.cover"></div>
+{#					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>#}
+{#					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>#}
 				    </div>
 				</div>
 				<div class="swiper-container gallery-thumbs">
@@ -137,11 +137,6 @@
                                    <p>{el.excerpt}</p>
                               </a>
      				</div>
-     				<!-- <div class="ulli">
-     					<img src="{% static 'img/jixiefang.png' %}" style="float: left; margin-right: 10px;">
-     					<h3>我是文章标题最多显示两行跳转至论坛社区文章，超出的部分用...代替</h3>
-     					<p>我是文章正文内容，显示字段为文章正文部分开头截取内容，我最多显示四行，文案文案文案文案文案文案文案文案文案文案文案文案文案</p>
-     				</div> -->
      			</div>
      			<div class="rightbottmanther">
      				<ul>
@@ -160,7 +155,8 @@
                     <a ms-attr-href="/baike/baike_list?types={el.mid}" style="float: right;">更多>></a>
                 </div>
      			<div class="beiyunbaikepart">
-     				<div class="img" style="width: 205px; height: 308px; float: left;"><img src="{% static 'img/983.png' %}"></div>
+{#     				<div class="img" style="width: 205px; height: 308px; float: left;"><img ms-attr-src="{% static 'img/983.png' %}"></div>#}
+                    <div class="img" style="width: 205px; height: 308px; float: left;"><img ms-attr-src="el.baike_images"></div>
      				<div class="rightlistsa">
      					<div class="ululli" ms-repeat-vw="el.children">
                             <h4><a href="###">{vw.menu_name}</a></h4>
@@ -178,22 +174,22 @@
      <!-- 底部 -->
      {% include 'footer.html' %}
      <script>
-             var galleryThumbs = new Swiper('.gallery-thumbs', {
-		      spaceBetween: 3,
-		      slidesPerView: 3,
-		      freeMode: false,
-		      watchSlidesVisibility: false,
-		      watchSlidesProgress: false,
-		    });
-		    var galleryTop = new Swiper('.gallery-top', {
-		      spaceBetween: 10,
-		      navigation: {
+         var galleryThumbs = new Swiper('.gallery-thumbs', {
+              spaceBetween: 3,
+              slidesPerView: 3,
+              freeMode: false,
+              watchSlidesVisibility: false,
+              watchSlidesProgress: false,
+            });
+            var galleryTop = new Swiper('.gallery-top', {
+              spaceBetween: 10,
+              navigation: {
 
-		      },
-		      thumbs: {
-		        swiper: galleryThumbs
-		      }
-		    });
+              },
+              thumbs: {
+                swiper: galleryThumbs
+              }
+            });
 
      </script>
 </body>

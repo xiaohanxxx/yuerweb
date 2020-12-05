@@ -416,7 +416,6 @@
                         dataType: "json",
                         success: function (data) {
                             wvm.guanzhus = data.data_list;
-                            console.log(wvm.guanzhus,'wvm.guanzhuswvm.guanzhuswvm.guanzhus');
                             $.each(wvm.guanzhus,function(index,value){
                                 if(value.user_article.length>4){
                                      value.user_article = value.user_article.splice(0,4);
@@ -424,9 +423,6 @@
                                 }
                             });
                             wvm.guanzhuNum = data.data_list.length;
-                            {#wvm.maxnum = data.maxnum;#}
-                            {#console.log(data,'345234234')#}
-                            {#wvm.gontopage(wvm.maxnum);#}
                         }
                     });
             },
@@ -443,7 +439,6 @@
                         dataType: "json",
                         success: function (data) {
                             //关注接口
-                            console.log(data,'789456');
                             layer.msg('关注成功');
                             wvm.getAllfensi();
                             wvm.getguanzhuData();
@@ -464,7 +459,6 @@
                         dataType: "json",
                         success: function (data) {
                             //取消关注接口
-                            console.log(data);
                             layer.msg('取消关注成功');
                             wvm.getAllfensi();
                             wvm.getguanzhuData();

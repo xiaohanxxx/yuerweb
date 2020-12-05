@@ -202,7 +202,6 @@
                         if (data.code == 200) {
                             layer.msg('登录成功，即将跳转到当前页');
                             localStorage.setItem('username', vm.loginData.username);
-                            sessionStorage.setItem("username", vm.loginData.username);
                             setTimeout(function() {
                                 history.back();
                             }, 2000)
@@ -333,7 +332,7 @@
                     success: function(data) {
                         vm.allbaikeData = data;
                         vm.datasgyes = data;
-                        console.log(vm.datasgyes);
+                        console.log(vm.allbaikeData,'allbaikeDataallbaikeData');
                         var zhou = vm.getQueryVariable('types');
                         if (zhou > 0) {
                             vm.changrightlm(zhou, zhou - 1);
@@ -394,9 +393,33 @@
                         console.log(data);
                     }
                 });
+            },
+            baikebanner:[],
+            bannerlist:function (){
+                var datas = {
+                    'bannertype':3,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/webmanage/banner',
+                    data: datas,
+                    dataType: "json",
+                    success: function(data) {
+                        vm.baikebanner = data.data
+                        console.log(data,'datases');
+
+
+
+
+
+
+                    }
+                });
             }
         })
         vm.getAllbaikeData();
         vm.getNewArtical();
         vm.gettopimgs();
+        vm.bannerlist();
     </script>

@@ -70,7 +70,7 @@
                         {% if unread_count %}
                             {% for notification in request.user.notifications.all %}
                                 <li>
-                                    <img src="{% static 'img/tuxiang.jpg' %}">
+                                    <a href="/users/centerhim/{{ notification.id }}"><img src="{% static 'img/tuxiang.jpg' %}"></a>
                                     <p style="padding-top: 10px;">{{ notification.actor }}</p>
                                     <p style="margin-top: 21px;">
                                         【{{ notification.timesince }}之前】{{ notification.actor }}在{{ notification.target }}{{ notification.verb }}
