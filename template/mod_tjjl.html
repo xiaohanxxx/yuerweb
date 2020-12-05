@@ -1,11 +1,11 @@
 {% load static %}
 {% include 'config.html' %}
-<div class="tjjlq" ms-controller="model_tjjl">
+<div class="tjjlq" id="tjjlq" ms-controller="model_tjjl">
     <div class="tjjl-h">
         <h3>推荐交流圈</h3>
     </div>
-    <ul class='tjjlbox' ms-repeat="navdata">
-        <li>
+    <ul class='tjjlbox' id="tjjlbox">
+        <li ms-repeat="navdata">
             <div ms-attr-class="Mid==el.id?'tjjlSelect':''" style="float: left;">
                 <a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">
                     <img ms-attr-src="{el.child[0].thumb}" alt="" height="40" width="40" style="margin-right: 15px;">
