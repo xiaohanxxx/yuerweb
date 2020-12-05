@@ -101,6 +101,13 @@
 
     </div>
     <div class="topic_r fl">
+        <style>
+            .tjjlbox{ padding-right: 12px;}
+    .tjjlbox img{ float: left;}
+    .tjjlbox li{ height: 40px; line-height: 40px; margin: 20px 0; font-size: 14px;}
+    .tjjl-h{ border-bottom: 1px solid #eee; padding-right: 15px;}
+    .tjjl-h h3{ height: 40px; line-height: 40px; border-bottom: 1px solid #FF44AD; width: 100px; text-align: center; font-size: 18px;}
+</style>
         {% include 'mod_tjjl.html' %}
         {# 热门话题调用 #}
         {% include 'mod_yuerlthot.html' %}
@@ -126,7 +133,6 @@
                 success:function(ajax){
                     layer.msg(ajax.msg);
                 }, error:function(error){
-                    console.log(error);
                 }
             })
         }
