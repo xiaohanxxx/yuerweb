@@ -216,7 +216,7 @@
                                             <img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%">
                                             <h3>{its.title.substr(0,14)}...</h3>
                                             <p>
-                                                {its.content.match(/[\u4e00-\u9fa5]/g)?its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20):''}...</p>
+                                                {its.content.match(/[\u4e00-\u9fa5]/g) ? its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20) : ''}...</p>
                                         </a>
                                     </li>
 
@@ -233,7 +233,7 @@
                                         <h3 style="font-weight:bold;margin-bottom:5px;color:#000;">
                                             {item.title.substr(0,14)}...</h3>
                                         <p>
-                                            {item.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20)}...</p>
+                                            {item.content.match(/[\u4e00-\u9fa5]/g)?item.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20):''}...</p>
                                     </a>
                                 </div>
                             </div>
