@@ -30,7 +30,7 @@ body {
 
 .headerNav .logos {
     width: 289px;
-    height: 150px;
+    margin-top:41px;
     float: left;
 }
 
@@ -1179,10 +1179,13 @@ body .ppart .currpaitp {
 
 .hzwdlefts ul li.curreswd {
     border-radius: 8px;
-    color: #ff44ad;
+    padding: 0 5px;
+    background-color: #ff44ad;
     border: 1px solid #ff44ad;
 }
-
+li.curreswd>a{
+    color:#fff;
+}
 
 .fenleiallswd {
     width: 100%;
@@ -1283,7 +1286,43 @@ body .ppart .currpaitp {
     width: 100%;
     overflow: hidden;
 }
-
+.doctorbox>a>img{
+    float:left;
+    width: 113px !important;
+    height: 141px !important;
+}
+.doctorbox .doctorinfo{
+    float:left;
+    max-width:180px;
+    margin-left: 16px;
+}
+.doctorinfo h4{
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom:10px;
+}
+.doctorinfo h4>abbr{
+    font-size:12px;
+    margin-left: 10px;
+    color:#666;
+}
+.doctorinfo p{
+    color:#999;
+    margin-bottom:10px;
+    font-size:12px;
+}
+.doctorinfo>a{
+    float: left;
+    width: 68px;
+    height: 24px;
+    border:1px solid #FF4BB0;
+    color:#FF4BB0;
+    margin-top: 22px;
+    border-radius: 12px;
+    line-height: 24px;
+    text-align: center;
+}
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
 .hotwdtuijian {
     background: #fff;

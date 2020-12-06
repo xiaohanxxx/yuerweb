@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -289,7 +289,11 @@
         <div class="sgyecontanather">
             <div class="sgyghhight" style="margin-right:20px;">
                 <div class="hhightleft">
-                    <h3><abbr>百科知识</abbr><a href="">备孕</a>|<a href="">怀孕</a>|<a href="">育儿</a>|<a href="">试管婴儿</a>|<a href="">不孕不育</a></h3>
+                    <h3>
+                        <abbr>百科知识</abbr>
+                        <a ms-repeat="bksonlmdara" ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name.substr(0,4)}</a>
+
+                    </h3>
                 </div>
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
@@ -363,7 +367,6 @@
                         'csrfmiddlewaretoken':glob_csrftoken
                     },
                     success: function(ajax) {
-                        console.log(ajax.data,'ajax')
                         var lunbohtml = '';
                         for (var i = 0; i < ajax.data.length; i++) {
                             lunbohtml += '<div class="swiper-slide"><img src="/media/' + ajax.data[i].cover + '" width="890" height="360"></div>';
@@ -418,6 +421,9 @@
                     newdata[j].allchild = JSON.parse(localStorage.getItem("navdata"))[j].child;
                 }
                 vm_indexhedes.navdata = newdata;
+                vm_hotaskbq.init();
+                vm_hysqctl.init();
+                vm_sgyercrl.init();
             },
             error: function(error) {
                 console.log(error);
@@ -431,8 +437,6 @@
             lisdata: [],
             init: function() {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                localStorage.clear();
-                localStorage.setItem('navdata', JSON.stringify(navs));
                 if (!navs[2]) {
                     location.reload();
                 } else {
@@ -466,7 +470,6 @@
                         Toolfun.snimgzsClass(data);
                         vm_sgyercrl.imgdata = data;
                         vm_sgyercrl.lisdata = ajax.data.curuent_page;
-                        Toolfun.qxzheClass();
                     },
                     error: function(error) {
                         console.log(error);
@@ -474,7 +477,7 @@
                 })
             }
         })
-        vm_sgyercrl.init();
+
         var vm_hysqctl = avalon.define({
             $id: 'hysqctl',
             imgdata: [],
@@ -483,8 +486,6 @@
             beiydata: [],
             init: function() {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                localStorage.clear();
-                localStorage.setItem('navdata', JSON.stringify(navs));
                 if (navs[3]) {
                     $.ajax({
                         url: '/luntan/articlelist/?tid=' + navs[3].child[0].id + '&num=8',
@@ -519,7 +520,7 @@
                 })
             }
         })
-        vm_hysqctl.init();
+
         var vm_bybyctl = avalon.define({
             $id: 'bybyctl',
             limgdata: [],
@@ -587,7 +588,7 @@
                 vm_hotaskbq.askdata = vm_hotaskbq.navdata[index].child;
             }
         })
-        vm_hotaskbq.init();
+
     </script>
     <script>
         $(function() {

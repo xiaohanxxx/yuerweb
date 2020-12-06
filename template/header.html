@@ -5,7 +5,7 @@
 <div class="header" ms-controller="headercont">
     <div class="headerNav">
         <div class="logos">
-            <a href="/"><img src="{% static 'img/logo.jpg' %}"></a>
+            <a href="/"><img style="width:215px;height:85px;" src="{% static 'images/icon/logo.png' %}"></a>
         </div>
         <div class="headerNav-ul">
 
@@ -317,7 +317,6 @@
                 success: function (data) {
                     vm.allbaikeData = data;
                     vm.datasgyes = data;
-                    console.log(vm.datasgyes);
                     var zhou = vm.getQueryVariable('types');
                     if (zhou > 0) {
                         vm.changrightlm(zhou, zhou - 1);
@@ -340,7 +339,7 @@
                 dataType: "json",
                 // timeout: 10000,
                 success: function (data) {
-                    console.log(data, '123456');
+
                 }
             });
         },
@@ -382,6 +381,7 @@
         newheaddata: [],
         newheaddata1: [],
         newheaddata2: [],
+        bksonlmdara:[],
         getHeadData: function () {
             $.ajax({
                 url: '/luntan/areas/',
@@ -413,6 +413,7 @@
                 dataType: 'json',
                 success: function (ajax) {
                     vm.newheaddata2 = ajax.data;
+                    vm.bksonlmdara = ajax.data;
                 }, error: function (error) {
                     console.log(error);
                 }
