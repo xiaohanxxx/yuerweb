@@ -131,7 +131,7 @@
         var vmm = avalon.define({
             $id: 'headercont',
             namees: '医院',
-            usernames: sessionStorage.getItem("username"),
+            usernames: localStorage.getItem("username"),
             showxiala: function() {
                 var _this = $(this);
                 if (_this.next('ul').hasClass('hites')) {
@@ -194,13 +194,11 @@
                     data: datgas,
                     dataType: "json",
                     success: function(data) {
-                        console.log(data, 99999);
                         vm.baikebanner = data.data
                     }
                 });
             },
             loginFun: function() {
-
                 if (vm.loginData.username == '' || !vm.loginData.username) {
                     layer.msg('请填写正确的用户名');
                     return;
@@ -260,7 +258,6 @@
                     url: '/users/register',
                     data: vm.zhuceDatas,
                     dataType: "json",
-                    // timeout: 10000,
                     success: function(data) {
                         if (data.code == 200) {
                             layer.msg('注册成功，即将跳转到登录页面');
