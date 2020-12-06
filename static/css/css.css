@@ -7,16 +7,15 @@
 
 body {
     background: #f9f9f9;
-    user-select: none;
-    -ms-user-select: none;
-    -moz-user-select: none;
 }
 
 .ms-controller {
     visibility: hidden
 }
 
+
 /*Í·²¿CSS*/
+
 .header {
     height: 150px;
     width: 100%;
@@ -33,7 +32,7 @@ body {
 
 .headerNav .logos {
     width: 289px;
-    margin-top: 41px;
+    height: 150px;
     float: left;
 }
 
@@ -107,8 +106,12 @@ body {
     /*padding-left: 54px;*/
 }
 
+
 /*.denglu p input{ width: 162px; height: 32px;  border-radius: 5px; outline: none;}*/
+
+
 /*border: 1px solid #ff44ad; */
+
 .denglu .pps input {
     width: 110px;
     height: 30px;
@@ -134,8 +137,8 @@ body {
     color: #F94479£»
 }
 
-
-.yiyuansearch { /*background-image: url(../img/searchxl.jpg);*/
+.yiyuansearch {
+    /*background-image: url(../img/searchxl.jpg);*/
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: 35px center;
@@ -173,7 +176,9 @@ body {
     text-align: center;
 }
 
+
 /*BANNER²¿·ÝCSS*/
+
 .banners {
     width: 100%;
     overflow: hidden;
@@ -186,7 +191,9 @@ body {
     background: #fff;
 }
 
+
 /*.bannersBox .bags{ background: #666; }*/
+
 .bannerboxleft {
     width: 290px;
     float: left;
@@ -255,7 +262,9 @@ body {
     color: #fff;
 }
 
+
 /**ÊÔ¹ÜÓ¤¶ù**/
+
 .shiguanyiner {
     width: 100%;
     overflow: hidden;
@@ -407,7 +416,9 @@ body {
     color: #898989;
 }
 
+
 /*swiper*/
+
 .swiper-container {
     width: 910px;
     height: auto;
@@ -491,18 +502,17 @@ body {
     color: red;
 }
 
-.asdlkfj ul > li > a > img {
+.asdlkfj ul>li>a>img {
     width: 39px;
     height: 39px;
     border-radius: 50%;
 }
 
-.asdlkfj ul > li > a > h3 {
+.asdlkfj ul>li>a>h3 {
     overflow: hidden;
     height: 16px;
     white-space: nowrap;
 }
-
 
 .shiguanyiner {
     width: 100%;
@@ -538,7 +548,7 @@ body {
     margin-top: 15px;
 }
 
-.hhightleft h3 > abbr:nth-of-type(1) {
+.hhightleft h3>abbr:nth-of-type(1) {
     font-size: 24px;
 }
 
@@ -609,7 +619,6 @@ body {
     padding-left: 20px;
 }
 
-
 .hotinfo {
     width: 276px;
     float: left;
@@ -628,7 +637,6 @@ body {
 }
 
 .infoone p {
-
     position: absolute;
     bottom: 0px;
     height: 40px;
@@ -643,11 +651,11 @@ body {
     background-size: 100% 100%;
 }
 
-.infoone > a {
+.infoone>a {
     display: block;
 }
 
-.infoone > a > img {
+.infoone>a>img {
     width: 276px;
     height: 202px;
     border-radius: 8px;
@@ -892,7 +900,9 @@ body {
     margin-left: 2%;
 }
 
+
 /*background: rgba(0,0,0,0.8); opacity: 0.8;*/
+
 .tupianhost p {
     width: 98%;
     position: absolute;
@@ -906,7 +916,8 @@ body {
     opacity: 0.6;
 }
 
-.h3tgoplis, .listh3hasdf {
+.h3tgoplis,
+.listh3hasdf {
     overflow: hidden;
     width: 100%;
 }
@@ -930,7 +941,7 @@ body {
     margin-bottom: 8px;
     font-size: 16px;
     font-family: 'Î¢ÈíÑÅºÚ';
-    font-weight: 400;
+    font-weight: bold;
     color: #666;
 }
 
@@ -969,7 +980,6 @@ body {
 .fsaldkjf a p {
     font-size: 12px;
 }
-
 
 .hotanwser {
     width: 100%;
@@ -1142,7 +1152,6 @@ body .ppart .currpaitp {
     font-family: "Î¢ÈíÑÅºÚ";
 }
 
-
 .hzwdbanner {
     width: 1200px;
     overflow: hidden;
@@ -1189,7 +1198,7 @@ body .ppart .currpaitp {
     border: 1px solid #ff44ad;
 }
 
-li.curreswd > a {
+li.curreswd>a {
     color: #fff;
 }
 
@@ -1214,7 +1223,6 @@ li.curreswd > a {
     color: #ff44ad;
     border-bottom: 1px solid #ff44ad;
 }
-
 
 .hzwdcontslist {
     width: 100%;
@@ -1242,7 +1250,9 @@ li.curreswd > a {
     padding-left: 15px;
 }
 
-.doctorbox, .metry, .szzhuanjia {
+.doctorbox,
+.metry,
+.szzhuanjia {
     overflow: hidden;
     width: 100%;
 }
@@ -1293,7 +1303,7 @@ li.curreswd > a {
     overflow: hidden;
 }
 
-.doctorbox > a > img {
+.doctorbox>a>img {
     float: left;
     width: 113px !important;
     height: 141px !important;
@@ -1312,7 +1322,7 @@ li.curreswd > a {
     margin-bottom: 10px;
 }
 
-.doctorinfo h4 > abbr {
+.doctorinfo h4>abbr {
     font-size: 12px;
     margin-left: 10px;
     color: #666;
@@ -1324,7 +1334,7 @@ li.curreswd > a {
     font-size: 12px;
 }
 
-.doctorinfo > a {
+.doctorinfo>a {
     float: left;
     width: 68px;
     height: 24px;
@@ -1336,7 +1346,9 @@ li.curreswd > a {
     text-align: center;
 }
 
+
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
+
 .hotwdtuijian {
     background: #fff;
     padding: 15px 0;
@@ -1348,7 +1360,8 @@ li.curreswd > a {
     width: 100%;
 }
 
-.hotwdtuijian ul, .hotwdtuijian ol {
+.hotwdtuijian ul,
+.hotwdtuijian ol {
     overflow: hidden;
     width: 97%;
 }
@@ -1381,7 +1394,6 @@ li.curreswd > a {
     font-size: 12px;
 }
 
-
 .hotwdtuijianes ol li {
     margin: 10px 20px 10px 0;
     font-size: 12px;
@@ -1396,7 +1408,6 @@ li.curreswd > a {
     float: right;
     font-size: 12px;
 }
-
 
 .hotwdtuijianes_new ol li {
     margin: 10px 20px 10px 0;
@@ -1413,7 +1424,6 @@ li.curreswd > a {
     float: right;
     font-size: 12px;
 }
-
 
 .tjyylists {
     width: 100%;
@@ -1458,7 +1468,6 @@ li.curreswd > a {
     cursor: pointer;
 }
 
-
 .topboxs {
     overflow: hidden;
     min-height: 120px;
@@ -1498,7 +1507,6 @@ li.curreswd > a {
     margin-right: 15px;
 }
 
-
 .oneboxs {
     width: 100%;
     height: auto;
@@ -1514,14 +1522,12 @@ li.curreswd > a {
 
 .toptitles h3 {
     font-size: 16px;
-    font-weight: "Î¢ÈíÑÅºÚ" £»
-    font-weight: 400;
+    font-weight: "Î¢ÈíÑÅºÚ" £» font-weight: 400;
 }
 
 .toptitles h4 {
     font-size: 14px;
-    font-weight: "Î¢ÈíÑÅºÚ" £»
-    font-weight: 300;
+    font-weight: "Î¢ÈíÑÅºÚ" £» font-weight: 300;
 }
 
 .toptitles p {
@@ -1529,7 +1535,8 @@ li.curreswd > a {
     line-height: 30px;
 }
 
-.quanzibox, .onetopulli {
+.quanzibox,
+.onetopulli {
     width: 100%;
     overflow: hidden;
 }
@@ -1574,6 +1581,7 @@ li.curreswd > a {
 
 
 /*互助问答*/
+
 .huzhuwenda {
     width: 100%;
     overflow: hidden;
@@ -1662,7 +1670,6 @@ li.curreswd > a {
     border-radius: 3px;
 }
 
-
 .liststitleconts {
     width: 100%;
     min-height: 300px;
@@ -1696,7 +1703,8 @@ li.curreswd > a {
     color: #666;
 }
 
-.listswenda, .listswenda ul {
+.listswenda,
+.listswenda ul {
     width: 100%;
     overflow: hidden;
 }
@@ -1717,7 +1725,8 @@ li.curreswd > a {
     float: left;
 }
 
-.imglists, .infousers {
+.imglists,
+.infousers {
     width: 100%;
     overflow: hidden;
 }
@@ -1816,7 +1825,6 @@ li.curreswd > a {
 
 .remenhuati h4 {
     text-decoration: none;
-
 }
 
 .sgyecontanather .remenhuaties {
@@ -1871,7 +1879,7 @@ li.curreswd > a {
     color: #FF44AD;
 }
 
-.hosadress > ul:nth-of-type(1) {
+.hosadress>ul:nth-of-type(1) {
     position: absolute;
     top: 24px;
     padding: 0;
@@ -1885,7 +1893,7 @@ li.curreswd > a {
     display: none;
 }
 
-.hosadress > ul:nth-of-type(1) > li {
+.hosadress>ul:nth-of-type(1)>li {
     text-align: center;
     height: 24px;
     width: 100%;
@@ -1893,13 +1901,13 @@ li.curreswd > a {
     line-height: 30px;
 }
 
-.hosadress > ul li:hover {
+.hosadress>ul li:hover {
     background-color: #fff;
     color: #fff;
     background-color: #F94479;
 }
 
-.hosadress > ul:nth-of-type(2) {
+.hosadress>ul:nth-of-type(2) {
     position: absolute;
     display: none;
     background-color: grey;
@@ -1911,7 +1919,7 @@ li.curreswd > a {
     overflow: auto;
 }
 
-.hosadress > ul:nth-of-type(2) > li {
+.hosadress>ul:nth-of-type(2)>li {
     floa: left;
     padding: 5px 10px;
     margin-right: 10px;
@@ -1919,17 +1927,17 @@ li.curreswd > a {
     text-align: center;
 }
 
-.remenhuaties > div {
+.remenhuaties>div {
     position: relative;
     height: 24px;
 }
 
-.remenhuaties > div > p {
+.remenhuaties>div>p {
     margin-top: 10px;
     cursor: pointer;
 }
 
-.remenhuaties > div > p i {
+.remenhuaties>div>p i {
     font-size: 16px;
     margin-right: 5px;
     color: red;
@@ -2040,7 +2048,6 @@ li.curreswd > a {
     right: 0;
 }
 
-
 .nanyunzhiliao {
     width: 100%;
     overflow: hidden;
@@ -2079,7 +2086,9 @@ li.curreswd > a {
     padding: 0 6px;
 }
 
-.redianhosts, .wenhaoconts, .wenhaoconts ul {
+.redianhosts,
+.wenhaoconts,
+.wenhaoconts ul {
     width: 100%;
     overflow: hidden;
 }
@@ -2198,7 +2207,6 @@ li.curreswd > a {
     border-radius: 3px;
 }
 
-
 .fenleicontsta {
     float: left;
     width: 680px;
@@ -2256,7 +2264,6 @@ li.curreswd > a {
     height: 35px;
 }
 
-
 .haoyunmama {
     width: 100%;
     overflow: hidden;
@@ -2300,7 +2307,6 @@ li.curreswd > a {
     margin: 0 auto;
     min-height: 250px;
 }
-
 
 .baikepariton {
     width: 100%;
@@ -2512,7 +2518,7 @@ li.curreswd > a {
 
 .hzwdcontslistes p {
     line-height: 30px;
-    padding: 5px 11px;
+    padding: 5px 28px;
 }
 
 .hzwdcontslisteszhou {
@@ -2620,7 +2626,6 @@ li.curreswd > a {
     padding-left: 20px;
 }
 
-
 .baiketj {
     width: 100%;
     overflow: hidden;
@@ -2643,8 +2648,8 @@ li.curreswd > a {
     width: 120px;
 }
 
-
-.pretitle, .nexttitle {
+.pretitle,
+.nexttitle {
     padding-left: 20px;
     padding-bottom: 10px;
 }
@@ -2683,7 +2688,6 @@ li.curreswd > a {
     margin-top: 15px;
 }
 
-
 .piaofubox {
     position: absolute;
     width: 100%;
@@ -2720,7 +2724,8 @@ li.curreswd > a {
     margin-top: 15px;
 }
 
-.yiyuanhuanjing, .qwzhuanjia {
+.yiyuanhuanjing,
+.qwzhuanjia {
     overflow: hidden;
 }
 
@@ -2792,7 +2797,8 @@ li.curreswd > a {
     margin-top: 15px;
 }
 
-.qwzhuanjia ol, .qwzhuanjia {
+.qwzhuanjia ol,
+.qwzhuanjia {
     width: 100%;
     overflow: hidden;
 }
@@ -2809,7 +2815,6 @@ li.curreswd > a {
     text-align: center;
 }
 
-
 .pjjyy {
     padding: 20px;
     background: #fff;
@@ -2820,7 +2825,8 @@ li.curreswd > a {
     margin-top: 15px;
 }
 
-.listyisheng, .listyisheng ol {
+.listyisheng,
+.listyisheng ol {
     overflow: hidden;
 }
 
@@ -2839,8 +2845,9 @@ li.curreswd > a {
     padding: 15px 0;
 }
 
-
-.left_bottom_artctal, .left_bottom_artctal ul, .left_bottom_artctal_anather {
+.left_bottom_artctal,
+.left_bottom_artctal ul,
+.left_bottom_artctal_anather {
     width: 100%;
     overflow: hidden;
 }
@@ -2878,7 +2885,6 @@ li.curreswd > a {
     margin-bottom: 20px;
     height: 40px;
 }
-
 
 .left_bottom_artctal_anather h3 {
     width: 100%;
@@ -3057,7 +3063,6 @@ li.curreswd > a {
     width: 90px;
 }
 
-
 .show_sy {
     overflow: hidden;
     width: 100%;
@@ -3074,7 +3079,6 @@ li.curreswd > a {
     height: 40px;
     line-height: 0px;
 }
-
 
 .centers {
     width: 1200px;
@@ -3137,7 +3141,6 @@ li.curreswd > a {
     bottom: 50px;
 }
 
-
 .nav_list {
     width: 100%;
     overflow: hidden;
@@ -3171,7 +3174,8 @@ li.curreswd > a {
     line-height: 50px;
     margin-right: 30px;
     width: 130px;
-    text-align: center;;
+    text-align: center;
+    ;
 }
 
 .bott_box {
@@ -3199,7 +3203,6 @@ li.curreswd > a {
     float: right;
     margin-right: 50px;
 }
-
 
 .tuijianjjq {
     width: 100%;
@@ -3280,7 +3283,8 @@ li.curreswd > a {
     color: #ff44ad;
 }
 
-.my_answer, .my_answer ul {
+.my_answer,
+.my_answer ul {
     overflow: hidden;
     width: 100%;
 }
@@ -3312,7 +3316,6 @@ li.curreswd > a {
     float: left;
     margin-right: 15px;
 }
-
 
 .gz_cont {
     overflow: hidden;
@@ -3376,8 +3379,8 @@ li.curreswd > a {
     overflow: hidden;
 }
 
-
-.centerEdier, .sadfh {
+.centerEdier,
+.sadfh {
     overflow: hidden;
     width: 100%;
 }
@@ -3485,8 +3488,7 @@ li.curreswd > a {
     float: left;
 }
 
-.leftslists {
-}
+.leftslists {}
 
 .guanzhus {
     border: 1px solid #fff;
@@ -3561,7 +3563,8 @@ li.curreswd > a {
     border-bottom: 1px solid #ff44ad;
 }
 
-.listsqiehuanwh, .listqha {
+.listsqiehuanwh,
+.listqha {
     width: 100%;
     overflow: hidden;
 }
@@ -3595,7 +3598,9 @@ li.curreswd > a {
     cursor: pointer;
 }
 
+
 /*遮罩样式*/
+
 .mainzz {
     position: absolute;
     top: 0;
@@ -3622,7 +3627,6 @@ li.curreswd > a {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
-
 }
 
 .mainzz .loading span {
@@ -3685,7 +3689,7 @@ li.curreswd > a {
     width: 340px;
 }
 
-.rmwdtj .hotaskbigbox > li {
+.rmwdtj .hotaskbigbox>li {
     height: 40px;
     line-height: 40px;
 }
@@ -3695,10 +3699,12 @@ li.curreswd > a {
 }
 
 .strsub {
-    width: 100% !important;
+    width: 100%!important;
 }
 
+
 /*轮播图样式*/
+
 .qiehuanimg .swiper-container {
     position: relative;
     height: 363px;

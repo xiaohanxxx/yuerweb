@@ -1,68 +1,86 @@
 {% load static %}
 
 <body ms-controller="bodycont">
-{% include 'config.html' %}
-<div class="header" ms-controller="headercont">
-    <div class="headerNav">
-        <div class="logos">
-            <a href="/"><img style="width:215px;height:85px;" src="{% static 'images/icon/logo.png' %}"></a>
-        </div>
-        <div class="headerNav-ul">
-
-            <ul>
-                <li>
-                    <a href="/" class="nava">首页</a>
-                </li>
-                <li>
-                    <a href="/shiguanbaby" class="acolor">试管婴儿</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="/shiguanbaby">海外试管</a></p>
-                        <p><a href="/shiguanbaby">国内试管</a></p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/luntan" class="acolor">育儿论坛</a>
-                    <div class="xialabox" style="display: none;">
-
-                        <p ms-repeat="newheaddata"><a
-                                ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
-                        </p>
-
-                    </div>
-                </li>
-                <li>
-                    <a href="/taolun" class="acolor" >互助问答</a>
-                    <div class="xialabox" style="display: none;">
-                        <p ms-repeat="newheaddata1"><a ms-attr-href="/taolun/grouplist/?aid={el.id}">{el.name}</a></p>
-
-                    </div>
-                </li>
-                <li>
-                    <a href="/hospital" class="acolor">医院推荐</a>
-                    <div class="xialabox" style="display: none;">
-                        <p><a href="/hospital?type=2">海外医院</a></p>
-                        <p><a href="/hospital?type=1">国内医院</a></p>
-                    </div>
-                </li>
-                <li>
-                    <a href="/baike" class="acolor" >百科知识</a>
-                    <div class="xialabox" style="display: none;">
-                        <p ms-repeat="newheaddata2"><a ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name}</a>
-                        </p>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-        <div class="denglu">
-            <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
-                <form method="get" action="/search/">
-                    {% csrf_token %}
-                    <input type="text" name="q" id="blurfs">
-                    <i class="searchbox"></i>
-                </form>
+    {% include 'config.html' %}
+    <div class="header" ms-controller="headercont">
+        <div class="headerNav">
+            <div class="logos">
+                <a href="/"><img src="{% static 'img/logo.jpg' %}"></a>
             </div>
-            {% if request.user.is_active %}
+            <div class="headerNav-ul">
+                <ul>
+                    <li>
+                        <a href="/" class="nava">首页</a>
+                    </li>
+                    <li>
+                        <a href="/shiguanbaby" class="acolor">试管婴儿</a>
+                        <div class="xialabox" style="display: none;">
+                            <p><a href="">海外试管</a></p>
+                            <p><a href="">国内试管</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/luntan" class="acolor">育儿论坛</a>
+                        <div class="xialabox" style="display: none;">
+                            <p><a href="">备孕交流圈</a></p>
+                            <p><a href="">妈妈交流圈</a></p>
+                            <p><a href="">试管婴儿交流圈</a></p>
+                            <p><a href="">难孕交流圈</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/taolun" class="acolor">互助问答</a>
+                        <div class="xialabox" style="display: none;">
+                            <p><a href="">试管婴儿</a></p>
+                            <p><a href="">不孕不育</a></p>
+                            <p><a href="">备孕</a></p>
+                            <p><a href="">怀孕</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/hospital" class="acolor">医院推荐</a>
+                        <div class="xialabox" style="display: none;">
+                            <p><a href="/hospital?type=2">海外医院</a></p>
+                            <p><a href="/hospital?type=1">国内医院</a></p>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="/baike" class="acolor">百科知识</a>
+                        <div class="xialabox" style="display: none;">
+                            <p><a href="/baike/baike_list?types=3">备孕</a></p>
+                            <p><a href="/baike/baike_list?types=4">怀孕</a></p>
+                            <p><a href="/baike/baike_list?types=5">育儿</a></p>
+                            <p><a href="/baike/baike_list?types=1">试管婴儿</a></p>
+                            <p><a href="/baike/baike_list?types=2">不孕不育</a></p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="denglu">
+                <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">
+{#                    <div class="yiyuansearch">#}
+{#                        <div ms-click="showxiala">{namees}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i>#}
+{#                        </div>#}
+{#                        <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">#}
+{#                            <li ms-click="changeSearch('医院')">医院</li>#}
+{#                            <li ms-click="changeSearch('医生')">医生</li>#}
+{#                            <li ms-click="changeSearch('问答')">问答</li>#}
+{#                            <li ms-click="changeSearch('百科')">百科</li>#}
+{#                        </ul>#}
+{#                        <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 99; margin-top: 8px; border-radius: 3px;">#}
+{#                            <li><a href="">我是关键词</a></li>#}
+{#                            <li><a href="">我是关键词</a></li>#}
+{#                            <li><a href="">我是关键词</a></li>#}
+{#                            <li><a href="">我是关键词</a></li>#}
+{#                        </ol>#}
+{#                    </div>#}
+                    <form method="get" action="/search/">
+                        {% csrf_token %}
+                        <input type="text" name="q" id="blurfs">
+                        <i class="searchbox"></i>
+                    </form>
+                </div>
+                {% if request.user.is_active %}
                 <div style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;">
                     <div class="xilainfocont">
                         <a class="userses"><i style="color: #ff44ad;">{usernames}</i>个人中心</a>
@@ -74,361 +92,329 @@
                     </div>
                 </div>
 
-            {% else %}
-                <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a
-                        href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###"
-                                                                                                      style="color:#F94479; text-decoration: none;">注册</a>
+                {% else %}
+                <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###" style="color:#F94479; text-decoration: none;">注册</a>
                 </p>
-            {% endif %}
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
-<style type="text/css">
-    .xilainfo a {
-        height: 35px;
-        line-height: 35px;
-        display: block;
-        width: 100%;
-        text-align: center;
-    }
-
-    .xilainfo {
-        background: #fff;
-        width: 110px;
-        border-radius: 5px;
-    }
-
-    .abc {
-        position: absolute;
-        right: 50px;
-        top: 10px;
-    }
-
-    .abc a {
-        color: #ff44ad;
-    }
-</style>
-<script>
-    avalon.config({
-        interpolate: ["{", "}"]
-    });
-    var vmm = avalon.define({
-        $id: 'headercont',
-        namees: '医院',
-        usernames: sessionStorage.getItem("username"),
-        showxiala: function () {
-            var _this = $(this);
-            if (_this.next('ul').hasClass('hites')) {
-                _this.next('ul').removeClass('hites');
-            } else {
-                _this.next('ul').addClass('hites');
-            }
-        },
-        changeSearch: function (els) {
-            vmm.namees = '';
-            vmm.namees = els;
-            $(this).parent().addClass('hites');
-        },
-        intoAere: function (res) {
-
+    <style type="text/css">
+        .xilainfo a {
+            height: 35px;
+            line-height: 35px;
+            display: block;
+            width: 100%;
+            text-align: center;
         }
-    })
-</script>
+        
+        .xilainfo {
+            background: #fff;
+            width: 110px;
+            border-radius: 5px;
+        }
+        
+        .abc {
+            position: absolute;
+            right: 50px;
+            top: 10px;
+        }
+        
+        .abc a {
+            color: #ff44ad;
+        }
+    </style>
+    <script>
+        avalon.config({
+            interpolate: ["{", "}"]
+        });
+        var vmm = avalon.define({
+            $id: 'headercont',
+            namees: '医院',
+            usernames: sessionStorage.getItem("username"),
+            showxiala: function() {
+                var _this = $(this);
+                if (_this.next('ul').hasClass('hites')) {
+                    _this.next('ul').removeClass('hites');
+                } else {
+                    _this.next('ul').addClass('hites');
+                }
+            },
+            changeSearch: function(els) {
+                vmm.namees = '';
+                vmm.namees = els;
+                $(this).parent().addClass('hites');
+            },
+            intoAere: function(res) {
 
-<script type="text/javascript">
-    $(function () {
-        $('.xilainfocont').hover(function () {
-            $(this).find('.xilainfo').show();
-        }, function () {
-            $(this).find('.xilainfo').hide();
+            }
         })
-    })
-    avalon.config({
-        interpolate: ["{", "}"]
-    });
-    var vm = avalon.define({
-        $id: "bodycont",
-        names: '医院',
-        a: 1,
-        b: 1,
-        getcodewenzi: '获取验证码',
-        datasgyes: [],
-        erjidatalist: [],
-        zhuceDatas: {
-            'username': '',
-            'phone': '',
-            'password': '',
-            'verification_Code': '',
-            'csrfmiddlewaretoken': glob_csrftoken
-        },
-        loginData: {
-            'username': '',
-            'password': '',
-            'csrfmiddlewaretoken': glob_csrftoken
-        },
-        loginFun: function () {
+    </script>
 
-            if (vm.loginData.username == '' || !vm.loginData.username) {
-                layer.msg('请填写正确的用户名');
-                return;
-            }
-            if (vm.loginData.password == '' || !vm.loginData.password) {
-                layer.msg('请填写正确的密码');
-                return;
-            }
-            $.ajax({
-                type: 'post',
-                url: '/users/login',
-                data: vm.loginData,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data, 99999);
-                    if (data.code == 200) {
-                        layer.msg('登录成功，即将跳转到当前页');
-                        localStorage.setItem('username', vm.loginData.username);
-                        sessionStorage.setItem("username", vm.loginData.username);
-                        setTimeout(function () {
-                            history.back();
-                        }, 2000)
-                    } else {
-                        layer.msg('登录不成功');
-                        return;
-                    }
-                }
-            });
-        },
-        mimayanzheng: function (ml) {
-            var reg = /^[\w]{6,12}$/
-            if (ml.match(reg)) {
-                return true;
-            } else {
-                return false;
-            }
-        },
-        register: function () {
-            if (vm.zhuceDatas.username == '' || !vm.zhuceDatas.username) {
-                layer.msg('请填写正确的用户名');
-                return;
-            }
-            if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
-                layer.msg('请填写正确的手机号');
-                return;
-            }
-            if (vm.zhuceDatas.password == '' || !vm.zhuceDatas.password || !vm.mimayanzheng(vm.zhuceDatas.password)) {
-                layer.msg('请填写正确的密码');
-                return;
-            }
-            if (vm.zhuceDatas.verification_Code == '' || !vm.zhuceDatas.verification_Code) {
-                layer.msg('请填写验证码');
-                return;
-            }
-            $.ajax({
-                type: 'post',
-                url: '/users/register',
-                data: vm.zhuceDatas,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
-                    if (data.code == 200) {
-                        layer.msg('注册成功，即将跳转到登录页面');
-                        setTimeout(function () {
-                            vm.a = 1;
-                        }, 2000)
-                    } else {
-                        layer.msg(data.msg);
-                        return;
-                    }
-                }
-            });
-        },
-        validatorTel: function (content) {
-            eval("var reg = /^1[34578]\\d{9}$/;");
-            return RegExp(reg).test(content);
-        },
-        changedlorzc: function (id) {
-            vm.a = id;
-        },
-        getDatasgye: function (el, index) {
-            vm.a = el.id;
-        },
-        indexs: '',
-        changrightlm: function (id, index,ev) {
-            if($(ev).attr('isget')>0){
-                return;
-            }
-            $(ev).attr('isget',1);
-            setTimeout(function(){
-                $(ev).attr('isget',0);
-            },4000)
-            vm.b = id;
-            vm.indexs = index;
-            vm.erjidatalist = [];
-            vm.erjidatalist = vm.datasgyes[index].children;
-            if (vm.erjidatalist.length > 4) {
-                vm.erjidatalist = vm.erjidatalist.splice(0, 4);
-            }
-        },
-        getMorelist: function () {
-            vm.erjidatalist = vm.datasgyes[vm.indexs].children;
-        },
-        rollbacklogin: function () {
-            vm.a == 1;
-        },
-        getQueryVariable: function (variable) {
-            var query = window.location.search.substring(1);
-            var vars = query.split("&");
-            for (var i = 0; i < vars.length; i++) {
-                var pair = vars[i].split("=");
-                if (pair[0] == variable) {
-                    return pair[1];
-                }
-            }
-            return (false);
-        },
-        newartical: [],
-        twotopNews: [],
-        getNewArtical: function () { //获取百科推荐和上半部分的数据
-            var count = {
-                count: 15,
+    <script type="text/javascript">
+        $(function() {
+            $('.xilainfocont').hover(function() {
+                $(this).find('.xilainfo').show();
+            }, function() {
+                $(this).find('.xilainfo').hide();
+            })
+        })
+        avalon.config({
+            interpolate: ["{", "}"]
+        });
+        var vm = avalon.define({
+            $id: "bodycont",
+            names: '医院',
+            a: 1,
+            b: 1,
+            getcodewenzi: '获取验证码',
+            datasgyes: [],
+            erjidatalist: [],
+            zhuceDatas: {
+                'username': '',
+                'phone': '',
+                'password': '',
+                'verification_Code': '',
                 'csrfmiddlewaretoken': glob_csrftoken
-            };
-            $.ajax({
-                type: 'post',
-                url: '/baike/api/articletimelist',
-                data: count,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
-                    vm.newartical = [];
-                    vm.newartical = data.data;
-                    if (vm.newartical.length > 1) {
-                        vm.twotopNews.push(vm.newartical[0]);
-                        vm.twotopNews.push(vm.newartical[1]);
-                    }
-                    // vm.newartical = vm.newartical.splice(2,14);
-                }
-            });
-        },
-        allbaikeData: [],
-        getAllbaikeData: function () { //获取百科所有栏目
-            var count = {
-                count: 12,
+            },
+            loginData: {
+                'username': '',
+                'password': '',
                 'csrfmiddlewaretoken': glob_csrftoken
-            }
-            $.ajax({
-                type: 'post',
-                url: '/baike/api/sgbk_sjldapi',
-                data: count,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
-                    vm.allbaikeData = data;
-                    vm.datasgyes = data;
-                    var zhou = vm.getQueryVariable('types');
-                    if (zhou > 0) {
-                        vm.changrightlm(zhou, zhou - 1);
-                    } else {
-                        vm.changrightlm(1, 0);
-                    }
-                }
-            });
-        },
-        gettopimg: [],
-        gettopimgs: function () {
-            var datas = {
-                'bannertype': 3,
-                'csrfmiddlewaretoken': glob_csrftoken
-            }
-            $.ajax({
-                type: 'post',
-                url: '/users/login',
-                data: datas,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
+            },
+            loginFun: function() {
 
+                if (vm.loginData.username == '' || !vm.loginData.username) {
+                    layer.msg('请填写正确的用户名');
+                    return;
                 }
-            });
-        },
-        getCode: function () { //获取验证码
-            if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
-                layer.msg('请填写正确的手机号');
-                return;
-            }
-            var time = 60;
-            if (time == 60) {
-                var time1 = setInterval(function () {
-                    if (time == 0) {
-                        vm.getcodewenzi = '重新发送'
-                        $("#sendsms").removeAttr("disabled");
-                        time = 60;
-                        clearInterval(time1);
-                    } else {
-                        $("#sendsms").attr("disabled", "true");
-                        vm.getcodewenzi = "重新发送(" + time + ")";
-                        time--;
+                if (vm.loginData.password == '' || !vm.loginData.password) {
+                    layer.msg('请填写正确的密码');
+                    return;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/login',
+                    data: vm.loginData,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data, 99999);
+                        if (data.code == 200) {
+                            layer.msg('登录成功，即将跳转到当前页');
+                            localStorage.setItem('username', vm.loginData.username);
+                            sessionStorage.setItem("username", vm.loginData.username);
+                            setTimeout(function() {
+                                history.back();
+                            }, 2000)
+                        } else {
+                            layer.msg('登录不成功');
+                            return;
+                        }
                     }
-                }, 1000);
+                });
+            },
+            mimayanzheng: function(ml) {
+                var reg = /^[\w]{6,12}$/
+                if (ml.match(reg)) {
+                    return true;
+                } else {
+                    return false;
+                }
+            },
+            baikebanner:[],
+            getbaikebanner:function (){
+                var datas = {
+                    'bannertype':3,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/webmanage/banner',
+                    data: datas,
+                    dataType: "json",
+                    success: function(data) {
+                        vm.baikebanner = data.data;
+                        console.log(data, 99999555555);
+                    }
+                });
+            },
+            register: function() {
+                if (vm.zhuceDatas.username == '' || !vm.zhuceDatas.username) {
+                    layer.msg('请填写正确的用户名');
+                    return;
+                }
+                if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
+                    layer.msg('请填写正确的手机号');
+                    return;
+                }
+                if (vm.zhuceDatas.password == '' || !vm.zhuceDatas.password || !vm.mimayanzheng(vm.zhuceDatas.password)) {
+                    layer.msg('请填写正确的密码');
+                    return;
+                }
+                if (vm.zhuceDatas.verification_Code == '' || !vm.zhuceDatas.verification_Code) {
+                    layer.msg('请填写验证码');
+                    return;
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/register',
+                    data: vm.zhuceDatas,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function(data) {
+                        if (data.code == 200) {
+                            layer.msg('注册成功，即将跳转到登录页面');
+                            setTimeout(function() {
+                                vm.a = 1;
+                            }, 2000)
+                        } else {
+                            layer.msg(data.msg);
+                            return;
+                        }
+                    }
+                });
+            },
+            validatorTel: function(content) {
+                eval("var reg = /^1[34578]\\d{9}$/;");
+                return RegExp(reg).test(content);
+            },
+            changedlorzc: function(id) {
+                vm.a = id;
+            },
+            getDatasgye: function(el, index) {
+                vm.a = el.id;
+            },
+            indexs: '',
+            changrightlm: function(id, index) {
+                vm.b = id;
+                vm.indexs = index;
+                vm.erjidatalist = [];
+                vm.erjidatalist = vm.datasgyes[index].children;
+                if (vm.erjidatalist.length > 4) {
+                    vm.erjidatalist = vm.erjidatalist.splice(0, 4);
+                }
+            },
+            getMorelist: function() {
+                vm.erjidatalist = vm.datasgyes[vm.indexs].children;
+            },
+            rollbacklogin: function() {
+                vm.a == 1;
+            },
+            getQueryVariable: function(variable) {
+                var query = window.location.search.substring(1);
+                var vars = query.split("&");
+                for (var i = 0; i < vars.length; i++) {
+                    var pair = vars[i].split("=");
+                    if (pair[0] == variable) {
+                        return pair[1];
+                    }
+                }
+                return (false);
+            },
+            newartical: [],
+            twotopNews: [],
+            getNewArtical: function() { //获取百科推荐和上半部分的数据
+                var count = {
+                    count: 15,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                };
+                $.ajax({
+                    type: 'post',
+                    url: '/baike/api/articletimelist',
+                    data: count,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function(data) {
+                        vm.newartical = [];
+                        vm.newartical = data.data;
+                        if (vm.newartical.length > 1) {
+                            vm.twotopNews.push(vm.newartical[0]);
+                            vm.twotopNews.push(vm.newartical[1]);
+                        }
+                        // vm.newartical = vm.newartical.splice(2,14);
+                    }
+                });
+            },
+            allbaikeData: [],
+            getAllbaikeData: function() { //获取百科所有栏目
+                var count = {
+                    count: 12,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/baike/api/sgbk_sjldapi',
+                    data: count,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function(data) {
+                        vm.allbaikeData = data;
+                        vm.datasgyes = data;
+                        console.log(vm.datasgyes);
+                        var zhou = vm.getQueryVariable('types');
+                        if (zhou > 0) {
+                            vm.changrightlm(zhou, zhou - 1);
+                        } else {
+                            vm.changrightlm(1, 0);
+                        }
+                    }
+                });
+            },
+            gettopimg: [],
+            gettopimgs: function() {
+                var datas = {
+                    'bannertype': 3,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/login',
+                    data: datas,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function(data) {
+                        console.log(data, '123456');
+                    }
+                });
+            },
+            getCode: function() { //获取验证码
+                if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
+                    layer.msg('请填写正确的手机号');
+                    return;
+                }
+                var time = 60;
+                if (time == 60) {
+                    var time1 = setInterval(function() {
+                        if (time == 0) {
+                            vm.getcodewenzi = '重新发送'
+                            $("#sendsms").removeAttr("disabled");
+                            time = 60;
+                            clearInterval(time1);
+                        } else {
+                            $("#sendsms").attr("disabled", "true");
+                            vm.getcodewenzi = "重新发送(" + time + ")";
+                            time--;
+                        }
+                    }, 1000);
+                }
+                var phone = {
+                    'phone': vm.zhuceDatas.phone,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/users/smsvif',
+                    data: phone,
+                    dataType: "json",
+                    // timeout: 10000,
+                    success: function(data) {
+                        console.log(data);
+                    }
+                });
             }
-            var phone = {
-                'phone': vm.zhuceDatas.phone,
-                'csrfmiddlewaretoken': glob_csrftoken
-            }
-            $.ajax({
-                type: 'post',
-                url: '/users/smsvif',
-                data: phone,
-                dataType: "json",
-                // timeout: 10000,
-                success: function (data) {
-                    console.log(data);
-                }
-            });
-        },
-        newheaddata: [],
-        newheaddata1: [],
-        newheaddata2: [],
-        bksonlmdara:[],
-        getHeadData: function () {
-            $.ajax({
-                url: '/luntan/areas/',
-                type: 'get',
-                dataType: 'json',
-                success: function (ajax) {
-                    vm.newheaddata = ajax.data;
-                }, error: function (error) {
-                    console.log(error);
-                }
-            })
-            $.ajax({
-                url: '/taolun/groups/',
-                type: 'get',
-                dataType: 'json',
-                success: function (ajax) {
-                    vm.newheaddata1 = ajax;
-                }, error: function (error) {
-                    console.log(error);
-                }
-            })
-            $.ajax({
-                url: '/baike/api/menuapi',
-                type: 'post',
-                data: {
-                    'type':1,
-                    'csrfmiddlewaretoken':glob_csrftoken
-                },
-                dataType: 'json',
-                success: function (ajax) {
-                    vm.newheaddata2 = ajax.data;
-                    vm.bksonlmdara = ajax.data;
-                }, error: function (error) {
-                    console.log(error);
-                }
-            })
-        }
-    })
-    vm.getHeadData();
-    vm.getAllbaikeData();
-    vm.getNewArtical();
-    vm.gettopimgs();
-</script>
+        })
+        vm.getbaikebanner();
+        vm.getAllbaikeData();
+        vm.getNewArtical();
+        vm.gettopimgs();
+    </script>
