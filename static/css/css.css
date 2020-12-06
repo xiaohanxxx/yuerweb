@@ -1305,8 +1305,8 @@ li.curreswd>a {
 
 .doctorbox>a>img {
     float: left;
-    width: 113px !important;
-    height: 141px !important;
+    /*width: 113px !important;*/
+    /*height: 141px !important;*/
 }
 
 .doctorbox .doctorinfo {
@@ -3699,7 +3699,7 @@ li.curreswd>a {
 }
 
 .strsub {
-    width: 100%!important;
+    width: 93%!important;
 }
 
 
