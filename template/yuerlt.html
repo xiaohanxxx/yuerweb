@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/idangerous.swiper2.7.6.min.js' %}"></script>
+    <script src="{% static 'layui/layui.all.js' %}"></script>
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
     <script src="{% static 'js/uitls/tool.js' %}"></script>
 
@@ -26,35 +27,33 @@
 <section id="yuerhead" class='wid yuerhead'>
 
 
-
-
-
     <div class="swiper-container">
         <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <a href="javascript:;" class='yu_h_imgbox fl'><img src="{% static 'images/yuerlt/img01.png' %}" alt=""></a>
+
+
+            <div class="swiper-slide" ms-repeat-as="lunbodata">
+                <a href="javascript:;" class='yu_h_imgbox fl'>
+                    <img ms-attr-src="/media/{as.lunboimg}" ms-attr-alt="{as.name}">
+                </a>
                 <div class="yu_h_info fl">
                     <h3>
-                        <a href="javascript:;">备孕交流圈</a>
+                        <a href="javascript:;">{as.name}</a>
                     </h3>
                     <p class='stitle'>
-                        <a href="javascript:;">我是文章标题我是文章标题</a>
+                        <a ms-attr-href="/luntan/articles/?aid={as.article.id}">{as.article.title.substr(0,15)}</a>
                     </p>
                     <p class="info">
-                        <a href="javascript:;">
-                            我是文章内容显示文章备孕交流圈文章开头部分，最多显
-                            示三行。文案文案文案文案文案文案文案案文案文案文案
-                            文案案文案文案文案文案
+                        <a ms-attr-href="/luntan/articles/?aid={as.article.id}">
+                            {as.article.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,100)}
                         </a>
                     </p>
                     <div class="userinfo">
-                        <a href="javascript:; " class='fl'><i class='iconfont'>&#xe604;</i><span>啦啦啦</span></a>
-                        <a href="javascript:;" class='fr'><i class='iconfont'  style='color:#ccc;'>&#xe66a;</i><span>88</span></a>
+                        <a href="javascript:; " class='fl'><i class='iconfont'>&#xe604;</i><span>{as.article.user.username}</span></a>
+                        <a href="javascript:;" class='fr'><i class='iconfont'
+                                                             style='color:#ccc;'>&#xe66a;</i><span>{as.article.count}</span></a>
                     </div>
                 </div>
             </div>
-            <div class="swiper-slide" style='background-color:orange;'>Slide 2</div>
-            <div class="swiper-slide" style='background-color:skyblue;'>Slide 3</div>
         </div>
         <!-- 导航按钮 -->
         <div class="leftBtn iconfont lb_btn">&#xe609;</div>
@@ -62,14 +61,6 @@
         <!-- 分页器 -->
         <div class="pagination"></div>
     </div>
-
-
-
-
-
-
-
-
 
 
     <div class="jlquan">
@@ -137,7 +128,14 @@
                         <span class='fr'>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span>
                     </div>
                     <div>
-                        <a ms-attr-href="'/users/centerhim/' + el.user.id"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
+                        {% if request.user.is_active %}
+                             <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="/media/{el.user.head}"
+                                                                           alt=""></a>
+                        {% else %}
+                             <a href="/login"><img ms-attr-src="/media/{el.user.head}"
+                                                                           alt=""></a>
+                        {% endif %}
+
                         <div class='fl userinfo'>
                             <p class="rgt_t">{el.user.username}</p>
                             <p class='rgt_info'><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
@@ -280,20 +278,81 @@
 <script type="text/javascript">
     {#数据请求渲染相关#}
     (function () {
-        var wzyuming = root_Domain;
-        var api_mainmenu = wzyuming + '/luntan/areas/',
-            api_articlelist = wzyuming + '/luntan/articlelist/?tid=',
-            api_hotarticles = wzyuming + '/luntan/hotarticles/',
-            api_goodmother = wzyuming + '/luntan/goodmother/?aid=',
-            api_ksAsk = wzyuming + '/luntan/articles/',
-            api_articles = wzyuming + '/luntan/articles/?aid=';
+        var api_mainmenu = '/luntan/areas/',
+            api_articlelist =  '/luntan/articlelist/?tid=',
+            api_hotarticles =  '/luntan/hotarticles/',
+            api_goodmother =  '/luntan/goodmother/?aid=',
+            api_ksAsk =  '/luntan/articles/',
+            api_articles =  '/luntan/articles/?aid=';
         var nyzl_num = 17,//控制难孕治疗帖子展示条数
             hymm_num = 8,//好孕妈妈的文章展示条数
             rmarc_num = 9;//热门文章展示条数
         var vm_areas = avalon.define({
             $id: "yuerltctr",
             yuerlt_data: [],
+            lunbodata: [],
+            lunboinfo: function () {
+                $.ajax({
+                    url:  '/luntan/getlunbo/',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (ajax) {
+                        var lunbodata = ajax.data;
+                        $.ajax({
+                            url:  '/webmanage/banner',
+                            type: 'post',
+                            data: {
+                                'bannertype': 2,
+                                'csrfmiddlewaretoken': glob_csrftoken
+                            }, success: function (ajax) {
+                                for (var i = 0; i < ajax.data.length; i++) {
+                                    lunbodata[i].lunboimg = ajax.data[i].cover;
+                                }
+                                vm_areas.lunbodata = lunbodata.splice(0, ajax.data.length);
+                                var mySwiper = new Swiper('.swiper-container', {
+                                    loop: true,
+                                    autoplay: 5000,
+                                    pagination: '.pagination',
+                                    paginationClickable: true,
+                                })
+                                var lb_btn = $('.lb_btn');
+                                $('.leftBtn').click(function () {
+                                    mySwiper.swipePrev();
+                                });
+                                $('.rightBtn').click(function () {
+                                    mySwiper.swipeNext();
+                                });
+                                $('.swiper-container').mousemove(function () {
+                                    lb_btn.each(function () {
+                                        $(this).addClass('yesShow');
+                                    });
+                                }).mouseleave(function () {
+                                    lb_btn.each(function () {
+                                        $(this).removeClass('yesShow');
+                                    });
+                                })
+                                $('.rgt_infobox>li').mouseover(function () {
+
+                                    Toolfun.clearClass('rgt_select', $('.rgt_infobox>li'))
+                                    $(this).addClass('rgt_select');
+                                })
+                                $('.headerNav-ul ul li').hover(function () {
+                                    $(this).find('.xialabox').show();
+                                }, function () {
+                                    $(this).find('.xialabox').hide();
+                                })
+                            }, error: function (error) {
+                                console.log(error);
+                            }
+                        })
+                    }, error: function (error) {
+                        console.log(error);
+                    }
+                });
+
+            }
         });
+        vm_areas.lunboinfo();
         var vm_byhot = avalon.define({
             $id: 'byhot',
             Mid: 0,
@@ -312,7 +371,7 @@
             metadata: [],
             goChange: function (menu_id) {
                 vm_nyzl.pageNo = $(this).attr('dataid');
-                Toolfun.iszhezClass();
+                
                 $.ajax({
                     url: api_articlelist + menu_id + '&num=' + nyzl_num,
                     type: 'get',
@@ -323,7 +382,7 @@
                         vm_nyzl.imgTitle = ajax.data.curuent_page.slice(7, 11);
                         Toolfun.snimgzsClass(vm_nyzl.imgTitle);
                         vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11, 17);
-                        Toolfun.qxzheClass();
+                        
                     }, error: function (error) {
                         console.log(error)
                     }
@@ -339,7 +398,7 @@
             hotdata: [],
             lisdata: [],
             goChange: function (currentid) {
-                Toolfun.iszhezClass();
+                
                 vm_sgyer.pageNo = $(this).attr('dataid');
                 $.ajax({
                     url: api_articlelist + currentid,
@@ -349,7 +408,7 @@
                         vm_sgyer.hotdata = ajax.data.curuent_page.slice(0, 1);
                         Toolfun.snimgzsClass(vm_sgyer.hotdata);
                         vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
-                        Toolfun.qxzheClass();
+                        
                     }, error: function (error) {
                         console.log(error);
                     }
@@ -379,7 +438,7 @@
         var vm_freeAsk = avalon.define({
             $id: 'freeAsk',
             data: [],
-            selecid: 4,
+            selecid: '',
             onChange: function () {
                 vm_freeAsk.selecid = $(this).find('option:selected').val();
                 var items = $('.lis-select>select');
@@ -389,6 +448,10 @@
             goAsk: function () {
                 var textval = $('#quick_ask').val().trim();
                 if (textval == '') {
+                    layer.msg("请输入发送完整的信息！！")
+                    return false;
+                }else if(vm_freeAsk.selecid==""){
+                    layer.msg('请选择要提问的所属栏目！！')
                     return false;
                 }
                 $.ajax({
@@ -397,7 +460,7 @@
                     data: {
                         'title': textval,
                         'topics': vm_freeAsk.selecid,
-                        'csrfmiddlewaretoken':glob_csrftoken
+                        'csrfmiddlewaretoken': glob_csrftoken
                     },
                     success: function (msg) {
                         alert('提交成功');
@@ -407,8 +470,9 @@
         })
 
         {#好孕妈妈数据请求#}
+
         function reshHymm(aid, num, page) {
-            Toolfun.iszhezClass();
+            
             $.ajax({
                 url: api_goodmother + aid + '&num=' + num + '&page' + page,
                 type: 'get',
@@ -417,13 +481,14 @@
                     vm_hymm.pageAll = ajax.data.page_num;
                     vm_hymm.pageOn = page;
                     vm_hymm.data = ajax.data.curuent_page;
-                    Toolfun.qxzheClass();
+                    
                 },
                 error: function (error) {
                     console.log(error);
                 }
             })
         }
+
         {#论坛轮播图请求#}
         localStorage.removeItem('navdata');
         localStorage.removeItem('Mgroup');
@@ -498,44 +563,6 @@
             }
         });
     })()
-</script>
-<script>
-    (function () {
-        $(document).ready(function () {
-            var mySwiper = new Swiper('.swiper-container', {
-                loop: true,
-                autoplay: 5000,
-                pagination: '.pagination',
-                paginationClickable: true,
-            })
-            var lb_btn = $('.lb_btn');
-            $('.leftBtn').click(function () {
-                mySwiper.swipePrev();
-            });
-            $('.rightBtn').click(function () {
-                mySwiper.swipeNext();
-            });
-            $('.swiper-container').mousemove(function () {
-                lb_btn.each(function () {
-                    $(this).addClass('yesShow');
-                });
-            }).mouseleave(function () {
-                lb_btn.each(function () {
-                    $(this).removeClass('yesShow');
-                });
-            })
-            $('.rgt_infobox>li').mouseover(function () {
-
-                Toolfun.clearClass('rgt_select', $('.rgt_infobox>li'))
-                $(this).addClass('rgt_select');
-            })
-            $('.headerNav-ul ul li').hover(function () {
-                $(this).find('.xialabox').show();
-            }, function () {
-                $(this).find('.xialabox').hide();
-            })
-        })
-    })();
 </script>
 
 </body>

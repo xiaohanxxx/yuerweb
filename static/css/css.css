@@ -1300,8 +1300,9 @@ body .ppart .currpaitp {
 }
 
 .hotwdtuijian ul li {
-    margin: 20px 0;
+    line-height:40px;
     font-size: 12px;
+    height: 40px;
 }
 
 .hotwdtuijian ul li a:hover {
@@ -1761,9 +1762,8 @@ body .ppart .currpaitp {
 
 .remenhuati h4 {
     text-decoration: none;
+
 }
-
-
 .sgyecontanather .remenhuaties {
     width: 350px;
     transform: translateX(8px);
@@ -3625,11 +3625,16 @@ body .ppart .currpaitp {
 .shiguanyiner .rmwdtj {
     width: 340px;
 }
-
+.rmwdtj .hotaskbigbox>li{
+    height:40px;
+    line-height:40px;
+}
 .sgyecontanather .remenhuaties {
     height: 496px;
 }
-
+.strsub{
+    width: 100%!important;
+}
 /*轮播图样式*/
 .qiehuanimg .swiper-container {
     position: relative;

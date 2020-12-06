@@ -219,11 +219,11 @@
         },
         flxzmenu: function () {
             if (order != 0) {
-                vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites + '&order=' + order;
+                vm_hzwda.url =  '/taolun/postinglist/?num=' + vm_hzwda.limites + '&order=' + order;
             } else {
-                vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
+                vm_hzwda.url =  '/taolun/postinglist/?num=' + vm_hzwda.limites;
             }
-            Toolfun.iszhezClass();
+            
             $.ajax({
                 url: vm_hzwda.url,
                 type: 'get',
@@ -232,7 +232,7 @@
                     vm_hzwda.count = ajax.maxnum;
                     vm_hzwda.contentcl(ajax.data);
                     vm_hzwda.intopages();
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -240,23 +240,23 @@
         },
         gopage: function (page) {
             var url = vm_hzwda.url + '&page=' + page;
-            Toolfun.iszhezClass();
+            
             $.ajax({
                 url: url,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwda.contentcl(ajax.data);
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
             })
         },
         init: function () {
-            vm_hzwda.url = root_Domain + '/taolun/postinglist/?num=' + vm_hzwda.limites;
+            vm_hzwda.url =  '/taolun/postinglist/?num=' + vm_hzwda.limites;
             $.ajax({
-                url: root_Domain + '/taolun/groups/',
+                url:  '/taolun/groups/',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
@@ -278,13 +278,13 @@
                     vm_hzwda.count = ajax.maxnum;
                     vm_hzwda.contentcl(ajax.data);
                     vm_hzwda.intopages();
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
             });
             $.ajax({
-                url: root_Domain + '/taolun/hottopics/?num=20',
+                url:  '/taolun/hottopics/?num=20',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
@@ -294,7 +294,7 @@
                 }
             });
             $.ajax({
-                url: root_Domain + '/taolun/hotarticles/?num=10',
+                url: '/taolun/hotarticles/?num=10',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {

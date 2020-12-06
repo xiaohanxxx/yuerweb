@@ -22,7 +22,6 @@
 </head>
 
 <body>
-{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 主体部分 -->
 <section class="byjlmain wid clearfix" ms-controller="luntanbox" style='margin-top:30px;'>
@@ -167,7 +166,6 @@
 </script>
 <script type="text/javascript">
     (function () {
-        var api_yuming = root_Domain;
         var inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');//初始化数据请求链接
         var Mid = window.location.href.substr(window.location.href.indexOf('Mid='), 5).replace('Mid=', '');//对应主栏目id
         var selectTid = window.location.href.substr(window.location.href.indexOf('tid'), 6).replace('&', '').replace(/tid=/, '');
@@ -192,7 +190,7 @@
             },
             gothumup: function (id) {
                 $.ajax({
-                    url: root_Domain + '/luntan/thumbup/?aid=' + id,
+                    url:  '/luntan/thumbup/?aid=' + id,
                     type: 'get',
                     dataType: 'text',
                     success: function (ajax) {
@@ -242,7 +240,7 @@
             qndrData: [],
             init: function () {
                 $.ajax({
-                    url: root_Domain + '/luntan/hotarticles/?num=12',
+                    url: '/luntan/hotarticles/?num=12',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {
@@ -261,7 +259,7 @@
         vm_qndrbox.init();
 
         function pageAjax(current) {
-            Toolfun.iszhezClass();
+            
             $.ajax({
                 url: inturl + '&page=' + current,
                 type: 'get',
@@ -284,7 +282,7 @@
                         }
                     }
                     vm_ltlist.lisdata = lisdata;
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -313,7 +311,7 @@
         }
 
         function init(inturl) {
-            Toolfun.iszhezClass();
+            
             $.ajax({
                 url: inturl,
                 type: 'get',
@@ -339,7 +337,7 @@
                     vm_ltlist.lisdata = lisdata;
                     _this.count = ajax.data.maxnum;
                     render(vm_ltlist.count, 10, 5);
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -347,7 +345,7 @@
         };
         init(inturl);//初始化
         $.ajax({
-            url: api_yuming + '/luntan/areas/',
+            url: '/luntan/areas/',
             type: 'get',
             dataType: 'json',
             success: function (ajax) {

@@ -25,6 +25,7 @@ body {
 #yuerhead .swiper-slide .yu_h_imgbox img {
     width: 828px;
     height: 347px;
+    display:block;
 }
 
 #yuerhead .swiper-slide .yu_h_info {

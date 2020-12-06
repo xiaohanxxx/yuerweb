@@ -26,12 +26,11 @@
     var localhref = window.location.href;
     vm_tjjl.Mid = localhref.substr(localhref.indexOf('Mid'),5).replace('Mid=','');
     $.ajax({
-        url: root_Domain + '/luntan/areas/',
+        url:  '/luntan/areas/',
         type: 'get',
         dataType: 'json',
         success: function (ajax) {
             vm_tjjl.navdata = ajax.data;
-            console.log(vm_tjjl.navdata,8848484848)
         }, error: function (error) {
             console.log(error);
         }

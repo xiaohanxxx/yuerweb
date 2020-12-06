@@ -19,7 +19,6 @@
     <link rel="stylesheet" type="text/css" href="{% static  "layui/css/layui.css" %}">
 </head>
 
-{% include 'config.html' %}
 {% include 'header.html' %}
 <div class="hzwdbanner"><img src="{% static  "img/hzwdbanner.png" %}"></div>
 
@@ -125,11 +124,11 @@
                     vm_hzwdlist.order = $(this).attr('order');
                     $(this).addClass('allcurr');
                     if (vm_hzwdlist.order) {
-                        url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&order=' + vm_hzwdlist.order;
+                        url = '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&order=' + vm_hzwdlist.order;
                     } else {
-                        url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites;
+                        url =  '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites;
                     }
-                    Toolfun.iszhezClass();
+                    
                     $.ajax({
                         url: url,
                         type: 'get',
@@ -139,7 +138,7 @@
                             vm_hzwdlist.count = ajax.maxnum;
                             vm_hzwdlist.lisdata = ajax.data;
                             vm_hzwdlist.intopages();
-                            Toolfun.qxzheClass();
+                            
                         }, error: function (error) {
                             console.log(error);
                         }
@@ -155,7 +154,7 @@
             } else {
                 vm_hzwdlist.dzid = id;
                 $.ajax({
-                    url: root_Domain + '/taolun/thumbup/?type=article&id=' + id,
+                    url: '/taolun/thumbup/?type=article&id=' + id,
                     type: 'get',
                     dataType: 'text',
                     success: function (ajax) {
@@ -171,18 +170,18 @@
         goPage: function (page) {
             var url = '';
             if (vm_hzwdlist.order) {
-                url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page + '&order=' + vm_hzwdlist.order;
+                url = '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page + '&order=' + vm_hzwdlist.order;
             } else {
-                url = root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page;
+                url =  '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page;
             }
-            Toolfun.iszhezClass();
+            
             $.ajax({
                 url: url,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdlist.lisdata = ajax.data;
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -190,19 +189,16 @@
         },
         lunboget:function(){
             $.ajax({
-                url:root_Domain+'/luntan/getlunbo/',
+                url:'/luntan/getlunbo/',
                 type:'get',
                 dataType:'json',
                 success:function(ajax){
                     vm_hzwdlist.lunboinfo = ajax.data;
-                    console.log(vm_hzwdlist.lunboinfo,595959595955959)
                 },error:function(error){
                     console.log(error);
                 }
             });
-            $.ajax({
-                url:root_Domain+''
-            })
+
         },
         init: function () {
             vm_hzwdlist.Mid = localStorage.getItem('Mid');
@@ -220,7 +216,7 @@
                 vm_hzwdlist.tid = location.href.replace(/.*tid=/, '').replace(/#/, '');
             }
             $.ajax({
-                url: root_Domain + '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites,
+                url: '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
