@@ -2,18 +2,44 @@
 {% include 'config.html' %}
 <div class="szzhuanjia" ms-controller="doctj">
     <h3><abbr>生殖专家推荐</abbr> <a href="###">更多>></a></h3>
-    <div class="doctorbox">
-        <img src="{% static  "img/doctor.png" %}" style="float: left; margin: 20px 15px 0 0;">
-        <h4 style="margin-top: 20px;">医生名称 <abbr>医生职位</abbr></h4>
-        <p style=" font-size: 14px;">所在医院名称</p>
-        <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>
-        <a href="###">向他提问</a>
+    <div class="doctorbox" ms-repeat="doctorData" style="padding-top:16px;">
+        <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="{el.thumb}"></a>
+        <div class="doctorinfo">
+            <h4 >{el.name.substr(0,4)} <abbr>{el.zhiwei}</abbr></h4>
+            <p >{el.area}</p>
+            <p >{el.details.substr(0,100)}...</p>
+            <a href="javascript:;">向他提问</a>
+        </div>
     </div>
 </div>
 <script>
-    var vm_doctj=avalon.define({
-        $id:'doctj',
-        init:function(){
+    var vm_doctj = avalon.define({
+        $id: 'doctj',
+        doctorData: [],
+        init: function () {
+            //获取推荐类型
+            $.ajax({
+                url: '/hospital/powerlist/',
+                type: 'get',
+                dataType: 'json',
+                success: function (res) {
+                    //获取推荐医生的信息
+                    $.ajax({
+                        url: '/hospital/powerdoctor/',
+                        data: {
+                            'type': res.data[0].id,
+                            'num': 1
+                        },
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (ajax) {
+                            vm_doctj.doctorData = ajax.data;
+                        }
+                    })
+                }, error: function (error) {
+                    console.log(error);
+                }
+            })
 
         }
     })

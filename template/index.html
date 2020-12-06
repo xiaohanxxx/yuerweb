@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html>
 
 <head>
@@ -17,7 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 </head>
-{% include 'config.html' %} {% include 'header.html' %}
+ {% include 'header.html' %}
 <div ms-controller="indexhedes" class="bodyindex">
     <div class="banners">
         <div class="bannersBox">
@@ -94,7 +94,7 @@
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
                         <ul>
-                            <li ms-repeat="sgyerdata" ms-class="currshequ:el.id == curid" ms-click="goChange(el.id)">
+                            <li ms-repeat="sgyerdata" ms-class="currshequ:el.id == curid"  isget="0"  ms-click="goChange(el.id,this)">
                                 {el.name}
                             </li>
                         </ul>
@@ -216,7 +216,7 @@
                                             <img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%">
                                             <h3>{its.title.substr(0,14)}...</h3>
                                             <p>
-                                                {its.content.match(/[\u4e00-\u9fa5]/g)?its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20):''}...</p>
+                                                {its.content.match(/[\u4e00-\u9fa5]/g) ? its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20) : ''}...</p>
                                         </a>
                                     </li>
 
@@ -233,7 +233,7 @@
                                         <h3 style="font-weight:bold;margin-bottom:5px;color:#000;">
                                             {item.title.substr(0,14)}...</h3>
                                         <p>
-                                            {item.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20)}...</p>
+                                            {item.content.match(/[\u4e00-\u9fa5]/g)?item.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20):''}...</p>
                                     </a>
                                 </div>
                             </div>
@@ -274,7 +274,7 @@
         <div class="hotanwsercont">
             <h3 class="h3frist">热点回答 <a href="/taolun/">更多>></a></h3>
             <p class="ppart">
-                <abbr ms-repeat="navdata" ms-click="goChange($index,el.id)" ms-class="currpaitp:topicid==el.id">{el.name.substr(0,6)}</abbr>
+                <abbr ms-repeat="navdata" isget='0' ms-click="goChange($index,el.id,this)" ms-class="currpaitp:topicid==el.id">{el.name.substr(0,6)}</abbr>
             </p>
             <div class="wentiwa">
                 <div class="titleanswer" ms-repeat-as="askdata">
@@ -289,12 +289,16 @@
         <div class="sgyecontanather">
             <div class="sgyghhight" style="margin-right:20px;">
                 <div class="hhightleft">
-                    <h3><abbr>百科知识</abbr><a href="">备孕</a>|<a href="">怀孕</a>|<a href="">育儿</a>|<a href="">试管婴儿</a>|<a href="">不孕不育</a></h3>
+                    <h3>
+                        <abbr>百科知识</abbr>
+                        <a ms-repeat="bksonlmdara" ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name.substr(0,4)}</a>
+
+                    </h3>
                 </div>
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
                         <ul>
-                            <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b" ms-click="changrightlm(el.mid,$index)">{el.menu_name}
+                            <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b" isget="0" ms-click="changrightlm(el.mid,$index,this)">{el.menu_name}
                             </li>
                         </ul>
                     </div>
@@ -363,7 +367,6 @@
                         'csrfmiddlewaretoken':glob_csrftoken
                     },
                     success: function(ajax) {
-                        console.log(ajax.data,'ajax')
                         var lunbohtml = '';
                         for (var i = 0; i < ajax.data.length; i++) {
                             lunbohtml += '<div class="swiper-slide"><img src="/media/' + ajax.data[i].cover + '" width="890" height="360"></div>';
@@ -418,6 +421,9 @@
                     newdata[j].allchild = JSON.parse(localStorage.getItem("navdata"))[j].child;
                 }
                 vm_indexhedes.navdata = newdata;
+                vm_hotaskbq.init();
+                vm_hysqctl.init();
+                vm_sgyercrl.init();
             },
             error: function(error) {
                 console.log(error);
@@ -431,8 +437,6 @@
             lisdata: [],
             init: function() {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                localStorage.clear();
-                localStorage.setItem('navdata', JSON.stringify(navs));
                 if (!navs[2]) {
                     location.reload();
                 } else {
@@ -451,10 +455,16 @@
                     })
                 }
             },
-            goChange: function(id) {
+            goChange: function(id,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
+                $(ev).attr('isget',1);
                 vm_sgyercrl.curid = id;
                 vm_sgyercrl.getlidata();
-                Toolfun.iszhezClass();
+                setTimeout(function(){
+                    $(ev).attr('isget',0);
+                },4000)
             },
             getlidata: function() {
                 $.ajax({
@@ -466,7 +476,6 @@
                         Toolfun.snimgzsClass(data);
                         vm_sgyercrl.imgdata = data;
                         vm_sgyercrl.lisdata = ajax.data.curuent_page;
-                        Toolfun.qxzheClass();
                     },
                     error: function(error) {
                         console.log(error);
@@ -474,7 +483,7 @@
                 })
             }
         })
-        vm_sgyercrl.init();
+
         var vm_hysqctl = avalon.define({
             $id: 'hysqctl',
             imgdata: [],
@@ -483,8 +492,6 @@
             beiydata: [],
             init: function() {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                localStorage.clear();
-                localStorage.setItem('navdata', JSON.stringify(navs));
                 if (navs[3]) {
                     $.ajax({
                         url: '/luntan/articlelist/?tid=' + navs[3].child[0].id + '&num=8',
@@ -519,7 +526,7 @@
                 })
             }
         })
-        vm_hysqctl.init();
+
         var vm_bybyctl = avalon.define({
             $id: 'bybyctl',
             limgdata: [],
@@ -582,12 +589,19 @@
                     }
                 })
             },
-            goChange: function(index, id) {
+            goChange: function(index, id,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
+                $(ev).attr('isget',1);
                 vm_hotaskbq.topicid = id;
                 vm_hotaskbq.askdata = vm_hotaskbq.navdata[index].child;
+                setTimeout(function(){
+                    $(ev).attr('isget',0);
+                },4000)
             }
         })
-        vm_hotaskbq.init();
+
     </script>
     <script>
         $(function() {

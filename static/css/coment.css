@@ -17,6 +17,9 @@ p {
 
 body {
     background-color: #F9F9F9;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
 }
 
 textarea {
@@ -94,7 +97,7 @@ button {
 
 .headerNav .logos {
     width: 289px;
-    height: 150px;
+    margin-top:41px;
     float: left;
 }
 

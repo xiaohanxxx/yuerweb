@@ -28,7 +28,11 @@
             for (var i = 0; i < data.length; i++) {
                 if (data[i].content.indexOf('<img') != '-1') {
                     var snimg = JSON.stringify(data[i].content.match(/src=".*\.(jpg|png)"/g)).match(/\/media\/.*\.(jpg|png)/);
-                    data[i].snimg = snimg[0];
+                    if(snimg){
+                        data[i].snimg = snimg[0];
+                    }else{
+                        data[i].snimg = '/media/luntan/moren.jpg';
+                    }
                 } else {
                     data[i].snimg = '/media/luntan/moren.jpg';
                 }
