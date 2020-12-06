@@ -160,18 +160,17 @@ button {
 }
 
 .denglu .pps {
-    width: 162px;
+    width: 216px;
     height: 32px;
     border-radius: 5px;
     color: #ff44ad;
     background: url('../img/searchbg.png') no-repeat;
-    padding-left: 54px;
 }
 
 /*.denglu p input{ width: 162px; height: 32px;  border-radius: 5px; outline: none;}*/
 /*border: 1px solid #ff44ad; */
 .denglu .pps input {
-    width: 110px;
+    width: 160px;
     height: 30px;
     margin-top: 1px;
     margin-left: 14px;
