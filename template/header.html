@@ -202,6 +202,7 @@
                         if (data.code == 200) {
                             layer.msg('登录成功，即将跳转到当前页');
                             localStorage.setItem('username', vm.loginData.username);
+                            sessionStorage.setItem('username', vm.loginData.username);
                             setTimeout(function() {
                                 history.back();
                             }, 2000)
@@ -313,7 +314,6 @@
                             vm.twotopNews.push(vm.newartical[0]);
                             vm.twotopNews.push(vm.newartical[1]);
                         }
-                        // vm.newartical = vm.newartical.splice(2,14);
                     }
                 });
             },
@@ -328,7 +328,6 @@
                     url: '/baike/api/sgbk_sjldapi',
                     data: count,
                     dataType: "json",
-                    // timeout: 10000,
                     success: function(data) {
                         vm.allbaikeData = data;
                         vm.datasgyes = data;
@@ -408,12 +407,6 @@
                     success: function(data) {
                         vm.baikebanner = data.data
                         console.log(data,'datases');
-
-
-
-
-
-
                     }
                 });
             }

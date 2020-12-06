@@ -7,11 +7,12 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/jquery-2.1.1.js' %}"></script>
   <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
 	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.SuperSlide.2.1.1.js' %}"></script>
 	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
@@ -55,26 +56,77 @@
       opacity: 1;
     }
 </style>
+{#     <div class="bodysae">#}
+{#     	<div class="bodysaeconts">#}
+{#     		<div class="partone" style="width: 1200px; height: 347px;">#}
+{# 			    <div class="swiper-container gallery-top">#}
+{#				    <div class="swiper-wrapper">#}
+{#					      <div class="swiper-slide" ms-repeat="baikebanner"><img ms-attr-src="'/media/' + el.cover"></div>#}
+{#					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>#}
+{#					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>#}
+{#				    </div>#}
+{#				</div>#}
+{#				<div class="swiper-container gallery-thumbs">#}
+{#				      <div class="swiper-wrapper">#}
+{#					      <div class="swiper-slide" style="background:rgb(89,201,134,0.6); opacity: 0.6;">最新百科</div>#}
+{#					      <div class="swiper-slide" style="background:rgb(249,155,204,0.6); opacity: 0.6;">热门百科</div>#}
+{#					      <div class="swiper-slide" style="background:rgb(122,198,234,0.6); opacity: 0.6;">推荐百科</div>#}
+{#					  </div>#}
+{#			    </div>#}
+{#     		</div>#}
+{#     	</div>#}
+{#     </div>#}
+
+<style>
+        .slideBox{ width:100%; height:347px; overflow:hidden; position:relative; border:1px solid #ddd;  }
+		.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1; }
+		.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
+		.slideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+		.slideBox .hd ul li.on{ background:#f00; color:#fff; }
+		.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+		.slideBox .bd li{ zoom:1; vertical-align:middle; }
+		.slideBox .bd img{ width:100%; height:347px; display:block;  }
+        	.slideBox .prev,
+		.slideBox .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(/static/img/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
+		.slideBox .next{ left:auto; right:3%; background-position:8px 5px; }
+		.slideBox .prev:hover,
+		.slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+		.slideBox .prevStop{ display:none;  }
+		.slideBox .nextStop{ display:none;  }
+</style>
+
      <div class="bodysae">
      	<div class="bodysaeconts">
-     		<div class="partone" style="width: 1200px; height: 347px;">
- 			    <div class="swiper-container gallery-top">
-				    <div class="swiper-wrapper">
-					      <div class="swiper-slide" ms-repeat="baikebanner"><img ms-attr-src="'/media/' + el.cover"></div>
-{#					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>#}
-{#					      <div class="swiper-slide"><img src="{% static 'img/banners.png' %}"></div>#}
-				    </div>
-				</div>
-				<div class="swiper-container gallery-thumbs">
-				      <div class="swiper-wrapper">
-					      <div class="swiper-slide" style="background:rgb(89,201,134,0.6); opacity: 0.6;">最新百科</div>
-					      <div class="swiper-slide" style="background:rgb(249,155,204,0.6); opacity: 0.6;">热门百科</div>
-					      <div class="swiper-slide" style="background:rgb(122,198,234,0.6); opacity: 0.6;">推荐百科</div>
-					  </div>
-			    </div>
-     		</div>
+     				<div id="slideBox" class="slideBox">
+			<div class="hd">
+				<ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+			</div>
+			<div class="bd">
+				<ul>
+					<li ms-repeat="baikebanner"><a href="" target="_blank"><img ms-attr-src="'/media/' + el.cover"></a></li>
+{#					<li><a href="" target="_blank"><img src="{% static 'img/banners.png' %}" /></a></li>#}
+{#					<li><a href="" target="_blank"><img src="{% static 'img/banners.png' %}" /></a></li>#}
+				</ul>
+			</div>
+
+			<!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+			<a class="prev" href="javascript:void(0)"></a>
+			<a class="next" href="javascript:void(0)"></a>
+        <script id="jsID" type="text/javascript">
+		jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true});
+		</script>
+
+		</div>
      	</div>
      </div>
+
+
+
+
 
 
      <div class="baikepariton">
