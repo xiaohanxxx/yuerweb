@@ -20,20 +20,20 @@
                         <p><a href="/shiguanbaby">国内试管</a></p>
                     </div>
                 </li>
-                <li >
-                    <a href="/luntan" class="acolor" ms-mouseover="getHeadData(this,1)" isget="0">育儿论坛</a>
+                <li>
+                    <a href="/luntan" class="acolor">育儿论坛</a>
                     <div class="xialabox" style="display: none;">
 
                         <p ms-repeat="newheaddata"><a
-                                ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
+                                ms-attr-href="/luntan/articlelist/?tid={el.id}&all=1&Mid={el.id}">{el.name}</a>
                         </p>
 
                     </div>
                 </li>
-                <li >
+                <li>
                     <a href="/taolun" class="acolor" ms-mouseover="getHeadData(this,2)" isget="0">互助问答</a>
                     <div class="xialabox" style="display: none;">
-                        <p ms-repeat="newheaddata"><a ms-attr-href="/taolun/grouplist/?aid={el.id}">{el.name}</a></p>
+                        <p ms-repeat="newheaddata1"><a ms-attr-href="/taolun/grouplist/?aid={el.id}">{el.name}</a></p>
 
                     </div>
                 </li>
@@ -44,10 +44,10 @@
                         <p><a href="/hospital?type=1">国内医院</a></p>
                     </div>
                 </li>
-                <li >
+                <li>
                     <a href="/baike" class="acolor" ms-mouseover="getHeadData(this,3)" isget="0">百科知识</a>
                     <div class="xialabox" style="display: none;">
-                        <p ms-repeat="newheaddata"><a ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name}</a>
+                        <p ms-repeat="newheaddata2"><a ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name}</a>
                         </p>
                     </div>
                 </li>
@@ -380,56 +380,45 @@
             });
         },
         newheaddata: [],
-        getHeadData: function (ev, index) {
-                if (ev && ev.stopPropagation) {//非IE浏览器
-                    ev.stopPropagation();
-                } else {//IE浏览器
-                    window.cancelBubble = true;
+        newheaddata1: [],
+        newheaddata2: [],
+        getHeadData: function () {
+            $.ajax({
+                url: '/luntan/areas/',
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm.newheaddata = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
                 }
-                if ($(ev).attr('isget') > 0) {
-                    return;
+            })
+            $.ajax({
+                url: '/taolun/groups/',
+                type: 'get',
+                dataType: 'json',
+                success: function (ajax) {
+                    vm.newheaddata1 = ajax;
+                }, error: function (error) {
+                    console.log(error);
                 }
-                var api1 = '/luntan/areas/',
-                    api2 = '/taolun/groups/',
-                    api3 = '/baike/api/menuapi';
-                var gettype = '';
-                var api = '';
-                var data = '';
-                if (index == 1) {
-                    api = api1;
-                    gettype='get';
-                } else if (index == 2) {
-                    api = api2;
-                    gettype='get';
-                } else {
-                    api = api3;
-                    gettype='post';
-                    data = {
-                        'type': 1,
-                        'csrfmiddlewaretoken': glob_csrftoken
-                    }
+            })
+            $.ajax({
+                url: '/baike/api/menuapi',
+                type: 'post',
+                data: {
+                    'type':1,
+                    'csrfmiddlewaretoken':glob_csrftoken
+                },
+                dataType: 'json',
+                success: function (ajax) {
+                    vm.newheaddata2 = ajax.data;
+                }, error: function (error) {
+                    console.log(error);
                 }
-                $.ajax({
-                    url: api,
-                    type: gettype,
-                    data: data,
-                    dataType: 'json',
-                    success: function (ajax) {
-                        $(ev).attr('isget', 1);
-                        if(index==2){
-                            vm.newheaddata = ajax;
-                        }else{
-                            vm.newheaddata = ajax.data;
-                        }
-                        setTimeout(function () {
-                            $(ev).attr('isget', 0);
-                        }, 2000)
-                    }, error: function (error) {
-                        console.log(error);
-                    }
-                })
-            }
-        })
+            })
+        }
+    })
     vm.getHeadData();
     vm.getAllbaikeData();
     vm.getNewArtical();
