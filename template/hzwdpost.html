@@ -103,7 +103,7 @@
             $('.sonbox').show();
             vm_postart.mid = $(_this).attr('mid');
             $.ajax({
-                url: root_Domain + '/taolun/topics/?gid=' + vm_postart.mid,
+                url: '/taolun/topics/?gid=' + vm_postart.mid,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
@@ -128,10 +128,10 @@
             layer.msg("话题字数不能超过100！！！");
         } else {
             if (yzmnow == vm_postart.yzm) {
-                if (ckeData && ckeData.length < 800 && vm_postart.topicId) {
-                    Toolfun.iszhezClass();
+                if (ckeData && ckeData.length < 1000 && vm_postart.topicId) {
+                    
                     $.ajax({
-                        url: root_Domain + '/taolun/posting/',
+                        url:  '/taolun/posting/',
                         type: 'post',
                         dataType: 'json',
                         data: {
@@ -141,7 +141,6 @@
                             'csrfmiddlewaretoken':glob_csrftoken
                         },
                         success: function (ajax) {
-                            Toolfun.qxzheClass();
                             layer.open({
                                 content: '发布成功',
                                 btn: ['继续发帖', '查看帖子'],
@@ -150,21 +149,20 @@
                                     ifTruePost();
                                 },
                                 btn2: function (index, layero) {
-                                    window.location.href = root_Domain + '/taolun/toposting/?pid=' + ajax.data;
+                                    window.location.href = '/taolun/toposting/?pid=' + ajax.data;
                                 }
                             })
                         }, error: function (error) {
-                            layer.msg("最大内容长度为800！！！")
+                            layer.msg("最大内容长度为1000！！！")
                         }
                     })
                 }
             } else {
                 layer.msg("请输入正确的验证码！！！");
             }
-
             if (!ckeData) {
                 layer.msg("请输入内容,发布不能为空！！");
-            } else if (ckeData.length > 800) {
+            } else if (ckeData.length > 1000) {
                 layer.msg("最大输入1000个字！！");
             }
             if (!vm_postart.topicId) {

@@ -25,7 +25,7 @@
         hosdata:[],
         init:function(){
             $.ajax({
-                url:root_Domain+'/hospital/areas/',
+                url:'/hospital/areas/',
                 type:'get',
                 dataType:'json',
                 success:function(ajax){
@@ -43,12 +43,11 @@
         },
         gethosdata:function(){
           $.ajax({
-              url:root_Domain+'/hospital/hospitallist/?worldarea='+vm_diquhospital.diquid+'&hospitallv=3',
+              url:'/hospital/hospitallist/?worldarea='+vm_diquhospital.diquid+'&hospitallv=3',
               type:'get',
               dataType: 'json',
               success:function(ajax){
                   vm_diquhospital.hosdata = ajax.data.splice(0,10);
-                  console.log(vm_diquhospital.hosdata,595959595959595)
               },error:function(error){
                   console.log(error);
               }

@@ -126,28 +126,28 @@
             this.plresh();
         },
         plresh: function () {
-            Toolfun.iszhezClass();
+            
             $.ajax({
-                url: root_Domain + '/taolun/comment/?pid=' + vm_hzwdinfo.pid+'&orderby=1',
+                url: '/taolun/comment/?pid=' + vm_hzwdinfo.pid+'&orderby=1',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdinfo.pldata = ajax.data;
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
             })
         },
         tidresh: function () {
-            Toolfun.iszhezClass();
+            
             $.ajax({
-                url: root_Domain + '/taolun/posting/?pid=' + vm_hzwdinfo.pid,
+                url:  '/taolun/posting/?pid=' + vm_hzwdinfo.pid,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdinfo.askdata = ajax.data;
-                    Toolfun.qxzheClass();
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -163,14 +163,14 @@
                 return false;
             }else{
                 vm_hzwdinfo.orderby = orderby;
-                Toolfun.iszhezClass();
+                
                 $.ajax({
-                    url:root_Domain+'/taolun/comment/?pid='+vm_hzwdinfo.pid+'&orderby='+vm_hzwdinfo.orderby,
+                    url:'/taolun/comment/?pid='+vm_hzwdinfo.pid+'&orderby='+vm_hzwdinfo.orderby,
                     type:'get',
                     dataType:'json',
                     success:function(ajax){
                         vm_hzwdinfo.pldata = ajax.data;
-                        Toolfun.qxzheClass();
+                        
                     },error:function(error){
                         console.log(error);
                     }
@@ -193,7 +193,7 @@
                 id = $(_this).attr('commentid');
             }
             $.ajax({
-                url: root_Domain + '/taolun/thumbup/?type=' + type + '&id=' + id,
+                url:'/taolun/thumbup/?type=' + type + '&id=' + id,
                 type: 'get',
                 dataType: 'text',
                 success: function (ajax) {
@@ -209,11 +209,13 @@
         },
         isPost: function (ev) {
             var _this = ev;
-            var value = layui.layedit.getContent(vm_hzwdinfo.ditsl);
-            if (value != '欢迎留言评论~！') {
-                Toolfun.iszhezClass();
+            var value = layui.layedit.getContent(vm_hzwdinfo.ditsl).replace(/&nbsp;/g,'').trim();
+            console.log(value.match(/[\u4e00-\u9fa5]/g),value.length,68686868,typeof(value) )
+
+            if (value != '欢迎留言评论~！'&& value != "") {
+                
                 $.ajax({
-                    url: root_Domain + '/taolun/comment/',
+                    url:  '/taolun/comment/',
                     type: 'post',
                     data: {
                         'articles_id': vm_hzwdinfo.pid,
@@ -226,7 +228,7 @@
                             layui.layedit.setContent(vm_hzwdinfo.ditsl,'欢迎留言评论~！');
                             vm_hzwdinfo.plresh();
                         },1500)
-                        Toolfun.qxzheClass();
+                        
                     }, error: function (error) {
                         layer.msg(error);
                     }

@@ -106,7 +106,7 @@
             if (yzmnow == vm_postart.yzm) {
                 if (ckeData && ckeData.length < 800 && vm_postart.topicId) {
                     $.ajax({
-                        url: root_Domain + '/luntan/articles/',
+                        url:  '/luntan/articles/',
                         type: 'post',
                         dataType: 'json',
                         data: {
@@ -124,7 +124,7 @@
                                     ifTruePost();
                                 },
                                 btn2: function (index, layero) {
-                                    window.location.href = root_Domain + '/luntan/articles/?aid=' + ajax.data;
+                                    window.location.href =  '/luntan/articles/?aid=' + ajax.data;
                                 }
                             })
                         },error:function(error){

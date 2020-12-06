@@ -19,7 +19,6 @@
     <title>{{ data.title }}</title>
 </head>
 <body>
-{% include 'config.html' %}
 {% include 'header.html' %}
 <!-- 话题头部 -->
 <section class="topicHead wid" style='margin-top:30px;' ms-controller="topicArc">
@@ -127,7 +126,7 @@
         posgz:function(ev){
             var _this=ev;
             $.ajax({
-                url:root_Domain+'/users/followapi',
+                url:'/users/followapi',
                 type:'post',
                 data:{
                    'type':0,
@@ -144,7 +143,7 @@
         guzhuinit:function(){
             var userid = $('.isFollow').attr('userid');
             $.ajax({
-                url:root_Domain+'/users/followapi',
+                url:'/users/followapi',
                 type:'post',
                 data:{
                     'type':2,
@@ -170,9 +169,9 @@
     initdataHtml();//初始化评论数据
     {#评论刷新#}
     function initdataHtml(){//评论数据局部渲染
-        Toolfun.iszhezClass();
+        
         $.ajax({
-            url: root_Domain + '/luntan/comment/?articles_id=' + vm_topicArc.articles_id,
+            url: '/luntan/comment/?articles_id=' + vm_topicArc.articles_id,
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
@@ -187,7 +186,7 @@
                 }
                 infoBox.html(html(comment.reverse()));
                 readyClick();
-                Toolfun.qxzheClass();
+                
             }, error: function (error) {
                 console.log(error);
             }
@@ -301,7 +300,7 @@
         }
         if(topicid&&comment.length<1000&&comment!=""){
             $.ajax({
-                url: root_Domain+'/luntan/comment/',
+                url: '/luntan/comment/',
                 type:'post',
                 data: truedata,
                 success:function(ajax){
@@ -322,7 +321,7 @@
         }else{
             this.onSelect = true;
             $.ajax({
-                url:root_Domain +'/luntan/thumbup/?aid='+vm_topicArc.articles_id,
+                url:'/luntan/thumbup/?aid='+vm_topicArc.articles_id,
                 type:'get',
                 dataType:'text',
                 success:function(ajax){
@@ -355,7 +354,7 @@
             var _this = ev;
             var topicid = $(_this).parent().prev().find("div.allInfo p").attr("commid"),
                 commid='',
-                comment= $(_this).prev().prev().find("div[name='result']").html().replace(/\'/,"");
+                comment= $(_this).prev().prev().find("div[name='result']").html().replace(/\'/,"").trim();
             commIfpost(topicid,commid,comment,$(_this).parent());
         })
     }
@@ -382,7 +381,7 @@
             var content = textBox.val();
             content = replace_em(content);
             result.html(content);
-            comment = result.html().replace(/\'/,"");
+            comment = result.html().replace(/\'/,"").trim();
             commIfpost(topicid,commid,comment,plbox);
             textBox.val("");
         })

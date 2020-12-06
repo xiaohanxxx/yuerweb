@@ -29,7 +29,7 @@
                 $('.diqubox').show();
             });
             $.ajax({
-                url: root_Domain + '/hospital/areas/',
+                url: '/hospital/areas/',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
@@ -42,7 +42,7 @@
         },
         gethosdata: function () {
             $.ajax({
-                url: root_Domain + '/hospital/hospitallist/?cityarea=' + vm_hothospital.diquid + '&hospitallv=3',
+                url:  '/hospital/hospitallist/?cityarea=' + vm_hothospital.diquid + '&hospitallv=3',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {

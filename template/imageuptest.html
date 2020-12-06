@@ -35,7 +35,7 @@ layui.use('upload', function(){
   //普通图片上传
   var uploadInst = upload.render({
     elem: '#test1',
-    url: 'http://127.0.0.1:8000/luntan/imageup/',    //改成您自己的上传接口
+    url: '/luntan/imageup/',    //改成您自己的上传接口
     before: function(obj){
         //预读本地文件示例，不支持ie8
         obj.preview(function(index, file, result){
