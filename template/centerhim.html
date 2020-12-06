@@ -65,8 +65,8 @@
                     			<p style="font-size: 12px;">{el.content}</p>
                     			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
-                    					<abbr style="margin-right: 20px;"><i class="layui-icon">&#xe6c6;</i>{el.commentnum}</abbr>
-                    					<abbr><i class="layui-icon">&#xe63a;</i>{el.thumbup}</abbr>
+                    					<abbr style="margin-right: 20px;" ms-click="dianzanfun(el,$index)"><i class="layui-icon">&#xe6c6;</i>{el.commentnum}</abbr>
+                    					<abbr><i class="layui-icon" >&#xe63a;</i> <a  ms-attr-href="/luntan/articles/?aid={el.id}">{el.thumbup}</a></abbr>
                     				</div>
                     		    </div>
                     		</li>
@@ -216,6 +216,29 @@
                         }
                     });
             },
+          dianzanfun:function(res,index){
+              var datas= {
+                   'aid':res.id,
+               }
+              $.ajax({
+                    type: 'get',
+                    url: '/luntan/thumbup/',
+                    data: datas,
+                    dataType: "text", //返回的是TEXT字符串
+                    success: function (result) {
+                        if(result == '点赞成功'){
+                            wvm.wvm.gethimtiezies[index].thumbup = wvm.wvm.gethimtiezies[index].thumbup + 1
+                            layer.msg(result);
+                        }else{
+                          layer.msg(result);
+                           return ;
+                        }
+                        //wvm.alltiezi[index].thumbup = wvm.alltiezi[index].thumbup + 1
+                        layer.msg(result);
+                    }
+                });
+
+          },
           change_edit:function(res){
               wvm.cc = res;
           },

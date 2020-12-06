@@ -131,7 +131,7 @@
         var vmm = avalon.define({
             $id: 'headercont',
             namees: '医院',
-            usernames: localStorage.getItem('username'),
+            usernames: sessionStorage.getItem("username"),
             showxiala: function() {
                 var _this = $(this);
                 if (_this.next('ul').hasClass('hites')) {
@@ -182,6 +182,23 @@
                 'password': '',
                 'csrfmiddlewaretoken': glob_csrftoken
             },
+
+            getbaikebanner:function(){
+                var datgas = {
+                    'type':3,
+                    'csrfmiddlewaretoken': glob_csrftoken
+                }
+                $.ajax({
+                    type: 'post',
+                    url: '/webmanage/banner',
+                    data: datgas,
+                    dataType: "json",
+                    success: function(data) {
+                        console.log(data, 99999);
+
+                    }
+                });
+            },
             loginFun: function() {
 
                 if (vm.loginData.username == '' || !vm.loginData.username) {
@@ -202,7 +219,7 @@
                         if (data.code == 200) {
                             layer.msg('登录成功，即将跳转到当前页');
                             localStorage.setItem('username', vm.loginData.username);
-                            sessionStorage.setItem('username', vm.loginData.username);
+                            sessionStorage.setItem("username", vm.loginData.username);
                             setTimeout(function() {
                                 history.back();
                             }, 2000)
@@ -314,6 +331,7 @@
                             vm.twotopNews.push(vm.newartical[0]);
                             vm.twotopNews.push(vm.newartical[1]);
                         }
+                        // vm.newartical = vm.newartical.splice(2,14);
                     }
                 });
             },
@@ -328,10 +346,11 @@
                     url: '/baike/api/sgbk_sjldapi',
                     data: count,
                     dataType: "json",
+                    // timeout: 10000,
                     success: function(data) {
                         vm.allbaikeData = data;
                         vm.datasgyes = data;
-                        console.log(vm.allbaikeData,'allbaikeDataallbaikeData');
+                        console.log(vm.datasgyes);
                         var zhou = vm.getQueryVariable('types');
                         if (zhou > 0) {
                             vm.changrightlm(zhou, zhou - 1);
@@ -392,27 +411,10 @@
                         console.log(data);
                     }
                 });
-            },
-            baikebanner:[],
-            bannerlist:function (){
-                var datas = {
-                    'bannertype':3,
-                    'csrfmiddlewaretoken': glob_csrftoken
-                }
-                $.ajax({
-                    type: 'post',
-                    url: '/webmanage/banner',
-                    data: datas,
-                    dataType: "json",
-                    success: function(data) {
-                        vm.baikebanner = data.data
-                        console.log(data,'datases');
-                    }
-                });
             }
         })
+        vm.getbaikebanner();
         vm.getAllbaikeData();
         vm.getNewArtical();
         vm.gettopimgs();
-        vm.bannerlist();
     </script>
