@@ -94,7 +94,7 @@
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
                         <ul>
-                            <li ms-repeat="sgyerdata" ms-class="currshequ:el.id == curid" ms-click="goChange(el.id)">
+                            <li ms-repeat="sgyerdata" ms-class="currshequ:el.id == curid"  isget="0"  ms-click="goChange(el.id,this)">
                                 {el.name}
                             </li>
                         </ul>
@@ -274,7 +274,7 @@
         <div class="hotanwsercont">
             <h3 class="h3frist">热点回答 <a href="/taolun/">更多>></a></h3>
             <p class="ppart">
-                <abbr ms-repeat="navdata" ms-click="goChange($index,el.id)" ms-class="currpaitp:topicid==el.id">{el.name.substr(0,6)}</abbr>
+                <abbr ms-repeat="navdata" isget='0' ms-click="goChange($index,el.id,this)" ms-class="currpaitp:topicid==el.id">{el.name.substr(0,6)}</abbr>
             </p>
             <div class="wentiwa">
                 <div class="titleanswer" ms-repeat-as="askdata">
@@ -298,7 +298,7 @@
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
                         <ul>
-                            <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b" ms-click="changrightlm(el.mid,$index)">{el.menu_name}
+                            <li ms-repeat-el="datasgyes" ms-class="currshequ:el.mid == b" isget="0" ms-click="changrightlm(el.mid,$index,this)">{el.menu_name}
                             </li>
                         </ul>
                     </div>
@@ -455,10 +455,16 @@
                     })
                 }
             },
-            goChange: function(id) {
+            goChange: function(id,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
+                $(ev).attr('isget',1);
                 vm_sgyercrl.curid = id;
                 vm_sgyercrl.getlidata();
-                Toolfun.iszhezClass();
+                setTimeout(function(){
+                    $(ev).attr('isget',0);
+                },4000)
             },
             getlidata: function() {
                 $.ajax({
@@ -583,9 +589,16 @@
                     }
                 })
             },
-            goChange: function(index, id) {
+            goChange: function(index, id,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
+                $(ev).attr('isget',1);
                 vm_hotaskbq.topicid = id;
                 vm_hotaskbq.askdata = vm_hotaskbq.navdata[index].child;
+                setTimeout(function(){
+                    $(ev).attr('isget',0);
+                },4000)
             }
         })
 

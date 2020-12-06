@@ -210,10 +210,8 @@
         isPost: function (ev) {
             var _this = ev;
             var value = layui.layedit.getContent(vm_hzwdinfo.ditsl).replace(/&nbsp;/g,'').trim();
-            console.log(value.match(/[\u4e00-\u9fa5]/g),value.length,68686868,typeof(value) )
 
             if (value != '欢迎留言评论~！'&& value != "") {
-                
                 $.ajax({
                     url:  '/taolun/comment/',
                     type: 'post',

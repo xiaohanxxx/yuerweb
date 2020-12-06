@@ -17,6 +17,9 @@ p {
 
 body {
     background-color: #F9F9F9;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
 }
 
 textarea {

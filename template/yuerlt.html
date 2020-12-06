@@ -161,7 +161,7 @@
                     </p>
                 </div>
                 <ul class="metalist">
-                    <li ms-repeat-as="metadata" ms-click="goChange(as.id)" ms-attr-dataid="{as.id}"
+                    <li ms-repeat-as="metadata" isget='0' ms-click="goChange(as.id,this)" ms-attr-dataid="{as.id}"
                         ms-attr-class="as.id==pageNo?'yesSelect':''">
                         <a href="javascript:;">{as.name}</a>
                     </li>
@@ -211,7 +211,7 @@
                 </div>
                 <ul class="sgyer-h fl">
                     <li ms-attr-class="el.id==pageNo?'lisSelect':''" ms-attr-dataid="el.id" ms-repeat-el="menudata"
-                        ms-click="goChange(el.id)">{el.name}
+                      isget='0'  ms-click="goChange(el.id,this) ">{el.name}
                     </li>
                 </ul>
                 <div class="sgyer-infolis fl">
@@ -368,9 +368,12 @@
             lisTitle: [],
             pageNo: 0,
             metadata: [],
-            goChange: function (menu_id) {
+            goChange: function (menu_id,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
                 vm_nyzl.pageNo = $(this).attr('dataid');
-                
+                $(ev).attr('isget',1);
                 $.ajax({
                     url: api_articlelist + menu_id + '&num=' + nyzl_num,
                     type: 'get',
@@ -381,7 +384,9 @@
                         vm_nyzl.imgTitle = ajax.data.curuent_page.slice(7, 11);
                         Toolfun.snimgzsClass(vm_nyzl.imgTitle);
                         vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11, 17);
-                        
+                        setTimeout(function(){
+                            $(ev).attr('isget',0);
+                        },4000)
                     }, error: function (error) {
                         console.log(error)
                     }
@@ -396,9 +401,12 @@
             menudata: [],
             hotdata: [],
             lisdata: [],
-            goChange: function (currentid) {
-                
+            goChange: function (currentid,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
                 vm_sgyer.pageNo = $(this).attr('dataid');
+                $(ev).attr('isget',1);
                 $.ajax({
                     url: api_articlelist + currentid,
                     type: 'get',
@@ -407,7 +415,9 @@
                         vm_sgyer.hotdata = ajax.data.curuent_page.slice(0, 1);
                         Toolfun.snimgzsClass(vm_sgyer.hotdata);
                         vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
-                        
+                        setTimeout(function(){
+                            $(ev).attr('isget',0);
+                        },4000)
                     }, error: function (error) {
                         console.log(error);
                     }

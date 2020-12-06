@@ -46,10 +46,10 @@
     <!-- 文章评论主体 -->
     <div class="byjl_main fl">
         <div class="main_btn">
-            <div ms-click="goChange(0)" ms-attr-class='typenum==0?"btnSelect":""'>全部</div>
-            <div ms-click="goChange(1)" ms-attr-class='typenum==1?"btnSelect":""'>最新</div>
-            <div ms-click="goChange(2)" ms-attr-class='typenum==2?"btnSelect":""'>热门</div>
-            <div ms-click="goChange(3)" ms-attr-class='typenum==3?"btnSelect":""'>推荐</div>
+            <div ms-click="goChange(0,this)" isget="0" ms-attr-class='typenum==0?"btnSelect":""'>全部</div>
+            <div ms-click="goChange(1,this)" isget="0" ms-attr-class='typenum==1?"btnSelect":""'>最新</div>
+            <div ms-click="goChange(2,this)" isget="0" ms-attr-class='typenum==2?"btnSelect":""'>热门</div>
+            <div ms-click="goChange(3,this)" isget="0" ms-attr-class='typenum==3?"btnSelect":""'>推荐</div>
         </div>
         <ul class="main_lis fl">
 
@@ -59,7 +59,7 @@
                 </a>
                 <div class="topicbox">
                     <a ms-attr-href="/luntan/articles/?aid={el.id}">
-                        <h3>{ el.title.substr(0,30)}..</h3>
+                        <h3>{ el.title.substr(0,20)}..</h3>
                         <div class="userleft">
                             <img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}">
                             <span>{el.user.username}</span>
@@ -178,8 +178,12 @@
             typenum: 0,//子id
             navdata: [],//父栏目数据
             count: 0,
-            goChange: function (type_num) {
+            goChange: function (type_num,ev) {
+                if($(ev).attr('isget')>0){
+                    return;
+                }
                 location.hash = '';
+                $(ev).attr('isget',1);
                 if (type_num == 0) {
                     inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');
                 } else {
@@ -187,6 +191,9 @@
                 }
                 vm_ltlist.typenum = type_num;
                 init(inturl);
+                setTimeout(function(){
+                    $(ev).attr('isget',0);
+                },4000)
             },
             gothumup: function (id) {
                 $.ajax({

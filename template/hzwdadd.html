@@ -22,16 +22,14 @@
          </style>
      -->
 </head>
-
-{% include 'config.html' %}
 {% include 'header.html' %}
 <div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
 <div class="hzwdconts" ms-controller="hzwdadd">
     <div class="hzwdleftse" style="min-height: 200px;">
         <ul>
             <li Mflid="999" ms-attr-class="mflid==999?'allList':''">全部</li>
-            <li ms-repeat="groupsdata" ms-attr-Mflid="el.id" ms-attr-class="mflid==el.id?'allList':''">
-                {el.name}{el.id}{mflid}
+            <li ms-repeat="groupsdata" ms-attr-Mflid="el.id" isget="0" ms-attr-class="mflid==el.id?'allList':''">
+                {el.name}
             </li>
         </ul>
 
@@ -102,8 +100,13 @@
             var lisbtn = $('.hzwdleftse>ul>li');
             for (var i = 0; i < lisbtn.length; i++) {
                 lisbtn.eq(i).click(function () {
-                    Toolfun.clearClass("allList", lisbtn);
-                    $(this).addClass('allList');
+                    if($(this).attr('isget')>0){
+                        return;
+                    }
+                    $(this).attr('isget',1);
+                    setTimeout(function(){
+                        $(this).attr('isget',0);
+                    },4000)
                     vm_hzwdadd.mflid = $(this).attr('mflid');
                     vm_hzwdadd.goMflid();
                 })

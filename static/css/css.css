@@ -7,6 +7,9 @@
 
 body {
     background: #f9f9f9;
+    user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
 }
 
 .ms-controller {
@@ -30,7 +33,7 @@ body {
 
 .headerNav .logos {
     width: 289px;
-    margin-top:41px;
+    margin-top: 41px;
     float: left;
 }
 
@@ -532,11 +535,13 @@ body {
 .hhightleft h3 {
     font-size: 16px;
     font-weight: 400;
-    margin-top:15px;
+    margin-top: 15px;
 }
-.hhightleft h3>abbr:nth-of-type(1){
-    font-size:24px;
+
+.hhightleft h3 > abbr:nth-of-type(1) {
+    font-size: 24px;
 }
+
 .hhightleft h3 abbr {
     margin-right: 20px;
     font-size: 18px;
@@ -958,7 +963,7 @@ body {
 .fsaldkjf a h3 {
     font-size: 14px;
     font-family: 'Î¢ÈíÑÅºÚ';
-    color:#666;
+    color: #666;
 }
 
 .fsaldkjf a p {
@@ -1183,8 +1188,9 @@ body .ppart .currpaitp {
     background-color: #ff44ad;
     border: 1px solid #ff44ad;
 }
-li.curreswd>a{
-    color:#fff;
+
+li.curreswd > a {
+    color: #fff;
 }
 
 .fenleiallswd {
@@ -1286,43 +1292,50 @@ li.curreswd>a{
     width: 100%;
     overflow: hidden;
 }
-.doctorbox>a>img{
-    float:left;
+
+.doctorbox > a > img {
+    float: left;
     width: 113px !important;
     height: 141px !important;
 }
-.doctorbox .doctorinfo{
-    float:left;
-    max-width:180px;
+
+.doctorbox .doctorinfo {
+    float: left;
+    max-width: 180px;
     margin-left: 16px;
 }
-.doctorinfo h4{
+
+.doctorinfo h4 {
     margin: 0;
     font-size: 16px;
     font-weight: bold;
-    margin-bottom:10px;
+    margin-bottom: 10px;
 }
-.doctorinfo h4>abbr{
-    font-size:12px;
+
+.doctorinfo h4 > abbr {
+    font-size: 12px;
     margin-left: 10px;
-    color:#666;
+    color: #666;
 }
-.doctorinfo p{
-    color:#999;
-    margin-bottom:10px;
-    font-size:12px;
+
+.doctorinfo p {
+    color: #999;
+    margin-bottom: 10px;
+    font-size: 12px;
 }
-.doctorinfo>a{
+
+.doctorinfo > a {
     float: left;
     width: 68px;
     height: 24px;
-    border:1px solid #FF4BB0;
-    color:#FF4BB0;
+    border: 1px solid #FF4BB0;
+    color: #FF4BB0;
     margin-top: 22px;
     border-radius: 12px;
     line-height: 24px;
     text-align: center;
 }
+
 /*.doctorbox a{ border-radius: 10px; color: #fff;   margin-top: 10px; text-align: center; padding: 3px 0; display: block; width: 70px; background: #ff44ad; float: left; }*/
 .hotwdtuijian {
     background: #fff;
@@ -1330,16 +1343,18 @@ li.curreswd>a{
     overflow: hidden;
     width: 97%;
 }
-.hotaskbigbox{
+
+.hotaskbigbox {
     width: 100%;
 }
+
 .hotwdtuijian ul, .hotwdtuijian ol {
     overflow: hidden;
     width: 97%;
 }
 
 .hotwdtuijian ul li {
-    line-height:40px;
+    line-height: 40px;
     font-size: 12px;
     height: 40px;
 }
@@ -1803,6 +1818,7 @@ li.curreswd>a{
     text-decoration: none;
 
 }
+
 .sgyecontanather .remenhuaties {
     width: 350px;
     transform: translateX(8px);
@@ -2828,7 +2844,11 @@ li.curreswd>a{
     width: 100%;
     overflow: hidden;
 }
- .left_bottom_artctal_anather{ background: #fff;}
+
+.left_bottom_artctal_anather {
+    background: #fff;
+}
+
 .left_bottom_artctal h3 {
     width: 100%;
     overflow: hidden;
@@ -3664,16 +3684,20 @@ li.curreswd>a{
 .shiguanyiner .rmwdtj {
     width: 340px;
 }
-.rmwdtj .hotaskbigbox>li{
-    height:40px;
-    line-height:40px;
+
+.rmwdtj .hotaskbigbox > li {
+    height: 40px;
+    line-height: 40px;
 }
+
 .sgyecontanather .remenhuaties {
     height: 496px;
 }
-.strsub{
-    width: 100%!important;
+
+.strsub {
+    width: 100% !important;
 }
+
 /*轮播图样式*/
 .qiehuanimg .swiper-container {
     position: relative;
@@ -3711,6 +3735,7 @@ li.curreswd>a{
 .qiehuanimg .swiper-pagination-bullet-active {
     background-color: #FF44AD;
 }
+
 .pagination {
     position: absolute;
     z-index: 20;
@@ -3768,9 +3793,10 @@ body .lis-select .askSelect {
     color: #FF44AD;
 }
 
-.bodyindex .sgyerbox .hhgihtlefth3{
-    height:437px;
+.bodyindex .sgyerbox .hhgihtlefth3 {
+    height: 437px;
 }
-.hhgihtlefth3.hysqbox{
+
+.hhgihtlefth3.hysqbox {
     height: 446px;
 }

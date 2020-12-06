@@ -252,7 +252,14 @@
             vm.a = el.id;
         },
         indexs: '',
-        changrightlm: function (id, index) {
+        changrightlm: function (id, index,ev) {
+            if($(ev).attr('isget')>0){
+                return;
+            }
+            $(ev).attr('isget',1);
+            setTimeout(function(){
+                $(ev).attr('isget',0);
+            },4000)
             vm.b = id;
             vm.indexs = index;
             vm.erjidatalist = [];
