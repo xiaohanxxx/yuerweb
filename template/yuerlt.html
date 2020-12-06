@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <script src="{% static 'js/uitls/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/idangerous.swiper2.7.6.min.js' %}"></script>
+    <script src="{% static 'layui/layui.all.js' %}"></script>
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
     <script src="{% static 'js/uitls/tool.js' %}"></script>
 
@@ -437,7 +438,7 @@
         var vm_freeAsk = avalon.define({
             $id: 'freeAsk',
             data: [],
-            selecid: 4,
+            selecid: '',
             onChange: function () {
                 vm_freeAsk.selecid = $(this).find('option:selected').val();
                 var items = $('.lis-select>select');
@@ -447,6 +448,10 @@
             goAsk: function () {
                 var textval = $('#quick_ask').val().trim();
                 if (textval == '') {
+                    layer.msg("请输入发送完整的信息！！")
+                    return false;
+                }else if(vm_freeAsk.selecid==""){
+                    layer.msg('请选择要提问的所属栏目！！')
                     return false;
                 }
                 $.ajax({
@@ -558,13 +563,6 @@
             }
         });
     })()
-</script>
-<script>
-    (function () {
-        $(document).ready(function () {
-
-        })
-    })();
 </script>
 
 </body>
