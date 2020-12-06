@@ -25,13 +25,13 @@
                     <div class="xialabox" style="display: none;">
 
                         <p ms-repeat="newheaddata"><a
-                                ms-attr-href="/luntan/articlelist/?tid={el.id}&all=1&Mid={el.id}">{el.name}</a>
+                                ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
                         </p>
 
                     </div>
                 </li>
                 <li>
-                    <a href="/taolun" class="acolor" ms-mouseover="getHeadData(this,2)" isget="0">互助问答</a>
+                    <a href="/taolun" class="acolor" >互助问答</a>
                     <div class="xialabox" style="display: none;">
                         <p ms-repeat="newheaddata1"><a ms-attr-href="/taolun/grouplist/?aid={el.id}">{el.name}</a></p>
 
@@ -45,7 +45,7 @@
                     </div>
                 </li>
                 <li>
-                    <a href="/baike" class="acolor" ms-mouseover="getHeadData(this,3)" isget="0">百科知识</a>
+                    <a href="/baike" class="acolor" >百科知识</a>
                     <div class="xialabox" style="display: none;">
                         <p ms-repeat="newheaddata2"><a ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name}</a>
                         </p>
