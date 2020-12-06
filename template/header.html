@@ -425,8 +425,26 @@
                     console.log(error);
                 }
             })
-        }
+        },
+        baikebanner:[],
+        getbaikebanner:function (){
+            var datas = {
+                'bannertype':3,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            $.ajax({
+                type: 'post',
+                url: '/webmanage/banner',
+                data: datas,
+                dataType: "json",
+                success: function(data) {
+                    vm.baikebanner = data.data;
+                    console.log(data, 99999555555);
+                }
+            });
+        },
     })
+    vm.getbaikebanner();
     vm.getHeadData();
     vm.getAllbaikeData();
     vm.getNewArtical();
