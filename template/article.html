@@ -148,6 +148,7 @@
                 dataType: "json",
                 success: function (data) {
                     vmm.get_tj_baike = data.data
+                    console.log(vmm.get_tj_baike)
                 }
             });
         },
@@ -159,7 +160,7 @@
             $.ajax({
                 type: 'post',
                 url: '/baike/api/articlecommend',//推荐文章
-                data: count,11
+                data: count,
                 dataType: "json",
                 success: function (data) {
                     vmm.getrmbaike = data.data
