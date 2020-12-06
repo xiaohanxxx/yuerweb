@@ -17,14 +17,14 @@
   <link rel="stylesheet" href="{% static 'css/coment.css' %}">
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
-<!--      <style type="text/css">
-      body{ background: #029EE9; }
-     </style>
- -->
+<style type="text/css">
+      .hzwdconts{ width: 1200px; margin: 0 auto;}
+</style>
+
 </head>
   {% include 'header.html' %}
      
-    <div class="hzwdconts"   ms-controller="hzwdconts">
+    <div class="hzwdconts"   ms-controller="hzwdcontses">
       <div class="hzwdlefts">
 
  
@@ -134,7 +134,7 @@
             interpolate: ["{", "}"]
         });  
        var vmw = avalon.define({
-        $id: "hzwdconts",
+        $id: "hzwdcontses",
         arear:[],
         citys:[],
         chengshi:'',
