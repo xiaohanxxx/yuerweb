@@ -210,7 +210,6 @@
         isPost: function (ev) {
             var _this = ev;
             var value = layui.layedit.getContent(vm_hzwdinfo.ditsl).replace(/&nbsp;/g,'').trim();
-
             if (value != '欢迎留言评论~！'&& value != "") {
                 $.ajax({
                     url:  '/taolun/comment/',

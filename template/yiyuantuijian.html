@@ -15,13 +15,13 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 <!--      <style type="text/css">
       body{ background: #029EE9; }
      </style>
  -->
 </head>
-    {% include 'config.html' %}
   {% include 'header.html' %}
      
     <div class="hzwdconts"   ms-controller="hzwdconts">
@@ -69,7 +69,7 @@
          <p ms-repeat="jishus" ms-class="allcurr:$index == d"  ms-click="jishuFun($index)">{el.name}</p>
       </div>
 </div>
-      <div class="hzwdcontslist">
+      <div class="hzwdcontslist" >
 
 
          <div class="tjyylists" ms-repeat="getYYlist">
@@ -95,7 +95,7 @@
 
      </div>
       </div>
-      <div class="hzwdrights">
+      <div class="hzwdrights yytjclass">
           <div class="szzhuanjia">
               <h3><abbr>推荐百科</abbr> <a href="/baike">更多>></a></h3>
               <div class="doctorbox" ms-repeat="getrmbaike">
@@ -119,36 +119,7 @@
 
 
    <div class="szzhuanjia">
-      <!--         <h3><abbr>专业论坛推荐</abbr> <a href="###">更多>></a></h3>
-              <div class="hotwdtuijianes_new">
-                 <ol>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                   <li>
-                     <a href="###">我是论坛文章标题，只能显示第一行</a>
-                   </li>
-                 </ol>
-              </div>
-          </div> -->
+
           {% include "mod_hotarticle.html" %}
 
       </div>

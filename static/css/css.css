@@ -15,7 +15,6 @@ body {
 .ms-controller {
     visibility: hidden
 }
-
 /*Í·²¿CSS*/
 .header {
     height: 150px;
@@ -3799,4 +3798,14 @@ body .lis-select .askSelect {
 
 .hhgihtlefth3.hysqbox {
     height: 446px;
+}
+/*医院推荐微调*/
+.yytjclass{
+    margin: 20px 0 20px 0;
+}
+.yytjclass .strsub{
+    margin-left:-24px;
+}
+.yytjclass .hot_arc{
+    margin-left:-36px;
 }
