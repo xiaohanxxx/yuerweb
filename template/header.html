@@ -182,10 +182,10 @@
                 'password': '',
                 'csrfmiddlewaretoken': glob_csrftoken
             },
-
+            baikebanner:[],
             getbaikebanner:function(){
                 var datgas = {
-                    'type':3,
+                    'bannertype':3,
                     'csrfmiddlewaretoken': glob_csrftoken
                 }
                 $.ajax({
@@ -195,7 +195,7 @@
                     dataType: "json",
                     success: function(data) {
                         console.log(data, 99999);
-
+                        vm.baikebanner = data.data
                     }
                 });
             },
