@@ -24,8 +24,7 @@
                     <a href="/luntan" class="acolor">育儿论坛</a>
                     <div class="xialabox" style="display: none;">
 
-                        <p ms-repeat="newheaddata"><a
-                                ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
+                        <p ms-repeat="newheaddata"><a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
                         </p>
 
                     </div>
@@ -76,8 +75,7 @@
 
             {% else %}
                 <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a
-                        href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###"
-                                                                                                      style="color:#F94479; text-decoration: none;">注册</a>
+                        href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###" style="color:#F94479; text-decoration: none;">注册</a>
                 </p>
             {% endif %}
         </div>
@@ -115,7 +113,7 @@
     var vmm = avalon.define({
         $id: 'headercont',
         namees: '医院',
-        usernames: sessionStorage.getItem("username"),
+        usernames: localStorage.getItem("username"),
         showxiala: function () {
             var _this = $(this);
             if (_this.next('ul').hasClass('hites')) {
@@ -227,7 +225,6 @@
                 url: '/users/register',
                 data: vm.zhuceDatas,
                 dataType: "json",
-                // timeout: 10000,
                 success: function (data) {
                     if (data.code == 200) {
                         layer.msg('注册成功，即将跳转到登录页面');
@@ -297,7 +294,6 @@
                 url: '/baike/api/articletimelist',
                 data: count,
                 dataType: "json",
-                // timeout: 10000,
                 success: function (data) {
                     vm.newartical = [];
                     vm.newartical = data.data;
@@ -344,7 +340,6 @@
                 url: '/users/login',
                 data: datas,
                 dataType: "json",
-                // timeout: 10000,
                 success: function (data) {
 
                 }

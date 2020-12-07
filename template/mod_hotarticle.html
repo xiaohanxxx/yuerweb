@@ -5,8 +5,14 @@
         <h4><span>热门文章</span></h4>
     </div>
     <ul class='clearfix'>
-        <li ms-repeat-el="data" style="line-height: 15px;"><a
-                ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title | truncate(18,'...')}</span><span style="float: right;"><i class="iconfont">&#xe661;</i>{el.thumb}</span></a>
+        <li ms-repeat-el="data" style="line-height: 15px;">
+            <a ms-attr-href="/luntan/articles/?aid={el.article.id}">
+                <span>{el.article.title | truncate(18,'...')}</span>
+                <span style="float: right;">
+{#                    <i class="iconfont">&#xe63a;</i>{el.thumb}#}
+                   <img src="{% static 'img/result.png' %}" alt=""> {el.thumb}
+                </span>
+            </a>
         </li>
     </ul>
     <div class="sjchangebtn" ms-click="goChange()">

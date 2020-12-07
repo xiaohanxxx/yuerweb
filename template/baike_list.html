@@ -55,17 +55,21 @@
          <div class="rightarclalist">
              <a href="###"><img src="{% static 'img/jszx.png' %}" alt=""></a>
              <div class="al_taolun alltaolun">
-                  <h4><abbr title="">大家都在讨论</abbr> <a href="/taolun/" style="float: right; margin-right:30px;">更多>></a></h4>
-                 <ul>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                     <li><a href="">我是文章标题文字信息只显示一行</a></li>
-                 </ul>
+{#                  <h4><abbr title="">大家都在讨论</abbr> <a href="/taolun/" style="float: right; margin-right:30px;">更多>></a></h4>#}
+{#                 <ul>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                     <li><a href="">我是文章标题文字信息只显示一行</a></li>#}
+{#                 </ul>#}
+                  <style>
+                      .alltaolun ul{ width: 85%;}
+                  </style>
+                 {% include 'mod_hotarticle.html' %}
              </div>
 
 

@@ -74,7 +74,7 @@
                     			<li ms-repeat-el="mywenda">
                     				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
                     				<p style="font-size: 12px; margin: 8px 0;">{el.content | truncate(60,'...') | html}</p>
-                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
+                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px; display: block;"  ms-click="dianzanfunwd(el,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
                     		</ul>
                     	</div>
@@ -196,24 +196,28 @@
           $id: "centeres",
           aa:1,
           cc:1,
-          {#dianzanfunes:function(res,index){#}
-          {#    var datas= {#}
-          {#         'aid':res,#}
-          {#     }#}
-          {#    $.ajax({#}
-          {#          type: 'get',#}
-          {#          url: '/luntan/thumbup/',#}
-          {#          data: datas,#}
-          {#          dataType: "text",#}
-          {#          success: function (result) {#}
-          {#              layer.msg(result);#}
-          {#              alert(result);#}
-          {#          },error:function(error){#}
-          {#            console.log(error,15151515)#}
-          {#        }#}
-          {#      });#}
-          {##}
-          {#},#}
+          dianzanfunwd:function(res,index){
+               var datas= {
+                    'type':'article',
+                    'id':res.id,
+               }
+               $.ajax({
+                    type: 'get',
+                    url: '/taolun/thumbup/',
+                    data: datas,
+                    dataType: "text", //返回的是TEXT字符串
+                    success: function (result) {
+                        if(result == '点赞成功！'){
+                            wvm.mywenda[index].thumbup = wvm.mywenda[index].thumbup + 1;
+                            layer.msg(result);
+                        }else{
+                          layer.msg(result);
+                           return ;
+                        }
+                        layer.msg(result);
+                    }
+                });
+          },
           dianzanfun:function(res,index){
               var datas= {
                    'aid':res.id,
@@ -395,6 +399,7 @@
                         dataType: "json",
                         success: function (data) {
                             wvm.mywenda = data.data;
+                                    console.log(wvm.mywenda,'wvm.mywenda')
                             wvm.maxnum = data.maxnum;
                             wvm.allmywenda = data.maxnum;
                             wvm.getguanzhuData();

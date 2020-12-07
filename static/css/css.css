@@ -1294,8 +1294,8 @@ li.curreswd > a {
 
 .doctorbox > a > img {
     float: left;
-    width: 113px !important;
-    height: 141px !important;
+    /*width: 113px !important;*/
+    /*height: 141px !important;*/
 }
 
 .doctorbox .doctorinfo {
@@ -1349,7 +1349,7 @@ li.curreswd > a {
 
 .hotwdtuijian ul, .hotwdtuijian ol {
     overflow: hidden;
-    width: 97%;
+    width: 90%;
 }
 
 .hotwdtuijian ul li {
@@ -2511,7 +2511,7 @@ li.curreswd > a {
 
 .hzwdcontslistes p {
     line-height: 30px;
-    padding: 5px 28px;
+    padding: 5px 8px;
 }
 
 .hzwdcontslisteszhou {
