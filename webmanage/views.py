@@ -19,11 +19,11 @@ def banner(request):
     if request.method == "POST":
         bannertype = request.POST.get('bannertype') # 首页1，论坛2，百科3
         if bannertype == "1":
-            banner_list = [i for i in models.Banner.objects.all().values('id','idx','title','cover','is_active')]
+            banner_list = [i for i in models.Banner.objects.all().values('id','idx','title','cover','is_active','banner_link')]
         elif bannertype == "2":
-            banner_list = [i for i in models.YuerBanner.objects.all().values('id','idx','title','cover','is_active')]
+            banner_list = [i for i in models.YuerBanner.objects.all().values('id','idx','title','cover','is_active','baikebanner_link')]
         elif bannertype == "3":
-            banner_list = [i for i in models.BaikeBanner.objects.all().values('id','idx','title','cover','is_active')]
+            banner_list = [i for i in models.BaikeBanner.objects.all().values('id','idx','title','cover','is_active','baikebanner_link')]
         else:
             banner_list = list()
         banners = function(banner_list)

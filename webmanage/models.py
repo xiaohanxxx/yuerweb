@@ -78,7 +78,7 @@ class BaikeBanner(models.Model):
 class YuerBanner(models.Model):
     title = models.CharField('标题', max_length=50)
     cover = models.ImageField('轮播图', upload_to='banner/index')
-    yuerbanner_link = models.URLField('对应链接',default='http://www.zhimeiai.cn')
+    baikebanner_link = models.URLField('对应链接',default='http://www.zhimeiai.cn')
     idx = models.IntegerField('索引')
     is_active = models.BooleanField('是否是active', default=False)
 
