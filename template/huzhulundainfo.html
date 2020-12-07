@@ -25,9 +25,9 @@
     <div class="hzwdleftse" style="min-height: 200px;">
         <div class="Muserinfo">
             {% if request.user.is_active %}
-                <a ms-attr-href="/users/centerhim/{askdata.user.id}"><img ms-attr-src="/media/{askdata.user.head}"/></a>
+                <a ms-attr-href="'/users/centerhim/'+{askdata.user.id}"><img ms-attr-src="/media/{askdata.user.head}" width="30px" height="30px" style="float: left; margin-right: 20px;"/></a>
             {% else %}
-                <a href="/login"><img ms-attr-src="/media/{askdata.user.head}"/></a>
+                <a href="/login"><img ms-attr-src="/media/{askdata.user.head}" width="30px" height="30px" style="float: left; margin-right: 20px;"/></a>
             {% endif %}
 
             <h3>{askdata.title}</h3>
@@ -70,9 +70,9 @@
             <ul class="plinfobox">
                 <li ms-repeat-as="pldata" data-repeat-rendered="plisShow">
                     {% if request.user.is_active %}
-                        <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
+                        <a ms-attr-href="'/users/centerhim/'+as.user.id"><img ms-attr-src="/media/{as.user.head}" alt=""  width="30px" height="30px" style="float: left; margin-right: 20px;"></a>
                     {% else %}
-                        <a href="/login"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
+                        <a href="/login"><img ms-attr-src="/media/{as.user.head}" alt="" width="30px" height="30px" style="float: left; margin-right: 20px;"></a>
                     {% endif %}
 
                     <div class="userinfo">

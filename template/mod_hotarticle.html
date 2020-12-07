@@ -2,15 +2,14 @@
 {% include 'config.html' %}
 <div class="hot_arc  hotarcs" ms-controller="rmarc">
     <div class="rgt_tit">
-        <h4><span>热门文章</span></h4>
+        <h4><span style="font-size: 18px; border-bottom: 2px solid #FF44AD; height: 35px; line-height: 35px; width: 100px; display: block; text-align: center;">热门文章</span></h4>
     </div>
     <ul class='clearfix'>
         <li ms-repeat-el="data" style="line-height: 15px;">
             <a ms-attr-href="/luntan/articles/?aid={el.article.id}">
                 <span>{el.article.title | truncate(18,'...')}</span>
                 <span style="float: right;">
-{#                    <i class="iconfont">&#xe63a;</i>{el.thumb}#}
-                   <img src="{% static 'img/result.png' %}" alt=""> {el.thumb}
+                    <i class="iconfont">&#xe63a;</i>{el.thumb} {el.thumb}
                 </span>
             </a>
         </li>
@@ -19,7 +18,9 @@
         <span ><i class="iconfont" >&#xe615;</i>换一批</span>
     </div>
 </div>
-
+<style>
+    .clearfix{ padding: 20px;}
+</style>
 <script>
     var api_hotarticles =  '/luntan/hotarticles/',
         rmarc_num = 9;

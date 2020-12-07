@@ -177,6 +177,7 @@ def outlogin(request):
 @login_required
 def changepwd(request):
     if request.method == 'POST':
+        print('aaaaa')
         new_password = request.POST.get('new_password',None)
         if new_password == None:
             data = {
@@ -200,6 +201,7 @@ def changetx(request):
     file_obj = request.FILES.get('avatar')
     Userinfo.user_avatar = file_obj
     Userinfo.save()
+    print("ok")
 
 
 # TODO 去TM的面向对象编程
@@ -214,6 +216,7 @@ class Followapi(View):
         self.request = request
         Quser_id = request.POST.get("Quser_id", None)
         type = int(request.POST.get('type'))
+        print(Quser_id,type)
         if Quser_id == None:
             pass
         else:
@@ -262,20 +265,22 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
+        print(follow_list)
         for i in follow_list:
             article_list = models.Articles.objects.filter(user_id=i['userid'])
+            print(article_list)
 
         data = {
             'code': 200,
             'msg': '成功',
             'data_list': list({
-              'user': i['username'],
-              'userid': i['userid'],
-              'user_article': list(
-                  models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
-          }
-          for i in follow_list
-          )
+                                  'user': i['username'],
+                                  'userid': i['userid'],
+                                  'user_article': list(
+                                      models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
+                              }
+                              for i in follow_list
+                              )
         }
 
         return HttpResponse(json.dumps(data), content_type="application/json")

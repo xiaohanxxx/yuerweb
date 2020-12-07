@@ -73,7 +73,7 @@
                         </div>
                         <div class='fr'>
                             <a href="">
-                                <span class='iconfont'>&#xe605;</span>
+{#                                <span class='iconfont'>&#xe605;</span>#}
                             </a>
                         </div>
                     </div>
@@ -216,7 +216,6 @@
                     data:datas,
                     success: function (data) {
                         mew.listsgye = data.data.curuent_page;
-                        console.log(mew.listsgye,'mew.listsgyemew.listsgyemew.listsgye');
                         mew.totals = data.data.maxnum;
                         mew.intopages(mew.totals);
                     }

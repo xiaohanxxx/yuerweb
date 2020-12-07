@@ -108,6 +108,8 @@
 			<div class="bd">
 				<ul>
 					<li ms-repeat="baikebanner"><a ms-attr-href="{el.baikebanner_link}" target="_blank"><img ms-attr-src="'/media/' + el.cover"></a></li>
+{#					<li><a href="" target="_blank"><img src="{% static 'img/banners.png' %}" /></a></li>#}
+{#					<li><a href="" target="_blank"><img src="{% static 'img/banners.png' %}" /></a></li>#}
 				</ul>
 			</div>
 
@@ -201,8 +203,8 @@
      	<div class="partonebiglists">
      		<div class="padiaeone">
      			<div class="h3">
-                    <h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad; float: left">{el.menu_name}</h3>
-                    <a ms-attr-href="/baike/baike_list?types={el.mid}" style="float: right;">更多>></a>
+                    <h3 style="width: 120px; height: 56px; line-height: 56px; border-bottom: 1px solid #ff44ad; float: left; padding-left: 26px;">{el.menu_name}</h3>
+                    <a ms-attr-href="/baike/baike_list?types={el.mid}" style="float: right; padding-right: 20px;">更多>></a>
                 </div>
      			<div class="beiyunbaikepart">
 {#     				<div class="img" style="width: 205px; height: 308px; float: left;"><img ms-attr-src="{% static 'img/983.png' %}"></div>#}

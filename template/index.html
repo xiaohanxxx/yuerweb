@@ -68,11 +68,11 @@
                     <li style="height: 40px; float: left; overflow: hidden; border-radius: 5px;"></li>
                     <li ms-repeat-el="curuent_pagees" style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                         {% if request.user.is_active %}
-                            <a ms-attr-href="/users/centerhim/{el.user.id}">
-                                <img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;">
+                            <a ms-attr-href="'/users/centerhim/' + el.user.id">
+                                <img ms-attr-src="'/media/' + el.user.head" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;">
                             </a>
                         {% else %}
-                            <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
+                            <a href="/login"><img ms-attr-src="'/media/' + el.user.head" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
                         {% endif %}
 
                         <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
@@ -88,10 +88,10 @@
                     <li ms-repeat-el="curuent_pagees"
                         style="height: 40px; min-width: 200px; float: left; background: #fff; overflow: hidden; border-radius: 5px;">
                         {% if request.user.is_active %}
-                            <a ms-attr-href="/users/centerhim/{el.user.id}">
-                                <img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
+                            <a ms-attr-href="'/users/centerhim/' + el.user.id">
+                                <img ms-attr-src="'/media/' + el.user.head" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
                         {% else %}
-                            <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
+                            <a href="/login"><img ms-attr-src="'/media/' + el.user.head" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
                         {% endif %}
                         <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
                             <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
@@ -131,7 +131,7 @@
                                 <li ms-repeat="lisdata">
                                     <a ms-attr-href="/luntan/articles/?aid={el.id}">
                                         {% if request.user.is_active %}
-                                            <a ms-attr-href="/users/centerhim/{el.user.id}">
+                                            <a ms-attr-href="'/users/centerhim/' + el.user.id">
                                                 <img ms-attr-src="/media/{el.user.head}">
                                             </a>
                                         {% else %}
@@ -177,7 +177,7 @@
                                 <li ms-repeat-as="lisdata">
                                     <a ms-attr-href="/luntan/articles/?aid={as.id}">
                                         {% if request.user.is_active %}
-                                            <a ms-attr-href="/users/centerhim/{as.user.id}">
+                                            <a ms-attr-href="'/users/centerhim/'+as.user.id">
                                                 <img ms-attr-src="/media/{as.user.head}" style="width:36px;height:36px;border-radius: 50%;">
                                             </a>
                                         {% else %}
@@ -249,7 +249,7 @@
                                     <li ms-repeat-its="llisdata">
                                         <a ms-attr-href="/taolun/toposting/?pid={its.id}">
                                             {% if request.user.is_active %}
-                                                <a ms-attr-href="/users/centerhim/{its.user.id}">
+                                                <a ms-attr-href="'/users/centerhim/'+its.user.id">
                                                     <img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%">
                                                 </a>
                                             {% else %}
@@ -290,7 +290,7 @@
                                     <li ms-repeat-its="rlisdata">
                                         <a ms-attr-href="/taolun/toposting/?pid={its.id}">
                                             {% if request.user.is_active %}
-                                                <a ms-attr-href="/users/centerhim/{its.user.id}"><img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
+                                                <a ms-attr-href="'/users/centerhim/'+its.user.id"><img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
                                             {% else %}
                                                 <a href="/login"><img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
                                             {% endif %}
@@ -425,7 +425,7 @@
                     success: function (ajax) {
                         var lunbohtml = '';
                         for (var i = 0; i < ajax.data.length; i++) {
-                            lunbohtml += '<div class="swiper-slide"><a href="'+ajax.data[i].banner_link+'" target="_blank"><img src="/media/' + ajax.data[i].cover + '" width="890" height="360"></a></div>';
+                            lunbohtml += '<div class="swiper-slide"><a href="'+ajax.data[i].banner_link+'"></a><img src="/media/' + ajax.data[i].cover + '" width="890" height="360"></div>';
                         }
                         $('.qiehuanimg .swiper-wrapper').html(lunbohtml);
                         var mySwiper = new Swiper('.swiper-container', {
@@ -592,13 +592,13 @@
             blxbydata: [],
             init: function () {
                 $.ajax({
-                    url: '/taolun/postinglist/?num=12',
+                    url: '/taolun/postinglist/?num=10',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {
                         var limgdata = ajax.data.splice(0, 2),
                             rimgdata = ajax.data.splice(0, 2),
-                            llisdata = ajax.data.splice(0, 4),
+                            llisdata = ajax.data.splice(0, 3),
                             rlisdata = ajax.data;
                         Toolfun.snimgzsClass(limgdata);
                         Toolfun.snimgzsClass(rimgdata);

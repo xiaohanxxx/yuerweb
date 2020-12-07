@@ -2,9 +2,10 @@
 {% include 'config.html' %}
  <div class="hotwdtuijian strsub"  ms-controller="rmarcs" style="width: 315px;  padding: 0 6px; float: left; ">
          <ul>
-           <li ms-repeat-item="getwendaese" style="width:90%;">
-              <i class="iconfont">&#xe622;</i>
-              <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.title.substr(0,15)}</a>
+           <li ms-repeat-item="getwendaese">
+{#              <i class="iconfont">&#xe615;</i>#}
+               <img src="{% static 'img/message.png' %}" alt="" width="20px" height="20px">
+              <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.title }</a>
               <abbr>{item.commentnum}个问答</abbr>
            </li>
          </ul>

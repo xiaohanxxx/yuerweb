@@ -62,7 +62,7 @@
                                 <div class="userinfo">
                                     <div class="userleft fl">
                                         {% if request.user.is_active %}
-                                            <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
+                                            <a ms-attr-href="'/users/centerhim/'+{el.user.id}"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
                                         {% else %}
                                             <a href="/login"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
                                         {% endif %}
@@ -109,7 +109,7 @@
                     <li ms-repeat-as="jhtopicdata">
                         <a ms-attr-href="/taolun/toposting/?pid={as.id}">
                             {% if request.user.is_active %}
-                                <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
+                                <a ms-attr-href="'/users/centerhim/'+as.user.id"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
                             {% else %}
                                 <a href="/login"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
                             {% endif %}
