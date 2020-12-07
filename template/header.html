@@ -27,7 +27,6 @@
                         <p ms-repeat="newheaddata"><a
                                 ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
                         </p>
-
                     </div>
                 </li>
                 <li>
@@ -75,9 +74,8 @@
                 </div>
 
             {% else %}
-                <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a
-                        href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###"
-                                                                                                      style="color:#F94479; text-decoration: none;">注册</a>
+                <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;">
+                    <a href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###" style="color:#F94479; text-decoration: none;">注册</a>
                 </p>
             {% endif %}
         </div>
@@ -182,7 +180,6 @@
                 data: vm.loginData,
                 dataType: "json",
                 success: function (data) {
-                    console.log(data, 99999);
                     if (data.code == 200) {
                         layer.msg('登录成功，即将跳转到当前页');
                         localStorage.setItem('username', vm.loginData.username);
@@ -439,7 +436,6 @@
                 dataType: "json",
                 success: function(data) {
                     vm.baikebanner = data.data;
-                    console.log(data, 99999555555);
                 }
             });
         },

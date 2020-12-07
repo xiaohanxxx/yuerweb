@@ -425,7 +425,7 @@
                     success: function (ajax) {
                         var lunbohtml = '';
                         for (var i = 0; i < ajax.data.length; i++) {
-                            lunbohtml += '<div class="swiper-slide"><img src="/media/' + ajax.data[i].cover + '" width="890" height="360"></div>';
+                            lunbohtml += '<div class="swiper-slide"><a href="'+ajax.data[i].banner_link+'"></a><img src="/media/' + ajax.data[i].cover + '" width="890" height="360"></div>';
                         }
                         $('.qiehuanimg .swiper-wrapper').html(lunbohtml);
                         var mySwiper = new Swiper('.swiper-container', {

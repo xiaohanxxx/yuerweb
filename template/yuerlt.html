@@ -31,7 +31,7 @@
 
 
             <div class="swiper-slide" ms-repeat-as="lunbodata">
-                <a href="javascript:;" class='yu_h_imgbox fl'>
+                <a ms-attr-href="{as.lunbolink}" class='yu_h_imgbox fl'>
                     <img ms-attr-src="/media/{as.lunboimg}" ms-attr-alt="{as.name}">
                 </a>
                 <div class="yu_h_info fl">
@@ -242,8 +242,7 @@
                     </div>
                     <ul class="sgyer-lis">
                         <li ms-repeat-el="lisdata"><a
-                                ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i
-                                class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
+                                ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
                     </ul>
                 </div>
 
@@ -316,6 +315,7 @@
                             }, success: function (ajax) {
                                 for (var i = 0; i < ajax.data.length; i++) {
                                     lunbodata[i].lunboimg = ajax.data[i].cover;
+                                    lunbodata[i].lunbolink = ajax.data[i].yuerbanner_link;
                                 }
                                 vm_areas.lunbodata = lunbodata.splice(0, ajax.data.length);
                                 var mySwiper = new Swiper('.swiper-container', {
