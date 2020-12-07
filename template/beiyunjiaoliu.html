@@ -61,7 +61,13 @@
                     <a ms-attr-href="/luntan/articles/?aid={el.id}">
                         <h3>{ el.title.substr(0,20)}..</h3>
                         <div class="userleft">
-                            <img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}">
+                            {% if request.user.is_active %}
+                                <a ms-attr-href="'/users/centerhim/'+el.user.id"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
+                            {% else %}
+                                <a href="/login"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
+                            {% endif %}
+
+
                             <span>{el.user.username}</span>
                             <span>{el.publish_date.replace(/\..*/,'')}</span>
                         </div>
@@ -124,7 +130,12 @@
                 <div class="drinfo" ms-repeat-its="as">
                     <div class="imgbox">
                         <a ms-attr-href="/users/centerhim/{its.article.id}">
-                            <img ms-attr-src="/media/{its.article.user.head}" alt="">
+                            {% if request.user.is_active %}
+                                <a ms-attr-href="'/users/centerhim/'+its.user.id"><img ms-attr-src="/media/{its.article.user.head}" alt=""></a>
+                            {% else %}
+                                <a href="/login"><img ms-attr-src="/media/{its.article.user.head}" alt=""></a>
+                            {% endif %}
+
                             <span>{its.article.user.username}</span>
                         </a>
                     </div>

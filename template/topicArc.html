@@ -40,9 +40,17 @@
         <div class='clearfix'>
             <div class="userInfo">
                 <div class="Mtx">
-                    <a href="javascript:;">
-                        <img src="/media/{{ data.user.head }}" alt="">
-                    </a>
+                    {% if request.user.is_active %}
+                        <a href="/users/centerhim/{{ data.user.id }}">
+                            <img src="/media/{{ data.user.head }}" alt="">
+                        </a>
+                    {% else %}
+                        <a href="/login">
+                            <img src="/media/{{ data.user.head }}" alt="">
+                        </a>
+                    {% endif %}
+
+
                 </div>
                 <div class="txInfo">
                     <span>{{ data.user.username }}</span>
@@ -197,8 +205,8 @@
         var htmldata = '';
         for (var a in comment) {
             var newstr = diguipilun(comment[a].child, comment[a],a);
-            htmldata += '<div class="pl clearfix" ><div class="tx"><a href="javascript:;">';
-            htmldata += '<img src="/media'+ comment[a].user.head + '" alt=""></a></div><p class="plbg">' + comment[a].user.username + '</p>';
+            htmldata += '<div class="pl clearfix" ><div class="tx">{% if request.user.is_active %}<a href="/users/centerhim/'+comment[a].user.id+'"><img src="/media'+ comment[a].user.head + '" alt=""></a>{% else %}<a href="/login">';
+            htmldata += '<img src="/media'+ comment[a].user.head + '" alt=""></a>{% endif %}</div><p class="plbg">' + comment[a].user.username + '</p>';
             htmldata += '<ul class="plul"><p commid=' + comment[a].id + '>　　' + comment[a].comment + '</p><div class="date clearfix">';
             htmldata += '<span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span><span btn="reply" dataInp="'+a+'" onclick="sonIfshow(this)">回复</span></div>';
             htmldata += newstr;

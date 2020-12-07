@@ -9,8 +9,8 @@
                 ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title | truncate(18,'...')}</span><span style="float: right;"><i class="iconfont">&#xe661;</i>{el.thumb}</span></a>
         </li>
     </ul>
-    <div class="sjchangebtn" ms-click="goChange()">
-        <img src="{% static 'images/yuerlt/change.png' %}" alt="">
+    <div class="sjchangebtn" isget="0" ms-click="goChange(this)">
+        <span ><i class="iconfont" >&#xe615;</i>换一批</span>
     </div>
 </div>
 
@@ -20,7 +20,18 @@
     var vm_rmarc = avalon.define({
         $id: 'rmarc',
         data: [],
-        goChange: function () {
+        goChange: function (e) {
+            var _this = $(e);
+            if(_this.attr('isget')>0){
+                return;
+            }
+            _this.attr('isget',1);
+            _this.addClass('sjchangebtnselect');
+            {#$(e).css({'background-color':'#FF44AD','color':'#fff'})#}
+            setTimeout(function(){
+                _this.attr('isget',0);
+                _this.removeClass('sjchangebtnselect');
+            },2000)
             reshRmarc();
         }
     })
