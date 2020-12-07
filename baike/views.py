@@ -196,7 +196,6 @@ def sjldapi(request):
                 )
                 }
             )
-
         return HttpResponse(json.dumps(data), content_type="application/json")
 
 

@@ -16,16 +16,12 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
-<!--      <style type="text/css">
-      body{ background: #029EE9; }
-     </style>
- -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/iconfont.css' %}">
 </head>
 
   {% include 'header.html' %}
   <div ms-controller="bodycontsesr">
      <div class="topboxs">
-{#            <div class="imgs"><img src="{% static 'img/yymc.png' %}"></div>#}
         <div class="imgs"> <img ms-src="{yiyuaninfo.thumb}" width="338" height="252"></div>
             <h3>{yiyuaninfo.title}</h3>
             <p>地址：{yiyuaninfo.cityarea}</p>
@@ -145,7 +141,7 @@
            </div>
          </div>
       </div>
-      <div class="hzwdrights">
+      <div class="hzwdrights yyinfobox">
           <a href=""><img src="{% static 'img/zixuntai.png' %}"></a>
           <div class="szzhuanjia">
               <h3><abbr>相关报道新闻</abbr> <a href="###">更多>></a></h3>

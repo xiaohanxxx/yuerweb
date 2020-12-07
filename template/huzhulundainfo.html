@@ -25,7 +25,7 @@
     <div class="hzwdleftse" style="min-height: 200px;">
         <div class="Muserinfo">
             {% if request.user.is_active %}
-                <a ms-attr-href="'/users/centerhim/'+{askdata.user.id}"><img ms-attr-src="/media/{askdata.user.head}"/></a>
+                <a ms-attr-href="/users/centerhim/{askdata.user.id}"><img ms-attr-src="/media/{askdata.user.head}"/></a>
             {% else %}
                 <a href="/login"><img ms-attr-src="/media/{askdata.user.head}"/></a>
             {% endif %}
@@ -70,7 +70,7 @@
             <ul class="plinfobox">
                 <li ms-repeat-as="pldata" data-repeat-rendered="plisShow">
                     {% if request.user.is_active %}
-                        <a ms-attr-href="'/users/centerhim/'+as.user.id"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
+                        <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
                     {% else %}
                         <a href="/login"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
                     {% endif %}
