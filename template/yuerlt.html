@@ -31,7 +31,7 @@
 
 
             <div class="swiper-slide" ms-repeat-as="lunbodata">
-                <a href="javascript:;" class='yu_h_imgbox fl'>
+                <a ms-attr-href="{as.lunbolink}" class='yu_h_imgbox fl' target="_blank">
                     <img ms-attr-src="/media/{as.lunboimg}" ms-attr-alt="{as.name}">
                 </a>
                 <div class="yu_h_info fl">
@@ -48,8 +48,7 @@
                     </p>
                     <div class="userinfo">
                         <a href="javascript:; " class='fl'><i class='iconfont'>&#xe604;</i><span>{as.article.user.username}</span></a>
-                        <a href="javascript:;" class='fr'><i class='iconfont'
-                                                             style='color:#ccc;'>&#xe66a;</i><span>{as.article.count}</span></a>
+                        <a href="javascript:;" class='fr'><i class='iconfont' style='color:#ccc;'>&#xe66a;</i><span>{as.article.count}</span></a>
                     </div>
                 </div>
             </div>
@@ -104,8 +103,14 @@
                             </a>
                         </p>
                         <div class="byuser">
-                            <div><img ms-attr-src="/media/{el.user.head}" style="width: 20px;height: 20px;border-radius: 50%;"
-                                      alt=""><span>{el.user.username}</span></div>
+                            <div>
+                                {% if request.user.is_active %}
+                                    <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" style="width: 20px;height: 20px;border-radius: 50%;" alt=""></a>
+                                {% else %}
+                                    <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="width: 20px;height: 20px;border-radius: 50%;" alt=""></a>
+                                {% endif %}
+                                <span>{el.user.username}</span>
+                            </div>
                             <a href="javascript:;">
                                 <i class='iconfont icon-pinglun'
                                    style='color:#CCC;'></i><span>{el.commentnum}</span></a>
@@ -122,17 +127,22 @@
                 <li ms-attr-class="$index==pageNow?'rgt_select':''" ms-repeat="data" ms-attr-dataid="{$index}"
                     ms-mouseover="mouser()">
                     <div>
-                        <div class='fl'><img ms-attr-src="/media/{el.user.head}" alt=""><span>{el.user.username}</span>
+                        <div class='fl'>
+                            {% if request.user.is_active %}
+                                <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
+                            {% else %}
+                                <a href="/login"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
+                            {% endif %}
+
+                            <span>{el.user.username}</span>
                         </div>
                         <span class='fr'>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span>
                     </div>
                     <div>
                         {% if request.user.is_active %}
-                             <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="/media/{el.user.head}"
-                                                                           alt=""></a>
+                            <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                         {% else %}
-                             <a href="/login"><img ms-attr-src="/media/{el.user.head}"
-                                                                           alt=""></a>
+                            <a href="/login"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                         {% endif %}
 
                         <div class='fl userinfo'>
@@ -145,8 +155,8 @@
                     </div>
                 </li>
             </ul>
-            <div class="sjchangebtn" ms-click="goChange()">
-                <img src="{% static 'images/yuerlt/change.png' %}" alt="">
+            <div class="sjchangebtn"  isget="0" ms-click="goChange(this)">
+                <span><i class="iconfont">&#xe615;</i>换一批</span>
             </div>
         </div>
     </div>
@@ -211,7 +221,7 @@
                 </div>
                 <ul class="sgyer-h fl">
                     <li ms-attr-class="el.id==pageNo?'lisSelect':''" ms-attr-dataid="el.id" ms-repeat-el="menudata"
-                      isget='0'  ms-click="goChange(el.id,this) ">{el.name}
+                        isget='0' ms-click="goChange(el.id,this) ">{el.name}
                     </li>
                 </ul>
                 <div class="sgyer-infolis fl">
@@ -232,8 +242,7 @@
                     </div>
                     <ul class="sgyer-lis">
                         <li ms-repeat-el="lisdata"><a
-                                ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i
-                                class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
+                                ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
                     </ul>
                 </div>
 
@@ -278,11 +287,11 @@
     {#数据请求渲染相关#}
     (function () {
         var api_mainmenu = '/luntan/areas/',
-            api_articlelist =  '/luntan/articlelist/?tid=',
-            api_hotarticles =  '/luntan/hotarticles/',
-            api_goodmother =  '/luntan/goodmother/?aid=',
-            api_ksAsk =  '/luntan/articles/',
-            api_articles =  '/luntan/articles/?aid=';
+            api_articlelist = '/luntan/articlelist/?tid=',
+            api_hotarticles = '/luntan/hotarticles/',
+            api_goodmother = '/luntan/goodmother/?aid=',
+            api_ksAsk = '/luntan/articles/',
+            api_articles = '/luntan/articles/?aid=';
         var nyzl_num = 17,//控制难孕治疗帖子展示条数
             hymm_num = 8,//好孕妈妈的文章展示条数
             rmarc_num = 9;//热门文章展示条数
@@ -292,13 +301,13 @@
             lunbodata: [],
             lunboinfo: function () {
                 $.ajax({
-                    url:  '/luntan/getlunbo/',
+                    url: '/luntan/getlunbo/',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {
                         var lunbodata = ajax.data;
                         $.ajax({
-                            url:  '/webmanage/banner',
+                            url: '/webmanage/banner',
                             type: 'post',
                             data: {
                                 'bannertype': 2,
@@ -306,6 +315,7 @@
                             }, success: function (ajax) {
                                 for (var i = 0; i < ajax.data.length; i++) {
                                     lunbodata[i].lunboimg = ajax.data[i].cover;
+                                    lunbodata[i].lunbolink = ajax.data[i].yuerbanner_link;
                                 }
                                 vm_areas.lunbodata = lunbodata.splice(0, ajax.data.length);
                                 var mySwiper = new Swiper('.swiper-container', {
@@ -368,12 +378,12 @@
             lisTitle: [],
             pageNo: 0,
             metadata: [],
-            goChange: function (menu_id,ev) {
-                if($(ev).attr('isget')>0){
+            goChange: function (menu_id, ev) {
+                if ($(ev).attr('isget') > 0) {
                     return;
                 }
                 vm_nyzl.pageNo = $(this).attr('dataid');
-                $(ev).attr('isget',1);
+                $(ev).attr('isget', 1);
                 $.ajax({
                     url: api_articlelist + menu_id + '&num=' + nyzl_num,
                     type: 'get',
@@ -384,9 +394,9 @@
                         vm_nyzl.imgTitle = ajax.data.curuent_page.slice(7, 11);
                         Toolfun.snimgzsClass(vm_nyzl.imgTitle);
                         vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11, 17);
-                        setTimeout(function(){
-                            $(ev).attr('isget',0);
-                        },4000)
+                        setTimeout(function () {
+                            $(ev).attr('isget', 0);
+                        }, 4000)
                     }, error: function (error) {
                         console.log(error)
                     }
@@ -401,12 +411,12 @@
             menudata: [],
             hotdata: [],
             lisdata: [],
-            goChange: function (currentid,ev) {
-                if($(ev).attr('isget')>0){
+            goChange: function (currentid, ev) {
+                if ($(ev).attr('isget') > 0) {
                     return;
                 }
                 vm_sgyer.pageNo = $(this).attr('dataid');
-                $(ev).attr('isget',1);
+                $(ev).attr('isget', 1);
                 $.ajax({
                     url: api_articlelist + currentid,
                     type: 'get',
@@ -415,9 +425,9 @@
                         vm_sgyer.hotdata = ajax.data.curuent_page.slice(0, 1);
                         Toolfun.snimgzsClass(vm_sgyer.hotdata);
                         vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
-                        setTimeout(function(){
-                            $(ev).attr('isget',0);
-                        },4000)
+                        setTimeout(function () {
+                            $(ev).attr('isget', 0);
+                        }, 4000)
                     }, error: function (error) {
                         console.log(error);
                     }
@@ -432,7 +442,17 @@
             topicname: 0,
             pageNow: 0,
             aid: 0,
-            goChange: function () {
+            goChange: function (e) {
+                var _this = $(e);
+                if (_this.attr('isget') > 0) {
+                    return;
+                }
+                _this.attr('isget', 1);
+                _this.addClass('sjchangebtnselect');
+                setTimeout(function () {
+                    _this.attr('isget', 0);
+                    _this.removeClass('sjchangebtnselect');
+                }, 2000)
                 vm_hymm.pageOn++;
                 if (vm_hymm.pageOn > vm_hymm.pageAll) {
                     vm_hymm.pageOn = 1;
@@ -459,7 +479,7 @@
                 if (textval == '') {
                     layer.msg("请输入发送完整的信息！！")
                     return false;
-                }else if(vm_freeAsk.selecid==""){
+                } else if (vm_freeAsk.selecid == "") {
                     layer.msg('请选择要提问的所属栏目！！')
                     return false;
                 }
@@ -469,6 +489,7 @@
                     data: {
                         'title': textval,
                         'topics': vm_freeAsk.selecid,
+                        'content': textval,
                         'csrfmiddlewaretoken': glob_csrftoken
                     },
                     success: function (msg) {
@@ -481,7 +502,7 @@
         {#好孕妈妈数据请求#}
 
         function reshHymm(aid, num, page) {
-            
+
             $.ajax({
                 url: api_goodmother + aid + '&num=' + num + '&page' + page,
                 type: 'get',
@@ -490,7 +511,7 @@
                     vm_hymm.pageAll = ajax.data.page_num;
                     vm_hymm.pageOn = page;
                     vm_hymm.data = ajax.data.curuent_page;
-                    
+
                 },
                 error: function (error) {
                     console.log(error);

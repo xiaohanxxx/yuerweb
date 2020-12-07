@@ -47,28 +47,6 @@
                     <p style="cursor:pointer;" order="2">等待回复</p>
                     <a href="/taolun/grouplist/">更多>></a>
                 </div>
-{#                            <div class="tuxiangimgs" style="float: left;"><a href=""><img#}
-{#                                    ms-attr-src='/media/{el.user.head}' width="230" height="160"></a>#}
-{#                            </div>#}
-{#                            <div class="floafright" style="float: left;">#}
-{#                                <a ms-attr-href="/taolun/toposting/?pid={el.id}" class="xuanfugh">#}
-{#                                    <p style="font-size: 16px; margin-bottom: 10px;">{ el.title }</p>#}
-{#                                </a>#}
-{#                                <a ms-attr-href="/taolun/toposting/?pid={el.id}">#}
-{#                                    {el.snimg|html}#}
-{#                                    {el.content}#}
-{#                                </a>#}
-{#                                <div class="infousers">#}
-{#                                    <div class="userone">#}
-{#                                        <i><img src="{% static  "img/user.png" %}">{ el.user.username }</i>#}
-{#                                        <i><img src="{% static  "img/time.png" %}">{ el.publish_date.replace(/:.*/,'') }</i>#}
-{#                                    </div>#}
-{#                                    <div class="usertwo">#}
-{#                                        <i><img src="{% static  "img/yanjin.png" %}">{ el.read }</i>#}
-{#                                        <i><img src="{% static  "img/result.png" %}">{ el.commentnum }</i>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
                 <div class="listswenda">
                     <ul>
 
@@ -83,7 +61,12 @@
                                 </a>
                                 <div class="userinfo">
                                     <div class="userleft fl">
-                                        <img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}">
+                                        {% if request.user.is_active %}
+                                            <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
+                                        {% else %}
+                                            <a href="/login"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
+                                        {% endif %}
+
                                         <span>{el.user.username}</span>
                                         <span>{el.update_date.replace(/\..*/,'')}</span>
                                     </div>
@@ -125,7 +108,12 @@
                 <ol>
                     <li ms-repeat-as="jhtopicdata">
                         <a ms-attr-href="/taolun/toposting/?pid={as.id}">
-                            <img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;">
+                            {% if request.user.is_active %}
+                                <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
+                            {% else %}
+                                <a href="/login"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
+                            {% endif %}
+
                             <h4 style="margin-bottom:10px;height: 38px;overflow: hidden;">{as.title}</h4>
                             <div class="tubiaoousrt">
                                 <span class="fl">

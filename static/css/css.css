@@ -32,7 +32,6 @@ body {
 
 .headerNav .logos {
     width: 289px;
-    /*margin-top: 41px;*/
     float: left;
 }
 
@@ -1463,7 +1462,7 @@ li.curreswd > a {
     min-height: 120px;
     background: #fff;
     margin: 25px auto;
-    width: 1200px;
+    width: 1160px;
     height: 260px;
     padding: 20px;
 }
@@ -3809,3 +3808,48 @@ body .lis-select .askSelect {
 .yytjclass .hot_arc{
     margin-left:-36px;
 }
+/*hotarticle*/
+body .sjchangebtn {
+    position: absolute;
+    bottom: 21px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 120px;
+    height: 27px;
+    cursor: pointer;
+}
+.sjchangebtn>span{
+    float:left;
+    background-color:#BEBEBE;
+    opacity: 0.6;
+    padding: 5px 10px;
+    border-radius: 13px;
+}
+.sjchangebtn>span i{
+    position:relative;
+    top:1px;
+    margin-right:6px;
+
+}
+.sjchangebtnselect span {
+    background-color: #FF44AD;
+}
+.byhot_r {
+    position: relative;
+    width: 337px;
+    height: 582px;
+    margin-left: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid 1px rgba(237, 237, 237, 0.5);
+}
+.hot_arc {
+    position: relative;
+    width: 296px;
+    height: 520px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 0px 18px 0 24px;
+}
+/*医院侧边*/
+.yyinfobox

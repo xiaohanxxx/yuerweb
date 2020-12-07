@@ -603,12 +603,27 @@ body .sjchangebtn {
     bottom: 21px;
     left: 50%;
     transform: translateX(-50%);
-    width: 84px;
+    max-width: 120px;
     height: 27px;
     cursor: pointer;
 }
+.sjchangebtn>span{
+    float:left;
+    background-color:#BEBEBE;
+    opacity: 0.6;
+    padding: 5px 10px;
+    border-radius: 13px;
+}
+.sjchangebtn>span i{
+    position:relative;
+    top:1px;
+    margin-right:6px;
 
-
+}
+.sjchangebtnselect span{
+    background-color: #FF44AD;
+    color:#fff;
+}
 /* hot_bq */
 
 .hot_bq {

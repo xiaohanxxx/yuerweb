@@ -39,7 +39,12 @@
 
         <div class="hzwdcontslist">
             <div class="partwdone" ms-repeat-its="lisdata">
-                <img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px;">
+                {% if request.user.is_active %}
+                    <a ms-attr-href="/users/centerhim/{its.user.id}"><img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px;"></a>
+                {% else %}
+                    <a href="/login"><img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px;"></a>
+                {% endif %}
+
                 <h4><a ms-attr-href="/taolun/toposting/?pid={its.id}">{its.title}</a></h4>
                 <p>{its.user.username} <i class="layui-icon">&#xe68d;</i> {its.publish_date.replace(/:.*/,'')}
                     {% if request.user.is_active %}
