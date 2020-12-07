@@ -3,5 +3,4 @@ from webmanage import views
 
 urlpatterns = [
     path('banner',views.banner),
-
 ]
