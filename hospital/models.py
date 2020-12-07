@@ -84,7 +84,7 @@ class Hospital(models.Model):
 
 class Mail(models.Model):
     username = models.CharField(max_length=32, verbose_name="名字")
-    userhead = models.TextField(verbose_name="头像地址")
+    userhead = models.ImageField(verbose_name='头像', default="thumbnail/824.png", upload_to='thumbnail')
     mail = models.TextField(verbose_name="感谢信")
     doctor = models.ForeignKey("Doctor", default=1, on_delete=models.CASCADE, verbose_name="医生")
 
