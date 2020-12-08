@@ -72,9 +72,9 @@
                             <span>{el.publish_date.replace(/\..*/,'')}</span>
                         </div>
                         <div class='fr'>
-                            <a href="">
+{#                            <a href="">#}
 {#                                <span class='iconfont'>&#xe605;</span>#}
-                            </a>
+{#                            </a>#}
                         </div>
                     </div>
                 </div>
@@ -216,6 +216,7 @@
                     data:datas,
                     success: function (data) {
                         mew.listsgye = data.data.curuent_page;
+                        console.log(mew.listsgye,'mew.listsgyemew.listsgyemew.listsgye');
                         mew.totals = data.data.maxnum;
                         mew.intopages(mew.totals);
                     }

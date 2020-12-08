@@ -17,8 +17,22 @@
      {% include 'header.html' %}
          <div class="centers" ms-controller="centeres">
          	 <div class="ctops">
+                 <style>
+                     .ctops{position: relative;}
+                     .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
+                     .hovser:hover .thtuxiang{ display: block;}
+                 </style>
 {#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}" height="124" width="124"></div>#}
-                 <div class="tuxiang"><img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;"></div>
+                 <div class="tuxiang hovser">
+                     <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
+                    <div class="tuxiang thtuxiang">
+                        <img src="{% static 'img/Vector.png' %}"  alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
+                        <div class="eidt" style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
+                            <i class="layui-icon">&#xe642;</i>
+                        </div>
+                    </div>
+                 </div>
+
          	 	 <div class="iam_username">{{ user }}</div>
          	 	 <div class="jd_tiao">
          	 	 	<div class="jdt" id="slideTest18"></div>
@@ -74,7 +88,7 @@
                     			<li ms-repeat-el="mywenda">
                     				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
                     				<p style="font-size: 12px; margin: 8px 0;">{el.content | truncate(60,'...') | html}</p>
-                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px; display: block;"  ms-click="dianzanfunwd(el,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
+                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;" ms-click="dianzanfunes(el.id,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
                     		</ul>
                     	</div>
@@ -196,27 +210,27 @@
           $id: "centeres",
           aa:1,
           cc:1,
-          dianzanfunwd:function(res,index){
-               var datas= {
-                    'type':'article',
-                    'id':res.id,
+          dianzanfunes:function(res,index){
+              var datas= {
+                  'type':'article',
+                  'id':res,
                }
-               $.ajax({
+              $.ajax({
                     type: 'get',
                     url: '/taolun/thumbup/',
                     data: datas,
-                    dataType: "text", //返回的是TEXT字符串
+                    dataType: "text",
                     success: function (result) {
                         if(result == '点赞成功！'){
                             wvm.mywenda[index].thumbup = wvm.mywenda[index].thumbup + 1;
                             layer.msg(result);
                         }else{
-                          layer.msg(result);
-                           return ;
+                            layer.msg(result);
                         }
-                        layer.msg(result);
-                    }
+                    },error:function(error){
+                  }
                 });
+
           },
           dianzanfun:function(res,index){
               var datas= {
@@ -399,7 +413,6 @@
                         dataType: "json",
                         success: function (data) {
                             wvm.mywenda = data.data;
-                                    console.log(wvm.mywenda,'wvm.mywenda')
                             wvm.maxnum = data.maxnum;
                             wvm.allmywenda = data.maxnum;
                             wvm.getguanzhuData();

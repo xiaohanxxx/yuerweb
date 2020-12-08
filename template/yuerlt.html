@@ -22,11 +22,6 @@
 </head>
 
 {% include 'header.html' %}
-<style>
-    .clearfix{
-        padding: 0;
-    }
-</style>
 <!-- 育儿论坛头部板块 -->
 <section id="yuerhead" ms-controller='yuerltctr' class='wid yuerhead'>
 
@@ -36,7 +31,7 @@
 
 
             <div class="swiper-slide" ms-repeat-as="lunbodata">
-                <a ms-attr-href="{as.lunbolink}" class='yu_h_imgbox fl'>
+                <a ms-attr-href="{as.lunbolink}" class='yu_h_imgbox fl' target="_blank">
                     <img ms-attr-src="/media/{as.lunboimg}" ms-attr-alt="{as.name}">
                 </a>
                 <div class="yu_h_info fl">
@@ -110,7 +105,7 @@
                         <div class="byuser">
                             <div>
                                 {% if request.user.is_active %}
-                                    <a ms-attr-href="'/users/centerhim/'+el.user.id"><img ms-attr-src="/media/{el.user.head}" style="width: 20px;height: 20px;border-radius: 50%;" alt=""></a>
+                                    <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" style="width: 20px;height: 20px;border-radius: 50%;" alt=""></a>
                                 {% else %}
                                     <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="width: 20px;height: 20px;border-radius: 50%;" alt=""></a>
                                 {% endif %}
@@ -134,7 +129,7 @@
                     <div>
                         <div class='fl'>
                             {% if request.user.is_active %}
-                                <a ms-attr-href="'/users/centerhim/'+el.user.id"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
+                                <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                             {% else %}
                                 <a href="/login"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                             {% endif %}
@@ -145,7 +140,7 @@
                     </div>
                     <div>
                         {% if request.user.is_active %}
-                            <a ms-attr-href="'/users/centerhim/' + el.id"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
+                            <a ms-attr-href="/users/centerhim/{el.user.id}"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                         {% else %}
                             <a href="/login"><img ms-attr-src="/media/{el.user.head}" alt=""></a>
                         {% endif %}

@@ -97,7 +97,7 @@
 /* 试管婴儿栏目主体 sgyerContent */
 
 #sgyer_main {
-    margin: 0px auto 30px auto;
+    margin: 30px auto;
     -moz-user-select: none;
     -webkit-user-select: none;
 }
