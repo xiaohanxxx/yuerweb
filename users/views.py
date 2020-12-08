@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 from sms import tengxun
 from luntan import models
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -326,7 +327,12 @@ def getnoticate(request):
     return HttpResponse('ok')
 
 
-from django.views.decorators.csrf import csrf_exempt
+def forget(request):
+    return render(request,'forget.html')
+
+# 忘记密码
+def forget_password(request):
+    phone = request.POST.get('phone')
 
 
 # 测试上传
