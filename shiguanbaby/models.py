@@ -50,7 +50,7 @@ class Articles(models.Model):
     isdelete = models.IntegerField(default=0, verbose_name="是否被删除(逻辑删除)")
     user = models.CharField(max_length=255, verbose_name="作者")
     topics = models.ManyToManyField("Topics", verbose_name='标签')
-    type = models.ManyToManyField("ArticleType", verbose_name="文章类型")
+    type = models.ManyToManyField("ArticleType", verbose_name="文章类型", blank=True)
     read = models.IntegerField(default=1, verbose_name="浏览量")
 
     class Meta:
