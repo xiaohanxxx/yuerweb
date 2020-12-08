@@ -268,11 +268,11 @@ class ThumbUp(views.View):
         thumb.save()
         return HttpResponse("点赞成功")
 
-
+@method_decorator(csrf_exempt,name='dispatch')
 class ImageUp(views.View):
     def get(self, request, *args, **kwargs):
         return render(request, 'imageuptest.html')
-    @csrf_exempt
+
     def post(self, request):
         avatar = request.FILES.get('upload')
         dir = 'media/luntan/' + avatar.name
