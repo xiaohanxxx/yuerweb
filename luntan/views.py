@@ -9,7 +9,7 @@ from django.forms import model_to_dict
 from django.shortcuts import render, HttpResponse, get_object_or_404
 from django import views
 from django.utils.decorators import method_decorator
-
+from django.views.decorators.csrf import csrf_exempt
 from yuerweb import settings
 from . import models as luntanmodel
 from . import form
@@ -268,7 +268,7 @@ class ThumbUp(views.View):
         thumb.save()
         return HttpResponse("点赞成功")
 
-
+@method_decorator(csrf_exempt,name='dispatch')
 class ImageUp(views.View):
     def get(self, request, *args, **kwargs):
         return render(request, 'imageuptest.html')
