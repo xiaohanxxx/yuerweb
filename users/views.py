@@ -45,7 +45,7 @@ def center(request):
         'user': user,
         'level': level,
         'integral': integral,
-        'userinfo':userinfo
+        'userinfo': userinfo
     }
     return render(request, 'center.html', {'data': data})
 
@@ -171,14 +171,13 @@ def outlogin(request):
     return redirect("/login")
 
 
-
 # 修改密码
 @error
 @login_required
 def changepwd(request):
     if request.method == 'POST':
         print('aaaaa')
-        new_password = request.POST.get('new_password',None)
+        new_password = request.POST.get('new_password', None)
         if new_password == None:
             data = {
                 'code': 400,
@@ -216,12 +215,11 @@ class Followapi(View):
         self.request = request
         Quser_id = request.POST.get("Quser_id", None)
         type = int(request.POST.get('type'))
-        print(Quser_id,type)
+        print(Quser_id, type)
         if Quser_id == None:
             pass
         else:
             self.Quser = User.objects.get(id=int(Quser_id))
-
 
         if type == 0:
             return self.follow()
@@ -311,9 +309,8 @@ def public_level(request):
     userinfo.save()
 
 
-
 # 公用通知方法
-def noticate(user,recipient,target,message):
+def noticate(user, recipient, target, message):
     # target 主题
     # message 评论消息
     verb = '在{0}回复了你{1}'.format(target, message)
@@ -324,22 +321,20 @@ def noticate(user,recipient,target,message):
     )
 
 
-
 # 获取通知信息
 def getnoticate(request):
     return HttpResponse('ok')
 
 
-
-
-
 from django.views.decorators.csrf import csrf_exempt
+
+
 # 测试上传
 @csrf_exempt
 def upload(request):
     if request.method == 'POST':
         avatar = request.FILES.get('file')
         user = Userinfo.objects.get(user=request.user)
-        user.user_avatar=avatar
+        user.user_avatar = avatar
         user.save()
-    return HttpResponse(json.dumps({'code':200}), content_type="application/json")
+    return HttpResponse(json.dumps({'code': 200}), content_type="application/json")

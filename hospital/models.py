@@ -1,5 +1,5 @@
 from django.db import models
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 
@@ -61,7 +61,7 @@ class ImageUp(models.Model):
 
 class Hospital(models.Model):
     title = models.CharField(max_length=100, verbose_name="标题")
-    content = models.TextField(verbose_name="正文")
+    content = RichTextUploadingField('内容')
     address = models.TextField(verbose_name="地址")
     phone = models.CharField(max_length=100, verbose_name="电话")
     create_time = models.DateTimeField(auto_now_add=True, verbose_name="创建时间")

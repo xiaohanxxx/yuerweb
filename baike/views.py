@@ -105,6 +105,7 @@ def baike_list(request):
 # 文章详情页渲染
 def article(request):
     aid = request.GET.get('aid')
+
     article_obj = models.Artical.objects.get(id=aid)
     article_obj.click_count = article_obj.click_count+1 # 阅读数+1
     article_obj.save()

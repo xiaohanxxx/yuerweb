@@ -81,7 +81,6 @@ class YuerBanner(models.Model):
     yuerbanner_link = models.URLField('对应链接',default='http://www.zhimeiai.cn')
     idx = models.IntegerField('索引')
     is_active = models.BooleanField('是否是active', default=False)
-
     add_time = models.DateTimeField('添加时间', auto_now_add=True)
 
     def __str__(self):
