@@ -333,14 +333,13 @@ def getnoticate(request):
 
 
 
-
+from django.views.decorators.csrf import csrf_exempt
 # 测试上传
+@csrf_exempt
 def upload(request):
     if request.method == 'POST':
-        name = request.POST.get('username')
-        avatar = request.FILES.get('avatar')
-        with open(avatar.name, 'wb') as f:
-            for line in avatar:
-                f.write(line)
-        return HttpResponse('ok')
-    return render(request, 'picture_upload.html')
+        avatar = request.FILES.get('file')
+        user = Userinfo.objects.get(user=request.user)
+        user.user_avatar=avatar
+        user.save()
+    return HttpResponse(json.dumps({'code':200}), content_type="application/json")
