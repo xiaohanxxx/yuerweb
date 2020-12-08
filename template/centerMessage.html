@@ -20,7 +20,21 @@
 <div class="centers" ms-controller="centeres">
     <div class="ctops">
         {{ data.userinfo }}
-        <div class="tuxiang"><img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;"></div>
+         <style>
+                     .ctops{position: relative;}
+                     .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
+                     .hovser:hover .thtuxiang{ display: block;}
+                 </style>
+{#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}" height="124" width="124"></div>#}
+                 <div class="tuxiang hovser">
+                     <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
+                    <div class="tuxiang thtuxiang">
+                        <img src="{% static 'img/Vector.png' %}"  alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
+                        <div class="eidt" id="test1" style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
+                            <i class="layui-icon">&#xe642;</i>
+                        </div>
+                    </div>
+                 </div>
         <div class="iam_username">{{ user }}</div>
         <div class="jd_tiao">
             <div class="jdt" id="slideTest18"></div>
@@ -320,6 +334,27 @@
                 verification_Code: '',
                 new_password: ''
             },
+        uploades:function(){
+              layui.use('upload', function(){
+                  var upload = layui.upload;
+                  //执行实例
+                  var uploadInst = upload.render({
+                    elem: '#test1' //绑定元素
+                    ,url: '/users/upload' //上传接口
+                    ,accept: 'images'
+                    ,size:500
+                    ,done: function(res,index,upload){
+                      //上传完毕回调
+                          if (res.code == 200){
+                               window.location.reload();
+                          }
+                    }
+                    ,error: function(){
+                      //请求异常回调
+                    }
+                  });
+            });
+        },
             change_edit: function (res) {
                 wvm.cc = res;
             },
@@ -383,6 +418,7 @@
 
             }
         });
+        wvm.uploades();
     </script>
 </body>
 </html>
