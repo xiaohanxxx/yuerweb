@@ -202,22 +202,7 @@
         });
     }
 </script>
-     <script>
-layui.use('upload', function(){
-      var upload = layui.upload;
-      //执行实例
-      var uploadInst = upload.render({
-        elem: '#test1' //绑定元素
-        ,url: '/upload/' //上传接口
-        ,done: function(res){
-          //上传完毕回调
-        }
-        ,error: function(){
-          //请求异常回调
-        }
-      });
-});
-</script>
+
 	<script type="text/javascript">
         avalon.config({
             interpolate: ["{", "}"]
@@ -226,6 +211,24 @@ layui.use('upload', function(){
           $id: "centeres",
           aa:1,
           cc:1,
+        uploades:function(){
+              layui.use('upload', function(){
+                  var upload = layui.upload;
+                  //执行实例
+                  var uploadInst = upload.render({
+                    elem: '#test1' //绑定元素
+                    ,url: '/upload/' //上传接口
+                    ,accept: 'images'
+                    ,size:50
+                    ,done: function(res){
+                      //上传完毕回调
+                    }
+                    ,error: function(){
+                      //请求异常回调
+                    }
+                  });
+            });
+        },
           dianzanfunes:function(res,index){
               var datas= {
                   'type':'article',
@@ -525,6 +528,7 @@ layui.use('upload', function(){
         wvm.getmywenda();//获取我所有的问答
         //wvm.getguanzhuData();//获取所有关注对象
         wvm.gontopage(wvm.maxnum);
+        wvm.uploades();
 	</script>
 </body>
 </html>
