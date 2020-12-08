@@ -1,7 +1,8 @@
 from django.db import models
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
+
 
 class Areas(models.Model):
     name = models.CharField(max_length=255, verbose_name="地区")
@@ -41,7 +42,7 @@ class ArticleType(models.Model):
 # 文章
 class Articles(models.Model):
     title = models.CharField(max_length=255, verbose_name="文章标题")
-    content = models.CharField(max_length=255, verbose_name="文章内容")
+    content = RichTextUploadingField('内容')
     area = models.ForeignKey("Areas", on_delete=models.CASCADE, verbose_name="所属地区")
     thumb = models.ImageField(verbose_name='缩略图', default="thumbnail/824.png", upload_to='thumbnail')
     publish_date = models.DateTimeField(auto_now_add=True, verbose_name="发布日期")
