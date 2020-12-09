@@ -329,7 +329,7 @@
         list_data:[],
         getsgyeList:function (){
             var data = {
-                mid:1,
+                mid:4,
                 'csrfmiddlewaretoken':glob_csrftoken
             }
            $.ajax({
@@ -338,7 +338,12 @@
                 dataType: 'json',
                 data:data,
                 success: function (data) {
-                    mew.list_data = data;
+                     mew.list_data = data;
+                     if (mew.list_data[0].list_data.length>6){
+                         mew.list_data[0].list_data = mew.list_data[0].list_data.splice(0,6);
+                     }else{
+                          mew.list_data = data;
+                     }
                 }
            })
         }

@@ -103,7 +103,7 @@
                 {% if request.user.is_active %}
                     <a href="/luntan/postarticle">发布新帖</a>
                 {% else %}
-                    <a href="/login">发布新帖</a>
+                    <a href="/login?type=1">发布新帖</a>
                 {% endif %}
             </div>
         </div>
@@ -277,7 +277,7 @@
         vm_qndrbox.init();
 
         function pageAjax(current) {
-            
+
             $.ajax({
                 url: inturl + '&page=' + current,
                 type: 'get',
@@ -300,7 +300,7 @@
                         }
                     }
                     vm_ltlist.lisdata = lisdata;
-                    
+
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -329,7 +329,7 @@
         }
 
         function init(inturl) {
-            
+
             $.ajax({
                 url: inturl,
                 type: 'get',
@@ -355,7 +355,7 @@
                     vm_ltlist.lisdata = lisdata;
                     _this.count = ajax.data.maxnum;
                     render(vm_ltlist.count, 10, 5);
-                    
+
                 }, error: function (error) {
                     console.log(error);
                 }
