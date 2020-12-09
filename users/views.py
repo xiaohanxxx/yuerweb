@@ -333,7 +333,7 @@ def forget(request):
                     return HttpResponse(json.dumps({'code':200,'msg':'您的密码已重置为：123456，请登录后回到个人中心修改'}), content_type="application/json")
         else:
             return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
-    return render(request,request,'forget.html')
+    return render(request,'forget.html')
 
 
 # 忘记密码
