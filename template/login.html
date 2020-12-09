@@ -19,13 +19,11 @@
         body {
             background: #029EE9;
         }
-
         .swiper-container {
             width: 100%;
             min-height: 300px;
             background: red;
         }
-
         .swiper-slide {
             text-align: center;
             font-size: 18px;
@@ -43,27 +41,21 @@
             -webkit-align-items: center;
             align-items: center;
         }
-
         .swiper-slide {
             width: 1200px;
             height: 347px;
         }
     </style>
-
 </head>
-
 <body ms-controller="bodycont">
 {% include 'header.html' %}
-
 <div class="denglupage">
-
     <div class="dengluandzc">
         <p class="aaa" ms-class="currese:a==1" style="border-top-left-radius: 3px; border-bottom-left-radius: 3px;"
            ms-click="changedlorzc(1)">登录</p>
         <p class="aaa" ms-class="currese:a==2" style=" border-top-right-radius: 3px; border-bottom-right-radius: 3px;"
            href="" ms-click="changedlorzc(2)">注册</p>
     </div>
-
     <div class="denglubox" ms-if="a==1">
         <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i><input type="" name="" ms-duplex="loginData.username" placeholder="请输入用户名"></div>
         <div class="mima">密码<i class="layui-icon">&#xe673;</i><input type="password" ms-duplex="loginData.password" name="" placeholder="请输入密码"></div>
@@ -72,12 +64,7 @@
             <p style="width: 492px; height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;"
                ms-click="loginFun">登录</p>
         </div>
-{#        <div class="weixinorqq">#}
-{#            <a href="##"><img src="{% static 'img/weixin.png' %}"></a>#}
-{#            <a href="##"><img src="{% static 'img/qq.png' %}"></a>#}
-{#        </div>#}
     </div>
-
     <div class="denglubox1" ms-if="a==2">
         <div class="yonghu">用户<i class="layui-icon layui-icon-username"></i>
             <input type="text" name="" ms-duplex="zhuceDatas.username" placeholder="请输入用户名">
@@ -85,7 +72,6 @@
         <div class="yonghu">手机<i class="layui-icon">&#xe678;</i>
             <input type="" ms-duplex="zhuceDatas.phone" name="" placeholder="请输入手机号">
         </div>
-
         <div class="mima">密码<i class="layui-icon">&#xe673;</i>
             <input type="password" ms-duplex="zhuceDatas.password" name="" placeholder="请输入6-20位密码，由数字和字母组成">
         </div>
@@ -112,7 +98,6 @@
             var layer = layui.layer;
         });
     }
-
      //回车登陆
  $("body").keyup(function(event){
    if(event.keyCode==13) {//keyCode=13是回车键

@@ -100,7 +100,7 @@
         </div>
         <div class="pl_lis">
             <div class="pl_lis_h clearfix">
-                <span class='fl'><em>99</em>条评论</span>
+                <span class='fl'><em>{ plallnum }</em>评论</span>
             </div>
             <div class="pl_info" infobox="box">
                 {#  这是递归开始#}
@@ -131,6 +131,7 @@
         comment: [],
         articles_id: 0,//帖子id
         parent_id: 0,//回帖对应的父id
+        plallnum:'',
         posgz:function(ev){
             var _this=ev;
             $.ajax({
@@ -177,13 +178,13 @@
     initdataHtml();//初始化评论数据
     {#评论刷新#}
     function initdataHtml(){//评论数据局部渲染
-        
         $.ajax({
             url: '/luntan/comment/?articles_id=' + vm_topicArc.articles_id,
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
                 var datalis = ajax.data;
+                vm_topicArc.plallnum = ajax.data.length|0;
                 var comment = [];
                 for (var i = 0; i < datalis.length; i++) {
                     if (datalis[i].parent == null) {

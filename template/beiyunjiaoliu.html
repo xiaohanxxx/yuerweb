@@ -31,11 +31,11 @@
             <span>当前位置：</span>
             <a href="javascript:;">育儿论坛</a>
             <span>></span>
-            <a href="javascript:;">{navdata[Mid-1].name}</a>
+            <a href="javascript:;">{navdata[0].name}</a>
         </div>
         <div class="byjl_l_main clearfix">
-            <h3>{navdata[Mid-1].name}</h3>
-            <div class="main_nav" ms-repeat-as="navdata[Mid-1].child">
+            <h3>{navdata[0].name}</h3>
+            <div class="main_nav" ms-repeat-as="navdata[0].child">
                 <div ms-attr-class="selectTid==as.id?'selectId':''">
                     <img ms-attr-src="as.thumb" ms-attr-alt="{as.name}"><a
                         ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a></div>
@@ -93,7 +93,7 @@
     <!-- 右侧信息栏 -->
     <div class="byjl_r fl">
         <div class="pushpost">
-            <h4>{navdata[Mid-1].name}</h4>
+            <h4>{navdata[0].name}</h4>
             <p>这里可以解决你的问题，快和大家一起讨论吧！</p>
             <p class='post_info clearfix'>
                 <span><i class='iconfont'>&#xe60f;</i>7496 篇文章</span>
@@ -178,8 +178,8 @@
 <script type="text/javascript">
     (function () {
         var inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');//初始化数据请求链接
-        var Mid = window.location.href.substr(window.location.href.indexOf('Mid='), 5).replace('Mid=', '');//对应主栏目id
-        var selectTid = window.location.href.substr(window.location.href.indexOf('tid'), 6).replace('&', '').replace(/tid=/, '');
+        var Mid = window.location.href.match(/Mid=\d+/)[0].replace(/Mid=/,'');
+        var selectTid = window.location.href.match(/tid=\d+/)[0].replace(/tid=/,'');
         var count = 1;
         var vm_ltlist = avalon.define({
             $id: 'luntanbox',
@@ -329,7 +329,6 @@
         }
 
         function init(inturl) {
-            
             $.ajax({
                 url: inturl,
                 type: 'get',
@@ -367,10 +366,14 @@
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
-                vm_ltlist.navdata = ajax.data;
-                localStorage.setItem('Mlanm', vm_ltlist.navdata[Mid - 1].name);
+                for(var i=0;i<ajax.data.length;i++){
+                    if(ajax.data[i].id==Mid){
+                        localStorage.setItem('Mlanm', ajax.data[i].name);
+                        vm_ltlist.navdata.push(ajax.data[i]);
+                        var navData = JSON.stringify(ajax.data[i].child);
+                    }
+                }
                 localStorage.setItem('Mid', vm_ltlist.Mid);
-                var navData = JSON.stringify(ajax.data[vm_ltlist.Mid - 1].child);
                 localStorage.setItem('topicNavs', navData);
             }, error: function (error) {
                 console.log(error);

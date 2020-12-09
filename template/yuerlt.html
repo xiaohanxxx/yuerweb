@@ -25,11 +25,8 @@
 <!-- 育儿论坛头部板块 -->
 <section id="yuerhead" ms-controller='yuerltctr' class='wid yuerhead'>
 
-
     <div class="swiper-container">
         <div class="swiper-wrapper">
-
-
             <div class="swiper-slide" ms-repeat-as="lunbodata">
                 <a ms-attr-href="{as.lunbolink}" class='yu_h_imgbox fl' target="_blank">
                     <img ms-attr-src="/media/{as.lunboimg}" ms-attr-alt="{as.name}">
@@ -60,14 +57,13 @@
         <div class="pagination"></div>
     </div>
 
-
     <div class="jlquan">
         <div class="jlqunClass" ms-repeat-el="yuerlt_data">
             <div class="quanTitle">
                 <a href="javascript:;"><img ms-attr-src="{el.child[0].thumb}" alt=""></a>
                 <div class="quaninfo">
                     <h5>
-                        <a href="javascript:;">{el.name}</a>
+                        <a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
                     </h5>
                     <p><span>785</span>篇备孕交流帖子</p>
                     <p><span>123</span>条评论</p>
@@ -96,7 +92,7 @@
                     <a ms-attr-href="/luntan/articles/?aid={el.id}">
                         <img ms-attr-src="{el.snimg}" alt=""></a>
                     <div class="byinfo_r">
-                        <p class="bytit"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
+                        <p class="bytit"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title.substr(0,15)}</a></p>
                         <p>
                             <a ms-attr-href="/luntan/articles/?aid={el.id}">
                                 {el.content|html}

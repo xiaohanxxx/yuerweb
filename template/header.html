@@ -8,7 +8,6 @@
             <a href="/"><img style="width:215px;height:85px;margin-top:41px;" src="{% static 'images/icon/logo.png' %}"></a>
         </div>
         <div class="headerNav-ul">
-
             <ul>
                 <li>
                     <a href="/" class="nava">首页</a>
@@ -75,7 +74,7 @@
 
             {% else %}
                 <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;">
-                    <a href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###" style="color:#F94479; text-decoration: none;">注册</a>
+                    <a href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="/users/login" style="color:#F94479; text-decoration: none;">注册</a>
                 </p>
             {% endif %}
         </div>
@@ -165,7 +164,6 @@
             'csrfmiddlewaretoken': glob_csrftoken
         },
         loginFun: function () {
-
             if (vm.loginData.username == '' || !vm.loginData.username) {
                 layer.msg('请填写正确的用户名');
                 return;
@@ -260,7 +258,17 @@
             vm.b = id;
             vm.indexs = index;
             vm.erjidatalist = [];
-            vm.erjidatalist = vm.datasgyes[index].children;
+            if(vm.datasgyes){
+                var zzdata = [];
+                if(vm.datasgyes[index].children.length>7){
+                    for(var i=0;i<7;i++){
+                        zzdata.push(vm.datasgyes[index].children[i]);
+                    }
+                }else{
+                    zzdata = vm.datasgyes[index].children;
+                }
+                vm.erjidatalist = zzdata;
+            }
             if (vm.erjidatalist.length > 4) {
                 vm.erjidatalist = vm.erjidatalist.splice(0, 4);
             }

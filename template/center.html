@@ -12,13 +12,28 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+    <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
 </head>
 <body>
      {% include 'header.html' %}
          <div class="centers" ms-controller="centeres">
          	 <div class="ctops">
-{#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}" height="124" width="124"></div>#}
-                 <div class="tuxiang"><img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;"></div>
+                 <style>
+                     .ctops{position: relative;}
+                     .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
+                     .hovser:hover .thtuxiang{ display: block;}
+                 </style>
+                 <div class="tuxiang hovser">
+                     <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
+                    <div class="tuxiang thtuxiang">
+                        <img src="{% static 'img/Vector.png' %}"  alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
+                        <div class="eidt" id="test1" style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
+                            <i class="layui-icon">&#xe642;</i>
+                        </div>
+                    </div>
+                 </div>
+
          	 	 <div class="iam_username">{{ user }}</div>
          	 	 <div class="jd_tiao">
          	 	 	<div class="jdt" id="slideTest18"></div>
@@ -74,7 +89,7 @@
                     			<li ms-repeat-el="mywenda">
                     				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
                     				<p style="font-size: 12px; margin: 8px 0;">{el.content | truncate(60,'...') | html}</p>
-                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
+                    				<div>{el.publish_date} <abbr style="float: right; margin-right: 115px;" ms-click="dianzanfunes(el.id,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
                     			</li>
                     		</ul>
                     	</div>
@@ -87,7 +102,6 @@
                      		<div class="gzlists_one">
                                 <a  ms-attr-href="'/users/centerhim/' + el.userid"><img src="{% static 'img/tuxiang.jpg' %}"></a>
                      			<p style="font-size: 16px; margin-bottom: 15px;">{el.user}</p>
-{#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
                      			<abbr ms-click="overguanzhuhim(el)" style="margin-left: 3px; cursor: pointer; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">已关注</abbr>
                      		</div>
                      		<div class="four_hot">
@@ -95,9 +109,7 @@
                      				<li ms-repeat-item="el.user_article">
                                         <a ms-attr-href="/luntan/articles/?aid={item.id}">{item.title | truncate(16,'...')}</a>
                      				</li>
-{#                     				<li>#}
-{#                     					<a href="">我是论坛帖子标题最多显示...</a>#}
-{#                     				</li>#}
+
                      			</ul>
                      		</div>
                      	</div>
@@ -118,14 +130,6 @@
                      		</div>
 
 
-
-{#                     		<div class="gzlists">#}
-{#                     			<img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>#}
-{#                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>#}
-{#                     		</div>#}
-
-
                      	</div>
                      </div>
                       <div id="demo8" ms-if="aa==1 || aa==2"></div>
@@ -144,16 +148,11 @@
                         			<input type="text" placeholder="我是用户名" style="height: 30px; line-height: 30px; padding-left: 10px;">
                         		    <input type="button" value="保存" style="height: 30px; line-height: 30px; width: 70px; text-align: center; border: 1px solid #FF44AD; background: #fff; color: #FF44AD; outline: none;">
                         		</p>
-{#                        		<p class="bangding" style="margin: 15px 0; padding: 15px;">绑定微信：<a title="">点击绑定</a></p>#}
-{#                        		<p class="bangding" style="margin: 15px 0; padding: 15px;">绑定  QQ：<a title="">点击绑定</a></p>#}
+
                         	</div>
                         	<div class="ziliao_set" style="padding: 25px;"  ms-if="cc ==2">
-{#                        		<p>用户名：{usernames}</p>#}
+
                         		<p>手机号：<input type="text" placeholder="请填写手机号" style="height: 30px; line-height: 30px;" ms-duplex="edit_passwad.phone"></p>
-{#                        		<p>验证码：#}
-{#                        			<input type="text" name="" style="height: 35px; line-height: 35px;" ms-duplex="edit_passwad.verification_Code" >#}
-{#                        			<input id="sendsmses" ms-click="getCode" type="button" name="" ms-attr-value="getcodewenzi" style="padding: 5px 7px; background: #fff; text-align: center; color: #FF44AD; border: 1px solid #FF44AD;">#}
-{#                        		</p>#}
                         		<p>输入新密码：<input type="password" placeholder="请填写新密码" style="height: 30px; line-height: 30px;"ms-duplex="edit_passwad.new_password" ></p>
                         		<p class="okedit"><abbr title="" style="cursor: pointer;" ms-click="okedit">确认修改</abbr></p>
                         	</div>
@@ -188,6 +187,7 @@
         });
     }
 </script>
+
 	<script type="text/javascript">
         avalon.config({
             interpolate: ["{", "}"]
@@ -196,24 +196,52 @@
           $id: "centeres",
           aa:1,
           cc:1,
-          {#dianzanfunes:function(res,index){#}
-          {#    var datas= {#}
-          {#         'aid':res,#}
-          {#     }#}
-          {#    $.ajax({#}
-          {#          type: 'get',#}
-          {#          url: '/luntan/thumbup/',#}
-          {#          data: datas,#}
-          {#          dataType: "text",#}
-          {#          success: function (result) {#}
-          {#              layer.msg(result);#}
-          {#              alert(result);#}
-          {#          },error:function(error){#}
-          {#            console.log(error,15151515)#}
-          {#        }#}
-          {#      });#}
-          {##}
-          {#},#}
+        uploades:function(){
+              layui.use('upload', function(){
+                  var upload = layui.upload;
+                  //执行实例
+                  var uploadInst = upload.render({
+                    elem: '#test1' //绑定元素
+                    ,url: '/users/upload' //上传接口
+                    ,accept: 'images'
+                    ,size:500
+                    ,done: function(res,index,upload){
+                      //上传完毕回调
+                          if (res.code == 200){
+                               window.location.reload();
+                          }
+                          console.log(res,'resres')
+                          console.log(index,'indexindex')
+                          console.log(upload,'uploadupload')
+                    }
+                    ,error: function(){
+                      //请求异常回调
+                    }
+                  });
+            });
+        },
+          dianzanfunes:function(res,index){
+              var datas= {
+                  'type':'article',
+                  'id':res,
+               }
+              $.ajax({
+                    type: 'get',
+                    url: '/taolun/thumbup/',
+                    data: datas,
+                    dataType: "text",
+                    success: function (result) {
+                        if(result == '点赞成功！'){
+                            wvm.mywenda[index].thumbup = wvm.mywenda[index].thumbup + 1;
+                            layer.msg(result);
+                        }else{
+                            layer.msg(result);
+                        }
+                    },error:function(error){
+                  }
+                });
+
+          },
           dianzanfun:function(res,index){
               var datas= {
                    'aid':res.id,
@@ -231,7 +259,6 @@
                           layer.msg(result);
                            return ;
                         }
-                        //wvm.alltiezi[index].thumbup = wvm.alltiezi[index].thumbup + 1
                         layer.msg(result);
                     }
                 });
@@ -264,40 +291,6 @@
             eval("var reg = /^1[34578]\\d{9}$/;");
             return RegExp(reg).test(content);
           },
-            {#getCode: function () { //获取验证码#}
-            {#    if (wvm.edit_passwad.phone == '' || !wvm.edit_passwad.phone || !wvm.validatorTel(wvm.edit_passwad.phone)) {#}
-            {#        layer.msg('请填写正确的手机号');#}
-            {#        return;#}
-            {#    }#}
-            {#    var time = 60;#}
-            {#    if (time == 60) {#}
-            {#        var time1 = setInterval(function () {#}
-            {#            if (time == 0) {#}
-            {#                wvm.getcodewenzi = '重发'#}
-            {#                $("#sendsms").removeAttr("disabled");#}
-            {#                time = 60;#}
-            {#                clearInterval(time1);#}
-            {#            } else {#}
-            {#                $("#sendsms").attr("disabled", "true");#}
-            {#                wvm.getcodewenzi = "重发(" + time + ")";#}
-            {#                time--;#}
-            {#            }#}
-            {#        }, 1000);#}
-            {#    }#}
-            {#    var phone = {#}
-            {#        phone: wvm.edit_passwad.phone#}
-            {#    }#}
-            {#    $.ajax({#}
-            {#        type: 'post',#}
-            {#        url: '/users/smsvif',#}
-            {#        data: phone,#}
-            {#        dataType: "json",#}
-            {#        // timeout: 10000,#}
-            {#        success: function (data) {#}
-            {#            console.log(data);#}
-            {#        }#}
-            {#    });#}
-            {#},#}
             okedit:function(){
                 $.ajax({
                     type: 'post',
@@ -484,13 +477,12 @@
                         }
                     });
             }
-        });
-		//wvm.getAllguanzhu();
+        })
 		wvm.getAllmytiezi();//获取我发布的帖子
         wvm.getAllfensi();
         wvm.getmywenda();//获取我所有的问答
-        //wvm.getguanzhuData();//获取所有关注对象
         wvm.gontopage(wvm.maxnum);
+        wvm.uploades();
 	</script>
 </body>
 </html>
