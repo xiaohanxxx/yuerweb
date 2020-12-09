@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 from sms import tengxun
 from luntan import models
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -80,6 +81,7 @@ def centerhim(request, Quser_id):
 
 
 # 用户注册
+@error
 def register(request):
     if request.method == 'POST':
         # TODO 查询用户信息并返回到登录界面
@@ -97,22 +99,6 @@ def register(request):
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             # 创建用户
-            user = User.objects.create_user(
-                username=username,
-                password=password,
-            )
-            user_save = Userinfo(
-                user=user,
-                phone=phone,
-            )
-            user_save.save()
-
-            data = {
-                'code': 200,
-                'msg': '注册成功'
-            }
-            return HttpResponse(json.dumps(data), content_type="application/json")
-
             # 获取验证码是否正确
             yzm = request.session['smscode']
             if verification_Code == yzm:
@@ -325,8 +311,47 @@ def noticate(user, recipient, target, message):
 def getnoticate(request):
     return HttpResponse('ok')
 
+# 忘记密码
+@csrf_exempt
+def forget(request):
+    if request.method == "POST":
+        #1、验证手机号码是否正确
+        phone = request.POST.get('phone')
+        username = request.POST.get('username')
+        verification_Code = request.POST.get('verification_Code')
+        user = User.objects.filter(username=username)
+        if user:
+            obj = User.objects.get(username=username)
+            userobj = Userinfo.objects.get(user_id=obj.id)
+            if userobj.phone != phone:
+                return HttpResponse(json.dumps({'code':400,'msg':'手机号错误'}), content_type="application/json")
+            else:
+                yzm = request.session['smscode']
+                if verification_Code == yzm:
+                    # 密码重置
+                    obj.set_password("123456")
+                    return HttpResponse(json.dumps({'code':200,'msg':'您的密码已重置为：123456，请登录后回到个人中心修改'}), content_type="application/json")
+        else:
+            return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
+    return render(request,'forget.html')
 
-from django.views.decorators.csrf import csrf_exempt
+
+# 忘记密码
+def forget_password(request):
+    #1、验证手机号码是否正确
+    phone = request.POST.get('phone')
+    username = request.POST.get('username')
+    user = User.objects.filter(username=username)
+    if user:
+        print(user.phone)
+    else:
+        return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
+
+
+    # verification_Code = request.POST.get('verification_Code')
+    # yzm = request.session['smscode']
+    # if verification_Code == yzm:
+
 
 
 # 测试上传

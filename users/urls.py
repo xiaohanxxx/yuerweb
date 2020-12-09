@@ -8,6 +8,7 @@ urlpatterns = [
     path('upload', views.upload),
     path('register', views.register),
     path('login', views.userlogin),
+    path('forget',views.forget),
     path('changepwd', views.changepwd),
     path('smsvif', views.smsvif),
     re_path(r'^centerhim/(\d+)', views.centerhim),  # 别人的个人中心
