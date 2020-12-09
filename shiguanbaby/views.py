@@ -27,7 +27,7 @@ class ArticlesList(views.View):
         aId = request.GET.get("aid")
         num = request.GET.get('num', 10)
         aObj = get_object_or_404(models.Areas, pk=aId)
-        articleList = aObj.articles_set.all().order_by("publish_date")
+        articleList = aObj.articles_set.all().order_by("-publish_date")
         curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
         paginator = Paginator(articleList, num)
         pag_num = paginator.num_pages  # 获取整个表的总页数

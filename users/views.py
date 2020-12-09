@@ -11,6 +11,7 @@ from django.utils.decorators import method_decorator
 from django.conf import settings
 from sms import tengxun
 from luntan import models
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
@@ -45,7 +46,7 @@ def center(request):
         'user': user,
         'level': level,
         'integral': integral,
-        'userinfo':userinfo
+        'userinfo': userinfo
     }
     return render(request, 'center.html', {'data': data})
 
@@ -80,6 +81,7 @@ def centerhim(request, Quser_id):
 
 
 # 用户注册
+@error
 def register(request):
     if request.method == 'POST':
         # TODO 查询用户信息并返回到登录界面
@@ -97,22 +99,6 @@ def register(request):
             return HttpResponse(json.dumps(data), content_type="application/json")
         else:
             # 创建用户
-            user = User.objects.create_user(
-                username=username,
-                password=password,
-            )
-            user_save = Userinfo(
-                user=user,
-                phone=phone,
-            )
-            user_save.save()
-
-            data = {
-                'code': 200,
-                'msg': '注册成功'
-            }
-            return HttpResponse(json.dumps(data), content_type="application/json")
-
             # 获取验证码是否正确
             yzm = request.session['smscode']
             if verification_Code == yzm:
@@ -171,13 +157,13 @@ def outlogin(request):
     return redirect("/login")
 
 
-
 # 修改密码
 @error
 @login_required
 def changepwd(request):
     if request.method == 'POST':
-        new_password = request.POST.get('new_password',None)
+        print('aaaaa')
+        new_password = request.POST.get('new_password', None)
         if new_password == None:
             data = {
                 'code': 400,
@@ -200,6 +186,7 @@ def changetx(request):
     file_obj = request.FILES.get('avatar')
     Userinfo.user_avatar = file_obj
     Userinfo.save()
+    print("ok")
 
 
 # TODO 去TM的面向对象编程
@@ -214,11 +201,11 @@ class Followapi(View):
         self.request = request
         Quser_id = request.POST.get("Quser_id", None)
         type = int(request.POST.get('type'))
+        print(Quser_id, type)
         if Quser_id == None:
             pass
         else:
             self.Quser = User.objects.get(id=int(Quser_id))
-
 
         if type == 0:
             return self.follow()
@@ -262,20 +249,22 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
+        print(follow_list)
         for i in follow_list:
             article_list = models.Articles.objects.filter(user_id=i['userid'])
+            print(article_list)
 
         data = {
             'code': 200,
             'msg': '成功',
             'data_list': list({
-              'user': i['username'],
-              'userid': i['userid'],
-              'user_article': list(
-                  models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
-          }
-          for i in follow_list
-          )
+                                  'user': i['username'],
+                                  'userid': i['userid'],
+                                  'user_article': list(
+                                      models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
+                              }
+                              for i in follow_list
+                              )
         }
 
         return HttpResponse(json.dumps(data), content_type="application/json")
@@ -306,9 +295,8 @@ def public_level(request):
     userinfo.save()
 
 
-
 # 公用通知方法
-def noticate(user,recipient,target,message):
+def noticate(user, recipient, target, message):
     # target 主题
     # message 评论消息
     verb = '在{0}回复了你{1}'.format(target, message)
@@ -319,23 +307,61 @@ def noticate(user,recipient,target,message):
     )
 
 
-
 # 获取通知信息
 def getnoticate(request):
     return HttpResponse('ok')
 
+# 忘记密码
+@csrf_exempt
+def forget(request):
+    if request.method == "POST":
+        #1、验证手机号码是否正确
+        phone = request.POST.get('phone')
+        username = request.POST.get('username')
+        verification_Code = request.POST.get('verification_Code')
+        password = request.POST.get('newpassword')
+        user = User.objects.filter(username=username)
+        if user:
+            obj = User.objects.get(username=username)
+            userobj = Userinfo.objects.get(user_id=obj.id)
+            if userobj.phone != phone:
+                return HttpResponse(json.dumps({'code':400,'msg':'手机号与用户名不匹配'}), content_type="application/json")
+            else:
+                yzm = request.session['smscode']
+                if verification_Code == yzm:
+                    # 密码重置
+                    obj.set_password(password)
+                    obj.save()
+                    return HttpResponse(json.dumps({'code':200,'msg':'密码已修改'}), content_type="application/json")
+        else:
+            return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
+    return render(request,'forget.html')
 
 
+# 忘记密码
+def forget_password(request):
+    #1、验证手机号码是否正确
+    phone = request.POST.get('phone')
+    username = request.POST.get('username')
+    user = User.objects.filter(username=username)
+    if user:
+        print(user.phone)
+    else:
+        return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
+
+
+    # verification_Code = request.POST.get('verification_Code')
+    # yzm = request.session['smscode']
+    # if verification_Code == yzm:
 
 
 
 # 测试上传
+@csrf_exempt
 def upload(request):
     if request.method == 'POST':
-        name = request.POST.get('username')
-        avatar = request.FILES.get('avatar')
-        with open(avatar.name, 'wb') as f:
-            for line in avatar:
-                f.write(line)
-        return HttpResponse('ok')
-    return render(request, 'picture_upload.html')
+        avatar = request.FILES.get('file')
+        user = Userinfo.objects.get(user=request.user)
+        user.user_avatar = avatar
+        user.save()
+    return HttpResponse(json.dumps({'code': 200}), content_type="application/json")

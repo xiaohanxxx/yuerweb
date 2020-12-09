@@ -25,9 +25,9 @@
     <div class="hzwdleftse" style="min-height: 200px;">
         <div class="Muserinfo">
             {% if request.user.is_active %}
-                <a ms-attr-href="/users/centerhim/{askdata.user.id}"><img ms-attr-src="/media/{askdata.user.head}"/></a>
+                <a ms-attr-href="/users/centerhim/{askdata.user.id}"><img ms-attr-src="/media/{askdata.user.head}" width="30" height="30" style="float: left;margin-right: 15px;"/></a>
             {% else %}
-                <a href="/login"><img ms-attr-src="/media/{askdata.user.head}"/></a>
+                <a href="/login"><img ms-attr-src="/media/{askdata.user.head}" width="30" height="30" style="float: left;margin-right: 15px;"/></a>
             {% endif %}
 
             <h3>{askdata.title}</h3>
@@ -70,9 +70,9 @@
             <ul class="plinfobox">
                 <li ms-repeat-as="pldata" data-repeat-rendered="plisShow">
                     {% if request.user.is_active %}
-                        <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
+                        <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" alt="" width="30" height="30" style="float: left;margin-right: 15px;"></a>
                     {% else %}
-                        <a href="/login"><img ms-attr-src="/media/{as.user.head}" alt=""></a>
+                        <a href="/login"><img ms-attr-src="/media/{as.user.head}" alt="" width="30" height="30" style="float: left;margin-right: 15px;"></a>
                     {% endif %}
 
                     <div class="userinfo">
@@ -136,28 +136,28 @@
             this.plresh();
         },
         plresh: function () {
-            
+
             $.ajax({
                 url: '/taolun/comment/?pid=' + vm_hzwdinfo.pid+'&orderby=1',
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdinfo.pldata = ajax.data;
-                    
+
                 }, error: function (error) {
                     console.log(error);
                 }
             })
         },
         tidresh: function () {
-            
+
             $.ajax({
                 url:  '/taolun/posting/?pid=' + vm_hzwdinfo.pid,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdinfo.askdata = ajax.data;
-                    
+
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -173,14 +173,14 @@
                 return false;
             }else{
                 vm_hzwdinfo.orderby = orderby;
-                
+
                 $.ajax({
                     url:'/taolun/comment/?pid='+vm_hzwdinfo.pid+'&orderby='+vm_hzwdinfo.orderby,
                     type:'get',
                     dataType:'json',
                     success:function(ajax){
                         vm_hzwdinfo.pldata = ajax.data;
-                        
+
                     },error:function(error){
                         console.log(error);
                     }
@@ -235,7 +235,7 @@
                             layui.layedit.setContent(vm_hzwdinfo.ditsl,'欢迎留言评论~！');
                             vm_hzwdinfo.plresh();
                         },1500)
-                        
+
                     }, error: function (error) {
                         layer.msg(error);
                     }

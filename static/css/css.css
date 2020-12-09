@@ -432,14 +432,15 @@ body {
 }
 
 .hidebox {
-    width: 900px;
+    width: 908px;
     height: 358px;
     background: #fff;
     position: absolute;
     left: 290px;
-    top: 0;
+    top: 0px;
     z-index: 111;
-    box-shadow: 1px 2px 2px #ff44ad;
+    /*box-shadow: 1px 2px 2px #ff44ad;*/
+    border:1px solid #E2AFD6;
 }
 
 .hideboxlist {
@@ -463,6 +464,7 @@ body {
 
 .hidebox .conts ul {
     overflow: hidden;
+    width: 90%;
 }
 
 .hidebox .conts ul li {
@@ -2476,7 +2478,9 @@ li.curreswd > a {
     margin-bottom: 10px;
     font-size: 14px;
 }
-
+.ululli a:hover{
+    color: #FF44AD;
+}
 .ululli h4 {
     margin-bottom: 10px;
     color: #ff44ad;
@@ -2496,7 +2500,14 @@ li.curreswd > a {
     padding: 0;
     cursor: pointer;
 }
-
+#sendsmses {
+    float: right;
+    width: 120px;
+    margin-right: 50px;
+    text-align: center;
+    padding: 0;
+    cursor: pointer;
+}
 .hzwdcontslistes {
     width: 100%;
     overflow: hidden;

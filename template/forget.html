@@ -5,78 +5,139 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta name=renderer content=webkit>
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="layui/layui.js"></script>
-	<script type="text/javascript" src="js/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/avalon.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/swiper-bundle.min.css">
-	<link rel="stylesheet" type="text/css" href="css/css.css">
-  <link rel="stylesheet" type="text/css" href="css/index.css">
-  <link rel="stylesheet" type="text/css" href="layui/css/layui.css">
-     <style type="text/css">
-      body{ background: #029EE9; }
-          .swiper-container{
-               width: 100%;
-               min-height: 300px;
-               background: red;
-          }
-         .swiper-slide {
-                text-align: center;
-                font-size: 18px;
-                background: #fff;
-                display: -webkit-box;
-                display: -ms-flexbox;
-                display: -webkit-flex;
-                display: flex;
-                -webkit-box-pack: center;
-                -ms-flex-pack: center;
-                -webkit-justify-content: center;
-                justify-content: center;
-                -webkit-box-align: center;
-                -ms-flex-align: center;
-                -webkit-align-items: center;
-                align-items: center;
-          }
-          .swiper-slide{ width: 1200px; height: 347px; }
-     </style>
-
+    {% load static %}
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{%  static 'css/index.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 </head>
-
-<body  ms-controller="bodyconts">
+<script>
+       avalon.config({
+            interpolate: ["{", "}"]
+    });
+       layui.use('layer', function(){
+          var layer = layui.layer;
+        });
+    var mmvm = avalon.define({
+         $id:'bodycontforget',
+         zhou:'验证码',
+         editedata:{
+             'phone':'',
+             'code':'',
+             'password':'',
+             'newpassword':'',
+             'username':''
+         },
+         getDataesa:function (){
+             console.log(mmvm.editedata,'editedata')
+             if (mmvm.editedata.phone == '' || !mmvm.editedata.phone || !vm.validatorTel(mmvm.editedata.phone)) {
+                layer.msg('请填写正确的手机号');
+                return;
+             }
+             if(mmvm.editedata.code == '' || !mmvm.editedata.code){
+                    layer.msg('请填写验证码');
+                    return;
+             }
+             if(mmvm.editedata.password == '' || !mmvm.editedata.password){
+                    layer.msg('请填写密码');
+                    return;
+             }
+             if(mmvm.editedata.newpassword == '' || !mmvm.editedata.newpassword ){
+                    layer.msg('请填写确认密码');
+                    return;
+             }
+             if (mmvm.editedata.password !== mmvm.editedata.newpassword ){
+                    layer.msg('请两次密码保持一致');
+                    return;
+             }
+             var datas = {
+                 'phone':mmvm.editedata.phone,
+                 'username':mmvm.editedata.username,
+                 'verification_Code':mmvm.editedata.code,
+                'csrfmiddlewaretoken': glob_csrftoken
+             }
+            $.ajax({
+                type: 'post',
+                url: '/users/forget',
+                data: datas,
+                dataType: "json",
+                // timeout: 10000,
+                success: function (data) {
+                    console.log(data,'*****************************');
+                    if(data.code == 200){
+                        layer.msg('修改密码成功，请登录后在个人中心修改密码');
+                        setTimeout(function () {
+                            window.location.href="/users/login?type=1"
+                        }, 1500)
+                    }
+                }
+            });
+         },
+        getCodees:function (){
+            if (mmvm.editedata.phone == '' || !mmvm.editedata.phone || !vm.validatorTel(mmvm.editedata.phone)) {
+                layer.msg('请填写正确的手机号');
+                return;
+            }
+            var time = 60;
+            if (time == 60) {
+                var time1 = setInterval(function () {
+                    if (time == 0) {
+                        mmvm.zhou = '重新发送'
+                        $("#sendsmses").removeAttr("disabled");
+                        time = 60;
+                        clearInterval(time1);
+                    } else {
+                        $("#sendsmses").attr("disabled", "true");
+                        mmvm.zhou = "重新发送(" + time + ")";
+                        time--;
+                    }
+                }, 1000);
+            }
+            var phone = {
+                'phone': mmvm.editedata.phone,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            $.ajax({
+                type: 'post',
+                url: '/users/smsvif',
+                data: phone,
+                dataType: "json",
+                // timeout: 10000,
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        }
+    })
+</script>
+<body  ms-controller="bodycontforget">
   {% include 'header.html' %}
-     
-   
-    <div class="denglupage">
-       
-     
 
+    <div class="denglupage">
         <div class="denglubox2">
-           <div class="yonghu">手机号<i class="layui-icon">&#xe678;</i><input type="" name="" placeholder="请输入手机号"></div>
-           <div class="yonghu">验证码<input type="" name="" placeholder="请输入验证码" style="width: 300px;"><abbr style="cursor: pointer;">获取验证码</abbr></div>
-           <div class="mima">新密码<i class="layui-icon">&#xe673;</i><input type="password" name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
-           <div class="mima">确认密码<i class="layui-icon">&#xe673;</i><input type="password" name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
+           <div class="yonghu">用户名 <i class="layui-icon">&#xe678;</i><input ms-duplex="editedata.username" type="" name="" placeholder="请输入用户名"></div>
+           <div class="yonghu">手机号 <i class="layui-icon">&#xe678;</i><input ms-duplex="editedata.phone" type="" name="" placeholder="请输入手机号"></div>
+           <div class="yonghu">验证码<input type="text" name=""  ms-duplex="editedata.code"   placeholder="请输入验证码" style="width: 300px;">
+               <abbr style="cursor: pointer;" >
+                    <input ms-click="getCodees" id="sendsmses" type="button" name="" ms-attr-value="zhou">
+               </abbr>
+           </div>
+           <div class="mima">新密码<i class="layui-icon">&#xe673;</i><input   ms-duplex="editedata.password"  type="password" name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
+           <div class="mima">确认密码<i class="layui-icon">&#xe673;</i><input type="password"   ms-duplex="editedata.newpassword"  name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>
 
            <div class="denlguanniu1">
-                <p style="width: 492px; height: 62px; line-height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;">确认</p>
-                <p style="margin-top: 25px; padding-left: 25px; width: 492px;"><a href="" style="float: right; color: #ff44ad;">已有账号，返回登录</a></p>
+                <p ms-click="getDataesa" style="width: 492px; height: 62px; line-height: 62px; background: #ff44ad; margin-left: 50px; border-radius: 60px; text-align: center; color: #fff; cursor: pointer; font-size: 16px;">确认</p>
+                <p style="margin-top: 25px; padding-left: 25px; width: 492px;"><a href="/users/login?type=1" style="float: right; color: #ff44ad;">已有账号，返回登录</a></p>
           </div>
-        </div> 
-
-
-
+        </div>
     </div>
-
-
-
-
-
-
-
-
      <!-- 底部 -->
     {% include 'footer.html' %}
-    
-</script>
+
 </body>
 </html>
