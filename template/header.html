@@ -75,7 +75,7 @@
 
             {% else %}
                 <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;">
-                    <a href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="###" style="color:#F94479; text-decoration: none;">注册</a>
+                    <a href="/users/login?type=1" style="color:#F94479; text-decoration: none;">登录</a> | <a href="/users/login?type=2" style="color:#F94479; text-decoration: none;">注册</a>
                 </p>
             {% endif %}
         </div>
@@ -149,7 +149,7 @@
         names: '医院',
         a: 1,
         b: 1,
-        getcodewenzi: '获取验证码',
+        getcodewenzi:'获取验证码',
         datasgyes: [],
         erjidatalist: [],
         zhuceDatas: {
@@ -195,7 +195,8 @@
             });
         },
         mimayanzheng: function (ml) {
-            var reg = /^[\w]{6,12}$/
+            var reg = /^[\w]{6,16}$/
+             {#var reges = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$\%\^\&\*\(\)])[0-9a-zA-Z!@#$\%\^\&\*\(\)]{6,16}/#}
             if (ml.match(reg)) {
                 return true;
             } else {
@@ -323,6 +324,7 @@
                 success: function (data) {
                     vm.allbaikeData = data;
                     vm.datasgyes = data;
+                    console.log(vm.datasgyes,'vm.datasgyes9999999999999');
                     var zhou = vm.getQueryVariable('types');
                     if (zhou > 0) {
                         vm.changrightlm(zhou, zhou - 1);

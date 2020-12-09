@@ -319,18 +319,20 @@ def forget(request):
         phone = request.POST.get('phone')
         username = request.POST.get('username')
         verification_Code = request.POST.get('verification_Code')
+        password = request.POST.get('newpassword')
         user = User.objects.filter(username=username)
         if user:
             obj = User.objects.get(username=username)
             userobj = Userinfo.objects.get(user_id=obj.id)
             if userobj.phone != phone:
-                return HttpResponse(json.dumps({'code':400,'msg':'手机号错误'}), content_type="application/json")
+                return HttpResponse(json.dumps({'code':400,'msg':'手机号与用户名不匹配'}), content_type="application/json")
             else:
                 yzm = request.session['smscode']
                 if verification_Code == yzm:
                     # 密码重置
-                    obj.set_password("123456")
-                    return HttpResponse(json.dumps({'code':200,'msg':'您的密码已重置为：123456，请登录后回到个人中心修改'}), content_type="application/json")
+                    obj.set_password(password)
+                    obj.save()
+                    return HttpResponse(json.dumps({'code':200,'msg':'密码已修改'}), content_type="application/json")
         else:
             return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
     return render(request,'forget.html')

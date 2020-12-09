@@ -189,7 +189,7 @@
 
 .sg_tag span {
     float: left;
-    width: 72px;
+    /*width: 72px;*/
     height: 25px;
     line-height: 25px;
     background-color: #FFE8F5;
@@ -350,7 +350,7 @@
 .bkflbox {
     position: relative;
     /*width: 312px;*/
-    height: 130px;
+    /*height: 130px;*/
     margin-bottom: 20px;
     top: 0;
 }
