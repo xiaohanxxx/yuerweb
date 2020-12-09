@@ -161,6 +161,8 @@ class PowerHospital(views.View):
         typeObj = get_object_or_404(models.Power, pk=type)
         if request.GET.get("worldarea"):
             artObjList = typeObj.hospital_set.filter(worldarea=request.GET.get("worldarea"))[:int(num)]
+        elif request.GET.get("cityarea"):
+            artObjList = typeObj.hospital_set.filter(cityarea=request.GET.get("cityarea"))[:int(num)]
         else:
             artObjList = typeObj.hospital_set.all()[:int(num)]
         res = [
