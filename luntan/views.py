@@ -178,10 +178,10 @@ class Article(views.View):
         }
         articleRes = luntanmodel.Articles.objects.create(**articleData)
 
-        topic = request.POST.getlist("topic", [])
+        topic = request.POST.get("topic")
 
         if topic:
-            topicObj = luntanmodel.Topics.objects.get(pk__in=topic)
+            topicObj = get_object_or_404(luntanmodel.Topics, pk=int(topic))
             articleRes.topics.add(topicObj)
 
         return HttpResponse(json.dumps({"data": articleRes.id}))
