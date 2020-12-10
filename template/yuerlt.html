@@ -64,15 +64,14 @@
                 <a href="javascript:;"><img ms-attr-src="{el.child[0].thumb}" alt=""></a>
                 <div class="quaninfo">
                     <h5>
-                        <a ms-attr-href="/luntan/articlelist/?tid={el.child[0].id}&all=1&Mid={el.id}">{el.name}</a>
+                        <a ms-attr-href="/luntan/allarticle/?aid={el.id}&all=1&Mid={el.id}">{el.name}</a>
                     </h5>
                     <p><span>785</span>篇备孕交流帖子</p>
                     <p><span>123</span>条评论</p>
                 </div>
             </div>
             <div class="quanmeta">
-                <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={el.id}"
-                   ms-repeat-as="el.child">{as.name}</a>
+                <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={el.id}" ms-repeat-as="el.child">{as.name}</a>
             </div>
         </div>
     </div>
@@ -96,7 +95,7 @@
                         <p class="bytit"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title.substr(0,15)}</a></p>
                         <p>
                             <a ms-attr-href="/luntan/articles/?aid={el.id}">
-                                {el.content|html}
+                                {el.content.match(/[\u4e00-\u9fa5]/g)?el.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,120):el.content|html}
                             </a>
                         </p>
                         <div class="byuser">
@@ -109,8 +108,7 @@
                                 <span>{el.user.username}</span>
                             </div>
                             <a href="javascript:;">
-                                <i class='iconfont icon-pinglun'
-                                   style='color:#CCC;'></i><span>{el.commentnum}</span></a>
+                                <i class='iconfont icon-pinglun' style='color:#CCC;'></i><span>{el.commentnum}</span></a>
                         </div>
                     </div>
                 </div>
@@ -182,7 +180,7 @@
                                 <p><a ms-attr-href="/luntan/articles/?aid={hot.id}">{hot.title}</a></p>
                                 <p>
                                     <a ms-attr-href="/luntan/articles/?aid={hot.id}">
-                                        {hot.content|html}
+                                        {hot.content.match(/[\u4e00-\u9fa5]/g)?hot.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,120):hot.content|html}
                                     </a>
                                 </p>
                             </div>
@@ -216,15 +214,15 @@
                         <a ms-attr-href="/luntan/articlelist/?tid={mainid}&all=1&Mid={mainid}"></a>
                     </p>
                 </div>
-                <ul class="sgyer-h fl">
+                <ul class="sgyer-h fl" style="height:370px !important;">
                     <li ms-attr-class="el.id==pageNo?'lisSelect':''" ms-attr-dataid="el.id" ms-repeat-el="menudata"
                         isget='0' ms-click="goChange(el.id,this) ">{el.name}
                     </li>
                 </ul>
                 <div class="sgyer-infolis fl">
                     <div class='clearfix' ms-repeat-el="hotdata">
-                        <a href="#">
-                            <img src="{% static 'images/yuerlt/img02.png' %}" alt="">
+                        <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                            <img ms-attr-src="{el.snimg}" alt="">
                         </a>
                         <div class='infolis-b'>
                             <h6>
@@ -232,7 +230,7 @@
                             </h6>
                             <p>
                                 <a ms-attr-href="/luntan/articles/?aid={el.id}">
-                                    {el.content|html}
+                                    {el.content.substr(0,120)|html}
                                 </a>
                             </p>
                         </div>
@@ -287,7 +285,6 @@
             api_articlelist = '/luntan/articlelist/?tid=',
             api_hotarticles = '/luntan/hotarticles/',
             api_goodmother = '/luntan/goodmother/?aid=',
-            api_ksAsk = '/luntan/articles/',
             api_articles = '/luntan/articles/?aid=';
         var nyzl_num = 17,//控制难孕治疗帖子展示条数
             hymm_num = 8,//好孕妈妈的文章展示条数
@@ -393,7 +390,7 @@
                         vm_nyzl.lisTitle = ajax.data.curuent_page.slice(11, 17);
                         setTimeout(function () {
                             $(ev).attr('isget', 0);
-                        }, 4000)
+                        }, 1000)
                     }, error: function (error) {
                         console.log(error)
                     }
@@ -424,7 +421,7 @@
                         vm_sgyer.lisdata = ajax.data.curuent_page.slice(1, 9);
                         setTimeout(function () {
                             $(ev).attr('isget', 0);
-                        }, 4000)
+                        }, 1500)
                     }, error: function (error) {
                         console.log(error);
                     }
@@ -481,16 +478,17 @@
                     return false;
                 }
                 $.ajax({
-                    url: api_ksAsk,
+                    url: '/luntan/articles/',
                     type: 'POST',
                     data: {
                         'title': textval,
-                        'topics': vm_freeAsk.selecid,
+                        'topic': vm_freeAsk.selecid,
                         'content': textval,
                         'csrfmiddlewaretoken': glob_csrftoken
                     },
                     success: function (msg) {
-                        alert('提交成功');
+                        $('#quick_ask').val("");
+                        layer.msg('提交成功');
                     }
                 })
             }

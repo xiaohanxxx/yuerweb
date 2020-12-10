@@ -630,7 +630,8 @@ body .sjchangebtn {
     margin-top: 17px;
     padding: 0 20px 0 27px;
     width: 292px;
-    height: 255px;
+    max-height:386px;
+    overflow: hidden;
     background-color: #fff;
     border-radius: 5px;
 }

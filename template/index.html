@@ -42,7 +42,7 @@
                                         <a ms-attr-href="/luntan/articlelist/?tid={it.id}&all=1&Mid={el.id}">{it.name}</a>
                                     </li>
                                 </ul>
-{#                                <h4><a href="/luntan">更多>></a></h4>#}
+                                <h4><a href="/luntan">更多>></a></h4>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                         {% endif %}
 
                         <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
-                            <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
+                            <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;padding:0 5px;">{el.title.substr(0,8)}...</abbr>
                             </h3>
                         </a>
                     </li>
@@ -96,7 +96,7 @@
                             <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
                         {% endif %}
                         <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
-                            <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title}...</abbr>
+                            <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title.substr(0,20)}...</abbr>
                             </h3>
                         </a>
                     </li>
@@ -131,15 +131,14 @@
                         <div class="rightinfonews">
                             <ul>
                                 <li ms-repeat="lisdata">
+                                    {% if request.user.is_active %}
+                                        <a ms-attr-href="/users/centerhim/{el.user.id}">
+                                            <img ms-attr-src="/media/{el.user.head}">
+                                        </a>
+                                    {% else %}
+                                        <a href="/login"><img ms-attr-src="/media/{el.user.head}"></a>
+                                    {% endif %}
                                     <a ms-attr-href="/luntan/articles/?aid={el.id}">
-                                        {% if request.user.is_active %}
-                                            <a ms-attr-href="/users/centerhim/{el.user.id}">
-                                                <img ms-attr-src="/media/{el.user.head}">
-                                            </a>
-                                        {% else %}
-                                            <a href="/login"><img ms-attr-src="/media/{el.user.head}"></a>
-                                        {% endif %}
-
                                         <h3>{el.title.substr(0,15)}...</h3>
                                         <p>
                                             {el.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,15)}...</p>
@@ -178,20 +177,20 @@
                         <div class="rightinfonewses">
                             <ul>
                                 <li ms-repeat-as="lisdata">
-                                    <a ms-attr-href="/luntan/articles/?aid={as.id}">
-                                        {% if request.user.is_active %}
-                                            <a ms-attr-href="/users/centerhim/{as.user.id}">
-                                                <img ms-attr-src="/media/{as.user.head}" style="width:36px;height:36px;border-radius: 50%;">
-                                            </a>
-                                        {% else %}
-                                            <a href="/login">
-                                                <img ms-attr-src="/media/{as.user.head}" style="width:36px;height:36px;border-radius: 50%;">
-                                            </a>
-                                        {% endif %}
 
+                                    {% if request.user.is_active %}
+                                        <a ms-attr-href="/users/centerhim/{as.user.id}">
+                                            <img ms-attr-src="/media/{as.user.head}" style="width:36px;height:36px;border-radius: 50%;">
+                                        </a>
+                                    {% else %}
+                                        <a href="/login">
+                                            <img ms-attr-src="/media/{as.user.head}" style="width:36px;height:36px;border-radius: 50%;">
+                                        </a>
+                                    {% endif %}
+                                    <a ms-attr-href="/luntan/articles/?aid={as.id}">
                                         <h3 style="font-weight:bold;">{as.title.substr(0,10)}...</h3>
                                         <p>
-                                            {as.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,13)}...
+                                            {as.content.match(/[\u4e00-\u9fa5]/g)?as.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,13):as.content|html}...
                                         </p>
                                     </a>
                                 </li>
@@ -229,9 +228,9 @@
             <div class="sgyghhight">
                 <div class="hhightleft" style="margin-bottom: 20px;">
                     <h3>
-                        <abbr>不孕不育</abbr>
-                        <a href="/taolun/">女性不孕</a>|<a href="/taolun/">男性不育</a>|<a href="/taolun/">病理性不孕</a>
-                        <a href="/taolun/" style="float: right; margin-right: 50px;">更多>></a>
+                        <abbr>难孕治疗</abbr>
+                        <a href="/luntan/">女性不孕</a>|<a href="/luntan/">男性不育</a>|<a href="/luntan/">病理性不孕</a>
+                        <a href="/luntan/" style="float: right; margin-right: 50px;">更多>></a>
                     </h3>
                 </div>
                 <div class="hhgihtlefth3">
@@ -240,7 +239,7 @@
 
                             <div class="h3tgoplis">
                                 <div class="tupianhost" ms-repeat-as="limgdata">
-                                    <a ms-attr-href="/taolun/toposting/?pid={as.id}">
+                                    <a ms-attr-href="/luntan/articles/?aid={as.id}">
                                         <img ms-attr-src="{as.snimg}" alt="{as.title}" style="height:130px;">
                                         <p>{as.title.substr(0,14)}...</p>
                                     </a>
@@ -251,21 +250,21 @@
                                 <ul>
 
                                     <li ms-repeat-its="llisdata">
-                                        <a ms-attr-href="/taolun/toposting/?pid={its.id}">
-                                            {% if request.user.is_active %}
-                                                <a ms-attr-href="/users/centerhim/{its.user.id}">
-                                                    <img ms-attr-src="/media/{its.user.head}"
-                                                         ms-attr-alt="{its.user.username}"
-                                                         style="width:36px;height:36px;border-radius: 50%">
-                                                </a>
-                                            {% else %}
-                                                <a href="/login">
-                                                    <img ms-attr-src="/media/{its.user.head}"
-                                                         ms-attr-alt="{its.user.username}"
-                                                         style="width:36px;height:36px;border-radius: 50%">
-                                                </a>
-                                            {% endif %}
 
+                                        {% if request.user.is_active %}
+                                            <a ms-attr-href="/users/centerhim/{its.user.id}">
+                                                <img ms-attr-src="/media/{its.user.head}"
+                                                     ms-attr-alt="{its.user.username}"
+                                                     style="width:36px;height:36px;border-radius: 50%">
+                                            </a>
+                                        {% else %}
+                                            <a href="/login">
+                                                <img ms-attr-src="/media/{its.user.head}"
+                                                     ms-attr-alt="{its.user.username}"
+                                                     style="width:36px;height:36px;border-radius: 50%">
+                                            </a>
+                                        {% endif %}
+                                        <a ms-attr-href="/luntan/articles/?aid={its.id}">
                                             <h3>{its.title.substr(0,14)}...</h3>
                                             <p>
                                                 {its.content.match(/[\u4e00-\u9fa5]/g)?its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20) : ''}...</p>
@@ -280,8 +279,7 @@
                         <div class="rwzlist">
                             <div class="ahfljks">
                                 <div class="fsaldkjf" ms-repeat-item="rimgdata">
-                                    <a ms-attr-href="/taolun/toposting/?pid={item.id}">
-
+                                    <a ms-attr-href="/luntan/articles/?aid={item.id}">
                                         <img ms-attr-src="{item.snimg}" ms-attr-alt="{item.title}" width="133"
                                              height="60" style="float: left; margin-right: 8px;border-radius: 8px;">
 
@@ -296,18 +294,15 @@
                             <div class="listh3hasdf">
                                 <ul>
                                     <li ms-repeat-its="rlisdata">
-                                        <a ms-attr-href="/taolun/toposting/?pid={its.id}">
-                                            {% if request.user.is_active %}
-                                                <a ms-attr-href="/users/centerhim/{its.user.id}"><img
-                                                        ms-attr-src="/media/{its.user.head}"
-                                                        ms-attr-alt="{its.user.username}"
-                                                        style="width:36px;height:36px;border-radius: 50%"></a>
-                                            {% else %}
-                                                <a href="/login">
-                                                    <img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
-                                            {% endif %}
 
-                                            <h3 style="color:#000;">{its.title.substr(0,24)}...</h3>
+                                        {% if request.user.is_active %}
+                                            <a ms-attr-href="/users/centerhim/{its.user.id}"><img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
+                                        {% else %}
+                                            <a href="/login">
+                                                <img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
+                                        {% endif %}
+                                        <a ms-attr-href="/luntan/articles/?aid={its.id}">
+                                            <h3 style="color:#000;">{its.title.substr(0,14)}...</h3>
                                             <p>
                                                 {its.content.match(/[\u4e00-\u9fa5]/g)?its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,26):''}...</p>
                                         </a>
@@ -320,13 +315,12 @@
             </div>
 
             <!--  生殖医院推荐 -->
-
             <div class="szdoctorhot">
                 <div class="cityhologe">
                     <a href="javascript:;"><img src="{% static 'img/07.jpg' %}" style="margin-left: 23px;"></a>
                     <p>病理性不孕 <a href="/taolun/"><span class="bybymore">更多</span></a></p>
                     <ul>
-                        <li ms-repeat-as="blxbydata"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,24)}</a><abbr>></abbr>
+                        <li ms-repeat-as="blxbydata"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,18)}</a><abbr>></abbr>
                         </li>
                     </ul>
                 </div>
@@ -414,7 +408,7 @@
             },
             getGdt: function () {
                 $.ajax({
-                    url: '/luntan/goodmother/?aid=2&num=10&page=1',
+                    url: '/luntan/allarticle/?aid=3&num=10&type=1',
                     type: 'get',
                     dataType: 'json',
                     success: function (data) {
@@ -490,6 +484,7 @@
                 vm_hotaskbq.init();
                 vm_hysqctl.init();
                 vm_sgyercrl.init();
+                vm_bybyctl.init();
             },
             error: function (error) {
                 console.log(error);
@@ -564,9 +559,9 @@
             beiydata: [],
             init: function () {
                 var navs = JSON.parse(localStorage.getItem('navdata'));
-                if (navs[3]) {
+                if (navs[1]) {
                     $.ajax({
-                        url: '/luntan/articlelist/?tid=' + navs[3].child[0].id + '&num=8',
+                        url: '/luntan/articlelist/?tid=' + navs[1].child[0].id + '&num=8',
                         type: 'get',
                         dataType: 'json',
                         success: function (ajax) {
@@ -605,40 +600,43 @@
             rlisdata: [],
             blxbydata: [],
             init: function () {
-                $.ajax({
-                    url: '/taolun/postinglist/?num=12',
-                    type: 'get',
-                    dataType: 'json',
-                    success: function (ajax) {
-                        var limgdata = ajax.data.splice(0, 2),
-                            rimgdata = ajax.data.splice(0, 2),
-                            llisdata = ajax.data.splice(0, 4),
-                            rlisdata = ajax.data;
-                        Toolfun.snimgzsClass(limgdata);
-                        Toolfun.snimgzsClass(rimgdata);
-                        vm_bybyctl.limgdata = limgdata;
-                        vm_bybyctl.rimgdata = rimgdata;
-                        vm_bybyctl.llisdata = llisdata;
-                        vm_bybyctl.rlisdata = rlisdata;
-                    },
-                    error: function (error) {
-                        console.log(error)
-                    }
-                });
-                $.ajax({
-                    url: '/taolun/hotarticles/',
-                    type: 'get',
-                    dataType: 'json',
-                    success: function (ajax) {
-                        vm_bybyctl.blxbydata = ajax.data.splice(0, 6);
-                    },
-                    error: function (error) {
-                        console.log(error);
-                    }
-                })
+                var navs = JSON.parse(localStorage.getItem('navdata'));
+                if (navs[3]) {
+                    $.ajax({
+                        url: '/luntan/articlelist/?tid=' + navs[3].child[0].id + '&num=12',
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (ajax) {
+                            var limgdata = ajax.data.curuent_page.splice(0, 2),
+                                rimgdata = ajax.data.curuent_page.splice(0, 2),
+                                llisdata = ajax.data.curuent_page.splice(0, 4),
+                                rlisdata = ajax.data.curuent_page;
+                            Toolfun.snimgzsClass(limgdata);
+                            Toolfun.snimgzsClass(rimgdata);
+                            vm_bybyctl.limgdata = limgdata;
+                            vm_bybyctl.rimgdata = rimgdata;
+                            vm_bybyctl.llisdata = llisdata;
+                            vm_bybyctl.rlisdata = rlisdata;
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    })
+                    $.ajax({
+                        url: '/taolun/hotarticles/',
+                        type: 'get',
+                        dataType: 'json',
+                        success: function (ajax) {
+                            vm_bybyctl.blxbydata = ajax.data.splice(0, 6);
+                        },
+                        error: function (error) {
+                            console.log(error);
+                        }
+                    })
+                }
             }
         })
-        vm_bybyctl.init();
+
         var vm_hotaskbq = avalon.define({
             $id: 'hotaskbq',
             topicid: '',

@@ -43,7 +43,7 @@
         },
         gethosdata:function(){
           $.ajax({
-              url:'/hospital/hospitallist/?worldarea='+vm_diquhospital.diquid+'&hospitallv=3',
+              url:'/hospital/powerhospital/?worldarea='+vm_diquhospital.diquid+'&type=1',
               type:'get',
               dataType: 'json',
               success:function(ajax){
