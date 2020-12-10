@@ -76,7 +76,7 @@
               <div class="leftyytj">
                   <a ms-attr-href="/hospital/hindex/?item={el.id}"><img ms-attr-src="el.thumb" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
                  <h3><a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
-                 <p>地址：{el.address}</p>
+                  <a ms-attr-href="/hospital/hindex/?item={el.id}"><p>地址：{el.address}</p></a>
                  <p>电话：{el.phone}</p>
               </div>
               <div class="rightyytj">
@@ -290,7 +290,6 @@
                           vmw.getYYlist = [];
                          vmw.getYYlist = data.data;
                          vmw.allnum = data.allnum;
-                         console.log(vmw.getYYlist,'vmw.getYYlist');
                       }
                   });
 
@@ -319,7 +318,6 @@
                    vmw.intopages(vmw.allnum);
                 }
             });
-            console.log(datas,'发送请求');
         },
         selectchange:function(data){  //城市列 事件监控
             vmw.dataslist.cityarea = data;

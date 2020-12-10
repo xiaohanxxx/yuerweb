@@ -17,10 +17,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
-    <!--      <style type="text/css">
-          body{ background: #029EE9; }
-         </style>
-     -->
 </head>
 {% include 'header.html' %}
 <div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
@@ -100,12 +96,13 @@
             var lisbtn = $('.hzwdleftse>ul>li');
             for (var i = 0; i < lisbtn.length; i++) {
                 lisbtn.eq(i).click(function () {
-                    if($(this).attr('isget')>0){
+                    var e = $(this);
+                    if(e.attr('isget')>0){
                         return;
                     }
-                    $(this).attr('isget',1);
+                    e.attr('isget',1);
                     setTimeout(function(){
-                        $(this).attr('isget',0);
+                        e.attr('isget',0);
                     },1000)
                     vm_hzwdadd.mflid = $(this).attr('mflid');
                     vm_hzwdadd.goMflid();

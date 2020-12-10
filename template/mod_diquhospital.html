@@ -11,7 +11,7 @@
         <div class="listqha" ms-repeat-item="hosdata">
             <a ms-attr-href="/hospital/hindex/?item={item.id}">
                 <img ms-attr-src="{item.thumb}">
-                <h4 style="font-size: 14px;font-weight:bold;">{item.title}</h4>
+                <h4 style="font-size: 14px;font-weight:bold;">{item.title.substr(0,12)}</h4>
                 <p>地址：{item.address.substr(0,20)}</p>
             </a>
         </div>
@@ -43,7 +43,7 @@
         },
         gethosdata:function(){
           $.ajax({
-              url:'/hospital/hospitallist/?worldarea='+vm_diquhospital.diquid+'&hospitallv=3',
+              url:'/hospital/powerhospital/?worldarea='+vm_diquhospital.diquid+'&type=1',
               type:'get',
               dataType: 'json',
               success:function(ajax){

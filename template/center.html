@@ -344,7 +344,7 @@
                    return ;
                 }
                 var datas = {
-                    'new_password':wvm.edit_passwad.new_password,
+                    new_password:wvm.edit_passwad.new_password,
                     'csrfmiddlewaretoken':glob_csrftoken
                 }
                 $.ajax({
@@ -353,7 +353,7 @@
                     data: datas,
                     dataType: "json",
                     success: function (data) {
-                        layer.msg('修改成功');
+
                     }
                 });
 

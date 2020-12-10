@@ -125,7 +125,7 @@
     border-radius: 50%;
 }
 
-.partwdone > img {
+.partwdone a> img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -161,7 +161,7 @@
     margin-top: 28px;
 }
 
-.Muserinfo > img {
+.Muserinfo a> img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -219,7 +219,7 @@
     font-size: 18px;
 }
 
-.plinfobox > li > img {
+.plinfobox > li a> img {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -272,7 +272,7 @@
     margin-bottom: 48px;
 }
 
-.plinfobox > li > img {
+.plinfobox > li a> img {
     float: left;
     margin-right: 12px;
 }
