@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -18,21 +18,7 @@
 
          <div class="centers" ms-controller="centeres">
          	 <div class="ctops">
-                 <style>
-                     .ctops{position: relative;}
-                     .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
-                     .hovser:hover .thtuxiang{ display: block;}
-                 </style>
-{#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"  height="124" width="124"></div>#}
-                 <div class="tuxiang hovser">
-                     <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
-                    <div class="tuxiang thtuxiang">
-                        <img src="{% static 'img/Vector.png' %}"  alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
-                        <div class="eidt" id="test1" style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
-                            <i class="layui-icon">&#xe642;</i>
-                        </div>
-                    </div>
-                 </div>
+         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"  height="124" width="124"></div>
          	 	 <div class="iam_username">{{ data.user }}</div>
          	 	 <div class="jd_tiao">
          	 	 	<div class="jdt" id="slideTest18"></div>
@@ -68,17 +54,18 @@
 {#	             			</li>#}
 	             		</ul>
 	             	</div>
-    <style>
-        .imgwidth{ width: 600px; height: auto; text-align: center;}
-    </style>
 
+  <style>
+        .imgwidth img{ width: 600px; height: auto; text-align: center;}
+.bott_box ol li p img{ width: 700px; height: auto;}
+    </style>
                     <div class="bott_box" ms-if="aa == 1">
                     	<ol>
 
                     		<li ms-repeat="gethimtiezies">
                     			<img src="{% static 'img/pexels.png' %}">
                     			<p style="font-size: 16px;"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
-                    			<p class="imgwidth" style="font-size: 12px; padding: 0 40px;">{el.content | truncate(180,'...')}</p>
+                    			<p class="imgwidth" style="font-size: 12px; padding: 0 40px;">{el.content | html | truncate(180,'...')}</p>
                     			<div style="margin-top: 15px;">{el.publish_date}
                     				<div class="rights">
                     					<abbr style="margin-right: 20px;" ms-click="dianzanfun(el,$index)"><i class="layui-icon">&#xe6c6;</i>{el.commentnum}</abbr>
