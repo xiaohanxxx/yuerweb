@@ -12,8 +12,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
-    <link rel="stylesheet" href="{% static 'css/coment.css' %}">
-    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
 </head>
 <body>
      {% include 'header.html' %}
@@ -24,6 +22,7 @@
                      .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
                      .hovser:hover .thtuxiang{ display: block;}
                  </style>
+{#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}" height="124" width="124"></div>#}
                  <div class="tuxiang hovser">
                      <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
                     <div class="tuxiang thtuxiang">
@@ -102,6 +101,7 @@
                      		<div class="gzlists_one">
                                 <a  ms-attr-href="'/users/centerhim/' + el.userid"><img src="{% static 'img/tuxiang.jpg' %}"></a>
                      			<p style="font-size: 16px; margin-bottom: 15px;">{el.user}</p>
+{#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
                      			<abbr ms-click="overguanzhuhim(el)" style="margin-left: 3px; cursor: pointer; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">已关注</abbr>
                      		</div>
                      		<div class="four_hot">
@@ -109,7 +109,9 @@
                      				<li ms-repeat-item="el.user_article">
                                         <a ms-attr-href="/luntan/articles/?aid={item.id}">{item.title | truncate(16,'...')}</a>
                      				</li>
-
+{#                     				<li>#}
+{#                     					<a href="">我是论坛帖子标题最多显示...</a>#}
+{#                     				</li>#}
                      			</ul>
                      		</div>
                      	</div>
@@ -130,6 +132,14 @@
                      		</div>
 
 
+
+{#                     		<div class="gzlists">#}
+{#                     			<img src="{% static 'img/tuxiang.jpg' %}">#}
+{#                     			<p style="font-size: 16px; margin-bottom: 15px;">我是用户名</p>#}
+{#                     			<abbr style="margin-left: 3px; margin-top: 15px;  border: 1px solid #666; padding: 2px 15px; font-size: 12px; color: #666;">相互关注</abbr>#}
+{#                     		</div>#}
+
+
                      	</div>
                      </div>
                       <div id="demo8" ms-if="aa==1 || aa==2"></div>
@@ -148,11 +158,16 @@
                         			<input type="text" placeholder="我是用户名" style="height: 30px; line-height: 30px; padding-left: 10px;">
                         		    <input type="button" value="保存" style="height: 30px; line-height: 30px; width: 70px; text-align: center; border: 1px solid #FF44AD; background: #fff; color: #FF44AD; outline: none;">
                         		</p>
-
+{#                        		<p class="bangding" style="margin: 15px 0; padding: 15px;">绑定微信：<a title="">点击绑定</a></p>#}
+{#                        		<p class="bangding" style="margin: 15px 0; padding: 15px;">绑定  QQ：<a title="">点击绑定</a></p>#}
                         	</div>
                         	<div class="ziliao_set" style="padding: 25px;"  ms-if="cc ==2">
-
-                        		<p>手机号：<input type="text" placeholder="请填写手机号" style="height: 30px; line-height: 30px;" ms-duplex="edit_passwad.phone"></p>
+{#                        		<p>用户名：{usernames}</p>#}
+{#                        		<p>手机号：<input type="text" placeholder="请填写手机号" style="height: 30px; line-height: 30px;" ms-duplex="edit_passwad.phone"></p>#}
+{#                        		<p>验证码：#}
+{#                        			<input type="text" name="" style="height: 35px; line-height: 35px;" ms-duplex="edit_passwad.verification_Code" >#}
+{#                        			<input id="sendsmses" ms-click="getCode" type="button" name="" ms-attr-value="getcodewenzi" style="padding: 5px 7px; background: #fff; text-align: center; color: #FF44AD; border: 1px solid #FF44AD;">#}
+{#                        		</p>#}
                         		<p>输入新密码：<input type="password" placeholder="请填写新密码" style="height: 30px; line-height: 30px;"ms-duplex="edit_passwad.new_password" ></p>
                         		<p class="okedit"><abbr title="" style="cursor: pointer;" ms-click="okedit">确认修改</abbr></p>
                         	</div>
@@ -210,9 +225,6 @@
                           if (res.code == 200){
                                window.location.reload();
                           }
-                          console.log(res,'resres')
-                          console.log(index,'indexindex')
-                          console.log(upload,'uploadupload')
                     }
                     ,error: function(){
                       //请求异常回调
@@ -259,6 +271,7 @@
                           layer.msg(result);
                            return ;
                         }
+                        //wvm.alltiezi[index].thumbup = wvm.alltiezi[index].thumbup + 1
                         layer.msg(result);
                     }
                 });
@@ -267,8 +280,8 @@
           getcodewenzi: '获取验证',
           usernames:sessionStorage.getItem("username"),
           edit_passwad:{
-          	'phone':'',
-          	'verification_Code':'',
+          	{#'phone':'',#}
+          	{#'verification_Code':'',#}
           	'new_password':'',
             'csrfmiddlewaretoken':glob_csrftoken
           },
@@ -291,15 +304,56 @@
             eval("var reg = /^1[34578]\\d{9}$/;");
             return RegExp(reg).test(content);
           },
+            {#getCode: function () { //获取验证码#}
+            {#    if (wvm.edit_passwad.phone == '' || !wvm.edit_passwad.phone || !wvm.validatorTel(wvm.edit_passwad.phone)) {#}
+            {#        layer.msg('请填写正确的手机号');#}
+            {#        return;#}
+            {#    }#}
+            {#    var time = 60;#}
+            {#    if (time == 60) {#}
+            {#        var time1 = setInterval(function () {#}
+            {#            if (time == 0) {#}
+            {#                wvm.getcodewenzi = '重发'#}
+            {#                $("#sendsms").removeAttr("disabled");#}
+            {#                time = 60;#}
+            {#                clearInterval(time1);#}
+            {#            } else {#}
+            {#                $("#sendsms").attr("disabled", "true");#}
+            {#                wvm.getcodewenzi = "重发(" + time + ")";#}
+            {#                time--;#}
+            {#            }#}
+            {#        }, 1000);#}
+            {#    }#}
+            {#    var phone = {#}
+            {#        phone: wvm.edit_passwad.phone#}
+            {#    }#}
+            {#    $.ajax({#}
+            {#        type: 'post',#}
+            {#        url: '/users/smsvif',#}
+            {#        data: phone,#}
+            {#        dataType: "json",#}
+            {#        // timeout: 10000,#}
+            {#        success: function (data) {#}
+            {#            console.log(data);#}
+            {#        }#}
+            {#    });#}
+            {#},#}
             okedit:function(){
+                if(wvm.edit_passwad.new_password=='' || !wvm.edit_passwad.new_password){
+                   layer.msg('密码不能为空');
+                   return ;
+                }
+                var datas = {
+                    'new_password':wvm.edit_passwad.new_password,
+                    'csrfmiddlewaretoken':glob_csrftoken
+                }
                 $.ajax({
                     type: 'post',
                     url: '/users/changepwd',
-                    data: wvm.edit_passwad,
+                    data: datas,
                     dataType: "json",
-                    // timeout: 10000,
                     success: function (data) {
-                        layer.msg(data.msg);
+                        layer.msg('修改成功');
                     }
                 });
 
@@ -322,8 +376,6 @@
                         wvm.maxnum = data.maxnum;
                         wvm.gontopage(wvm.maxnum);
                         wvm.allmaxnum = data.maxnum;
-
-                        console.log(wvm.alltiezi,'wvm.alltiezi');
                         //wvm.getmywenda();
                     }
                 });
@@ -477,10 +529,12 @@
                         }
                     });
             }
-        })
+        });
+		//wvm.getAllguanzhu();
 		wvm.getAllmytiezi();//获取我发布的帖子
         wvm.getAllfensi();
         wvm.getmywenda();//获取我所有的问答
+        //wvm.getguanzhuData();//获取所有关注对象
         wvm.gontopage(wvm.maxnum);
         wvm.uploades();
 	</script>

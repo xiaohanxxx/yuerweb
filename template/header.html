@@ -8,6 +8,7 @@
             <a href="/"><img style="width:215px;height:85px;margin-top:41px;" src="{% static 'images/icon/logo.png' %}"></a>
         </div>
         <div class="headerNav-ul">
+
             <ul>
                 <li>
                     <a href="/" class="nava">首页</a>
@@ -63,8 +64,8 @@
             {% if request.user.is_active %}
                 <div style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;">
                     <div class="xilainfocont">
-                        <a class="userses"><i style="color: #ff44ad;">{usernames}</i>个人中心</a>
-                        <p style=" position: absolute; display:none; margin-top: -2px; z-index: 9999;" class="xilainfo">
+                        <a class="userses"><i style="color: #ff44ad;"></i><img src="/media/{{ request.user.info.user_avatar }}" alt="" width="25" height="25" style="border-radius: 50%; margin-right: 5px;">{{ request.user }}</a>
+                        <p style=" position: absolute; display:none; margin-top: -2px; z-index: 9999; background: #f9f9f9;" class="xilainfo">
                             <a href="/users">我的资料</a>
                             <a href="/users/centerMessage">我的消息</a>
                             <a href="/users/outlogin" style="color:#F94479; text-decoration: none;">退出</a>
@@ -74,7 +75,7 @@
 
             {% else %}
                 <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;">
-                    <a href="/users/login" style="color:#F94479; text-decoration: none;">登录</a> | <a href="/users/login" style="color:#F94479; text-decoration: none;">注册</a>
+                    <a href="/users/login?type=1" style="color:#F94479; text-decoration: none;">登录</a> | <a href="/users/login?type=2" style="color:#F94479; text-decoration: none;">注册</a>
                 </p>
             {% endif %}
         </div>
@@ -148,7 +149,7 @@
         names: '医院',
         a: 1,
         b: 1,
-        getcodewenzi: '获取验证码',
+        getcodewenzi:'获取验证码',
         datasgyes: [],
         erjidatalist: [],
         zhuceDatas: {
@@ -164,6 +165,7 @@
             'csrfmiddlewaretoken': glob_csrftoken
         },
         loginFun: function () {
+
             if (vm.loginData.username == '' || !vm.loginData.username) {
                 layer.msg('请填写正确的用户名');
                 return;
@@ -193,7 +195,8 @@
             });
         },
         mimayanzheng: function (ml) {
-            var reg = /^[\w]{6,12}$/
+            var reg = /^[\w]{6,16}$/
+             {#var reges = /^(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[!@#$\%\^\&\*\(\)])[0-9a-zA-Z!@#$\%\^\&\*\(\)]{6,16}/#}
             if (ml.match(reg)) {
                 return true;
             } else {
@@ -204,6 +207,8 @@
             if (vm.zhuceDatas.username == '' || !vm.zhuceDatas.username) {
                 layer.msg('请填写正确的用户名');
                 return;
+            }else{
+                vm.zhuceDatas.username = $.trim(vm.zhuceDatas.username);
             }
             if (vm.zhuceDatas.phone == '' || !vm.zhuceDatas.phone || !vm.validatorTel(vm.zhuceDatas.phone)) {
                 layer.msg('请填写正确的手机号');
@@ -258,19 +263,11 @@
             vm.b = id;
             vm.indexs = index;
             vm.erjidatalist = [];
-            if(vm.datasgyes){
-                var zzdata = [];
-                if(vm.datasgyes[index].children.length>7){
-                    for(var i=0;i<7;i++){
-                        zzdata.push(vm.datasgyes[index].children[i]);
-                    }
-                }else{
-                    zzdata = vm.datasgyes[index].children;
-                }
-                vm.erjidatalist = zzdata;
-            }
-            if (vm.erjidatalist.length > 4) {
-                vm.erjidatalist = vm.erjidatalist.splice(0, 4);
+            vm.erjidatalist = vm.datasgyes[index].children;
+            console.log(vm.erjidatalist,'vm.erjidatalist');
+            console.log(vm.datasgyes,'datasgyes');
+            if (vm.erjidatalist.length > 8) {
+                vm.erjidatalist = vm.erjidatalist.splice(0, 8);
             }
         },
         getMorelist: function () {
@@ -329,6 +326,10 @@
                 success: function (data) {
                     vm.allbaikeData = data;
                     vm.datasgyes = data;
+                    console.log(vm.allbaikeData,'vm.datasgyes9999999999999');
+                    $.each(vm.allbaikeData,function (i,item){
+                        item.children = item.children.splice(0,6)
+                    })
                     var zhou = vm.getQueryVariable('types');
                     if (zhou > 0) {
                         vm.changrightlm(zhou, zhou - 1);
