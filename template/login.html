@@ -137,7 +137,7 @@
         },
         aa:function (){
             console.log(wem.getQueryVariable('type'),'****************');
-            vm.a = wem.getQueryVariable('type');
+            vm.a = wem.getQueryVariable('type')?wem.getQueryVariable('type'):1;
         }
     })
     wem.aa();
