@@ -2751,8 +2751,9 @@ li.curreswd > a {
 }
 
 .yiyuanhuanjing img {
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: auto;
+
 }
 
 .yiyuanhuanjing ul li .sgq {
@@ -2966,7 +2967,7 @@ li.curreswd > a {
     cursor: pointer;
     font-size: 16px;
     margin-right: 10px;
-    width: 80px;
+    width: 110px;
     height: 30px;
     line-height: 30px;
     text-align: center;
