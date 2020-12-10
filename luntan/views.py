@@ -109,6 +109,47 @@ class ArticlesList(views.View):
         return HttpResponse(json.dumps({"data": res}), content_type="application/json")
 
 
+# 获取圈子帖子列表
+class AllArticles(views.View):
+    def get(self, request, *args, **kwargs):
+        aId = request.GET.get('aid')
+        num = request.GET.get('num', 10)
+        type = request.GET.get('type', 1)
+        areaData = get_object_or_404(luntanmodel.Areas, pk=int(aId))
+        # 最新
+        if int(type) == 1:
+            articleList = luntanmodel.Articles.objects.filter(isdelete=0, topics__area=aId).order_by("-publish_date")
+        # 热门
+        elif int(type) == 2:
+            thumbList = luntanmodel.ThumbUp.objects.filter(articles__topics__area=aId, articles__isdelete=0).values(
+                'articles_id').annotate(count=Count('articles_id'))
+            aidList = [i["articles_id"] for i in thumbList]
+            articleList = luntanmodel.Articles.objects.filter(pk__in=aidList)
+        # 推荐
+        else:
+            articleList = luntanmodel.Articles.objects.filter(isdelete=0, topics__area=aId).order_by("read")
+        curuent_page_num = request.GET.get("page", 1)  # 获取当前页数,默认为1
+        paginator = Paginator(articleList, num)
+        curuent_page = paginator.page(curuent_page_num)  # 获取当前页的数据
+        res = {
+            "maxnum": len(articleList),
+            "curuent_page": [
+                {
+                    "id": i.id,
+                    "title": i.title,
+                    "content": i.content,
+                    "publish_date": str(i.publish_date),
+                    "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
+                    "commentnum": i.articles_comment.all().count(),
+                    "thumbup": i.thumup_articles.all().count()
+                } for i in curuent_page
+            ]
+        }
+        if request.GET.get('all'):
+            return render(request, 'beiyunjiaoliu.html', {"data": res})
+        return HttpResponse(json.dumps({"data": res}), content_type="application/json")
+
+
 # 获取帖子
 class Article(views.View):
     def get(self, request, *args, **kwargs):
@@ -157,7 +198,7 @@ class Comment(views.View):
                 "id": i.id,
                 "comment": i.comment,
                 "publish_date": str(i.publish_date),
-                "user": {"id": i.user.id, "username": i.user.username, "head": str(artObj.user.info.user_avatar)},
+                "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
                 "parent": i.parent_id
             } for i in commentData
         ]
