@@ -54,7 +54,7 @@ class Articles(models.Model):
     read = models.IntegerField(default=1, verbose_name="浏览量")
 
     class Meta:
-        verbose_name = "文章"  # 在admin站点显示名称
+        verbose_name = "试管婴儿文章"  # 在admin站点显示名称
         verbose_name_plural = verbose_name
 
     def __str__(self):
