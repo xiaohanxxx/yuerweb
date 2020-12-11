@@ -242,7 +242,9 @@ body {
     color: #777;
     text-decoration: none;
 }
-
+.xmlist:hover p a{
+    color: #FF44AD;
+}
 .jticon {
     float: right;
     width: 30px;
@@ -251,9 +253,9 @@ body {
     line-height: 130px;
 }
 
-.xmlist p a:hover {
-    color: #fff;
-}
+/*.xmlist p a:hover {*/
+/*    color: #fff;*/
+/*}*/
 
 /**ÊÔ¹ÜÓ¤¶ù**/
 .shiguanyiner {
