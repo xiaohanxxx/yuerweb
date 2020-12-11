@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect,get_object_or_404
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from users.models import Userinfo, Follow
@@ -39,7 +39,7 @@ def smsvif(request):
 @login_required
 def center(request):
     user = request.user
-    userinfo = Userinfo.objects.get(user_id=user.id)
+    userinfo = get_object_or_404(Userinfo,user_id=user.id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -55,7 +55,7 @@ def center(request):
 @login_required
 def centerMessage(request):
     user = request.user
-    userinfo = Userinfo.objects.get(user_id=user.id)
+    userinfo = get_object_or_404(Userinfo,user_id=user.id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -69,7 +69,7 @@ def centerMessage(request):
 
 # 别人的个人中心
 def centerhim(request, Quser_id):
-    userinfo = Userinfo.objects.get(user_id=Quser_id)
+    userinfo = get_object_or_404(Userinfo,user_id=Quser_id)
     level = userinfo.get_level_display()
     integral = userinfo.integral
     data = {
@@ -127,6 +127,7 @@ def register(request):
 
 
 # 用户登录
+@csrf_exempt
 def userlogin(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -189,9 +190,11 @@ def changetx(request):
     print("ok")
 
 
+
 # TODO 去TM的面向对象编程
 @method_decorator(error, name='dispatch')
 @method_decorator(login_required, name='dispatch')
+@method_decorator(csrf_exempt, name='dispatch')
 class Followapi(View):
     def __init__(self, **kwargs):
         super(Followapi, self).__init__(**kwargs)
@@ -249,7 +252,6 @@ class Followapi(View):
     # 获得关所有已关注对象2
     def getfollowapi(self):
         follow_list = Follow.user_followed(self.user)
-        print(follow_list)
         for i in follow_list:
             article_list = models.Articles.objects.filter(user_id=i['userid'])
             print(article_list)
@@ -260,12 +262,14 @@ class Followapi(View):
             'data_list': list({
                                   'user': i['username'],
                                   'userid': i['userid'],
+                                  'user_avatar':i['user_avatar'],
                                   'user_article': list(
                                       models.Articles.objects.filter(user_id=i['userid']).values('id', 'title'))
                               }
                               for i in follow_list
                               )
         }
+
 
         return HttpResponse(json.dumps(data), content_type="application/json")
 

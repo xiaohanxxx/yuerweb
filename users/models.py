@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 
@@ -17,6 +17,16 @@ class Userinfo(models.Model):
     )
     level = models.IntegerField('等级', choices=Virtual_choice, default=0)
     phone = models.CharField('手机号', max_length=20)
+
+
+    def image_img(self):
+        if self.user_avatar:
+            # TODO 上线后需要修改为上线地址
+            # print('http://127.0.0.1:8000/media/%s'%self.cover)
+            return mark_safe('<img src="http://127.0.0.1:8000/media/%s" style="width: 100px"/>' % self.user_avatar)
+        else:
+            return u'图片'
+
 
     def __str__(self):
         return self.user.username
@@ -53,7 +63,7 @@ class Follow(models.Model):
         followeders = Follow.objects.filter(follower=from_user).all()
         user_followed = []
         for followeder in followeders:
-            user_followed.append({'username': followeder.followed.username, 'userid': followeder.followed.id})
+            user_followed.append({'username': followeder.followed.username, 'userid': followeder.followed.id,'user_avatar':followeder.follower.info.user_avatar.url})
         return user_followed  # list
 
     # 得到当前用户的粉丝
@@ -67,7 +77,7 @@ class Follow(models.Model):
             t = Follow.objects.filter(follower=from_user, followed=Quser).all()
             if t:
                 user_followed.append(
-                    {'username': followeder.follower.username, 'userid': followeder.follower.id,
+                    {'username': followeder.follower.username, 'userid': followeder.follower.id,'user_avatar':followeder.follower.info.user_avatar.url,
                      'mutualfollower': 0})  # 0表示互相关注
             else:
                 user_followed.append(

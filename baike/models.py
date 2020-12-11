@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import markdown
 from django.utils.html import strip_tags
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 # 百科主栏目模型
@@ -42,6 +43,15 @@ class Artical(models.Model):
     excerpt = models.CharField('摘要',max_length=100,blank=True)
     click_count = models.IntegerField('点击次数',default=0)
     add_time = models.DateTimeField('发布时间',auto_now_add=True)
+
+
+    def image_img(self):
+        if self.thumb:
+            # TODO 上线后需要修改为上线地址
+            # print('http://127.0.0.1:8000/media/%s'%self.cover)
+            return mark_safe('<img src="http://127.0.0.1:8000/media/%s" style="width: 100px"/>' % self.thumb)
+        else:
+            return u'图片'
 
 
     def save(self, *args, **kwargs):
