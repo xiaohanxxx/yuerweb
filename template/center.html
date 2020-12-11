@@ -35,7 +35,22 @@
 
          	 	 <div class="iam_username">{{ user }}</div>
          	 	 <div class="jd_tiao">
-         	 	 	<div class="jdt" id="slideTest18"></div>
+{#         	 	 	<div class="jdt" id="slideTest18"></div>#}
+                     <progress max="10000" value="5000" style="width:300px; height: 8px; border-radius: 5px; background: #fff; color: #FF44AD;"></progress>
+                     <style>
+                         ::-ms-fill{
+                             background:deeppink;
+                        }
+                        ::-moz-progress-bar{
+                             background:#FF44AD;
+                          }
+                        ::-webkit-progress-bar{
+                             background:#f1f1f1;
+                          }
+                        ::-webkit-progress-value{
+                             background:#FF44AD;
+                          }
+                     </style>
          	 	 </div>
      	 	 	<div class="jin_pai">
      	 	 		{{ data.level }}
