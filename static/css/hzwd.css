@@ -297,7 +297,9 @@
     line-height: 20px;
     overflow: auto;
 }
-
+.hotwdtuijian li i{
+    color:#777;
+}
 .userinfo .plinfobox > div > span i {
     font-size: 18px;
 }

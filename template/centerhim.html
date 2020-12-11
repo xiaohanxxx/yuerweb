@@ -1,408 +1,416 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<title>他的个人中心</title>
-	{% load static %}
-	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <meta charset="utf-8">
+    <title>他的个人中心</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/uitls/tool.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+
 </head>
 <body>
-     {% include 'header.html' %}
+{% include 'header.html' %}
 
-         <div class="centers" ms-controller="centeres">
-         	 <div class="ctops">
-                 <style>
-                     .ctops{position: relative;}
-                     .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
-                     .hovser:hover .thtuxiang{ display: block;}
-                 </style>
-{#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}"  height="124" width="124"></div>#}
-                 <div class="tuxiang hovser">
-                     <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
-                    <div class="tuxiang thtuxiang">
-                        <img src="{% static 'img/Vector.png' %}"  alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
-                        <div class="eidt" id="test1" style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
-                            <i class="layui-icon">&#xe642;</i>
+<div class="centers" ms-controller="centeres">
+    <div class="ctops">
+        <div class="tuxiang"><img src="\media/{{ data.user.info.user_avatar }}" height="124" width="124"></div>
+        <div class="iam_username">{{ data.user }}</div>
+        <div class="jd_tiao">
+            <div class="jdt" id="slideTest18"></div>
+        </div>
+        <div class="jin_pai">
+            {{ data.level }}
+        </div>
+        <div class="czz_czz">
+            成长值 {{ data.integral }}
+        </div>
+        <div class="guanzhus" ms-click="guanzhuhims">
+            {#     	 	 		关注他#}
+            {guanzhuh}
+        </div>
+    </div>
+
+
+    <div class="nav_list">
+        <div class="nav_left">
+            <div class="navs">
+                <ul>
+                    <li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
+                        他的论坛（{ maxnumes }）
+                    </li>
+                    <li ms-class="curee_cener:aa==2" ms-click="getBox(2)">
+                        他的问答（{ maxnumwd }）
+                    </li>
+
+                </ul>
+            </div>
+
+            <style>
+                .imgwidth img {
+                    width: 600px;
+                    height: auto;
+                    text-align: center;
+                }
+
+                .bott_box ol li p img {
+                    width: 700px;
+                    height: auto;
+                }
+                .centers .tjjlq {
+                    width: 320px;
+                }
+                .centers .tjjl-h h3{
+                    min-width: 160px;
+                }
+                .centers .tjjl-h{
+                    height:40px;
+                }
+                .centers .nav_right .tuijianjjq .hot_arc{
+                    width: 308px;
+                }
+                .centers .bott_box ol li img{
+                    width: 100px;
+                }
+            </style>
+            <div class="bott_box" ms-if="aa == 1">
+                <ol>
+                    <li ms-repeat="gethimtiezies">
+                        <img ms-attr-src="{el.snimg}">
+                        <p style="font-size: 16px;margin-bottom:6px;font-weight:bold;"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
+                        <p class="imgwidth" style="font-size: 12px; padding: 0 40px;line-height:18px;text-indent: 1em;">{el.content | html | truncate(180,'...')}</p>
+                        <div style="margin-top: 15px;margin-left:120px;">{el.publish_date.replace(/\..*/,'')}
+                            <div class="rights">
+                                <abbr style="margin-right: 20px;" ms-click="dianzanfun(el,$index)"><i
+                                        class="layui-icon">&#xe6c6;</i>{el.commentnum}</abbr>
+                                <abbr><i class="layui-icon">&#xe63a;</i> <a
+                                        ms-attr-href="/luntan/articles/?aid={el.id}">{el.thumbup}</a></abbr>
+                            </div>
                         </div>
-                    </div>
-                 </div>
-         	 	 <div class="iam_username">{{ data.user }}</div>
-         	 	 <div class="jd_tiao">
-         	 	 	<div class="jdt" id="slideTest18"></div>
-         	 	 </div>
-     	 	 	<div class="jin_pai">
-     	 	 		{{ data.level }}
-     	 	 	</div>
-     	 	 	<div class="czz_czz">
-     	 	 		成长值  {{ data.integral }}
-     	 	 	</div>
-     	 	 	<div class="guanzhus" ms-click="guanzhuhims">
-{#     	 	 		关注他#}
-                    {guanzhuh}
-     	 	 	</div>
-         	 </div>
+                    </li>
+                </ol>
+            </div>
 
-
-             <div class="nav_list">
-               <div class="nav_left">
-	             	<div class="navs">
-	             		<ul>
-	             			<li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
-	             				他的论坛（{ maxnumes }）
-	             			</li>
-	             			<li ms-class="curee_cener:aa==2"  ms-click="getBox(2)">
-	             				他的问答（{ maxnumwd }）
-	             			</li>
-{#	             			<li ms-class="curee_cener:aa==3"  ms-click="getBox(3)">#}
-{#	             				他的关注（999）#}
-{#	             			</li>#}
-{#	             			<li ms-class="curee_cener:aa==4"  ms-click="getBox(4)">#}
-{#	             				他的粉丝（999）#}
-{#	             			</li>#}
-	             		</ul>
-	             	</div>
-    <style>
-        .imgwidth{ width: 600px; height: auto; text-align: center;}
-        .bott_box ol li p img{ width: 700px; height: auto;}
-    </style>
-
-                    <div class="bott_box" ms-if="aa == 1">
-                    	<ol>
-
-                    		<li ms-repeat="gethimtiezies">
-                    			<img src="{% static 'img/pexels.png' %}">
-                    			<p style="font-size: 16px;"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
-                    			<p class="imgwidth" style="font-size: 12px; padding: 0 40px;">{el.content | truncate(180,'...')}</p>
-                    			<div style="margin-top: 15px;">{el.publish_date}
-                    				<div class="rights">
-                    					<abbr style="margin-right: 20px;" ms-click="dianzanfun(el,$index)"><i class="layui-icon">&#xe6c6;</i>{el.commentnum}</abbr>
-                    					<abbr><i class="layui-icon" >&#xe63a;</i> <a  ms-attr-href="/luntan/articles/?aid={el.id}">{el.thumbup}</a></abbr>
-                    				</div>
-                    		    </div>
-                    		</li>
-
-
-                    	</ol>
-                    </div>
-
-                    <style>
-                        .imgs img{  width: 300px; height: 260px; }
-                    </style>
-                    <div class="bott_box" ms-if="aa == 2">
-                    	<div class="my_answer">
-                    		<ul>
-                    			<li ms-repeat="himswenda">
-                    				<p style="font-size: 14px;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a></p>
-                    				<p style="font-size: 12px; margin: 8px 0;" class="imgs">{el.content | html | truncate(260,'...')}</p>
-                    				<div>{el.publish_date}  <abbr style="float: right; margin-right: 115px;" ms-click="dianzanfunes(el.id,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr></div>
-                    			</li>
-{#                    			<li>#}
-{#                    				<p style="font-size: 14px;">我是问题标题文字</p>#}
-{#                    				<p style="font-size: 12px; margin: 8px 0;">我是回答问题文字，最多显示一行，点击文章标题跳转到文章详情</p>#}
-{#                    				<div>2020.11.04  <abbr style="float: right; margin-right: 115px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></div>#}
-{#                    			</li>#}
-                    		</ul>
-                    	</div>
-                    </div>
-
-
-
-
-
-{#                     <div class="bott_box" ms-if="aa == 3">#}
-{#                     	<div class="gz_cont">#}
-{##}
-{#                     		<div class="gzlists">#}
-{#                     			<img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                     			<p style="font-size: 16px;">我是用户名</p>#}
-{#                     			<p style="font-size: 14px; margin-bottom: 5px;">粉丝 | 999</p>#}
-{#                     			<abbr style="margin-left: 53px; border: 1px solid #FF44AD; padding: 2px 15px; font-size: 12px; color: #FF44AD;">关注</abbr>#}
-{#                     		</div>#}
-{##}
-{#                     	</div>#}
-{#                     </div>#}
-
-
+            <style>
+                .imgs img {
+                    width: 300px;
+                    height: 260px;
+                }
+            </style>
+            <div class="bott_box" ms-if="aa == 2">
+                <div class="my_answer">
+                    <ul>
+                        <li ms-repeat="himswenda">
+                            <p style="font-size: 14px;font-weight:bold;"><a ms-attr-href="/taolun/toposting/?pid={el.id}">{el.title}</a>
+                            </p>
+                            <p style="font-size: 12px; margin: 8px 0;text-indent: 2em;width:90%;" class="imgs">{el.content | html | truncate(260,'...')}</p>
+                            <div>{el.publish_date.replace(/\..*/,'')} <abbr style="float: right; margin-right: 115px;" ms-click="dianzanfunes(el.id,$index)"><i class="layui-icon">&#xe6c6;</i>{el.thumbup}</abbr>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="nav_right">
-                	{% include 'mod_tjjl.html' %}
-                    <style>
-                        #tjjlbox li{ width: 100%; overflow: hidden; margin: 15px 0; }
-                        #tjjlq{ padding: 15px;}
-                        .tjjl-h{ height: 30px; line-height: 30px; border-bottom: 1px solid #eee;}
-                        .tjjl-h h3{ height: 29px; line-height: 30px; text-align: center; border-bottom: 1px solid #FF44AD; width: 100px;}
-                    </style>
-{#                    <div class="tuijianjjq">#}
-{#                    	 <h4><abbr>推荐交流圈</abbr></h4>#}
-{#                    	 <ul>#}
-{#                    	 	<li>#}
-{#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">好孕妈妈交流圈</a>#}
-{#                    	 		<abbr>999 个话题</abbr>#}
-{#                    	 	</li>#}
-{#                    	 </ul>#}
-{#                    </div>#}
+            </div>
 
+        </div>
+        <div class="nav_right">
+            {% include 'mod_tjjl.html' %}
+            <style>
+                #tjjlbox li {
+                    width: 100%;
+                    overflow: hidden;
+                    margin: 15px 0;
+                }
 
+                #tjjlq {
+                    padding: 15px;
+                }
 
-                    <div class="tuijianjjq">
-{#                    	 <h4><abbr>热门回答</abbr></h4>#}
-{#                    	 <ul>#}
-{#                    	 	<li>#}
-{#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>#}
-{#                    	 		<abbr>999 个话题</abbr>#}
-{#                    	 	</li>#}
-{#                    	 </ul>#}
+                .tjjl-h {
+                    height: 30px;
+                    line-height: 30px;
+                    border-bottom: 1px solid #eee;
+                }
 
-                        {% include 'mod_hotarticle.html' %}
-                         <style>
-                             .rgt_tit{ width: 100%; height: 30px; line-height: 30px; overflow: hidden; border-bottom: 1px solid A#eee;}
-                             .tuijianjjq .rgt_tit h4{ width: 100px; height: 31px; line-height: 30px; margin-top: 0;}
-                             .rgt_tit h4 span{ display: block; width: 100px;height: 29px; line-height: 30px; overflow: hidden; text-align: center; border-bottom: 1px solid #FF44AD;}
-                         </style>
-                    </div>
+                .tjjl-h h3 {
+                    height: 29px;
+                    line-height: 30px;
+                    text-align: center;
+                    border-bottom: 1px solid #FF44AD;
+                    width: 100px;
+                }
+            </style>
 
+            <div class="tuijianjjq">
 
-                </div>
+                {% include 'mod_hotarticle.html' %}
+                <style>
+                    .rgt_tit {
+                        width: 100%;
+                        height: 30px;
+                        line-height: 30px;
+                        overflow: hidden;
+                        border-bottom: 1px solid A #eee;
+                    }
 
+                    .tuijianjjq .rgt_tit h4 {
+                        width: 100px;
+                        height: 31px;
+                        line-height: 30px;
+                        margin-top: 0;
+                    }
 
-             </div>
-
-
-
-
-         </div>
-     {% include 'footer.html' %}
-     <script type="text/javascript">
-		layui.use('slider', function(){
-		  var slider = layui.slider;
-		       slider.render({
-		    		elem: '#slideTest18',
-		    		value: 888,
-		    		max:10000,
-		    		disabled: true, //禁用滑块
-		    		// showstep:false,
-		    		theme:"#FF44AD"
-			  });
-		});
-	</script>
-	<script>
+                    .rgt_tit h4 span {
+                        display: block;
+                        width: 100px;
+                        height: 29px;
+                        line-height: 30px;
+                        overflow: hidden;
+                        text-align: center;
+                        border-bottom: 1px solid #FF44AD;
+                    }
+                </style>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+<script type="text/javascript">
+    layui.use('slider', function () {
+        var slider = layui.slider;
+        slider.render({
+            elem: '#slideTest18',
+            value: 888,
+            max: 10000,
+            disabled: true, //禁用滑块
+            // showstep:false,
+            theme: "#FF44AD"
+        });
+    });
+</script>
+<script>
     if (layui) {
         layui.use('layer', function () {
             var layer = layui.layer;
         });
     }
 </script>
-	<script type="text/javascript">
-        avalon.config({
-            interpolate: ["{", "}"]
-        });
-		var wvm = avalon.define({
-          $id: "centeres",
-          aa:1,
-          cc:1,
-          guanzhuh:'关注他',
-          getcodewenzi: '获取验证',
-          edit_passwad:{
-          	phone:'',
-          	verification_Code:'',
-          	new_password:''
-          },
-          dianzanfunes:function(res,index){
-              var datas= {
-                  'type':'article',
-                  'id':res,
-               }
-              $.ajax({
-                    type: 'get',
-                    url: '/taolun/thumbup/',
-                    data: datas,
-                    dataType: "text",
-                    success: function (result) {
-                        if(result == '点赞成功！'){
-                            wvm.himswenda[index].thumbup = wvm.himswenda[index].thumbup + 1;
-                            layer.msg(result);
-                        }else{
-                            layer.msg(result);
-                        }
-                    },error:function(error){
-                  }
-                });
-
-          },
-            guanzhuhims:function (data,index){
-                  var datas = {
-                            'type':0,
-                            'Quser_id':localStorage.getItem("uid"),
-                            'csrfmiddlewaretoken':glob_csrftoken
-                      }
-                    $.ajax({
-                        type: 'post',
-                        url: '/users/followapi',
-                        data: datas,
-                        dataType: "json",
-                        success: function (data) {
-                            //关注接口
-                            console.log(data,'data3333333');
-                            layer.msg('关注成功');
-                            wvm.guanzhuh = '已关注';
-                        }
-                    });
-            },
-          dianzanfun:function(res,index){
-              var datas= {
-                   'aid':res.id,
-               }
-              $.ajax({
-                    type: 'get',
-                    url: '/luntan/thumbup/',
-                    data: datas,
-                    dataType: "text", //返回的是TEXT字符串
-                    success: function (result) {
-                        if(result == '点赞成功'){
-                            wvm.wvm.gethimtiezies[index].thumbup = wvm.wvm.gethimtiezies[index].thumbup + 1
-                            layer.msg(result);
-                        }else{
-                          layer.msg(result);
-                           return ;
-                        }
-                        //wvm.alltiezi[index].thumbup = wvm.alltiezi[index].thumbup + 1
+<script type="text/javascript">
+    avalon.config({
+        interpolate: ["{", "}"]
+    });
+    var wvm = avalon.define({
+        $id: "centeres",
+        aa: 1,
+        cc: 1,
+        guanzhuh: '关注他',
+        getcodewenzi: '获取验证',
+        edit_passwad: {
+            phone: '',
+            verification_Code: '',
+            new_password: ''
+        },
+        dianzanfunes: function (res, index) {
+            var datas = {
+                'type': 'article',
+                'id': res,
+            }
+            $.ajax({
+                type: 'get',
+                url: '/taolun/thumbup/',
+                data: datas,
+                dataType: "text",
+                success: function (result) {
+                    if (result == '点赞成功！') {
+                        wvm.himswenda[index].thumbup = wvm.himswenda[index].thumbup + 1;
+                        layer.msg(result);
+                    } else {
                         layer.msg(result);
                     }
-                });
+                }, error: function (error) {
+                }
+            });
 
-          },
-          change_edit:function(res){
-              wvm.cc = res;
-          },
-          getBox:function(res){
-              wvm.aa = res;
-          },
-          validatorTel: function (content) {
+        },
+        guanzhuhims: function (data, index) {
+            var datas = {
+                'type': 0,
+                'Quser_id': localStorage.getItem("uid"),
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            $.ajax({
+                type: 'post',
+                url: '/users/followapi',
+                data: datas,
+                dataType: "json",
+                success: function (data) {
+                    //关注接口
+                    layer.msg('关注成功');
+                    wvm.guanzhuh = '已关注';
+                }
+            });
+        },
+        dianzanfun: function (res, index) {
+            var datas = {
+                'aid': res.id,
+            }
+            $.ajax({
+                type: 'get',
+                url: '/luntan/thumbup/',
+                data: datas,
+                dataType: "text", //返回的是TEXT字符串
+                success: function (result) {
+                    if (result == '点赞成功') {
+                        wvm.wvm.gethimtiezies[index].thumbup = wvm.wvm.gethimtiezies[index].thumbup + 1
+                        layer.msg(result);
+                    } else {
+                        layer.msg(result);
+                        return;
+                    }
+                    layer.msg(result);
+                }
+            });
+
+        },
+        change_edit: function (res) {
+            wvm.cc = res;
+        },
+        getBox: function (res) {
+            wvm.aa = res;
+        },
+        validatorTel: function (content) {
             eval("var reg = /^1[34578]\\d{9}$/;");
             return RegExp(reg).test(content);
-          },
-            getCode: function () { //获取验证码
-                if (wvm.edit_passwad.phone == '' || !wvm.edit_passwad.phone || !wvm.validatorTel(wvm.edit_passwad.phone)) {
-                    layer.msg('请填写正确的手机号');
-                    return;
-                }
-                var time = 60;
-                if (time == 60) {
-                    var time1 = setInterval(function () {
-                        if (time == 0) {
-                            wvm.getcodewenzi = '重发'
-                            $("#sendsms").removeAttr("disabled");
-                            time = 60;
-                            clearInterval(time1);
-                        } else {
-                            $("#sendsms").attr("disabled", "true");
-                            wvm.getcodewenzi = "重发(" + time + ")";
-                            time--;
-                        }
-                    }, 1000);
-                }
-                var phone = {
-                    'phone': wvm.edit_passwad.phone,
-                    'csrfmiddlewaretoken':glob_csrftoken
-                }
-                $.ajax({
-                    type: 'post',
-                    url: '/users/smsvif',
-                    data: phone,
-                    dataType: "json",
-                    success: function (data) {
-                        console.log(data);
-                    }
-                });
-            },
-            okedit:function(){
-            	var new_password = {
-            		'new_password':wvm.edit_passwad.password,
-                    'csrfmiddlewaretoken':glob_csrftoken
-            	}
-                $.ajax({
-                    type: 'post',
-                    url: '/users/changepwd',
-                    data: new_password,
-                    dataType: "json",
-                    // timeout: 10000,
-                    success: function (data) {
-                        layer.msg(data.msg);
-                    }
-                });
-            },
-            gethimtiezies:[],
-            totalNum:0,
-            getQueryVariable: function(variable) {
-                var query = window.location.search.substring(1);
-                var vars = query.split("&");
-                for (var i = 0; i < vars.length; i++) {
-                    var pair = vars[i].split("=");
-                    if (pair[0] == variable) {
-                        return pair[1];
-                    }
-                }
-                return (false);
-            },
-            getparase:function (variable){
-                var query = window.location.pathname;
-                var vars = query.split("/");
-                localStorage.setItem('uid',vars[vars.length-1]);
-            },
-            himswenda:[],
-            maxnumwd:0,
-            gethimwenda:function(){
-              var uides = {
-            		'uid':localStorage.getItem('uid'),
-                    'page':1,
-                    'num':10
-            	}
-                $.ajax({
-                    type: 'get',
-                    url: '/taolun/getmyarticles/',
-                    data: uides,
-                    dataType: "json",
-                    success: function (data) {
-                        wvm.himswenda = data.data
-                        wvm.maxnumwd = data.maxnum
-                        console.log(wvm.himswenda,'himswendahimswendahimswenda')
-                    },error:function(error){
-
-                    }
-                });
-            },
-            maxnumes:0,
-            gethimtiezi:function (){
-            	var uides = {
-            		'uid':localStorage.getItem('uid'),
-                    'page':1,
-                    'num':10
-            	}
-                $.ajax({
-                    type: 'get',
-                    url: '/luntan/getmyarticles/',
-                    data: uides,
-                    dataType: "json",
-                    success: function (data) {
-                        wvm.gethimtiezies = data.data
-                        wvm.maxnumes = data.maxnum
-                        console.log(wvm.gethimtiezies,'asdfsafdsafd')
-                    },error:function(error){
-
-                    }
-                });
+        },
+        getCode: function () { //获取验证码
+            if (wvm.edit_passwad.phone == '' || !wvm.edit_passwad.phone || !wvm.validatorTel(wvm.edit_passwad.phone)) {
+                layer.msg('请填写正确的手机号');
+                return;
             }
-        });
-         wvm.getparase();
-         wvm.gethimwenda();
-         wvm.gethimtiezi();
-	</script>
+            var time = 60;
+            if (time == 60) {
+                var time1 = setInterval(function () {
+                    if (time == 0) {
+                        wvm.getcodewenzi = '重发'
+                        $("#sendsms").removeAttr("disabled");
+                        time = 60;
+                        clearInterval(time1);
+                    } else {
+                        $("#sendsms").attr("disabled", "true");
+                        wvm.getcodewenzi = "重发(" + time + ")";
+                        time--;
+                    }
+                }, 1000);
+            }
+            var phone = {
+                'phone': wvm.edit_passwad.phone,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            $.ajax({
+                type: 'post',
+                url: '/users/smsvif',
+                data: phone,
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                }
+            });
+        },
+        okedit: function () {
+            var new_password = {
+                'new_password': wvm.edit_passwad.password,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            $.ajax({
+                type: 'post',
+                url: '/users/changepwd',
+                data: new_password,
+                dataType: "json",
+                // timeout: 10000,
+                success: function (data) {
+                    layer.msg(data.msg);
+                }
+            });
+        },
+        gethimtiezies: [],
+        totalNum: 0,
+        getQueryVariable: function (variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return (false);
+        },
+        getparase: function (variable) {
+            var query = window.location.pathname;
+            var vars = query.split("/");
+            localStorage.setItem('uid', vars[vars.length - 1]);
+        },
+        himswenda: [],
+        maxnumwd: 0,
+        gethimwenda: function () {
+            var uides = {
+                'uid': localStorage.getItem('uid'),
+                'page': 1,
+                'num': 10
+            }
+            $.ajax({
+                type: 'get',
+                url: '/taolun/getmyarticles/',
+                data: uides,
+                dataType: "json",
+                success: function (data) {
+                    Toolfun.snimgzsClass(data.data);
+                    for(var i=0;i<data.data.length;i++){
+                        data.data[i].content = data.data[i].content.replace(/<img.*\/>/g,'');
+                    }
+                    wvm.himswenda = data.data
+                    wvm.maxnumwd = data.maxnum
+                    console.log(data.data.content,'9898981515wl',data.data)
+                }, error: function (error) {
+
+                }
+            });
+        },
+        maxnumes: 0,
+        gethimtiezi: function () {
+            var uides = {
+                'uid': localStorage.getItem('uid'),
+                'page': 1,
+                'num': 10
+            }
+            $.ajax({
+                type: 'get',
+                url: '/luntan/getmyarticles/',
+                data: uides,
+                dataType: "json",
+                success: function (data) {
+                    Toolfun.snimgzsClass(data.data);
+                    for(var i=0;i<data.data.length;i++){
+                        data.data[i].content = data.data[i].content.replace(/<img.*\/>/g,'');
+                    }
+                    wvm.gethimtiezies = data.data
+                    wvm.maxnumes = data.maxnum
+                }, error: function (error) {
+
+                }
+            });
+        }
+    });
+    wvm.getparase();
+    wvm.gethimwenda();
+    wvm.gethimtiezi();
+</script>
 </body>
 </html>
