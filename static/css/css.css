@@ -15,6 +15,7 @@ body {
 .ms-controller {
     visibility: hidden
 }
+
 /*Í·²¿CSS*/
 .header {
     height: 150px;
@@ -181,14 +182,15 @@ body {
     width: 1200px;
     height: 360px;
     margin: 0 auto;
+    border-bottom-left-radius: 5px;
     background: #fff;
 }
 
-/*.bannersBox .bags{ background: #666; }*/
 .bannerboxleft {
     width: 290px;
     float: left;
     height: 360px;
+
     position: relative;
 }
 
@@ -237,7 +239,7 @@ body {
     font-size: 14px;
     margin-bottom: 10px;
     padding: 0 10px;
-    color: #333;
+    color: #777;
     text-decoration: none;
 }
 
@@ -817,9 +819,8 @@ body {
 
 .hotbeiyun {
     float: left;
-    width: 318px;
+    width: 280px;
     min-height: 409px;
-    max-height: 409px;
     position: relative;
     border-radius: 5px;
 }
@@ -831,7 +832,10 @@ body {
     text-align: center;
     color: #fff;
 }
-
+.hotbeiyun a>img{
+    width:280px!important;
+    margin: 16px 20px 0 0;
+}
 .hotbeiyun a p {
     position: absolute;
     left: 0;
@@ -885,11 +889,11 @@ body {
     position: relative;
     float: left;
 }
-
+.tupianhost>a{
+    float:left;
+}
 .tupianhost img {
-    width: 96%;
-    height: auto;
-    margin-left: 2%;
+    width: 98%;
 }
 
 /*background: rgba(0,0,0,0.8); opacity: 0.8;*/
@@ -928,7 +932,7 @@ body {
 
 .listh3hasdf ul li h3 {
     margin-bottom: 8px;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'Î¢ÈíÑÅºÚ';
     font-weight: 400;
     color: #666;
@@ -1295,8 +1299,8 @@ li.curreswd > a {
 
 .doctorbox > a > img {
     float: left;
-    width: 113px !important;
-    height: 141px !important;
+    /*width: 113px !important;*/
+    /*height: 141px !important;*/
 }
 
 .doctorbox .doctorinfo {
@@ -2457,11 +2461,11 @@ li.curreswd > a {
 }
 
 .ululli {
-    width: 30%;
+    width: 48%;
     float: left;
     overflow: hidden;
     margin-right: 2%;
-    height: 160px;
+    height: 200px;
 }
 
 .abq {
@@ -2471,10 +2475,20 @@ li.curreswd > a {
 
 .ululli a {
     text-decoration: none;
-    margin-right: 15px;
+    /*margin-right: 15px;*/
     color: #666;
     margin-bottom: 10px;
     font-size: 14px;
+    width: 50%;
+    float: left;
+    text-align: left;
+    display: block;
+    padding-left: 5px;
+
+}
+.ululli a:before{
+    content:'▪';
+    margin-right: 8px;
 }
 .ululli a:hover{
     color: #FF44AD;
@@ -2617,7 +2631,6 @@ li.curreswd > a {
 
 .content p {
     padding: 10px 15px;
-    font-size: 12px;
     line-height: 25px;
 }
 
@@ -2751,8 +2764,9 @@ li.curreswd > a {
 }
 
 .yiyuanhuanjing img {
-    width: 100%;
-    height: 100%;
+    width: 600px;
+    height: auto;
+
 }
 
 .yiyuanhuanjing ul li .sgq {
@@ -2966,7 +2980,7 @@ li.curreswd > a {
     cursor: pointer;
     font-size: 16px;
     margin-right: 10px;
-    width: 80px;
+    width: 110px;
     height: 30px;
     line-height: 30px;
     text-align: center;
@@ -3036,7 +3050,6 @@ li.curreswd > a {
 .al_taolun h4 {
     height: 35px;
     line-height: 35px;
-    border-bottom: 1px solid #f1f1f1;
     width: 100%;
 }
 
@@ -3166,6 +3179,12 @@ li.curreswd > a {
     width: 350px;
 }
 
+.nav_right .tuijianjjq .hot_arc {
+    width: 280px;
+    height: 570px;
+    margin-bottom: 20px;
+}
+
 .navs ul {
     width: 100%;
     overflow: hidden;
@@ -3217,22 +3236,6 @@ li.curreswd > a {
     margin-top: 10px;
 }
 
-.tuijianjjq h4 {
-    border-bottom: 1px solid #f1f1f1;
-    height: 35px;
-    line-height: 35px;
-    font-size: 18px;
-    margin-top: 10px;
-}
-
-.tuijianjjq h4 abbr {
-    font-size: 18px;
-    border-bottom: 1px solid #FF44AD;
-    height: 35px;
-    line-height: 35px;
-    display: block;
-    width: 100px;
-}
 
 .tuijianjjq ul li {
     width: 100%;
@@ -3809,16 +3812,20 @@ body .lis-select .askSelect {
 .hhgihtlefth3.hysqbox {
     height: 446px;
 }
+
 /*医院推荐微调*/
-.yytjclass{
+.yytjclass {
     margin: 20px 0 20px 0;
 }
-.yytjclass .strsub{
-    margin-left:-24px;
+
+.yytjclass .strsub {
+    margin-left: -24px;
 }
-.yytjclass .hot_arc{
-    margin-left:-36px;
+
+.yytjclass .hot_arc {
+    margin-left: -36px;
 }
+
 /*hotarticle*/
 body .sjchangebtn {
     position: absolute;
@@ -3829,38 +3836,60 @@ body .sjchangebtn {
     height: 27px;
     cursor: pointer;
 }
-.sjchangebtn>span{
-    float:left;
-    background-color:#BEBEBE;
+
+.sjchangebtn > span {
+    float: left;
+    background-color: #BEBEBE;
     opacity: 0.6;
     padding: 5px 10px;
     border-radius: 13px;
 }
-.sjchangebtn>span i{
-    position:relative;
-    top:1px;
-    margin-right:6px;
+
+.sjchangebtn > span i {
+    position: relative;
+    top: 1px;
+    margin-right: 6px;
 
 }
+
 .sjchangebtnselect span {
     background-color: #FF44AD;
 }
-.byhot_r {
-    position: relative;
-    width: 337px;
-    height: 582px;
-    margin-left: 10px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: solid 1px rgba(237, 237, 237, 0.5);
-}
-.hot_arc {
-    position: relative;
-    width: 296px;
-    height: 520px;
-    background-color: #ffffff;
-    border-radius: 5px;
-    padding: 0px 18px 0 24px;
-}
+
 /*医院侧边*/
-.yyinfobox
+.yyinfocb .hot_arc {
+    margin-top: 20px;
+}
+
+.bkxginfo {
+    width: 95%;
+    margin-bottom: 20px;
+}
+
+.bkxginfo h4 {
+    background-color: #fff;
+}
+
+.bkxginfo li abbr {
+    width: 50px !important;
+}
+.bodyindex .lefth3list{
+    width: 140px;
+    margin-left:20px;
+    border-radius:5px;
+}
+.bodyindex .szdoctorhot{
+    width:340px;
+    padding: 0 10px;
+    margin-left:20px;
+}
+.bodyindex .remenhuaties{
+    float:left;
+    width:340px;
+    margin-left:10px;
+}
+.bodyindex .cityhologe img{
+    margin-left:10px!important;
+    width: 320px;
+    margin:20px auto;
+}

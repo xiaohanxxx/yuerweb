@@ -107,14 +107,14 @@
                 <h3>精华推荐</h3>
                 <ol>
                     <li ms-repeat-as="jhtopicdata">
-                        <a ms-attr-href="/taolun/toposting/?pid={as.id}">
+
                             {% if request.user.is_active %}
                                 <a ms-attr-href="/users/centerhim/{as.user.id}"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
                             {% else %}
                                 <a href="/login"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
                             {% endif %}
 
-                            <h4 style="margin-bottom:10px;height: 38px;overflow: hidden;">{as.title}</h4>
+                            <h4 style="margin-bottom:10px;height: 38px;overflow: hidden;"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,15)}</a></h4>
                             <div class="tubiaoousrt">
                                 <span class="fl">
                                     <i class="iconfont">&#xe71b;</i>
@@ -125,7 +125,6 @@
                                     <span>{as.commentnum}</span>
                                 </span>
                             </div>
-                        </a>
                     </li>
                 </ol>
             </div>
@@ -249,10 +248,19 @@
                 dataType: 'json',
                 success: function (ajax) {
                     var imgbox = ['/static/img/933.png', '/static/img/932.png', '/static/img/931.png', '/static/img/930.png'];
-                    for (var i = 0; i < imgbox.length; i++) {
-                        ajax[i].img = imgbox[i];
+                    var newgroupsdata = [];
+                    if(ajax.length>4){
+                        for(var i=0;i<imgbox.length;i++){
+                            ajax[i].img = imgbox[i];
+                            newgroupsdata.push(ajax[i]);
+                        }
+                    }else{
+                        for (var i = 0; i < ajax.length; i++) {
+                            ajax[i].img = imgbox[i];
+                            newgroupsdata.push(ajax[i]);
+                        }
                     }
-                    vm_hzwda.groupsdata = ajax.reverse().sort();
+                    vm_hzwda.groupsdata = newgroupsdata.reverse();
                     localStorage.setItem('Mgroup', JSON.stringify(ajax));
                 }, error: function (error) {
                     console.log(error);

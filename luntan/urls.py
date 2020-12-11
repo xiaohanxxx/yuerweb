@@ -9,6 +9,7 @@ urlpatterns = [
     path(r'areas/', views.Areas.as_view(), name='areas'),
     path(r'topics/', views.Topics.as_view(), name='topices'),
     path(r'articlelist/', views.ArticlesList.as_view(), name='articlelist'),
+    path(r'allarticle/', views.AllArticles.as_view(), name='allarticle'),
     path(r'articles/', views.Article.as_view(), name='articles'),
     path(r'comment/', views.Comment.as_view(), name='comment'),
     path(r'hotarticles/', views.HotAritcles.as_view(), name='hotarticles'),

@@ -194,7 +194,7 @@ class Comment(views.View):
                 "id": i.id,
                 "comment": i.comment,
                 "publish_date": str(i.publish_date),
-                "user": {"id": i.user.id, "username": i.user.username, "head": str(postingObj.user.info.user_avatar)},
+                "user": {"id": i.user.id, "username": i.user.username, "head": str(i.user.info.user_avatar)},
                 "parent": i.parent_id,
                 "thumbup": i.thumup_comment.all().count(),
                 "isthumbup": 0 if not (request.user.id and models.ThumbUpComment.objects.filter(user_id=request.user.id,

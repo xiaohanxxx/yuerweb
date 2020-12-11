@@ -22,8 +22,9 @@
         $id: 'hothospital',
         diqudata: [],
         index: 0,
+        gnid:'',
         hositaldata: [],
-        diquid: 7,//城市id
+        diquid: '',//城市id
         init: function () {
             $('.hosadress>p').click(function () {
                 $('.diqubox').show();
@@ -34,6 +35,7 @@
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hothospital.diqudata = ajax.data[0];//国内医院数据
+                    vm_hothospital.gnid = ajax.data[0].id;
                     vm_hothospital.gethosdata();
                 }, error: function (error) {
                     console.log(error);
@@ -41,8 +43,14 @@
             });
         },
         gethosdata: function () {
+            var url = '';
+            if(vm_hothospital.diquid){
+                url = '/hospital/powerhospital/?cityarea=' + vm_hothospital.diquid + '&type=1';
+            }else{
+                url = '/hospital/powerhospital/?worldarea=' + vm_hothospital.gnid + '&type=1';
+            }
             $.ajax({
-                url:  '/hospital/hospitallist/?cityarea=' + vm_hothospital.diquid + '&hospitallv=3',
+                url: url ,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {

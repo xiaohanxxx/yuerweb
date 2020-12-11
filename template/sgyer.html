@@ -164,7 +164,7 @@
                     <a href="" class="bkmetaname">{item.menu_name}</a>
                 </div>
                 <div class="bkmetalises">
-                    <a ms-attr-href="/baike/article?aid={item.id}" ms-repeat-it="item.list_data">{it.title}</a>
+                    <a ms-repeat-it="item.list_data"  ms-attr-href="/baike/article?aid={item.id}">{it.title}</a>
                 </div>
             </div>
         </div>
@@ -192,7 +192,6 @@
                 dataType: 'json',
                 success: function (data) {
                     mew.aeraees = data.data;
-                    {#console.log(mew.aeraees,'mew.aeraeesmew.aeraeesmew.aeraees')#}
                 },
                 error: function (error) {
                     console.log(error);
@@ -216,7 +215,6 @@
                     data:datas,
                     success: function (data) {
                         mew.listsgye = data.data.curuent_page;
-                        console.log(mew.listsgye,'mew.listsgyemew.listsgyemew.listsgye');
                         mew.totals = data.data.maxnum;
                         mew.intopages(mew.totals);
                     }

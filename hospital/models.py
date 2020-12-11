@@ -6,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 
 class Area(models.Model):
     name = models.CharField(max_length=255, verbose_name="地区")
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, blank=True, verbose_name='自关联')
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, verbose_name='自关联', blank=True, null=True)
 
     class Meta:
         verbose_name = "地区"  # 在admin站点显示名称

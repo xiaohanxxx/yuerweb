@@ -25,7 +25,7 @@
     <div class="currdis clearfix">
         <div class="dqwz">当前位置：</div>
         <div class="lmmbx">
-            <a href="javascript:;">育儿论坛</a>
+            <a href="/luntan">育儿论坛</a>
             <span>></span>
             <a href="javascript:;">{{ data.title }}</a>
         </div>
@@ -70,13 +70,13 @@
             <p class='title'>{{ data.title }}</p>
             <div class="allInfo">
                 <p commid="{{ data.id }}">
-                        {{ data.content |safe }}
+                    {{ data.content |safe }}
                 </p>
             </div>
             <div class="plbox fr">
                 <div><span>评论</span><i>|</i><span>{{ data.commentnum }}</span></div>
                 {% if request.user.is_active %}
-                <div><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></div>
+                    <div><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></div>
                 {% else %}
                     <div><a href="/login"><span>点赞</span><i>|</i><span>{{ data.thumbup }}</span></a></div>
                 {% endif %}
@@ -84,7 +84,7 @@
         </div>
         <div class="plInpbox clearfix">
             <span>评论</span>
-            <div class="pl_head" >
+            <div class="pl_head">
                 <div class="bqBtn" style="position:relative;">
                     <div id="emoji">😄</div>
                 </div>
@@ -95,12 +95,12 @@
             {% if request.user.is_active %}
                 <span id="plintBtn" class="fr" onclick="goPostcomm(this)"><a href="javascript:;">发布</a></span>
             {% else %}
-                <span id="plintBtn" style="margin-top:10px;" class="fr" ><a href="/login">发布</a></span>
+                <span id="plintBtn" style="margin-top:10px;" class="fr"><a href="/login">发布</a></span>
             {% endif %}
         </div>
         <div class="pl_lis">
             <div class="pl_lis_h clearfix">
-                <span class='fl'><em>99</em>条评论</span>
+                <span class='fl'><em>{ plallnum }</em>评论</span>
             </div>
             <div class="pl_info" infobox="box">
                 {#  这是递归开始#}
@@ -112,12 +112,35 @@
     </div>
     <div class="topic_r fl">
         <style>
-            .tjjlbox{ padding-right: 12px;}
-    .tjjlbox img{ float: left;}
-    .tjjlbox li{ height: 40px; line-height: 40px; margin: 20px 0; font-size: 14px;}
-    .tjjl-h{ border-bottom: 1px solid #eee; padding-right: 15px;}
-    .tjjl-h h3{ height: 40px; line-height: 40px; border-bottom: 1px solid #FF44AD; width: 100px; text-align: center; font-size: 18px;}
-</style>
+            .tjjlbox {
+                padding-right: 12px;
+            }
+
+            .tjjlbox img {
+                float: left;
+            }
+
+            .tjjlbox li {
+                height: 40px;
+                line-height: 40px;
+                margin: 20px 0;
+                font-size: 14px;
+            }
+
+            .tjjl-h {
+                border-bottom: 1px solid #eee;
+                padding-right: 15px;
+            }
+
+            .tjjl-h h3 {
+                height: 40px;
+                line-height: 40px;
+                border-bottom: 1px solid #FF44AD;
+                width: 100px;
+                text-align: center;
+                font-size: 18px;
+            }
+        </style>
         {% include 'mod_tjjl.html' %}
         {# 热门话题调用 #}
         {% include 'mod_yuerlthot.html' %}
@@ -131,40 +154,43 @@
         comment: [],
         articles_id: 0,//帖子id
         parent_id: 0,//回帖对应的父id
-        posgz:function(ev){
-            var _this=ev;
+        plallnum: '',
+        posgz: function (ev) {
+            var _this = ev;
             $.ajax({
-                url:'/users/followapi',
-                type:'post',
-                data:{
-                   'type':0,
-                   'Quser_id':$(_this).attr('userid'),
-                    'csrfmiddlewaretoken':glob_csrftoken
+                url: '/users/followapi',
+                type: 'post',
+                data: {
+                    'type': 0,
+                    'Quser_id': $(_this).attr('userid'),
+                    'csrfmiddlewaretoken': glob_csrftoken
                 },
-                success:function(ajax){
+                success: function (ajax) {
                     $('.userInfo .isFollow').html('已关注')
                     layer.msg(ajax.msg);
-                }, error:function(error){
+                }, error: function (error) {
                 }
             })
         },
-        guzhuinit:function(){
+        guzhuinit: function () {
             var userid = $('.isFollow').attr('userid');
             $.ajax({
-                url:'/users/followapi',
-                type:'post',
-                data:{
-                    'type':2,
-                    'Quser_id':userid,
-                    'csrfmiddlewaretoken':glob_csrftoken
+                url: '/users/followapi',
+                type: 'post',
+                data: {
+                    'type': 2,
+                    'Quser_id': userid,
+                    'csrfmiddlewaretoken': glob_csrftoken
                 },
-                success:function(ajax){
-                    for(var i =0;i<ajax.data_list.length;i++){
-                        if(ajax.data_list[i].userid==userid){
-                            $('.userInfo .isFollow').html('已关注');
+                success: function (ajax) {
+                    if (ajax.data_list) {
+                        for (var i = 0; i < ajax.data_list.length; i++) {
+                            if (ajax.data_list[i].userid == userid) {
+                                $('.userInfo .isFollow').html('已关注');
+                            }
                         }
                     }
-                },error:function(error){
+                }, error: function (error) {
                     console.log(error);
                 }
             })
@@ -176,14 +202,15 @@
 
     initdataHtml();//初始化评论数据
     {#评论刷新#}
-    function initdataHtml(){//评论数据局部渲染
-        
+
+    function initdataHtml() {//评论数据局部渲染
         $.ajax({
             url: '/luntan/comment/?articles_id=' + vm_topicArc.articles_id,
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
                 var datalis = ajax.data;
+                vm_topicArc.plallnum = ajax.data.length | 0;
                 var comment = [];
                 for (var i = 0; i < datalis.length; i++) {
                     if (datalis[i].parent == null) {
@@ -194,23 +221,24 @@
                 }
                 infoBox.html(html(comment.reverse()));
                 readyClick();
-                
+
             }, error: function (error) {
                 console.log(error);
             }
         })
     }
+
     {#评论递归一层#}
+
     function html(comment) {//第一个为数据，第二个为递归体
         var htmldata = '';
         for (var a in comment) {
-            var newstr = diguipilun(comment[a].child, comment[a],a);
-            htmldata += '<div class="pl clearfix" ><div class="tx">{% if request.user.is_active %}<a href="/users/centerhim/'+comment[a].user.id+'"><img src="/media'+ comment[a].user.head + '" alt=""></a>{% else %}<a href="/login">';
-            htmldata += '<img src="/media'+ comment[a].user.head + '" alt=""></a>{% endif %}</div><p class="plbg">' + comment[a].user.username + '</p>';
+            var newstr = diguipilun(comment[a].child, comment[a], a);
+            htmldata += '<div class="pl clearfix" ><div class="tx">{% if request.user.is_active %}<a href="/users/centerhim/'+comment[a].user.id+'"><img src="/media/'+ comment[a].user.head+ '" alt=""></a>{% else %}<a href="/login">';htmldata += '<img src="/media'+ comment[a].user.head +'" alt=""></a>{% endif %}</div><p class="plbg">' + comment[a].user.username + '</p>';
             htmldata += '<ul class="plul"><p commid=' + comment[a].id + '>　　' + comment[a].comment + '</p><div class="date clearfix">';
-            htmldata += '<span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span><span btn="reply" dataInp="'+a+'" onclick="sonIfshow(this)">回复</span></div>';
+            htmldata += '<span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span><span btn="reply" dataInp="' + a + '" onclick="sonIfshow(this)">回复</span></div>';
             htmldata += newstr;
-            htmldata += '<div class="pl_inpbox" dataInp="'+a+'"><div class="plinput"><div class="plinput-h" style="position:relative;"><div bq_btn="emoji">😄</div>';
+            htmldata += '<div class="pl_inpbox" dataInp="' + a + '"><div class="plinput"><div class="plinput-h" style="position:relative;"><div bq_btn="emoji">😄</div>';
             htmldata += '</div><textarea name="pl_Input"></textarea><div name="result" contenteditable="true" style="display:none;"></div>';
             htmldata += '</div><span name="qxplBtn" onclick="sonQxcomm(this)" class="fl">取消评论</span>';
             htmldata += '{% if request.user.is_active %}<span name = "plintBtn" class= "fr" onclick = "sonPostcomm(this)"> <a href = "javascript:;"> 发布 </a></span> {% else %}<span name = "plintBtn" class= "fr" onclick = ""> <a href = "/login"> 发布 </a></span>{% endif %}';
@@ -218,8 +246,10 @@
         }
         return htmldata;
     }
+
     {#评论递归函数#}
-    function diguipilun(comment, Mcomment,Mid) {//comment：子级所有数据，Mcomment单个父级数据，Mid父级元素的索引
+
+    function diguipilun(comment, Mcomment, Mid) {//comment：子级所有数据，Mcomment单个父级数据，Mid父级元素的索引
         var diguistr = '';
         if (!comment) {
             return '　';
@@ -228,14 +258,14 @@
             diguistr += '<ul class="hfplbox"><div class="pl clearfix"><p class="plbg plbg2"><span class="afuser">' + comment[a].user.username + '</span>';
             diguistr += '<span>回复了</span><span class="befuser">' + Mcomment.user.username + '</span></p><ul class="plul">';
             diguistr += '<p commid="' + comment[a].id + '">　　' + comment[a].comment + '</p><div class="date"><span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span>';
-            diguistr += '<span btn="reply" dataInp="'+Mid+'" onclick="sonIfshow(this)">回复</span></div></ul></div>';
+            diguistr += '<span btn="reply" dataInp="' + Mid + '" onclick="sonIfshow(this)">回复</span></div></ul></div>';
             if (comment[a].child) {
                 for (var b in comment[a].child) {
                     diguistr += '<ul class="hfplbox"><div class="pl clearfix"><p class="plbg plbg2"><span class="afuser">' + comment[a].child[b].user.username + '</span>';
                     diguistr += '<span>回复了</span><span class="befuser">' + comment[a].user.username + '</span></p><ul class="plul">';
                     diguistr += '<p commid="' + comment[a].child[b].id + '">　　' + comment[a].child[b].comment + '</p><div class="date"><span>' + comment[a].child[b].publish_date.replace(/\d+:.*/, '') + '</span>';
-                    diguistr += '<span btn="reply" dataInp="'+Mid+'" onclick="sonIfshow(this)">回复</span></div></ul></div>';
-                    diguistr += diguipilun(comment[a].child[b].child, comment[a].child[b],Mid);
+                    diguistr += '<span btn="reply" dataInp="' + Mid + '" onclick="sonIfshow(this)">回复</span></div></ul></div>';
+                    diguistr += diguipilun(comment[a].child[b].child, comment[a].child[b], Mid);
                     diguistr += '</ul>';
                 }
             }
@@ -245,16 +275,16 @@
     }
 
     {#    文本输入框#}
-   /*表情初始化
-      content_el: 输入框的位置
-            list: 下的属性详解
-                name		-- 分类名称
-                code 		-- 分类的表情编码，与其他分类不可重复
-                path 		-- 图片路径
-                suffix		-- 图片的后缀
-                max_number	-- 图片的最大个数
-*/
-//表情包函数,绑定挂载
+    /*表情初始化
+       content_el: 输入框的位置
+             list: 下的属性详解
+                 name		-- 分类名称
+                 code 		-- 分类的表情编码，与其他分类不可重复
+                 path 		-- 图片路径
+                 suffix		-- 图片的后缀
+                 max_number	-- 图片的最大个数
+ */
+    //表情包函数,绑定挂载
     function bqbaofunc(bqbtn, textbox) {//bqbtn 为表情显示按钮，textbox为文本存储盒子
         bqbtn.emoji({
             content_el: textbox,
@@ -279,6 +309,7 @@
             }]
         });
     }
+
     //表情格式替换
     function replace_em(str) {
         str = str.replace(/\</g, '&lt;');
@@ -289,52 +320,60 @@
         str = str.replace(/\[other_([0-9]*)\]/g, "<img src='/static/face/emoji3/$1.png'/>");
         return str;
     }
+
     {#帖子内容判断#}
-    function commIfpost(topicid,commid,comment,dom){
+
+    function commIfpost(topicid, commid, comment, dom) {
         var truedata = {};
-        if(commid != ""){
-            truedata ={
-                "articles_id":topicid,
-                "parent_id":commid,
-                "comment":comment,
-                'csrfmiddlewaretoken':glob_csrftoken
-            }
-        }else{
+        if (commid != "") {
             truedata = {
-                    "articles_id":topicid,
-                    "comment":comment,
-                    'csrfmiddlewaretoken':glob_csrftoken
-                }
+                "articles_id": topicid,
+                "parent_id": commid,
+                "comment": comment,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+        } else {
+            truedata = {
+                "articles_id": topicid,
+                "comment": comment,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
         }
-        if(topicid&&comment.length<1000&&comment!=""){
+        if (topicid && comment.length < 600 && comment != "") {
             $.ajax({
                 url: '/luntan/comment/',
-                type:'post',
+                type: 'post',
                 data: truedata,
-                success:function(ajax){
-                   initdataHtml();
-                   layer.msg("评论成功");
+                success: function (ajax) {
+                    initdataHtml();
+                    layer.msg("评论成功");
+                },error:function(error){
+                    layer.msg('提交不成功，请从新提交！');
+                    setTimeout(function(){
+                        location.reload();
+                    },2000)
                 }
             })
-        }else if(comment==""){
+        } else if (comment == "") {
             layer.msg("请输入")
-        }else{
-            layer.msg('只能输入1000个字符,');
+        } else {
+            layer.msg('只能输入600个字符,');
         }
     }
+
     {#点赞与评论#}
-    $('.plbox>div').eq(1).click(function(){//点赞
-        if(this.onSelect){
-           return false;
-        }else{
+    $('.plbox>div').eq(1).click(function () {//点赞
+        if (this.onSelect) {
+            return false;
+        } else {
             this.onSelect = true;
             $.ajax({
-                url:'/luntan/thumbup/?aid='+vm_topicArc.articles_id,
-                type:'get',
-                dataType:'text',
-                success:function(ajax){
-                    layer.msg(ajax,{'time':1000});
-                    if(ajax.length>5){
+                url: '/luntan/thumbup/?aid=' + vm_topicArc.articles_id,
+                type: 'get',
+                dataType: 'text',
+                success: function (ajax) {
+                    layer.msg(ajax, {'time': 1000});
+                    if (ajax.length > 5) {
                         return false;
                     }
                     location.reload();
@@ -342,42 +381,47 @@
             })
         }
     })
-    $('#NopostBtn').click(function(){
+    $('#NopostBtn').click(function () {
         $('#khlypl').val('');
     })
     //评论事件处理
     var Mpostbox = $('#khlypl');
     var emoji = $('#emoji');
-    bqbaofunc(emoji,Mpostbox);//主评论
-    $("#plintBtn").click(function() {
+    bqbaofunc(emoji, Mpostbox);//主评论
+    $("#plintBtn").click(function () {
         var content = $("#khlypl").val();
         content = replace_em(content);//解析表情
         $("div[name='result']").eq(0).html(content);
         $("#khlypl").val('');
     });
 
-{# 父级一层回复#}
-    function goPostcomm(ev){
-        $(document).ready(function(){
+    {# 父级一层回复#}
+
+    function goPostcomm(ev) {
+        $(document).ready(function () {
             var _this = ev;
             var topicid = $(_this).parent().prev().find("div.allInfo p").attr("commid"),
-                commid='',
-                comment= $(_this).prev().prev().find("div[name='result']").html().replace(/\'/,"").trim();
-            commIfpost(topicid,commid,comment,$(_this).parent());
+                commid = '',
+                comment = $(_this).prev().prev().find("div[name='result']").html().replace(/\'/, "").trim();
+            commIfpost(topicid, commid, comment, $(_this).parent());
         })
     }
-{#子级绑定的回复事件#}
-    function sonIfshow(ev){//点击回复事件
-        $(document).ready(function(){
+
+    {#子级绑定的回复事件#}
+
+    function sonIfshow(ev) {//点击回复事件
+        $(document).ready(function () {
             var that = ev;
             var index = $(that).attr("datainp");
             vm_topicArc.parent_id = $(that).parent().prev().attr("commid");
             $('.pl_info>div.pl').eq(index).find(".pl_inpbox").show();
         })
     }
+
     {# 给评论列表添加发布事件 #}
-    function sonPostcomm(ev){
-        $(document).ready(function(){
+
+    function sonPostcomm(ev) {
+        $(document).ready(function () {
             var _this = ev;
             var textBox = $(_this).prev().prev().children("textarea");
             var plbox = $(_this).parent();
@@ -389,22 +433,25 @@
             var content = textBox.val();
             content = replace_em(content);
             result.html(content);
-            comment = result.html().replace(/\'/,"").trim();
-            commIfpost(topicid,commid,comment,plbox);
+            comment = result.html().replace(/\'/, "").trim();
+            commIfpost(topicid, commid, comment, plbox);
             textBox.val("");
         })
     }
+
     {#取消评论事件#}
-    function sonQxcomm(ev){
-        $(document).ready(function(){
-            var that=ev;
+
+    function sonQxcomm(ev) {
+        $(document).ready(function () {
+            var that = ev;
             $(that).prev().find("textarea").val('');
             $(that).prev().find("div[name='result']").html("");
             $(that).parent().hide();
         })
     }
-    function readyClick(){//对渲染后的表情绑定事件
-        $(document).ready(function(){
+
+    function readyClick() {//对渲染后的表情绑定事件
+        $(document).ready(function () {
             var pls = $('.pl_info>div.pl');
             for (var i = 0; i < pls.length; i++) {
                 var emibtn = pls.eq(i).find('div[bq_btn="emoji"]');

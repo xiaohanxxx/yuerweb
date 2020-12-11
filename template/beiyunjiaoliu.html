@@ -29,16 +29,14 @@
     <div class="byjl_l fl">
         <div class="byjl_l_h">
             <span>当前位置：</span>
-            <a href="javascript:;">育儿论坛</a>
+            <a href="/luntan">育儿论坛</a>
             <span>></span>
-            <a href="javascript:;">{navdata[Mid-1].name}</a>
+            <a href="javascript:;">{navdata[0].name}</a>
         </div>
         <div class="byjl_l_main clearfix">
-            <h3>{navdata[Mid-1].name}</h3>
-            <div class="main_nav" ms-repeat-as="navdata[Mid-1].child">
-                <div ms-attr-class="selectTid==as.id?'selectId':''">
-                    <img ms-attr-src="as.thumb" ms-attr-alt="{as.name}"><a
-                        ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a></div>
+            <h3><div></div><p><span>{navdata[0].name}</span><i>（热门话题大全）</i></p></h3>
+            <div class="main_nav" ms-repeat-as="navdata[0].child">
+                <a  ms-attr-class="selectTid==as.id?'isSelectId':''" ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a>
             </div>
 
         </div>
@@ -66,12 +64,10 @@
                             {% else %}
                                 <a href="/login"><img ms-attr-src="/media/{el.user.head}" ms-attr-alt="{el.title.substr(0,6)}"></a>
                             {% endif %}
-
-
                             <span>{el.user.username}</span>
                             <span>{el.publish_date.replace(/\..*/,'')}</span>
                         </div>
-                        <p>{el.content.substr(0,100)}..</p>
+                        <p>{el.content.substr(0,100)|html}..</p>
                     </a>
                     <div class="userright">
                         {% if request.user.is_active %}
@@ -93,7 +89,7 @@
     <!-- 右侧信息栏 -->
     <div class="byjl_r fl">
         <div class="pushpost">
-            <h4>{navdata[Mid-1].name}</h4>
+            <h4>{navdata[0].name}</h4>
             <p>这里可以解决你的问题，快和大家一起讨论吧！</p>
             <p class='post_info clearfix'>
                 <span><i class='iconfont'>&#xe60f;</i>7496 篇文章</span>
@@ -103,7 +99,7 @@
                 {% if request.user.is_active %}
                     <a href="/luntan/postarticle">发布新帖</a>
                 {% else %}
-                    <a href="/login?type=1">发布新帖</a>
+                    <a href="/login">发布新帖</a>
                 {% endif %}
             </div>
         </div>
@@ -129,15 +125,14 @@
             <div class="swiper-slide" ms-repeat-as="qndrData">
                 <div class="drinfo" ms-repeat-its="as">
                     <div class="imgbox">
-                        <a ms-attr-href="/users/centerhim/{its.article.id}">
-                            {% if request.user.is_active %}
-                                <a ms-attr-href="/users/centerhim/{its.user.id}"><img ms-attr-src="/media/{its.article.user.head}" alt=""></a>
-                            {% else %}
-                                <a href="/login"><img ms-attr-src="/media/{its.article.user.head}" alt=""></a>
-                            {% endif %}
+                        {% if request.user.is_active %}
+                            <a ms-attr-href="/users/centerhim/{its.article.user.id}"><img ms-attr-src="/media/{its.article.user.head}" alt=""></a>
+                        {% else %}
+                            <a href="/login"><img ms-attr-src="/media/{its.article.user.head}" alt=""></a>
+                        {% endif %}
 
-                            <span>{its.article.user.username}</span>
-                        </a>
+                        <a ms-attr-href="/users/centerhim/{its.article.user.id}"><span>{its.article.user.username}</span></a>
+
                     </div>
                 </div>
             </div>
@@ -178,8 +173,10 @@
 <script type="text/javascript">
     (function () {
         var inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');//初始化数据请求链接
-        var Mid = window.location.href.substr(window.location.href.indexOf('Mid='), 5).replace('Mid=', '');//对应主栏目id
-        var selectTid = window.location.href.substr(window.location.href.indexOf('tid'), 6).replace('&', '').replace(/tid=/, '');
+        var Mid = window.location.href.match(/Mid=\d+/)[0].replace(/Mid=/,'');
+        if(window.location.href.match(/tid=\d+/)){
+            var selectTid = window.location.href.match(/tid=\d+/)[0].replace(/tid=/,'');
+        }
         var count = 1;
         var vm_ltlist = avalon.define({
             $id: 'luntanbox',
@@ -277,7 +274,7 @@
         vm_qndrbox.init();
 
         function pageAjax(current) {
-
+            
             $.ajax({
                 url: inturl + '&page=' + current,
                 type: 'get',
@@ -300,7 +297,7 @@
                         }
                     }
                     vm_ltlist.lisdata = lisdata;
-
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -329,7 +326,6 @@
         }
 
         function init(inturl) {
-
             $.ajax({
                 url: inturl,
                 type: 'get',
@@ -355,7 +351,7 @@
                     vm_ltlist.lisdata = lisdata;
                     _this.count = ajax.data.maxnum;
                     render(vm_ltlist.count, 10, 5);
-
+                    
                 }, error: function (error) {
                     console.log(error);
                 }
@@ -367,10 +363,14 @@
             type: 'get',
             dataType: 'json',
             success: function (ajax) {
-                vm_ltlist.navdata = ajax.data;
-                localStorage.setItem('Mlanm', vm_ltlist.navdata[Mid - 1].name);
+                for(var i=0;i<ajax.data.length;i++){
+                    if(ajax.data[i].id==Mid){
+                        localStorage.setItem('Mlanm', ajax.data[i].name);
+                        vm_ltlist.navdata.push(ajax.data[i]);
+                        var navData = JSON.stringify(ajax.data[i].child);
+                    }
+                }
                 localStorage.setItem('Mid', vm_ltlist.Mid);
-                var navData = JSON.stringify(ajax.data[vm_ltlist.Mid - 1].child);
                 localStorage.setItem('topicNavs', navData);
             }, error: function (error) {
                 console.log(error);
