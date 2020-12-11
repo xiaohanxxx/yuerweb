@@ -13,14 +13,17 @@ class Bk_Admin(admin.ModelAdmin):
 
 @admin.register(Child_menu)
 class Child_Admin(admin.ModelAdmin):
-    list_display = ('menu_name', 'relation', 'is_active')
+    list_display = ('menu_name','id', 'relation', 'is_active')
 
 
 
 
 @admin.register(Artical)
 class Artical_Admin(admin.ModelAdmin):
-    list_display = ('title','thumb', 'category', 'author', 'excerpt', 'click_count')
-    # readonly_fields = ("excerpt", "click_count",)
+    list_display = ('title','thumb', 'category', 'author', 'excerpt', 'click_count','image_img')
+    list_editable = ('category',)
+    search_fields = ('title',)
+    list_filter = ('category',)
     list_per_page = 10
+
 
