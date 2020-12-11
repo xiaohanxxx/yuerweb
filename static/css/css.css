@@ -1055,7 +1055,7 @@ body .ppart .currpaitp {
     background-position: 0px center;
 }
 
-.titleanswer p {
+.titleanswer>p {
     font-size: 12px;
     padding-left: 40px;
     color: #666;
