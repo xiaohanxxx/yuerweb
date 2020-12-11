@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>首页</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name=renderer content=webkit>
+	{% load static %}
+	<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+<!--      <style type="text/css">
+      body{ background: #029EE9; }
+     </style>
+ -->
+</head>
+{#{% include 'header.html' %}#}
+<body  ms-controller="bodyconts">
+    {%  include 'header.html' %}
+
+   
+    <div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
+
+    <div class="hzwdconts">
+      <div class="hzwdlefts">
+         <h3 style="font-size: 16px; padding: 15px;">试管婴儿</h3>
+         <div style="padding: 15px;">总共为您找到相关结果<abbr style="color: red; margin:0 10px;">999</abbr>个</div>
+         <div class="fenleiallswd">
+             <p class="allcurr">全部</p>
+{#             <p>最新</p>#}
+{#             <p>热门</p>#}
+{#             <p>求助</p>#}
+{#             <p>发帖</p>#}
+         </div>
+{#      {{ page }}#}
+
+         <div class="hzwdcontslist">
+         {% if query %}
+             {% for result in page.object_list %}
+                 {% if result.verbose_name == '文章管理' %}
+                     <div class="partwdone">
+                       <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
+                         {{  result.verbose_name }}
+                       <h4><a href="/baike/article?aid={{ result.object.id }}">{{ result.title | safe}}</a></h4>
+                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                     </div>
+
+                 {% elif  result.verbose_name == '医生详情'%}
+                    <div class="partwdone">
+                       <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
+                         {{  result.verbose_name }}
+                       <h4><a href="/hospital/doctor/?did={{ result.object.id }}">{{ result.name | safe}}</a></h4>
+                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                    </div>
+
+                      {% elif  result.verbose_name == '帖子' %}
+                    <div class="partwdone">
+                       <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
+{#                         {{  result.verbose_name }}#}
+                       <h4><a href="/taolun/toposting/?pid={{ result.object.id }}">{{ result.title | safe}}</a></h4>
+                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                    </div>
+
+                   {% elif  result.verbose_name == '医院介绍文章' %}
+                    <div class="partwdone">
+                       <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
+
+{#{{  result.verbose_name }}#}
+                       <h4><a href="/hospital/hindex/?item={{ result.object.id }}">{{ result.title | safe}}</a></h4>
+                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                    </div>
+
+                     {% elif  result.verbose_name == '试管婴儿文章' %}
+                        <div class="partwdone">
+                           <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
+                           {{  result.verbose_name }}
+                           <h4><a href="/shiguanbaby/articles/?aid={{ result.object.id }}">{{ result.title | safe}}</a></h4>
+                           <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                        </div>
+                   {% endif %}
+                 
+             {% endfor %}
+         {% endif %}
+
+{##}
+{#             {% if query %}#}
+{#   <h3>搜索结果如下：</h3>#}
+{#   {% for result in page.object_list %}#}
+{#         <p>{{ result.object.title | safe}}</p>#}
+{#       <p>{{ result.object.content }}</p>#}
+{#       <p>{{ result.object.id }}</p>#}
+{#   {% empty %}#}
+{#       <p>啥也没找到</p>#}
+{#   {% endfor %}#}
+{#{% endif %}#}
+
+
+
+
+{#             <div class="partwdone">#}
+{#               <img src="img/tuxiang.jpg" style="float: left; margin-right: 10px;">#}
+{#               <h4>我是文章标题最多显示一行   ---医生</h4>#}
+{#               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>#}
+{#             </div>#}
+{#  #}
+{#             <div id="pagers"></div>#}
+         </div> 
+
+
+
+      </div>
+      <div class="hzwdrights">
+{#          <div class="szzhuanjia">#}
+{#              <h3><abbr>推荐医生</abbr> <a href="###">更多>></a></h3>#}
+{#              <div class="doctorbox">#}
+{#                 <img src="{% static 'img/doctor.png' %}" style="float: left; margin: 20px 15px 0 0;">#}
+{#                 <h4 style="margin-top: 20px;">医生名称 <abbr>医生职位</abbr></h4>#}
+{#                 <p style=" font-size: 14px;">所在医院名称</p>#}
+{#                 <p style=" font-size: 14px; margin-top: 10px;">医院介绍文案，点击查看医生详情，只能显示二行多的...</p>#}
+{#                 <a href="###">向他提问</a>#}
+{#              </div>#}
+{#          </div>#}
+
+
+
+
+
+   <div class="szzhuanjia">
+              <h3><abbr>推荐百科</abbr> <a href="/baike/">更多>></a></h3>
+              <div class="hotwdtuijianes">
+                 <ol>
+                    <li ms-repeat="get_tj_baike">
+                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title | html}</a>
+                    </li>
+                 </ol>
+              </div>
+          </div>
+
+          <div class="szzhuanjia">
+              <h3><abbr>热门帖子</abbr> <a href="###">更多>></a></h3>
+              <div class="hotwdtuijian">
+{#                 <ul>#}
+{#                   <li>#}
+{#                     <a href="###">话题标签话题标签话题标签话题标签</a>#}
+{#                     <abbr>999个问答</abbr>#}
+{#                   </li>#}
+{#                 </ul>#}
+                  {% include 'mod_hotarticle.html' %}
+              </div>
+          </div>
+      </div>
+    </div>
+
+
+
+
+
+
+     <!-- 底部 -->
+    {%  include 'footer.html' %}
+     
+      <script>
+    var vm = avalon.define({
+        $id: "bodyconts",
+        name:"医院",
+        get_tj_baike: [],
+        get_baike_tuijian: function () {
+            var count = {
+                'count': 10,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/articleread',//热门文章
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vm.get_tj_baike = data.data
+                    console.log(vm.get_tj_baike,'vm.get_tj_baikevm.get_tj_baikevm.get_tj_baike')
+                }
+            });
+        },
+        intopages:function(){
+            layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'pagers'
+                ,count: 100
+                ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+                ,jump: function(obj){
+                  console.log(obj)
+                }
+              });
+            });
+        },
+        showxiala:function(){
+            var _this = $(this);
+            if(_this.next('ul').hasClass('hites')){
+                _this.next('ul').removeClass('hites');
+            }else{
+                _this.next('ul').addClass('hites');
+            }
+        },
+        changeSearch:function(els){
+            vm.name = '';
+            vm.name = els;
+            $(this).parent().addClass('hites');
+        },
+    })
+    vm.get_baike_tuijian();
+    vm.intopages();
+</script>
+</body>
+</html>
