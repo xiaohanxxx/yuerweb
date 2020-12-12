@@ -11,6 +11,8 @@
     <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
@@ -20,21 +22,44 @@
 <div class="centers" ms-controller="centeres">
     <div class="ctops">
         {{ data.userinfo }}
-         <style>
-                     .ctops{position: relative;}
-                     .thtuxiang{position: absolute; background: red; border-radius: 124px; background: rgba(0,0,0,0.7); opacity: 0.7; left: 0; top: 0; display: none;}
-                     .hovser:hover .thtuxiang{ display: block;}
-                 </style>
-{#         	 	 <div class="tuxiang"><img src="{% static 'img/txCenter.png' %}" height="124" width="124"></div>#}
-                 <div class="tuxiang hovser">
-                     <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
-                    <div class="tuxiang thtuxiang">
-                        <img src="{% static 'img/Vector.png' %}"  alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
-                        <div class="eidt" id="test1" style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
-                            <i class="layui-icon">&#xe642;</i>
-                        </div>
-                    </div>
-                 </div>
+        <style>
+            .ctops {
+                position: relative;
+            }
+            .thtuxiang {
+                position: absolute;
+                background: red;
+                border-radius: 124px;
+                background: rgba(0, 0, 0, 0.7);
+                opacity: 0.7;
+                left: 0;
+                top: 0;
+                display: none;
+            }
+
+            .hovser:hover .thtuxiang {
+                display: block;
+            }
+            .centers .tjjlbox > li > div:nth-of-type(2){
+                margin-left:0;
+            }
+            .centers .tuijianjjq{
+                width: 96%;
+            }
+            .centers .tuijianjjq i{
+                color:#777;
+            }
+        </style>
+        <div class="tuxiang hovser">
+            <img src="\media/{{ data.userinfo.user_avatar }}" width="124" height="124" style="border-radius: 124px;">
+            <div class="tuxiang thtuxiang">
+                <img src="{% static 'img/Vector.png' %}" alt="" style="position: absolute; left: 50%; margin-left: -9px; top: 50%; margin-top: -9px; z-index: 5;">
+                <div class="eidt" id="test1"
+                     style="width: 24px; height:19px; background: #fff; border-radius: 50%; position:absolute; z-index: 9; right: 5px; bottom: 5px; text-align: center; padding-top: 5px;">
+                    <i class="layui-icon">&#xe642;</i>
+                </div>
+            </div>
+        </div>
         <div class="iam_username">{{ user }}</div>
         <div class="jd_tiao">
             <div class="jdt" id="slideTest18"></div>
@@ -45,9 +70,7 @@
         <div class="czz_czz">
             成长值 {{ data.integral }}
         </div>
-{#        <div class="guanzhus">#}
-{#            关注他#}
-{#        </div>#}
+
     </div>
 
 
@@ -58,239 +81,63 @@
                     <li ms-class="curee_cener:aa==1" ms-click="getBox(1)">
                         全部（{{ unread_count }}）
                     </li>
-{#                    <li ms-class="curee_cener:aa==2" ms-click="getBox(2)">#}
-{#                        通知（1）<span class="layui-badge-dot"></span>#}
-{#                    </li>#}
-{#                    <li ms-class="curee_cener:aa==3" ms-click="getBox(3)">#}
-{#                        评论（999）<span class="layui-badge-dot"></span>#}
-{#                    </li>#}
-{#                    <li ms-class="curee_cener:aa==4" ms-click="getBox(4)">#}
-{#                        回复（1）<span class="layui-badge-dot"></span>#}
-{#                    </li>#}
-{#                    <li ms-class="curee_cener:aa==5" ms-click="getBox(5)">#}
-{#                        点赞（1）<span class="layui-badge-dot"></span>#}
-{#                    </li>#}
                 </ul>
             </div>
 
-  <style>
-      .tjjlq{ background: #fff;}
-      .tjjlbox{ padding-left: 20px; width: 95%;}
-      .tuijianjjq ul{ width: 91%;}
-  </style>
+            <style>
+                .tjjlq {
+                    background: #fff;
+                }
+
+                .tjjlbox {
+                    padding-left: 20px;
+                    width: 95%;
+                }
+
+                .tuijianjjq ul {
+                    width: 91%;
+                }
+                .partonecont li p span{
+                    float:left;
+                }
+                .partonecont ul li img{
+                    float:none;
+                    width: 50px;
+                    height:50px;
+                }
+            </style>
             <div class="bott_box" ms-if="aa == 1">
                 <div class="partonecont">
                     <ul>
                         {% if unread_count %}
                             {% for notification in request.user.notifications.all %}
                                 <li>
-                                    <a href="/users/centerhim/{{ notification.id }}"><img src="{% static 'img/tuxiang.jpg' %}"></a>
-                                    <p style="padding-top: 10px;">{{ notification.actor }}</p>
+                                    <a href="/users/centerhim/{{ notification.id }}"><img src="\media/{{ notification.actor.info.user_avatar }}">{{ notification.actor }}</a>
                                     <p style="margin-top: 21px;">
-                                        【{{ notification.timesince }}之前】{{ notification.actor }}在{{ notification.target }}{{ notification.verb }}
-{#                                        <abbr class="abc" style="float: right; color: #FF44AD;"><a href="">查看</a> | <a href="">已读</a></abbr>#}
+                                        <span>【{{ notification.timesince }}之前】</span>
+                                        <span style="color:pink;display:inline-block;padding:0 6px;">{{ notification.actor }}</span>
+                                        <span>在{{ notification.target | safe }}</span>
+                                        <span style="float:left;padding:0 6px;color:skyblue;">{{ notification.verb |safe}}</span>
                                 </li>
 
                             {% empty %}
                                 暂无消息
                             {% endfor %}
-{#                            <li>#}
-{#                                <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                                <p style="padding-top: 10px;">我是用户名</p>#}
-{#                                <p style="margin-top: 21px;">#}
-{#                                    【最新评论】我是用户评论消息字段，最多显示两行，点击查看对话跳转至文章详情界面点击标注已读消息提示消失，最多显示两行，超出部分用...代替 </p>#}
-{#                                <abbr class="abc" style="float: right; color: #FF44AD;"><a href="">查看</a> | <a href="">已读</a></abbr>#}
-{#                            </li>#}
+
                         {% endif %}
                     </ul>
                 </div>
             </div>
 
-{#            <div class="bott_box" ms-if="aa == 2">#}
-{#                <div class="my_answer">#}
-{#                    <ul>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">系统通知</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">系统通知</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">系统通知</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">系统通知</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">系统通知</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                    </ul>#}
-{##}
-{##}
-{#                </div>#}
-{#            </div>#}
-{##}
-{##}
-{#            <div class="bott_box" ms-if="aa == 3">#}
-{##}
-{#                <ul class="lwconts">#}
-{#                    <li>#}
-{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                        <p style="padding-top: 10px;">我是用户名</p>#}
-{#                        <p style="margin-top: 21px;">#}
-{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                        <p style="padding-top: 10px;">我是用户名</p>#}
-{#                        <p style="margin-top: 21px;">#}
-{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                        <p style="padding-top: 10px;">我是用户名</p>#}
-{#                        <p style="margin-top: 21px;">#}
-{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                        <p style="padding-top: 10px;">我是用户名</p>#}
-{#                        <p style="margin-top: 21px;">#}
-{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                    </li>#}
-{#                    <li>#}
-{#                        <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                        <p style="padding-top: 10px;">我是用户名</p>#}
-{#                        <p style="margin-top: 21px;">#}
-{#                            【最新评论】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                    </li>#}
-{#                </ul>#}
-{##}
-{#            </div>#}
-{##}
-{##}
-{#            <div class="bott_box" ms-if="aa == 4">#}
-{#                <div class="gz_cont">#}
-{##}
-{##}
-{#                    <ul class="lwconts">#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">#}
-{#                                【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                        </li>#}
-{#                    </ul>#}
-{##}
-{#                </div>#}
-{#            </div>#}
-{##}
-{##}
-{#            <div class="bott_box" ms-if="aa == 5">#}
-{#                <div class="gz_cont">#}
-{##}
-{##}
-{#                    <ul class="lwconts">#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">【点赞】赞了您的评论</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                            <p style="padding-top: 10px;">我是用户名</p>#}
-{#                            <p style="margin-top: 21px;">【点赞】赞了您的评论</p>#}
-{#                        </li>#}
-{#                        <!-- <li>#}
-{#                                    <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                                    <p style="padding-top: 10px;">我是用户名</p>#}
-{#                                    <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                                </li>#}
-{#                                <li>#}
-{#                                    <img src="{% static 'img/tuxiang.jpg' %}">#}
-{#                                    <p style="padding-top: 10px;">我是用户名</p>#}
-{#                                    <p style="margin-top: 21px;">【最新回复】我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。我是通知内容，这里最多显示两行，点击查看跳转至-通知-菜单栏，显示全部内容，超出部分用...代替。</p>#}
-{#                                </li> -->#}
-{##}
-{#                    </ul>#}
-{##}
-{#                </div>#}
-{#            </div>#}
-
-
         </div>
         <div class="nav_right">
-
             <div class="tuijianjjq">
                 {% include 'mod_tjjl.html' %}
-
-
                 <div class="tuijianjjq">
-                    <h4 style="background: #fff; height: 40px; line-height: 40px; padding-left: 20px"><abbr>热门回答</abbr></h4>
+                    <h4 style="background: #fff; height: 40px; line-height: 40px; padding-left: 20px"><abbr>热门回答</abbr>
+                    </h4>
                     {% include 'mod_hotwenda.html' %}
-                    {#                    	 <ul>#}
-                    {#                    	 	<li>#}
-                    {#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>#}
-                    {#                    	 		<abbr>999 个话题</abbr>#}
-                    {#                    	 	</li>#}
-                    {#                    	 	<li>#}
-                    {#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>#}
-                    {#                    	 		<abbr>999 个话题</abbr>#}
-                    {#                    	 	</li>#}
-                    {#                    	 	<li>#}
-                    {#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>#}
-                    {#                    	 		<abbr>999 个话题</abbr>#}
-                    {#                    	 	</li>#}
-                    {#                    	 	<li>#}
-                    {#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>#}
-                    {#                    	 		<abbr>999 个话题</abbr>#}
-                    {#                    	 	</li>#}
-                    {#                    	 	<li>#}
-                    {#                    	 		<a href=""><img src="{% static 'img/tuxiang.jpg' %}">问答标题文字信息只显示一行</a>#}
-                    {#                    	 		<abbr>999 个话题</abbr>#}
-                    {#                    	 	</li>#}
-                    {#                    	 </ul>#}
                 </div>
-
 
             </div>
 
@@ -334,27 +181,27 @@
                 verification_Code: '',
                 new_password: ''
             },
-        uploades:function(){
-              layui.use('upload', function(){
-                  var upload = layui.upload;
-                  //执行实例
-                  var uploadInst = upload.render({
-                    elem: '#test1' //绑定元素
-                    ,url: '/users/upload' //上传接口
-                    ,accept: 'images'
-                    ,size:500
-                    ,done: function(res,index,upload){
-                      //上传完毕回调
-                          if (res.code == 200){
-                               window.location.reload();
-                          }
-                    }
-                    ,error: function(){
-                      //请求异常回调
-                    }
-                  });
-            });
-        },
+            uploades: function () {
+                layui.use('upload', function () {
+                    var upload = layui.upload;
+                    //执行实例
+                    var uploadInst = upload.render({
+                        elem: '#test1' //绑定元素
+                        , url: '/users/upload' //上传接口
+                        , accept: 'images'
+                        , size: 500
+                        , done: function (res, index, upload) {
+                            //上传完毕回调
+                            if (res.code == 200) {
+                                window.location.reload();
+                            }
+                        }
+                        , error: function () {
+                            //请求异常回调
+                        }
+                    });
+                });
+            },
             change_edit: function (res) {
                 wvm.cc = res;
             },
@@ -387,7 +234,7 @@
                 }
                 var phone = {
                     phone: wvm.edit_passwad.phone,
-                    'csrfmiddlewaretoken':glob_csrftoken
+                    'csrfmiddlewaretoken': glob_csrftoken
                 }
                 $.ajax({
                     type: 'post',
@@ -403,7 +250,7 @@
             okedit: function () {
                 var new_password = {
                     'new_password': wvm.edit_passwad.password,
-                    'csrfmiddlewaretoken':glob_csrftoken
+                    'csrfmiddlewaretoken': glob_csrftoken
                 }
                 $.ajax({
                     type: 'post',

@@ -3,6 +3,7 @@
 <head>
     <title>首页</title>
     <meta charset="utf-8">
+    <meta name="baidu-site-verification" content="code-cWRdph1qQ5" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
     {% load static %}
@@ -22,8 +23,7 @@
     <div class="banners">
         <div class="bannersBox">
             <div class="bannerboxleft">
-                <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this)"
-                     ms-on-mouseleave="navsHide(this)">
+                <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this)" ms-on-mouseleave="navsHide(this)">
                     <img ms-attr-src="{el.child[0].thumb}">
                     <div class="xmlist">
                         <h3>{ el.name }</h3>
@@ -31,7 +31,7 @@
                             <a ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={el.id}" ms-repeat-as="el.child">{as.name}</a>
                         </p>
                     </div>
-                    <div class="jticon"> ></div>
+                    <div class="jticon"> > </div>
 
                     <!-- 隐藏 -->
                     <div class="hidebox" style="display:none">
@@ -219,7 +219,6 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
     <!-- 不孕不育 -->
@@ -385,7 +384,7 @@
         <p style="font-size: 14px; color: #333;">友情链接:申请合作</p>
         <div class="lianjieyq" style="margin-top: 30px;">
             {% for item in friendlink %}
-                <a href="{{ link }}">{{ item.link_name }}</a> {% endfor %}
+                <a href="{{ item.link }}">{{ item.link_name }}</a> {% endfor %}
         </div>
     </div>
     {% include 'footer.html' %}
@@ -655,6 +654,13 @@
                             }
                         }else{
                             zzdata = ajax.data;
+                        }
+                        for(var j=0;j<ajax.data.length;j++){
+                            for(var i=0;i<ajax.data[j].child.length;i++){
+                                if(ajax.data[j].child[i].comment.comment){
+                                     ajax.data[j].child[i].comment.comment=ajax.data[j].child[i].comment.comment.replace(/(<p>|<\\p>)/g,'');
+                                }
+                            }
                         }
                         vm_hotaskbq.navdata = zzdata;
                         vm_hotaskbq.topicid = ajax.data[0].id;

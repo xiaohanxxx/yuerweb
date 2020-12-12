@@ -48,7 +48,7 @@
         <div class="pinglunkk" style="margin-top:20px;">
             <h4 style="margin-bottom:10px;">评论</h4>
             <div class="fuwenben">
-                <textarea id="demo" style="display: none;">欢迎留言评论~！</textarea>
+                <textarea id="demo" style="display: none;" placeholder="欢迎留言评论~！"></textarea>
                 <p style="margin-top: 15px;">
                     <span id="qxpl">取消评论</span>
                     {% if request.user.is_active %}
@@ -122,7 +122,7 @@
         init: function () {
             var qxpl = $('#qxpl');
             qxpl.click(function () {
-                layui.layedit.setContent(vm_hzwdinfo.ditsl, '欢迎留言评论~！');
+                layui.layedit.setContent(vm_hzwdinfo.ditsl, '');
             })
             layui.use('layedit', function () {
                 var layedit = layui.layedit;
@@ -219,27 +219,33 @@
         },
         isPost: function (ev) {
             var _this = ev;
-            var value = layui.layedit.getContent(vm_hzwdinfo.ditsl).replace(/&nbsp;/g,'').trim();
-            if (value != '欢迎留言评论~！'&& value != "") {
-                $.ajax({
-                    url:  '/taolun/comment/',
-                    type: 'post',
-                    data: {
-                        'articles_id': vm_hzwdinfo.pid,
-                        'comment': value,
-                        'csrfmiddlewaretoken':glob_csrftoken
-                    },
-                    success: function (ajax) {
-                        layer.msg(ajax, {'time': 1000});
-                        setTimeout(function(){
-                            layui.layedit.setContent(vm_hzwdinfo.ditsl,'欢迎留言评论~！');
-                            vm_hzwdinfo.plresh();
-                        },1500)
-
-                    }, error: function (error) {
-                        layer.msg(error);
-                    }
-                })
+            var value = layui.layedit.getContent(vm_hzwdinfo.ditsl).replace(/&nbsp;/g,'').trim().replace(/(<p>|<\\p>)/g,'');
+            if (value != "") {
+                if(value.length<800){
+                        $.ajax({
+                        url:  '/taolun/comment/',
+                        type: 'post',
+                        data: {
+                            'articles_id': vm_hzwdinfo.pid,
+                            'comment': value,
+                            'csrfmiddlewaretoken':glob_csrftoken
+                        },
+                        success: function (ajax) {
+                            layer.msg(ajax, {'time': 1000});
+                            setTimeout(function(){
+                                layui.layedit.setContent(vm_hzwdinfo.ditsl,'');
+                                vm_hzwdinfo.plresh();
+                            },1500)
+                        }, error: function (error) {
+                            layer.msg('字数超出！！请从新输入',{'time':1000});
+                            setTimeout(function(){
+                                location.reload();
+                            },1500)
+                        }
+                    })
+                }else{
+                   layer.msg('评论字数不能超过800')
+                }
             } else {
                 layer.msg('请输入评论内容！！', {'time': 1000});
             }
@@ -252,19 +258,18 @@
                     var off = $(this).attr('isShow');
                     if (off == 'false') {
                         $(this).html('<span><i class="iconfont">&#xe65a;</i><span>收起</span> </span>');
-                        allinfobox.eq(i).css({'height': '200px'});
+                        $(this).prev().children('p').css('height','200px');
                         $(this).attr('isShow', 'true');
                     } else {
                         $(this).html('<span><i class="iconfont">&#xe665;</i><span>点击显示更多</span> </span>');
-                        allinfobox.eq(i).css({'height': '20px'});
+                        $(this).prev().children('p').css('height','20px');
                         $(this).attr('isShow', 'false');
                     }
                 });
-                if (allinfobox.eq(i).html().trim('').match(/([\u4e00-\u9fa5]|\w)/g).length > 240) {
+                if (allinfobox.eq(i).html().trim('').match(/([\u4e00-\u9fa5]|\w)/g).length > 100) {
                     nowLi.show();
                 }
             }
-
         }
     })
     vm_hzwdinfo.init();
