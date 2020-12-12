@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>首页</title>
+    <title>孕儿网</title>
     <meta charset="utf-8">
     <meta name="baidu-site-verification" content="code-cWRdph1qQ5" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
+    <meta name="description" content="专业的试管婴儿讨论咨讯平台，在这里可以找到各种问题情况，同时也可以找到一些志同道合的人，这里有专业的医生解决试管婴儿等不孕不育问题，是一个很好的试管婴儿和不孕不育的平台">
+    <meta name="keywords" content="育儿网，专业试管婴儿">
     {% load static %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/idangerous.swiper2.7.6.min.js' %}"></script>
@@ -13,6 +15,7 @@
     <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/uitls/tool.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'images/icon/favicon.ico' %}" type="image/x-icon">
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" href="{% static 'css/idangerous.swiper.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
@@ -23,9 +26,8 @@
     <div class="banners">
         <div class="bannersBox">
             <div class="bannerboxleft">
-                <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this)"
-                     ms-on-mouseleave="navsHide(this)">
-                    <img ms-attr-src="{el.child[0].thumb}">
+                <div class="bannerwz bags" ms-repeat="navdata" ms-on-mouseover="navsShow(this,$index+1)" ms-on-mouseleave="navsHide(this,$index+1)">
+                    <img ms-attr-src="/static/images/souye/byjl0{$index+1}.png">
                     <div class="xmlist">
                         <h3>{ el.name }</h3>
                         <p>
@@ -111,6 +113,7 @@
             <div class="sgyghhight sgyerbox">
                 <div class="hhightleft">
                     <h3><abbr>试管婴儿</abbr><a href="/luntan/">试管论坛</a>|<a href="/hospital/">试管医院</a>|<a href="/shiguanbaby/">试管技术</a></h3>
+                    <div class="moreall"><a href="/luntan/">更多</a></div>
                 </div>
                 <div class="hhgihtlefth3">
                     <div class="lefth3list">
@@ -146,10 +149,8 @@
                                     </a>
                                 </li>
                             </ul>
-                            <div class="moreall"><a href="/luntan/">更多</a></div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -337,8 +338,8 @@
             </p>
             <div class="wentiwa">
                 <div class="titleanswer" ms-repeat-as="askdata">
-                    <h3><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title}</a></h3>
-                    <p>{as.comment.comment|html}...</p>
+                    <h3 style="font-weight:bold;"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,15)}..</a></h3>
+                    <p><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.comment.comment.substr(0,30)|html}...</a></p>
                 </div>
             </div>
         </div>
@@ -396,14 +397,16 @@
             navdata: [],
             lunbodata: [],
             curuent_pagees: [],
-            navsShow: function (ev) {
+            navsShow: function (ev,index) {
                 var _this = ev;
-                $(_this).css("background-color", "#e2afd6");
+                $(_this).addClass('ishoverselect');
+                $(_this).find('img').attr("src","/static/images/souye/byjlxz0"+index+".png");
                 $(_this).find('.hidebox').show();
             },
-            navsHide: function (ev) {
+            navsHide: function (ev,index) {
                 var _this = ev;
-                $(_this).css("background-color", "");
+                $(_this).removeClass('ishoverselect');
+                $(_this).find('img').attr("src","/static/images/souye/byjl0"+index+".png");
                 $(_this).find('.hidebox').hide();
             },
             getGdt: function () {
@@ -535,7 +538,7 @@
             },
             getlidata: function () {
                 $.ajax({
-                    url: '/luntan/articlelist/?tid=' + vm_sgyercrl.curid + '&num=7&page=1',
+                    url: '/luntan/articlelist/?tid=' + vm_sgyercrl.curid + '&num=8&page=1',
                     type: 'get',
                     dataType: 'json',
                     success: function (ajax) {

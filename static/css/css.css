@@ -219,7 +219,6 @@ body {
     float: left;
     width: 36px;
     height: 36px;
-    border-radius: 50%;
 }
 
 .xmlist {
@@ -229,9 +228,10 @@ body {
 }
 
 .xmlist h3 {
-    font-size: 16px;
-    margin: 30px 0 5px 0;
-    color: #ff44ad;
+    font-size: 18px;
+    font-weight:bold;
+    margin: 30px 0 10px 10px;
+    color: #333;
 }
 
 .xmlist p a {
@@ -239,7 +239,7 @@ body {
     font-size: 14px;
     margin-bottom: 10px;
     padding: 0 10px;
-    color: #777;
+    color: #666;
     text-decoration: none;
 }
 
@@ -252,7 +252,7 @@ body {
 }
 
 .xmlist p a:hover {
-    color: #fff;
+    color: #FF44AD!important;
 }
 
 /**ÊÔ¹ÜÓ¤¶ù**/
@@ -529,6 +529,7 @@ body {
 }
 
 .hhightleft {
+    position:relative;
     height: 50px;
     line-height: 50px;
     padding-left: 20px;
@@ -538,6 +539,7 @@ body {
     font-size: 16px;
     font-weight: 400;
     margin-top: 15px;
+    padding-bottom:4px;
 }
 
 .hhightleft h3 > abbr:nth-of-type(1) {
@@ -1830,7 +1832,7 @@ li.curreswd > a {
 
 .remenhuaties {
     width: 320px;
-    overflow: auto;
+    overflow: hidden;
     height: 518px;
     background: #fff;
     border-radius: 5px;
@@ -3892,4 +3894,13 @@ body .sjchangebtn {
     margin-left:10px!important;
     width: 320px;
     margin:20px auto;
+}
+.ishoverselect{
+    background-color: #FCDCE9;
+}
+.ishoverselect .xmlist h3{
+    color:#FF44AD;
+}
+.ishoverselect .xmlist p a{
+    color: #FF7DCC;
 }
