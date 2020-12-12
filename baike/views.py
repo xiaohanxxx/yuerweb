@@ -45,7 +45,6 @@ def error(func):
 
     return errorcase
 
-import os
 # 百科主页渲染
 def baike(request):
     # dir_list = os.listdir('baike\新建文件夹 (6)')
@@ -83,6 +82,11 @@ def baike(request):
 # 百科列表页渲染
 def baike_list(request):
     return render(request, 'baike_list.html')
+
+
+def baikebigfl_list(request):
+    return render(request,'baikebigfl_list.html')
+
 
 
 # 文章详情页渲染
@@ -213,6 +217,8 @@ def articlelistapi(request):
 
 
 
+
+
 # 获取一级栏目下的分类id及文章
 @error
 def getmenuarticle(request):
@@ -235,7 +241,7 @@ def getmenuarticle(request):
                         'menu_name':i.menu_name,
                         'type':2,
                         'list_data':list(
-                            i.artical_set.all().values('id','title')[:int(count)]
+                            i.artical_set.all().values('id','title','thumb','add_time','click_count','excerpt')[:int(count)]
                         )
                     } for i in child_menu
                 )
