@@ -21,6 +21,7 @@ from django.views.static import serve
 from yuerweb import views
 import notifications.urls
 import notifications
+from django.views.generic.base import RedirectView
 from webmanage import views as manageviews
 
 urlpatterns = [
@@ -28,7 +29,7 @@ urlpatterns = [
     path('', views.index),
     path('login', views.login),
     path('register', views.register),
-
+    url(r'^favicon.ico$',RedirectView.as_view(url=r'static/favicon.ico')),
 
     url(r'luntan/', include('luntan.urls')),
 

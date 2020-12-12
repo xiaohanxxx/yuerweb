@@ -45,17 +45,18 @@
                  {% if result.verbose_name == '文章管理' %}
                      <div class="partwdone">
                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
-                         {{  result.verbose_name }}
+{#                         {{  result.verbose_name }}#}
                        <h4><a href="/baike/article?aid={{ result.object.id }}">{{ result.title | safe}}</a></h4>
-                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                       <p><i class="layui-icon">&#xe68d;</i> {{ result.object.add_time | safe}} <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>{{ result.object.click_count | safe}}</abbr></p>
                      </div>
 
                  {% elif  result.verbose_name == '医生详情'%}
                     <div class="partwdone">
                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
-                         {{  result.verbose_name }}
+{#                         {{  result.verbose_name }}#}
                        <h4><a href="/hospital/doctor/?did={{ result.object.id }}">{{ result.name | safe}}</a></h4>
-                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+{#                        <h4>医生信息，没有发布时间</h4>#}
+{#                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>#}
                     </div>
 
                       {% elif  result.verbose_name == '帖子' %}
@@ -63,24 +64,22 @@
                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
 {#                         {{  result.verbose_name }}#}
                        <h4><a href="/taolun/toposting/?pid={{ result.object.id }}">{{ result.title | safe}}</a></h4>
-                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                       <p><i class="layui-icon">&#xe68d;</i> {{ result.object.publish_date | safe}} <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>{{ result.object.read | safe}}</abbr></p>
                     </div>
 
                    {% elif  result.verbose_name == '医院介绍文章' %}
                     <div class="partwdone">
                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
-
-{#{{  result.verbose_name }}#}
                        <h4><a href="/hospital/hindex/?item={{ result.object.id }}">{{ result.title | safe}}</a></h4>
-                       <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                       <p><i class="layui-icon">&#xe68d;</i>{{ result.object.create_time}}<abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i></abbr></p>
                     </div>
 
                      {% elif  result.verbose_name == '试管婴儿文章' %}
                         <div class="partwdone">
                            <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
-                           {{  result.verbose_name }}
+{#                           {{  result.verbose_name }}#}
                            <h4><a href="/shiguanbaby/articles/?aid={{ result.object.id }}">{{ result.title | safe}}</a></h4>
-                           <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>
+                            <p><i class="layui-icon">&#xe68d;</i> {{ result.object.publish_date | safe}}<abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>{{ result.object.read | safe}}</abbr></p>
                         </div>
                    {% endif %}
                  

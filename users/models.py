@@ -63,7 +63,7 @@ class Follow(models.Model):
         followeders = Follow.objects.filter(follower=from_user).all()
         user_followed = []
         for followeder in followeders:
-            user_followed.append({'username': followeder.followed.username, 'userid': followeder.followed.id,'user_avatar':followeder.follower.info.user_avatar.url})
+            user_followed.append({'username': followeder.followed.username, 'userid': followeder.followed.id,'user_avatar':followeder.followed.info.user_avatar.url})
         return user_followed  # list
 
     # 得到当前用户的粉丝
@@ -81,7 +81,7 @@ class Follow(models.Model):
                      'mutualfollower': 0})  # 0表示互相关注
             else:
                 user_followed.append(
-                    {'username': followeder.follower.username, 'userid': followeder.follower.id,
+                    {'username': followeder.follower.username, 'userid': followeder.follower.id,'user_avatar':followeder.follower.info.user_avatar.url,
                      'mutualfollower': 1})  # 1表示未关注粉丝
 
         return user_followed  # 得到from_user关注的人，返回列表

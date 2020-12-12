@@ -8,6 +8,9 @@ urlpatterns = [
     path('',views.baike),
     path('baike_list',views.baike_list),
     path('article',views.article),
+    path('baikebigfl_list',views.baikebigfl_list),
+    path('baikelis',views.baikelis),
+
 
     path('api/menuapi',views.baikemenuapi),
     path('api/sgbk_sjldapi',views.sjldapi),
