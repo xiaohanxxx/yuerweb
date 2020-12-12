@@ -28,7 +28,8 @@ def smsvif(request):
 
         request.session['smscode'] = yzm
         sms = tengxun.MySmsSender()
-        sms.send(phone, settings.SMS_TEMPLATE_ID['register'], [yzm, '3'])
+        a = sms.send(phone, settings.SMS_TEMPLATE_ID['register'], [yzm])
+        print(a)
         data = {
             'code': 200,
             'msg': '发送成功'
