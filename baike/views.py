@@ -87,6 +87,9 @@ def baike_list(request):
 def baikebigfl_list(request):
     return render(request,'baikebigfl_list.html')
 
+def articles(request):
+    return render(request,'articles.html')
+
 
 
 # 文章详情页渲染
