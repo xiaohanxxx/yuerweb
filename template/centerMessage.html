@@ -112,7 +112,7 @@
                         {% if unread_count %}
                             {% for notification in request.user.notifications.all %}
                                 <li>
-                                    <a href="/users/centerhim/{{ notification.id }}"><img src="\media/{{ notification.actor.info.user_avatar }}">{{ notification.actor }}</a>
+                                    <a href="/users/centerhim/{{ notification.actor.id }}"><img src="\media/{{ notification.actor.info.user_avatar }}">{{ notification.actor }}</a>
                                     <p style="margin-top: 21px;">
                                         <span>【{{ notification.timesince }}之前】</span>
                                         <span style="color:pink;display:inline-block;padding:0 6px;">{{ notification.actor }}</span>
@@ -251,7 +251,7 @@
                 var new_password = {
                     'new_password': wvm.edit_passwad.password,
                     'csrfmiddlewaretoken': glob_csrftoken
-                }
+                };
                 $.ajax({
                     type: 'post',
                     url: '/users/changepwd',

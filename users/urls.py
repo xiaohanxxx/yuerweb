@@ -10,6 +10,7 @@ urlpatterns = [
     path('login', views.userlogin),
     path('forget',views.forget),
     path('changepwd', views.changepwd),
+    path('setusername',views.set_username),
     path('smsvif', views.smsvif),
     re_path(r'^centerhim/(\d+)', views.centerhim),  # 别人的个人中心
     path('centerMessage', views.centerMessage),  # 我的消息

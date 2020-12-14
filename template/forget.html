@@ -16,16 +16,6 @@
   <link rel="stylesheet" type="text/css" href="{%  static 'css/index.css' %}">
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 </head>
-<style>
-    #sendsmses{
- float: right;
- width: 120px;
- margin-right: 50px;
- text-align: center;
- padding: 0;
- cursor: pointer;
-}
-</style>
 <script>
        avalon.config({
             interpolate: ["{", "}"]
@@ -70,8 +60,8 @@
                  'username':mmvm.editedata.username,
                  'verification_Code':mmvm.editedata.code,
                  'newpassword':mmvm.editedata.newpassword,
-                'csrfmiddlewaretoken': glob_csrftoken
-             }
+                  'csrfmiddlewaretoken': glob_csrftoken
+             };
             $.ajax({
                 type: 'post',
                 url: '/users/forget',
@@ -85,8 +75,6 @@
                         setTimeout(function () {
                             window.location.href="/users/login?type=1"
                         }, 1500)
-                    }else{
-                        layer.msg(data.msg);
                     }
                 }
             });
@@ -137,12 +125,7 @@
            <div class="yonghu">手机号 <i class="layui-icon">&#xe678;</i><input ms-duplex="editedata.phone" type="" name="" placeholder="请输入手机号"></div>
            <div class="yonghu">验证码<input type="text" name=""  ms-duplex="editedata.code"   placeholder="请输入验证码" style="width: 300px;">
                <abbr style="cursor: pointer;" >
-                    <input ms-click="getCodees" id="sendsmses" style=" float: right;
- width: 120px;
- margin-right: 50px;
- text-align: center;
- padding: 0;
- cursor: pointer;" type="button" name="" ms-attr-value="zhou">
+                    <input ms-click="getCodees" id="sendsmses" type="button" name="" ms-attr-value="zhou">
                </abbr>
            </div>
            <div class="mima">新密码<i class="layui-icon">&#xe673;</i><input   ms-duplex="editedata.password"  type="password" name="" placeholder="请输入6-20位密码，由数字和字母组成"></div>

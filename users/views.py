@@ -371,3 +371,18 @@ def upload(request):
         user.user_avatar = avatar
         user.save()
     return HttpResponse(json.dumps({'code': 200}), content_type="application/json")
+
+
+# 修改用户名
+@error
+@login_required
+def set_username(request):
+    user = request.user
+    username = request.POST.get('username')
+    user.username = username
+    user.save()
+    data = {
+        'code':200,
+        'msg':'修改成功'
+    }
+    return HttpResponse(json.dumps(data), content_type="application/json")
