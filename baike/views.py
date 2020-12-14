@@ -179,6 +179,10 @@ def sjldapi(request):
                         {
                             'articleid': article['id']
                             , 'title': article['title']
+                            ,'thumb':article['thumb']
+                            ,'excerpt':article['excerpt']
+                            ,'click_count':article['click_count']
+                            ,'add_time':article['add_time']
                         }
                         for article in child.artical_set.all().values('id', 'title')[:int(count)]
                     )
