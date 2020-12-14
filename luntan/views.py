@@ -218,7 +218,7 @@ class Comment(views.View):
         noticate(
             request.user,
             article.user if not data.get("parent_id", 0) else parent_comment.user,
-            article.title,
+            article,
             data["comment"]
         )
 
