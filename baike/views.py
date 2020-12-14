@@ -182,15 +182,16 @@ def sjldapi(request):
                             ,'thumb':article['thumb']
                             ,'excerpt':article['excerpt']
                             ,'click_count':article['click_count']
-                            ,'add_time':article['add_time']
+                            ,'add_time':article['add_time'].strftime('%Y-%m-%d')
                         }
-                        for article in child.artical_set.all().values('id', 'title')[:int(count)]
+                        for article in child.artical_set.all().values('id', 'title','thumb','excerpt','click_count','add_time')[:int(count)]
                     )
                     }
                     for child in menu.child_menu_set.all()
                 )
                 }
             )
+        print(data)
 
         return HttpResponse(json.dumps(data), content_type="application/json")
 
