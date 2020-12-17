@@ -87,6 +87,9 @@ def baike_list(request):
 def baikebigfl_list(request):
     return render(request,'baikebigfl_list.html')
 
+def baikelis(request):
+    return render(request,'baikelis.html')
+
 
 
 # 文章详情页渲染
@@ -176,14 +179,19 @@ def sjldapi(request):
                         {
                             'articleid': article['id']
                             , 'title': article['title']
+                            ,'thumb':article['thumb']
+                            ,'excerpt':article['excerpt']
+                            ,'click_count':article['click_count']
+                            ,'add_time':article['add_time'].strftime('%Y-%m-%d')
                         }
-                        for article in child.artical_set.all().values('id', 'title')[:int(count)]
+                        for article in child.artical_set.all().values('id', 'title','thumb','excerpt','click_count','add_time')[:int(count)]
                     )
                     }
                     for child in menu.child_menu_set.all()
                 )
                 }
             )
+        print(data)
 
         return HttpResponse(json.dumps(data), content_type="application/json")
 

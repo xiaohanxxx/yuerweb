@@ -217,7 +217,7 @@ PAGE_NUM = 10
 SMS_SECRET_ID = "AKIDh8IC2zP4CblcChp3pKcxB9ukLehXLRUT"  # API秘钥管理SecretId
 SMS_SECRET_KEY = "FKJw461qW3ZcqOp9gGxY0Ys6EOOPOr4h"  # API秘钥管理SecretKey
 SMS_APPID = '1400460735'  # 应用列表SDK AppID
-SMS_SIGN = 'RFG助孕指南'  # 签名管理的内容
+SMS_SIGN = '孕儿网'  # 签名管理的内容
 
 # 正文模板管理ID
 SMS_TEMPLATE_ID = {

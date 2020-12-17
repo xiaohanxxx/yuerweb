@@ -304,12 +304,13 @@ def public_level(request):
 def noticate(user, recipient, target, message):
     # target 主题
     # message 评论消息
-    verb = '在{0}回复了你{1}'.format(target, message)
     notify.send(
         user,  # 消息发送者
         recipient=recipient,  # 消息接收者
-        verb=verb,  # 分情况；评论或回复
+        target=target,
+        verb=message,  # 分情况；评论或回复
     )
+
 
 
 # 获取通知信息
@@ -370,3 +371,18 @@ def upload(request):
         user.user_avatar = avatar
         user.save()
     return HttpResponse(json.dumps({'code': 200}), content_type="application/json")
+
+
+# 修改用户名
+@error
+@login_required
+def set_username(request):
+    user = request.user
+    username = request.POST.get('username')
+    user.username = username
+    user.save()
+    data = {
+        'code':200,
+        'msg':'修改成功'
+    }
+    return HttpResponse(json.dumps(data), content_type="application/json")

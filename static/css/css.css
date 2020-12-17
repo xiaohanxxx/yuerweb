@@ -23,7 +23,14 @@ body {
     border-bottom: 1px solid #f8eaea;
     background: #fff;
 }
-
+#sendsmses {
+ float: right;
+ width: 120px;
+ margin-right: 50px;
+ text-align: center;
+ padding: 0;
+ cursor: pointer;
+}
 .headerNav {
     height: 150px;
     width: 1200px;
