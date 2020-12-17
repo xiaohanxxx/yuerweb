@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="育儿论坛">
-    <meta name="keywords" content="育儿论坛">
+    <title>育儿网_全面试管婴儿咨讯平台</title>
+    <meta name="keywords" content="育儿网，试管婴儿，试管婴儿咨讯平台">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/coment.css' %}">
     <link rel="stylesheet" href="{% static 'css/idangerous.swiper.css' %}">
@@ -18,8 +19,6 @@
     <script src="{% static 'js/uitls/avalon.js' %}"></script>
     <script src="{% static 'js/index.js' %}"></script>
     <script src="{% static 'js/uitls/tool.js' %}"></script>
-
-    <title>育儿论坛</title>
 </head>
 
 {% include 'header.html' %}
@@ -37,10 +36,10 @@
                         <a href="javascript:;">{as.name}</a>
                     </h3>
                     <p class='stitle'>
-                        <a ms-attr-href="/luntan/articles/?aid={as.article.id}">{as.article.title.substr(0,15)}</a>
+                        <a ms-attr-href="/luntan/articles/{as.article.id}.html">{as.article.title.substr(0,15)}</a>
                     </p>
                     <p class="info">
-                        <a ms-attr-href="/luntan/articles/?aid={as.article.id}">
+                        <a ms-attr-href="/luntan/articles/{as.article.id}.html">
                             {as.article.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,100)}
                         </a>
                     </p>
@@ -89,12 +88,12 @@
             </div>
             <div class="byinfobox">
                 <div class="box_byinfo" ms-repeat-el="data">
-                    <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                    <a ms-attr-href="/luntan/articles/{el.id}.html">
                         <img ms-attr-src="{el.snimg}" alt=""></a>
                     <div class="byinfo_r">
-                        <p class="bytit"><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title.substr(0,15)}</a></p>
+                        <p class="bytit"><a ms-attr-href="/luntan/articles/{el.id}.html">{el.title.substr(0,15)}</a></p>
                         <p>
-                            <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                            <a ms-attr-href="/luntan/articles/{el.id}.html">
                                 {el.content.match(/[\u4e00-\u9fa5]/g)?el.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,120):el.content|html}
                             </a>
                         </p>
@@ -142,7 +141,7 @@
 
                         <div class='fl userinfo'>
                             <p class="rgt_t">{el.user.username}</p>
-                            <p class='rgt_info'><a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a></p>
+                            <p class='rgt_info'><a ms-attr-href="/luntan/articles/{el.id}.html">{el.title}</a></p>
                             <div><span>{el.topicname[Math.floor(Math.random()*(el.topicname.length))].name}</span><span><i
                                     class='iconfont icon-pinglun1'></i>{el.commentnum}</span>
                             </div>
@@ -177,9 +176,9 @@
                         <div class="info_h clearfix">
                             <img src="{% static 'images/yuerlt/hot.png' %}" alt="">
                             <div ms-repeat-hot="hotTitle">
-                                <p><a ms-attr-href="/luntan/articles/?aid={hot.id}">{hot.title}</a></p>
+                                <p><a ms-attr-href="/luntan/articles/{hot.id}.html">{hot.title}</a></p>
                                 <p>
-                                    <a ms-attr-href="/luntan/articles/?aid={hot.id}">
+                                    <a ms-attr-href="/luntan/articles/{hot.id}.html">
                                         {hot.content.match(/[\u4e00-\u9fa5]/g)?hot.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,120):hot.content|html}
                                     </a>
                                 </p>
@@ -187,21 +186,21 @@
                         </div>
                         <ul class="info_lis" ms-repeat-lis="data">
                             <li>
-                                <a ms-attr-href="/luntan/articles/?aid={lis.id}"><i class='iconfont icon-wenhao'></i>{lis.title}</a>
+                                <a ms-attr-href="/luntan/articles/{lis.id}.html"><i class='iconfont icon-wenhao'></i>{lis.title}</a>
                             </li>
 
                         </ul>
                     </div>
                     <div class="info_r fl">
                         <div class="r_imgbox">
-                            <a ms-attr-href="/luntan/articles/?aid={ims.id}" ms-repeat-ims="imgTitle">
+                            <a ms-attr-href="/luntan/articles/{ims.id}.html" ms-repeat-ims="imgTitle">
                                 <img ms-attr-src="{ims.snimg}" alt="">
                                 <span>{ims.title}</span>
                             </a>
                         </div>
 
                         <div class="r_list">
-                            <a ms-attr-href="/luntan/articles/?aid={as.id}" ms-repeat-as="lisTitle"><i
+                            <a ms-attr-href="/luntan/articles/{as.id}.html" ms-repeat-as="lisTitle"><i
                                     class='iconfont icon-dot'></i><span>{as.title}</span></a>
                         </div>
                     </div>
@@ -221,15 +220,15 @@
                 </ul>
                 <div class="sgyer-infolis fl">
                     <div class='clearfix' ms-repeat-el="hotdata">
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                        <a ms-attr-href="/luntan/articles/{el.id}.html">
                             <img ms-attr-src="{el.snimg}" alt="">
                         </a>
                         <div class='infolis-b'>
                             <h6>
-                                <a ms-attr-href="/luntan/articles/?aid={el.id}">{el.title}</a>
+                                <a ms-attr-href="/luntan/articles/{el.id}.html">{el.title}</a>
                             </h6>
                             <p>
-                                <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                                <a ms-attr-href="/luntan/articles/{el.id}.html">
                                     {el.content.substr(0,120)|html}
                                 </a>
                             </p>
@@ -237,7 +236,7 @@
                     </div>
                     <ul class="sgyer-lis">
                         <li ms-repeat-el="lisdata"><a
-                                ms-attr-href="/luntan/articles/?aid={el.id}"><span>{el.title}</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
+                                ms-attr-href="/luntan/articles/{el.id}.html"><span>{el.title}</span><span><i class='iconfont icon-pinglun1'></i>{el.commentnum}</span></a></li>
                     </ul>
                 </div>
 

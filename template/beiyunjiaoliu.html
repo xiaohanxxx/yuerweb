@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>备孕交流</title>
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="备孕交流">
-    <meta name="keywords" content="备孕交流">
+    <title>育儿网_全面试管婴儿咨讯平台</title>
+    <meta name="keywords" content="育儿网，试管婴儿，试管婴儿咨讯平台">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
     <link rel="stylesheet" href="{% static 'css/coment.css' %}">
     <link rel="stylesheet" href="{% static 'css/yuerlt.css' %}">
     <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}">
@@ -35,6 +35,9 @@
         </div>
         <div class="byjl_l_main clearfix">
             <h3><div></div><p><span>{navdata[0].name}</span><i>（热门话题大全）</i></p></h3>
+            <div class="main_nav">
+                <a style="text-align:center;" ms-attr-href="/luntan/allarticle/?aid={Mid}&all=1&Mid={Mid}" ms-attr-class="selectTid?'':'isSelectId'">全部</a>
+            </div>
             <div class="main_nav" ms-repeat-as="navdata[0].child">
                 <a  ms-attr-class="selectTid==as.id?'isSelectId':''" ms-attr-href="/luntan/articlelist/?tid={as.id}&all=1&Mid={Mid}">{as.name}</a>
             </div>
@@ -44,7 +47,6 @@
     <!-- 文章评论主体 -->
     <div class="byjl_main fl">
         <div class="main_btn">
-            <div ms-click="goChange(0,this)" isget="0" ms-attr-class='typenum==0?"btnSelect":""'>全部</div>
             <div ms-click="goChange(1,this)" isget="0" ms-attr-class='typenum==1?"btnSelect":""'>最新</div>
             <div ms-click="goChange(2,this)" isget="0" ms-attr-class='typenum==2?"btnSelect":""'>热门</div>
             <div ms-click="goChange(3,this)" isget="0" ms-attr-class='typenum==3?"btnSelect":""'>推荐</div>
@@ -52,11 +54,11 @@
         <ul class="main_lis fl">
 
             <li ms-repeat-el='lisdata' class="clearfix">
-                <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                <a ms-attr-href="/luntan/articles/{el.id}.html">
                     {el.snimg|html}
                 </a>
                 <div class="topicbox">
-                    <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                    <a ms-attr-href="/luntan/articles/{el.id}.html">
                         <h3>{ el.title.substr(0,20)}..</h3>
                         <div class="userleft">
                             {% if request.user.is_active %}
@@ -192,11 +194,8 @@
                 }
                 location.hash = '';
                 $(ev).attr('isget',1);
-                if (type_num == 0) {
-                    inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');
-                } else {
-                    inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '') + '&type=' + type_num;
-                }
+                //if (type_num == 0) {inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '');} else {inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '') + '&type=' + type_num;}
+                inturl = window.location.href.replace(/&all=1&Mid=\d.*/, '') + '&type=' + type_num;
                 vm_ltlist.typenum = type_num;
                 init(inturl);
                 setTimeout(function(){
@@ -246,7 +245,6 @@
                     }
                 })
             },
-
         });
         vm_ltlist.selectTid = selectTid;
         vm_ltlist.Mid = Mid;
@@ -272,9 +270,7 @@
             },
         })
         vm_qndrbox.init();
-
         function pageAjax(current) {
-            
             $.ajax({
                 url: inturl + '&page=' + current,
                 type: 'get',
@@ -351,7 +347,6 @@
                     vm_ltlist.lisdata = lisdata;
                     _this.count = ajax.data.maxnum;
                     render(vm_ltlist.count, 10, 5);
-                    
                 }, error: function (error) {
                     console.log(error);
                 }

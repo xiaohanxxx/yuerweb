@@ -5,8 +5,8 @@
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="话题文章">
-    <meta name="keywords" content="话题文章">
+    <meta name="keywords" content="育儿网，试管婴儿，试管婴儿咨讯平台">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
     <link rel="stylesheet" href="{% static 'css/coment.css' %}">
     <link rel="stylesheet" href="{% static 'css/yuerlt.css' %}">
     <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
@@ -234,7 +234,7 @@
         var htmldata = '';
         for (var a in comment) {
             var newstr = diguipilun(comment[a].child, comment[a], a);
-            htmldata += '<div class="pl clearfix" ><div class="tx">{% if request.user.is_active %}<a href="/users/centerhim/'+comment[a].user.id+'"><img src="/media/'+ comment[a].user.head+ '" alt=""></a>{% else %}<a href="/login">';htmldata += '<img src="/media'+ comment[a].user.head +'" alt=""></a>{% endif %}</div><p class="plbg">' + comment[a].user.username + '</p>';
+            htmldata += '<div class="pl clearfix" ><div class="tx">{% if request.user.is_active %}<a href="/users/centerhim/'+comment[a].user.id+'"><img src="/media/'+ comment[a].user.head+ '" alt=""></a>{% else %}<a href="/login">';htmldata += '<img src="/media/'+ comment[a].user.head +'" alt=""></a>{% endif %}</div><p class="plbg">' + comment[a].user.username + '</p>';
             htmldata += '<ul class="plul"><p commid=' + comment[a].id + '>　　' + comment[a].comment + '</p><div class="date clearfix">';
             htmldata += '<span>' + comment[a].publish_date.replace(/\d+:.*/, '') + '</span><span btn="reply" dataInp="' + a + '" onclick="sonIfshow(this)">回复</span></div>';
             htmldata += newstr;

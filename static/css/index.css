@@ -15,7 +15,7 @@
 
 .denglupage{ width: 1200px; position: relative; overflow: hidden; margin:20px auto; height: 720px; background:#fff url(../img/dlbg.png) 664px 75px no-repeat;}
 .dengluandzc{ width: 518px; position: absolute;left: 64px; top: 68px; }
-.dengluandzc p{ display: block; cursor: pointer; width: 252px; height: 65px; line-height: 65px; text-decoration: none; text-align: center; float: left; font-size: 18px; }
+.dengluandzc p{ display: block; cursor: pointer; width: 250px; height: 65px; line-height: 65px; text-decoration: none; text-align: center; float: left; font-size: 18px; }
 .dengluandzc .currese {color:#ff44ad; border: 1px solid #ff44ad; }
 .aaa{border-bottom: 1px solid #666; border-left:  1px solid #666; border-top:  1px solid #666;border-right:  1px solid #666;margin-right: 5px;}
 .denglubox { overflow: hidden; width: 100%; margin-top: 180px; margin-left: 25px; }

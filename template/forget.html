@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
 	<title>首页</title>
@@ -17,7 +17,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 </head>
 <style>
-    #sendsmses{
+    #sendsmses {
  float: right;
  width: 120px;
  margin-right: 50px;
@@ -85,8 +85,6 @@
                         setTimeout(function () {
                             window.location.href="/users/login?type=1"
                         }, 1500)
-                    }else{
-                        layer.msg(data.msg);
                     }
                 }
             });

@@ -1,11 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-  <title>首页</title>
+  <title>医院推荐</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <meta name=renderer content=webkit>
    {% load static %}
+    <meta name="keywords" content="育儿网，试管婴儿，试管婴儿咨讯平台">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
   <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
@@ -73,10 +75,10 @@
 
 
          <div class="tjyylists" ms-repeat="getYYlist">
-              <div class="leftyytj">
-                  <a ms-attr-href="/hospital/hindex/?item={el.id}"><img ms-attr-src="el.thumb" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
-                 <h3><a ms-attr-href="/hospital/hindex/?item={el.id}">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
-                  <a ms-attr-href="/hospital/hindex/?item={el.id}"><p>地址：{el.address}</p></a>
+              <div class="leftyytj" style="width:613px">
+                  <a ms-attr-href="/hospital/hindex/{el.id}.html"><img ms-attr-src="el.thumb" width="147" height="92" alt="" style="float: left; margin-right: 25px;"></a>
+                 <h3><a ms-attr-href="/hospital/hindex/{el.id}.html">{el.title}</a>     <abbr title="">{el.hospitallv}</abbr></h3>
+                  <a ms-attr-href="/hospital/hindex/{el.id}.html"><p>地址：{el.address}</p></a>
                  <p>电话：{el.phone}</p>
               </div>
               <div class="rightyytj">
@@ -99,7 +101,7 @@
           <div class="szzhuanjia">
               <h3><abbr>推荐百科</abbr> <a href="/baike">更多>></a></h3>
               <div class="doctorbox" ms-repeat="getrmbaike">
-                 <a ms-attr-href="/baike/article?aid={el.id}">
+                 <a ms-attr-href="/baike/article/{el.id}.html">
                    <img ms-attr-src="'/media/' + el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">
                    <h4 style="margin-top: 20px; font-size: 14px; padding-right: 15px;">{el.title}</h4>
                    <p style=" font-size: 12px; margin-top: 10px; padding-right: 15px;">{el.excerpt | truncate(33,'...')}</p>
@@ -336,7 +338,7 @@
                 dataType: "json",
                 success: function (data) {
                     vmw.getrmbaike = data.data
-                    console.log(vmw.getrmbaike,'**************vmw.getrmbaike**********')
+                    console.log(vmw.getrmbaike,'**************vmw.getrmbaike**********')  
                 }
             });
         }

@@ -36,11 +36,20 @@
                 <span>{askdata.user.username}</span>
                 <i class="layui-icon">&#xe68d;</i>
                 <span>{askdata.publish_date.replace(/\..*/,'')}</span>
-                <abbr style="float: right;" ms-attr-class="askdata.isthumbup == 1?'isthumb':''" ms-attr-tid="askdata.id"
-                      ms-click="isthumbup(this)" ms-attr-thumb="askdata.isthumbup">
-                    <i class="layui-icon">&#xe6c6;</i>
-                    <span>{askdata.thumbup}</span>
-                </abbr>
+                {% if request.user.is_active %}
+                    <abbr style="float: right;" ms-attr-class="askdata.isthumbup == 1?'isthumb':''" ms-attr-tid="askdata.id" ms-click="isthumbup(this)" ms-attr-thumb="askdata.isthumbup">
+                        <i class="layui-icon">&#xe6c6;</i>
+                        <span>{askdata.thumbup}</span>
+                    </abbr>
+                {% else %}
+                    <a href="/login">
+                        <abbr style="float: right;" ms-attr-class="askdata.isthumbup == 1?'isthumb':''" ms-attr-tid="askdata.id" ms-click="isthumbup(this)" ms-attr-thumb="askdata.isthumbup">
+                            <i class="layui-icon">&#xe6c6;</i>
+                            <span>{askdata.thumbup}</span>
+                        </abbr>
+                    </a>
+                {% endif %}
+
             </p>
             <p>{askdata.content|html}</p>
         </div>
@@ -81,10 +90,16 @@
                         <div class="plinfobox">
                             <div>
                                 <p>
-                                    {as.comment.replace(/(<\p>)/,'')|html}
+                                    {as.comment.replace(/(<\p>)/g,'')|html}
                                 </p>
-                                <span ms-attr-class="as.isthumbup==1?'isthumb':''" ms-attr-commentid="as.id"
-                                      ms-click="isthumbup(this)" ms-attr-thumb="as.isthumbup"><i class="layui-icon">&#xe6c6;</i>&nbsp;{as.thumbup}</span>
+                                {% if request.user.is_active %}
+                                    <span ms-attr-class="as.isthumbup==1?'isthumb':''" ms-attr-commentid="as.id" ms-click="isthumbup(this)" ms-attr-thumb="as.isthumbup"><i class="layui-icon">&#xe6c6;</i>&nbsp;{as.thumbup}</span>
+                                {% else %}
+                                    <a href="/login">
+                                        <span ms-attr-class="as.isthumbup==1?'isthumb':''" ms-attr-commentid="as.id" ms-click="isthumbup(this)" ms-attr-thumb="as.isthumbup"><i class="layui-icon">&#xe6c6;</i>&nbsp;{as.thumbup}</span>
+                                    </a>
+                                {% endif %}
+
                             </div>
                             <p class="isShow" isShow="false">
                                 <span><i class="iconfont">&#xe665;</i><span>点击显示更多</span> </span>
@@ -131,7 +146,11 @@
                     height: 100
                 }); //建立编辑器
             });
-            vm_hzwdinfo.pid = JSON.stringify(location.href.match(/pid=\d+/)).match(/\d+/g)[0];
+            if(location.href.match(/pid=\d+/)){
+                vm_hzwdinfo.pid = JSON.stringify(location.href.match(/pid=\d+/)).match(/\d+/g)[0];
+            }else{
+                vm_hzwdinfo.pid = JSON.stringify(location.href.match(/\d+.html/)).match(/\d+/g)[0];
+            }
             this.tidresh();
             this.plresh();
         },

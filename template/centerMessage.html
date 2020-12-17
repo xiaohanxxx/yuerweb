@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -102,22 +102,24 @@
                 }
                 .partonecont ul li img{
                     float:none;
-                    width: 50px;
-                    height:50px;
+                    width: 30px;
+                    height:30px;
                 }
             </style>
+<!--<span>在{{ notification.target | safe }}</span>-->
             <div class="bott_box" ms-if="aa == 1">
                 <div class="partonecont">
                     <ul>
                         {% if unread_count %}
                             {% for notification in request.user.notifications.all %}
-                                <li>
-                                    <a href="/users/centerhim/{{ notification.id }}"><img src="\media/{{ notification.actor.info.user_avatar }}">{{ notification.actor }}</a>
-                                    <p style="margin-top: 21px;">
+                                <li style="overflow:hidden;">
+                                    <a style="float:left;" href="/users/centerhim/{{ notification..actor.id }}"><img src="\media/{{ notification.actor.info.user_avatar }}">{{ notification.actor }}</a>
+                                    <p style="margin-top: 5px;">
                                         <span>【{{ notification.timesince }}之前】</span>
                                         <span style="color:pink;display:inline-block;padding:0 6px;">{{ notification.actor }}</span>
                                         <span>在{{ notification.target | safe }}</span>
                                         <span style="float:left;padding:0 6px;color:skyblue;">{{ notification.verb |safe}}</span>
+                                    </p>
                                 </li>
 
                             {% empty %}

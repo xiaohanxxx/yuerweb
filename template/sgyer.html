@@ -30,12 +30,12 @@
 <section class="sgyer_h wid clearfix" id='sgyer_h'>
     <p><span>当前位置：</span><a href="javascript:;">试管婴儿</a></p>
     <div class="sg_hot fl" ms-repeat="tebietuijian">
-        <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="{el.thumb}" alt="hot图片"></a>
+        <a ms-attr-href="/shiguanbaby/articles/{el.id}.html"><img ms-attr-src="{el.thumb}" alt="hot图片"></a>
 
         <h4>
-            <a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a>
+            <a ms-attr-href="/shiguanbaby/articles/{el.id}.html">{el.title}</a>
         </h4>
-        <p><a>{el.content}</a></p>
+        <p><a>{el.content.substr(0,260)|html}</a></p>
     </div>
     <ul class="sg_hot_r fr">
         <li ms-repeat="tuijianartical">
@@ -44,7 +44,7 @@
                   <img ms-attr-src="{el.thumb}" alt="" width="270" height="200">
             </a>
             <span>
-                    <a  ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}...</a>
+                    <a  ms-attr-href="/shiguanbaby/articles/{el.id}.html">{el.title}...</a>
                 </span>
         </li>
 
@@ -59,10 +59,10 @@
         </div>
         <ul class="sginfo clearfix">
             <li ms-repeat="listsgye">
-                <a ms-attr-href="/shiguanbaby/articles?aid={el.id}"><img ms-attr-src="el.thumb" alt=""></a>
+                <a ms-attr-href="/shiguanbaby/articles/{el.id}.html"><img ms-attr-src="el.thumb" alt=""></a>
                 <div class='sginfo_r fr'>
-                    <h4><a ms-attr-href="/shiguanbaby/articles?aid={el.id}">{el.title}</a></p>
-                        <p><a href="javascript:;">{el.content | truncate(60, '...')}</a></p>
+                    <h4><a ms-attr-href="/shiguanbaby/articles/{el.id}.html">{el.title}</a></p>
+                        <p><a href="javascript:;">{el.content|html | truncate(60, '...')}</a></p>
                     <div class='sg_tag'>
                         <span ms-repeat-item="el.topics"><a href="javascript:;">{item.name}</a></span>
                     </div>
@@ -153,10 +153,6 @@
         </ul>
     </div>
     <div class="bkinfobox">
-
-
-
-
         <div class="bkflbox" ms-repeat-el="list_data">
             <div ms-repeat-item="el.list_data" style="float: left; width: 33%; height: 160px;">
                 <div class="bkinfohead">
@@ -164,7 +160,8 @@
                     <a href="" class="bkmetaname">{item.menu_name}</a>
                 </div>
                 <div class="bkmetalises">
-                    <a ms-repeat-it="item.list_data"  ms-attr-href="/baike/article?aid={item.id}">{it.title}</a>
+                    <a ms-repeat-it="item.list_data"  ms-attr-href="/baike/article/{item.id}.html">{it.title}</a>
+{#                    <a ms-repeat-it="item.list_data"  ms-attr-href="/baike/article?aid={item.id}">{it.title}</a>#}
                 </div>
             </div>
         </div>
@@ -275,7 +272,7 @@
         tebietuijian:[],
         getSpeashoAtical:function (){
             var datas = {
-                type:5, //文章类型ID
+                type:2, //文章类型ID
                 num:1  //文章数量
             }
            $.ajax({

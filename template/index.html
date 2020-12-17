@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>孕儿网</title>
+    <title>孕儿网_试管婴儿交流平台</title>
     <meta charset="utf-8">
     <meta name="baidu-site-verification" content="code-cWRdph1qQ5" />
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
-    <meta name="description" content="专业的试管婴儿讨论咨讯平台，在这里可以找到各种问题情况，同时也可以找到一些志同道合的人，这里有专业的医生解决试管婴儿等不孕不育问题，是一个很好的试管婴儿和不孕不育的平台">
-    <meta name="keywords" content="育儿网，专业试管婴儿">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
+    <meta name="keywords" content="育儿网，试管婴儿交流平台，女性不孕交流平台">
     {% load static %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'js/uitls/idangerous.swiper2.7.6.min.js' %}"></script>
@@ -80,7 +80,7 @@
                             <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
                         {% endif %}
 
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
+                        <a ms-attr-href="/luntan/articles/{el.id}.html" style="text-decoration: none; color: #666;">
                             <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;padding:0 5px;">{el.title.substr(0,8)}...</abbr>
                             </h3>
                         </a>
@@ -98,7 +98,7 @@
                         {% else %}
                             <a href="/login"><img ms-attr-src="/media/{el.user.head}" style="float: left; margin-right: 8px; width: 30px; height: 30px; margin-top: 5px;"></a>
                         {% endif %}
-                        <a ms-attr-href="/luntan/articles/?aid={el.id}" style="text-decoration: none; color: #666;">
+                        <a ms-attr-href="/luntan/articles/{el.id}.html" style="text-decoration: none; color: #666;">
                             <h3 style="font-size: 12px; margin-top: 14px;">{el.username}:<abbr style="color: #ff44ad;">{el.title.substr(0,20)}...</abbr>
                             </h3>
                         </a>
@@ -126,7 +126,7 @@
                     <div class="leftcontinfo">
                         <div class="hotinfo">
                             <div class="infoone" ms-repeat-its="imgdata">
-                                <a ms-attr-href="/luntan/articles/?aid={its.id}">
+                                <a ms-attr-href="/luntan/articles/{its.id}.html">
                                     <img ms-attr-src="{its.snimg}">
                                     <p>{its.title.substr(0,20)}...</p>
                                 </a>
@@ -142,7 +142,7 @@
                                     {% else %}
                                         <a href="/login"><img ms-attr-src="/media/{el.user.head}"></a>
                                     {% endif %}
-                                    <a ms-attr-href="/luntan/articles/?aid={el.id}">
+                                    <a ms-attr-href="/luntan/articles/{el.id}.html">
                                         <h3>{el.title.substr(0,15)}...</h3>
                                         <p>
                                             {el.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,15)}...</p>
@@ -170,7 +170,7 @@
                     <div class="leftcontinfoes">
                         <div class="hotinfo" style="width: 167px;">
                             <div class="infoone" ms-repeat-as="imgdata">
-                                <a ms-attr-href="/luntan/articles/?aid={as.id}" style="display:block;">
+                                <a ms-attr-href="/luntan/articles/{as.id}.html" style="display:block;">
                                     <img ms-attr-src="{as.snimg}" style="width:167px;height:200px;">
                                     <p>{as.title.substr(0,15)}...</p>
                                 </a>
@@ -189,7 +189,7 @@
                                             <img ms-attr-src="/media/{as.user.head}" style="width:36px;height:36px;border-radius: 50%;">
                                         </a>
                                     {% endif %}
-                                    <a ms-attr-href="/luntan/articles/?aid={as.id}">
+                                    <a ms-attr-href="/luntan/articles/{as.id}.html">
                                         <h3 style="font-weight:bold;">{as.title.substr(0,10)}...</h3>
                                         <p>
                                             {as.content.match(/[\u4e00-\u9fa5]/g)?as.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,13):as.content|html}...
@@ -200,7 +200,7 @@
                         </div>
 
                         <div class="hotbeiyun" ms-repeat-its="hotimg">
-                            <a ms-attr-href="/luntan/articles/?aid={its.id}">
+                            <a ms-attr-href="/luntan/articles/{its.id}.html">
                                 <img ms-attr-src="its.snimg" height="409px" width="100%;">
                                 <p>{its.title.substr(0,14)}...</p>
                             </a>
@@ -216,7 +216,7 @@
                 </div>
                 <div class="cityhologe">
                     <ul>
-                        <li ms-repeat-as="beiydata"><a ms-attr-href="/luntan/articles/?aid={as.article.id}">{as.article.title.substr(0,20)}</a><abbr>></abbr>
+                        <li ms-repeat-as="beiydata"><a ms-attr-href="/luntan/articles/{as.article.id}.html">{as.article.title.substr(0,20)}</a><abbr>></abbr>
                         </li>
                     </ul>
                 </div>
@@ -240,7 +240,7 @@
 
                             <div class="h3tgoplis">
                                 <div class="tupianhost" ms-repeat-as="limgdata">
-                                    <a ms-attr-href="/luntan/articles/?aid={as.id}">
+                                    <a ms-attr-href="/luntan/articles/{as.id}.html">
                                         <img ms-attr-src="{as.snimg}" alt="{as.title}" style="height:130px;">
                                         <p>{as.title.substr(0,14)}...</p>
                                     </a>
@@ -265,7 +265,7 @@
                                                      style="width:36px;height:36px;border-radius: 50%">
                                             </a>
                                         {% endif %}
-                                        <a ms-attr-href="/luntan/articles/?aid={its.id}">
+                                        <a ms-attr-href="/luntan/articles/{its.id}.html">
                                             <h3>{its.title.substr(0,14)}...</h3>
                                             <p>
                                                 {its.content.match(/[\u4e00-\u9fa5]/g)?its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,20) : ''}...</p>
@@ -280,7 +280,7 @@
                         <div class="rwzlist">
                             <div class="ahfljks">
                                 <div class="fsaldkjf" ms-repeat-item="rimgdata">
-                                    <a ms-attr-href="/luntan/articles/?aid={item.id}">
+                                    <a ms-attr-href="/luntan/articles/{item.id}.html">
                                         <img ms-attr-src="{item.snimg}" ms-attr-alt="{item.title}" width="133"
                                              height="60" style="float: left; margin-right: 8px;border-radius: 8px;">
 
@@ -302,7 +302,7 @@
                                             <a href="/login">
                                                 <img ms-attr-src="/media/{its.user.head}" ms-attr-alt="{its.user.username}" style="width:36px;height:36px;border-radius: 50%"></a>
                                         {% endif %}
-                                        <a ms-attr-href="/luntan/articles/?aid={its.id}">
+                                        <a ms-attr-href="/luntan/articles/{its.id}.html">
                                             <h3 style="color:#000;">{its.title.substr(0,14)}...</h3>
                                             <p>
                                                 {its.content.match(/[\u4e00-\u9fa5]/g)?its.content.match(/[\u4e00-\u9fa5]/g).toString().replace(/\,/g,'').substr(0,26):''}...</p>
@@ -321,7 +321,7 @@
                     <a href="javascript:;"><img src="{% static 'img/07.jpg' %}" style="margin-left: 23px;"></a>
                     <p>病理性不孕 <a href="/taolun/"><span class="bybymore">更多</span></a></p>
                     <ul>
-                        <li ms-repeat-as="blxbydata"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,18)}</a><abbr>></abbr>
+                        <li ms-repeat-as="blxbydata"><a ms-attr-href="/taolun/toposting/{as.id}.html">{as.title.substr(0,18)}</a><abbr>></abbr>
                         </li>
                     </ul>
                 </div>
@@ -338,8 +338,8 @@
             </p>
             <div class="wentiwa">
                 <div class="titleanswer" ms-repeat-as="askdata">
-                    <h3 style="font-weight:bold;"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,15)}..</a></h3>
-                    <p><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.comment.comment.substr(0,30)|html}...</a></p>
+                    <h3 style="font-weight:bold;"><a ms-attr-href="/taolun/toposting/{as.id}.html">{as.title.substr(0,15)}..</a></h3>
+                    <p><a ms-attr-href="/taolun/toposting/{as.id}.html">{as.comment.comment.substr(0,30)|html}...</a></p>
                 </div>
             </div>
         </div>
@@ -369,7 +369,7 @@
                                 <div>
                                     <h3>{el.menu_name}</h3>
                                     <div class="yunqq">
-                                        <a ms-repeat-sanji="el.children" ms-attr-href="/baike/article?aid={sanji.articleid}">{sanji.title}</a>
+                                        <a ms-repeat-sanji="el.children" ms-attr-href="/baike/article/{sanji.articleid}.html">{sanji.title}</a>
                                     </div>
                                 </div>
                             </div>
