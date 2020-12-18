@@ -1,4 +1,4 @@
-body,
+﻿body,
 ul,
 img,
 h1,
@@ -440,7 +440,7 @@ button {
 /* doctorinfo  */
 
 #doctorinfo {
-    height: 685px;
+    height: 797px;
     margin-top: 27px;
 }
 
@@ -882,8 +882,10 @@ body .topicBox li img {
 
 #emoji {
     width: 50px;
-    font-size: 2em;
+    font-size: 24px;
     cursor: pointer;
+    margin-left:10px;
+    line-height:42px;
     float: left;
 }
 

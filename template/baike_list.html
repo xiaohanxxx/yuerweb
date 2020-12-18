@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>百科列表</title>
+    <title>百科列表-试管婴儿_育儿网</title>
     <meta charset="utf-8">
     {% load static %}
 
@@ -38,7 +38,7 @@
             <div class="fl_list" ms-repeat-el="erjidatalist">
                 <h3>{el.menu_name}</h3>
                 <ol>
-                    <li ms-repeat-sanji="el.children"><a ms-attr-href="/baike/article?aid={sanji.articleid}">{sanji.title}</a>
+                    <li ms-repeat-sanji="el.children"><a ms-attr-href="/baike/article/{sanji.articleid}.html">{sanji.title}</a>
                     </li>
                 </ol>
             </div>

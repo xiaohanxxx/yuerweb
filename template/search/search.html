@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
   <title>首页</title>
@@ -13,6 +13,8 @@
     <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/coment.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/iconfont.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
 <!--      <style type="text/css">
       body{ background: #029EE9; }
@@ -22,14 +24,90 @@
 {#{% include 'header.html' %}#}
 <body  ms-controller="bodyconts">
     {%  include 'header.html' %}
-
+{#    <div class="header">#}
+{#       <div class="headerNav">#}
+{#         <div class="logos"><img src="img/logo.jpg"></div>#}
+{#         <div class="headerNav-ul">#}
+{#          <ul>#}
+{#            <li>#}
+{#              <a href="" class="nava">首页</a>#}
+{#            </li>#}
+{#            <li>#}
+{#              <a href="" class="acolor">试管婴儿  </a>#}
+{#              <div class="xialabox"  style="display: none;">#}
+{#                <p><a href="">海外试管</a></p>#}
+{#                <p><a href="">国内试管</a></p>#}
+{#              </div>#}
+{#            </li>#}
+{#            <li>#}
+{#              <a href="" class="acolor">育儿论坛</a>#}
+{#              <div class="xialabox" style="display: none;">#}
+{#                <p><a href="">备孕交流圈</a></p>#}
+{#                <p><a href="">妈妈交流圈</a></p>#}
+{#                <p><a href="">试管婴儿交流圈</a></p>#}
+{#                <p><a href="">难孕交流圈</a></p>#}
+{#              </div>#}
+{#            </li>#}
+{#            <li>#}
+{#              <a href="" class="acolor">互助问答</a>#}
+{#              <div class="xialabox" style="display: none;">#}
+{#                <p><a href="">试管婴儿</a></p>#}
+{#                <p><a href="">不孕不育</a></p>#}
+{#                <p><a href="">备孕</a></p>#}
+{#                <p><a href="">怀孕</a></p>#}
+{#              </div>#}
+{#            </li>#}
+{#            <li>#}
+{#              <a href="" class="acolor">医院推荐</a>#}
+{#              <div class="xialabox" style="display: none;">#}
+{#                <p><a href="">海外医院</a></p>#}
+{#                <p><a href="">国内医院</a></p>#}
+{#              </div>#}
+{#            </li>#}
+{#            <li>#}
+{#              <a href="" class="acolor">百科知识</a>#}
+{#              <div class="xialabox" style="display: none;">#}
+{#                <p><a href="">备孕</a></p>#}
+{#                <p><a href="">怀孕</a></p>#}
+{#                <p><a href="">育儿</a></p>#}
+{#                <p><a href="">试管婴儿</a></p>#}
+{#                <p><a href="">不孕不育</a></p>#}
+{#              </div>#}
+{#            </li>#}
+{#          </ul>#}
+{#         </div>#}
+{#         <div class="denglu">#}
+{#          <div class="pps" style=" margin-top: 64px;position: relative; margin-bottom: 10px;">#}
+{#                    <div class="yiyuansearch">#}
+{#                          <div  ms-click="showxiala">{{name}}<i class="layui-icon" style="margin-left: 5px; text-align: center;">&#xe61a;</i></div>#}
+{#                          <ul class="hites" style="position: absolute; left: 0; width: 55px; font-size: 14px; background:#f1f1f1; z-index: 999999;">#}
+{#                              <li ms-click="changeSearch('医院')">医院</li>#}
+{#                              <li ms-click="changeSearch('医生')">医生</li>#}
+{#                              <li ms-click="changeSearch('问答')">问答</li>#}
+{#                              <li ms-click="changeSearch('百科')">百科</li>#}
+{#                          </ul>#}
+{#                          <ol style="width: 212px; display: none; min-height: 50px; background:#f1f1f1; position: absolute; left: 0;font-size: 14px; z-index: 999999; margin-top: 8px; border-radius: 3px;">#}
+{#                              <li>我是关键词</li>#}
+{#                              <li>我是关键词</li>#}
+{#                              <li>我是关键词</li>#}
+{#                              <li>我是关键词</li>#}
+{#                          </ol>#}
+{#                    </div>#}
+{#                    <input type="" name="" id="blurfs">#}
+{#                    <i class="searchbox"></i>#}
+{#                </div>#}
+{#          <p style="position: absolute; top: 20px; right: 4px; text-decoration: none; color:#F94479;"><a href="" style="color:#F94479; text-decoration: none;">登录</a> | <a href="" style="color:#F94479; text-decoration: none;">注册</a></p>#}
+{#         </div>#}
+{#       </div>#}
+{#     </div>#}
+     
    
     <div class="hzwdbanner"><img src="{% static 'img/hzwdbanner.png' %}"></div>
 
     <div class="hzwdconts">
       <div class="hzwdlefts">
          <h3 style="font-size: 16px; padding: 15px;">试管婴儿</h3>
-         <div style="padding: 15px;">总共为您找到相关结果<abbr style="color: red; margin:0 10px;">999</abbr>个</div>
+         <div style="padding: 15px;">总共为您找到以下相关结果</div>
          <div class="fenleiallswd">
              <p class="allcurr">全部</p>
 {#             <p>最新</p>#}
@@ -37,12 +115,11 @@
 {#             <p>求助</p>#}
 {#             <p>发帖</p>#}
          </div>
-{#      {{ page }}#}
 
          <div class="hzwdcontslist">
          {% if query %}
              {% for result in page.object_list %}
-                 {% if result.verbose_name == '文章管理' %}
+              {% if result.verbose_name == '文章管理' %}
                      <div class="partwdone">
                        <img src="{% static 'img/tuxiang.jpg' %}" style="float: left; margin-right: 10px;">
 {#                         {{  result.verbose_name }}#}
@@ -82,7 +159,6 @@
                             <p><i class="layui-icon">&#xe68d;</i> {{ result.object.publish_date | safe}}<abbr style="float: left; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>{{ result.object.read | safe}}</abbr></p>
                         </div>
                    {% endif %}
-                 
              {% endfor %}
          {% endif %}
 
@@ -107,7 +183,7 @@
 {#               <p><i class="layui-icon">&#xe68d;</i> 2020-10-15  <abbr style="float: right; margin-right: 48px;"><i class="layui-icon">&#xe6c6;</i>999</abbr></p>#}
 {#             </div>#}
 {#  #}
-{#             <div id="pagers"></div>#}
+             <!--div id="pagers"></div>-->
          </div> 
 
 
@@ -141,15 +217,9 @@
           </div>
 
           <div class="szzhuanjia">
-              <h3><abbr>热门帖子</abbr> <a href="###">更多>></a></h3>
+             <!-- <h3><abbr>热门帖子</abbr> <a href="###">更多>></a></h3>-->
               <div class="hotwdtuijian">
-{#                 <ul>#}
-{#                   <li>#}
-{#                     <a href="###">话题标签话题标签话题标签话题标签</a>#}
-{#                     <abbr>999个问答</abbr>#}
-{#                   </li>#}
-{#                 </ul>#}
-                  {% include 'mod_hotarticle.html' %}
+                 {% include 'mod_hotarticle.html' %}
               </div>
           </div>
       </div>
@@ -213,7 +283,7 @@
         },
     })
     vm.get_baike_tuijian();
-    vm.intopages();
+    //vm.intopages();
 </script>
 </body>
 </html>

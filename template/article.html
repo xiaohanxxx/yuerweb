@@ -1,10 +1,11 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>文章详情</title>
+    <title>{{ article_data.data.0.title }}-试管婴儿_育儿网</title>
     <meta charset="utf-8">
     {% load static %}
-
+    <meta name="keywords" content="育儿网，试管婴儿，试管婴儿咨讯平台">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
@@ -22,9 +23,8 @@
 <body style="position: relative;">
 {% include 'header.html' %}
 <!-- 头部 -->
-{#{{ article_data.data.0.title }}#}
 
-{#{{ article_data }}#}
+
 
 {#{% for article in article_data.data %}#}
 {#    {{ article.title }}#}
@@ -39,12 +39,14 @@
             <div class="title" style="font-size: 18px; font-weight: bold;">{{ article_data.data.0.title }}</div>
             <div class="time" style="margin-bottom: 30px;">发布：{{ article_data.data.0.add_time }}</div>
             <div class="content">
+                <!--<a href="###"><img src="{% static 'img/jszx.png' %}" art='' title="" style="float:right;width:571px; height:200px;margin-bottom:50px; margin-right:30px;"/></a>-->  
+<a href="###"><img src="/media/{{ article_data.data.0.thumb }}" art='' title="" style="float:right;margin-bottom:50px; margin-right:30px; width:450px; height:auto;"/></a>
                 {{ article_data.data.0.content | safe }}
             </div>
             <div class="pretitle">上一篇：
                 <abbr>
                     {% if s_article %}
-                        <a href="\baike/article?aid={{ s_article.id }}">{{ s_article.title }}</a>
+                        <a href="\baike/article/{{ s_article.id }}.html">{{ s_article.title }}</a>
                     {% else %}
                         <a href="###">没有了</a>
                     {% endif %}
@@ -53,23 +55,23 @@
             <div class="nexttitle">下一篇：
                 <abbr>
                     {% if x_article %}
-                      <a href="\baike/article?aid={{ x_article.id }}">{{ x_article.title }}</a>
+                      <a href="\baike/article/{{ x_article.id }}.html">{{ x_article.title }}</a>
                       {% else %}
                       <a href="###">没有了</a>
                     {% endif %}
                 </abbr>
             </div>
-
+  <style>
+    .left_bottom_artctal ul li a:hover{ color:#ff44ad;}
+</style>
             <div class="left_bottom_artctal">
                 <h3><abbr>相关百科推荐</abbr></h3>
                 <ul>
                     <li ms-repeat="getrmbaike">
-                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title}</a>
+                        <a ms-attr-href="/baike/article/{el.id}.html">{el.title}</a>
                     </li>
                 </ul>
             </div>
-
-
         </div>
         <div class="rightpart" >
             <div class="suoyin">
@@ -94,7 +96,7 @@
                 <h3><abbr>相关热门推荐</abbr></h3>
                 <ul>
                     <li ms-repeat="get_tj_baike">
-                        <a ms-attr-href="/baike/article?aid={el.id}">{el.title | html}</a>
+                        <a ms-attr-href="/baike/article/{el.id}.html">{el.title | html}</a>
                     </li>
                 </ul>
             </div>
@@ -148,6 +150,7 @@
                 dataType: "json",
                 success: function (data) {
                     vmm.get_tj_baike = data.data
+                    console.log(vmm.get_tj_baike)
                 }
             });
         },
@@ -163,6 +166,7 @@
                 dataType: "json",
                 success: function (data) {
                     vmm.getrmbaike = data.data
+                    console.log(vmm.getrmbaike,"推荐文章");
                 }
             });
         }

@@ -317,7 +317,7 @@ div.box_byinfo:nth-child(even) {
 
 .byhot_r {
     position: relative;
-    width: 338px;
+    width: 337px;
     height: 582px;
     margin-left: 10px;
     background-color: #fff;
@@ -2100,4 +2100,7 @@ body div[bq_btn="emoji"] {
     color: #C9C9C9;
     margin-right: 8px;
     font-size: 16px;
+}
+.byjl_l_main .all{
+
 }

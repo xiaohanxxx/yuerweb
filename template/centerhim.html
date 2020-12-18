@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>他的个人中心</title>
+    <title>他的个人中心-试管婴儿_育儿网</title>
     {% load static %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
@@ -22,7 +22,7 @@
 
 <div class="centers" ms-controller="centeres">
     <div class="ctops">
-        <div class="tuxiang"><img src="\media/{{ data.user.info.user_avatar }}" height="124" width="124"></div>
+        <div class="tuxiang"><img src="\media/{{ data.user.info.user_avatar }}" height="124" width="124" style="border-radius:50%;"></div>
         <div class="iam_username">{{ data.user }}</div>
         <div class="jd_tiao">
             <div class="jdt" id="slideTest18"></div>
@@ -187,7 +187,7 @@
         var slider = layui.slider;
         slider.render({
             elem: '#slideTest18',
-            value: 888,
+            value: 0,
             max: 10000,
             disabled: true, //禁用滑块
             // showstep:false,

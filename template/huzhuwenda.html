@@ -2,10 +2,12 @@
 <html>
 <head>
     {% load static %}
-    <title>互助问答</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta name=renderer content=webkit>
+    <title>育儿网_全面试管婴儿咨讯平台</title>
+    <meta name="keywords" content="育儿网，试管婴儿，试管婴儿咨讯平台">
+    <meta name="description" content="孕儿网全球试管婴儿交流平台。专注于不孕不育，试管婴儿，备孕育儿交流，提供全球试管婴儿医院资讯，医生预约，了解试管婴儿费用，试管婴儿成功率，以及试管婴儿疑难问题解决服务等，为您的安全孕育保驾护航！">
     <script type="text/javascript" src="{% static  "js/jquery.min.js" %}"></script>
     <script type="text/javascript" src="{% static  "js/swiper-bundle.min.js" %}"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/avalon.js/1.5.5/avalon.js"></script>
@@ -17,7 +19,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/hzwd.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static  "css/iconfont.css" %}">
 </head>
-{% include 'config.html' %}
 {% include 'header.html' %}
 <div class="huzhuwenda" ms-controller="hzwda">
     <div class="huzhuconst">
@@ -29,7 +30,7 @@
                         <li ms-repeat="groupsdata">
                             <img ms-attr-src="{el.img}" style="float: left; margin-right: 16px;">
                             <h4 style="font-size: 14px;">{el.name}</h4>
-                            <p style="font-size: 12px;">9896位成员</p>
+                            <p style="font-size: 12px;">{Math.floor(Math.random()*999)}位成员</p>
                             <a ms-attr-href="/taolun/grouplist/?aid={el.id}" style="display:block;"><abbr
                                     style="font-size: 12px; width: 56px; height: 20px; line-height: 20px; text-align: center; margin-top:12px; display: block; float: left; background: #FF44AD; color: #fff; cursor: pointer;">
                                 加入小组
@@ -51,11 +52,11 @@
                     <ul>
 
                         <li ms-repeat-el='datasfsa'>
-                            <a ms-attr-href="/taolun/toposting/?pid={el.id}">
+                            <a ms-attr-href="/taolun/toposting/{el.id}.html">
                                 {el.snimg|html}
                             </a>
                             <div class="topicbox">
-                                <a ms-attr-href="/taolun/toposting/?pid={el.id}">
+                                <a ms-attr-href="/taolun/toposting/{el.id}.html">
                                     <h3>{ el.title.substr(0,30)}..</h3>
                                     <p>{el.content.substr(0,100)}..</p>
                                 </a>
@@ -72,7 +73,7 @@
                                     </div>
                                     <div class="userright fr">
                                         <span><i class="iconfont">&#xe605;</i>{el.read}</span>
-                                        <a ms-attr-href="/taolun/toposting/?pid={el.id}" class="fl">
+                                        <a ms-attr-href="/taolun/toposting/{el.id}.html" class="fl">
                                             <span><i class="iconfont">&#xe66a;</i>{el.commentnum}</span>
                                         </a>
                                     </div>
@@ -114,7 +115,7 @@
                                 <a href="/login"><img ms-attr-src="/media/{as.user.head}" style="float: left; margin-right: 12px;"></a>
                             {% endif %}
 
-                            <h4 style="margin-bottom:10px;height: 38px;overflow: hidden;"><a ms-attr-href="/taolun/toposting/?pid={as.id}">{as.title.substr(0,15)}</a></h4>
+                            <h4 style="margin-bottom:10px;height: 38px;overflow: hidden;"><a ms-attr-href="/taolun/toposting/{as.id}.html">{as.title.substr(0,15)}</a></h4>
                             <div class="tubiaoousrt">
                                 <span class="fl">
                                     <i class="iconfont">&#xe71b;</i>

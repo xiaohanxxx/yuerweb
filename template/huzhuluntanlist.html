@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>互助问答列表</title>
+    <title>互助问答列表-试管婴儿_育儿网</title>
     {% load static %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
@@ -40,12 +40,12 @@
         <div class="hzwdcontslist">
             <div class="partwdone" ms-repeat-its="lisdata">
                 {% if request.user.is_active %}
-                    <a ms-attr-href="/users/centerhim/{its.user.id}"><img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px; width: 30px; height: 30px;"></a>
+                    <a ms-attr-href="/users/centerhim/{its.user.id}"><img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px;"></a>
                 {% else %}
-                    <a href="/login"><img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px; width: 30px; height: 30px;"></a>
+                    <a href="/login"><img ms-attr-src="/media/{its.user.head}" style="float: left; margin-right: 10px;"></a>
                 {% endif %}
 
-                <h4><a ms-attr-href="/taolun/toposting/?pid={its.id}">{its.title}</a></h4>
+                <h4><a ms-attr-href="/taolun/toposting/{its.id}.html">{its.title}</a></h4>
                 <p>{its.user.username} <i class="layui-icon">&#xe68d;</i> {its.publish_date.replace(/:.*/,'')}
                     {% if request.user.is_active %}
                         <a href="javascript:;" ms-click="dianz(its.id,this)" ms-attr-isthumup="its.isthumbup" ms-attr-class="its.isthumbup==1?'isthumbup':''">
@@ -71,9 +71,9 @@
     <div class="hzwdrights">
         <div class="metry">
             {% if request.user.is_active %}
-                <a href="/taolun/topost/"><img src="{% static  "img/340.png" %}" width="30" height="30"></a>
+                <a href="/taolun/topost/"><img src="{% static  "img/340.png" %}"></a>
             {% else %}
-                <a href="/login"><img src="{% static  "img/340.png" %}" width="30" height="30"></a>
+                <a href="/login"><img src="{% static  "img/340.png" %}"></a>
             {% endif %}
         </div>
 {#    医生推荐#}
@@ -133,7 +133,7 @@
                     } else {
                         url =  '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites;
                     }
-
+                    
                     $.ajax({
                         url: url,
                         type: 'get',
@@ -143,7 +143,7 @@
                             vm_hzwdlist.count = ajax.maxnum;
                             vm_hzwdlist.lisdata = ajax.data;
                             vm_hzwdlist.intopages();
-
+                            
                         }, error: function (error) {
                             console.log(error);
                         }
@@ -179,14 +179,14 @@
             } else {
                 url =  '/taolun/postinglist/?tid=' + vm_hzwdlist.tid + '&num=' + vm_hzwdlist.limites + '&page=' + page;
             }
-
+            
             $.ajax({
                 url: url,
                 type: 'get',
                 dataType: 'json',
                 success: function (ajax) {
                     vm_hzwdlist.lisdata = ajax.data;
-
+                    
                 }, error: function (error) {
                     console.log(error);
                 }

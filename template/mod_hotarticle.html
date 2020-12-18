@@ -6,7 +6,7 @@
     </div>
     <ul class='clearfix'>
         <li ms-repeat-el="data" style="line-height: 15px;"><a
-                ms-attr-href="/luntan/articles/?aid={el.article.id}"><span>{el.article.title | truncate(18,'...')}</span><span style="float: right;"><i class="iconfont">&#xe661;</i>{el.thumb}</span></a>
+                ms-attr-href="/luntan/articles/{el.article.id}.html"><span>{el.article.title | truncate(18,'...')}</span><span style="float: right;"><i class="iconfont">&#xe661;</i>{el.thumb}</span></a>
         </li>
     </ul>
     <div class="sjchangebtn" isget="0" ms-click="goChange(this)">

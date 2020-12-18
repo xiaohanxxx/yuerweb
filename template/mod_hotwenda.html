@@ -1,11 +1,11 @@
 {% load static %}
 {% include 'config.html' %}
- <div class="hotwdtuijian strsub"  ms-controller="rmarcs" style="width: 315px;  padding: 0 6px; float: left; ">
+ <div class="hotwdtuijian strsub"  ms-controller="rmarcs" style="width: 315px; margin: 0 0 20px 0; padding: 0 6px; float: left; ">
          <ul>
            <li ms-repeat-item="getwendaese" style="width:90%;">
-              <i class="iconfont">&#xe622;</i>
-              <a ms-attr-href="/taolun/toposting/?pid={item.id}">{item.title.substr(0,15)}</a>
-              <abbr>{item.commentnum}个问答</abbr>
+              <i class="iconfont" style="color:#019FE8;">&#xe622;</i>
+              <a ms-attr-href="/taolun/toposting/{item.id}.html">{item.title.substr(0,15)}</a>
+              <abbr style="margin-right:0;">{item.commentnum}个问答</abbr>
            </li>
          </ul>
 </div>
