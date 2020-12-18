@@ -20,3 +20,8 @@ def register(request):
 
 def changepwd(request):
     return render(request,'changepwd.html')
+
+
+# 移动端
+def m_index(request):
+    return render(request,'m_template/index.html')
