@@ -22,7 +22,7 @@ class Child_Admin(admin.ModelAdmin):
 class Artical_Admin(admin.ModelAdmin):
     list_display = ('title','thumb', 'category', 'author', 'excerpt', 'click_count','image_img')
     list_editable = ('category',)
-    search_fields = ('title',)
+    search_fields = ('title',) # 搜索
     list_filter = ('category',)
     list_per_page = 10
 

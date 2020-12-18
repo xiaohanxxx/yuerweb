@@ -344,23 +344,6 @@ def forget(request):
     return render(request,'forget.html')
 
 
-# 忘记密码
-def forget_password(request):
-    #1、验证手机号码是否正确
-    phone = request.POST.get('phone')
-    username = request.POST.get('username')
-    user = User.objects.filter(username=username)
-    if user:
-        print(user.phone)
-    else:
-        return HttpResponse(json.dumps({'code':400,'msg':'没有此用户'}), content_type="application/json")
-
-
-    # verification_Code = request.POST.get('verification_Code')
-    # yzm = request.session['smscode']
-    # if verification_Code == yzm:
-
-
 
 # 测试上传
 @csrf_exempt
