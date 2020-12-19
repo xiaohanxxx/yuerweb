@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-  <title>医院详情</title>
+  <title>医院详情-试管婴儿_育儿网</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
   <meta name=renderer content=webkit>
@@ -54,13 +54,15 @@
 
           <div class="listyisheng">
               <ul>
-                <li ms-repeat="doctorlist">
+                <li ms-repeat="doctorlist" style="height:340px;">
                    <img ms-attr-src="el.thumb" width="100%" height="197">
-                   <p>{el.name} <br><abbr>{el.zhiwei}</abbr></p>
+                   <p>{el.name} </p>
+                   <p>{el.zhiwei}</p>
                    <p style="font-size: 12px; margin: 5px 0;">{el.hospital}</p>
-                   <p style="font-size: 12px; margin: 5px 0;">擅长：{el.goodjob}</p>
+                   
                     <div class="piaofubox">
                         <div style="margin-top: 30px; margin-left: 20px; font-size: 16px;">{el.title}</div>
+<p style="font-size: 12px; margin: 5px 0; padding:0px 50px 0 20px;">擅长：{el.goodjob}</p>
                         <div style=" margin-left: 20px; margin-top: 5px; font-size: 12px;">{el.zhiwei}</div>
 {#                        <div class="biaoqiannz"><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr><abbr>技术标签</abbr></div>#}
                         <div class="zixunzhuanjia"><a ms-attr-href="/hospital/doctor/?did={el.id}">咨询专家</a></div>
@@ -126,7 +128,7 @@
                 <li ms-repeat="getpowerdoctor">
                   <div class="yshione">
                       <a ms-attr-href="/hospital/doctor/?did={el.id}"><img ms-attr-src="el.thumb" width="88" height="88"></a>
-                      <h3><a ms-attr-href="/hospital/doctor/?did={el.id}">{el.name} </a><abbr>{el.zhiwei}</abbr></h3>
+                      <h3><a ms-attr-href="/hospital/doctor/?did={el.id}">{el.name}  </a><abbr>{el.zhiwei}</abbr></h3>
                       <p>{el.hospital}</p>
                       <div style="width: 100%; float: left;  margin-top: 8px;">
                         擅长：{el.goodjob}
@@ -135,7 +137,7 @@
                 </li>
               </ol>
                 <div class="hd">
-                  <ul></ul>
+                  <ul style="width:0; height:0; overflow:hidden;"></ul>
                 </div>
              </div>
             <script type="text/javascript">

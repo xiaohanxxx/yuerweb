@@ -45,7 +45,7 @@
                 <li>
                     <a href="/baike" ms-class-1="acolor" ms-class-2="nava:currentlmId==6" ms-click="lmChange(6)" >百科知识</a>
                     <div class="xialabox" style="display: none;" >
-                        <p ms-repeat="newheaddata2" ms-click="lmChange(6)"><a ms-attr-href="/baike/baike_list?types={el.id}">{el.menu_name}</a>
+                        <p ms-repeat="newheaddata2" ms-click="lmChange(6)"><a ms-attr-href="/baike/baikelis?types={el.id}">{el.menu_name}</a>
                         </p>
                     </div>
                 </li>
@@ -324,7 +324,7 @@
         allbaikeData: [],
         getAllbaikeData: function () { //获取百科所有栏目
             var count = {
-                count: 6,
+                'count': 6,
                 'csrfmiddlewaretoken': glob_csrftoken
             }
             $.ajax({
@@ -332,7 +332,6 @@
                 url: '/baike/api/sgbk_sjldapi',
                 data: count,
                 dataType: "json",
-                // timeout: 10000,
                 success: function (data) {
                     vm.allbaikeData = data;
                     vm.datasgyes = data;

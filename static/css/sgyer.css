@@ -1,4 +1,4 @@
-.sgyer_h {
+﻿.sgyer_h {
     margin: 32px auto;
     margin-bottom: 0;
     height: 490px;
@@ -239,7 +239,8 @@
 /* sgbkbox */
 
 #sgbkbox {
-    height: 438px;
+    height: 520px;
+    overflow:hidden;
     padding-top: 25px;
     background-color: #fff;
     border-radius: 10px;
@@ -321,11 +322,13 @@
     padding-bottom: 8px;
     border-bottom: solid 1px #ededed;
     margin-top: 15px;
+    margin-bottom:15px;
 }
 
 .bkinfohead>img {
     width: 24px;
     height: 24px;
+    margin-top:-15px;
 }
 
 .bkinfohead>a {

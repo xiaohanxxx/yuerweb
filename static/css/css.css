@@ -1,4 +1,4 @@
-* {
+﻿* {
     padding: 0;
     margin: 0;
     list-style: none;
@@ -23,14 +23,7 @@ body {
     border-bottom: 1px solid #f8eaea;
     background: #fff;
 }
-#sendsmses {
- float: right;
- width: 120px;
- margin-right: 50px;
- text-align: center;
- padding: 0;
- cursor: pointer;
-}
+
 .headerNav {
     height: 150px;
     width: 1200px;
@@ -1187,6 +1180,7 @@ body .ppart .currpaitp {
 }
 
 .hzwdlefts ul li {
+    /*height:340px;*/
     float: left;
     cursor: pointer;
     margin-right: 15px;
@@ -2336,13 +2330,16 @@ li.curreswd > a {
 .haohengconts ul li {
     position: relative;
     float: left;
+    margin:27px 25px 0 15px;
 }
-
+.haohengconts ul li:hover{
+    box-shadow: 0 0 10px #999;
+}
 .haohengconts ul li p {
     width: 100px;
     position: absolute;
     left: 45px;
-    top: 53px;
+    top: 35px;
 }
 
 .haohengconts ul li p a {
@@ -2543,8 +2540,8 @@ li.curreswd > a {
 }
 
 .hzwdcontslistes p {
-    line-height: 30px;
-    padding: 5px 28px;
+    line-height: 40px;
+    padding:0 10px;
 }
 
 .hzwdcontslisteszhou {
@@ -3284,6 +3281,7 @@ li.curreswd > a {
     width: 100%;
     margin: 35px 0;
     position: relative;
+    overflow:hidden;
 }
 
 .partonecont ul li img {

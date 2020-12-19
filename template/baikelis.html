@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title>首页</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+  <meta name=renderer content=webkit>
+   {% load static %}
+  <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/swiper-bundle.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/avalon.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/swiper-bundle.min.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/css.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+  <link rel="stylesheet" href="{% static 'css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'css/iconfont.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'layui/css/layui.css' %}">
+<style type="text/css">
+      .hzwdconts{ width: 1200px; margin: 0 auto;}
+</style>
+
+</head>
+  {% include 'header.html' %}
+     
+    <div class="hzwdconts"   ms-controller="hzwdcontses">
+      <div style="width: 1200px; margin: 0 auto; "><a href=""><img src="{% static 'img/topbanner.png' %}" width="1200" height="150" style="margin-top: 20px;"></a></div>
+      <div class="hzwdlefts">
+<style>
+    .hzwdcontslistfasdfsdf{ width: 100%; overflow: hidden; background: #fff;}
+    .hzwdcontslistfasdfsdf ul{ overflow: hidden; list-style: none; width: 94%;}
+    .hzwdcontslistfasdfsdf ul li{ height: 168px; overflow: hidden; margin-bottom: 10px; margin-top: 10px; border-bottom: 1px dashed #eee; padding-bottom: 27px;}
+    .hzwdcontslistfasdfsdf ul li a:hover{color: #ff44ad;}
+    .hzwdlefts ul{ padding:30px 15px;}
+    .qiehuanbklist{ width: 100%; overflow: hidden}
+    .qiehuanbklist P{ margin-left:12px; margin-top:25px; font-size: 16px; height: 30px; line-height: 30px; margin-right: 35px; padding: 5px 25px; text-align: center; float: left;}
+    .curressdf{ background: #FF44AD; color: #fff; border-radius: 30px;}
+    .hzwdcontslistfasdfsdf .hzwdcontsesa li a:hover{ color:#ff44ad;}
+    .hzwdcontslistfasdfsdf .hzwdcontsesa li h3:hover a{ color:#ff44ad;}
+    .hzwdcontslistfasdfsdf .hzwdcontsesa h3:hover a{ color:#ff44ad;}
+</style>
+
+
+      <div class="hzwdcontslistfasdfsdf" >
+           <div class="qiehuanbklist">
+               <p ms-class="curressdf:aas == 1"  ms-click="getDataall(1)">备孕百科</p>
+               <p ms-class="curressdf:aas == 2"  ms-click="getDataall(2)">怀孕百科</p>
+               <p ms-class="curressdf:aas == 3"  ms-click="getDataall(3)">不孕不育</p>
+               <p ms-class="curressdf:aas == 4"  ms-click="getDataall(4)">试管婴儿</p>
+               <p ms-class="curressdf:aas == 5"  ms-click="getDataall(5)">育儿百科</p>
+           </div>
+           <ul class="hzwdcontsesa" id="hzwdcontsesa">
+
+           </ul>
+
+         <div id="pagers"></div>
+
+     </div>
+      </div>
+      <div class="hzwdrights yytjclass">
+          <style>
+              .lists p{ padding-left: 30px; margin: 8px 0 26px 0; font-size: 16px;}
+              .hot_arc .rgt_tit{ padding-top:0; }
+              body .rgt_tit{ margin-top: 0; }
+.yytjclass .hot_arc{ margin-left:-7px;}
+          </style>
+          <div class="szzhuanjia hostnews">
+          	{% include 'mod_hotarticle.html' %}
+          </div>
+
+
+          <div class="szzhuanjia">
+              <h3><abbr>推荐百科</abbr> <a href="/baike">更多>></a></h3>
+              <div class="doctorbox" ms-repeat="getrmbaike">
+                 <a ms-attr-href="/baike/article/{el.id}.html">
+{#                   <img ms-attr-src="'/media/' + el.thumb" style="float: left; margin: 20px 15px 0 0; width: 80px; height: 80px;">#}
+                   <h4 style="margin-top: 20px; font-size: 14px; padding-right: 15px;">{el.title}</h4>
+{#                   <p style=" font-size: 12px; margin-top: 10px; padding-right: 15px;">{el.excerpt | truncate(33,'...')}</p>#}
+                 </a>
+              </div>
+          </div>
+
+          <div class="szzhuanjia">
+              <h3><abbr>热门问答</abbr> <a href="/taolun/">更多>></a></h3>
+              <div class="hotwdtuijian" style="font-size: 16px;">
+                  {% include 'mod_hotwenda.html' %}
+             </div>
+
+     </div>
+   </div>
+
+     <!-- 底部 -->
+    {% include 'footer.html' %}
+
+      <script>
+        avalon.config({
+            interpolate: ["{", "}"]
+        });  
+       var vmw = avalon.define({
+        $id: "hzwdcontses",
+        allnum:0,
+        aas:1,
+        url:'',
+        getDataall:function (res){
+            vmw.aas = res;
+            vmw.getAllbaikeData(res);
+        },
+        intopages:function(count){  //分页初始化
+            layui.use(['laypage', 'layer'], function(){
+              var laypage = layui.laypage
+              ,layer = layui.layer;
+              laypage.render({
+                elem: 'pagers'
+                ,count:count
+                ,limit:9
+                ,limits:[9,20,30,40]
+                ,layout: ['count', 'prev', 'page', 'next', 'limit'],
+                jump: function(obj,first){
+                  
+                     //模拟渲染
+                      document.getElementById('hzwdcontsesa').innerHTML = function(){
+                        var arr = []
+                        ,thisData = vmw.allbaikeDataes.concat().splice(obj.curr*obj.limit - obj.limit, obj.limit);
+                        layui.each(thisData, function(index, item){
+                           
+                          arr.push('<li><a style="display:block; float:left; margin-right:15px; width:200px; height:168px;" href="/baike/article/'+item.articleid+'.html"><img src="/media/'+item.thumb+'" alt="" style="float: left; width: 200px; height: 168px; margin-right: 15px;"></a><h3 style="font-size: 21px; margin-bottom: 10px;"><a href="/baike/article/'+item.articleid+'.html" style="color:#333;">'+item.title+'</a></h3><p style="font-size: 16px; color:#666;">'+item.excerpt+'...</p><p style="margin-top: 15px; font-size: 16px;">'+item.add_time+'<abbr title="" style="margin-left: 30px;text-decoration:none;"><img src="{% static 'img/liulan.png' %}" alt="" style="margin-right: 10px;">'+item.click_count+'</abbr></p></li>');                         });
+                        return arr.join('');
+                      }();
+                }
+              });
+            });
+        },
+        allbaikeData: [],
+        allbaikeDataes:[],
+        erjilanmu:[],
+        alnum:0,
+        getAllbaikeData: function (idnexs) { //获取百科所有栏目
+            var count = {
+                count: 12,
+                'csrfmiddlewaretoken': glob_csrftoken
+            }
+            vmw.allbaikeDataes = [];
+            $.ajax({
+                type: 'post',
+                url: '/baike/api/sgbk_sjldapi',
+                data: count,
+                dataType: "json",
+                success: function (data) {
+                    vmw.allbaikeData = data;
+                    vmw.erjilanmu = vmw.allbaikeData[idnexs-1].children;
+                    $.each(vmw.erjilanmu,function(i,item){
+                        if(item.children || item.children.length>0){
+                            $.each(item.children,function(j,k){
+                                 vmw.allbaikeDataes.push(k);
+                            })
+                        }
+                    })
+                    vmw.alnum = vmw.allbaikeDataes.length;
+                    vmw.intopages(vmw.alnum);//初始化分页
+                }
+            });
+        },
+           getQueryVariable: function (variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return (false);
+        },
+        aaa:function (){
+            vmw.aas = vmw.getQueryVariable('types')?vmw.getQueryVariable('types'):1;
+            console.log(vmw.aas,'*******************');
+        }
+    })
+    vmw.aaa();
+    vmw.getDataall(vmw.aas);
+</script>
+</body>
+</html>
