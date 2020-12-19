@@ -31,3 +31,6 @@ def m_login(request):
 
 def m_zhuce(request):
     return render(request,'m_template/zhuce.html')
+
+def m_forget(request):
+    return render(request,'m_template/forget.html')

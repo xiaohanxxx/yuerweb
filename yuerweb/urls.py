@@ -52,4 +52,5 @@ urlpatterns = [
     path('index', views.m_index),
     path('m_login', views.m_login),
     path('m_zhuce', views.m_zhuce),
+    path('m_forget', views.m_forget)
 ]
