@@ -25,3 +25,9 @@ def changepwd(request):
 # 移动端
 def m_index(request):
     return render(request,'m_template/index.html')
+
+def m_login(request):
+    return render(request,'m_template/login.html')
+
+def m_zhuce(request):
+    return render(request,'m_template/zhuce.html')

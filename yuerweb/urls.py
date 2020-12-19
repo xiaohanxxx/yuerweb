@@ -29,14 +29,13 @@ urlpatterns = [
     path('', views.index),
     path('login', views.login),
     path('register', views.register),
-    url(r'^favicon.ico$',RedirectView.as_view(url=r'static/favicon.ico')),
+    url(r'^favicon.ico$', RedirectView.as_view(url=r'static/favicon.ico')),
 
     url(r'luntan/', include('luntan.urls')),
 
     url(r'hospital/', include('hospital.urls')),
     url(r'shiguanbaby/', include('shiguanbaby.urls')),
     url(r'taolun/', include('taolun.urls')),
-
 
     url(r'baike/', include('baike.urls')),
     url(r'users/', include('users.urls')),
@@ -49,9 +48,8 @@ urlpatterns = [
     path('search/', include('haystack.urls')),
     # url(r'^upload', views.upload)  # 测试路由
 
-
-
-
-    #移动端路由
+    # 移动端路由
     path('index', views.m_index),
+    path('m_login', views.m_login),
+    path('m_zhuce', views.m_zhuce),
 ]
