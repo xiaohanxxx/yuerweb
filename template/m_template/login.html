@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="randerer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="applicable-device" content="mobile">
+    <meta name="viewport" content="width=device-width,user-scale=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+    <meta charset="utf-8">
+    <title>百科首页</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'skins/js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'skins/js/avalon.js' %}"></script>
+    <script type="text/javascript" src="{% static 'skins/js/rem.js' %}"></script>
+    <script type="text/javascript" src="{% static 'skins/js/TouchSlide.1.1.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'skins/css/coment.css' %}">
+    <link rel="stylesheet" href="{% static 'skins/css/css.css' %}">
+    <link rel="stylesheet" href="{% static 'skins/css/iconfont.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'skins/css/swiper.min.css' %}">
+    <script type="text/javascript" src="{% static 'skins/js/swiper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'skins/js/zpto.min.js' %}"></script>
+</head>
+
+<body style="background: #fff; height: 100vh;">
+    <header id="header" class="" ms-controller="indexbox" style="border-bottom: 1px solid #f1f1f1;">
+        <h1>
+            <a href="###"><img src="{% static 'skins/img/logo.svg' %}" alt="网站logo"></a>
+            <span id="menuicon" class="iconfont" ms-click="showmunelist(2)">&#xe611;</span>
+        </h1>
+        <div class="showboxmuen" ms-if="aa==2" style="display: none;">
+            <div class="thinmeBox">
+                <div class="indexsy_z">
+                   <a href="###">首页</a>  <span ms-click="showmunelist(1)">x</span>
+                   <ul>
+                     <li>
+                         <h3>育儿论坛</h3>
+                         <p>
+                            <a href="###">备孕交流圈</a>
+                            <a href="###">好孕妈妈交流圈</a>
+                            <a href="###">难孕交流圈</a>
+                            <a href="###">试管婴儿交流圈</a>
+                         </p>
+                     </li>
+                     <li>
+                         <h3>互助问答</h3>
+                         <p>
+                            <a href="###">试管婴儿</a>
+                            <a href="###">不孕不育</a>
+                            <a href="###">备孕</a>
+                            <a href="###">怀孕</a>
+                         </p>
+                     </li>
+                     <li>
+                         <h3>百科知识</h3>
+                         <p>
+                            <a href="###">备孕</a>
+                            <a href="###">怀孕</a>
+                            <a href="###">育儿</a>
+                            <a href="###">试管婴儿</a>
+                            <a href="###">不孕不育</a>
+                         </p>
+                     </li>
+                     <li>
+                         <h3>个人中心</h3>
+                         <p>
+                            <a href="###">我的资料</a>
+                            <a href="###">我的消息</a>
+                         </p>
+                     </li>
+                   </ul>
+                </div>
+            </div>
+       </div>
+    </header>
+    <!-- /header -->
+    
+    <div class="topimgs" style="background: #fff;">
+        <img src="{% static 'skins/img/dlimg.png' %}" alt="">
+    </div>
+    <div class="denglus_z">
+        <div class="loginfrome">
+            <span class="iconfont" style="font-size: 25px; vertical-align: middle; margin-right: 15px;">&#xe604;</span> <input type="text" name="" placeholder="请输入用户名">
+        </div>
+        <div class="loginfrome">
+            <span class="iconfont" style="font-size: 25px; vertical-align: middle; margin-right: 15px;">&#xe606;</span> <input type="password" name="" placeholder="请输入密码">
+        </div>
+        <div class="loginfrome">
+            <input type="button" name="" value="登录" id="buttons_z">
+        </div>
+        <div class="loginfrome1">
+           <span class="span1"><a href="###">忘记密码?</a></span>
+           <span class="span2"><a href="/m_zhuce">立即注册</a></span>
+        </div>
+    </div> 
+    <script type="text/javascript">
+        avalon.config({
+          interpolate: ["{", "}"]
+        });
+        var mva = avalon.define({
+            $id:'indexbox',
+            aa:1,
+            showmunelist:function(res){
+                mva.aa = res;
+            }
+        });
+    </script>
+</body>
+
+</html>
